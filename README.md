@@ -1,5 +1,5 @@
-# Projeto de locação de veículos urbanos - Desktop
-Software desktop para o projeto de locação de veículos urbanos. Projeto de conclusão do curso Técnico de Informática.
+# Projeto de locação de veículos urbanos - Web
+Software web para o projeto de locação de veículos urbanos. Projeto de conclusão do curso Técnico de Informática.
 
 **Boas práticas**
 
