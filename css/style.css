@@ -1,0 +1,317 @@
+body::after {
+    content: "mobile";
+    font-size: 0;
+}
+
+/*------------------------------------------------------------------------- PSEUDO ELEMENTOS PARA BREAKPOINT*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/*------------------------------------------------------------------------- CSS RESET*/
+
+a {
+    text-decoration: none;
+}
+
+#container {
+    
+}
+
+/*------------------------------------------------------------------------- GERAL*/
+
+header {        
+    background-color: #bababa;    
+    width: 100%;
+    height: 60px;
+    padding: 5px 0px;
+    position: fixed;
+    left: 0px;
+}
+
+header #box-cabecalho {
+    width: 310px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+header #box-cabecalho #mobile-botao-menu {
+    background: url(../img/icones/menu_sandwich.png) no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    cursor: pointer;
+    float: left;    
+}
+
+header #box-cabecalho #box-conta {    
+    width: 120px;
+    height: 60px;
+    float: right;    
+}
+
+header #box-cabecalho #box-conta #icone-notificacao {
+    background: url(../img/icones/notificacao.png) no-repeat;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    float: left;    
+}
+
+header #box-cabecalho #box-conta #imagem-perfil {
+    background-color: #dddddd;
+    width: 55px;
+    height: 55px;    
+    border-radius: 50px;
+    border: 2px solid white;
+    overflow: hidden;    
+    cursor: pointer;
+    float: right;    
+}
+
+header #box-cabecalho #box-conta #imagem-perfil img {
+    width: 55px;
+    height: 55px;
+}
+
+/*------------------------------------------------------------------------- CABEÇALHO*/
+
+#box-mobile-menu {
+    display: none;
+    background-color: white;    
+    width: 0px;
+    height: 100%;
+    position: fixed;        
+    transition: width .2s;
+}
+
+#box-mobile-menu #mobile-menu {
+    
+}
+
+#box-mobile-menu #mobile-menu li {
+    background-color: #ededed;
+    margin-bottom: 2px;    
+}
+
+#box-mobile-menu #mobile-menu li a {
+    display: block;
+    padding: 20px;
+    text-align: center;
+}
+
+/*------------------------------------------------------------------------- MENU DE PAGINAS - MOBILE*/
+
+#box-menu-usuario {
+    display: none;
+    background-color: #cecece;
+    position: relative;
+    width: 200px; 
+    height: 175px;
+    top: 65px;
+    margin-left: auto;    
+}
+
+#box-menu-usuario #menu-usuario {
+    
+}
+
+#box-menu-usuario #menu-usuario {
+    list-style-type: none;
+}
+
+#box-menu-usuario #menu-usuario li {
+    
+}
+
+#box-menu-usuario #menu-usuario li a {
+    display: block;
+    padding: 20px;
+}
+
+/*------------------------------------------------------------------------- MENU USUARIO*/
+
+#main {
+    background-color: #cccccc;
+    min-height: 400px;
+    padding-top: 72px;
+    padding-bottom: 10px;    
+}
+
+#main .imagem-divisao-conteudo {
+    background-image: url(../img/image_teste.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+}
+
+#main .imagem-divisao-conteudo:nth-child(1) {
+    background-image: url(../img/image_teste2.jpg);
+}
+
+#main .box-conteudo {
+    width: 310px;
+    margin: 0 auto;
+}
+
+#main .box-conteudo .box-conteudo-apresentacao {    
+    padding: 0px 5px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+
+#main .box-conteudo .box-conteudo-apresentacao .titulo-apresentacao {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#main .box-conteudo .box-conteudo-apresentacao .imagem-apresentacao {
+    display: block;
+    width: 280px;
+    height: 200px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+#main .box-conteudo .box-conteudo-apresentacao .texto-apresentacao {
+    display: block;
+    width: 270px;
+    font-size: 20px;
+    text-align: justify;
+    margin: 0 auto;
+}
+
+#main #container-locadores-destaque {    
+    height: 410px;   
+    overflow-x: scroll;
+    padding: 5px;
+    padding-top: 15px;
+    margin: 0 auto;
+}
+
+#main #container-locadores-destaque #horizontal-wrapper {
+    width: 2600px;   
+}
+
+#main #container-locadores-destaque .box-locador-destaque {
+    background-color: #a8a8a8;
+    width: 250px;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .foto-locador {
+    width: 250px;
+    height: 220px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .nome-locador {
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .localizacao-locador {
+    font-size: 19px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes {   
+    margin-top: 50px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .avaliacoes-locador {
+    font-style: italic;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes 
+.container-icone-avaliacoes {
+    display: inline-block;
+    margin-left: 80px;
+    margin-top: 5px;
+}
+
+#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes 
+.container-icone-avaliacoes .icone-avaliacao {
+    background: url(../img/icones/avaliacao.png);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+/*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
+
+footer {
+    background-color: #7b7b7b;
+    width: 100%;
+    height: auto;
+    padding: 10px 0px;
+    margin-top: 5px;
+}
+
+footer #box-rodape {
+    width: 310px;
+    margin: 0 auto;
+}
+
+footer #box-rodape #box-mapa-site {
+    margin-bottom: 30px;
+}
+
+footer #box-rodape #box-mapa-site h1 {
+    color: white;
+    font-size: 22px;    
+    margin-bottom: 5px;    
+}
+
+footer #box-rodape #box-mapa-site #lista-paginas {
+    list-style-type: none;    
+}
+
+footer #box-rodape #box-mapa-site #lista-paginas li {    
+    margin-bottom: 5px;
+}
+
+footer #box-rodape #box-mapa-site #lista-paginas li a {
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    display: block;
+}
+
+footer #box-rodape #declaracao-copyright {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
+/*------------------------------------------------------------------------- RODAPÉ*/
