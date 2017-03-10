@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home - City Share</title>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/style.css"></link>
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="box-cabecalho">
+                    <div id="mobile-botao-menu"></div>
+                    <div id="box-conta">
+                        <a href="#"><div id="icone-notificacao"></div></a>                        
+                        <div id="imagem-perfil">
+                            <img src="img/link_face.jpg" />
+                        </div>
+                    </div>
+                    <div class="js-popup-painel" id="box-menu-usuario">
+                        <ul id="menu-usuario">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a href="#">Sair</a></li>
+                        </ul>
+                    </div>
+                    <!-- MENU DE USUÁRIO -->                    
+                </div>
+            </header>            
+            <!-- CABEÇALHO -->
+            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
+                <ul id="mobile-menu">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ALUGUE</a></li>
+                    <li><a href="#">EMPRESTE</a></li>
+                    <li><a href="#">CONTATO</a></li>                    
+                </ul>
+            </div>
+            <!-- MENU DE PAGINAS - MOBILE -->            
+            <div id="main">
+                <div class="box-conteudo">
+                    <section class="box-conteudo-faq">
+                        <h1 class="titulo-faq">Perguntas frequentes</h1>
+                        <div id="faq-accordion">
+                            <div class="faq">Pergunta 1
+                                <div class="faq-answer">Resposta ipsum</div>
+                            </div>
+                            <div class="faq">Pergunta 2
+                                <div class="faq-answer">Resposta ipsum</div>
+                            </div>
+                            <div class="faq">Pergunta 3
+                                <div class="faq-answer">Resposta ipsum</div>
+                            </div>
+                            <div class="faq">Pergunta 4
+                                <div class="faq-answer">Resposta ipsum</div>
+                            </div>
+                            <div class="faq">Pergunta 5
+                                <div class="faq-answer">Resposta ipsum</div>
+                            </div>
+                        </div>                        
+                    </section>
+                </div>           
+                <div class="box-conteudo">
+                    <section class="box-conteudo-apresentacao">
+                        <h1 class="titulo-apresentacao">Fale conosco</h1>
+                        <p class="subtitulo">Não sanou sua dúvida? Contate-nos!</p>
+                        <div id="info-contato">
+                            <p>E-mail:</p>
+                            mail@mail
+                            
+                            <p>Telefone:</p>
+                            1234-5678
+                            
+                            <p>Atendimento:</p>
+                            horario de atendimento
+                            
+                            <p>Endereço:</p>
+                            rua tal numero 1
+                        </div>
+                        <form name="form-contato" action="#">
+                            Nome:
+                            <input type="text" name="nome" style="width:300px"/>
+                            E-mail:
+                            <input type="text" name="email" style="width:300px"/>
+                            Mensagem:
+                            <textarea name="mensagem" hint="mensagem" style="resize:none" rows="5" cols="40"></textarea>
+                            <input type="button" value="Enviar" name="enviar" style="margin-left:110px"/>
+                        </form>
+                    </section>
+                </div>
+            </div>            
+        </div>
+        <footer>
+            <div id="box-rodape">
+                <section id="box-mapa-site">
+                    <h1>Mapa do Site</h1>
+                    <ul id="lista-paginas">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Alugue</a></li>
+                        <li><a href="#">Empreste</a></li>
+                        <li><a href="#">Veículo</a></li>
+                        <li><a href="#">Sobre o Projeto</a></li>
+                        <li><a href="#">Benefícios do Projeto</a></li>
+                        <li><a href="#">A Empresa</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </section>
+                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+        <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
