@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home - City Share</title>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/style.css"></link>
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="box-cabecalho">
+                    <div id="mobile-botao-menu"></div>
+                    <div id="box-conta">
+                        <a href="#"><div id="icone-notificacao"></div></a>                        
+                        <div id="imagem-perfil">
+                            <img src="img/link_face.jpg" />
+                        </div>
+                    </div>
+                    <div class="js-popup-painel" id="box-menu-usuario">
+                        <ul id="menu-usuario">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a href="#">Sair</a></li>
+                        </ul>
+                    </div>
+                    <!-- MENU DE USUÁRIO -->
+                    <div id="mobile-botao-filtragem"></div>
+                    <!-- BOTAO FILTRAGEM DE VEÍCULOS -->
+                </div>
+            </header>            
+            <!-- CABEÇALHO -->
+            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
+                <ul id="mobile-menu">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ALUGUE</a></li>
+                    <li><a href="#">EMPRESTE</a></li>
+                    <li><a href="#">CONTATO</a></li>                    
+                </ul>
+            </div>
+            <!-- MENU DE PAGINAS - MOBILE -->
+            <section class="js-popup-painel painel-mobile" id="box-mobile-filtragem">
+                <h1 id="titulo">Filtragem</h1>
+                <form method="post" action="#">                    
+                    <div class="box-opcoes-select">
+                        <p class="label">Estado</p>
+                        <select class="select">
+                            <option>Estado</option>
+                        </select>
+                    </div>
+                    <div class="box-opcoes-select">
+                        <p class="label">Cidade</p>
+                        <select class="select">
+                            <option>Cidade</option>
+                        </select>
+                    </div>
+                    <div class="box-opcoes-select">
+                        <p class="label">Tipo de Transporte</p>
+                        <select class="select">
+                            <option>Bicicleta</option>
+                        </select>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Valor da Diária</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Valor do Combustível</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Quilometragem do Veículo</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Limite de Distância</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-slider">
+                        <div class="label">Avaliação Mínima</div>
+                        <div class="box-slider">
+                            <input class="slider" type="range"/>
+                            <p class="valor-slider">0/5</p>
+                        </div>
+                    </div>
+                    <input class="botao-submit" type="submit" value="Filtrar" />
+                </form>
+            </section>
+            <!-- MENU DE FILTRAGEM - MOBILE -->
+            <div id="main">
+                <div class="box-conteudo">
+                    <div id="lista-veiculos">
+                        <section class="box-veiculo">
+                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
+                            <div class="box-info-veiculo">                                
+                                <h1 class="titulo-veiculo">Nome do Veículo</h1>
+                                <div class="box-valor-diaria">
+                                    <p class="valor-diaria">R$00,00
+                                        <span class="label-diaria">diária</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-info-valores">
+                                <p class="valor-combustivel">Valor do Combustível</p>
+                                <p class="valor">R$00,00</p>
+                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-avaliacoes">
+                                <div class="container-icone-avaliacoes">
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="box-veiculo">
+                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
+                            <div class="box-info-veiculo">                                
+                                <h1 class="titulo-veiculo">Nome do Veículo</h1>
+                                <div class="box-valor-diaria">
+                                    <p class="valor-diaria">R$00,00
+                                        <span class="label-diaria">diária</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-info-valores">
+                                <p class="valor-combustivel">Valor do Combustível</p>
+                                <p class="valor">R$00,00</p>
+                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-avaliacoes">
+                                <div class="container-icone-avaliacoes">
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div id="box-paginas">
+                        <div id="box-botoes">
+                            <div class="box-botoes-pagina">                            
+                                <a id="link-pagina-prev" href="#">Anterior</a>
+                                <div id="box-primeira-pagina">
+                                    <a href="#">Primeira</a>
+                                </div>
+                            </div>
+                            <p id="label-pagina-atual">1</p>
+                            <div class="box-botoes-pagina">
+                                <a id="link-pagina-next" href="#">Próxima</a>
+                                <div id="box-ultima-pagina">
+                                    <a href="#">Última</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CONTEUDO PRINCIPAL -->
+        </div>
+        <footer>
+            <div id="box-rodape">
+                <section id="box-mapa-site">
+                    <h1>Mapa do Site</h1>
+                    <ul id="lista-paginas">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Alugue</a></li>
+                        <li><a href="#">Empreste</a></li>
+                        <li><a href="#">Veículo</a></li>
+                        <li><a href="#">Sobre o Projeto</a></li>
+                        <li><a href="#">Benefícios do Projeto</a></li>
+                        <li><a href="#">A Empresa</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </section>
+                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+        <!-- RODAPÉ -->
+        <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

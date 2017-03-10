@@ -45,6 +45,7 @@ header {
     padding: 5px 0px;
     position: fixed;
     left: 0px;
+    z-index: 2;
 }
 
 header #box-cabecalho {
@@ -60,7 +61,7 @@ header #box-cabecalho #mobile-botao-menu {
     height: 50px;
     margin-top: 5px;
     cursor: pointer;
-    float: left;    
+    float: left;
 }
 
 header #box-cabecalho #box-conta {    
@@ -96,13 +97,38 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------------------------------------------------------------------- CABEÇALHO*/
 
-#box-mobile-menu {
+#mobile-botao-filtragem {
+    background-color: #b9b9b9;
+    background-image: url(../img/icones/filtrar.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 65px;
+    height: 65px;
+    padding: 5px;
+    position: relative;
+    margin-left: auto;
+    top: 65px;
+    border-radius: 0px 0px 2px 2px;
+    border-top: 0px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/*------------------------------------------------------------------------- BOTAO FILTRAGEM VEÍCULOS*/
+
+.painel-mobile {
     display: none;
     background-color: white;    
     width: 0px;
     height: 100%;
+    padding: 5px;
     position: fixed;        
     transition: width .2s;
+    z-index: 2;
+}
+
+#box-mobile-menu {
+    
 }
 
 #box-mobile-menu #mobile-menu {
@@ -120,20 +146,115 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     text-align: center;
 }
 
-/*------------------------------------------------------------------------- MENU DE PAGINAS - MOBILE*/
+/*------------- MENU DE PAGINAS - MOBILE*/
+
+#container #box-mobile-filtragem {    
+    width: 250px;    
+    height: 100%;
+    position: fixed;    
+}
+
+#container #box-mobile-filtragem #titulo {
+    text-align: center;
+    font-size: 22px;
+}
+
+#container #box-mobile-filtragem .box-opcoes-select {
+    margin-bottom: 10px;
+}
+
+#container #box-mobile-filtragem .box-opcoes-select .label {
+    font-size: 20px;
+}
+
+#container #box-mobile-filtragem .box-opcoes-select .select {
+    height: 50px;
+    width: 250px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor {
+    margin-bottom: 10px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .label {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .box-valores {
+    margin-bottom: 5px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .box-valores .label-intervalo {
+    display: inline-block;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .box-valores .txt-valor {    
+    width: 90px;
+    height: 30px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .box-ordem {
+    
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .box-ordem .opcao-ordem {
+    width: 20px;
+    height: 20px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-valor .box-ordem .label-ordem {
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    bottom: 5px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-slider {
+    margin-bottom: 10px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-slider .label {
+    font-size: 20px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-slider .box-slider {
+    
+}
+
+#container #box-mobile-filtragem .box-filtragem-slider .box-slider .slider {
+    width: 245px;
+}
+
+#container #box-mobile-filtragem .box-filtragem-slider .box-slider .valor-slider {
+    text-align: center;    
+}
+
+#container #box-mobile-filtragem .botao-submit {
+    background-color: #d9d9d9;
+    width: 120px;
+    height: 50px;
+    border: 0px;
+    border-radius: 5px;
+    margin-left: 55px;
+    outline: none;    
+}
+
+/*------------- MENU DE FILTRAGEM - MOBILE*/
+
+/*------------------------------------------------------------------------- PAINEIS MOBILE*/
 
 #box-menu-usuario {
     display: none;
-    background-color: #cecece;
+    background-color: #f2f2f2;
     position: relative;
     width: 200px; 
-    height: 175px;
     top: 65px;
-    margin-left: auto;    
+    margin-left: auto; 
+    z-index: 3;
 }
 
 #box-menu-usuario #menu-usuario {
-    
 }
 
 #box-menu-usuario #menu-usuario {
@@ -146,10 +267,24 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #box-menu-usuario #menu-usuario li a {
     display: block;
-    padding: 20px;
+    padding: 20px;    
 }
 
 /*------------------------------------------------------------------------- MENU USUARIO*/
+
+.container-icone-avaliacoes {
+    display: inline-block;        
+}
+
+.container-icone-avaliacoes .icone-avaliacao {
+    background: url(../img/icones/avaliacao.png);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+/*------------- PRESETS*/
 
 #main {
     background-color: #cccccc;
@@ -252,21 +387,147 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin-left: 5px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes 
-.container-icone-avaliacoes {
-    display: inline-block;
+#main #container-locadores-destaque .box-locador-destaque 
+.box-avaliacoes .container-icone-avaliacoes {
     margin-left: 80px;
+    margin-bottom: 5px;
     margin-top: 5px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes 
-.container-icone-avaliacoes .icone-avaliacao {
-    background: url(../img/icones/avaliacao.png);
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    display: inline-block;
+/*------------- HOME*/
+
+#main .box-conteudo #lista-veiculos {    
+    width: 310px;
+    height: auto;    
 }
+
+#main .box-conteudo #lista-veiculos .box-veiculo {
+    background-color: #dedede;
+    margin-bottom: 10px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .imagem-veiculo {
+    width: 310px;
+    margin: 0px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo {
+    height: 50px;
+    margin-top: 0px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo .titulo-veiculo {    
+    font-size: 23px;
+    font-weight: bold;
+    text-align: left;
+    margin: 0px 5px;
+    margin-top: 3px;
+    float: left;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria {
+    display: inline-block;
+    width: 100px;
+    height: 35px;
+    margin-right: 5px;
+    padding-left: 5px;
+    border-left: 2px solid black;
+    float: right;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria {
+    font-size: 22px;
+    height: 35px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria .label-diaria {
+    text-align: right;
+    font-style: italic;
+    font-size: 15px;
+    position: relative;
+    left: 50px;
+    bottom: 11px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores {
+    margin-top: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-combustivel,
+#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-quilometragem {
+    font-size: 20px;
+    text-align: left;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    margin: 5px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-avaliacoes {
+    display: block;
+    height: 33px;
+    padding-bottom: 5px;
+}
+
+#main .box-conteudo #lista-veiculos .box-veiculo .box-avaliacoes .container-icone-avaliacoes {
+    float: right;    
+}
+
+#main .box-conteudo #box-paginas {    
+    padding: 2px;
+    margin: 0 auto;
+    border-top: 1px solid #9a9a9a;
+}
+
+#main .box-conteudo #box-paginas #box-botoes {
+    width: 285px;
+    margin: 0 auto;
+}
+
+#main .box-conteudo #box-paginas #box-primeira-pagina,
+#main .box-conteudo #box-paginas #link-pagina-prev,
+#main .box-conteudo #box-paginas #link-pagina-next, 
+#main .box-conteudo #box-paginas #box-ultima-pagina {    
+    background-color: #d4d4d4;
+    font-size: 25px;    
+    padding: 15px;
+    margin: 1px;
+}
+
+#main .box-conteudo #box-paginas .box-botoes-pagina {
+    display: inline-block;
+    text-align: right;
+}
+
+#main .box-conteudo #box-paginas #link-pagina-prev {
+    display: inline-block;
+    text-align: right;
+}
+
+#main .box-conteudo #box-paginas #label-pagina-atual {    
+    display: inline-block;    
+    font-size: 24px;    
+    padding: 15px;
+    position: relative;
+    bottom: 25px;
+}
+
+#main .box-conteudo #box-paginas #link-pagina-next {
+    display: inline-block;
+    text-align: left;
+}
+
+#main .box-conteudo #box-paginas #box-ultima-pagina {
+    text-align: left;
+}
+
+/*------------- ALUGUE*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
