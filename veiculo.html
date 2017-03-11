@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home - City Share</title>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/style.css"></link>
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="box-cabecalho">
+                    <div id="mobile-botao-menu"></div>
+                    <div id="box-conta">
+                        <a href="#"><div id="icone-notificacao"></div></a>                        
+                        <div id="imagem-perfil">
+                            <img src="img/link_face.jpg" />
+                        </div>
+                    </div>
+                    <div class="js-popup-painel" id="box-menu-usuario">
+                        <ul id="menu-usuario">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a href="#">Sair</a></li>
+                        </ul>
+                    </div>
+                    <!-- MENU DE USUÁRIO -->                    
+                </div>
+            </header>            
+            <!-- CABEÇALHO -->
+            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
+                <ul id="mobile-menu">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ALUGUE</a></li>
+                    <li><a href="#">EMPRESTE</a></li>
+                    <li><a href="#">CONTATO</a></li>                    
+                </ul>
+            </div>
+            <!-- MENU DE PAGINAS - MOBILE -->
+            <div class="main" id="pag-detalhes-veiculo">
+                <div id="slide-imagens-veiculo">
+                    <div class="botao-slide" id="botao-prev"></div>       
+                    <div class="botao-slide" id="botao-next"></div>
+                    <div id="container-imagens"></div>
+                </div>
+                <div class="box-conteudo">
+                    <section class="box-veiculo">                        
+                        <h1 id="titulo-veiculo">Nome do Veículo</h1>
+                        <div id="box-valores-veiculo">
+                            <div class="box-label-valor">
+                                <p class="label">Diária:</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-label-valor">
+                                <p class="label">Combustível (L):</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-label-valor">
+                                <p class="label">Valor por Distância Excedida (Km):</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                        </div>
+                        <div class="box-label-valor" id="box-limite-distancia">
+                            <p class="label">Limite de Distância:</p>
+                            <p class="valor">99999Km</p>
+                        </div>
+                        <div class="box-data">
+                            <div class="box-label-data">
+                                <p class="label">Retirada:</p>
+                                <input class="data-input" type="text" />
+                            </div>
+                            <input class="hora-input" type="text" />
+                        </div>
+                        <div class="box-data">
+                            <div class="box-label-data">
+                                <p class="label">Devolução:</p>
+                                <input class="data-input" type="text" />
+                            </div>
+                            <input class="hora-input" type="text" />
+                            <a id="botao-alugar" href="#">Alugar</a>
+                        </div>
+                    </section>
+                </div>
+                <section id="box-previa-locador">
+                    <img id="imagem-locador" src="img/image_teste.jpg" />
+                    <div id="info-locador">
+                        <h1 id="nome-locador">Nome do Locador</h1>
+                        <div id="box-reputacao-locador">
+                            <p id="label-reputacao">Reputação do locador</p>
+                            <div class="container-icone-avaliacoes">
+                                <div class="icone-avaliacao"></div>
+                                <div class="icone-avaliacao"></div>
+                                <div class="icone-avaliacao"></div>
+                                <div class="icone-avaliacao"></div>
+                                <div class="icone-avaliacao"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="box-conteudo">
+                    <section class="box-veiculo">
+                        <section id="box-especificacoes-veiculos">
+                            <h1 id="titulo">Especificações</h1>
+                            <p id="titulo-descricao">Descrição</p>
+                            <p id="conteudo-descricao">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio sem, imperdiet non lacus vel, dictum venenatis mi. Cras porttitor nec orci in semper. Etiam viverra fringilla metus posuere ultricies. Nullam non ipsum sit amet nisl lobortis convallis. Pellentesque nec purus ligula. Maecenas bibendum pharetra tellus et sagittis. Cras aliquam condimentum metus, tristique dapibus felis. Proin id risus commodo, consectetur ligula sit amet, vestibulum velit. Fusce vel rutrum diam. Aliquam dolor eros, vestibulum id ipsum ac, interdum lobortis arcu. Etiam eget nibh at libero pharetra efficitur. Pellentesque libero orci, congue quis lectus at, posuere rhoncus orci. Ut urna lectus, sodales et urna nec, faucibus sodales magna.
+                            </p>
+                            <section id="box-acessorios-veiculo">
+                                <h1 id="titulo-acessorios">Acessórios</h1>
+                                <ul id="lista-acessorios">
+                                    <li>Item 1</li>
+                                    <li>Item 2</li>
+                                    <li>Item 3</li>
+                                    <li>Item 4</li>
+                                </ul>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+            </div>
+            <!-- CONTEUDO PRINCIPAL -->
+        </div>
+        <footer>
+            <div id="box-rodape">
+                <section id="box-mapa-site">
+                    <h1>Mapa do Site</h1>
+                    <ul id="lista-paginas">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Alugue</a></li>
+                        <li><a href="#">Empreste</a></li>
+                        <li><a href="#">Veículo</a></li>
+                        <li><a href="#">Sobre o Projeto</a></li>
+                        <li><a href="#">Benefícios do Projeto</a></li>
+                        <li><a href="#">A Empresa</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </section>
+                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+        <!-- RODAPÉ -->
+        <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

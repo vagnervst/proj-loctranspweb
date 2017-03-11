@@ -286,14 +286,14 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- PRESETS*/
 
-#main {
+.main {
     background-color: #cccccc;
     min-height: 400px;
     padding-top: 72px;
     padding-bottom: 10px;    
 }
 
-#main .imagem-divisao-conteudo {
+.main .imagem-divisao-conteudo {
     background-image: url(../img/image_teste.jpg);
     background-attachment: fixed;
     background-size: cover;
@@ -301,29 +301,29 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     height: 300px;
 }
 
-#main .imagem-divisao-conteudo:nth-child(1) {
+.main .imagem-divisao-conteudo:nth-child(1) {
     background-image: url(../img/image_teste2.jpg);
 }
 
-#main .box-conteudo {
+.main .box-conteudo {
     width: 310px;
     margin: 0 auto;
 }
 
-#main .box-conteudo .box-conteudo-apresentacao {    
+.main .box-conteudo .box-conteudo-apresentacao {    
     padding: 0px 5px;
     padding-top: 15px;
     margin-bottom: 10px;
 }
 
-#main .box-conteudo .box-conteudo-apresentacao .titulo-apresentacao {
+.main .box-conteudo .box-conteudo-apresentacao .titulo-apresentacao {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-#main .box-conteudo .box-conteudo-apresentacao .imagem-apresentacao {
+.main .box-conteudo .box-conteudo-apresentacao .imagem-apresentacao {
     display: block;
     width: 280px;
     height: 200px;
@@ -331,7 +331,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin-bottom: 15px;
 }
 
-#main .box-conteudo .box-conteudo-apresentacao .texto-apresentacao {
+.main .box-conteudo .box-conteudo-apresentacao .texto-apresentacao {
     display: block;
     width: 270px;
     font-size: 20px;
@@ -341,7 +341,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- GERAL*/
 
-#main #container-locadores-destaque {    
+.main #container-locadores-destaque {    
     height: 410px;   
     overflow-x: scroll;
     padding: 5px;
@@ -349,23 +349,23 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin: 0 auto;
 }
 
-#main #container-locadores-destaque #horizontal-wrapper {
+.main #container-locadores-destaque #horizontal-wrapper {
     width: 2600px;   
 }
 
-#main #container-locadores-destaque .box-locador-destaque {
+.main #container-locadores-destaque .box-locador-destaque {
     background-color: #a8a8a8;
     width: 250px;
     display: inline-block;
     margin: 0 3px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .foto-locador {
+.main #container-locadores-destaque .box-locador-destaque .foto-locador {
     width: 250px;
     height: 220px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .nome-locador {
+.main #container-locadores-destaque .box-locador-destaque .nome-locador {
     font-size: 23px;
     text-align: center;
     margin-bottom: 5px;
@@ -373,23 +373,23 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin-right: 5px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .localizacao-locador {
+.main #container-locadores-destaque .box-locador-destaque .localizacao-locador {
     font-size: 19px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes {   
+.main #container-locadores-destaque .box-locador-destaque .box-avaliacoes {   
     margin-top: 50px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .avaliacoes-locador {
+.main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .avaliacoes-locador {
     font-style: italic;
     display: inline-block;
     margin-left: 5px;
 }
 
-#main #container-locadores-destaque .box-locador-destaque 
+.main #container-locadores-destaque .box-locador-destaque 
 .box-avaliacoes .container-icone-avaliacoes {
     margin-left: 80px;
     margin-bottom: 5px;
@@ -398,27 +398,27 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- HOME*/
 
-#main .box-conteudo #lista-veiculos {    
+.main .box-conteudo #lista-veiculos {    
     width: 310px;
     height: auto;    
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo {
+.main .box-conteudo #lista-veiculos .box-veiculo {
     background-color: #dedede;
     margin-bottom: 10px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .imagem-veiculo {
+.main .box-conteudo #lista-veiculos .box-veiculo .imagem-veiculo {
     width: 310px;
     margin: 0px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo {
     height: 50px;
     margin-top: 0px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo .titulo-veiculo {    
+.main .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo .titulo-veiculo {    
     font-size: 23px;
     font-weight: bold;
     text-align: left;
@@ -427,7 +427,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     float: left;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria {
     display: inline-block;
     width: 100px;
     height: 35px;
@@ -437,12 +437,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     float: right;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria {
     font-size: 22px;
     height: 35px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria .label-diaria {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria .label-diaria {
     text-align: right;
     font-style: italic;
     font-size: 15px;
@@ -451,19 +451,19 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     bottom: 11px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores {
     margin-top: 10px;
     padding: 5px;
     margin-bottom: 10px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-combustivel,
-#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-quilometragem {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-combustivel,
+.main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-quilometragem {
     font-size: 20px;
     text-align: left;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor {
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
@@ -471,48 +471,48 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin: 5px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-avaliacoes {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-avaliacoes {
     display: block;
     height: 33px;
     padding-bottom: 5px;
 }
 
-#main .box-conteudo #lista-veiculos .box-veiculo .box-avaliacoes .container-icone-avaliacoes {
+.main .box-conteudo #lista-veiculos .box-veiculo .box-avaliacoes .container-icone-avaliacoes {
     float: right;    
 }
 
-#main .box-conteudo #box-paginas {    
+.main .box-conteudo #box-paginas {    
     padding: 2px;
     margin: 0 auto;
     border-top: 1px solid #9a9a9a;
 }
 
-#main .box-conteudo #box-paginas #box-botoes {
+.main .box-conteudo #box-paginas #box-botoes {
     width: 285px;
     margin: 0 auto;
 }
 
-#main .box-conteudo #box-paginas #box-primeira-pagina,
-#main .box-conteudo #box-paginas #link-pagina-prev,
-#main .box-conteudo #box-paginas #link-pagina-next, 
-#main .box-conteudo #box-paginas #box-ultima-pagina {    
+.main .box-conteudo #box-paginas #box-primeira-pagina,
+.main .box-conteudo #box-paginas #link-pagina-prev,
+.main .box-conteudo #box-paginas #link-pagina-next, 
+.main .box-conteudo #box-paginas #box-ultima-pagina {    
     background-color: #d4d4d4;
     font-size: 25px;    
     padding: 15px;
     margin: 1px;
 }
 
-#main .box-conteudo #box-paginas .box-botoes-pagina {
+.main .box-conteudo #box-paginas .box-botoes-pagina {
     display: inline-block;
     text-align: right;
 }
 
-#main .box-conteudo #box-paginas #link-pagina-prev {
+.main .box-conteudo #box-paginas #link-pagina-prev {
     display: inline-block;
     text-align: right;
 }
 
-#main .box-conteudo #box-paginas #label-pagina-atual {    
+.main .box-conteudo #box-paginas #label-pagina-atual {    
     display: inline-block;    
     font-size: 24px;    
     padding: 15px;
@@ -520,41 +520,41 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     bottom: 25px;
 }
 
-#main .box-conteudo #box-paginas #link-pagina-next {
+.main .box-conteudo #box-paginas #link-pagina-next {
     display: inline-block;
     text-align: left;
 }
 
-#main .box-conteudo #box-paginas #box-ultima-pagina {
+.main .box-conteudo #box-paginas #box-ultima-pagina {
     text-align: left;
 }
 
 /*------------- ALUGUE*/
 
-#main .box-conteudo-faq{
+.main .box-conteudo-faq{
     padding: 0px 5px;
     padding-top: 15px;
     margin-bottom: 10px;
 }
 
-#main .box-conteudo-faq .titulo-faq{
+.main .box-conteudo-faq .titulo-faq{
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-#main .box-conteudo-faq #faq-accordion{
+.main .box-conteudo-faq #faq-accordion{
     width: 100%;
     height: auto;
 }
 
-#main .box-conteudo-faq #faq-accordion .faq{
+.main .box-conteudo-faq #faq-accordion .faq{
     width: 100%;
     height: 25px;
     border: 1px solid #696969;
 }
 
-#main .box-conteudo-faq #faq-accordion .faq .faq-answer{
+.main .box-conteudo-faq #faq-accordion .faq .faq-answer{
     width: 300px;
     height: 25px;
     display: none;
@@ -562,17 +562,17 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     float: left;
 }
 
-#main .box-conteudo .subtitulo{
+.main .box-conteudo .subtitulo{
     text-align: center;
     font-size: 18px;
     margin-bottom: 10px;
 }
-#main .box-conteudo #info-contato{
+.main .box-conteudo #info-contato{
     text-align: left;
     font-size: 18px;
     margin-bottom: 10px;
 }
-#main .box-conteudo #info-contato p{
+.main .box-conteudo #info-contato p{
     margin-top: 10px;
     font-weight: bold;
     font-size: 20px;
@@ -580,18 +580,18 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- FAQ/CONTATO*/
 
-#main .box-conteudo .box-conteudo-empresa{
+.main .box-conteudo .box-conteudo-empresa{
      padding: 0px 5px;
     padding-top: 15px;
     margin-bottom: 10px;
 }
-#main .box-conteudo .box-conteudo-empresa .titulo-empresa{
+.main .box-conteudo .box-conteudo-empresa .titulo-empresa{
     text-align: center;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-#main .box-conteudo .box-conteudo-empresa .logo-empresa{
+.main .box-conteudo .box-conteudo-empresa .logo-empresa{
     display: block;
     width: 300px;
     height: 150px;
@@ -599,7 +599,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin-bottom: 15px;
     background-color: aqua;
 }
-#main .box-conteudo .box-conteudo-empresa .texto-empresa{
+.main .box-conteudo .box-conteudo-empresa .texto-empresa{
     display: block;
     width: 300px;
     font-size: 16px;
@@ -609,6 +609,171 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 /*------------- EMPRESA*/
+
+#pag-detalhes-veiculo #slide-imagens-veiculo {    
+    background-color: #8b8b8b;    
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo .botao-slide {
+    background-color: #646464;
+    width: 80px;
+    height: 200px;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #botao-prev {
+    float: left;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens {    
+    background-color: #909090;
+    height: 200px;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #botao-next {
+    float: right;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #titulo-veiculo {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-label-valor {    
+    margin: 2px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-label-valor .label {
+    font-size: 20px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo .box-label-valor .valor {
+    font-size: 23px;    
+    text-align: right;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-limite-distancia {
+    margin-bottom: 30px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-limite-distancia .label {
+    font-size: 18px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-limite-distancia .valor {
+    text-align: left;
+    font-size: 20px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data {
+    margin-bottom: 5px;    
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data .box-label-data {
+    
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data .box-label-data .data-input {
+    width: 145px;
+    height: 35px;
+    margin-right: 10px;
+    float: left;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data .hora-input {
+    width: 145px;
+    height: 35px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #botao-alugar {
+    background-color: #aaaaaa;
+    color: white;
+    display: block;
+    width: 40px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 25px 50px;
+    border-radius: 5px;    
+}
+
+#pag-detalhes-veiculo #box-previa-locador {    
+    border: 1px solid #a7a7a7;
+    margin-top: 10px;
+}
+
+#pag-detalhes-veiculo #box-previa-locador #imagem-locador {
+    width: 140px;
+    height: 140px;
+    float: left;
+}
+
+#pag-detalhes-veiculo #box-previa-locador #info-locador {    
+    width: 280px;
+    margin-left: 150px;
+}
+
+#pag-detalhes-veiculo #box-previa-locador #info-locador 
+#nome-locador {
+    font-size: 20px;
+}
+
+#pag-detalhes-veiculo #box-previa-locador #info-locador 
+#box-reputacao-locador {
+    margin-top: 60px;
+}
+
+#pag-detalhes-veiculo #box-previa-locador #info-locador 
+#box-reputacao-locador #label-reputacao {
+    font-size: 18px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos {
+    padding: 5px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos 
+#titulo {
+    background-color: #bebebe;
+    font-size: 25px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos 
+#titulo-descricao {
+    font-size: 22px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #bababa;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos 
+#conteudo-descricao {
+    font-size: 20px;
+    text-align: justify;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos 
+#box-acessorios-veiculo #titulo-acessorios {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos 
+#box-acessorios-veiculo #lista-acessorios {
+    list-style-type: none;
+}
+
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #box-especificacoes-veiculos 
+#box-acessorios-veiculo #lista-acessorios li {
+    background-color: #d1d1d1;
+    padding: 15px;
+    margin: 3px;
+}
+
+/*------------- VEICULO*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
