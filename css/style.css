@@ -664,6 +664,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-limite-distancia .valor {
     text-align: left;
+    font-style: italic;
     font-size: 20px;
 }
 
@@ -672,12 +673,13 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data .box-label-data {
-    
+    font-size: 20px;    
 }
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data .box-label-data .data-input {
     width: 145px;
     height: 35px;
+    font-size: 18px;
     margin-right: 10px;
     float: left;
 }
@@ -685,6 +687,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #pag-detalhes-veiculo .box-conteudo .box-veiculo .box-data .hora-input {
     width: 145px;
     height: 35px;
+    font-size: 18px;
 }
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo #botao-alugar {
@@ -699,7 +702,9 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-detalhes-veiculo #box-previa-locador {    
-    border: 1px solid #a7a7a7;
+    border-top: 1px solid #a7a7a7;
+    border-bottom: 1px solid #a7a7a7;
+    padding: 5px;
     margin-top: 10px;
 }
 
@@ -710,7 +715,6 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-detalhes-veiculo #box-previa-locador #info-locador {    
-    width: 280px;
     margin-left: 150px;
 }
 
@@ -823,7 +827,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .box-info,
 #pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .resposta {
-    margin-left: 20px;    
+    margin-left: 10px;    
 }
 
 #pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .resposta {
