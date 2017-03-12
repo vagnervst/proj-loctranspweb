@@ -773,6 +773,66 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin: 3px;
 }
 
+#pag-detalhes-veiculo #container-perguntas #titulo-container-perguntas {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-info {
+    background-color: #e0e0e0;
+    height: 52px;
+    padding: 5px 0px;
+    margin-bottom: 1px;
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-info 
+.titulo {
+    max-width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    padding: 15px 10px;
+    margin-left: 10px;
+    float: left;
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-info 
+.data { 
+    font-size: 18px;
+    border-left: 1px solid gray;
+    padding: 15px 20px;
+    margin-right: 10px;
+    float: right;
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-pergunta .pergunta {
+    background-color: #eaeaea;
+    font-size: 18px;
+    text-align: justify;
+    padding: 5px 20px;
+    margin-bottom: 1px;
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .titulo-resposta {
+    background-color: #e0e0e0;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 13px;    
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .box-info,
+#pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .resposta {
+    margin-left: 20px;    
+}
+
+#pag-detalhes-veiculo #container-perguntas .box-pergunta .box-resposta .resposta {
+    background-color: #eaeaea;
+    font-size: 18px;
+    padding: 5px 20px;
+    text-align: justify;
+}
+
 /*------------- VEICULO*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
