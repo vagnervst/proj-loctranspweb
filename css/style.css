@@ -839,6 +839,104 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- VEICULO*/
 
+#pag-cadastro #box-tipo-conta {
+    background-color: aliceblue;    
+}
+
+#pag-cadastro #box-tipo-conta .botao-conta {    
+    background-color: #eaeaea;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    font-size: 25px;
+    padding: 20px 0px;    
+}
+
+#pag-cadastro #container-cadastro-fisico {
+    min-height: 670px;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro {
+    position: relative;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .titulo-cadastro  {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .label-input {
+    margin-bottom: 20px;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .label-input .label {
+    font-size: 20px;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .label-input .radio-label {
+    display: inline-block;
+    position: relative;
+    bottom: 7px;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .label-input .text-input {
+    display: block;
+    background: none;
+    width: 100%;
+    height: 50px;
+    font-size: 23px;
+    border: 0px;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .label-input .radio-input {
+    width: 30px;
+    height: 30px;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .button-link {
+    background-color: #e2e2e2;
+    width: 200px;
+    font-size: 20px;
+    text-align: center;
+    border: 0px;
+    border-radius: 5px;
+    padding: 20px 0px;
+    margin: 0 auto;
+    outline: none;
+    cursor: pointer;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .button-link {
+    display: inline-block;
+    width: 150px;
+}
+
+#pag-cadastro .box-conteudo #box-cartao-credito .horizontal-input-container .label-input {
+    display: inline-block;
+}
+
+#pag-cadastro .box-conteudo #box-cartao-credito .horizontal-input-container .label-input .text-input {
+    width: 140px;
+}
+
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-info-contato,
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-cartao-credito,
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-conta-bancaria,
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-conducao,
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-autenticacao {
+    display: none;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .botao-cadastrar {
+    margin-left: 50px;
+}
+
+/*------------- CADASTRO*/
+
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
 footer {

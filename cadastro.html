@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home - City Share</title>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/style.css"></link>
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="box-cabecalho">
+                    <div id="mobile-botao-menu"></div>
+                    <div id="box-conta">
+                        <a href="#"><div id="icone-notificacao"></div></a>                        
+                        <div id="imagem-perfil">
+                            <img src="img/link_face.jpg" />
+                        </div>
+                    </div>
+                    <div class="js-popup-painel" id="box-menu-usuario">
+                        <ul id="menu-usuario">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a href="#">Sair</a></li>
+                        </ul>
+                    </div>
+                    <!-- MENU DE USUÁRIO -->                    
+                </div>
+            </header>            
+            <!-- CABEÇALHO -->
+            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
+                <ul id="mobile-menu">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ALUGUE</a></li>
+                    <li><a href="#">EMPRESTE</a></li>
+                    <li><a href="#">CONTATO</a></li>                    
+                </ul>
+            </div>
+            <!-- MENU DE PAGINAS - MOBILE -->
+            <div class="main" id="pag-cadastro">
+                <div class="imagem-divisao-conteudo"></div>
+                <div id="box-tipo-conta">
+                    <div class="box-conteudo">
+                        <a class="botao-conta" href="#">Física</a>
+                        <a class="botao-conta" href="#">Jurídica</a>
+                    </div>
+                </div>
+                <div class="box-conteudo">
+                    <div id="container-cadastro-fisico">
+                        <form method="post" action="#">
+                            <section class="box-cadastro" id="box-info-pessoais">
+                                <h1 class="titulo-cadastro">Informações Pessoais</h1>               
+                                <div class="label-input">
+                                    <label class="label">Nome*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="label-input">
+                                    <label class="label">Sobrenome*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="horizontal-input-container">
+                                    <div class="label-input">
+                                        <label class="label">Data de Nascimento*:
+                                            <input class="text-input" type="text" />
+                                        </label>
+                                    </div>
+                                    <div class="label-input">
+                                        <p class="label">Sexo:</p>
+                                        <input class="radio-input" type="radio" />
+                                        <label class="label radio-label">Feminino</label>
+                                        <input class="radio-input" type="radio" />
+                                        <label class="label radio-label">Masculino</label>
+                                    </div>
+                                </div>
+                                <div class="horizontal-input-container">
+                                    <div class="label-input">
+                                        <label class="label">CPF*:
+                                            <input class="text-input" type="text" />
+                                        </label>
+                                    </div>
+                                    <div class="label-input">
+                                        <label class="label">RG*:
+                                            <input class="text-input" type="text" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <p class="button-link">Confirmar</p>
+                            </section>
+                            <section class="box-cadastro" id="box-info-contato">
+                                <h1 class="titulo-cadastro">Informações de Contato</h1>               
+                                <div class="label-input">
+                                    <label class="label">Telefone*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="label-input">
+                                    <label class="label">Celular*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="label-input">
+                                    <label class="label">Email*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="horizontal-input-container">
+                                    <p class="button-link">Vou alugar</p>
+                                    <p class="button-link">Vou emprestar</p>
+                                </div>
+                            </section>
+                            <section class="box-cadastro" id="box-cartao-credito">
+                                <h1 class="titulo-cadastro">Cartão de Crédito</h1>               
+                                <div class="label-input">
+                                    <label class="label">
+                                        Nome do Titular do Cartão*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="label-input">
+                                    <label class="label">Número do Cartão*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="horizontal-input-container">
+                                    <div class="label-input">
+                                        <label class="label">Validade (mm/aa)*:
+                                            <input class="text-input" type="text" placeholder="Mês" />
+                                        </label>
+                                    </div>
+                                    <div class="label-input">
+                                        <input class="text-input" type="text" placeholder="Ano" />
+                                    </div>
+                                </div>
+                                <p class="button-link">Confirmar</p>
+                            </section>
+                            <section class="box-cadastro" id="box-conta-bancaria">
+                                <h1 class="titulo-cadastro">Conta Bancária</h1>               
+                                <div class="label-input">
+                                    <label class="label">
+                                        Número da Agência*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="label-input">
+                                    <label class="label">Número da Conta*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                    <p class="button-link">Confirmar</p>
+                            </section>
+                            <section class="box-cadastro" id="box-conducao">
+                                <h1 class="titulo-cadastro">Dados de Condução</h1>               
+                                <div class="label-input">
+                                    <label class="label">CNH*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>                
+                                    <p class="button-link">Confirmar</p>
+                            </section>
+                            <section class="box-cadastro" id="box-autenticacao">
+                                <h1 class="titulo-cadastro">Autenticação</h1>               
+                                <div class="label-input">
+                                    <label class="label">Senha*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <div class="label-input">
+                                    <label class="label">Confirmar Senha*:
+                                        <input class="text-input" type="text" />
+                                    </label>
+                                </div>
+                                <input class="button-link botao-cadastrar" type="submit" value="Criar Conta"/>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- CONTEUDO PRINCIPAL -->
+        </div>
+        <footer>
+            <div id="box-rodape">
+                <section id="box-mapa-site">
+                    <h1>Mapa do Site</h1>
+                    <ul id="lista-paginas">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Alugue</a></li>
+                        <li><a href="#">Empreste</a></li>
+                        <li><a href="#">Veículo</a></li>
+                        <li><a href="#">Sobre o Projeto</a></li>
+                        <li><a href="#">Benefícios do Projeto</a></li>
+                        <li><a href="#">A Empresa</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </section>
+                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+        <!-- RODAPÉ -->
+        <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
