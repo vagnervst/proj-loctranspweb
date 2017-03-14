@@ -218,6 +218,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     z-index: 1;
 }
 
+@media (min-width: 520px) {
+    #mobile-botao-filtragem {
+        top: 45px;
+    }
+}
+
 /*------------------------------------------------------------------------- BOTAO FILTRAGEM VEÍCULOS*/
 
 .painel-mobile {
@@ -1013,8 +1019,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin-top: 20px;
 }
 
-@media (min-width: 740px){
-    /*eu sou um lixo*/
+@media (min-width: 740px){    
     #pag-contato .box-conteudo .container-form-contato{
         float: left;
         width: 800px;
