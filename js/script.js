@@ -3,49 +3,72 @@ $(document).ready(function() {
     
     if( tamanhoTela.indexOf("mobile") != -1 ) {
             
-        function controlarPainelMobile(botaoInteracao, painel, elementoClicado, elementoOculto = undefined) {
-            var painelExibido = (painel.style.display == "block")? true : false;
+        function controlarPainelMobile(botaoInteracao, painel, elementoClicado, elemento_a_ocultar = undefined) {
             
-            if( elementoClicado != painel && elementoClicado != botaoInteracao ) {            
+            if( elementoClicado != painel && elementoClicado != botaoInteracao ) {
+                //Evita o fechamento do painel caso o clique ocorra em um de seus elementos filho
                 elementoClicado = $(elementoClicado).parents(".painel-mobile")[0];
             }                                            
             
-            if( painelExibido && elementoClicado != painel ) {
-                togglePainelMobile(painel);
+            if( isPainelExibido(painel) && elementoClicado != painel ) {
+                //Fecha o painel
+                toggleExibicaoPainel(painel);
                 
-                if( elementoOculto != undefined ) elementoOculto.style.display = "block";
-            } else if( !painelExibido && elementoClicado == botaoInteracao ) {
-                togglePainelMobile(painel);
+                if( elemento_a_ocultar != undefined ) elemento_a_ocultar.style.display = "block";
+            } else if( !isPainelExibido(painel) && elementoClicado == botaoInteracao ) {
+                //Abre o painel
+                toggleExibicaoPainel(painel);
                 
-                if( elementoOculto != undefined ) elementoOculto.style.display = "none";
+                if( elemento_a_ocultar != undefined ) elemento_a_ocultar.style.display = "none";
             }
         }
         
-        function togglePainelMobile(painel) {
-            var tamanhoPainelAtivo = "250px";
+        function mudarStatusExibicaoPainel(painel) {
+            //Altera a classe que define o status de exibicao do painel
+            //de acordo com seu status atual
+            var classePainelAtivo = "js-popup-painel-ativo";
+            var classePainelInativo = "js-popup-painel";
             
-            var painelExibido = ( painel.style.width == tamanhoPainelAtivo )? true : false;
-            
-            if( painelExibido ) {
-                painel.style.display = "none";
-                painel.style.width = "0px";                                                
+            if( $(painel).hasClass(classePainelAtivo) ) {
+                $(painel).removeClass(classePainelAtivo);
+                $(painel).addClass(classePainelInativo);
             } else {
-                painel.style.display = "block";                
-                painel.style.width = tamanhoPainelAtivo;
-                
-                //Oculta todos os paineis exibidos
-                var paineis = document.getElementsByClassName("js-popup-painel");
-                for( var i = 0; i < paineis.length; ++i) {
-                    if( paineis[0].style.display == "block" && paineis[0] != painel ) {
-                        paineis[0].style.display == "block";
-                        paineis[0].style.width == "0px";
-                    }
-                }
+                $(painel).removeClass(classePainelInativo);
+                $(painel).addClass(classePainelAtivo);
             }
         }
+        
+        function isPainelExibido(painel) {
+            //Verifica se o painel em questao contem a classe de status ativo
+            //Caso positivo, retorna true. Retorna false caso o contrario
+            
+            var nao_encontrado = -1;            
+            var painelExibido = ( painel.id.indexOf("-ativo") !== nao_encontrado )? true : false;
+            
+            return painelExibido;
+        }
+        
+        function toggleExibicaoPainel(painel) {
+            //Exibe ou oculta o painel de acordo com seus estado atual
+                        
+            if( isPainelExibido(painel) ) { 
+                console.log("Ocultando: " + painel.id);
+                var idPainelInativo = painel.id.substr(0, painel.id.indexOf("-ativo"));                
+                $(painel).attr("id", idPainelInativo);                
+                mudarStatusExibicaoPainel(painel);
+                
+            } else {
+                var idPainelAtivo = painel.id + "-ativo";                
+                $(painel).attr("id", idPainelAtivo);                
+                mudarStatusExibicaoPainel(painel);                                
+            }
+                        
+            return isPainelExibido(painel);
+        }                
         
         function inicializarManusMobile() {
-        
+            //Inicializa os menus e seus respectivos botoes de ativacao
+            
             var botaoMenuPaginas = document.getElementById("mobile-botao-menu");       
             var painelMenuPaginas = document.getElementById("box-mobile-menu");                
 
@@ -54,9 +77,7 @@ $(document).ready(function() {
 
             var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem");        
             var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
-
-            var menuPaginasExibido = false;
-            var menuPerfilExibido = false;
+            
             $(document.body).click(function(e) {
                 var elementoClicado = e.target;
 
@@ -99,6 +120,7 @@ $(document).ready(function() {
         }
         
         function inicializarSessoesCadastro() {
+            //Inicializa as sessoas de cadastro de usuario
             var paginaCadastro = $("#pag-cadastro")[0];
                         
             if( paginaCadastro != undefined ) {

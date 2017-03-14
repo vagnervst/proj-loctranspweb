@@ -226,10 +226,8 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------------------------------------------------------------------- BOTAO FILTRAGEM VEÍCULOS*/
 
-.painel-mobile {
-    display: none;
+.painel-mobile {    
     background-color: white;    
-    width: 0px;
     height: 100%;
     padding: 5px;
     position: fixed;        
@@ -238,19 +236,21 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #box-mobile-menu {
-    
+    display: none;
+    width: 0px;
 }
 
-#box-mobile-menu #mobile-menu {
-    
+#box-mobile-menu-ativo {
+    display: inline-block;
+    width: 200px;
 }
 
-#box-mobile-menu #mobile-menu li {
+#box-mobile-menu-ativo #mobile-menu li {
     background-color: #557bc9;
     margin-bottom: 2px;    
 }
 
-#box-mobile-menu #mobile-menu li a {
+#box-mobile-menu-ativo #mobile-menu li a {
     display: block;
     color: white;
     padding: 20px;
@@ -259,89 +259,97 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- MENU DE PAGINAS - MOBILE*/
 
-#container #box-mobile-filtragem {    
+#container #box-mobile-filtragem, #container #box-mobile-filtragem-ativo {    
     width: 250px;    
     height: 100%;
     position: fixed;    
 }
 
-#container #box-mobile-filtragem #titulo {
+#container #box-mobile-filtragem {
+    display: none;
+}
+
+#container #box-mobile-filtragem-ativo {
+    display: inline-block;
+}
+
+#container #box-mobile-filtragem-ativo #titulo {
     text-align: center;
     font-size: 22px;
 }
 
-#container #box-mobile-filtragem .box-opcoes-select {
+#container #box-mobile-filtragem-ativo .box-opcoes-select {
     margin-bottom: 10px;
 }
 
-#container #box-mobile-filtragem .box-opcoes-select .label {
+#container #box-mobile-filtragem-ativo .box-opcoes-select .label {
     font-size: 20px;
 }
 
-#container #box-mobile-filtragem .box-opcoes-select .select {
+#container #box-mobile-filtragem-ativo .box-opcoes-select .select {
     height: 50px;
     width: 250px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor {
     margin-bottom: 10px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .label {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .label {
     font-size: 20px;
     margin-bottom: 5px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .box-valores {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores {
     margin-bottom: 5px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .box-valores .label-intervalo {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores .label-intervalo {
     display: inline-block;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .box-valores .txt-valor {    
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores .txt-valor {    
     width: 90px;
     height: 30px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .box-ordem {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .box-ordem {
     
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .box-ordem .opcao-ordem {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .box-ordem .opcao-ordem {
     width: 20px;
     height: 20px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-valor .box-ordem .label-ordem {
+#container #box-mobile-filtragem-ativo .box-filtragem-valor .box-ordem .label-ordem {
     display: inline-block;
     height: 20px;
     position: relative;
     bottom: 5px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-slider {
+#container #box-mobile-filtragem-ativo .box-filtragem-slider {
     margin-bottom: 10px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-slider .label {
+#container #box-mobile-filtragem-ativo .box-filtragem-slider .label {
     font-size: 20px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-slider .box-slider {
+#container #box-mobile-filtragem-ativo .box-filtragem-slider .box-slider {
     
 }
 
-#container #box-mobile-filtragem .box-filtragem-slider .box-slider .slider {
+#container #box-mobile-filtragem-ativo .box-filtragem-slider .box-slider .slider {
     width: 245px;
 }
 
-#container #box-mobile-filtragem .box-filtragem-slider .box-slider .valor-slider {
+#container #box-mobile-filtragem-ativo .box-filtragem-slider .box-slider .valor-slider {
     text-align: center;    
 }
 
-#container #box-mobile-filtragem .botao-submit {
+#container #box-mobile-filtragem-ativo .botao-submit {
     background-color: #d9d9d9;
     width: 120px;
     height: 50px;
@@ -355,29 +363,50 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------------------------------------------------------------------- PAINEIS MOBILE*/
 
-#box-menu-usuario {
-    display: none;
-    background-color: #f2f2f2;
-    position: relative;
-    width: 200px; 
-    top: 65px;
-    margin-left: auto; 
+#box-menu-usuario, 
+#box-menu-usuario-ativo {
+    width: 200px;        
     z-index: 3;
 }
 
-@media (min-width: 520px) {
-    #box-menu-usuario {
-        top: 45px;
+#box-menu-usuario {
+    display: none;
+}
+
+#box-menu-usuario-ativo {
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 110px;
+}
+
+@media (min-width: 740px) {
+    #box-menu-usuario-ativo {
+        margin-left: 505px;
     }
 }
 
-#box-menu-usuario #menu-usuario {
+#box-menu-usuario #menu-usuario,
+#box-menu-usuario-ativo #menu-usuario{    
     list-style-type: none;
+    position: relative;
 }
 
-#box-menu-usuario #menu-usuario li a {
+#box-menu-usuario-ativo #menu-usuario li a {    
     display: block;
-    padding: 20px;    
+    background-color: #2a2a2a;
+    color: white;
+    padding: 20px;
+    border-bottom: 1px solid #464646;
+}
+
+#box-menu-usuario-ativo #menu-usuario li a:active {
+    background-color: #557bc9;
+}
+
+@media (min-width: 740px) {
+    #box-menu-usuario-ativo #menu-usuario li a:hover {
+        background-color: #557bc9;
+    } 
 }
 
 /*------------------------------------------------------------------------- MENU USUARIO*/
@@ -399,13 +428,17 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 .main {
     background-color: #ebebeb;
     min-height: 400px;
-    padding-top: 60px;
+    padding-top: 75px;
     padding-bottom: 10px;    
+}
+
+#pag-home {
+    padding-top: 40px;
 }
 
 @media (min-width: 520px) {
     .main {
-        padding-top: 40px;
+        padding-top: 55px;
     }
 }
 
@@ -1135,6 +1168,10 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- EMPRESA*/
 
+#pag-detalhes-veiculo {
+    padding-top: 50px;
+}
+
 #pag-detalhes-veiculo #slide-imagens-veiculo {    
     background-color: #8b8b8b;    
     height: 200px;
@@ -1364,6 +1401,10 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- VEICULO*/
 
+#pag-cadastro {
+    padding-top: 40px;
+}
+
 #pag-cadastro #box-tipo-conta {
     background-color: #c7c7c7;
     padding-top: 5px;
@@ -1467,6 +1508,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 /*------------- CADASTRO*/
+
+#pag-sobre-projeto {
+    padding-top: 40px;
+}
+
+/*------------- SOBRE O PROJETO*/
 
 #pag-beneficios-projeto {
     padding-top: 100px;
