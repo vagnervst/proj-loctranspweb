@@ -1014,6 +1014,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 @media (min-width: 740px){
+    /*eu sou um lixo*/
     #pag-contato .box-conteudo .container-form-contato{
         float: left;
         width: 800px;
