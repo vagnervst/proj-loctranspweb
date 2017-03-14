@@ -805,7 +805,8 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 .main .box-conteudo #lista-veiculos {    
     width: 310px;
-    height: auto;    
+    height: auto;
+    margin: 0 auto;
 }
 
 .main .box-conteudo #lista-veiculos .box-veiculo {
@@ -1245,10 +1246,16 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 /*------------- VEICULO*/
 
 #pag-cadastro #box-tipo-conta {
-    background-color: aliceblue;    
+    background-color: #c7c7c7;
+    padding-top: 5px;
 }
 
-#pag-cadastro #box-tipo-conta .botao-conta {    
+#pag-cadastro #box-tipo-conta #container-botoes-conta {
+    width: 305px;
+    margin: 0 auto;
+}
+
+#pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta {    
     background-color: #eaeaea;
     display: inline-block;
     width: 150px;
