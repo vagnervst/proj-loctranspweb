@@ -1399,6 +1399,29 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     text-align: justify;
 }
 
+#pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta {
+    margin-top: 20px;
+}
+
+#pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #titulo {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+#pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #conteudo-pergunta {    
+    display: block;
+    margin: 0 auto;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+#pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #botao-perguntar {
+    display: block;
+    margin: 0 auto;
+}
+
 /*------------- VEICULO*/
 
 #pag-cadastro {
