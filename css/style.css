@@ -493,6 +493,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin-bottom: 10px;
 }
 
+.main .box-conteudo .box-conteudo-apresentacao .subtitulo-apresentacao {
+    text-align: center;
+    font-size: 22px;    
+    margin-bottom: 10px;
+}
+
 .main .box-conteudo .box-conteudo-apresentacao .imagem-apresentacao {
     display: block;
     width: 280px;
@@ -1461,6 +1467,34 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 /*------------- CADASTRO*/
+
+#pag-beneficios-projeto {
+    padding-top: 100px;
+}
+
+@media (min-width: 1000px) {
+    #pag-beneficios-projeto .box-conteudo .conteudo-horizontal-ltr, 
+    #pag-beneficios-projeto .box-conteudo .conteudo-horizontal-rtl {
+        height: 245px;
+    }
+
+    #pag-beneficios-projeto .box-conteudo .conteudo-horizontal-ltr .texto-apresentacao,
+    #pag-beneficios-projeto .box-conteudo .conteudo-horizontal-rtl .texto-apresentacao {
+        height: 180px;
+        margin-top: 40px;
+    }
+    
+    #pag-beneficios-projeto .box-conteudo .box-conteudo-apresentacao .imagem-apresentacao {
+        width: 350px;
+        height: 250px;
+    }
+}
+    
+#pag-beneficios-projeto .box-conteudo .box-conteudo-apresentacao .titulo-apresentacao {
+    font-size: 30px;    
+}
+
+/*------------- BENEFICIOS*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
