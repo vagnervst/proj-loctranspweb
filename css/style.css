@@ -393,13 +393,13 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 .main {
     background-color: #ebebeb;
     min-height: 400px;
-    padding-top: 72px;
+    padding-top: 60px;
     padding-bottom: 10px;    
 }
 
 @media (min-width: 520px) {
     .main {
-        padding-top: 50px;
+        padding-top: 40px;
     }
 }
 
@@ -608,19 +608,19 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 520px) {
     .main #container-locadores-destaque {
-        height: 610px;
+        height: 620px;
     }
 }
 
 @media (min-width: 740px) {
     .main #container-locadores-destaque {
-        height: 780px;
+        height: 790px;
     }
 }
 
 @media (min-width: 1000px) {
     .main #container-locadores-destaque {
-        height: 570px;
+        height: 580px;
     }
 }
 
