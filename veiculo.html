@@ -48,47 +48,59 @@
                 </ul>
             </div>
             <!-- MENU DE PAGINAS - MOBILE -->
-            <div class="main" id="pag-detalhes-veiculo">
+            <div class="main" id="pag-detalhes-veiculo">                
                 <div id="slide-imagens-veiculo">
                     <div class="botao-slide" id="botao-prev"></div>       
                     <div class="botao-slide" id="botao-next"></div>
                     <div id="container-imagens"></div>
                 </div>
-                <div class="box-conteudo">
+                <div class="box-conteudo">                        
                     <section class="box-veiculo">                        
                         <h1 id="titulo-veiculo">Nome do Veículo</h1>
-                        <div id="box-valores-veiculo">
-                            <div class="box-label-valor">
-                                <p class="label">Diária:</p>
-                                <p class="valor">R$00,00</p>
+                        <div id="info-veiculo">
+                            <div id="box-valores-veiculo">
+                                <div class="box-label-valor">
+                                    <p class="label">Diária:</p>
+                                    <p class="valor">R$00,00</p>
+                                </div>
+                                <div class="box-label-valor">
+                                    <p class="label">Combustível (L):</p>
+                                    <p class="valor">R$00,00</p>
+                                </div>
+                                <div class="box-label-valor">
+                                    <p class="label">Valor por Distância Excedida (Km):</p>
+                                    <p class="valor">R$00,00</p>
+                                </div>
+                                <div class="box-label-valor" id="box-limite-distancia">
+                                    <p class="label">Limite de Distância (Km):</p>
+                                    <p class="valor">99999</p>
+                                </div>
+                            </div>                            
+                            <div id="box-locacao">
+                                <div class="box-data">
+                                    <p class="titulo">Retirada</p>
+                                    <div class="box-label-data">                                    
+                                        <p class="label">Data:</p>
+                                        <input class="data-input" type="text" placeholder="XX/XX/XX" />
+                                    </div>
+                                    <div class="box-label-data">                                    
+                                        <p class="label">Hora:</p>
+                                        <input class="hora-input" type="text" placeholder="XX:XX" />
+                                    </div>                                
+                                </div>
+                                <div class="box-data">
+                                    <p class="titulo">Devolução</p>
+                                    <div class="box-label-data">                                    
+                                        <p class="label">Data:</p>
+                                        <input class="data-input" type="text" placeholder="XX/XX/XX" />
+                                    </div>
+                                    <div class="box-label-data">                                    
+                                        <p class="label">Hora:</p>
+                                        <input class="hora-input" type="text" placeholder="XX:XX" />
+                                    </div>                                
+                                </div>
+                                <a id="botao-alugar" href="#">Alugar</a>
                             </div>
-                            <div class="box-label-valor">
-                                <p class="label">Combustível (L):</p>
-                                <p class="valor">R$00,00</p>
-                            </div>
-                            <div class="box-label-valor">
-                                <p class="label">Valor por Distância Excedida (Km):</p>
-                                <p class="valor">R$00,00</p>
-                            </div>
-                        </div>
-                        <div class="box-label-valor" id="box-limite-distancia">
-                            <p class="label">Limite de Distância:</p>
-                            <p class="valor">99999km</p>
-                        </div>
-                        <div class="box-data">
-                            <div class="box-label-data">
-                                <p class="label">Retirada:</p>
-                                <input class="data-input" type="text" placeholder="XX/XX/XX" />
-                            </div>
-                            <input class="hora-input" type="text" placeholder="XX:XX" />
-                        </div>
-                        <div class="box-data">
-                            <div class="box-label-data">
-                                <p class="label">Devolução:</p>
-                                <input class="data-input" type="text" placeholder="XX/XX/XX" />
-                            </div>
-                            <input class="hora-input" type="text" placeholder="XX:XX" />
-                            <a id="botao-alugar" href="#">Alugar</a>
                         </div>
                     </section>
                 </div>
