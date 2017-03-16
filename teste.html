@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home - City Share</title>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/teste.css"></link>
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <div id="box-cabecalho">
+                    <div id="mobile-botao-menu"></div>
+                    <div id="menu-navegacao">
+                        <ul>
+                            <li class="botao-menu"><a href="#">Home</a></li>
+                            <li class="botao-menu"><a href="#">Alugue</a></li>
+                            <li class="botao-menu"><a href="#">Empreste</a></li>
+                            <li class="botao-menu"><a href="#">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div id="box-conta">
+                        <a href="#"><div id="icone-notificacao"></div></a>                
+                        <div id="imagem-perfil">                            
+                            <img src="img/link_face.jpg" />
+                        </div>
+                        <div id="box-info-usuario">
+                            <p id="nome-usuario">Nome do Usuario</p>
+                            <a id="botao-logout" href="#">Sair</a>
+                        </div>
+                    </div>
+                    <div class="js-popup-painel" id="box-menu-usuario">
+                        <ul id="menu-usuario">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Configurações</a></li>
+                            <li><a href="#">Sair</a></li>
+                        </ul>
+                    </div>
+                    <!-- MENU DE USUÁRIO -->
+                    <div id="mobile-botao-filtragem"></div>
+                    <!-- BOTAO FILTRAGEM DE VEÍCULOS -->
+                </div>
+            </header>            
+            <!-- CABEÇALHO -->
+            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
+                <ul id="mobile-menu">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ALUGUE</a></li>
+                    <li><a href="#">EMPRESTE</a></li>
+                    <li><a href="#">CONTATO</a></li>                    
+                </ul>
+            </div>
+            <!-- MENU DE PAGINAS - MOBILE -->
+            <section class="js-popup-painel painel-mobile" id="box-mobile-filtragem">
+                <h1 id="titulo">Filtragem</h1>
+                <form method="post" action="#">                    
+                    <div class="box-opcoes-select">
+                        <p class="label">Estado</p>
+                        <select class="select">
+                            <option>Estado</option>
+                        </select>
+                    </div>
+                    <div class="box-opcoes-select">
+                        <p class="label">Cidade</p>
+                        <select class="select">
+                            <option>Cidade</option>
+                        </select>
+                    </div>
+                    <div class="box-opcoes-select">
+                        <p class="label">Tipo de Transporte</p>
+                        <select class="select">
+                            <option>Bicicleta</option>
+                        </select>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Valor da Diária</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Valor do Combustível</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Quilometragem do Veículo</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-filtragem-valor">
+                        <p class="label">Limite de Distância</p>
+                        <div class="box-valores">
+                            <p class="label-intervalo">De:</p>
+                            <input class="txt-valor" type="text" />
+                            <p class="label-intervalo">A:</p>
+                            <input class="txt-valor" type="text" />
+                        </div>
+                        <div class="box-ordem">                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Crescente</span>
+                            </label>                        
+                            <label>
+                                <input class="opcao-ordem" type="radio" />
+                                <span class="label-ordem">Decrescente</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-opcoes-select">
+                        <p class="label">Avaliação Mínima</p>
+                        <select class="select">
+                            <option>0</option>
+                        </select>
+                    </div>
+                    <input class="botao-submit" type="submit" value="Filtrar" />
+                </form>
+            </section>
+            <!-- MENU DE FILTRAGEM - MOBILE -->
+            <div class="main" id="pag-listagem-veiculos">
+                <div id="container-filtro-lista">
+                    <div id="wrapper-filtragem">
+                        
+                    </div>
+                    <div id="wrapper-lista">
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- CONTEUDO PRINCIPAL -->
+        </div>
+        <footer>
+            <div id="box-rodape">
+                <section id="box-mapa-site">
+                    <h1>Mapa do Site</h1>
+                    <ul id="lista-paginas">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Alugue</a></li>
+                        <li><a href="#">Empreste</a></li>
+                        <li><a href="#">Veículo</a></li>
+                        <li><a href="#">Sobre o Projeto</a></li>
+                        <li><a href="#">Benefícios do Projeto</a></li>
+                        <li><a href="#">A Empresa</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </section>
+                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
+            </div>
+        </footer>
+        <!-- RODAPÉ -->
+        <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

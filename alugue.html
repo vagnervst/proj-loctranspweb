@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Home - City Share</title>
-        <meta name="viewport" content="width=device-width"/>
+        <meta name="viewport" content="width=device-width" />
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css"></link>
     </head>
     <body>
@@ -79,7 +80,7 @@
                             <p class="label-intervalo">A:</p>
                             <input class="txt-valor" type="text" />
                         </div>
-                        <div class="box-ordem">                        
+                        <div class="box-ordem">
                             <label>
                                 <input class="opcao-ordem" type="radio" />
                                 <span class="label-ordem">Crescente</span>
@@ -147,20 +148,88 @@
                             </label>
                         </div>
                     </div>
-                    <div class="box-filtragem-slider">
-                        <div class="label">Avaliação Mínima</div>
-                        <div class="box-slider">
-                            <input class="slider" type="range"/>
-                            <p class="valor-slider">0/5</p>
-                        </div>
+                    <div class="box-opcoes-select">
+                        <p class="label">Avaliação Mínima</p>
+                        <select class="select">
+                            <option>0</option>
+                        </select>
                     </div>
                     <input class="botao-submit" type="submit" value="Filtrar" />
                 </form>
             </section>
             <!-- MENU DE FILTRAGEM - MOBILE -->
             <div class="main" id="pag-listagem-veiculos">
-                <div class="box-conteudo">
-                    <div id="lista-veiculos">
+                <!--<section id="box-filtragem">
+                    <h1 id="titulo">Filtragem</h1>
+                    <form method="post" action="#">                    
+                        <div class="box-opcoes-select">
+                            <p class="label">Estado</p>
+                            <select class="select">
+                                <option>Estado</option>
+                            </select>
+                        </div>
+                        <div class="box-opcoes-select">
+                            <p class="label">Cidade</p>
+                            <select class="select">
+                                <option>Cidade</option>
+                            </select>
+                        </div>
+                        <div class="box-opcoes-select">
+                            <p class="label">Tipo de Transporte</p>
+                            <select class="select">
+                                <option>Bicicleta</option>
+                            </select>
+                        </div>
+                        <div class="box-filtragem-valor">
+                            <p class="label">Valor da Diária</p>
+                            <div class="box-valores">
+                                <p class="label-intervalo">De:</p>
+                                <input class="txt-valor" type="text" />
+                                <p class="label-intervalo">A:</p>
+                                <input class="txt-valor" type="text" />
+                            </div>
+                        </div>
+                        <div class="box-filtragem-valor">
+                            <p class="label">Valor do Combustível</p>
+                            <div class="box-valores">
+                                <p class="label-intervalo">De:</p>
+                                <input class="txt-valor" type="text" />
+                                <p class="label-intervalo">A:</p>
+                                <input class="txt-valor" type="text" />
+                            </div>
+                        </div>
+                        <div class="box-filtragem-valor">
+                            <p class="label">Quilometragem do Veículo</p>
+                            <div class="box-valores-linhas">
+                                <div class="label-entrada">
+                                    <p class="label-intervalo">De:</p>
+                                    <input class="txt-valor" type="text" />
+                                </div>
+                                <div class="label-entrada">
+                                    <p class="label-intervalo">A:</p>
+                                    <input class="txt-valor" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-filtragem-valor">
+                            <p class="label">Limite de Distância</p>
+                            <div class="box-valores-linhas">
+                                <div class="label-entrada">
+                                    <p class="label-intervalo">De:</p>
+                                    <input class="txt-valor" type="text" />
+                                </div>
+                                <div class="label-entrada">
+                                    <p class="label-intervalo">A:</p>
+                                    <input class="txt-valor" type="text" />
+                                </div>
+                            </div>
+                        </div>                            
+                        <input class="botao-submit" type="submit" value="Filtrar" />
+                    </form>
+                </section>-->
+                <!-- MENU DE FILTRAGEM - DESKTOP -->
+                <div class="box-conteudo">                    
+                    <div id="lista-veiculos">                        
                         <section class="box-veiculo">
                             <img class="imagem-veiculo" src="img/image_teste.jpg" />
                             <div class="box-info-veiculo">                                
@@ -171,6 +240,7 @@
                                     </p>
                                 </div>
                             </div>
+                            <p class="modelo-veiculo">Modelo do veículo</p>
                             <div class="box-info-valores">
                                 <p class="valor-combustivel">Valor do Combustível</p>
                                 <p class="valor">R$00,00</p>
@@ -190,13 +260,95 @@
                         <section class="box-veiculo">
                             <img class="imagem-veiculo" src="img/image_teste.jpg" />
                             <div class="box-info-veiculo">                                
-                                <h1 class="titulo-veiculo">Nome do Veículo</h1>
+                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
                                 <div class="box-valor-diaria">
                                     <p class="valor-diaria">R$00,00
                                         <span class="label-diaria">diária</span>
                                     </p>
                                 </div>
                             </div>
+                            <p class="modelo-veiculo">Modelo do veículo</p>
+                            <div class="box-info-valores">
+                                <p class="valor-combustivel">Valor do Combustível</p>
+                                <p class="valor">R$00,00</p>
+                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-avaliacoes">
+                                <div class="container-icone-avaliacoes">
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="box-veiculo">
+                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
+                            <div class="box-info-veiculo">                                
+                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
+                                <div class="box-valor-diaria">
+                                    <p class="valor-diaria">R$00,00
+                                        <span class="label-diaria">diária</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="modelo-veiculo">Modelo do veículo</p>
+                            <div class="box-info-valores">
+                                <p class="valor-combustivel">Valor do Combustível</p>
+                                <p class="valor">R$00,00</p>
+                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-avaliacoes">
+                                <div class="container-icone-avaliacoes">
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="box-veiculo">
+                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
+                            <div class="box-info-veiculo">                                
+                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
+                                <div class="box-valor-diaria">
+                                    <p class="valor-diaria">R$00,00
+                                        <span class="label-diaria">diária</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="modelo-veiculo">Modelo do veículo</p>
+                            <div class="box-info-valores">
+                                <p class="valor-combustivel">Valor do Combustível</p>
+                                <p class="valor">R$00,00</p>
+                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
+                                <p class="valor">R$00,00</p>
+                            </div>
+                            <div class="box-avaliacoes">
+                                <div class="container-icone-avaliacoes">
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                    <div class="icone-avaliacao"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="box-veiculo">
+                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
+                            <div class="box-info-veiculo">                                
+                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
+                                <div class="box-valor-diaria">
+                                    <p class="valor-diaria">R$00,00
+                                        <span class="label-diaria">diária</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="modelo-veiculo">Modelo do veículo</p>
                             <div class="box-info-valores">
                                 <p class="valor-combustivel">Valor do Combustível</p>
                                 <p class="valor">R$00,00</p>
@@ -215,7 +367,7 @@
                         </section>
                     </div>
                     <div id="box-paginas">
-                        <div id="box-botoes">
+                        <div id="box-botoes-mobile">
                             <div class="box-botoes-pagina">                            
                                 <a id="link-pagina-prev" href="#">Anterior</a>
                                 <div id="box-primeira-pagina">
@@ -229,6 +381,13 @@
                                     <a href="#">Última</a>
                                 </div>
                             </div>
+                        </div>
+                        <div id="box-botoes-desktop">
+                            <a class="botoes" href="#">Primeira</a>
+                            <a class="botoes" href="#">Anterior</a>
+                            <p id="pagina-atual">1</p>
+                            <a class="botoes" href="#">Próxima</a>
+                            <a class="botoes" href="#">Ultima</a>
                         </div>
                     </div>
                 </div>
