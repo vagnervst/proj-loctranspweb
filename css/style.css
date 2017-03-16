@@ -549,6 +549,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 .preset-botao:hover, .preset-input-submit:hover {
+    background-color: #3c3c3c;
+    color: #ffffff;
+    border-bottom: 4px solid #202020;
+}
+
+.preset-botao:active, .preset-input-submit:active {
     background-color: #141619;
     border-bottom: 4px solid #202020;    
 }
@@ -1564,6 +1570,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     text-align: right;
 }
 
+#pag-listagem-veiculos .box-conteudo #box-paginas .box-botoes-pagina .botao-pagina {
+    width: 100px;
+    padding: 15px 0;
+    margin-bottom: 5px;
+}
+
 #pag-listagem-veiculos .box-conteudo #box-paginas #box-botoes-prev {
     float: left;
 }
@@ -1572,17 +1584,11 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     float: right;
 }
 
-@media (min-width: 740px) {
-    #pag-listagem-veiculos .box-conteudo #box-paginas .box-botoes-pagina {
-        
-    } 
-}
-
 #pag-listagem-veiculos .box-conteudo #box-paginas #box-numero-paginas {
     display: block;    
     width: 50px;
     text-align: center;
-    padding-top: 33px;
+    padding-top: 18px;
     float: left;
 }
 
@@ -1598,17 +1604,6 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #pag-listagem-veiculos .box-conteudo #box-paginas #box-numero-paginas #label-pagina-atual {
     border-bottom: 1px solid black;
-}
-
-@media (min-width: 740px) {
-    #pag-listagem-veiculos .box-conteudo #box-paginas #label-pagina-atual {
-        padding: 5px;
-        bottom: 20px;
-    }
-}
-
-#pag-listagem-veiculos .box-conteudo #box-paginas #box-ultima-pagina {
-    text-align: left;
 }
 
 /*------------- ALUGUE*/
