@@ -11,6 +11,10 @@
             <header>
                 <div id="box-cabecalho">
                     <div id="mobile-botao-menu"></div>
+                    <div id="mobile-botao-filtragem-ativo"></div>
+                    <!-- BOTAO FILTRAGEM DE VEÍCULOS MOBILE -->                    
+                    <div id="desktop-botao-filtragem"></div>
+                    <!-- BOTAO FILTRAGEM DE VEÍCULOS DESKTOP -->                    
                     <div id="menu-navegacao">
                         <ul>
                             <li class="botao-menu"><a href="#">Home</a></li>
@@ -37,8 +41,6 @@
                         </ul>
                     </div>
                     <!-- MENU DE USUÁRIO -->
-                    <div id="mobile-botao-filtragem"></div>
-                    <!-- BOTAO FILTRAGEM DE VEÍCULOS -->
                 </div>
             </header>            
             <!-- CABEÇALHO -->
@@ -99,16 +101,6 @@
                             <p class="label-intervalo">A:</p>
                             <input class="txt-valor" type="text" />
                         </div>
-                        <div class="box-ordem">                        
-                            <label>
-                                <input class="opcao-ordem" type="radio" />
-                                <span class="label-ordem">Crescente</span>
-                            </label>
-                            <label>
-                                <input class="opcao-ordem" type="radio" />
-                                <span class="label-ordem">Decrescente</span>
-                            </label>
-                        </div>
                     </div>
                     <div class="box-filtragem-valor">
                         <p class="label">Quilometragem do Veículo</p>
@@ -118,16 +110,6 @@
                             <p class="label-intervalo">A:</p>
                             <input class="txt-valor" type="text" />
                         </div>
-                        <div class="box-ordem">                        
-                            <label>
-                                <input class="opcao-ordem" type="radio" />
-                                <span class="label-ordem">Crescente</span>
-                            </label>                        
-                            <label>
-                                <input class="opcao-ordem" type="radio" />
-                                <span class="label-ordem">Decrescente</span>
-                            </label>
-                        </div>
                     </div>
                     <div class="box-filtragem-valor">
                         <p class="label">Limite de Distância</p>
@@ -136,16 +118,6 @@
                             <input class="txt-valor" type="text" />
                             <p class="label-intervalo">A:</p>
                             <input class="txt-valor" type="text" />
-                        </div>
-                        <div class="box-ordem">                        
-                            <label>
-                                <input class="opcao-ordem" type="radio" />
-                                <span class="label-ordem">Crescente</span>
-                            </label>                        
-                            <label>
-                                <input class="opcao-ordem" type="radio" />
-                                <span class="label-ordem">Decrescente</span>
-                            </label>
                         </div>
                     </div>
                     <div class="box-opcoes-select">
@@ -158,78 +130,13 @@
                 </form>
             </section>
             <!-- MENU DE FILTRAGEM - MOBILE -->
-            <div class="main" id="pag-listagem-veiculos">
-                <!--<section id="box-filtragem">
-                    <h1 id="titulo">Filtragem</h1>
-                    <form method="post" action="#">                    
-                        <div class="box-opcoes-select">
-                            <p class="label">Estado</p>
-                            <select class="select">
-                                <option>Estado</option>
-                            </select>
-                        </div>
-                        <div class="box-opcoes-select">
-                            <p class="label">Cidade</p>
-                            <select class="select">
-                                <option>Cidade</option>
-                            </select>
-                        </div>
-                        <div class="box-opcoes-select">
-                            <p class="label">Tipo de Transporte</p>
-                            <select class="select">
-                                <option>Bicicleta</option>
-                            </select>
-                        </div>
-                        <div class="box-filtragem-valor">
-                            <p class="label">Valor da Diária</p>
-                            <div class="box-valores">
-                                <p class="label-intervalo">De:</p>
-                                <input class="txt-valor" type="text" />
-                                <p class="label-intervalo">A:</p>
-                                <input class="txt-valor" type="text" />
-                            </div>
-                        </div>
-                        <div class="box-filtragem-valor">
-                            <p class="label">Valor do Combustível</p>
-                            <div class="box-valores">
-                                <p class="label-intervalo">De:</p>
-                                <input class="txt-valor" type="text" />
-                                <p class="label-intervalo">A:</p>
-                                <input class="txt-valor" type="text" />
-                            </div>
-                        </div>
-                        <div class="box-filtragem-valor">
-                            <p class="label">Quilometragem do Veículo</p>
-                            <div class="box-valores-linhas">
-                                <div class="label-entrada">
-                                    <p class="label-intervalo">De:</p>
-                                    <input class="txt-valor" type="text" />
-                                </div>
-                                <div class="label-entrada">
-                                    <p class="label-intervalo">A:</p>
-                                    <input class="txt-valor" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-filtragem-valor">
-                            <p class="label">Limite de Distância</p>
-                            <div class="box-valores-linhas">
-                                <div class="label-entrada">
-                                    <p class="label-intervalo">De:</p>
-                                    <input class="txt-valor" type="text" />
-                                </div>
-                                <div class="label-entrada">
-                                    <p class="label-intervalo">A:</p>
-                                    <input class="txt-valor" type="text" />
-                                </div>
-                            </div>
-                        </div>                            
-                        <input class="botao-submit" type="submit" value="Filtrar" />
-                    </form>
-                </section>-->
-                <!-- MENU DE FILTRAGEM - DESKTOP -->
-                <div class="box-conteudo">                    
-                    <div id="lista-veiculos">                        
+            <div class="main" id="pag-listagem-veiculos">                
+                <div class="box-conteudo">
+                    <div id="box-pesquisa">
+                        <input class="preset-input-text " id="texto-pesquisa" type="text" placeholder="Pesquisar..." />
+                        <input class="preset-input-submit " id="botao-pesquisa" type="submit" value="Buscar" />
+                    </div>
+                    <div id="lista-veiculos">
                         <section class="box-veiculo">
                             <img class="imagem-veiculo" src="img/image_teste.jpg" />
                             <div class="box-info-veiculo">                                
@@ -368,26 +275,30 @@
                     </div>
                     <div id="box-paginas">
                         <div id="box-botoes-mobile">
-                            <div class="box-botoes-pagina">                            
-                                <a id="link-pagina-prev" href="#">Anterior</a>
+                            <div class="box-botoes-pagina" id="box-botoes-prev">                            
+                                <a class="botao" id="link-pagina-prev" href="#">Anterior</a>
                                 <div id="box-primeira-pagina">
-                                    <a href="#">Primeira</a>
+                                    <a class="botao" href="#">Primeira</a>
                                 </div>
                             </div>
-                            <p id="label-pagina-atual">1</p>
-                            <div class="box-botoes-pagina">
-                                <a id="link-pagina-next" href="#">Próxima</a>
+                            <div id="box-numero-paginas">
+                                <p id="label-pagina-atual">1</p>
+                                <p id="label-total-paginas">1</p>
+                            </div>
+                            <div class="box-botoes-pagina" id="box-botoes-next">
+                                <a class="botao" id="link-pagina-next" href="#">Próxima</a>
                                 <div id="box-ultima-pagina">
-                                    <a href="#">Última</a>
+                                    <a class="botao" href="#">Última</a>
                                 </div>
                             </div>
                         </div>
                         <div id="box-botoes-desktop">
-                            <a class="botoes" href="#">Primeira</a>
-                            <a class="botoes" href="#">Anterior</a>
-                            <p id="pagina-atual">1</p>
-                            <a class="botoes" href="#">Próxima</a>
-                            <a class="botoes" href="#">Ultima</a>
+                            <a class="preset-botao botao-pagina" href="#">Primeira</a>
+                            <a class="preset-botao botao-pagina" href="#">Anterior</a>
+                            <p id="pagina-atual">1 |</p>
+                            <p id="total-paginas">3</p>
+                            <a class="preset-botao botao-pagina" href="#">Próxima</a>
+                            <a class="preset-botao botao-pagina" href="#">Ultima</a>
                         </div>
                     </div>
                 </div>
