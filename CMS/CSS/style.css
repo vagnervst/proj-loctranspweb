@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+   margin: 0px;
+    background-color: #202020;
+}
+
+/*---- PAGINA DE LOGIN DO CMS ----*/
+#main_login{
+    width: 1000px;
+    height: 950px;
+    margin: 0 auto;
+}
+
+.conteudo {
+    width: 500px;
+    margin: 0 auto;
+    
+}
+
+#banner_login{    
+    height: 300px;
+}
+
+#content_login{    
+    height: 590px;
+    background-color: #ebebeb;
+    align-content: center;
+}
+
+.text-input{
+    background-color: inherit;
+    width: 300px;
+    height: 30px;
+    padding: 2px;
+    margin-left: 20px;
+    font-size: 1.2em;
+    border: 0;
+    border-bottom: 2px solid #a1aec9;
+    outline: none;
+    border-radius: 2px 2px 0px 0px;
+    transition: border-bottom .2s;
+    margin-bottom: 20px;
+    color: #a1aec9;
+}
+
+.text-input:focus {
+    border-bottom: 2px solid #557bc9;
+}
+
+.submit-input {
+    width: 100px;
+    height: 35px;
+    display: block;
+    margin: 10px auto 0px auto;
+    background-color: #afafaf;
+    color: black;
+    border: 0px;
+    outline: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.submit-input:hover {
+    cursor: pointer;
+    background-color: #525252;    
+    color: white;
+}
+
+#footer_login{    
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #a1aec9;
+}
+
+#form_login{
+    width: 160px;
+    margin: 0 auto;
+    padding-top: 195px;
+    padding-right: 140px;
+}
+/*---- PAGINA HOME DO CMS ----*/
