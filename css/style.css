@@ -1656,16 +1656,29 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #pag-contato .box-conteudo-faq #faq-accordion .faq{
     width: 100%;
-    height: 25px;
+    min-height: 25px;
     border: 1px solid #696969;
+    position: relative;
+    float: left;
+    border-radius: 3px;
 }
-
+#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-desc{
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 99%;
+    height: 25px;
+}
+#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-desc:hover{
+    cursor: pointer;
+}
 #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer{
-    width: 300px;
+    width: 100%;
     height: 25px;
     display: none;
     background-color: white;
     float: left;
+    border-top: 1px solid #696969;
 }
 
 /*------------- FAQ*/

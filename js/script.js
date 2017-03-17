@@ -181,4 +181,7 @@ $(document).ready(function() {
         inicializarMenusDesktop();
         inicializarSessoesCadastro();
     }
+    $('.faq').click(function (){
+        $(this).find('.faq-answer').slideToggle('fast');
+    });
 });
