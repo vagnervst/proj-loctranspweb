@@ -384,4 +384,7 @@ $(document).ready(function() {
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
     }
+    $('.faq').click(function (){
+        $(this).find('.faq-answer').slideToggle('fast');
+    });
 });

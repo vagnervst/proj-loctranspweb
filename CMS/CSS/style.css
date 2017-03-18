@@ -6,6 +6,73 @@ body{
     background-color: #202020;
 }
 
+/*------------------------------------------------------------------------- PSEUDO ELEMENTOS PARA BREAKPOINT*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/*------------------------------------------------------------------------- CSS RESET*/
+
+a {
+    text-decoration: none;
+}
+
+.preset-input-text {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #A1AEC9;
+    color: gray;
+    outline: none;
+}
+
+.preset-input-text:focus {
+    border-bottom: 1px solid #557BC9;
+    color: black;
+}
+
+.preset-botao, .preset-input-submit {
+    display: inline-block;    
+    background-color: #202020;    
+    color: #ebebeb;
+    text-align: center;    
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+    border-bottom: 4px solid #141619;    
+}
+
+.preset-botao:hover, .preset-input-submit:hover {
+    background-color: #3c3c3c;
+    color: #ffffff;
+    border-bottom: 4px solid #202020;
+}
+
+.preset-botao:active, .preset-input-submit:active {
+    background-color: #141619;
+    border-bottom: 4px solid #202020;    
+}
+
+/*------------- PRESETS*/
+
 /*---- PAGINA DE LOGIN DO CMS ----*/
 #main_login{
     width: 1000px;
@@ -82,3 +149,143 @@ body{
     padding-right: 140px;
 }
 /*---- PAGINA HOME DO CMS ----*/
+.container{
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+header{
+    background-color: #a1aec9;
+    width: 1080px;
+    height: 150px;
+    margin: 0 auto; 
+}
+header #box-cabecalho{
+    width: inherit;
+    height: inherit;
+    margin: 0 auto;
+}
+header #box-cabecalho #box-conta{
+    width: 200px;
+    height: 120px;
+    margin: 15px;
+    float: right;
+    background-color: #557bc9;
+}
+header #box-cabecalho #box-conta #box-imagem-usuario{
+    width: 100px;
+    height: 120px;
+    float: left;
+}
+header #box-cabecalho #box-conta #box-imagem-usuario img{
+    width: 80px;
+    height: 100px;
+    margin: 10px;
+}
+header #box-cabecalho #box-conta #box-info-usuario{
+    width: 100px;
+    height: 120px;
+    float: left;
+}
+header #box-cabecalho #box-conta #box-info-usuario #nome-usuario{
+    font-size: 16px;
+    font-weight: bold;
+    color: #ebebeb;
+    margin-top: 10px;
+    text-align: center;
+}
+header #box-cabecalho #box-conta #box-info-usuario #nivel-usuario{
+    font-size: 14px;
+    font-weight: bold;
+    color: #ebebeb;
+    margin-top: 5px;
+    text-align: center;
+}
+
+header #box-cabecalho #box-conta #box-logout{
+    width: 80px;
+    height: 30px;
+}
+
+header #box-cabecalho #box-conta #botao-logout{
+    width: 50px;
+    height: 20px;
+    float: right;
+    margin-top: 20px;
+}
+
+.box-menu-lateral{
+    width: 200px;
+    height: 900px;
+    background-color: #557bc9;
+    position: fixed;
+    top: 0px;
+}
+.box-menu-lateral #box-image-logo{
+    width: 200px;
+    height: 150px;
+}
+.box-menu-lateral #box-image-logo img{
+    width: 180px;
+    height: 140px;
+    margin: 10px;
+}
+.box-menu-lateral .menu-lateral{
+    width: 200px;
+    height: 220px;
+}
+.box-menu-lateral .menu-lateral ul{
+    list-style-type: none;
+}
+.box-menu-lateral .menu-lateral ul li{
+    display: block;
+    background-color: #a1aec9;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 10px; 
+}
+.box-menu-lateral .menu-lateral ul li:hover{
+    background-color: #2a3d64;
+}
+.box-menu-lateral .menu-lateral ul li a{
+    display: block;
+    width: 150px;
+    float: left;
+}
+.box-menu-lateral .menu-lateral ul li a:hover{
+    color: #ebebeb;
+}
+.box-menu-lateral .menu-lateral ul li img{
+    width: 42px;
+    height: 42px;
+    margin: 3px;
+}
+.box-menu-lateral .menu-lateral ul li img:hover{
+    cursor: pointer;
+}
+/*---- CABEÇALHO ----*/
+
+footer{
+    background-color: #a1aec9;
+    width: 1080px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 10px 0px;
+    position: fixed;
+}
+footer #box-rodape{
+    width: inherit;
+    height: inherit;
+}
+footer #box-rodape #box-logo-rodape{
+    width: 100px;
+    height: 200px;
+}
+.CMS_main{
+    width: 1080px;
+    height: 750px;
+    background-color: #ebebeb;
+}
