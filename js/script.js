@@ -1,26 +1,50 @@
 $(document).ready(function() {       
     var tamanhoTela = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
     
-    function controlarPainelMobile(botaoInteracao, painel, elementoClicado, elemento_a_ocultar = undefined) {
-            
-        if( elementoClicado != painel && elementoClicado != botaoInteracao ) {
+    function getIdStatusElemento(elemento, ativo) {
+        //captura o id de status de um elemento, sendo estes
+        //#id-elemento-active para ativo e somente #id-elemento para inativo
+        //o retorno e dependente da variavel booleana ativo, caso true, retorna o id para elemento ativo, e false faz o oposto
+        
+        var idStatus = undefined;
+        if( ativo === true ) {
+            //retorna o id para status: ativo
+            idStatus = elemento.id.substr(0, elemento.id.indexOf("-ativo")) + "-ativo";          
+        } else {
+            //retorna o id para status: inativo
+            idStatus = elemento.id.substr(0, elemento.id.indexOf("-ativo"));            
+        }
+        
+        return idStatus;
+    }
+    
+    function isElementoDoPainel(elemento, painel) {
+        if( $(painel).children( elemento.id ).length > 0 ) return true;
+        
+        return false;
+    }
+    
+    function controlarPainel(botaoInteracao, painel, elementoClicado, elemento_a_ocultar = undefined) {                
+        
+        if( elementoClicado != painel && isElementoDoPainel(elementoClicado, painel) ) {
             //Evita o fechamento do painel caso o clique ocorra em um de seus elementos filho
             elementoClicado = $(elementoClicado).parents(".painel-mobile")[0];
-        }                                            
-
+        }
+        
         if( isPainelExibido(painel) && elementoClicado != painel ) {
             //Fecha o painel
             toggleExibicaoPainel(painel);
 
             if( elemento_a_ocultar != undefined ) {
-                elemento_a_ocultar.id = elemento_a_ocultar.id + "-ativo";
+                elemento_a_ocultar.id = toggleIdStatusElemento(elemento_a_ocultar, true);
             }
+            
         } else if( !isPainelExibido(painel) && elementoClicado == botaoInteracao ) {
             //Abre o painel
             toggleExibicaoPainel(painel);
 
             if( elemento_a_ocultar != undefined ) {
-                var idInativo = elemento_a_ocultar.id.substr(0, elemento_a_ocultar.id.indexOf("-ativo"));
+                var idInativo = toggleIdStatusElemento(elemento_a_ocultar, false);
                 elemento_a_ocultar.id = idInativo;
             }
         }
@@ -44,7 +68,8 @@ $(document).ready(function() {
     function isPainelExibido(painel) {
         //Verifica se o painel em questao contem a classe de status ativo
         //Caso positivo, retorna true. Retorna false caso o contrario
-
+        if( painel === null ) return;
+        
         var nao_encontrado = -1;            
         var painelExibido = ( painel.id.indexOf("-ativo") !== nao_encontrado )? true : false;
 
@@ -69,67 +94,245 @@ $(document).ready(function() {
         return isPainelExibido(painel);
     }
     
-    function definirProximaSessao(sessao, botao) {
-        //Define para qual sessao de cadastro o botao desejado ira transferir            
+    function ocultarEtapa(etapa, duracao, callback = undefined) {
+        $(etapa).animate({
+            //Executa animacao de saida
+            right: "300px",
+            opacity: "0"
+        }, duracao, function() {
+            //Reseta o CSS da sessao retirada
+            $(etapa).css("display", "none");
+            $(etapa).css("right", "0px");
+            $(etapa).css("opacity", "1");
+            
+            if( callback !== undefined) callback();
+        });
+    }
+    
+    function exibirEtapa(etapa, duracao, callback) {
+        $(etapa).css("opacity", "0");
+        $(etapa).css("position", "relative");
+        $(etapa).css("top", "300px");
+        $(etapa).css("display", "block");
+        
+        $(etapa).animate({
+            opacity: "1",
+            top: "0px"
+        }, duracao, callback);
+    }
+    
+    function definirEventoTransicao(botao, etapaAlvo) {
+        //Define o evento de transicao para a sessao selecionada, ao botao
 
         $(botao).click(function() {
-            if( $(sessao).css("display") === "none" ) {
-                var sessaoAtual = $(botao).parents(".box-cadastro")[0];
-
-                $(sessaoAtual).animate({
-                    //Executa animacao de saida
-                    right: "300px",
-                    opacity: "0"
-                }, 150, function() {
-                    //Reseta o CSS da sessao retirada
-                    $(sessaoAtual).css("display", "none");
-                    $(sessaoAtual).css("right", "0px");
-                    $(sessaoAtual).css("opacity", "1");
-
-                    //Prepara o CSS da sessao a ser inserida, para animacao
-                    $(sessao).css("opacity", "0");
-                    $(sessao).css("position", "relative");
-                    $(sessao).css("top", "300px");
-                    $(sessao).css("display", "block");
-                    $(sessao).animate({
-                        opacity: "1",
-                        top: "0px"
-                    }, 150);
-                });                                                            
+            if( $(etapaAlvo).css("display") === "none" ) {
+                var etapaAtual = $(botao).parents(".box-cadastro")[0];
+                
+                ocultarEtapa(etapaAtual, 200, exibirEtapa(etapaAlvo, 300));
             }
         });
     }
+    
+    function capturarClasseEtapa(elemento) {
+        //Retorna, da lista de classes de um elemento, a classe utilizada para identificacao de etapas de cadastro
+        if( elemento === undefined ) return null;        
+        
+        var classe_identificacao_etapa = "js-etapa";
+        
+        var nao_encontrado = -1;
+        var listaClasses = elemento.classList;
+        for( var i = 0; i < listaClasses.length; ++i ) {
+            
+            if( listaClasses[i].indexOf(classe_identificacao_etapa) != nao_encontrado ) {                
+                return listaClasses[i];
+            }
+        }                
+        
+        return null;
+    }
+    
+    function capturarEtapaAlvo(botao, boxSessaoCadastro) {
+        //Captura a etapa para qual o botao deve transferir
+        //atraves da classe inserida neste botao, que deve ser a mesma da etapa desejada
+        
+        var classeEtapaAlvo = capturarClasseEtapa(botao);
+        var etapas = capturarEtapas(boxSessaoCadastro);
+                        
+        for( var i = 0; i < etapas.length; ++i ) {
+            var classeEtapa = capturarClasseEtapa(etapas[i]);
+            
+            if( classeEtapaAlvo === classeEtapa ) return etapas[i];
+        }
+    }
+    
+    function definirTransferencia(botao, boxSessaoCadastro) {
 
-    function inicializarSessoesCadastro() {
-        //Inicializa as sessoas de cadastro de usuario
+        var etapaAlvo = capturarEtapaAlvo(botao, boxSessaoCadastro);        
+        
+        definirEventoTransicao(botao, etapaAlvo);
+    }
+    
+    function capturarBotoesTransferencia(etapa) {
+        //Captura todos os botoes de transferencia de uma etapa
+        var botoes = $(etapa).children(".js-botao-transf");
+        
+        if( botoes.length === 0 ) {
+            botoes = $($(etapa).children(".horizontal-input-container")).children(".js-botao-transf");
+        }                
+        
+        return botoes;
+    }
+    
+    function capturarEtapas(boxSessaoCadastro) {
+        //Captura todas as etapas de cadastro pertencentes a uma sessao de cadastro
+        return $($(boxSessaoCadastro).children("form")[0]).children(".box-cadastro");
+    }
+    
+    function prepararSessaoCadastro(boxSessaoCadastro) {
+        //Captura todas as etapas de uma sessao de cadastro, e seus botoes de transferencia
+        //para inicializar as transicoes
+        var etapas = capturarEtapas(boxSessaoCadastro);                
+                
+        for( var i = 0; i < etapas.length; ++i ) {
+            var listaBotoesTransf = capturarBotoesTransferencia(etapas[i]);            
+            
+            for( var x = 0; x < listaBotoesTransf.length; ++x ) {                
+                definirTransferencia( listaBotoesTransf[x], boxSessaoCadastro );
+            }
+        }
+    }    
+    
+    function isTipoContaAtivo(boxCadastro) {
+        //Retorna true se o formulario de cadastro for o ativo no momento
+        
+        if( $(boxCadastro).hasClass("js-cadastro-ativo") ) return true;
+        
+        return false;
+    }        
+    
+    function setStatusFormularioConta(boxCadastro, ativo) {
+        //Altera o status do formulario de cadastro para ativo ou inativo
+        
+        if( ativo ) {
+            $(boxCadastro).removeClass("js-cadastro-ativo");
+            $(boxCadastro).addClass("js-cadastro-ativo");
+        } else {
+            $(boxCadastro).removeClass("js-cadastro-ativo");
+        }
+    }
+    
+    function getFormularioAtivo(listaFormCadastro) {
+        //Retorna o formulario ativo no momento
+        
+        for( var i = 0; i < listaFormCadastro.length; ++i ) {
+            if( isTipoContaAtivo(listaFormCadastro[i]) ) return listaFormCadastro[i];
+        }
+    }
+    
+    function getIndiceFormAtivo(listaFormCadastro) {
+        var formAtivo = getFormularioAtivo(listaFormCadastro);
+        
+        var indiceFormAtivo = listaFormCadastro.indexOf(formAtivo);
+        return indiceFormAtivo;        
+    }
+    
+    function executarTransicaoIndicador(listaFormCadastro) {
+        var indicador = $(".indicador-modo")[0];
+        
+        var indice = getIndiceFormAtivo(listaFormCadastro);
+        
+        var direcao_esquerda = 0;
+        var direcao_direita = 1;
+        if( indice === direcao_esquerda) {
+            indicador.id = "indicador-modo-fisico";
+        } else {
+            indicador.id = "indicador-modo-juridico";
+        }
+    }
+    
+    function resetarFormulario(boxFormularioCadastro) {
+        //Limpa todas as caixas preenchidas e retorna o formulario a etapa inicial
+        var form = $(boxFormularioCadastro).children("form")[0];
+        
+        $(form).trigger("reset");
+        var etapas = capturarEtapas(boxFormularioCadastro);
+        
+        exibirEtapa( etapas[0], 200 );
+        for( var i = 1; i < etapas.length; ++i ) {
+            ocultarEtapa( etapas[i], 200 );
+        }
+    }
+    
+    function executarTransicaoFormulario(listaFormCadastro) {
+        var formAtivo = getFormularioAtivo(listaFormCadastro);
+        var formInativo = ( getIndiceFormAtivo(listaFormCadastro) === 0 )? listaFormCadastro[1] : listaFormCadastro[0];
+        
+        resetarFormulario(formInativo);
+        executarTransicaoIndicador( listaFormCadastro );
+        
+        $(formInativo).animate({
+            opacity: 0
+        }, 200, function() {
+            formInativo.style.display = "none";
+        });
+        
+        $(formAtivo).animate({
+            opacity: 1
+        }, 200, function() {
+            formAtivo.style.display = "block";
+        });
+    }
+    
+    function setStatusTipoContaUnico(listaFormCadastro, indice, ativo) {
+        //Altera o status dos formularios de cadastro, mantendo somente um deles ativo
+                
+        for( var i = 0; i < listaFormCadastro.length; ++i ) {
+            if( i === indice ) { 
+                setStatusFormularioConta(listaFormCadastro[i], ativo);
+            } else { 
+                setStatusFormularioConta(listaFormCadastro[i], !ativo);
+            }
+        }
+        
+        executarTransicaoFormulario(listaFormCadastro);
+    }
+    
+    function inicializarBotoesTipoConta() {
+        var botaoCadastroFisico = $("#botao-conta-fisica")[0];
+        var botaoCadastroJuridico = $("#botao-conta-juridica")[0];
+        
+        var boxSessaoCadastroFisico = $("#container-cadastro-fisico")[0];
+        var boxSessaoCadastroJuridico = $("#container-cadastro-juridico")[0];
+        
+        var listaFormCadastro = [];
+        listaFormCadastro.push( boxSessaoCadastroFisico );
+        listaFormCadastro.push( boxSessaoCadastroJuridico );                
+        
+        $(botaoCadastroFisico).click(function(){
+            setStatusTipoContaUnico(listaFormCadastro, 0, true);
+            //executarTransicaoFormulario(listaFormCadastro);
+        });
+        
+        $(botaoCadastroJuridico).click(function(){
+            setStatusTipoContaUnico(listaFormCadastro, 1, true);
+            //executarTransicaoFormulario(listaFormCadastro);
+        });
+    }
+    
+    function inicializarEtapasCadastro() {
+        //Inicializa as sessoes de cadastro de usuario fisico e juridico
         var paginaCadastro = $("#pag-cadastro")[0];
 
         if( paginaCadastro != undefined ) {
-
-            var infoPessoaisFisico = $("#container-cadastro-fisico #box-info-pessoais")[0];
-            var infoContatoFisico = $("#container-cadastro-fisico #box-info-contato")[0];
-            var infoCartaoCreditoFisico = $("#container-cadastro-fisico #box-cartao-credito")[0];
-            var infoContaBancariaFisico = $("#container-cadastro-fisico #box-conta-bancaria")[0];
-            var infoConducaoFisico = $("#container-cadastro-fisico #box-conducao")[0];
-            var infoAutenticacaoFisico = $("#container-cadastro-fisico #box-autenticacao")[0];
-
-            //Transferencias da sessao de informacoes pessoais
-            definirProximaSessao(infoContatoFisico, $(infoPessoaisFisico).children(".button-link")[0]);
-
-            //Transferencias da sessap de informacoes de contato                
-            definirProximaSessao(infoCartaoCreditoFisico, $(infoContatoFisico).children(".horizontal-input-container").children()[0]);
-            definirProximaSessao(infoContaBancariaFisico, $(infoContatoFisico).children(".horizontal-input-container").children()[1]);
-
-            //Transferencias da sessao de dados de cartao de credito
-            definirProximaSessao(infoConducaoFisico, $(infoCartaoCreditoFisico).children(".button-link")[0]);
-
-            //Transferencias da sessao de dados de conta bancaria
-            definirProximaSessao(infoAutenticacaoFisico, $(infoContaBancariaFisico).children(".button-link")[0]);
-
-            //Transferencias da sessao de dados de conducao0
-            definirProximaSessao(infoAutenticacaoFisico, $(infoConducaoFisico).children(".button-link")[0]);
+            inicializarBotoesTipoConta();
+            
+            var boxSessaoCadastroFisico = $("#container-cadastro-fisico")[0];
+            var boxSessaoCadastroJuridico = $("#container-cadastro-juridico")[0];
+            
+            prepararSessaoCadastro(boxSessaoCadastroFisico);
+            prepararSessaoCadastro(boxSessaoCadastroJuridico);
         }
-    }
+    }        
     
     if( tamanhoTela.indexOf("mobile") != -1 ) {                                    
         
@@ -140,7 +343,7 @@ $(document).ready(function() {
             var painelMenuPaginas = document.getElementById("box-mobile-menu");                
 
             var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-            var boxMenuPerfil = document.getElementById("box-menu-usuario");                
+            var painelMenuPerfil = document.getElementById("box-menu-usuario");                
 
             var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");                        
             var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
@@ -148,15 +351,15 @@ $(document).ready(function() {
             $(document.body).click(function(e) {
                 var elementoClicado = e.target;
 
-                controlarPainelMobile(botaoMenuPaginas, painelMenuPaginas, elementoClicado);
-                controlarPainelMobile(botaoMenuPerfil, boxMenuPerfil, elementoClicado);
-                controlarPainelMobile(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);                
+                controlarPainel(botaoMenuPaginas, painelMenuPaginas, elementoClicado);
+                controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
+                controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);                
             });
         
-        }                
+        }
                 
         inicializarMenusMobile();
-        inicializarSessoesCadastro();
+        inicializarEtapasCadastro();
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {
         
@@ -167,18 +370,18 @@ $(document).ready(function() {
             var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
             
             var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-            var boxMenuPerfil = document.getElementById("box-menu-usuario"); 
+            var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
             
             $(document.body).click(function(e) {
                 var elementoClicado = e.target;            
                 
-                controlarPainelMobile(botaoMenuPerfil, boxMenuPerfil, elementoClicado);
-                controlarPainelMobile(botaoFiltragemVeiculosDesktop, painelFiltragemVeiculos, elementoClicado);
+                controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
+                controlarPainel(botaoFiltragemVeiculosDesktop, painelFiltragemVeiculos, elementoClicado);
                 
             });
         }
         
         inicializarMenusDesktop();
-        inicializarSessoesCadastro();
+        inicializarEtapasCadastro();
     }
 });

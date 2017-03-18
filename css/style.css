@@ -2492,31 +2492,85 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     padding-top: 40px;
 }
 
-#pag-cadastro #box-tipo-conta {
-    background-color: #c7c7c7;
-    padding-top: 5px;
+#pag-cadastro .imagem-divisao-conteudo {
+    margin-bottom: 1px;
+}
+
+#pag-cadastro #box-tipo-conta {    
+    background-color: #a1aec9;
+    padding-top: 10px;
+    border-bottom: 2px solid #202020;
+    overflow: hidden;
 }
 
 #pag-cadastro #box-tipo-conta #container-botoes-conta {
-    width: 305px;
+    width: 292px;
     margin: 0 auto;
 }
 
-#pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta {    
-    background-color: #eaeaea;
-    display: inline-block;
-    width: 150px;
-    text-align: center;
-    font-size: 25px;
-    padding: 20px 0px;    
+@media (min-width: 740px) {
+    #pag-cadastro #box-tipo-conta #container-botoes-conta {
+        width: 215px;
+    }
 }
 
-#pag-cadastro #container-cadastro-fisico {
+#pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta {    
+    display: inline-block;
+    width: 140px;
+    border-radius: 2px 2px 0px 0px;
+    font-size: 25px;
+    padding: 20px 0px;
+    border-bottom: 0px;
+    border-left: 4px solid #141619;    
+}
+
+#pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta:hover,
+#pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta:active {
+    border-left: 4px solid #202020;    
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta {
+        width: 100px;
+        font-size: 20px;
+        padding: 10px 0px;
+    } 
+}
+
+#pag-cadastro #box-tipo-conta .indicador-modo {
+    background-color: #202020;    
+    width: 50%;
+    height: 5px;
+    margin-top: 3px;
+    position: relative;
+    transition: all .2s;
+    left: 0;
+}
+
+#pag-cadastro #box-tipo-conta #indicador-modo-fisico {
+    left: 0%;
+}
+
+#pag-cadastro #box-tipo-conta #indicador-modo-juridico {
+    left: 50%;
+}
+
+#pag-cadastro #container-cadastro-fisico, #pag-cadastro #container-cadastro-juridico {
     min-height: 670px;
 }
 
+#pag-cadastro #container-cadastro-juridico {
+    display: none;
+}
+
 #pag-cadastro .box-conteudo .box-cadastro {
-    position: relative;
+    position: relative;    
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro {
+        text-align: center;
+    }
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .titulo-cadastro  {
@@ -2526,12 +2580,26 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     margin: 15px 0;
 }
 
-#pag-cadastro .box-conteudo .box-cadastro .label-input {
-    margin-bottom: 20px;
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .titulo-cadastro {
+        font-size: 19px;
+    }
 }
 
-#pag-cadastro .box-conteudo .box-cadastro .label-input .label {
-    font-size: 20px;
+#pag-cadastro .box-conteudo .box-cadastro .label-input {
+    margin-bottom: 20px;    
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .label-input .label .input-label {        
+    display: block;
+    text-align: left;
+    font-size: 20px;   
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input .label .input-label {               
+        font-size: 18px;
+    }
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .label-input .radio-label {
@@ -2540,15 +2608,30 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     bottom: 7px;
 }
 
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input .radio-label {
+        bottom: 5px;
+    }
+}
+
 #pag-cadastro .box-conteudo .box-cadastro .label-input .text-input {
-    display: block;
-    background: none;
     width: 100%;
     height: 50px;
     font-size: 23px;
-    border: 0px;
-    border-bottom: 1px solid white;
-    outline: none;
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input .text-input {
+        width: 650px;
+        height: 30px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input .text-input {
+        width: 900px;        
+    }
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .label-input .radio-input {
@@ -2556,22 +2639,42 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     height: 30px;
 }
 
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input .radio-input {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 #pag-cadastro .box-conteudo .box-cadastro .button-link {
-    background-color: #e2e2e2;
+    display: block;
     width: 200px;
     font-size: 20px;
     text-align: center;
-    border: 0px;
-    border-radius: 5px;
     padding: 20px 0px;
     margin: 0 auto;
-    outline: none;
-    cursor: pointer;
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .button-link {
+        width: 120px;
+        padding: 10px 0px;
+    }
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container {
+    text-align: center;
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .button-link {
     display: inline-block;
     width: 150px;
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .button-link {
+        width: 130px;
+    }
 }
 
 #pag-cadastro .box-conteudo #box-cartao-credito .horizontal-input-container .label-input {
@@ -2586,12 +2689,16 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #pag-cadastro .box-conteudo #container-cadastro-fisico #box-cartao-credito,
 #pag-cadastro .box-conteudo #container-cadastro-fisico #box-conta-bancaria,
 #pag-cadastro .box-conteudo #container-cadastro-fisico #box-conducao,
-#pag-cadastro .box-conteudo #container-cadastro-fisico #box-autenticacao {
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-autenticacao,
+#pag-cadastro .box-conteudo #container-cadastro-juridico #box-info-contato,
+#pag-cadastro .box-conteudo #container-cadastro-juridico #box-info-empresa, 
+#pag-cadastro .box-conteudo #container-cadastro-juridico #box-conta-bancaria,
+#pag-cadastro .box-conteudo #container-cadastro-juridico #box-autenticacao {
     display: none;
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .botao-cadastrar {
-    margin-left: 50px;
+    
 }
 
 /*------------- CADASTRO*/
