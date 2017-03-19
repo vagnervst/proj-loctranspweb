@@ -365,12 +365,19 @@ $(document).ready(function() {
 
         var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
         var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
-
+        
+        var botaoNotificacoes = $("#icone-notificacao")[0];
+        var painelNotificacoes = $("#box-menu-notificacoes")[0];
+        
+        console.log(botaoNotificacoes);
+        console.log(painelNotificacoes);
+        
         $(document.body).click(function(e) {
             var elementoClicado = e.target;
 
             controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
             controlarPainel(botaoFiltragemVeiculosDesktop, painelFiltragemVeiculos, elementoClicado);
+            controlarPainel(botaoNotificacoes, painelNotificacoes, elementoClicado);
 
         });
     }

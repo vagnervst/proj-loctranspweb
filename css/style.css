@@ -166,6 +166,7 @@ header #box-cabecalho #box-conta #icone-notificacao {
     width: 40px;
     height: 40px;
     margin-top: 5px;
+    cursor: pointer;
     float: left;    
 }
 
@@ -471,7 +472,179 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- MENU DE FILTRAGEM DE VEICULOS*/
 
-/*------------------------------------------------------------------------- PAINEIS MOBILE*/
+#box-menu-notificacoes,
+#box-menu-notificacoes-ativo {    
+    background-color: #2a2a2a;
+    width: 230px;
+    border-radius: 0px 0px 5px 5px;
+    position: relative;
+    top: 5px;    
+    float: right;
+}
+
+#box-menu-notificacoes {
+    display: none;
+}
+
+#box-menu-notificacoes-ativo {
+    display: block;
+}
+
+@media (min-width: 520px) {
+    #box-menu-notificacoes,
+    #box-menu-notificacoes-ativo {
+        width: 260px;
+        margin-right: 50px;
+    }
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes,
+    #box-menu-notificacoes-ativo {
+        width: 290px;
+        margin-right: 80px;
+        top: 0px;
+    }
+}
+
+#box-menu-notificacoes #titulo-box-notificacoes,
+#box-menu-notificacoes-ativo #titulo-box-notificacoes {
+    background-color: #ebebeb;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+    padding: 5px;
+    font-weight: bold;
+    color: #557BC9;
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes #titulo-box-notificacoes,
+    #box-menu-notificacoes-ativo #titulo-box-notificacoes {
+        font-size: 14px;
+    }
+}
+
+#box-menu-notificacoes .box-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao {    
+    display: block;
+    border-bottom: 1px solid #464646;
+    width: 220px;    
+    padding: 5px;       
+    float: left;
+}
+
+#box-menu-notificacoes-ativo .box-notificacao:hover,
+#box-menu-notificacoes-ativo .box-notificacao:active {
+    background-color: #557BC9;
+}
+
+@media (min-width: 520px) {
+    #box-menu-notificacoes .box-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao {
+        width: 250px;
+    }
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes .box-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao {
+        width: 280px;
+    }
+}
+
+#box-menu-notificacoes .box-notificacao:last-child,
+#box-menu-notificacoes-ativo .box-notificacao:last-child {
+    border-bottom: 0px;
+}
+
+#box-menu-notificacoes .box-notificacao .icone-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao .icone-notificacao {        
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    float: left;
+}
+
+#box-menu-notificacoes .box-notificacao .info-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao .info-notificacao {
+    display: block;
+    width: 100px;
+    float: left;
+}
+
+@media (min-width: 520px) {
+    #box-menu-notificacoes .box-notificacao .info-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao {
+        width: 185px;
+    }
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes .box-notificacao .info-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao {
+        width: 215px;
+    }
+}
+
+#box-menu-notificacoes .box-notificacao .info-notificacao .titulo-notificacao,
+#box-menu-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao .info-notificacao .titulo-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao .info-notificacao .conteudo-notificacao {
+    display: block;    
+    width: 165px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 520px) {
+    #box-menu-notificacoes .box-notificacao .info-notificacao .titulo-notificacao,
+    #box-menu-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao .titulo-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao .conteudo-notificacao {
+        width: 185px;
+    }
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes .box-notificacao .info-notificacao .titulo-notificacao,
+    #box-menu-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao .titulo-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao .conteudo-notificacao {
+        width: 215px;
+    }
+}
+
+#box-menu-notificacoes .box-notificacao .info-notificacao .titulo-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao .info-notificacao .titulo-notificacao {
+    color: #f7f7f7;
+    font-size: 19px;
+    font-weight: bold;    
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes .box-notificacao .info-notificacao .titulo-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao .titulo-notificacao {        
+        font-size: 15px;
+    }
+}
+
+#box-menu-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
+#box-menu-notificacoes-ativo .box-notificacao .info-notificacao .conteudo-notificacao {    
+    color: #bababa;
+    text-align: justify;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 740px) {
+    #box-menu-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
+    #box-menu-notificacoes-ativo .box-notificacao .info-notificacao .conteudo-notificacao {
+        font-size: 13px;
+    }
+}
+
+/*------------- MENU DE NOTIFICACOES*/
 
 #box-menu-usuario, 
 #box-menu-usuario-ativo {
@@ -510,6 +683,10 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     border-bottom: 1px solid #464646;
 }
 
+#box-menu-usuario-ativo #menu-usuario li:last-child a {
+    border-bottom: 0px;
+}
+
 #box-menu-usuario-ativo #menu-usuario li a:active {
     background-color: #557bc9;
 }
@@ -520,7 +697,9 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     } 
 }
 
-/*------------------------------------------------------------------------- MENU USUARIO*/
+/*------------- MENU USUARIO*/
+
+/*------------------------------------------------------------------------- PAINEIS*/
 
 .container-icone-avaliacoes {
     display: inline-block;        
@@ -593,7 +772,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 /*------------- PRESETS*/
 
 .main {
-    background-color: #ebebeb;
+    background-color: #ffffff;
     min-height: 400px;
     padding-top: 75px;
     padding-bottom: 10px;  
@@ -616,7 +795,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     background-size: cover;
     width: 100%;
     height: 300px;
-    margin: 10px 0px;
+    margin: 0px 0px;
 }
 
 @media (min-width: 740px) {
@@ -809,12 +988,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     }
 }
 
-
-.main #container-locadores-destaque {    
+.main #container-locadores-destaque {
+    background-color: #515e77;
     height: 410px;   
     overflow-x: auto;
     padding: 5px;
-    padding-top: 15px;
+    padding-top: 15px;    
     margin: 0 auto;
 }
 
@@ -871,14 +1050,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 .main #container-locadores-destaque .box-locador-destaque {    
     display: inline-block;
-    background-color: #cbcbcb;
+    background-color: #eaeaea;
     width: 240px;
     border-radius: 0px 0px 5px 5px;
     margin: 0 3px;
     padding: 5px;
     color: #202020;
-    opacity: 0.8 ;
-    transition:opacity 0.2s; 
 }
 
 @media (min-width: 1000px) {
@@ -886,11 +1063,6 @@ header #box-cabecalho #box-conta #imagem-perfil img {
         margin: 0 1px;
         padding: 3px;
     }
-}
-
-.main #container-locadores-destaque .box-locador-destaque:hover,
-.main #container-locadores-destaque .box-locador-destaque:active {
-    opacity: 1 ;
 }
 
 @media (min-width: 520px) {
@@ -901,7 +1073,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 .main #container-locadores-destaque .box-locador-destaque .foto-locador {
     width: 240px;
-    height: 220px;
+    height: 220px;    
 }
 
 .main #container-locadores-destaque .box-locador-destaque .nome-locador {
@@ -992,11 +1164,11 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 @media (min-width: 740px) {
     .main #container-locadores-destaque .box-locador-destaque {
         width: 150px;
-    }
+    }        
     
     .main #container-locadores-destaque .box-locador-destaque .foto-locador {
         width: 150px;
-        height: 130px;
+        height: 130px;        
     }
     
     .main #container-locadores-destaque .box-locador-destaque .nome-locador {
@@ -1013,6 +1185,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     
     .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes {
         margin-left: 2px;
+        filter: grayscale(50%);
+        transition: filter .2s;
+    }
+     
+    .main #container-locadores-destaque .box-locador-destaque:hover .box-avaliacoes .container-icone-avaliacoes {
+        filter: grayscale(0%);
     }
     
     .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes .icone-avaliacao {
