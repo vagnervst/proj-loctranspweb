@@ -543,6 +543,26 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     color: black;
 }
 
+.preset-input-textarea {
+    background: none;
+    color: gray;
+    border: 1px solid #A1AEC9;    
+    outline: none;
+    resize: none;
+}
+
+.preset-input-textarea:focus {
+    color: black;
+    border: 1px solid #557BC9;
+}
+
+.preset-input-select {
+    background: none;    
+    border: 0px;
+    border-bottom: 1px solid #A1AEC9;
+    outline: none;
+}
+
 .preset-botao, .preset-input-submit {
     display: inline-block;    
     background-color: #202020;    
@@ -1638,221 +1658,219 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- ALUGUE*/
 
-#pag-contato .box-conteudo-faq{
+#pag-contato .box-conteudo-faq {
     padding: 0px 5px;
     padding-top: 15px;
     margin-bottom: 10px;
 }
-#pag-contato .box-conteudo-faq .titulo-faq{
+
+#pag-contato .box-conteudo-faq .titulo-faq {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-#pag-contato .box-conteudo-faq #faq-accordion{
+
+#pag-contato .box-conteudo-faq #faq-accordion {
     width: 100%;
     height: auto;
 }
 
-#pag-contato .box-conteudo-faq #faq-accordion .faq{
-    width: 100%;
-    min-height: 25px;
-    border: 1px solid #696969;
+#pag-contato .box-conteudo-faq #faq-accordion .faq {
+    width: 100%;    
+    border-left: 1px solid #bcbcbc;
+    border-top: 1px solid #bcbcbc;
+    border-right: 1px solid #bcbcbc;
+    border-bottom: 1px solid #bcbcbc;    
+    margin-bottom: 5px;
     position: relative;
-    float: left;
-    border-radius: 3px;
+    float: left;    
 }
-#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-desc{
-    padding: 5px 5px;
+
+#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-desc {    
+    padding: 10px 5px;
     font-size: 16px;
-    font-weight: bold;
-    width: 99%;
-    height: 25px;
+    font-weight: bold;    
 }
-#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-desc:hover{
+
+#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-desc:hover {
     cursor: pointer;
 }
-#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer{
-    width: 100%;
-    height: 25px;
+
+#pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {
     display: none;
-    background-color: white;
+    width: 290px;
+    background-color: #202020;
+    color: white;
+    text-align: justify;
+    padding: 5px;
     float: left;
-    border-top: 1px solid #696969;
 }
 
-/*------------- FAQ*/
-
-#pag-contato .box-conteudo .box-conteudo-contato{
-    
-}
-
-@media (min-width: 740px){
-    #pag-contato .box-conteudo .box-conteudo-contato{
-        
+@media (min-width: 420px) {
+    #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {
+        width: 361px;
     }
 }
-#pag-contato .box-conteudo .box-conteudo-contato .subtitulo{
+
+@media (min-width: 520px) {
+    #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {
+        width: 431px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {
+        width: 631px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {
+        width: 881px;
+    }
+}
+
+#pag-contato .box-conteudo .box-conteudo-contato .subtitulo {
     text-align: center;
     font-size: 20px;
     margin-bottom: 50px;
 }
-#pag-contato .box-conteudo .box-conteudo-contato #info-contato{
+
+#pag-contato .box-conteudo .box-conteudo-contato #info-contato {
     text-align: left;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
-@media (min-width: 740px){
-    #pag-contato .box-conteudo .box-conteudo-contato #info-contato{
+
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo .box-conteudo-contato #info-contato {
         float: left;
-        width: 300px;
+        width: 295px;
         height: 400px;
     }
 }
 
-#pag-contato .box-conteudo #info-contato{
-    padding: 0px 5px;
-    padding-top: 5px;
-    padding-bottom: 15px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #cccccc;
-}
-@media (min-width: 740px){
-    #pag-contato .box-conteudo #info-contato{
-        border-bottom: none;
-        margin-right: 100px;
+@media (min-width: 1000px) {
+    #pag-contato .box-conteudo .box-conteudo-contato #info-contato {
+        width: 540px;
     }
 }
-@media (min-width: 1020px){
-    #pag-contato .box-conteudo #info-contato{
-        margin-right: 250px;
-    }
-}
-#pag-contato .box-conteudo #info-contato p{
+
+#pag-contato .box-conteudo #info-contato .label {
+    display: inline-block;
     margin-top: 20px;
     font-weight: bold;
     font-size: 19px;
 }
-#pag-contato .box-conteudo .box-contato{
+
+#pag-contato .box-conteudo .box-contato {
     margin-top: 20px;
 }
 
 @media (min-width: 740px){    
-    #pag-contato .box-conteudo .container-form-contato{
-        float: left;
-        width: 1000px;
-        height: 800px;
+    #pag-contato .box-conteudo #container-form-contato {
+        display: inline-block;
     }
 }
 
-#pag-contato .box-conteudo .box-conteudo-contato{
+#pag-contato .box-conteudo .box-conteudo-contato {
     padding: 15px 5px;
     margin-bottom: 10px;
     border-radius: 2px;
 }
-#pag-contato .box-conteudo .box-conteudo-contato .titulo-contato{
+
+#pag-contato .box-conteudo .box-conteudo-contato .titulo-contato {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-#pag-contato .box-conteudo .box-conteudo-contato .box-contato{
+
+#pag-contato .box-conteudo .box-conteudo-contato .box-contato {
     position: relative;
 }
+
 #pag-contato .box-conteudo .box-contato .label-input-contato {
     margin-bottom: 20px;
 }
 
-#pag-contato .box-conteudo .box-contato .label-input-contato .label-contato{
+#pag-contato .box-conteudo .box-contato .label-input-contato .label-contato {
     font-size: 20px;
 }
+
 @media (min-width: 520px){
-    #pag-contato .box-conteudo .box-contato .label-input-contato .label-contato{
+    #pag-contato .box-conteudo .box-contato .label-input-contato .label-contato {
         width: 100px;
     }
 }
+
 @media (min-width: 740px){
-    #pag-contato .box-conteudo .box-contato .label-input-contato .label-contato{
+    #pag-contato .box-conteudo .box-contato .label-input-contato .label-contato {
         width: 200px;
+        font-size: 18px;
     }
 }
 
 #pag-contato .box-conteudo .box-contato .label-input-contato .text-input {
     display: block;
-    background: none;
     width: 100%;
     height: 50px;
-    font-size: 23px;
-    border: 0px;
-    border-bottom: 1px solid white;
-    outline: none;
+    font-size: 23px;    
 }
 
-@media (min-width: 740px){
-    #pag-contato .box-conteudo .box-contato .label-input-contato .text-input{
-        width: 200px;
-    }
-}
-@media (min-width: 1020px){
-    #pag-contato .box-conteudo .box-contato .label-input-contato .text-input{
-        width: 300px;
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo .box-contato .label-input-contato .text-input {        
+        height: 30px;
+        font-size: 15px;
     }
 }
 
-#pag-contato .box-conteudo .box-contato .label-input-contato .text-area-input{
+#pag-contato .box-conteudo .box-contato .label-input-contato .text-area-input {
     display: block;
-    background: none;
     width: 100%;
-    height: 70px;
+    height: 170px;
     font-size: 23px;
-    border: 0px;
-    border: 1px solid white;
-    outline: none;
-    resize: none;
-    margin-top: 5px;
+    margin-top: 5px;    
 }
-@media (min-width: 740px){
-    #pag-contato .box-conteudo .box-contato .label-input-contato .text-area-input{
-        width: 200px;
+
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo .box-contato .label-input-contato .text-area-input {        
+        font-size: 15px;
     }
 }
-@media (min-width: 1020px){
-    #pag-contato .box-conteudo .box-contato .label-input-contato .text-area-input{
-        width: 300px;
+
+#pag-contato .box-conteudo .box-contato .label-input-contato .select-input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+}
+
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo .box-contato .label-input-contato .select-input {
+        height: 30px;
+        font-size: 15px;
     }
 }
 
 #pag-contato .box-conteudo .box-contato .button-link {
-    background-color: #e2e2e2;
     width: 200px;
     font-size: 20px;
-    text-align: center;
-    border: 0px;
-    border-radius: 5px;
     padding: 20px 0px;
     margin: 0 auto;
-    outline: none;
-    cursor: pointer;
-    display: inline-block;
+    display: block;
 }
-#pag-contato .box-conteudo .box-contato .botao-contato {
-    margin-left: 50px;
-}
-<<<<<<< HEAD
-=======
-@media (min-width: 520px){
-    #pag-contato .box-conteudo .box-contato .botao-contato{
-        margin-left: 30px;
-    }
-}
-@media (min-width: 740px){
-    #pag-contato .box-conteudo .box-contato .botao-contato{
-        margin-left: 10px;
-    }
-}
->>>>>>> 7022189cc63181ee45895063a2fa4e07e609ed77
 
-/*------------- CONTATO*/
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo .box-contato .button-link {
+        width: 120px;
+        font-size: 17px;
+        padding: 10px 0px;
+    }
+}
+
+/*------------- FAQ E CONTATO*/
 
 #pag-sobre-empresa .box-conteudo #apresentacao-empresa .subtitulo {
     font-size: 19px;

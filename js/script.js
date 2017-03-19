@@ -18,13 +18,14 @@ $(document).ready(function() {
         return idStatus;
     }
     
-    function isElementoDoPainel(elemento, painel) {
-        if( $(painel).children( elemento.id ).length > 0 ) return true;
+    function isElementoDoPainel(elemento, painel) {        
+        if( $(elemento).parents( painel.id ).length > 0 ) return true;
         
         return false;
     }
     
     function controlarPainel(botaoInteracao, painel, elementoClicado, elemento_a_ocultar = undefined) {                
+        if(painel === null) return;
         
         if( elementoClicado != painel && isElementoDoPainel(elementoClicado, painel) ) {
             //Evita o fechamento do painel caso o clique ocorra em um de seus elementos filho
@@ -287,9 +288,9 @@ $(document).ready(function() {
         //Altera o status dos formularios de cadastro, mantendo somente um deles ativo
                 
         for( var i = 0; i < listaFormCadastro.length; ++i ) {
-            if( i === indice ) { 
+            if( i === indice ) {
                 setStatusFormularioConta(listaFormCadastro[i], ativo);
-            } else { 
+            } else {
                 setStatusFormularioConta(listaFormCadastro[i], !ativo);
             }
         }
@@ -332,58 +333,59 @@ $(document).ready(function() {
             prepararSessaoCadastro(boxSessaoCadastroFisico);
             prepararSessaoCadastro(boxSessaoCadastroJuridico);
         }
-    }        
+    }
     
-    if( tamanhoTela.indexOf("mobile") != -1 ) {                                    
-        
-        function inicializarMenusMobile() {
-            //Inicializa os menus mobile e seus respectivos botoes de ativacao
+    function inicializarMenusMobile() {
+        //Inicializa os menus mobile e seus respectivos botoes de ativacao
+
+        var botaoMenuPaginas = document.getElementById("mobile-botao-menu");       
+        var painelMenuPaginas = document.getElementById("box-mobile-menu");                
+
+        var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
+        var painelMenuPerfil = document.getElementById("box-menu-usuario");                
+
+        var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");                        
+        var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
+
+        $(document.body).click(function(e) {
+            var elementoClicado = e.target;            
             
-            var botaoMenuPaginas = document.getElementById("mobile-botao-menu");       
-            var painelMenuPaginas = document.getElementById("box-mobile-menu");                
+            controlarPainel(botaoMenuPaginas, painelMenuPaginas, elementoClicado);
+            controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
+            controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);                
+        });
 
-            var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-            var painelMenuPerfil = document.getElementById("box-menu-usuario");                
+    }
+    
+    function inicializarMenusDesktop() {
+        //Inicializa os menus desktop e seus respectivos botoes de ativacao
 
-            var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");                        
-            var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
-            
-            $(document.body).click(function(e) {
-                var elementoClicado = e.target;
+        var botaoFiltragemVeiculosDesktop = document.getElementById("desktop-botao-filtragem");
+        var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
 
-                controlarPainel(botaoMenuPaginas, painelMenuPaginas, elementoClicado);
-                controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
-                controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);                
-            });
-        
-        }
+        var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
+        var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
+
+        $(document.body).click(function(e) {
+            var elementoClicado = e.target;
+
+            controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
+            controlarPainel(botaoFiltragemVeiculosDesktop, painelFiltragemVeiculos, elementoClicado);
+
+        });
+    }
+    
+    if( tamanhoTela.indexOf("mobile") != -1 ) {                
                 
         inicializarMenusMobile();
         inicializarEtapasCadastro();
         
-    } else if( tamanhoTela.indexOf("desktop") != -1 ) {
-        
-        function inicializarMenusDesktop() {
-            //Inicializa os menus desktop e seus respectivos botoes de ativacao
-            
-            var botaoFiltragemVeiculosDesktop = document.getElementById("desktop-botao-filtragem");
-            var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
-            
-            var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-            var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
-            
-            $(document.body).click(function(e) {
-                var elementoClicado = e.target;            
-                
-                controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
-                controlarPainel(botaoFiltragemVeiculosDesktop, painelFiltragemVeiculos, elementoClicado);
-                
-            });
-        }
+    } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
     }
+    
     $('.faq').click(function (){
         $(this).find('.faq-answer').slideToggle('fast');
     });
