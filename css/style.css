@@ -69,7 +69,7 @@ header #box-cabecalho {
 
 @media (min-width: 520px) {
     header, header #box-cabecalho {
-        height: 40px;
+        height: 35px;        
     }
 }
 
@@ -91,8 +91,9 @@ header #box-cabecalho #mobile-botao-menu {
 
 @media (min-width: 520px) {
     header #box-cabecalho #mobile-botao-menu {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
+        margin-top: 2px;
     }
 }
 
@@ -126,15 +127,14 @@ header #box-cabecalho #menu-navegacao ul li {
 }
 
 header #box-cabecalho #menu-navegacao ul li a {
-    display: inline-block;
-    background-color: #141619;
+    display: inline-block;    
     border: 1px solid #557bc9;
     width: 100px;
     color: white;
     font-family: roboto;
     text-align: center;
     border-radius: 2px;
-    padding: 10px 0px;
+    padding: 7px 0px;    
 }
 
 header #box-cabecalho #menu-navegacao ul li a:hover {
@@ -150,7 +150,7 @@ header #box-cabecalho #box-conta {
 
 @media (min-width: 520px) {
     header #box-cabecalho #box-conta {
-        height: 40px;
+        height: 35px;
     }
 }
 
@@ -212,8 +212,8 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 @media (min-width: 520px) {
     header #box-cabecalho #box-conta #imagem-perfil,
     header #box-cabecalho #box-conta #imagem-perfil img {
-        width: 38px;
-        height: 38px;
+        width: 30px;
+        height: 30px;        
     }
 }
 
@@ -267,7 +267,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 /*------------------------------------------------------------------------- BOTAO FILTRAGEM VEÍCULOS*/
 
 .painel-mobile {    
-    background-color: white;    
+    background-color: #141619;    
     height: 100%;
     padding: 5px;
     position: fixed;        
@@ -285,16 +285,23 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     width: 200px;
 }
 
-#box-mobile-menu-ativo #mobile-menu li {
-    background-color: #557bc9;
-    margin-bottom: 2px;    
+#box-mobile-menu-ativo #mobile-menu li {    
+    margin-bottom: 5px;
 }
 
 #box-mobile-menu-ativo #mobile-menu li a {
     display: block;
-    color: white;
+    background-color: #ebebeb;
+    border-bottom: 2px solid #868686;
+    color: black;
     padding: 20px;
     text-align: center;
+}
+
+#box-mobile-menu-ativo #mobile-menu li a:active {
+    background-color: #557BC9;
+    border-bottom: 2px solid #5d5d5d;
+    color: white;
 }
 
 /*------------- MENU DE PAGINAS - MOBILE*/
@@ -455,15 +462,11 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #container #box-mobile-filtragem .botao-submit,
-#container #box-mobile-filtragem-ativo .botao-submit {
-    background-color: #d9d9d9;
+#container #box-mobile-filtragem-ativo .botao-submit {    
     display: block;
     width: 120px;
-    height: 40px;
-    border: 0px;
-    border-radius: 5px;
-    margin: 0 auto;
-    outline: none;    
+    height: 40px;       
+    margin: 0 auto;    
 }
 
 /*------------- MENU DE FILTRAGEM DE VEICULOS*/
@@ -488,6 +491,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 740px) {
     #box-menu-usuario-ativo {
+        margin-top: 0px;
         margin-left: 505px;
     }
 }
@@ -601,8 +605,8 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 @media (min-width: 520px) {
-    .main {
-        padding-top: 55px;
+    #pag-home {
+        padding-top: 35px;
     }
 }
 
@@ -1188,7 +1192,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo {
-    background-color: #141619;
+    background-color: #ebebeb;
     margin-bottom: 10px;    
     border: 1px solid #141619;
 }
@@ -1249,8 +1253,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     }
 }
 
-#pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo {
-    background-color: #ebebeb;
+#pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo {    
     height: 50px;
     position: relative;
     bottom: 3px;
@@ -1284,8 +1287,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     width: 188px;    
     overflow: hidden;
     white-space: nowrap;
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 23px;    
     text-align: left;    
     margin: 0px 5px;
     margin-top: 9px;
@@ -1317,11 +1319,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 @media (min-width: 1000px) {
-    #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo .titulo-veiculo {
-        background-color: #c7c7c7;
+    #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo .titulo-veiculo {        
         width: 226px;
         font-size: 19px;
         text-align: center;
+        font-weight: normal;
+        border-bottom: 1px solid #b2b2b2;
         margin-left: 0px;
         padding: 5px 2px;
     }
@@ -1340,10 +1343,13 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria {
     font-size: 22px;
     height: 35px;
+    font-weight: bold;
+    color: black;
     float: left;
 }
 
 #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria .label-diaria {
+    color: #557BC9;
     text-align: right;
     font-style: italic;
     font-size: 15px;
@@ -1354,13 +1360,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 740px) {
     #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria {
-        display: inline-block;
-        background-color: #141619;
+        display: inline-block;        
         width: 110px;
         height: 18px;
         padding: 5px;
-        border: 0px;
-        color: white;
+        border: 0px;        
+        border-bottom: 1px solid gray;
     }
     
     #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria .valor-diaria {
@@ -1373,17 +1378,13 @@ header #box-cabecalho #box-conta #imagem-perfil img {
         left: 0px;
         bottom: 0px;
         font-size: 17px;
-        font-weight: bold;
     }
 }
 
 @media (min-width: 1000px) {
     #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-valor-diaria {
-        display: block;
-        background-color: #202020;
-        width: 120px;        
-        padding: 5px;        
-        border: 0px;
+        display: block;        
+        width: 120px;                
         color: white;
         float: left;
     }
@@ -1472,7 +1473,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-info-valores .valor-quilometragem {
     font-size: 20px;
     text-align: left;
-    color: white;
+    color: #000000;
 }
 
 @media (min-width: 740px) {
@@ -1488,7 +1489,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     font-size: 20px;
     font-weight: bold;    
     text-align: right;
-    color: white;
+    color: #000000;
     margin: 5px;
 }
 

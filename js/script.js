@@ -18,8 +18,8 @@ $(document).ready(function() {
         return idStatus;
     }
     
-    function isElementoDoPainel(elemento, painel) {        
-        if( $(elemento).parents( painel.id ).length > 0 ) return true;
+    function isElementoDoPainel(elemento, painel) {
+        if( $(elemento).parents( "#" + painel.id.toString() ).length > 0 ) return true;
         
         return false;
     }
