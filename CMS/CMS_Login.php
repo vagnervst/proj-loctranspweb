@@ -7,7 +7,7 @@
 		</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
 	</head>
-	<body>
+	<body >
         <div id="main_login">
             <header class="conteudo">
                 <div id="banner_login">
