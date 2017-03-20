@@ -19,6 +19,8 @@ $(document).ready(function() {
     }
     
     function isElementoDoPainel(elemento, painel) {
+        if( painel === undefined ) return;
+        
         if( $(elemento).parents( "#" + painel.id.toString() ).length > 0 ) return true;
         
         return false;
@@ -69,7 +71,7 @@ $(document).ready(function() {
     function isPainelExibido(painel) {
         //Verifica se o painel em questao contem a classe de status ativo
         //Caso positivo, retorna true. Retorna false caso o contrario
-        if( painel === null ) return;
+        if( painel === undefined ) return;
         
         var nao_encontrado = -1;            
         var painelExibido = ( painel.id.indexOf("-ativo") !== nao_encontrado )? true : false;
@@ -335,6 +337,74 @@ $(document).ready(function() {
         }
     }
     
+    function exibirImagemSlide(boxImagem, duracao) {        
+        $(boxImagem).css("display", "block");
+        
+        $(boxImagem).animate({
+            opacity: 1
+        }, duracao);
+    }
+    
+    function ocultarImagemSlide(boxImagem, duracao, callback = undefined) {        
+        $(boxImagem).animate({
+            opacity: 0
+        }, duracao, function() {
+            $(boxImagem).css("display", "none");
+                                    
+            if(callback !== undefined) setTimeout(function(){callback()}, 0);
+        });
+    }
+    
+    function exibirUnicaImagemSlide(boxImagemAnterior, boxImagem, duracaoIn, duracaoOut) {
+        ocultarImagemSlide(boxImagemAnterior, duracaoOut, function() { exibirImagemSlide(boxImagem, duracaoIn); });
+    }
+    
+    function capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens) {
+        var numeroImagens = listaImagens.length;
+        
+        var indiceProximaImagem = indiceImagemAtual + 1;
+        if( indiceProximaImagem > numeroImagens - 1 ) indiceProximaImagem = 0;
+        
+        return indiceProximaImagem;
+    }
+    
+    function capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens) {
+        var numeroImagens = listaImagens.length;
+        
+        var indiceImagemAnterior = indiceImagemAtual - 1;
+        if( indiceImagemAnterior < 0 ) indiceImagemAnterior = numeroImagens - 1;
+        
+        return indiceImagemAnterior;
+    }
+    
+    function inicializarSlide() {
+        var paginaVeiculo = $("#pag-detalhes-veiculo")[0];
+        
+        if( paginaVeiculo !== undefined ) {
+            var boxSlide = $("#slide-imagens-veiculo")[0];
+            
+            var botaoNext = $(boxSlide).children("#botao-next")[0];
+            var botaoPrev = $(boxSlide).children("#botao-prev")[0];
+            
+            var indiceImagemAtual = -1;
+            var imagens = $($(boxSlide).children("#container-imagens")[0]).children(".imagem");
+                        
+            $(botaoNext).click(function() {                
+                indiceImagemAtual = capturarIndiceImagemSeguinte(indiceImagemAtual, imagens);
+                var indiceImagemAnterior = capturarIndiceImagemAnterior(indiceImagemAtual, imagens);
+                
+                exibirUnicaImagemSlide( imagens[indiceImagemAnterior], imagens[indiceImagemAtual], 300, 300 );
+            });
+            
+            $(botaoPrev).click(function() {                
+                indiceImagemAtual = capturarIndiceImagemAnterior(indiceImagemAtual, imagens);
+                var indiceImagemAnterior = capturarIndiceImagemSeguinte(indiceImagemAtual, imagens);
+                
+                exibirUnicaImagemSlide( imagens[indiceImagemAnterior], imagens[indiceImagemAtual], 300, 300 );
+            });
+        }
+    }
+    
     function inicializarMenusMobile() {
         //Inicializa os menus mobile e seus respectivos botoes de ativacao
 
@@ -386,11 +456,13 @@ $(document).ready(function() {
                 
         inicializarMenusMobile();
         inicializarEtapasCadastro();
+        inicializarSlide();
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
+        inicializarSlide();
     }
     
     $('.faq').click(function (){

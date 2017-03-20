@@ -2111,13 +2111,13 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 /*------------- EMPRESA*/
 
-#pag-detalhes-veiculo {
-    padding-top: 50px;
+#pag-detalhes-veiculo {    
+    padding-top: 70px;
 }
 
-@media (min-width: 740px) {
+@media (min-width: 520px) {
     #pag-detalhes-veiculo {
-        padding-top: 50px;
+        padding-top: 45px;
     }
 }
 
@@ -2127,42 +2127,106 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-detalhes-veiculo #slide-imagens-veiculo .botao-slide {
-    background-color: #646464;
+    background-color: #202020;
     width: 80px;
     height: 200px;
+    position: relative;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity .2s;
+    z-index: 1;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo .botao-slide:hover {
+    opacity: 0.6;
 }
 
 #pag-detalhes-veiculo #slide-imagens-veiculo #botao-prev {
+    background-image: url(../img/icones/botao-prev.png);
+    background-position: center;
+    background-repeat: no-repeat;
     float: left;
 }
 
-#pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens {    
-    background-color: #909090;
-    height: 200px;
+#pag-detalhes-veiculo #slide-imagens-veiculo #botao-next {
+    background-image: url(../img/icones/botao-next.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    float: right;
 }
 
-#pag-detalhes-veiculo #slide-imagens-veiculo #botao-next {
-    float: right;
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens {   
+    height: 200px;  
+    z-index: 0;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens .imagem {            
+    display: none;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+    position: relative;
+    bottom: 200px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+@media (min-width: 740px) {
+    #pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens .imagem {
+        height: 400px;
+        bottom: 400px;
+    }
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens .imagem img {
+    width: 100%;    
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-contador {    
+    display: none;
+    height: 15px;
+    position: relative;
+    bottom: 25px;
+    text-align: center;
+    padding: 5px 0;
+    z-index: 1;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador {
+    display: inline-block;
+    background-color: aliceblue;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin: 0px 3px;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador.ativo {
+    background-color: black;
 }
 
 @media (min-width: 740px) {
     #pag-detalhes-veiculo #slide-imagens-veiculo,
     #pag-detalhes-veiculo #slide-imagens-veiculo .botao-slide,
     #pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens {
-        height: 300px;
+        height: 400px;
     }
 }
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo #titulo-veiculo {
     font-size: 25px;
-    text-align: center;
-    margin-bottom: 10px;
+    text-align: center;    
+    padding: 5px 0px;
 }
 
-@media (min-width: 740px) {
-    #pag-detalhes-veiculo .box-conteudo .box-veiculo #titulo-veiculo {
-        display: none;
-    }
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #modelo-veiculo {
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px 0px;
+    border-top: 1px solid #202020;
 }
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo .box-label-valor {    
@@ -2189,25 +2253,23 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 @media (min-width: 740px) {
-    #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo {        
-        background-color: #ebebeb;
+    #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo {                
         width: 565px;
         padding-bottom: 5px;
         border-bottom: 0px solid gray;
         margin: 0 auto;
         margin-top: 5px;
+        text-align: center;
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {        
         display: inline-block;
-        width: 244px;
-        padding: 5px;
+        width: 49%;        
         border-left: 1px solid #202020;
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo {        
-        width: 290px;
-        margin: 10px;
+        width: 50%;        
         float: left;
     }
     
@@ -2224,15 +2286,15 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 1000px) {
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo {
-        width: 801px;        
+        width: 801px;
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {                
-        width: 345px;        
+               
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo {        
-        width: 425px;
+               
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo .box-label-valor .label {        

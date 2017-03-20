@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> | City Share</title>
+        <title>Veículo | City Share</title>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" href="css/style.css"></link>
     </head>
@@ -50,13 +50,30 @@
             <!-- MENU DE PAGINAS - MOBILE -->
             <div class="main" id="pag-detalhes-veiculo">                
                 <div id="slide-imagens-veiculo">
-                    <div class="botao-slide" id="botao-prev"></div>       
-                    <div class="botao-slide" id="botao-next"></div>
-                    <div id="container-imagens"></div>
+                    <span class="botao-slide" id="botao-prev"></span>
+                    <span class="botao-slide" id="botao-next"></span>
+                    <div id="container-imagens">                        
+                        <div class="imagem" style="background-image: url(img/tesla1.jpg)"></div>
+                        <div class="imagem" style="background-image: url(img/tesla2.jpg)"></div>
+                        <div class="imagem" style="background-image: url(img/tesla3.jpg)"></div>
+                        <div class="imagem" style="background-image: url(img/tesla4.jpg)"></div>
+                        <div class="imagem" style="background-image: url(img/tesla5.png)"></div>
+                    </div>
+                    <div id="container-contador">
+                        <div class="contador ativo"></div>
+                        <div class="contador"></div>
+                        <div class="contador"></div>
+                        <div class="contador"></div>
+                        <div class="contador"></div>
+                    </div>
+                    <div id="box-botao-expansao">
+                        <span id="botao-expansao"></span>    
+                    </div>
                 </div>
                 <div class="box-conteudo">                        
                     <section class="box-veiculo">                        
-                        <h1 id="titulo-veiculo">Nome do Veículo</h1>
+                        <h1 id="titulo-veiculo">Titulo da Publicação</h1>
+                        <p id="modelo-veiculo">Modelo do Veículo</p>
                         <div id="info-veiculo">
                             <div id="box-valores-veiculo">
                                 <div class="box-label-valor">
