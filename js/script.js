@@ -356,7 +356,7 @@ $(document).ready(function() {
     }
     
     function exibirUnicaImagemSlide(boxImagemAnterior, boxImagem, duracaoIn, duracaoOut) {
-        ocultarImagemSlide(boxImagemAnterior, duracaoOut, function() { exibirImagemSlide(boxImagem, duracaoIn); });
+        ocultarImagemSlide(boxImagemAnterior, duracaoOut, function() { exibirImagemSlide(boxImagem, duracaoIn); });        
     }
     
     function capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens) {
@@ -377,6 +377,31 @@ $(document).ready(function() {
         return indiceImagemAnterior;
     }
     
+    function ativarIndicador(indice, listaIndicadores) {
+        $(listaIndicadores[indice]).addClass("ativo");
+    }
+    
+    function desativarIndicador(indice, listaIndicadores) {
+        $(listaIndicadores[indice]).removeClass("ativo");
+    }
+    
+    function transeferirImagemSlide(indiceImagemAtual, listaImagens, listaIndicadores, ordemInversa = false) {
+        if( ordemInversa === false ) {
+            indiceImagemAtual = capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens);
+            var indiceImagemAnterior = capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens);
+        } else {
+            indiceImagemAtual = capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens);
+            var indiceImagemAnterior = capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens);
+        }
+
+        exibirUnicaImagemSlide( listaImagens[indiceImagemAnterior], listaImagens[indiceImagemAtual], 300, 300 );
+
+        desativarIndicador(indiceImagemAnterior, listaIndicadores);
+        ativarIndicador(indiceImagemAtual, listaIndicadores);
+        
+        return indiceImagemAtual;
+    }
+    
     function inicializarSlide() {
         var paginaVeiculo = $("#pag-detalhes-veiculo")[0];
         
@@ -388,19 +413,18 @@ $(document).ready(function() {
             
             var indiceImagemAtual = -1;
             var imagens = $($(boxSlide).children("#container-imagens")[0]).children(".imagem");
-                        
+            
+            var containerIndicadores = $(boxSlide).children("#container-contador")[0];
+            var indicadores = $(containerIndicadores).children(".contador");
+            
+            indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);
+            
             $(botaoNext).click(function() {                
-                indiceImagemAtual = capturarIndiceImagemSeguinte(indiceImagemAtual, imagens);
-                var indiceImagemAnterior = capturarIndiceImagemAnterior(indiceImagemAtual, imagens);
-                
-                exibirUnicaImagemSlide( imagens[indiceImagemAnterior], imagens[indiceImagemAtual], 300, 300 );
+                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);
             });
             
             $(botaoPrev).click(function() {                
-                indiceImagemAtual = capturarIndiceImagemAnterior(indiceImagemAtual, imagens);
-                var indiceImagemAnterior = capturarIndiceImagemSeguinte(indiceImagemAtual, imagens);
-                
-                exibirUnicaImagemSlide( imagens[indiceImagemAnterior], imagens[indiceImagemAtual], 300, 300 );
+                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores, true);
             });
         }
     }

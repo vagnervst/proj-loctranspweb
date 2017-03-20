@@ -2193,6 +2193,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     z-index: 1;
 }
 
+@media (min-width: 740px) {
+    #pag-detalhes-veiculo #slide-imagens-veiculo #container-contador {
+        display: block;
+    }
+}
+
 #pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador {
     display: inline-block;
     background-color: aliceblue;
