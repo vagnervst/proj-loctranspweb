@@ -4,6 +4,12 @@
 body{
     margin: 0;
     background-color: #202020;
+    width: 100%;
+    height:100%;
+}
+html{
+    width: 100%;
+    height:100%;
 }
 
 /*------------------------------------------------------------------------- PSEUDO ELEMENTOS PARA BREAKPOINT*/
@@ -75,9 +81,10 @@ a {
 
 /*---- PAGINA DE LOGIN DO CMS ----*/
 #main_login{
-    width: 1000px;
-    height: 950px;
+    width: 500px;
+    height: 100%;
     margin: 0 auto;
+    background-color: #ebebeb;
 }
 
 .conteudo {
@@ -91,7 +98,7 @@ a {
 }
 
 #content_login{    
-    height: 590px;
+    height: 400px;
     background-color: #ebebeb;
     align-content: center;
 }
@@ -140,6 +147,9 @@ a {
     line-height: 60px;
     text-align: center;
     background-color: #a1aec9;
+    position:absolute;
+	bottom:0;
+	
 }
 
 #form_login{
@@ -230,6 +240,14 @@ header #box-cabecalho #box-conta #botao-logout{
     width: 200px;
     height: inherit;
     background-color: #557bc9;
+    float: left ;
+    top: 0px;
+}
+.CMS_main .box-menu-lateral{
+    width: 200px;
+    height: inherit;
+    background-color: #557bc9;
+    float: left ;
     top: 0px;
 }
 .box-menu-lateral .menu-lateral{
