@@ -343,8 +343,6 @@ $(document).ready(function() {
         $(boxImagem).animate({
             opacity: 1
         }, duracao);
-        
-        $(boxImagem).addClass("ativo");
     }
     
     function ocultarImagemSlide(boxImagem, duracao, callback = undefined) {        
@@ -352,49 +350,31 @@ $(document).ready(function() {
             opacity: 0
         }, duracao, function() {
             $(boxImagem).css("display", "none");
-            $(boxImagem).removeClass("ativo");
-            
+                                    
             if(callback !== undefined) setTimeout(function(){callback()}, 0);
         });
-    }
-    
-    function ocultarTodasImagensSlide(listaImagens, duracao, callback) {
-        for( var i = 0; i < listaImagens.length; ++i ) {
-            ocultarImagemSlide( listaImagens[i], duracao );
-        }
-        
-        if( callback !== undefined ) setTimeout(function() { callback(); }, 0);
     }
     
     function exibirUnicaImagemSlide(boxImagemAnterior, boxImagem, duracaoIn, duracaoOut) {
         ocultarImagemSlide(boxImagemAnterior, duracaoOut, function() { exibirImagemSlide(boxImagem, duracaoIn); });        
     }
     
-    function capturarIndiceImagemSeguinte(listaImagens) {
+    function capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens) {
         var numeroImagens = listaImagens.length;
         
-        var indiceProximaImagem = capturarIndiceImagemAtiva(listaImagens) + 1;
+        var indiceProximaImagem = indiceImagemAtual + 1;
         if( indiceProximaImagem > numeroImagens - 1 ) indiceProximaImagem = 0;
         
         return indiceProximaImagem;
     }
     
-    function capturarIndiceImagemAnterior(listaImagens) {
-        var indiceImagemAtiva = capturarIndiceImagemAtiva(listaImagens);
+    function capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens) {
+        var numeroImagens = listaImagens.length;
         
-        var indiceImagemAnterior = ( indiceImagemAtiva - 1 >= 0 )? indiceImagemAtiva - 1: listaImagens.length - 1;
+        var indiceImagemAnterior = indiceImagemAtual - 1;
+        if( indiceImagemAnterior < 0 ) indiceImagemAnterior = numeroImagens - 1;
         
         return indiceImagemAnterior;
-    }
-    
-    function capturarIndiceImagemAtiva(listaImagens) {
-        var numeroImagens = listaImagens.length;
-                
-        for( var i = 0; i < listaImagens.length; ++i ) {
-            if( $(listaImagens[i]).hasClass("ativo") ) return i;
-        }
-        
-        return numeroImagens-1;
     }
     
     function ativarIndicador(indice, listaIndicadores) {
@@ -405,31 +385,21 @@ $(document).ready(function() {
         $(listaIndicadores[indice]).removeClass("ativo");
     }
     
-    function transeferirImagemSlide(indiceImagemAtual, listaImagens, listaIndicadores, ordemInversa = false, duracaoIn, duracaoOut) {
-        var indiceImagemAnterior;
+    function transeferirImagemSlide(indiceImagemAtual, listaImagens, listaIndicadores, ordemInversa = false) {
         if( ordemInversa === false ) {
-            indiceImagemAtual = capturarIndiceImagemSeguinte(listaImagens);
-            indiceImagemAnterior = capturarIndiceImagemAtiva(listaImagens);
+            indiceImagemAtual = capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens);
+            var indiceImagemAnterior = capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens);
         } else {
-            indiceImagemAnterior = capturarIndiceImagemAtiva(listaImagens);
-            indiceImagemAtual = capturarIndiceImagemAnterior(listaImagens);            
-        }                
-        
-        exibirUnicaImagemSlide( listaImagens[indiceImagemAnterior], listaImagens[indiceImagemAtual], duracaoIn, duracaoOut );
+            indiceImagemAtual = capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens);
+            var indiceImagemAnterior = capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens);
+        }
+
+        exibirUnicaImagemSlide( listaImagens[indiceImagemAnterior], listaImagens[indiceImagemAtual], 300, 300 );
 
         desativarIndicador(indiceImagemAnterior, listaIndicadores);
         ativarIndicador(indiceImagemAtual, listaIndicadores);
         
         return indiceImagemAtual;
-    }        
-    
-    function transicionarIndicador(indicador, listaIndicadores, listaImagens, duracaoIn, duracaoOut) {
-        var indiceImagemAnterior = capturarIndiceImagemAtiva(listaImagens);
-        var indiceSelecionado = $(listaIndicadores).index(indicador, listaIndicadores);
-        
-        exibirUnicaImagemSlide(listaImagens[indiceImagemAnterior], listaImagens[indiceSelecionado], duracaoIn, duracaoOut);
-        desativarIndicador(indiceImagemAnterior, listaIndicadores);
-        ativarIndicador(indiceSelecionado, listaIndicadores);
     }
     
     function inicializarSlide() {
@@ -447,21 +417,14 @@ $(document).ready(function() {
             var containerIndicadores = $(boxSlide).children("#container-contador")[0];
             var indicadores = $(containerIndicadores).children(".contador");
             
-            indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores, duracaoEntradaImagem, duracaoSaidaImagem);
-            
-            var duracaoEntradaImagem = 300;
-            var duracaoSaidaImagem = 300;
+            indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);
             
             $(botaoNext).click(function() {                
-                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);                
+                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);
             });
             
             $(botaoPrev).click(function() {                
                 indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores, true);
-            });
-            
-            $(indicadores).click(function() {
-                transicionarIndicador(this, indicadores, imagens, 300);                
             });
         }
     }
@@ -498,7 +461,10 @@ $(document).ready(function() {
         var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
         
         var botaoNotificacoes = $("#icone-notificacao")[0];
-        var painelNotificacoes = $("#box-menu-notificacoes")[0];                
+        var painelNotificacoes = $("#box-menu-notificacoes")[0];
+        
+        console.log(botaoNotificacoes);
+        console.log(painelNotificacoes);
         
         $(document.body).click(function(e) {
             var elementoClicado = e.target;

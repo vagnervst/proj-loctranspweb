@@ -2,14 +2,8 @@
 /* CSS Document */
 
 body{
-    margin: 0;
+   margin: 0px;
     background-color: #202020;
-    width: 100%;
-    height:100%;
-}
-html{
-    width: 100%;
-    height:100%;
 }
 
 /*------------------------------------------------------------------------- PSEUDO ELEMENTOS PARA BREAKPOINT*/
@@ -81,10 +75,9 @@ a {
 
 /*---- PAGINA DE LOGIN DO CMS ----*/
 #main_login{
-    width: 500px;
-    height: 100%;
+    width: 1000px;
+    height: 950px;
     margin: 0 auto;
-    background-color: #ebebeb;
 }
 
 .conteudo {
@@ -98,7 +91,7 @@ a {
 }
 
 #content_login{    
-    height: 400px;
+    height: 590px;
     background-color: #ebebeb;
     align-content: center;
 }
@@ -147,9 +140,6 @@ a {
     line-height: 60px;
     text-align: center;
     background-color: #a1aec9;
-    position:absolute;
-	bottom:0;
-	
 }
 
 #form_login{
@@ -159,7 +149,7 @@ a {
     padding-right: 140px;
 }
 /*---- PAGINA HOME DO CMS ----*/
-#container{
+.container{
     width: 1000px;
     height: auto;
     margin: 0 auto;
@@ -175,17 +165,6 @@ header #box-cabecalho{
     width: inherit;
     height: inherit;
     margin: 0 auto;
-}
-header #box-cabecalho #box-image-logo{
-    width: 200px;
-    height: 150px;
-    float: left;
-    background-color: #557bc9;
-}
-header #box-cabecalho #box-image-logo img{
-    width: 180px;
-    height: 140px;
-    margin: 5px 10px;
 }
 header #box-cabecalho #box-conta{
     width: 200px;
@@ -236,20 +215,21 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-top: 20px;
 }
 
-.CMS_main .box-menu-lateral{
+.box-menu-lateral{
     width: 200px;
-    height: inherit;
+    height: 900px;
     background-color: #557bc9;
-    float: left ;
+    position: fixed;
     top: 0px;
 }
-.CMS_main .box-menu-lateral{
+.box-menu-lateral #box-image-logo{
     width: 200px;
-    height: inherit;
-    background-color: #557bc9;
-    float: left ;
-    top: 0px;
-    float: left;
+    height: 150px;
+}
+.box-menu-lateral #box-image-logo img{
+    width: 180px;
+    height: 140px;
+    margin: 10px;
 }
 .box-menu-lateral .menu-lateral{
     width: 200px;
@@ -265,7 +245,7 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 50px;
     text-align: center;
     line-height: 50px;
-    margin-bottom: 10px;
+    margin-top: 10px; 
 }
 .box-menu-lateral .menu-lateral ul li:hover{
     background-color: #2a3d64;
@@ -288,48 +268,24 @@ header #box-cabecalho #box-conta #botao-logout{
 }
 /*---- CABEÇALHO ----*/
 
-.box-conteudo{
-    width: 880px;
-    height: inherit;
-}
-.box-conteudo .box-conteudo-menu{
-    width: 150px;
-    height: 150px;
-    float: left;
-    background-color: red;
-    margin: 5px;
-}
-.box-conteudo .box-conteudo-menu img{
-    width: 150px;
-    height: 120px;
-}
-.box-conteudo .box-conteudo-menu .titulo-conteudo-menu{
-    width: 150px;
-    height: 30px;
-    text-align: center;
-}
-/*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
-
 footer{
     background-color: #a1aec9;
     width: 1080px;
     height: 100px;
     margin: 0 auto;
     padding: 10px 0px;
-    
+    position: fixed;
 }
 footer #box-rodape{
     width: inherit;
     height: inherit;
 }
 footer #box-rodape #box-logo-rodape{
-    width: 150px;
-    height: 100px;
-    margin: 5px 15px;
-    background-color: aqua;
+    width: 100px;
+    height: 200px;
 }
 .CMS_main{
     width: 1080px;
-    height: 680px;
+    height: 750px;
     background-color: #ebebeb;
 }
