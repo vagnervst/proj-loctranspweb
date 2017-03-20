@@ -338,21 +338,27 @@ $(document).ready(function() {
     }
     
     function exibirImagemSlide(boxImagem, duracao) {        
+        isTransicionando = true;
         $(boxImagem).css("display", "block");
         
         $(boxImagem).animate({
             opacity: 1
-        }, duracao);
+        }, duracao, function() {
+            isTransicionando = false;
+        });
         
         $(boxImagem).addClass("ativo");
     }
     
     function ocultarImagemSlide(boxImagem, duracao, callback = undefined) {        
+        isTransicionando = true;
+        
         $(boxImagem).animate({
             opacity: 0
         }, duracao, function() {
             $(boxImagem).css("display", "none");
             $(boxImagem).removeClass("ativo");
+            isTransicionando = false;
             
             if(callback !== undefined) setTimeout(function(){callback()}, 0);
         });
@@ -389,7 +395,7 @@ $(document).ready(function() {
     
     function capturarIndiceImagemAtiva(listaImagens) {
         var numeroImagens = listaImagens.length;
-                
+        
         for( var i = 0; i < listaImagens.length; ++i ) {
             if( $(listaImagens[i]).hasClass("ativo") ) return i;
         }
@@ -432,6 +438,7 @@ $(document).ready(function() {
         ativarIndicador(indiceSelecionado, listaIndicadores);
     }
     
+    var isTransicionando = false;
     function inicializarSlide() {
         var paginaVeiculo = $("#pag-detalhes-veiculo")[0];
         
@@ -452,15 +459,21 @@ $(document).ready(function() {
             var duracaoEntradaImagem = 300;
             var duracaoSaidaImagem = 300;
             
-            $(botaoNext).click(function() {                
-                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);                
+            $(botaoNext).click(function() {
+                if( isTransicionando ) return;
+                
+                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);                                
             });
             
-            $(botaoPrev).click(function() {                
+            $(botaoPrev).click(function() {
+                if( isTransicionando ) return;
+                
                 indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores, true);
             });
             
             $(indicadores).click(function() {
+                if( isTransicionando ) return;
+                
                 transicionarIndicador(this, indicadores, imagens, 300);                
             });
         }
