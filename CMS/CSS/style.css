@@ -231,6 +231,7 @@ header #box-cabecalho #box-conta #botao-logout{
     height: inherit;
     background-color: #557bc9;
     top: 0px;
+    float: left;
 }
 .box-menu-lateral .menu-lateral{
     width: 200px;
@@ -268,6 +269,28 @@ header #box-cabecalho #box-conta #botao-logout{
     cursor: pointer;
 }
 /*---- CABEÇALHO ----*/
+
+.box-conteudo{
+    width: 880px;
+    height: inherit;
+}
+.box-conteudo .box-conteudo-menu{
+    width: 150px;
+    height: 150px;
+    float: left;
+    background-color: red;
+    margin: 5px;
+}
+.box-conteudo .box-conteudo-menu img{
+    width: 150px;
+    height: 120px;
+}
+.box-conteudo .box-conteudo-menu .titulo-conteudo-menu{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+}
+/*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 
 footer{
     background-color: #a1aec9;
