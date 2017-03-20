@@ -8,12 +8,9 @@
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
 	</head>
 	<body>
-        <div id="container">
+        <div class="container">
             <header>
                 <div id="box-cabecalho">
-                    <div id="box-image-logo">
-                        <img src="Image/logo_test.jpg" />
-                    </div>
                     <div id="box-conta">
                         <div id="box-imagem-usuario">
                             <img src="Image/olamarilene.jpg"/>
@@ -28,29 +25,33 @@
                     </div>
                 </div>
             </header>
-            <div class="CMS_main" id="pag-home">
-                <div class="box-menu-lateral">
-                    <div class="menu-lateral">
-                        <ul>
-                            <li class="botao-menu-lateral">
-                                <a href="#">Home</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                            <li class="botao-menu-lateral">
-                                <a href="#">Clientes</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                            <li class="botao-menu-lateral">
-                                <a href="#">City Share</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                            <li class="botao-menu-lateral">
-                                <a href="#">Desktop</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="box-menu-lateral">
+                <div id="box-image-logo">
+                    <img src="Image/logo_test.jpg" />
                 </div>
+                <div class="menu-lateral">
+                    <ul>
+                        <li class="botao-menu-lateral">
+                            <a href="#">Home</a>
+                            <img src="Image/50x50.gif"/>
+                        </li>
+                        <li class="botao-menu-lateral">
+                            <a href="#">Clientes</a>
+                            <img src="Image/50x50.gif"/>
+                        </li>
+                        <li class="botao-menu-lateral">
+                            <a href="#">City Share</a>
+                            <img src="Image/50x50.gif"/>
+                        </li>
+                        <li class="botao-menu-lateral">
+                            <a href="#">Desktop</a>
+                            <img src="Image/50x50.gif"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="CMS_main" id="pag-home">
+                
             </div>
             <footer>
                 <div id="box-rodape">

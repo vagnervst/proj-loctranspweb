@@ -2174,8 +2174,8 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 740px) {
     #pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens .imagem {
-        height: 500px;
-        bottom: 500px;
+        height: 400px;
+        bottom: 400px;
     }
 }
 
@@ -2202,8 +2202,8 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador {
     display: inline-block;
     background-color: aliceblue;
-    width: 20px;
-    height: 13px;
+    width: 10px;
+    height: 10px;
     border-radius: 10px;
     margin: 0px 3px;
     cursor: pointer;
@@ -2215,14 +2215,14 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador.ativo {
-    background-color: #141619;
+    background-color: black;
 }
 
 @media (min-width: 740px) {
     #pag-detalhes-veiculo #slide-imagens-veiculo,
     #pag-detalhes-veiculo #slide-imagens-veiculo .botao-slide,
     #pag-detalhes-veiculo #slide-imagens-veiculo #container-imagens {
-        height: 500px;
+        height: 400px;
     }
 }
 
