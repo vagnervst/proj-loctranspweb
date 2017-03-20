@@ -241,7 +241,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 520px) {
     #mobile-botao-filtragem-ativo {
-        top: 45px;
+        top: 40px;
     }
 }
 
@@ -310,7 +310,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem, #container #box-mobile-filtragem-ativo {    
     width: 250px;    
     height: 100%;
-    position: fixed;    
+    position: fixed;
 }
 
 @media (min-width: 740px) {
@@ -335,6 +335,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo #titulo {
     text-align: center;
     font-size: 20px;
+    color: white;
 }
 
 @media (min-width: 740px) {
@@ -352,6 +353,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem .box-opcoes-select .label,
 #container #box-mobile-filtragem-ativo .box-opcoes-select .label {
     font-size: 17px;
+    color: #a1aec9;
 }
 
 @media (min-width: 740px) {
@@ -366,6 +368,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo .box-opcoes-select .select {
     height: 35px;
     width: 250px;
+    color: white;
 }
 
 @media (min-width: 740px) {
@@ -385,6 +388,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .label {
     font-size: 17px;
     margin-bottom: 5px;
+    color: #a1aec9;
 }
 
 @media (min-width: 740px){
@@ -397,6 +401,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem .box-filtragem-valor .box-valores,
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores {
     margin-bottom: 0px;
+    color: white;
 }
 
 #container #box-mobile-filtragem .box-filtragem-valor .box-valores .label-intervalo,
@@ -415,6 +420,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores .txt-valor {    
     width: 90px;
     height: 25px;
+    color: white;
 }
 
 @media (min-width: 740px) {
@@ -427,7 +433,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #container #box-mobile-filtragem .box-filtragem-valor .box-ordem,
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .box-ordem {
-    
+    color: white;
 }
 
 #container #box-mobile-filtragem .box-filtragem-valor .box-ordem .opcao-ordem,
@@ -465,9 +471,23 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem .botao-submit,
 #container #box-mobile-filtragem-ativo .botao-submit {    
     display: block;
+    background-color: white;
+    color: black;
+    border-bottom: 3px solid #818181;
     width: 120px;
     height: 40px;       
-    margin: 0 auto;    
+    margin: 0 auto;   
+}
+
+#container #box-mobile-filtragem-ativo .botao-submit:hover {
+    background-color: #919191;    
+    border-bottom: 3px solid #606060;
+}
+
+#container #box-mobile-filtragem-ativo .botao-submit:active {
+    background-color: #202020;
+    color: #ffffff;
+    border-bottom: 3px solid #252525;
 }
 
 /*------------- MENU DE FILTRAGEM DE VEICULOS*/
@@ -2802,6 +2822,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     }
 }
 
+@media (min-width: 1000px) {
+    #pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #conteudo-pergunta {
+        width: 850px;
+    }
+}
+
 #pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #botao-perguntar {
     display: block;
     width: 150px;
@@ -2812,9 +2838,9 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 740px) {
     #pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #botao-perguntar {
-        width: 100px;
-        font-size: 17px;
-        padding: 10px 0px;
+        width: 70px;
+        font-size: 15px;
+        padding: 5px 0px;
     }
 }
 
