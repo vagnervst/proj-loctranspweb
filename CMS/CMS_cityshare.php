@@ -36,6 +36,26 @@
                     </div>
                 </div>
                 <div class="box-conteudo">
+                    <div class="box-conteudo-menu">
+                        <img />
+                        <p class="titulo-conteudo-menu">Conteudo</p>           
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <img />
+                        <p class="titulo-conteudo-menu">Níveis de acesso</p>           
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <img />
+                        <p class="titulo-conteudo-menu">Permissões</p>           
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <img />
+                        <p class="titulo-conteudo-menu">Contato</p>           
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <img />
+                        <p class="titulo-conteudo-menu">Administradores</p>           
+                    </div>
                 </div>
             </div>
             <?php
