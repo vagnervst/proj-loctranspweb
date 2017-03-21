@@ -35,6 +35,9 @@
                         </ul>
                     </div>
                 </div>
+                <div id="box-caminho">
+                    <a href="#" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> city share</a> >
+                </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
                         <img />
