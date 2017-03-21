@@ -334,6 +334,89 @@ header #box-cabecalho #box-conta #botao-logout{
     color: white;
     font-size: 16px;
 }
+
+/*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
+/*pagina de beneficios */
+.box-conteudo #container-previa{
+    height:250px;
+    width: 850px;
+    margin-left: auto ;
+    margin-right: auto ;
+    border: solid 2px #c2c2c2;
+    padding: 5px;
+    
+}
+.box-conteudo #container-previa #box-img-previa {
+    background-color: azure ;
+    width: 350px;
+    height: 250px;
+    border-radius: 15px;
+    float: left;
+
+}
+.box-conteudo #container-previa #box-texto-previa {
+    width:470px;
+    height: 235px;
+    float: left ;
+    margin-left: 20px;
+    text-align: justify;
+    padding-top: 15px;
+    font-family: monospace;
+}
+.img-beneficios{
+    width: 350px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.box-conteudo #container-previa .lbl-previa{
+    font-size: 16px ;
+    font-style: bold; 
+}
+.box-conteudo #container-previa #input-previa{
+    height: 30px;
+    width: 450px;
+    border:0 ;
+    box-shadow: 2px 3px 36px 0px #c2c2c2;
+    
+    
+}
+.box-conteudo #container-dados{
+    height:250px;
+    width: 850px;
+    margin-top: 20px;
+    margin-left: auto ;
+    margin-right: auto ;
+    border: solid 2px #c2c2c2;
+    padding: 5px;
+    
+}
+.box-conteudo #container-dados #box-texto {
+    width:470px;
+    height: 235px;
+    float: left ;
+    margin-left: 20px;
+    text-align: justify;
+    padding-top: 15px;
+    font-family: monospace;
+}
+.box-conteudo #container-dados .lbl{
+    font-size: 16px ;
+    font-style: bold; 
+}
+.box-conteudo #container-dados #input{
+    height: 30px;
+    width: 450px;
+    border:0 ;
+    box-shadow: 2px 3px 36px 0px #c2c2c2;
+    
+    
+}
+#linha-dados{
+    margin-top: 10px;
+    width: 100%;
+    align-items: center;
+}
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 
 footer{
