@@ -17,7 +17,7 @@
                     <div class="menu-lateral">
                         <ul>
                             <li class="botao-menu-lateral">
-                                <a href="#">Home</a>
+                                <a href="CMS_home.php">Home</a>
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">
@@ -25,7 +25,7 @@
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">
-                                <a href="#">City Share</a>
+                                <a href="CMS_cityshare.php">City Share</a>
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">

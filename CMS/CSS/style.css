@@ -299,27 +299,27 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-bottom: 20px;
     color: #c2c2c2
 }
+#box-caminho .link-caminho{
+    text-decoration: none ;
+    color: #c2c2c2 ;
+    
+}
+#box-caminho .link-caminho:hover{
+   
+    color: blue;
+    
+}
 .box-conteudo{
     width: 880px;
     height: inherit;
     float: left ;
 }
-.link-caminho{
-    text-decoration: none ;
-    color: #c2c2c2 ;
-    
-}
-.link-caminho:hover{
-   
-    color: blue;
-    
-}
 .box-conteudo .box-conteudo-menu{
     width: 150px;
     height: 150px;
     float: left;
-    background-color: red;
-    margin: 5px;
+    background-color: #a1aec9;
+    margin: 5px 10px;
 }
 .box-conteudo .box-conteudo-menu img{
     width: 150px;
@@ -329,6 +329,10 @@ header #box-cabecalho #box-conta #botao-logout{
     width: 150px;
     height: 30px;
     text-align: center;
+}
+.box-conteudo .box-conteudo-menu .titulo-conteudo-menu a{
+    color: white;
+    font-size: 16px;
 }
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 
