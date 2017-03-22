@@ -338,43 +338,69 @@ $(document).ready(function() {
     }
     
     function exibirImagemSlide(boxImagem, duracao) {        
+        isTransicionando = true;
         $(boxImagem).css("display", "block");
         
         $(boxImagem).animate({
             opacity: 1
-        }, duracao);
+        }, duracao, function() {
+            isTransicionando = false;
+        });
+        
+        $(boxImagem).addClass("ativo");
     }
     
     function ocultarImagemSlide(boxImagem, duracao, callback = undefined) {        
+        isTransicionando = true;
+        
         $(boxImagem).animate({
             opacity: 0
         }, duracao, function() {
             $(boxImagem).css("display", "none");
-                                    
+            $(boxImagem).removeClass("ativo");
+            isTransicionando = false;
+            
             if(callback !== undefined) setTimeout(function(){callback()}, 0);
         });
+    }
+    
+    function ocultarTodasImagensSlide(listaImagens, duracao, callback) {
+        for( var i = 0; i < listaImagens.length; ++i ) {
+            ocultarImagemSlide( listaImagens[i], duracao );
+        }
+        
+        if( callback !== undefined ) setTimeout(function() { callback(); }, 0);
     }
     
     function exibirUnicaImagemSlide(boxImagemAnterior, boxImagem, duracaoIn, duracaoOut) {
         ocultarImagemSlide(boxImagemAnterior, duracaoOut, function() { exibirImagemSlide(boxImagem, duracaoIn); });        
     }
     
-    function capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens) {
+    function capturarIndiceImagemSeguinte(listaImagens) {
         var numeroImagens = listaImagens.length;
         
-        var indiceProximaImagem = indiceImagemAtual + 1;
+        var indiceProximaImagem = capturarIndiceImagemAtiva(listaImagens) + 1;
         if( indiceProximaImagem > numeroImagens - 1 ) indiceProximaImagem = 0;
         
         return indiceProximaImagem;
     }
     
-    function capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens) {
-        var numeroImagens = listaImagens.length;
+    function capturarIndiceImagemAnterior(listaImagens) {
+        var indiceImagemAtiva = capturarIndiceImagemAtiva(listaImagens);
         
-        var indiceImagemAnterior = indiceImagemAtual - 1;
-        if( indiceImagemAnterior < 0 ) indiceImagemAnterior = numeroImagens - 1;
+        var indiceImagemAnterior = ( indiceImagemAtiva - 1 >= 0 )? indiceImagemAtiva - 1: listaImagens.length - 1;
         
         return indiceImagemAnterior;
+    }
+    
+    function capturarIndiceImagemAtiva(listaImagens) {
+        var numeroImagens = listaImagens.length;
+        
+        for( var i = 0; i < listaImagens.length; ++i ) {
+            if( $(listaImagens[i]).hasClass("ativo") ) return i;
+        }
+        
+        return numeroImagens-1;
     }
     
     function ativarIndicador(indice, listaIndicadores) {
@@ -385,23 +411,34 @@ $(document).ready(function() {
         $(listaIndicadores[indice]).removeClass("ativo");
     }
     
-    function transeferirImagemSlide(indiceImagemAtual, listaImagens, listaIndicadores, ordemInversa = false) {
+    function transeferirImagemSlide(indiceImagemAtual, listaImagens, listaIndicadores, ordemInversa = false, duracaoIn, duracaoOut) {
+        var indiceImagemAnterior;
         if( ordemInversa === false ) {
-            indiceImagemAtual = capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens);
-            var indiceImagemAnterior = capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens);
+            indiceImagemAtual = capturarIndiceImagemSeguinte(listaImagens);
+            indiceImagemAnterior = capturarIndiceImagemAtiva(listaImagens);
         } else {
-            indiceImagemAtual = capturarIndiceImagemAnterior(indiceImagemAtual, listaImagens);
-            var indiceImagemAnterior = capturarIndiceImagemSeguinte(indiceImagemAtual, listaImagens);
-        }
-
-        exibirUnicaImagemSlide( listaImagens[indiceImagemAnterior], listaImagens[indiceImagemAtual], 300, 300 );
+            indiceImagemAnterior = capturarIndiceImagemAtiva(listaImagens);
+            indiceImagemAtual = capturarIndiceImagemAnterior(listaImagens);            
+        }                
+        
+        exibirUnicaImagemSlide( listaImagens[indiceImagemAnterior], listaImagens[indiceImagemAtual], duracaoIn, duracaoOut );
 
         desativarIndicador(indiceImagemAnterior, listaIndicadores);
         ativarIndicador(indiceImagemAtual, listaIndicadores);
         
         return indiceImagemAtual;
+    }        
+    
+    function transicionarIndicador(indicador, listaIndicadores, listaImagens, duracaoIn, duracaoOut) {
+        var indiceImagemAnterior = capturarIndiceImagemAtiva(listaImagens);
+        var indiceSelecionado = $(listaIndicadores).index(indicador, listaIndicadores);
+        
+        exibirUnicaImagemSlide(listaImagens[indiceImagemAnterior], listaImagens[indiceSelecionado], duracaoIn, duracaoOut);
+        desativarIndicador(indiceImagemAnterior, listaIndicadores);
+        ativarIndicador(indiceSelecionado, listaIndicadores);
     }
     
+    var isTransicionando = false;
     function inicializarSlide() {
         var paginaVeiculo = $("#pag-detalhes-veiculo")[0];
         
@@ -417,36 +454,92 @@ $(document).ready(function() {
             var containerIndicadores = $(boxSlide).children("#container-contador")[0];
             var indicadores = $(containerIndicadores).children(".contador");
             
-            indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);
+            indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores, duracaoEntradaImagem, duracaoSaidaImagem);
             
-            $(botaoNext).click(function() {                
-                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);
+            var duracaoEntradaImagem = 300;
+            var duracaoSaidaImagem = 300;
+            
+            $(botaoNext).click(function() {
+                if( isTransicionando ) return;
+                
+                indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores);                                
             });
             
-            $(botaoPrev).click(function() {                
+            $(botaoPrev).click(function() {
+                if( isTransicionando ) return;
+                
                 indiceImagemAtual = transeferirImagemSlide(indiceImagemAtual, imagens, indicadores, true);
             });
+            
+            $(indicadores).click(function() {
+                if( isTransicionando ) return;
+                
+                transicionarIndicador(this, indicadores, imagens, 300);                
+            });
+        }
+    }        
+    
+    function inicializarSelecionadorImagensVeiculo() {
+        var paginaPublicacao = $("#pag-publicar")[0];
+        
+        if( paginaPublicacao !== undefined ) {
+            var containerImagensVeiculo = $("#container-imagens-veiculo")[0];
+
+            var botoesImagem = $(containerImagensVeiculo).find("#imagens #wrapper-imagens .imagem");
+            var inputImagens = $(containerImagensVeiculo).find("#file-inputs .imagem-input");
+
+            for( var i = 0; i < botoesImagem.length; ++i ) {
+                $(botoesImagem[i]).click(function() {
+                    var fileInput = inputImagens[ $(botoesImagem).index(this) ];
+                    fileInput.click();
+
+                    $(fileInput).change(function() {
+                        var botaoImagem = botoesImagem[ $(inputImagens).index(this) ];
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $(this).attr("src", e.target.result);
+                        }
+
+                        reader.onloadend = function(e) {
+                            if( reader.readyState === 2 ) {
+                                $(botaoImagem).css("background-image", "url(" + reader.result + ")");
+                                
+                                var label = $(botaoImagem.parentNode).children(".label")[0];
+                                label.innerHTML = "Definido";
+                                $(label).css("background-color", "#8CC955");                                
+                            }
+                        }
+
+                        reader.readAsDataURL( this.files[0] );                    
+                    });
+                });
+            }
         }
     }
     
     function inicializarMenusMobile() {
         //Inicializa os menus mobile e seus respectivos botoes de ativacao
 
-        var botaoMenuPaginas = document.getElementById("mobile-botao-menu");       
-        var painelMenuPaginas = document.getElementById("box-mobile-menu");                
+        var botaoMenuPaginas = document.getElementById("mobile-botao-menu");
+        var painelMenuPaginas = document.getElementById("box-mobile-menu");
 
         var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-        var painelMenuPerfil = document.getElementById("box-menu-usuario");                
+        var painelMenuPerfil = document.getElementById("box-menu-usuario");
 
-        var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");                        
+        var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");
         var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
-
+        
+        var botaoNotificacoes = $("#icone-notificacao")[0];
+        var painelNotificacoes = $("#box-menu-notificacoes")[0];
+        
         $(document.body).click(function(e) {
             var elementoClicado = e.target;            
             
             controlarPainel(botaoMenuPaginas, painelMenuPaginas, elementoClicado);
             controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
-            controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);                
+            controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);
+            controlarPainel(botaoNotificacoes, painelNotificacoes, elementoClicado);
         });
 
     }
@@ -461,10 +554,7 @@ $(document).ready(function() {
         var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
         
         var botaoNotificacoes = $("#icone-notificacao")[0];
-        var painelNotificacoes = $("#box-menu-notificacoes")[0];
-        
-        console.log(botaoNotificacoes);
-        console.log(painelNotificacoes);
+        var painelNotificacoes = $("#box-menu-notificacoes")[0];                
         
         $(document.body).click(function(e) {
             var elementoClicado = e.target;
@@ -481,12 +571,14 @@ $(document).ready(function() {
         inicializarMenusMobile();
         inicializarEtapasCadastro();
         inicializarSlide();
+        inicializarSelecionadorImagensVeiculo();
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
         inicializarSlide();
+        inicializarSelecionadorImagensVeiculo();
     }
     
     $('.faq').click(function (){

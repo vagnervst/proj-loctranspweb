@@ -241,7 +241,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 520px) {
     #mobile-botao-filtragem-ativo {
-        top: 45px;
+        top: 40px;
     }
 }
 
@@ -310,7 +310,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem, #container #box-mobile-filtragem-ativo {    
     width: 250px;    
     height: 100%;
-    position: fixed;    
+    position: fixed;
 }
 
 @media (min-width: 740px) {
@@ -335,6 +335,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo #titulo {
     text-align: center;
     font-size: 20px;
+    color: white;
 }
 
 @media (min-width: 740px) {
@@ -352,6 +353,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem .box-opcoes-select .label,
 #container #box-mobile-filtragem-ativo .box-opcoes-select .label {
     font-size: 17px;
+    color: #a1aec9;
 }
 
 @media (min-width: 740px) {
@@ -366,6 +368,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo .box-opcoes-select .select {
     height: 35px;
     width: 250px;
+    color: white;
 }
 
 @media (min-width: 740px) {
@@ -385,6 +388,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .label {
     font-size: 17px;
     margin-bottom: 5px;
+    color: #a1aec9;
 }
 
 @media (min-width: 740px){
@@ -397,6 +401,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem .box-filtragem-valor .box-valores,
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores {
     margin-bottom: 0px;
+    color: white;
 }
 
 #container #box-mobile-filtragem .box-filtragem-valor .box-valores .label-intervalo,
@@ -415,6 +420,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .box-valores .txt-valor {    
     width: 90px;
     height: 25px;
+    color: white;
 }
 
 @media (min-width: 740px) {
@@ -427,7 +433,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #container #box-mobile-filtragem .box-filtragem-valor .box-ordem,
 #container #box-mobile-filtragem-ativo .box-filtragem-valor .box-ordem {
-    
+    color: white;
 }
 
 #container #box-mobile-filtragem .box-filtragem-valor .box-ordem .opcao-ordem,
@@ -465,9 +471,23 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #container #box-mobile-filtragem .botao-submit,
 #container #box-mobile-filtragem-ativo .botao-submit {    
     display: block;
+    background-color: white;
+    color: black;
+    border-bottom: 3px solid #818181;
     width: 120px;
     height: 40px;       
-    margin: 0 auto;    
+    margin: 0 auto;   
+}
+
+#container #box-mobile-filtragem-ativo .botao-submit:hover {
+    background-color: #919191;    
+    border-bottom: 3px solid #606060;
+}
+
+#container #box-mobile-filtragem-ativo .botao-submit:active {
+    background-color: #202020;
+    color: #ffffff;
+    border-bottom: 3px solid #252525;
 }
 
 /*------------- MENU DE FILTRAGEM DE VEICULOS*/
@@ -2183,7 +2203,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     width: 100%;    
 }
 
-#pag-detalhes-veiculo #slide-imagens-veiculo #container-contador {    
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-contador {
     display: none;
     height: 15px;
     position: relative;
@@ -2206,6 +2226,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     height: 10px;
     border-radius: 10px;
     margin: 0px 3px;
+    cursor: pointer;
+    opacity: .8;
+}
+
+#pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador:hover {
+    background-color: #a1aec9;
 }
 
 #pag-detalhes-veiculo #slide-imagens-veiculo #container-contador .contador.ativo {
@@ -2268,7 +2294,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
         text-align: center;
     }
     
-    #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {        
+    #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {
         display: inline-block;
         width: 49%;        
         border-left: 1px solid #202020;
@@ -2796,6 +2822,12 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     }
 }
 
+@media (min-width: 1000px) {
+    #pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #conteudo-pergunta {
+        width: 850px;
+    }
+}
+
 #pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #botao-perguntar {
     display: block;
     width: 150px;
@@ -2806,9 +2838,9 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 @media (min-width: 740px) {
     #pag-detalhes-veiculo #container-perguntas #box-adicionar-pergunta #box-conteudo-pergunta #botao-perguntar {
-        width: 100px;
-        font-size: 17px;
-        padding: 10px 0px;
+        width: 70px;
+        font-size: 15px;
+        padding: 5px 0px;
     }
 }
 
@@ -3062,6 +3094,436 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 /*------------- BENEFICIOS*/
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario {
+        padding-top: 50px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario {
+        background-color: #ebebeb;
+        height: 195px;
+        border: 1px solid #b9b9b9;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {    
+    background-color: #ebebeb;
+    width: 304px;
+    height: 105px;
+    padding: 2px;
+    border: 1px solid #a7a7a7;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {
+        width: 374px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {
+        width: 444px;        
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
+        border: 0px;
+        width: 99.6%;
+        height: 191px;
+        border-right: 1px solid #b9b9b9;
+        float: left;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto {    
+    width: 90px;
+    text-align: center;
+    float: left;
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto #foto-usuario {    
+    width:  80px;
+    height: 80px;
+    border: 2px solid #ebebeb;
+    border-radius: 5px 50px 50px 50px;        
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {    
+    width: 210px;
+    height: 105px;
+    float: right;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
+        width: 255px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
+        width: 320px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
+        width: 530px;
+        height: 190px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
+        width: 770px;        
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {
+    font-size: 19px;
+    font-weight: bold;    
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {
+        text-align: center;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #6a6a6a;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #a1aec9;
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info .info {
+    font-weight: normal;
+    color: black;
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info .info {
+        display: block;        
+        margin-bottom: 5px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
+    width: 210px;
+    text-align: right;
+    border-top: 1px solid #ebebeb;
+    padding-top: 2px;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
+        width: 255px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
+        width: 320px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {        
+        width: 530px;
+        margin-top: 27px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
+        width: 770px;
+        margin-top: 10px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes .icone-avaliacao {
+    width: 20px;
+    height: 20px;
+}
+
+#pag-perfil-usuario .box-conteudo #box-info-publicacoes #titulo {
+    background-color: #a1aec9;
+    padding: 10px 0px;
+    text-align: center;    
+    border: 1px solid #9f9f9f;
+    margin-top: 5px;
+    font-weight: bold;  
+    color: white;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes {
+    background-color: #efefef;
+    border: 1px solid #a7a7a7;
+    border-top: 0px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao {
+    padding: 5px;
+    height: 130px;
+    border-bottom: 1px solid #a7a7a7;
+    margin-bottom: 5px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao:last-child {
+    border-bottom: 0px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .foto-publicacao {    
+    background-image: url(../img/tesla1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;    
+    width: 125px;
+    height: 130px;
+    border: 1px solid #a7a7a7;
+    float: left;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .foto-publicacao {
+        width: 160px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+    width: 160px;
+    height: 122px;
+    padding: 5px;
+    float: left;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+        width: 195px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+        width: 265px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+        width: 465px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+        width: 715px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .titulo {
+    font-size: 18px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .modelo-veiculo {
+    background-color: #e0e0e0;
+    padding: 2px;
+    font-style: italic;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .box-diaria {
+    width: 70px;
+    padding: 5px;
+    margin-top: 30px;
+    margin-left: auto;
+    border-top: 1px solid #a7a7a7;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .box-diaria .diaria {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .box-diaria .label-diaria {
+    text-align: right;
+}
+
+/*------------- PERFIL USUARIO*/
+
+#pag-publicar .box-conteudo #container-imagens-veiculo {
+    width: 300px;
+    height: 180px;
+    border: 1px solid #d6d6d6;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #file-inputs {
+    display: none;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+    width: 300px;
+    height: 180px;                
+    overflow-x: auto;
+    z-index: 1;
+}
+
+@media (min-width: 420px) {
+    #pag-publicar .box-conteudo #container-imagens-veiculo,
+    #pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+        width: 380px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-publicar .box-conteudo #container-imagens-veiculo,
+    #pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+        width: 450px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-publicar .box-conteudo #container-imagens-veiculo {
+        border: 0px;
+        border-bottom: 1px solid #d6d6d6;
+    }
+    
+    #pag-publicar .box-conteudo #container-imagens-veiculo,
+    #pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+        width: 630px;
+    }
+}
+
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens {    
+    position: relative;
+    width: 620px;
+    height: 140px;
+    top: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem {
+    display: inline-block;
+    width: 120px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .imagem {
+    display: block;
+    width: 110px;
+    height: 110px;
+    background-color: #141619;
+    background-image: url(../img/icones/icone-imagem.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 4px solid #141619;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;    
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .label {
+    display: block;
+    width: 118px;
+    background-color: #557bc9;
+    color: white;    
+    padding: 5px 0px;
+    font-weight: bold;
+    border-radius: 0px 0px 5px 5px; 
+    border-top: 3px solid #202020;
+}
+
+#pag-publicar form {
+    text-align: center;
+}
+
+#pag-publicar .titulo-separador {
+    background-color: #141619;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0px;
+    margin: 25px 0px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#pag-publicar .box-conteudo .label-input {
+    margin-top: 10px;
+    text-align: left;
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-text {
+    width: 100%;
+}
+
+#pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
+#pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
+#pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
+    width: 200px;
+}
+
+@media (min-width: 520px) {
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
+    #pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
+        width: 280px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
+    #pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
+        width: 380px;
+    }
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-text {
+    height: 30px;
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-textarea {
+    width: 100%;
+    height: 80px;
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-select {
+    height: 40px;
+}
+
+#pag-publicar .box-conteudo .label-checkbox {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#pag-publicar .box-conteudo .label-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+#pag-publicar .box-conteudo .label-checkbox .label {
+    display: inline;
+    position: relative;
+    bottom: 5px;
+}
+
+#pag-publicar .box-conteudo #botao-publicar {
+    width: 150px;
+    padding: 15px 0px;
+    margin-top: 30px;
+}
+
+/*------------- PUBLICAR VEICULO*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
