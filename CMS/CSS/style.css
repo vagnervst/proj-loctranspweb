@@ -709,6 +709,91 @@ header #box-cabecalho #box-conta #botao-logout{
     float: right;
     margin-right: 25px;
 }
+/****************EMPRESTE*****************/
+
+#pag-cityshare-empreste .box-conteudo #container-pagina{
+    height:250px;
+    width: 850px;
+    margin-top: 20px;
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 5px;
+    
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .titulo-conteudo{
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin: 5px 0px;
+}
+
+#pag-cityshare-empreste .box-conteudo #container-pagina #box-texto {
+    width:470px;
+    height: 235px;
+    float: left ;
+    margin-left: 20px;
+    text-align: justify;
+    padding-top: 15px;
+    font-family: monospace;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-input-pagina{
+    width: inherit;
+    height: 60px;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-input-pagina .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-input-pagina .input-pagina{
+    width: 600px;
+    height: 20px;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-conteudo-pagina{
+    width: inherit;
+    height: 300px;
+    display: inline-block;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-conteudo-pagina .titulo-sessao{
+    width: 100%;
+    height: 20px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+}
+
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto-2{
+    width: 810px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    float: left;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image{
+    width: 450px;
+    height: 200px;
+    margin: 10px 5px;
+    float: left;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image img{
+    width: inherit;
+    height: inherit;
+    
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-botao{
+    width: inherit;
+    height: 50px;
+    display: inline-block;
+}
+#pag-cityshare-empreste .box-conteudo #container-pagina .box-botao .preset-input-submit{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-right: 25px;
+}
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 
