@@ -2294,7 +2294,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
         text-align: center;
     }
     
-    #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {        
+    #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {
         display: inline-block;
         width: 49%;        
         border-left: 1px solid #202020;
@@ -3110,7 +3110,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {    
-    background-color: #141619;
+    background-color: #ebebeb;
     width: 304px;
     height: 105px;
     padding: 2px;
@@ -3185,14 +3185,15 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {
     font-size: 19px;
-    font-weight: bold;
-    color: white;
+    font-weight: bold;    
 }
 
 @media (min-width: 1000px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {
         text-align: center;
         margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #6a6a6a;
     }
 }
 
@@ -3205,7 +3206,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info .info {
     font-weight: normal;
-    color: white;
+    color: black;
 }
 
 @media (min-width: 740px) {
@@ -3244,7 +3245,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 @media (min-width: 1000px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
         width: 770px;
-        margin-top: 18px;
+        margin-top: 10px;
     }
 }
 
@@ -3273,6 +3274,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
     padding: 5px;
     height: 130px;
     border-bottom: 1px solid #a7a7a7;
+    margin-bottom: 5px;
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao:last-child {
@@ -3331,7 +3333,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .modelo-veiculo {
-    background-color: #c7c7c7;
+    background-color: #e0e0e0;
     padding: 2px;
     font-style: italic;
 }
@@ -3354,6 +3356,174 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 /*------------- PERFIL USUARIO*/
+
+#pag-publicar .box-conteudo #container-imagens-veiculo {
+    width: 300px;
+    height: 180px;
+    border: 1px solid #d6d6d6;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #file-inputs {
+    display: none;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+    width: 300px;
+    height: 180px;                
+    overflow-x: auto;
+    z-index: 1;
+}
+
+@media (min-width: 420px) {
+    #pag-publicar .box-conteudo #container-imagens-veiculo,
+    #pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+        width: 380px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-publicar .box-conteudo #container-imagens-veiculo,
+    #pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+        width: 450px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-publicar .box-conteudo #container-imagens-veiculo {
+        border: 0px;
+        border-bottom: 1px solid #d6d6d6;
+    }
+    
+    #pag-publicar .box-conteudo #container-imagens-veiculo,
+    #pag-publicar .box-conteudo #container-imagens-veiculo #imagens {
+        width: 630px;
+    }
+}
+
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens {    
+    position: relative;
+    width: 620px;
+    height: 140px;
+    top: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem {
+    display: inline-block;
+    width: 120px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .imagem {
+    display: block;
+    width: 110px;
+    height: 110px;
+    background-color: #141619;
+    background-image: url(../img/icones/icone-imagem.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 4px solid #141619;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;    
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .label {
+    display: block;
+    width: 118px;
+    background-color: #557bc9;
+    color: white;    
+    padding: 5px 0px;
+    font-weight: bold;
+    border-radius: 0px 0px 5px 5px; 
+    border-top: 3px solid #202020;
+}
+
+#pag-publicar form {
+    text-align: center;
+}
+
+#pag-publicar .titulo-separador {
+    background-color: #141619;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0px;
+    margin: 25px 0px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#pag-publicar .box-conteudo .label-input {
+    margin-top: 10px;
+    text-align: left;
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-text {
+    width: 100%;
+}
+
+#pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
+#pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
+#pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
+    width: 200px;
+}
+
+@media (min-width: 520px) {
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
+    #pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
+        width: 280px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
+    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
+    #pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
+        width: 380px;
+    }
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-text {
+    height: 30px;
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-textarea {
+    width: 100%;
+    height: 80px;
+}
+
+#pag-publicar .box-conteudo .label-input .preset-input-select {
+    height: 40px;
+}
+
+#pag-publicar .box-conteudo .label-checkbox {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#pag-publicar .box-conteudo .label-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+#pag-publicar .box-conteudo .label-checkbox .label {
+    display: inline;
+    position: relative;
+    bottom: 5px;
+}
+
+#pag-publicar .box-conteudo #botao-publicar {
+    width: 150px;
+    padding: 15px 0px;
+    margin-top: 30px;
+}
+
+/*------------- PUBLICAR VEICULO*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 

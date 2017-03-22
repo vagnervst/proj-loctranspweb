@@ -477,26 +477,69 @@ $(document).ready(function() {
                 transicionarIndicador(this, indicadores, imagens, 300);                
             });
         }
+    }        
+    
+    function inicializarSelecionadorImagensVeiculo() {
+        var paginaPublicacao = $("#pag-publicar")[0];
+        
+        if( paginaPublicacao !== undefined ) {
+            var containerImagensVeiculo = $("#container-imagens-veiculo")[0];
+
+            var botoesImagem = $(containerImagensVeiculo).find("#imagens #wrapper-imagens .imagem");
+            var inputImagens = $(containerImagensVeiculo).find("#file-inputs .imagem-input");
+
+            for( var i = 0; i < botoesImagem.length; ++i ) {
+                $(botoesImagem[i]).click(function() {
+                    var fileInput = inputImagens[ $(botoesImagem).index(this) ];
+                    fileInput.click();
+
+                    $(fileInput).change(function() {
+                        var botaoImagem = botoesImagem[ $(inputImagens).index(this) ];
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $(this).attr("src", e.target.result);
+                        }
+
+                        reader.onloadend = function(e) {
+                            if( reader.readyState === 2 ) {
+                                $(botaoImagem).css("background-image", "url(" + reader.result + ")");
+                                
+                                var label = $(botaoImagem.parentNode).children(".label")[0];
+                                label.innerHTML = "Definido";
+                                $(label).css("background-color", "#8CC955");                                
+                            }
+                        }
+
+                        reader.readAsDataURL( this.files[0] );                    
+                    });
+                });
+            }
+        }
     }
     
     function inicializarMenusMobile() {
         //Inicializa os menus mobile e seus respectivos botoes de ativacao
 
-        var botaoMenuPaginas = document.getElementById("mobile-botao-menu");       
-        var painelMenuPaginas = document.getElementById("box-mobile-menu");                
+        var botaoMenuPaginas = document.getElementById("mobile-botao-menu");
+        var painelMenuPaginas = document.getElementById("box-mobile-menu");
 
         var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-        var painelMenuPerfil = document.getElementById("box-menu-usuario");                
+        var painelMenuPerfil = document.getElementById("box-menu-usuario");
 
-        var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");                        
+        var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");
         var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
-
+        
+        var botaoNotificacoes = $("#icone-notificacao")[0];
+        var painelNotificacoes = $("#box-menu-notificacoes")[0];
+        
         $(document.body).click(function(e) {
             var elementoClicado = e.target;            
             
             controlarPainel(botaoMenuPaginas, painelMenuPaginas, elementoClicado);
             controlarPainel(botaoMenuPerfil, painelMenuPerfil, elementoClicado);
-            controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);                
+            controlarPainel(botaoFiltragemVeiculos, painelFiltragemVeiculos, elementoClicado);
+            controlarPainel(botaoNotificacoes, painelNotificacoes, elementoClicado);
         });
 
     }
@@ -528,12 +571,14 @@ $(document).ready(function() {
         inicializarMenusMobile();
         inicializarEtapasCadastro();
         inicializarSlide();
+        inicializarSelecionadorImagensVeiculo();
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
         inicializarSlide();
+        inicializarSelecionadorImagensVeiculo();
     }
     
     $('.faq').click(function (){
