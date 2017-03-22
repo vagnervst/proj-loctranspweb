@@ -12,7 +12,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-cityshare-conteudo">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -36,28 +36,28 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_cityshare_conteudo.php">Conteudo</a></p>           
+                        <p class="titulo-conteudo-menu"><a href="CMS_adm_home.php">Home</a></p>
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Níveis de acesso</a></p>           
+                        <p class="titulo-conteudo-menu"><a href="CMS_empresa.php">Sobre a Empresa</a></p>
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Permissões</a></p>
+                        <p class="titulo-conteudo-menu"><a href="CMS_empreste.php">Empreste</a></p>      
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Contato</a></p>
+                        <p class="titulo-conteudo-menu"><a href="CMS_beneficios.php">Benefícios do Projeto</a></p>
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Administradores</a></p>           
+                        <p class="titulo-conteudo-menu"><a href="CMS_projeto.php">Sobre o Projeto</a></p>
                     </div>
                 </div>
             </div>
