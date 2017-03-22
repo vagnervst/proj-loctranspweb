@@ -274,8 +274,6 @@ header #box-cabecalho #box-conta #botao-logout{
     display: block;
     width: 150px;
     float: left;
-}
-.box-menu-lateral .menu-lateral ul li a:hover{
     color: #ebebeb;
 }
 .box-menu-lateral .menu-lateral ul li img{
@@ -313,6 +311,7 @@ header #box-cabecalho #box-conta #botao-logout{
     width: 880px;
     height: inherit;
     float: left ;
+    overflow: auto;
 }
 .box-conteudo .box-conteudo-menu{
     width: 150px;
@@ -337,14 +336,19 @@ header #box-cabecalho #box-conta #botao-logout{
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 /*pagina de beneficios */
+.box-conteudo .titulo-sessao{
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    text-align: center;
+}
 .box-conteudo #container-previa{
     height:250px;
     width: 850px;
-    margin-left: auto ;
-    margin-right: auto ;
-    border: solid 2px #c2c2c2;
-    padding: 5px;
-    
+    margin: 10px auto;
+    padding: 5px;    
 }
 .box-conteudo #container-previa #box-img-previa {
     background-color: azure ;
@@ -357,41 +361,33 @@ header #box-cabecalho #box-conta #botao-logout{
 .box-conteudo #container-previa #box-texto-previa {
     width:470px;
     height: 235px;
-    float: left ;
-    margin-left: 20px;
+    float: left;
     text-align: justify;
-    padding-top: 15px;
-    font-family: monospace;
 }
 .img-beneficios{
     width: 350px;
     height: 250px;
     border-radius: 15px;
 }
-
-.box-conteudo #container-previa .lbl-previa{
-    font-size: 16px ;
-    font-style: bold; 
+.box-conteudo #container-previa input{
+    margin: 0px 10px;
 }
 .box-conteudo #container-previa #input-previa{
-    height: 30px;
-    width: 450px;
-    border:0 ;
-    box-shadow: 2px 3px 36px 0px #c2c2c2;
-    
-    
+    height: 230px;
+    width: 470px;
+    resize: none;
+    margin: 5px 10px;
 }
-.box-conteudo #container-dados{
+.box-conteudo #container-pagina{
     height:250px;
     width: 850px;
     margin-top: 20px;
     margin-left: auto ;
     margin-right: auto ;
-    border: solid 2px #c2c2c2;
     padding: 5px;
     
 }
-.box-conteudo #container-dados #box-texto {
+.box-conteudo #container-pagina #box-texto {
     width:470px;
     height: 235px;
     float: left ;
@@ -400,23 +396,320 @@ header #box-cabecalho #box-conta #botao-logout{
     padding-top: 15px;
     font-family: monospace;
 }
-.box-conteudo #container-dados .lbl{
-    font-size: 16px ;
-    font-style: bold; 
+.box-conteudo #container-pagina .box-input-pagina{
+    width: inherit;
+    height: 60px;
 }
-.box-conteudo #container-dados #input{
-    height: 30px;
-    width: 450px;
-    border:0 ;
-    box-shadow: 2px 3px 36px 0px #c2c2c2;
-    
-    
-}
-#linha-dados{
-    margin-top: 10px;
+.box-conteudo #container-pagina .box-input-pagina .titulo-input{
     width: 100%;
-    align-items: center;
+    height: 20px;
+    float: left;
 }
+.box-conteudo #container-pagina .box-input-pagina .input-pagina{
+    width: 600px;
+    height: 20px;
+}
+.box-conteudo #container-pagina .box-conteudo-pagina{
+    width: inherit;
+    height: 200px;
+    display: inline-block;
+}
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image{
+    width: 250px;
+    height: 180px;
+    margin: 10px 5px;
+    float: left;
+}
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image img{
+    width: inherit;
+    height: inherit;
+    
+}
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto{
+    width: 550px;
+    height: 175px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    float: left;
+}
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea{
+    width: inherit;
+    height: inherit;
+    resize: none;
+}
+.box-conteudo #container-pagina .box-botao{
+    width: inherit;
+    height: 50px;
+    display: inline-block;
+}
+.box-conteudo #container-pagina .box-botao .preset-input-submit{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-right: 25px;
+}
+/****************EMPRESA*****************/
+
+#pag-cityshare-empresa .box-conteudo #container-pagina{
+    height:250px;
+    width: 850px;
+    margin-top: 20px;
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 5px;
+    
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina #box-texto {
+    width:470px;
+    height: 235px;
+    float: left ;
+    margin-left: 20px;
+    text-align: justify;
+    padding-top: 15px;
+    font-family: monospace;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-input-pagina{
+    width: inherit;
+    height: 60px;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-input-pagina .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-input-pagina .input-pagina{
+    width: 600px;
+    height: 20px;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina{
+    width: inherit;
+    height: 200px;
+    display: inline-block;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image{
+    width: 250px;
+    height: 180px;
+    margin: 10px 5px;
+    float: left;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image img{
+    width: inherit;
+    height: inherit;
+    
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo{
+    width: 550px;
+    height: 50px;
+    margin-left: 5px;
+    float: left;
+    
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo .input-pagina{
+    width: 550px;
+    height: 20px;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto{
+    width: 550px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    float: left;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea{
+    width: inherit;
+    height: inherit;
+    resize: none;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-botao{
+    width: inherit;
+    height: 50px;
+    display: inline-block;
+}
+#pag-cityshare-empresa .box-conteudo #container-pagina .box-botao .preset-input-submit{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-right: 25px;
+}
+/****************PROJETO*****************/
+
+#pag-cityshare-projeto .box-conteudo #container-pagina{
+    height:250px;
+    width: 850px;
+    margin-top: 20px;
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 5px;
+    
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina #box-texto {
+    width:470px;
+    height: 235px;
+    float: left ;
+    margin-left: 20px;
+    text-align: justify;
+    padding-top: 15px;
+    font-family: monospace;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-input-pagina{
+    width: inherit;
+    height: 60px;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-input-pagina .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-input-pagina .input-pagina{
+    width: 600px;
+    height: 20px;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina{
+    width: inherit;
+    height: 200px;
+    display: inline-block;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image{
+    width: 250px;
+    height: 180px;
+    margin: 10px 5px;
+    float: left;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image img{
+    width: inherit;
+    height: inherit;
+    
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo{
+    width: 550px;
+    height: 50px;
+    margin-left: 5px;
+    float: left;
+    
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo .input-pagina{
+    width: 550px;
+    height: 20px;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto{
+    width: 550px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    float: left;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea{
+    width: inherit;
+    height: inherit;
+    resize: none;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto-2{
+    width: 810px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    float: left;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto-2 textarea{
+    width: inherit;
+    height: inherit;
+    resize: none;
+}
+
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-botao{
+    width: inherit;
+    height: 50px;
+    display: inline-block;
+}
+#pag-cityshare-projeto .box-conteudo #container-pagina .box-botao .preset-input-submit{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-right: 25px;
+}
+
+/****************HOME*****************/
+
+#pag-cityshare-home .box-conteudo #container-pagina{
+    height:250px;
+    width: 850px;
+    margin-top: 20px;
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 5px;
+    
+}
+#pag-cityshare-home .box-conteudo #container-pagina #box-texto {
+    width:470px;
+    height: 235px;
+    float: left ;
+    margin-left: 20px;
+    text-align: justify;
+    padding-top: 15px;
+    font-family: monospace;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-input-pagina{
+    width: inherit;
+    height: 60px;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-input-pagina .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-input-pagina .input-pagina{
+    width: 600px;
+    height: 20px;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-conteudo-pagina{
+    width: inherit;
+    height: 300px;
+    display: inline-block;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-conteudo-pagina .titulo-sessao{
+    width: 100%;
+    height: 20px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image{
+    width: 450px;
+    height: 250px;
+    margin: 10px 5px;
+    float: left;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image img{
+    width: inherit;
+    height: inherit;
+    
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-botao{
+    width: inherit;
+    height: 50px;
+    display: inline-block;
+}
+#pag-cityshare-home .box-conteudo #container-pagina .box-botao .preset-input-submit{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-right: 25px;
+}
+
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 
 footer{
