@@ -467,6 +467,13 @@ header #box-cabecalho #box-conta #botao-logout{
     float: right;
     margin-right: 25px;
 }
+.box-conteudo #container-pagina #box-publicacoes{
+    width: 100% ;
+    height: 600px;
+    overflow: auto;
+    
+}
+
 /****************EMPRESA*****************/
 
 #pag-cityshare-empresa {
@@ -819,6 +826,74 @@ header #box-cabecalho #box-conta #botao-logout{
     display: inline-block;
 }
 #pag-cityshare-empreste .box-conteudo #container-pagina .box-botao .preset-input-submit{
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-right: 25px;
+}
+/***************CONTATO*******************/
+#pag-cityshare-contato{
+    height: 1250px;
+    
+}
+#pag-cityshare-contato .box-conteudo {
+    
+}
+#pag-cityshare-contato .box-conteudo .titulo-sesssao{
+    width: 100%;
+    height: 30px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    text-align: center;
+}
+#pag-cityshare-contato .box-conteudo #containner-fale-conosco{
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    
+}
+#pag-cityshare-contato .box-conteudo .item-fale-conosco{
+    margin-left: auto;
+    margin-right: auto ;
+    width: 600px;
+    height: 50px ;
+}
+#pag-cityshare-contato .box-conteudo #containner-fale-conosco .titulo-input{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#pag-cityshare-contato .box-conteudo  .input-pagina {
+    width: 600px;
+    height: 20px;
+}
+
+#pag-cityshare-contato .box-conteudo #containner-perguntas{
+    height: 500px;;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+}
+#pag-cityshare-contato .box-conteudo #containner-perguntas .pergunta{
+    width: 610px; 
+    height: 100px;
+    border: solid 1px #e2e2e2;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto ;
+}
+#pag-cityshare-contato .box-conteudo  .box-botao{
+    width: inherit;
+    height: 50px;
+    display: inline-block;
+}
+#pag-cityshare-contato .box-conteudo  .box-botao .preset-input-submit{
     width: 100px;
     height: 40px;
     float: right;
