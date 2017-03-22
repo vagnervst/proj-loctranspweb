@@ -40,24 +40,34 @@
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_cityshare_conteudo.php">Conteudo</a></p>           
+                        <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
+                            <img src="Image/content_test.jpg" />
+                            Conteudo
+                        </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Níveis de acesso</a></p>           
+                        <a class="titulo-conteudo-menu" href="#">
+                            <img src="Image/content_test.jpg" />                        
+                            Níveis de acesso
+                        </a>
                     </div>
-                    <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Permissões</a></p>
+                    <div class="box-conteudo-menu">                        
+                        <a class="titulo-conteudo-menu" href="#">
+                            <img src="Image/content_test.jpg" />                        
+                            Permissões
+                        </a>
                     </div>
-                    <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Contato</a></p>
+                    <div class="box-conteudo-menu">                        
+                        <a class="titulo-conteudo-menu" href="#">
+                            <img src="Image/content_test.jpg" />
+                            Contato
+                        </a>
                     </div>
-                    <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Administradores</a></p>           
+                    <div class="box-conteudo-menu">                        
+                        <a class="titulo-conteudo-menu" href="#">
+                            <img src="Image/content_test.jpg" />
+                            Administradores
+                        </a>
                     </div>
                 </div>
             </div>

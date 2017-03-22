@@ -16,10 +16,10 @@
             </header>
             <div class="conteudo" id="content_login">
                 <form name="frmCMSlogin" method="post" action="CMS_home.php" id="form_login">
-                    Usuário
-                    <input type="text" name="CMSusuario" class="text-input" required/>
-                    Senha
-                    <input type="password" name="CMSsenha" class="text-input" required/>
+                    <label>Usuário
+                        <input type="text" name="CMSusuario" class="text-input" required/></label>
+                    <label>Senha
+                        <input type="password" name="CMSsenha" class="text-input" required/></label>
                     <input type="submit" value="Entrar" name="CMSsubmit" class="submit-input"/>
                 </form>
             </div>

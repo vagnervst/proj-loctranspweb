@@ -40,25 +40,35 @@
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_adm_home.php">Home</a></p>
+                        <a class="titulo-conteudo-menu" href="CMS_adm_home.php">
+                            <img src="Image/content_test.jpg" />
+                            Home
+                        </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_empresa.php">Sobre a Empresa</a></p>
+                        <a class="titulo-conteudo-menu" href="CMS_empresa.php">
+                            <img src="Image/content_test.jpg" />
+                            Sobre a Empresa
+                        </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_empreste.php">Empreste</a></p>      
+                        <a class="titulo-conteudo-menu" href="CMS_empreste.php">
+                            <img src="Image/content_test.jpg" />
+                            Empreste
+                        </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_beneficios.php">Benefícios do Projeto</a></p>
-                    </div>
+                        <a class="titulo-conteudo-menu" href="CMS_beneficios.php">
+                            <img src="Image/content_test.jpg" />
+                            Benefícios do Projeto
+                        </a>
+                    </div>                    
                     <div class="box-conteudo-menu">
-                        <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="CMS_projeto.php">Sobre o Projeto</a></p>
-                    </div>
+                        <a class="titulo-conteudo-menu" href="CMS_projeto.php">
+                            <img src="Image/content_test.jpg" />
+                            Sobre o Projeto
+                        </a>
+                    </div>                    
                 </div>
             </div>
             <?php
