@@ -25,7 +25,7 @@
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">
-                                <a href="#">City Share</a>
+                                <a href="CMS_cityshare.php">City Share</a>
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">

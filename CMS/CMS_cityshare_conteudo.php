@@ -49,7 +49,7 @@
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Empreste</a></p>      
+                        <p class="titulo-conteudo-menu"><a href="CMS_empreste.php">Empreste</a></p>      
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
