@@ -12,7 +12,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-cityshare-beneficios">
+            <div class="CMS_main" id="pag-cityshare-projeto">
                 <div class="box-menu-lateral">
                     <div class="menu-lateral">
                         <ul>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Benefícios do Projeto</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Sobre o Projeto</a>
                 </div>
                 <form action="#" method="post">
                     <div class="box-conteudo">
@@ -55,15 +55,12 @@
                                 <label class="titulo-input">Título</label>
                                 <input type="text" class="input-pagina">
                             </div>
-                            <div class="box-input-pagina">
-                                <label class="titulo-input">Introdução</label>
-                                <input type="text" class="input-pagina">
-                            </div>
                             <div class="box-conteudo-pagina">
                                 <div class="conteudo-image">
                                     <img src="Image/banner_test.jpg"/>
                                 </div>
                                 <div class="conteudo-texto">
+                                    <label class="titulo-input">Descrição</label>
                                     <textarea></textarea>
                                 </div>
                             </div>
@@ -72,14 +69,13 @@
                                     <img src="Image/banner_test.jpg"/>
                                 </div>
                                 <div class="conteudo-texto">
+                                    <label class="titulo-input">Descrição</label>
                                     <textarea></textarea>
                                 </div>
                             </div>
                             <div class="box-conteudo-pagina">
-                                <div class="conteudo-image">
-                                    <img src="Image/banner_test.jpg"/>
-                                </div>
-                                <div class="conteudo-texto">
+                                <div class="conteudo-texto-2">
+                                    <label class="titulo-input">Conteúdo</label>
                                     <textarea></textarea>
                                 </div>
                             </div>

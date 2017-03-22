@@ -12,7 +12,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-cityshare-conteudo">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -41,7 +41,11 @@
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Home</a></p>           
+                        <p class="titulo-conteudo-menu"><a href="CMS_adm_home.php">Home</a></p>
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <img src="Image/content_test.jpg" />
+                        <p class="titulo-conteudo-menu"><a href="CMS_empresa.php">Sobre a Empresa</a></p>
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
@@ -49,7 +53,11 @@
                     </div>
                     <div class="box-conteudo-menu">
                         <img src="Image/content_test.jpg" />
-                        <p class="titulo-conteudo-menu"><a href="#">Benefícios do Projeto</a></p>           
+                        <p class="titulo-conteudo-menu"><a href="CMS_beneficios.php">Benefícios do Projeto</a></p>
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <img src="Image/content_test.jpg" />
+                        <p class="titulo-conteudo-menu"><a href="CMS_projeto.php">Sobre o Projeto</a></p>
                     </div>
                 </div>
             </div>
