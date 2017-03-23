@@ -59,28 +59,38 @@
                                 <label class="titulo-input">Introdução</label>
                                 <input type="text" class="input-pagina">
                             </div>
-                            <div class="box-conteudo-pagina">
-                                <div class="conteudo-image">
-                                    <img src="Image/banner_test.jpg"/>
+                            <div id="box-publicacoes">
+                                <div class="box-conteudo-pagina">
+                                    <div class="conteudo-image">
+                                        <img src="Image/banner_test.jpg"/>
+                                    </div>
+                                    <div class="conteudo-texto">
+                                        <textarea></textarea>
+                                    </div>
                                 </div>
-                                <div class="conteudo-texto">
-                                    <textarea></textarea>
+                                <div class="box-conteudo-pagina">
+                                    <div class="conteudo-image">
+                                        <img src="Image/banner_test.jpg"/>
+                                    </div>
+                                    <div class="conteudo-texto">
+                                        <textarea></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="box-conteudo-pagina">
-                                <div class="conteudo-image">
-                                    <img src="Image/banner_test.jpg"/>
+                                <div class="box-conteudo-pagina">
+                                    <div class="conteudo-image">
+                                        <img src="Image/banner_test.jpg"/>
+                                    </div>
+                                    <div class="conteudo-texto">
+                                        <textarea></textarea>
+                                    </div>
                                 </div>
-                                <div class="conteudo-texto">
-                                    <textarea></textarea>
-                                </div>
-                            </div>
-                            <div class="box-conteudo-pagina">
-                                <div class="conteudo-image">
-                                    <img src="Image/banner_test.jpg"/>
-                                </div>
-                                <div class="conteudo-texto">
-                                    <textarea></textarea>
+                                <div class="box-conteudo-pagina">
+                                    <div class="conteudo-image">
+                                        <img src="Image/banner_test.jpg"/>
+                                    </div>
+                                    <div class="conteudo-texto">
+                                        <textarea></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="box-botao">
