@@ -68,8 +68,14 @@ header #box-cabecalho {
 }
 
 @media (min-width: 520px) {
-    header, header #box-cabecalho {
+    header, header #box-cabecalho {        
         height: 35px;        
+    }
+}
+
+@media (min-width: 520px) {
+    header #box-cabecalho {
+        width: 480px;            
     }
 }
 
@@ -143,14 +149,14 @@ header #box-cabecalho #menu-navegacao ul li a:hover {
 }
 
 header #box-cabecalho #box-conta {    
-    width: 120px;
+    width: 210px;
     height: 60px;        
     float: right;    
 }
 
 @media (min-width: 520px) {
-    header #box-cabecalho #box-conta {
-        height: 35px;
+    header #box-cabecalho #box-conta {        
+        height: 35px;        
     }
 }
 
@@ -160,7 +166,56 @@ header #box-cabecalho #box-conta {
     }
 }
 
-header #box-cabecalho #box-conta #icone-notificacao {
+header #box-cabecalho #box-conta #box-login-cadastro {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+header #box-cabecalho #box-conta #box-login-cadastro .botao-conta {
+    display: inline-block;
+    width: 95px;
+    padding: 15px 0px;
+    text-align: center;
+    color: white;
+    border: 1px solid #a1aec9;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+header #box-cabecalho #box-conta #box-login-cadastro .botao-conta:hover,
+header #box-cabecalho #box-conta #box-login-cadastro .botao-conta:active {
+    background-color: #a1aec9;    
+}
+
+header #box-cabecalho #box-conta #box-login-cadastro #botao-cadastro {
+    background-color: #557BC9;
+    color: white;
+    border: 1px solid #557BC9;    
+}
+
+@media (min-width: 520px) {
+    header #box-cabecalho #box-conta #box-login-cadastro {
+        padding: 0px;
+    }
+    
+    header #box-cabecalho #box-conta #box-login-cadastro .botao-conta {
+        padding: 7px 0px;
+    }
+}
+
+header #box-cabecalho #box-conta #box-info-conta {
+    width: 120px;
+    float: right;
+    height: inherit;
+}
+
+@media (min-width: 740px) {
+    header #box-cabecalho #box-conta #box-info-conta {
+        width: 200px;
+    }
+}
+
+header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
     background: url(../img/icones/notificacao.png) no-repeat;
     background-size: cover;
     width: 40px;
@@ -171,20 +226,26 @@ header #box-cabecalho #box-conta #icone-notificacao {
 }
 
 @media (min-width: 520px) {
-    header #box-cabecalho #box-conta #icone-notificacao {
+    header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
         width: 28px;
         height: 28px;
     }
 }
 
-header #box-cabecalho #box-conta #box-info-usuario {
+@media (min-width: 740px) {
+    header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
+        margin-right: 10px;
+    }
+}
+
+header #box-cabecalho #box-conta #box-info-conta #box-info-usuario {
     display: none;
     width: 170px;
     margin-left: auto;
 }
 
 @media (min-width: 740px) {
-    header #box-cabecalho #box-conta #box-info-usuario {
+    header #box-cabecalho #box-conta #box-info-conta #box-info-usuario {
         display: block;
     }
 }
@@ -314,10 +375,9 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 @media (min-width: 740px) {
-    #container #box-mobile-filtragem, #container #box-mobile-filtragem-ativo {        
-        background-color: #e3e3e3;
+    #container #box-mobile-filtragem, #container #box-mobile-filtragem-ativo {
         width: 180px;        
-        top: 50px;
+        top: 45px;
         margin: 0px;
         float: left;
     }
@@ -679,13 +739,14 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #box-menu-usuario-ativo {
     display: inline-block;
     margin-top: 5px;
-    margin-left: 110px;
+    position: relative;
+    right: 70px;
 }
 
 @media (min-width: 740px) {
     #box-menu-usuario-ativo {
-        margin-top: 0px;
-        margin-left: 505px;
+        margin-top: 4px;
+        right: 0px;
     }
 }
 
@@ -800,7 +861,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 #pag-home {
-    padding-top: 40px;
+    padding-top: 70px;
 }
 
 @media (min-width: 520px) {
@@ -1392,7 +1453,7 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo {
     background-color: #ebebeb;
     margin-bottom: 10px;    
-    border: 1px solid #141619;
+    border: 1px solid #d2d2d2;
 }
 
 @media (min-width: 740px) {
@@ -3524,6 +3585,62 @@ header #box-cabecalho #box-conta #imagem-perfil img {
 }
 
 /*------------- PUBLICAR VEICULO*/
+
+#pag-login {
+    padding-top: 70px;
+}
+
+@media (min-width: 520px) {
+    #pag-login {
+        padding-top: 45px;
+    }
+}
+
+#pag-login .imagem-principal {
+    height: 200px;
+}
+
+#pag-login #box-login {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    min-height: 400px;
+    text-align: center;
+}
+
+@media (min-width: 520px) {
+    #pag-login #box-login {
+        width: 400px;
+    }
+}
+
+#pag-login #box-login .label-input .label {
+    display: inline-block;
+    width: 300px;
+    font-size: 20px;
+    text-align: left;
+    margin: 10px;
+}
+
+#pag-login #box-login .label-input .input {
+    width: 300px;
+    height: 30px;    
+}
+
+@media (min-width: 520px) {
+    #pag-login #box-login .label-input .label,
+    #pag-login #box-login .label-input .input {
+        width: 380px;
+    }
+}
+
+#pag-login #box-login #botao-entrar {
+    width: 150px;
+    padding: 15px 0px;
+    margin: 20px;
+}
+
+/*------------- LOGIN*/
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
