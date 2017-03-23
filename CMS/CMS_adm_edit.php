@@ -12,7 +12,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-cityshare-adm-edit">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -36,38 +36,10 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_adm.php" class="link-caminho" >Administradores</a> > <a href="#" class="link-caminho" >Editar/Novo</a>
                 </div>
                 <div class="box-conteudo">
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
-                            <img src="Image/content_test.jpg" />
-                            Conteudo
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-                            Níveis de acesso
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-                            Permissões
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />
-                            Contato
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
-                            <img src="Image/content_test.jpg" />
-                            Administradores
-                        </a>
+                    <div>
                     </div>
                 </div>
             </div>
