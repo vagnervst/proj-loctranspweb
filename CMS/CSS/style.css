@@ -569,6 +569,9 @@ header #box-cabecalho #box-conta #botao-logout{
 }
 /****************PROJETO*****************/
 
+#pag-cityshare-projeto{
+    height: 1200px;
+}
 #pag-cityshare-projeto .box-conteudo #container-pagina{
     height:250px;
     width: 850px;
