@@ -674,6 +674,62 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-right: 25px;
 }
 
+/****************ADMINISTRADORES*****************/
+
+#pag-cityshare-adm{
+    height: 1000px;
+}
+#pag-cityshare-adm .box-conteudo {
+    width: 870px;
+    height: auto;
+    float: left ;    
+}
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm {
+    width: 200px;
+    height: 150px;
+    float: left;
+    background-color: #a1aec9;
+    margin: 5px 10px;
+    border-radius: 0px 0px 2px 2px;
+    padding: 5px;
+}
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .titulo-conteudo-adm{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #70798d;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info{
+    width: 100%;
+    height: 90px;
+}
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .nome-adm{
+    width: 100%;
+    height: 40px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .nivel-adm{
+    width: 100%;
+    height: 50px;
+    margin-left: 10px;
+}
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-btn-edit{
+    width: 100%;
+    height: 20px;
+    padding-top: 5px;
+}
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-btn-edit .preset-botao{
+    width: 60px;
+    height: 100%;
+    float: right;
+}
 /****************HOME*****************/
 
 #pag-cityshare-home {
