@@ -9,47 +9,7 @@
     </head>
     <body>
         <div id="container">
-            <header>
-                <div id="box-cabecalho">
-                    <div id="mobile-botao-menu"></div>
-                    <div id="menu-navegacao">
-                        <ul>
-                            <li class="botao-menu"><a href="#">Home</a></li>
-                            <li class="botao-menu"><a href="#">Alugue</a></li>
-                            <li class="botao-menu"><a href="#">Empreste</a></li>
-                            <li class="botao-menu"><a href="#">Contato</a></li>
-                        </ul>
-                    </div>
-                    <div id="box-conta">
-                        <a href="#"><div id="icone-notificacao"></div></a>                
-                        <div id="imagem-perfil">                            
-                            <img src="img/link_face.jpg" />
-                        </div>
-                        <div id="box-info-usuario">
-                            <p id="nome-usuario">Nome do Usuario</p>
-                            <a id="botao-logout" href="#">Sair</a>
-                        </div>
-                    </div>
-                    <div class="js-popup-painel" id="box-menu-usuario">
-                        <ul id="menu-usuario">
-                            <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Configurações</a></li>
-                            <li><a href="#">Sair</a></li>
-                        </ul>
-                    </div>
-                    <!-- MENU DE USUÁRIO -->                    
-                </div>
-            </header>            
-            <!-- CABEÇALHO -->
-            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
-                <ul id="mobile-menu">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ALUGUE</a></li>
-                    <li><a href="#">EMPRESTE</a></li>
-                    <li><a href="#">CONTATO</a></li>                    
-                </ul>
-            </div>
-            <!-- MENU DE PAGINAS - MOBILE -->
+            <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-sobre-projeto">
                 <div class="imagem-divisao-conteudo imagem-principal"></div>
                 <div class="box-conteudo">
@@ -81,25 +41,7 @@
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>
-        <footer>
-            <div id="box-rodape">
-                <section id="box-mapa-site">
-                    <h1>Mapa do Site</h1>
-                    <ul id="lista-paginas">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Alugue</a></li>
-                        <li><a href="#">Empreste</a></li>
-                        <li><a href="#">Veículo</a></li>
-                        <li><a href="#">Sobre o Projeto</a></li>
-                        <li><a href="#">Benefícios do Projeto</a></li>
-                        <li><a href="#">A Empresa</a></li>
-                        <li><a href="#">Contato</a></li>
-                    </ul>
-                </section>
-                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
-            </div>
-        </footer>
-        <!-- RODAPÉ -->
+        <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
         <script src="js/script.js"></script>
     </body>
