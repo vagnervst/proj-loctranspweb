@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="#">
+                        <a class="titulo-conteudo-menu" href="CMS_cityshare_nivelAcesso.php">
                             <img src="Image/content_test.jpg" />                        
                             Níveis de acesso
                         </a>
