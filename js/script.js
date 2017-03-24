@@ -521,14 +521,14 @@ $(document).ready(function() {
     function inicializarMenusMobile() {
         //Inicializa os menus mobile e seus respectivos botoes de ativacao
 
-        var botaoMenuPaginas = document.getElementById("mobile-botao-menu");
-        var painelMenuPaginas = document.getElementById("box-mobile-menu");
+        var botaoMenuPaginas = $("#mobile-botao-menu")[0];
+        var painelMenuPaginas = $("#box-mobile-menu")[0];
 
-        var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-        var painelMenuPerfil = document.getElementById("box-menu-usuario");
+        var botaoMenuPerfil = $("#imagem-perfil img")[0];
+        var painelMenuPerfil = $("#box-menu-usuario")[0];
 
-        var botaoFiltragemVeiculos = document.getElementById("mobile-botao-filtragem-ativo");
-        var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
+        var botaoFiltragemVeiculos = $("#mobile-botao-filtragem-ativo")[0];
+        var painelFiltragemVeiculos = $("#box-mobile-filtragem")[0];
         
         var botaoNotificacoes = $("#icone-notificacao")[0];
         var painelNotificacoes = $("#box-menu-notificacoes")[0];
@@ -547,11 +547,11 @@ $(document).ready(function() {
     function inicializarMenusDesktop() {
         //Inicializa os menus desktop e seus respectivos botoes de ativacao
 
-        var botaoFiltragemVeiculosDesktop = document.getElementById("desktop-botao-filtragem");
-        var painelFiltragemVeiculos = document.getElementById("box-mobile-filtragem");
+        var botaoFiltragemVeiculosDesktop = $("#desktop-botao-filtragem")[0];
+        var painelFiltragemVeiculos = $("#box-mobile-filtragem")[0];
 
-        var botaoMenuPerfil = document.getElementById("imagem-perfil").getElementsByTagName("img")[0];
-        var painelMenuPerfil = document.getElementById("box-menu-usuario"); 
+        var botaoMenuPerfil = $("#imagem-perfil img")[0];
+        var painelMenuPerfil = $("#box-menu-usuario")[0];
         
         var botaoNotificacoes = $("#icone-notificacao")[0];
         var painelNotificacoes = $("#box-menu-notificacoes")[0];                

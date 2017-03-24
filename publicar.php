@@ -9,84 +9,7 @@
     </head>
     <body>
         <div id="container">
-            <header>
-                <div id="box-cabecalho">
-                    <div id="mobile-botao-menu"></div>
-                    <div id="menu-navegacao">
-                        <ul>
-                            <li class="botao-menu"><a href="index.html">Home</a></li>
-                            <li class="botao-menu"><a href="alugue.html">Alugue</a></li>
-                            <li class="botao-menu"><a href="empreste.html">Empreste</a></li>
-                            <li class="botao-menu"><a href="contato.html">Contato</a></li>
-                        </ul>
-                    </div>
-                    <div id="box-conta">
-                        <span id="icone-notificacao"></span>
-                        <div id="imagem-perfil">                            
-                            <img src="img/link_face.jpg" />
-                        </div>
-                        <div id="box-info-usuario">
-                            <p id="nome-usuario">Nome do Usuario</p>
-                            <a id="botao-logout" href="#">Sair</a>
-                        </div>
-                    </div>
-                    <div class="js-popup-painel" id="box-menu-usuario">
-                        <ul id="menu-usuario">
-                            <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Configurações</a></li>
-                            <li><a href="#">Sair</a></li>
-                        </ul>
-                    </div>
-                    <!-- MENU DE USUÁRIO -->
-                    <section class="js-popup-painel" id="box-menu-notificacoes">
-                        <h1 id="titulo-box-notificacoes">Notificações</h1>
-                        <section class="box-notificacao">
-                            <a href="#">
-                                <img class="icone-notificacao" />
-                                <div class="info-notificacao">
-                                    <h1 class="titulo-notificacao">Titulo</h1>
-                                    <p class="conteudo-notificacao">                                    
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue ante at magna pellentesque fringilla. Nam placerat dictum turpis ac pellentesque. Aenean et ligula a nibh tristique ultricies et eu sem. Ut turpis mi, tincidunt id gravida sed, porttitor eu erat. Cras eleifend maximus egestas. Maecenas eget ultrices nibh. Aliquam vitae semper arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In vel facilisis nulla. Fusce a sem mi. Ut eget tincidunt dolor, eu dictum risus. Nullam volutpat suscipit auctor. Vestibulum vel sem elit. Donec et purus egestas, egestas augue in, molestie dui. Vivamus ut varius felis.
-                                    </p>
-                                </div>
-                            </a>
-                        </section>
-                        <section class="box-notificacao">
-                            <a href="#">
-                                <img class="icone-notificacao" />
-                                <div class="info-notificacao">
-                                    <h1 class="titulo-notificacao">Titulo</h1>
-                                    <p class="conteudo-notificacao">                                    
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue ante at magna pellentesque fringilla. Nam placerat dictum turpis ac pellentesque. Aenean et ligula a nibh tristique ultricies et eu sem. Ut turpis mi, tincidunt id gravida sed, porttitor eu erat. Cras eleifend maximus egestas. Maecenas eget ultrices nibh. Aliquam vitae semper arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In vel facilisis nulla. Fusce a sem mi. Ut eget tincidunt dolor, eu dictum risus. Nullam volutpat suscipit auctor. Vestibulum vel sem elit. Donec et purus egestas, egestas augue in, molestie dui. Vivamus ut varius felis.
-                                    </p>
-                                </div>
-                            </a>
-                        </section>
-                        <section class="box-notificacao">
-                            <a href="#">
-                                <img class="icone-notificacao" />
-                                <div class="info-notificacao">
-                                    <h1 class="titulo-notificacao">Titulo</h1>
-                                    <p class="conteudo-notificacao">                                    
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue ante at magna pellentesque fringilla. Nam placerat dictum turpis ac pellentesque. Aenean et ligula a nibh tristique ultricies et eu sem. Ut turpis mi, tincidunt id gravida sed, porttitor eu erat. Cras eleifend maximus egestas. Maecenas eget ultrices nibh. Aliquam vitae semper arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In vel facilisis nulla. Fusce a sem mi. Ut eget tincidunt dolor, eu dictum risus. Nullam volutpat suscipit auctor. Vestibulum vel sem elit. Donec et purus egestas, egestas augue in, molestie dui. Vivamus ut varius felis.
-                                    </p>
-                                </div>
-                            </a>
-                        </section>
-                    </section>
-                    <!-- MENU DE NOTIFICACOES --> 
-                </div>
-            </header>            
-            <!-- CABEÇALHO -->
-            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
-                <ul id="mobile-menu">
-                    <li><a class="preset-botao" href="#">HOME</a></li>
-                    <li><a class="preset-botao" href="#">ALUGUE</a></li>
-                    <li><a class="preset-botao" href="#">EMPRESTE</a></li>
-                    <li><a class="preset-botao" href="#">CONTATO</a></li>                    
-                </ul>
-            </div>
-            <!-- MENU DE PAGINAS - MOBILE -->
+            <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-publicar">
                 <form>
                     <div class="box-conteudo">
@@ -220,24 +143,7 @@
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>
-        <footer>
-            <div id="box-rodape">
-                <section id="box-mapa-site">
-                    <h1>Mapa do Site</h1>
-                    <ul id="lista-paginas">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="alugue.html">Alugue</a></li>
-                        <li><a href="empreste.html">Empreste</a></li>
-                        <li><a href="projeto.html">Sobre o Projeto</a></li>
-                        <li><a href="beneficios.html">Benefícios do Projeto</a></li>
-                        <li><a href="empresa.html">A Empresa</a></li>
-                        <li><a href="contato.html">Contato</a></li>
-                    </ul>
-                </section>
-                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
-            </div>
-        </footer>
-        <!-- RODAPÉ -->
+        <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
         <script src="js/script.js"></script>
     </body>

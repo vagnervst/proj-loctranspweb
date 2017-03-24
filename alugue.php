@@ -9,51 +9,8 @@
     </head>
     <body>
         <div id="container">
-            <header>
-                <div id="box-cabecalho">
-                    <div id="mobile-botao-menu"></div>
-                    <div id="mobile-botao-filtragem-ativo"></div>
-                    <!-- BOTAO FILTRAGEM DE VEÍCULOS MOBILE -->                    
-                    <div id="desktop-botao-filtragem"></div>
-                    <!-- BOTAO FILTRAGEM DE VEÍCULOS DESKTOP -->                    
-                    <div id="menu-navegacao">
-                        <ul>
-                            <li class="botao-menu"><a href="index.html">Home</a></li>
-                            <li class="botao-menu"><a href="alugue.html">Alugue</a></li>
-                            <li class="botao-menu"><a href="empreste.html">Empreste</a></li>
-                            <li class="botao-menu"><a href="contato.html">Contato</a></li>
-                        </ul>
-                    </div>
-                    <div id="box-conta">
-                        <a href="#"><div id="icone-notificacao"></div></a>                
-                        <div id="imagem-perfil">                            
-                            <img src="img/link_face.jpg" />
-                        </div>
-                        <div id="box-info-usuario">
-                            <p id="nome-usuario">Nome do Usuario</p>
-                            <a id="botao-logout" href="#">Sair</a>
-                        </div>
-                    </div>
-                    <div class="js-popup-painel" id="box-menu-usuario">
-                        <ul id="menu-usuario">
-                            <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Configurações</a></li>
-                            <li><a href="#">Sair</a></li>
-                        </ul>
-                    </div>
-                    <!-- MENU DE USUÁRIO -->
-                </div>
-            </header>            
-            <!-- CABEÇALHO -->
-            <div class="js-popup-painel painel-mobile" id="box-mobile-menu">
-                <ul id="mobile-menu">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ALUGUE</a></li>
-                    <li><a href="#">EMPRESTE</a></li>
-                    <li><a href="#">CONTATO</a></li>                    
-                </ul>
-            </div>
-            <!-- MENU DE PAGINAS - MOBILE -->
+            <?php $contexto = "alugue"; ?>
+            <?php require_once("layout/header.php"); ?>
             <section class="js-popup-painel painel-mobile" id="box-mobile-filtragem">
                 <h1 id="titulo">Filtragem</h1>
                 <form method="post" action="#">                    
