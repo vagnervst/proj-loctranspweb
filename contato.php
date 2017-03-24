@@ -1,5 +1,19 @@
+<?php
+    $contatoSubmit = ( isset($_POST["contatoSubmit"]) )? $_POST["contatoSubmit"] : null;
+    if( isset( $contatoSubmit ) ) {
+        $nome = isset( $_POST["txtNome"] )? $_POST["txtNome"] : null;
+        $email = isset( $_POST["txtEmail"] )? $_POST["txtEmail"] : null;
+        $assunto = isset( $_POST["slAssunto"] )? $_POST["slAssunto"] : null;
+        $mensagem = isset( $_POST["txtaMensagem"] )? $_POST["txtaMensagem"] : null;
+        
+        echo $nome . "<br/>";
+        echo $email . "<br/>";
+        echo $assunto . "<br/>";
+        echo $mensagem . "<br/>";
+    }
+?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <title>Contato | City Share</title>
         <meta name="viewport" content="width=device-width"/>
@@ -66,33 +80,36 @@
                             CEP 04376-002 - São Paulo/SP</p>
                         </div>
                         <div id="container-form-contato">
-                            <form name="form-contato" action="#">
-                            <section class="box-contato">
-                                <div class="label-input-contato">
-                                    <label class="label-contato">Nome*:
-                                        <input class="text-input preset-input-text" type="text" placeholder="Digite seu nome"/>        
-                                    </label>
-                                </div>
-                                <div class="label-input-contato">
-                                    <label class="label-contato">E-mail*:
-                                        <input class="text-input preset-input-text" type="text" placeholder="Digite seu e-mail"/>
-                                    </label>
-                                </div>
-                                <div class="label-input-contato">
-                                    <label class="label-contato">Assunto*:
-                                        <select class="select-input preset-input-select">
-                                            <option selected disabled>Escolha um assunto</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="label-input-contato">
-                                    <label class="label-contato">Mensagem*:
-                                        <textarea class="text-area-input preset-input-textarea" rows="5" cols="40" placeholder="Digite sua mensagem..."></textarea>
-                                    </label>
-                                </div>
-                                <input class="button-link preset-input-submit" type="submit" value="Enviar"/>
-                            </section>
-                        </form>
+                            <form method="post" action="contato.php">
+                                <section class="box-contato">
+                                    <div class="label-input-contato">
+                                        <label class="label-contato">Nome*:
+                                            <input class="text-input preset-input-text" type="text" name="txtNome" placeholder="Digite seu nome"/>        
+                                        </label>
+                                    </div>
+                                    <div class="label-input-contato">
+                                        <label class="label-contato">E-mail*:
+                                            <input class="text-input preset-input-text" type="text" name="txtEmail" placeholder="Digite seu e-mail"/>
+                                        </label>
+                                    </div>
+                                    <div class="label-input-contato">
+                                        <label class="label-contato">Assunto*:
+                                            <select class="select-input preset-input-select" name="slAssunto">                                                
+                                                <option selected disabled>Escolha um assunto</option>
+                                                <?php for($i = 0; $i < 10; ++$i) { ?>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="label-input-contato">
+                                        <label class="label-contato">Mensagem*:
+                                            <textarea class="text-area-input preset-input-textarea" rows="5" cols="40" name="txtaMensagem" placeholder="Digite sua mensagem..."></textarea>
+                                        </label>
+                                    </div>
+                                    <input class="button-link preset-input-submit" type="submit" name="contatoSubmit" value="Enviar"/>
+                                </section>
+                            </form>
                         </div>
                     </section>
                 </div>
