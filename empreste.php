@@ -10,7 +10,7 @@
     <body>
         <div id="container">
             <?php require_once("layout/header.php"); ?>
-            <div class="main" id="pag-home">
+            <div class="main" id="pag-empreste">
                 <div class="imagem-divisao-conteudo imagem-principal"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">

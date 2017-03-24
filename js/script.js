@@ -264,6 +264,8 @@ $(document).ready(function() {
         for( var i = 1; i < etapas.length; ++i ) {
             ocultarEtapa( etapas[i], 200 );
         }
+        
+        $(boxFormularioCadastro).find(".botao-foto").css("background-image", "url(img/icones/icone-imagem.png)");
     }
     
     function executarTransicaoFormulario(listaFormCadastro) {
@@ -322,11 +324,23 @@ $(document).ready(function() {
         });
     }
     
+    function inicializarBotaoSelecaoImagem() {
+        var botaoFotoFisico = $("#botao-foto-fisico")[0];
+        var fileInputFisico = $("#input-foto-fisico")[0];
+        
+        var botaoFotoJuridico = $("#botao-foto-juridico")[0];
+        var fileInputJuridico = $("#input-foto-juridico")[0];
+        
+        definirBotaoSelecaoImagem(botaoFotoFisico, fileInputFisico);
+        definirBotaoSelecaoImagem(botaoFotoJuridico, fileInputJuridico);
+    }
+    
     function inicializarEtapasCadastro() {
         //Inicializa as sessoes de cadastro de usuario fisico e juridico
         var paginaCadastro = $("#pag-cadastro")[0];
 
         if( paginaCadastro != undefined ) {
+            inicializarBotaoSelecaoImagem();
             inicializarBotoesTipoConta();
             
             var boxSessaoCadastroFisico = $("#container-cadastro-fisico")[0];
@@ -479,6 +493,33 @@ $(document).ready(function() {
         }
     }        
     
+    function definirBotaoSelecaoImagem(botao, inputFile, label = undefined) {
+        $(botao).click(function() {            
+            inputFile.click();
+
+            $(inputFile).change(function() {            
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $(this).attr("src", e.target.result);
+                }
+
+                reader.onloadend = function(e) {
+                    if( reader.readyState === 2 ) {
+                        $(botao).css("background-image", "url(" + reader.result + ")");
+                        
+                        if(label !== undefined) {
+                            label.innerHTML = "Definido";
+                            $(label).css("background-color", "#8CC955");        
+                        }
+                    }
+                }
+
+                reader.readAsDataURL( this.files[0] );                    
+            });
+        });
+    }
+    
     function inicializarSelecionadorImagensVeiculo() {
         var paginaPublicacao = $("#pag-publicar")[0];
         
@@ -489,31 +530,11 @@ $(document).ready(function() {
             var inputImagens = $(containerImagensVeiculo).find("#file-inputs .imagem-input");
 
             for( var i = 0; i < botoesImagem.length; ++i ) {
-                $(botoesImagem[i]).click(function() {
-                    var fileInput = inputImagens[ $(botoesImagem).index(this) ];
-                    fileInput.click();
-
-                    $(fileInput).change(function() {
-                        var botaoImagem = botoesImagem[ $(inputImagens).index(this) ];
-
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $(this).attr("src", e.target.result);
-                        }
-
-                        reader.onloadend = function(e) {
-                            if( reader.readyState === 2 ) {
-                                $(botaoImagem).css("background-image", "url(" + reader.result + ")");
-                                
-                                var label = $(botaoImagem.parentNode).children(".label")[0];
-                                label.innerHTML = "Definido";
-                                $(label).css("background-color", "#8CC955");                                
-                            }
-                        }
-
-                        reader.readAsDataURL( this.files[0] );                    
-                    });
-                });
+                var botaoImagem = botoesImagem[i];                
+                var fileInput = inputImagens[ $(botoesImagem).index(botaoImagem) ];
+                var label = $(botoesImagem[i].parentNode).children(".label")[0];
+                
+                definirBotaoSelecaoImagem(botaoImagem, fileInput, label);
             }
         }
     }
@@ -582,6 +603,7 @@ $(document).ready(function() {
     }
     
     $('.faq').click(function (){
+        console.log(this);
         $(this).find('.faq-answer').slideToggle('fast');
     });
 });

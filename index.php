@@ -23,7 +23,8 @@
                             Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!<br>
                             <br>
                             Cadastre-se agora e comece a usar o nosso sistema!
-                        </p>
+                            <span class="botao-exibir-mais"><a href="projeto.php">Ler mais</a></span>
+                        </p>                        
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo"></div>
@@ -42,7 +43,7 @@
                             <h1 class="nome-locador">Nome locador</h1>
                             <p class="localizacao-locador">Estado: SP</p>                        
                             <div class="box-avaliacoes">
-                                <p class="avaliacoes-locador">Avaliações: 41</p>                            
+                                <p class="avaliacoes-locador">Avaliações: 41</p>
                                 <div class="container-icone-avaliacoes">
                                     <div class="icone-avaliacao"></div>
                                     <div class="icone-avaliacao"></div>
@@ -66,10 +67,8 @@
                             <br>
                             - O Sistema dinâmico permite que o veículo seja alugado em questão de minutos;<br>
                             <br>
-                            - Pague somente pelo uso e não pela propriedade do carro.<br>
-                            <br>
-                            <br>
-                            Veja mais alguns dos benefícios aqui.
+                            - Pague somente pelo uso e não pela propriedade do carro.<br>                                                        
+                            <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais</a></span>
                         </p>
                     </section>
                 </div>
@@ -79,7 +78,8 @@
                         <h1 class="titulo-apresentacao">Sobre a Empresa</h1>
                         <p class="texto-apresentacao">
                             A empresa “City Share” é uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o território nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar três, que são eles: Bicicletários,  Miniparques em vagas de rua e Espaços de convivência, gastronomia e arte. 
-                        </p>
+                            <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais</a></span>
+                        </p>                        
                     </section>
                 </div>
             </div>

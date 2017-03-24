@@ -1,5 +1,13 @@
+<?php
+    $login = ( isset($_POST["submitLogin"]) )? $_POST["submitLogin"] : null;
+
+    if( !empty($login) ) {
+        $email = ( $_POST["txtEmail"] )? $_POST["txtEmail"] : null;
+        $senha = ( $_POST["txtSenha"] )? $_POST["txtSenha"] : null;                
+    }
+?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <title>Home | City Share</title>
         <meta name="viewport" content="width=device-width" />
@@ -13,18 +21,18 @@
             <div class="main" id="pag-login">
                 <div class="imagem-divisao-conteudo imagem-principal"></div>
                 <div id="box-login">
-                    <form method="post" action="#">
+                    <form method="post" action="login.php">
                         <div class="label-input">
                             <label><span class="label">Email</span>
-                                <input class="preset-input-text input" type="text"/>
+                                <input class="preset-input-text input" type="text" name="txtEmail" />
                             </label>
                         </div>
                         <div class="label-input">
                             <label><span class="label">Senha</span>
-                                <input class="preset-input-text input" type="text"/>
+                                <input class="preset-input-text input" type="password" name="txtSenha" />
                             </label>
                         </div>
-                        <input class="preset-input-submit" id="botao-entrar" type="submit" value="Entrar"/>
+                        <input class="preset-input-submit" id="botao-entrar" type="submit" name="submitLogin" value="Entrar"/>
                     </form>
                 </div>
             </div>
