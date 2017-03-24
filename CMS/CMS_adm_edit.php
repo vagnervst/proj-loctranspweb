@@ -39,7 +39,29 @@
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_adm.php" class="link-caminho" >Administradores</a> > <a href="#" class="link-caminho" >Editar/Novo</a>
                 </div>
                 <div class="box-conteudo">
-                    <div>
+                    <div class="container-campos">
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Nome</label>
+                            <input type="text" class="input-pagina">
+                        </div>
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Usuário</label>
+                            <input type="text" class="input-pagina">
+                        </div>
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Senha</label>
+                            <input type="text" class="input-pagina">
+                        </div>
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Nível de Autentificação</label>
+                            <select>
+                                <option>Adm</option>
+                            </select>
+                        </div>
+                        <div class="box-botao">
+                            <input type="submit" class="preset-input-submit" value="Salvar">
+                            <input type="submit" class="preset-input-submit" value="Remover">
+                        </div>
                     </div>
                 </div>
             </div>
