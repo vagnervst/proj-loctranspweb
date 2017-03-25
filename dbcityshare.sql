@@ -402,13 +402,11 @@ DROP TABLE IF EXISTS `tbl_empreste`;
 CREATE TABLE `tbl_empreste` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(70) NOT NULL,
-  `descricao` varchar(200) NOT NULL,
+  `descricao` varchar(800) NOT NULL,
   `imagemA` varchar(50) DEFAULT NULL,
   `tituloA` varchar(70) NOT NULL,
-  `previaImagem` varchar(50) DEFAULT NULL,
-  `previaTexto` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -417,6 +415,7 @@ CREATE TABLE `tbl_empreste` (
 
 LOCK TABLES `tbl_empreste` WRITE;
 /*!40000 ALTER TABLE `tbl_empreste` DISABLE KEYS */;
+INSERT INTO `tbl_empreste` VALUES (1,'Quer lucrar com seu veÃ­culo?','Lucrar com seu veÃ­culo aqui na City Share Ã© fÃ¡cil e prÃ¡tico, nosso sistema foi desenvolvido especialmente para facilitar esse processo para vocÃª usuÃ¡rio, mas tenha em mente que existem tambÃ©m critÃ©rios a serem seguidos. Entenda melhor o processo de cadastro.','logo\\_eita\\_2.jpg','Como funciona?');
 /*!40000 ALTER TABLE `tbl_empreste` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1111,7 +1110,7 @@ CREATE TABLE `tbl_sobreprojeto` (
   `previaTexto` varchar(200) NOT NULL,
   `previaImagem` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1120,6 +1119,7 @@ CREATE TABLE `tbl_sobreprojeto` (
 
 LOCK TABLES `tbl_sobreprojeto` WRITE;
 /*!40000 ALTER TABLE `tbl_sobreprojeto` DISABLE KEYS */;
+INSERT INTO `tbl_sobreprojeto` VALUES (1,'weqwe','','logo city share v2.jpg','paleta de cores.jpg','qweq','qweqwe','qweqwe','logo prototipo.jpg');
 /*!40000 ALTER TABLE `tbl_sobreprojeto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1436,4 +1436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-25  5:12:18
+-- Dump completed on 2017-03-25 20:22:05
