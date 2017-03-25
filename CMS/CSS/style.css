@@ -318,8 +318,7 @@ header #box-cabecalho #box-conta #botao-logout{
 .box-conteudo {
     width: 870px;
     height: 100%;
-    float: left ; 
-    overflow: auto;
+    float: left ;
 }
 
 .box-conteudo .box-conteudo-menu {
@@ -344,49 +343,6 @@ header #box-cabecalho #box-conta #botao-logout{
     text-align: center;
     color: white;    
 }
-.box-conteudo .box-usuario{
-    width: 260px;
-    height: 150px;
-    float: left;
-    background-color: #e2e2e2;
-    margin: 5px;
-    border-radius: 0px 0px 2px 2px;
-    padding: 5px;
-}
-.box-conteudo .box-usuario .nome-usuario{
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    text-align: center ;
-    border-bottom: solid 2px ;
-    
-}
-.box-conteudo .box-usuario .cont-usuario{
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-}
-.box-conteudo #box-pesquisa{
-    margin-bottom: 20px;
-    
-}
-.box-conteudo #box-pesquisa #search {
-    height: 30px;
-    width: 700px;
-    border-radius: 8px;
-    border: 0 ;
-    background-color: none ;
-    margin-left: 10px;
-}
-.box-conteudo #box-pesquisa #btn-pesquisar {
-    height: 30px;
-    width: 70px;
-    border-radius: 8px;
-    border: 0 ;
-    background-color: #c2c2c2 ;
-    margin-left: 10px;
-}
-
 .box-conteudo .box-conteudo-menu .titulo-conteudo-menu a{
     color: white;
     font-size: 16px;
@@ -1045,6 +1001,54 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 40px;
     float: right;
     margin-right: 25px;
+}
+/***************CLIENTES*******************/
+
+#pag-clientes-usuarios .box-conteudo {
+    height: 830px;
+    overflow: auto;
+}
+#pag-clientes-usuarios .box-conteudo .box-usuario{
+    width: 260px;
+    height: 150px;
+    float: left;
+    background-color: #e2e2e2;
+    margin: 5px;
+    border-radius: 0px 0px 2px 2px;
+    padding: 5px;
+}
+#pag-clientes-usuarios .box-conteudo .box-usuario .nome-usuario{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center ;
+    border-bottom: solid 2px ;
+    
+}
+#pag-clientes-usuarios .box-conteudo .box-usuario .cont-usuario{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+#pag-clientes-usuarios #box-pesquisa{
+    margin-bottom: 20px;
+    
+}
+#pag-clientes-usuarios #box-pesquisa #search {
+    height: 30px;
+    width: 700px;
+    border-radius: 8px;
+    border: 0 ;
+    background-color: none ;
+    margin-left: 10px;
+}
+#pag-clientes-usuarios #box-pesquisa #btn-pesquisar {
+    height: 30px;
+    width: 70px;
+    border-radius: 8px;
+    border: 0 ;
+    background-color: #c2c2c2 ;
+    margin-left: 10px;
 }
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
