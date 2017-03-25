@@ -10,8 +10,6 @@
             public $descricao;
             public $imagemA;
             public $tituloA;
-            public $previaImagem;
-            public $previaTexto;
         }
         
     }

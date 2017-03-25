@@ -1,3 +1,13 @@
+<?php
+    require_once("include/initialize.php");
+    
+    $dadosEmpreste = new \Tabela\Empreste();
+    $buscaDados = $dadosEmpreste->buscar("id = 1");
+    
+    if( !empty($buscaDados[0]) ) $dadosEmpreste = $buscaDados[0]; 
+    
+    $pasta_imagens = "img/uploads/conteudo/empreste";
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -14,17 +24,15 @@
                 <div class="imagem-divisao-conteudo imagem-principal"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
-                        <h1 class="titulo-apresentacao">Quer lucrar com seu veículo?</h1>                        
-                        <p class="texto-apresentacao">
-                            Lucrar com seu veículo aqui na City Share é fácil e prático, nosso sistema foi desenvolvido especialmente para facilitar esse processo para você usuário, mas tenha em mente que existem também critérios a serem seguidos. Entenda melhor o processo de cadastro.
-                        </p>                        
+                        <h1 class="titulo-apresentacao"><?php echo $dadosEmpreste->titulo; ?></h1>                        
+                        <p class="texto-apresentacao"><?php echo $dadosEmpreste->descricao; ?></p>                        
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
-                        <h1 class="titulo-apresentacao">Como funciona?</h1>
-                        <img class="imagem-apresentacao" src="img/image_teste.jpg" />
+                        <h1 class="titulo-apresentacao"><?php echo $dadosEmpreste->tituloA; ?></h1>
+                        <img class="imagem-apresentacao" src="<?php echo File::read($dadosEmpreste->imagemA, $pasta_imagens); ?>" />
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo"></div>

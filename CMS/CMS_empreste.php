@@ -13,33 +13,21 @@
         $descricao = ( isset($_POST["txtDescricao"]) )? $_POST["txtDescricao"] : null;
         $tituloA = ( isset($_POST["txtTituloA"]) )? $_POST["txtTituloA"] : null;
         $imagemA = ( isset($_FILES["imagemA"]) )? $_FILES["imagemA"] : null;
-        $imagemPrevia = ( isset($_FILES["imagemPrevia"]) )? $_FILES["imagemPrevia"] : null;
-        $previaTexto = ( isset($_POST["txtPreviaTexto"]) )? $_POST["txtPreviaTexto"] : null;
         
         $listaRequiredInputs = [];
         $listaRequiredInputs[] = $titulo;
         $listaRequiredInputs[] = $descricao;
-        $listaRequiredInputs[] = $tituloA;        
-        $listaRequiredInputs[] = $previaTexto;                
+        $listaRequiredInputs[] = $tituloA;                
         
-        $listaInput = [];
-        $listaInput[] = $imagemA;
-        $listaInput[] = $imagemPrevia;
-        
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ) {
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) ) {
             $objEmpreste = new \Tabela\Empreste();            
             
             $objEmpreste->titulo = $titulo;
             $objEmpreste->descricao = $descricao;
             $objEmpreste->tituloA = $tituloA;
-            $objEmpreste->previaTexto = $previaTexto;
                                                    
             if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosEmpreste->imagemA, $upload_dir ) ) {
                 $objEmpreste->imagemA = $imagemA["name"];
-            }
-
-            if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosEmpreste->previaImagem, $upload_dir ) ) {
-                $objEmpreste->previaImagem = $imagemPrevia["name"];
             }
             
             if( empty($dadosEmpreste) )                 
@@ -99,17 +87,7 @@
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Sobre o Projeto</a>
                 </div>
                 <form action="CMS_empreste.php" method="post" enctype="multipart/form-data">
-                    <div class="box-conteudo">
-                        <p class="titulo-sessao">Prévia</p>
-                        <div id="container-previa">
-                            <div class="box-input-imagem">
-                                <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosEmpreste->previaImagem, $upload_dir); ?>)"></span>
-                                <input class="input" type="file" name="imagemPrevia" />
-                            </div>
-                            <div id="box-texto-previa">
-                                <textarea id="input-previa" name="txtPreviaTexto" placeholder="Texto previa"><?php echo $dadosEmpreste->previaTexto; ?></textarea>
-                            </div>
-                        </div>
+                    <div class="box-conteudo">                        
                         <p class="titulo-sessao">Página</p>
                         <div id="container-pagina">
                             <p class="titulo-conteudo">Título do Conteúdo</p>
