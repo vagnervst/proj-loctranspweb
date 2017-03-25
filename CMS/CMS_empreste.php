@@ -1,3 +1,63 @@
+<?php
+    require_once("../include/initialize.php");
+    $dadosEmpreste = new \Tabela\Empreste();
+    $buscaDados = $dadosEmpreste->buscar("id = 1");
+    
+    if( !empty($buscaDados[0]) ) $dadosEmpreste = $buscaDados[0];    
+
+    $formSubmit = ( isset($_POST["formSubmit"]) )? $_POST["formSubmit"] : null;
+    
+    $upload_dir = "../img/uploads/conteudo/empreste";
+    if( !empty($formSubmit) ) {        
+        $titulo = ( isset($_POST["txtTitulo"]) )? $_POST["txtTitulo"] : null;
+        $descricao = ( isset($_POST["txtDescricao"]) )? $_POST["txtDescricao"] : null;
+        $tituloA = ( isset($_POST["txtTituloA"]) )? $_POST["txtTituloA"] : null;
+        $imagemA = ( isset($_FILES["imagemA"]) )? $_FILES["imagemA"] : null;
+        $imagemPrevia = ( isset($_FILES["imagemPrevia"]) )? $_FILES["imagemPrevia"] : null;
+        $previaTexto = ( isset($_POST["txtPreviaTexto"]) )? $_POST["txtPreviaTexto"] : null;
+        
+        $listaRequiredInputs = [];
+        $listaRequiredInputs[] = $titulo;
+        $listaRequiredInputs[] = $descricao;
+        $listaRequiredInputs[] = $tituloA;        
+        $listaRequiredInputs[] = $previaTexto;                
+        
+        $listaInput = [];
+        $listaInput[] = $imagemA;
+        $listaInput[] = $imagemPrevia;
+        
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ) {
+            $objEmpreste = new \Tabela\Empreste();            
+            
+            $objEmpreste->titulo = $titulo;
+            $objEmpreste->descricao = $descricao;
+            $objEmpreste->tituloA = $tituloA;
+            $objEmpreste->previaTexto = $previaTexto;
+                                                   
+            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosEmpreste->imagemA, $upload_dir ) ) {
+                $objEmpreste->imagemA = $imagemA["name"];
+            }
+
+            if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosEmpreste->previaImagem, $upload_dir ) ) {
+                $objEmpreste->previaImagem = $imagemPrevia["name"];
+            }
+            
+            if( empty($dadosEmpreste) )                 
+            {                
+                echo "INSERT";
+                $objEmpreste->inserir();
+            } 
+            else 
+            {
+                echo "UPDATE";
+                $objEmpreste->id = 1;
+                $objEmpreste->atualizar();
+            }            
+        }
+        
+        redirecionar_para("CMS_empreste.php");
+    }
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -38,16 +98,16 @@
                 <div id="box-caminho">
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Sobre o Projeto</a>
                 </div>
-                <form action="#" method="post">
+                <form action="CMS_empreste.php" method="post" enctype="multipart/form-data">
                     <div class="box-conteudo">
                         <p class="titulo-sessao">Prévia</p>
                         <div id="container-previa">
                             <div class="box-input-imagem">
-                                <span class="botao-imagem conteudo-image" id="box-img-previa"></span>
-                                <input class="input" type="file" name="imagemA" />
+                                <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosEmpreste->previaImagem, $upload_dir); ?>)"></span>
+                                <input class="input" type="file" name="imagemPrevia" />
                             </div>
                             <div id="box-texto-previa">
-                                <textarea id="input-previa" placeholder="Texto previa"></textarea>
+                                <textarea id="input-previa" name="txtPreviaTexto" placeholder="Texto previa"><?php echo $dadosEmpreste->previaTexto; ?></textarea>
                             </div>
                         </div>
                         <p class="titulo-sessao">Página</p>
@@ -55,12 +115,12 @@
                             <p class="titulo-conteudo">Título do Conteúdo</p>
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Título</label>
-                                <input type="text" class="input-pagina">
+                                <input class="input-pagina" type="text" name="txtTitulo" value="<?php echo $dadosEmpreste->titulo; ?>">
                             </div>
                             <div class="box-conteudo-pagina">
                                 <div class="conteudo-texto">
                                     <label class="titulo-input">Descrição</label>
-                                    <textarea></textarea>
+                                    <textarea name="txtDescricao"><?php echo $dadosEmpreste->descricao; ?></textarea>
                                 </div>
                             </div>
                             <p class="titulo-conteudo">Título do Conteúdo</p>
@@ -68,16 +128,16 @@
                                 <div class="conteudo-texto-2">
                                     <div class="box-input-pagina">
                                         <label class="titulo-input">Título</label>
-                                        <input type="text" class="input-pagina">
+                                        <input class="input-pagina" type="text" name="txtTituloA" value="<?php echo $dadosEmpreste->tituloA; ?>">
                                     </div>
                                 </div>
                                 <div class="box-input-imagem">
-                                    <span class="botao-imagem conteudo-image" id="box-img-previa"></span>
+                                    <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosEmpreste->imagemA, $upload_dir); ?>)"></span>
                                     <input class="input" type="file" name="imagemA" />
                                 </div>
                             </div>
                             <div class="box-botao">
-                                <input type="submit" class="preset-input-submit" value="Salvar">
+                                <input class="preset-input-submit" type="submit" name="formSubmit" value="Salvar">
                             </div>
                         </div>
                     </div>
