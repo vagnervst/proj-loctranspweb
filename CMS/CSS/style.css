@@ -375,22 +375,14 @@ header #box-cabecalho #box-conta #botao-logout{
     text-align: center;
 }
 .box-conteudo #container-previa{
-    height: 150px;
+    height: 250px;
     width: 850px;
     margin: 10px auto;
     padding: 5px;    
 }
-.box-conteudo #container-previa #box-img-previa {
-    background-color: azure ;
-    width: 350px;
-    height: 250px;
-    border-radius: 15px;
-    float: left;
-
-}
 .box-conteudo #container-previa #box-texto-previa {
-    width: 470px;
-    height: 145px;
+    width:470px;
+    height: 235px;
     float: left;
     text-align: justify;
 }
@@ -403,8 +395,8 @@ header #box-cabecalho #box-conta #botao-logout{
     margin: 0px 10px;
 }
 .box-conteudo #container-previa #input-previa{
-    height: 130px;
-    width: 825px;
+    height: 230px;
+     width: 470px;
     resize: none;
     margin: 5px 10px;
 }
@@ -454,6 +446,12 @@ header #box-cabecalho #box-conta #botao-logout{
     width: 250px;
     height: 180px;
     margin: 10px 5px;    
+    float: left;
+}
+.box-conteudo #container-previa .conteudo-image {
+    width: 350px;
+    height: 230px;
+    margin: 5px 5px;    
     float: left;
 }
 
