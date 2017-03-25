@@ -95,8 +95,9 @@
                         <input class="preset-input-submit " id="botao-pesquisa" type="submit" value="Buscar" />
                     </div>
                     <div id="lista-veiculos">
+                        <?php for($i = 0; $i < 10; ++$i) { ?>
                         <section class="box-veiculo">
-                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
+                            <a href="veiculo.php"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
                             <div class="box-info-veiculo">                                
                                 <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
                                 <div class="box-valor-diaria">
@@ -122,114 +123,7 @@
                                 </div>
                             </div>
                         </section>
-                        <section class="box-veiculo">
-                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
-                            <div class="box-info-veiculo">                                
-                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
-                                <div class="box-valor-diaria">
-                                    <p class="valor-diaria">R$00,00
-                                        <span class="label-diaria">diária</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="modelo-veiculo">Modelo do veículo</p>
-                            <div class="box-info-valores">
-                                <p class="valor-combustivel">Valor do Combustível</p>
-                                <p class="valor">R$00,00</p>
-                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
-                                <p class="valor">R$00,00</p>
-                            </div>
-                            <div class="box-avaliacoes">
-                                <div class="container-icone-avaliacoes">
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="box-veiculo">
-                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
-                            <div class="box-info-veiculo">                                
-                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
-                                <div class="box-valor-diaria">
-                                    <p class="valor-diaria">R$00,00
-                                        <span class="label-diaria">diária</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="modelo-veiculo">Modelo do veículo</p>
-                            <div class="box-info-valores">
-                                <p class="valor-combustivel">Valor do Combustível</p>
-                                <p class="valor">R$00,00</p>
-                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
-                                <p class="valor">R$00,00</p>
-                            </div>
-                            <div class="box-avaliacoes">
-                                <div class="container-icone-avaliacoes">
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="box-veiculo">
-                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
-                            <div class="box-info-veiculo">                                
-                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
-                                <div class="box-valor-diaria">
-                                    <p class="valor-diaria">R$00,00
-                                        <span class="label-diaria">diária</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="modelo-veiculo">Modelo do veículo</p>
-                            <div class="box-info-valores">
-                                <p class="valor-combustivel">Valor do Combustível</p>
-                                <p class="valor">R$00,00</p>
-                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
-                                <p class="valor">R$00,00</p>
-                            </div>
-                            <div class="box-avaliacoes">
-                                <div class="container-icone-avaliacoes">
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="box-veiculo">
-                            <img class="imagem-veiculo" src="img/image_teste.jpg" />
-                            <div class="box-info-veiculo">                                
-                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
-                                <div class="box-valor-diaria">
-                                    <p class="valor-diaria">R$00,00
-                                        <span class="label-diaria">diária</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="modelo-veiculo">Modelo do veículo</p>
-                            <div class="box-info-valores">
-                                <p class="valor-combustivel">Valor do Combustível</p>
-                                <p class="valor">R$00,00</p>
-                                <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
-                                <p class="valor">R$00,00</p>
-                            </div>
-                            <div class="box-avaliacoes">
-                                <div class="container-icone-avaliacoes">
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                </div>
-                            </div>
-                        </section>
+                        <?php } ?>                        
                     </div>
                     <div id="box-paginas">
                         <div id="box-botoes-mobile">

@@ -23,7 +23,7 @@
 
                 $statement = "";
                 for($i = 0; $i < count($propriedades); ++$i) {
-                    if( $propriedades[$i] != $this::$primary_key ) {
+                    if( $propriedades[$i] != $this::$primary_key && !empty($valores[$i]) ) {
                         $statement .= $propriedades[$i] . " = " . $this->preparar_valor($valores[$i]);
                         if( $i < count($propriedades)-1 ) $statement .= ", ";
                     }
@@ -166,9 +166,7 @@
 
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
-                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";
-                
-                echo $sql;
+                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                
                 
                 return $this->executarQuery($sql);
             }

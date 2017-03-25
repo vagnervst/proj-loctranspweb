@@ -84,14 +84,6 @@
                                         <textarea></textarea>
                                     </div>
                                 </div>
-                                <div class="box-conteudo-pagina">
-                                    <div class="conteudo-image">
-                                        <img src="Image/banner_test.jpg"/>
-                                    </div>
-                                    <div class="conteudo-texto">
-                                        <textarea></textarea>
-                                    </div>
-                                </div>
                             </div>
                             <div class="box-botao">
                                 <input type="submit" class="preset-input-submit" value="Salvar">

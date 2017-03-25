@@ -75,6 +75,18 @@ a {
     border-bottom: 4px solid #202020;    
 }
 
+.box-input-imagem .botao-imagem {
+    background-image: url(../image/banner_test.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.box-input-imagem .input {
+    display: none;
+}
+
 /*------------- PRESETS*/
 
 /*---- PAGINA DE LOGIN DO CMS ----*/
@@ -363,7 +375,7 @@ header #box-cabecalho #box-conta #botao-logout{
     text-align: center;
 }
 .box-conteudo #container-previa{
-    height:250px;
+    height: 150px;
     width: 850px;
     margin: 10px auto;
     padding: 5px;    
@@ -377,8 +389,8 @@ header #box-cabecalho #box-conta #botao-logout{
 
 }
 .box-conteudo #container-previa #box-texto-previa {
-    width:470px;
-    height: 235px;
+    width: 470px;
+    height: 145px;
     float: left;
     text-align: justify;
 }
@@ -391,8 +403,8 @@ header #box-cabecalho #box-conta #botao-logout{
     margin: 0px 10px;
 }
 .box-conteudo #container-previa #input-previa{
-    height: 230px;
-    width: 470px;
+    height: 130px;
+    width: 825px;
     resize: none;
     margin: 5px 10px;
 }
@@ -405,6 +417,7 @@ header #box-cabecalho #box-conta #botao-logout{
     padding: 5px;
     
 }
+
 .box-conteudo #container-pagina #box-texto {
     width:470px;
     height: 235px;
@@ -414,36 +427,37 @@ header #box-cabecalho #box-conta #botao-logout{
     padding-top: 15px;
     font-family: monospace;
 }
+
 .box-conteudo #container-pagina .box-input-pagina{
     width: inherit;
     height: 60px;
 }
-.box-conteudo #container-pagina .box-input-pagina .titulo-input{
+
+.box-conteudo #container-pagina .box-input-pagina .titulo-input {
     width: 100%;
     height: 20px;
     float: left;
 }
-.box-conteudo #container-pagina .box-input-pagina .input-pagina{
+
+.box-conteudo #container-pagina .box-input-pagina .input-pagina {
     width: 600px;
     height: 20px;
 }
-.box-conteudo #container-pagina .box-conteudo-pagina{
+
+.box-conteudo #container-pagina .box-conteudo-pagina {
     width: inherit;
     height: 200px;
     display: inline-block;
 }
-.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image{
+
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image {
     width: 250px;
     height: 180px;
-    margin: 10px 5px;
+    margin: 10px 5px;    
     float: left;
 }
-.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image img{
-    width: inherit;
-    height: inherit;
-    
-}
-.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto{
+
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto {
     width: 550px;
     height: 175px;
     margin-top: 10px;
@@ -451,22 +465,26 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-left: 5px;
     float: left;
 }
-.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea{
+
+.box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea {
     width: inherit;
     height: inherit;
     resize: none;
 }
-.box-conteudo #container-pagina .box-botao{
+
+.box-conteudo #container-pagina .box-botao {
     width: inherit;
     height: 50px;
     display: inline-block;
 }
-.box-conteudo #container-pagina .box-botao .preset-input-submit{
+
+.box-conteudo #container-pagina .box-botao .preset-input-submit {
     width: 100px;
     height: 40px;
     float: right;
     margin-right: 25px;
 }
+
 .box-conteudo #container-pagina #box-publicacoes{
     width: 100% ;
     height: 600px;
