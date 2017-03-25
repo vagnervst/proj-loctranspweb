@@ -27,7 +27,7 @@
                         <h1 class="titulo-empresa"><?php echo $dadosSobreEmpresa->tituloA; ?></h1>
                     </section>
                 </div>
-                <div class="logo-empresa" style="background-image: url(<?php echo File::read($dadosSobreEmpresa->imagemA, $pasta_imagens); ?>)"></div>
+                <img class="logo-empresa" src="<?php echo File::read($dadosSobreEmpresa->imagemA, $pasta_imagens); ?>" />
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao box-conteudo-empresa">                                                
                         <p class="texto-empresa"><?php echo $dadosSobreEmpresa->descricaoA; ?></p>
@@ -38,7 +38,7 @@
                         <h1 class="titulo-empresa"><?php echo $dadosSobreEmpresa->tituloB; ?></h1>                        
                     </section>
                 </div>
-                <div class="logo-empresa" style="background-image: url(<?php echo File::read($dadosSobreEmpresa->imagemB, $pasta_imagens); ?>)"></div>
+                <img class="logo-empresa" src="<?php echo File::read($dadosSobreEmpresa->imagemB, $pasta_imagens); ?>" />
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao box-conteudo-empresa">
                         <p class="texto-empresa"><?php echo $dadosSobreEmpresa->descricaoB; ?></p>

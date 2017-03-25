@@ -374,8 +374,9 @@ header #box-cabecalho #box-conta #botao-logout{
     border-top: 1px solid black;
     text-align: center;
 }
+
 .box-conteudo #container-previa{
-    height: 150px;
+    height:250px;
     width: 850px;
     margin: 10px auto;
     padding: 5px;    
@@ -389,8 +390,8 @@ header #box-cabecalho #box-conta #botao-logout{
 
 }
 .box-conteudo #container-previa #box-texto-previa {
-    width: 470px;
-    height: 145px;
+    width:470px;
+    height: 235px;
     float: left;
     text-align: justify;
 }
@@ -403,12 +404,13 @@ header #box-cabecalho #box-conta #botao-logout{
     margin: 0px 10px;
 }
 .box-conteudo #container-previa #input-previa{
-    height: 130px;
-    width: 825px;
+    height: 230px;
+    width: 470px;
     resize: none;
     margin: 5px 10px;
 }
-.box-conteudo #container-pagina{
+
+.box-conteudo #container-pagina {
     height:250px;
     width: 850px;
     margin-top: 20px;
@@ -502,11 +504,22 @@ header #box-cabecalho #box-conta #botao-logout{
     height:250px;
     width: 850px;
     margin-top: 20px;
-    margin-left: auto ;
-    margin-right: auto ;
+    margin-left: auto;
+    margin-right: auto;
     padding: 5px;
-    
 }
+
+#pag-cityshare-empresa .box-conteudo #container-previa {
+    height: 150px;
+}
+
+#pag-cityshare-empresa .box-conteudo #container-previa #input-previa {
+    height: 130px;
+    width: 825px;
+    resize: none;
+    margin: 5px 10px;
+}
+
 #pag-cityshare-empresa .box-conteudo #container-pagina #box-texto {
     width:470px;
     height: 235px;

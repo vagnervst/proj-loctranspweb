@@ -42,8 +42,9 @@
                     <div class="box-conteudo">
                         <p class="titulo-sessao">Prévia</p>
                         <div id="container-previa">
-                            <div id="box-img-previa">
-                                <img alt="123" title="123" src="Image/banner_test.jpg" class="img-beneficios">
+                            <div class="box-input-imagem">
+                                <span class="botao-imagem conteudo-image" id="box-img-previa"></span>
+                                <input class="input" type="file" name="imagemA" />
                             </div>
                             <div id="box-texto-previa">
                                 <textarea id="input-previa" placeholder="Texto previa"></textarea>
@@ -70,8 +71,9 @@
                                         <input type="text" class="input-pagina">
                                     </div>
                                 </div>
-                                <div class="conteudo-image">
-                                    <img src="Image/banner_test.jpg"/>
+                                <div class="box-input-imagem">
+                                    <span class="botao-imagem conteudo-image" id="box-img-previa"></span>
+                                    <input class="input" type="file" name="imagemA" />
                                 </div>
                             </div>
                             <div class="box-botao">
