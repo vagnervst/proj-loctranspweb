@@ -1,3 +1,6 @@
+<?php 
+    require_once("include/initialize.php");
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -23,8 +26,8 @@
                             Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!<br>
                             <br>
                             Cadastre-se agora e comece a usar o nosso sistema!
-                            <span class="botao-exibir-mais"><a href="projeto.php">Ler mais</a></span>
-                        </p>                        
+                            <span class="botao-exibir-mais"><a href="projeto.php">Ler mais...</a></span>
+                        </p>
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo"></div>
@@ -39,7 +42,7 @@
                     <div id="horizontal-wrapper">
                         <?php for($i = 0; $i < 10; ++$i) { ?>
                         <section class="box-locador-destaque">
-                            <a href="#"><img class="foto-locador" src="img/link_face.jpg"/></a>
+                            <a href="perfil.php"><img class="foto-locador" src="img/link_face.jpg"/></a>
                             <h1 class="nome-locador">Nome locador</h1>
                             <p class="localizacao-locador">Estado: SP</p>                        
                             <div class="box-avaliacoes">
@@ -68,17 +71,21 @@
                             - O Sistema dinâmico permite que o veículo seja alugado em questão de minutos;<br>
                             <br>
                             - Pague somente pelo uso e não pela propriedade do carro.<br>                                                        
-                            <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais</a></span>
+                            <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais...</a></span>
                         </p>
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
-                        <h1 class="titulo-apresentacao">Sobre a Empresa</h1>
+                        <?php 
+                            $dadosSobreEmpresa = new \Tabela\SobreEmpresa();
+                            $dadosSobreEmpresa = $dadosSobreEmpresa->buscar("id = 1")[0];
+                        ?>
+                        <h1 class="titulo-apresentacao"><?php echo $dadosSobreEmpresa->titulo; ?></h1>
                         <p class="texto-apresentacao">
-                            A empresa “City Share” é uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o território nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar três, que são eles: Bicicletários,  Miniparques em vagas de rua e Espaços de convivência, gastronomia e arte. 
-                            <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais</a></span>
+                            <?php echo $dadosSobreEmpresa->previaTexto; ?>
+                            <span class="botao-exibir-mais"><a href="empresa.php">Ler mais...</a></span>
                         </p>                        
                     </section>
                 </div>

@@ -36,7 +36,7 @@
                         <h1 id="titulo">Publicações</h1>
                         <div id="container-publicacoes">
                             <div class="box-publicacao">
-                                <a href="#">
+                                <a href="veiculo.php">
                                     <div class="foto-publicacao"></div>
                                 </a>
                                 <section class="box-info-publicacao">

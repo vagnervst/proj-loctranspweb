@@ -15,13 +15,12 @@
                 $this->desconectar();
             }
 
-            private function conectar() {
-                echo "conectando...<br/><hr/>";
+            private function conectar() {                
                 $this->conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->banco);
+                mysqli_set_charset($this->conexao, "utf-8");
             }
 
-            public function desconectar() {
-                echo "desconectando...<br/><hr/>";
+            public function desconectar() {                
                 return mysqli_close($this->conexao);
             }
 
