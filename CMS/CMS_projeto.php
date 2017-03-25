@@ -16,17 +16,17 @@
         $descricaoImagemB = ( isset($_POST["txtDescricaoImagemB"]) )? $_POST["txtDescricaoImagemB"] : null;
         $conteudo = ( isset($_POST["txtConteudo"]) )? $_POST["txtConteudo"] : null;
         
-        $listaRequiredInputs[] = [];
+        $listaRequiredInputs = [];
         $listaRequiredInputs[] = $previaDescricao;
         $listaRequiredInputs[] = $titulo;
         $listaRequiredInputs[] = $descricaoImagemA;
         $listaRequiredInputs[] = $descricaoImagemB;
         $listaRequiredInputs[]= $conteudo;
-        
-        $listaInput[] = [];
+                        
+        $listaInput = [];
         $listaInput[] = $imagemA;
         $listaInput[] = $imagemB;
-        $listaInput[] = $imagemPrevia;
+        $listaInput[] = $imagemPrevia;                
         
         if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ){
             $objSobreProjeto = new \Tabela\SobreProjeto();
@@ -40,13 +40,15 @@
             if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosSobreProjeto->imagemA, $upload_dir ) ){
                 $objSobreProjeto->imagemA = $imagemA["name"];
             }
+            
             if( File::replace( $imagemB["tmp_name"], $imagemB["name"], $dadosSobreProjeto->imagemB, $upload_dir ) ){
                 $objSobreProjeto->imagemB = $imagemB["name"];
             }
-            if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosSobreProjeto->imagemPrevia, $upload_dir ) ){
-                $objSobreProjeto->imagemPrevia = $imagemPrevia["name"];
+            
+            if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosSobreProjeto->previaImagem, $upload_dir ) ){
+                $objSobreProjeto->previaImagem = $imagemPrevia["name"];
             }
-            echo($objSobreProjeto);
+                        
             if( empty($objSobreProjeto->buscar("id = 1")) ){
                 $objSobreProjeto->inserir();
             }
