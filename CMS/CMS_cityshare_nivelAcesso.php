@@ -3,7 +3,7 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>
-            CMS - Início | City Share
+            CMS - Conteúdo | City Share
 		</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
 	</head>
@@ -12,9 +12,9 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-cityshare-adm">
                 <div class="box-menu-lateral">
-                    <div class="menu-lateral">
+                     <div class="menu-lateral">
                         <ul>
                             <li class="botao-menu-lateral">
                                 <a href="CMS_home.php">Home</a>
@@ -35,7 +35,22 @@
                         </ul>
                     </div>
                 </div>
+                <div id="box-caminho">
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_nivelAcesso.php" class="link-caminho" >Níveis de Acesso</a>
+                </div>
                 <div class="box-conteudo">
+                    <div class="box-conteudo-adm">
+                        <div class="titulo-conteudo-adm">
+                            Título Nível
+                        </div>
+                        <div class="box-adm-info">
+                            <p class="nome-adm">Número de usuarios:XXXXX</p>
+                            <p class="nivel-adm">Nivel de Autenticação:XXXXXX</p>
+                        </div>
+                        <div class="box-btn-edit">
+                            <a class="preset-botao" href="CMS_nivel_edit.php">Editar</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <?php

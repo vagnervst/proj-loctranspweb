@@ -12,7 +12,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-clientes-usuarios">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -36,38 +36,19 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
-                </div>
+                        <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a> > <a href="CMS_usuario.php" class="link-caminho" >Usuarios</a>
+                    </div>
+                    <div id="box-pesquisa">
+                        <form method="post" action="CMS_usuario.php"> 
+                            <input id="search" type="search" placeholder="Pesquisar"  ><input id="btn-pesquisar"type="submit" value="pesquisar">
+                                   
+                       </form>
+                    </div>
                 <div class="box-conteudo">
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
-                            <img src="Image/content_test.jpg" />
-                            Conteudo
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_nivelAcesso.php">
-                            <img src="Image/content_test.jpg" />                        
-                            Níveis de acesso
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-                            Permissões
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />
-                            Contato
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
-                            <img src="Image/content_test.jpg" />
-                            Administradores
-                        </a>
+                    <div class="box-usuario">
+                        <div class="nome-usuario">jose bezerra</div>
+                        <div class="cont-usuario">Email : jbezerra</div>
+                        <div class="cont-usuario">Tipo : jbezerra</div>
                     </div>
                 </div>
             </div>

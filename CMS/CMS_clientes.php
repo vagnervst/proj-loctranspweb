@@ -12,7 +12,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-clientes">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -36,19 +36,19 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
+                        <a class="titulo-conteudo-menu" href="CMS_usuario.php">
                             <img src="Image/content_test.jpg" />
-                            Conteudo
+                            Usuario
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_nivelAcesso.php">
+                        <a class="titulo-conteudo-menu" href="#">
                             <img src="Image/content_test.jpg" />                        
-                            Níveis de acesso
+                            Planos de conta 
                         </a>
                     </div>
                     <div class="box-conteudo-menu">                        
@@ -57,19 +57,10 @@
                             Permissões
                         </a>
                     </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />
-                            Contato
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
-                            <img src="Image/content_test.jpg" />
-                            Administradores
-                        </a>
-                    </div>
+                    
+                    
                 </div>
+                
             </div>
             <?php
                 include("layout/footer.php");
