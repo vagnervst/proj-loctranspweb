@@ -1,6 +1,8 @@
 <?php
     namespace DB {
+        
         class DatabaseUtils {
+            
             public function get_propriedades() {
                 $propriedades = get_object_vars($this);
 
