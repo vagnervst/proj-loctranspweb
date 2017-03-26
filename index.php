@@ -61,16 +61,14 @@
                 </section>                
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao conteudo-horizontal-rtl">
-                        <h1 class="titulo-apresentacao">Benefícios do Projeto</h1>
+                        <?php 
+                            $dadosBeneficiosProjeto = new \Tabela\BeneficiosProjeto();
+                            $buscaBeneficios = $dadosBeneficiosProjeto->buscar("id = 1");
+                            $dadosBeneficiosProjeto = ( !empty($buscaBeneficios[0]) )? $buscaBeneficios[0] : $dadosBeneficiosProjeto;
+                        ?>
+                        <h1 class="titulo-apresentacao"><?php echo $dadosBeneficiosProjeto->titulo; ?></h1>
                         <img class="imagem-apresentacao" src="img/image_teste.jpg" />
-                        <p class="texto-apresentacao">
-                            O projeto City Share traz também benefícios para quem o utiliza, sendo alguns deles:<br>
-                            <br>
-                            - Remuneração pelo veículo alugado;<br>
-                            <br>
-                            - O Sistema dinâmico permite que o veículo seja alugado em questão de minutos;<br>
-                            <br>
-                            - Pague somente pelo uso e não pela propriedade do carro.<br>                                                        
+                        <p class="texto-apresentacao"><?php echo $dadosBeneficiosProjeto->previaTexto; ?>
                             <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais...</a></span>
                         </p>
                     </section>

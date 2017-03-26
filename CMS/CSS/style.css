@@ -355,6 +355,7 @@ header #box-cabecalho #box-conta #botao-logout{
     text-align: center;
     color: white;    
 }
+
 .box-conteudo .box-conteudo-menu .titulo-conteudo-menu a{
     color: white;
     font-size: 16px;
@@ -363,7 +364,7 @@ header #box-cabecalho #box-conta #botao-logout{
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 /*pagina de beneficios */
 #pag-cityshare-beneficios {
-    height: 1200px;
+    height: 1220px;
 }
 
 .box-conteudo .titulo-sessao{
@@ -485,11 +486,15 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-right: 25px;
 }
 
-.box-conteudo #container-pagina #box-publicacoes{
+.box-conteudo #container-pagina #box-publicacoes {
     width: 100% ;
     height: 600px;
     overflow: auto;
     
+}
+
+#pag-cityshare-beneficios .box-conteudo #container-pagina #box-publicacoes {
+    height: auto;    
 }
 
 /****************EMPRESA*****************/
