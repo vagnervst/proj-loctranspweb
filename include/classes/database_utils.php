@@ -21,29 +21,27 @@
                 $propriedades = $this->get_propriedades();
                 $valores = $this->get_valores();                        
 
-                $statement = "";
+                $statement = [];
                 for($i = 0; $i < count($propriedades); ++$i) {
                     if( $propriedades[$i] != $this::$primary_key && !empty($valores[$i]) ) {
-                        $statement .= $propriedades[$i] . " = " . $this->preparar_valor($valores[$i]);
-                        if( $i < count($propriedades)-1 ) $statement .= ", ";
+                        $statement[] = $propriedades[$i] . " = " . $this->preparar_valor($valores[$i]);                                                
                     }
                 }
-
-                return $statement;
+                
+                return implode($statement, ", ");
             }
 
             public function get_propriedades_preparadas($incluirPrimaryKey=true) {
                 $propriedades = $this->get_propriedades();
 
-                $statement = "";
+                $statement = [];
                 for($i = 0; $i < count($propriedades); ++$i) {
                     if( !$incluirPrimaryKey && $propriedades[$i] == $this::$primary_key ) continue;
 
-                    $statement .= $propriedades[$i];
-                    if( $i < count($propriedades) - 1 ) $statement .= ", ";
+                    $statement[] = $propriedades[$i];                    
                 }
 
-                return $statement;
+                return implode($statement, ", ");
             }
 
             public function get_valores_preparados($incluirPrimaryKey=true) {
@@ -132,7 +130,7 @@
             }
 
             public function executarQuery($sql) {
-                $db = new Database();
+                $db = new Database();                
                 return $db->query($sql);
             }                
 
@@ -152,7 +150,7 @@
                 $sql = "UPDATE " . $this::$nome_tabela . " ";
                 $sql .= "SET " . $this->get_update_valores($this) . " ";                        
                 $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();
-
+                                
                 return $this->executarQuery($sql);
             }
 
