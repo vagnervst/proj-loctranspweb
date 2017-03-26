@@ -1,7 +1,9 @@
 <?php
     require_once("../include/initialize.php");
     $dadosSobreEmpresa = new \Tabela\SobreEmpresa();
-    $dadosSobreEmpresa = $dadosSobreEmpresa->buscar("id = 1")[0];
+    $buscaDados = $dadosSobreEmpresa->buscar("id = 1");
+    
+    if( !empty($buscaDados[0]) ) $dadosSobreEmpresa = $buscaDados[0]; 
 
     $form = ( isset($_POST["formSubmit"]) )? $_POST["formSubmit"] : null;
     
@@ -30,7 +32,7 @@
         $listaInput[] = $imagemA;
         $listaInput[] = $imagemB;
         
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ) {
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ) {            
             $objSobreEmpresa = new \Tabela\SobreEmpresa();
                         
             $objSobreEmpresa->titulo = $titulo; 
@@ -49,12 +51,12 @@
                 $objSobreEmpresa->imagemB = $imagemB["name"];
             }
                         
-            if( empty($objSobreEmpresa->buscar("id = 1")) ) 
-            {                
+            if( empty($dadosSobreEmpresa) ) 
+            {                                
                 $objSobreEmpresa->inserir();
             } 
             else 
-            {
+            {                
                 $objSobreEmpresa->id = 1;
                 $objSobreEmpresa->atualizar();
             }            
