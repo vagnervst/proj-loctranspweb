@@ -88,7 +88,7 @@
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">
-                                <a href="#">Clientes</a>
+                                <a href="CMS_clientes.php">Clientes</a>
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">
