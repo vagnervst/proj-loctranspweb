@@ -1,7 +1,9 @@
 <?php
     require_once("../include/initialize.php");
     $dadosSobreProjeto = new \Tabela\SobreProjeto();
-    $dadosSobreProjeto = $dadosSobreProjeto->buscar("id = 1")[0];
+    $buscaDados = $dadosSobreProjeto->buscar("id = 1");
+    
+    if( !empty($buscaDados[0]) ) $dadosSobreProjeto = $buscaDados[0];
 
     $form = ( isset($_POST['formSubmit']) )? $_POST["formSubmit"] : null;
 
@@ -16,12 +18,12 @@
         $descricaoImagemB = ( isset($_POST["txtDescricaoImagemB"]) )? $_POST["txtDescricaoImagemB"] : null;
         $conteudo = ( isset($_POST["txtConteudo"]) )? $_POST["txtConteudo"] : null;
         
-        $listaRequiredInputs = [];
-        $listaRequiredInputs[] = $previaDescricao;
+        $listaRequiredInputs = [];        
         $listaRequiredInputs[] = $titulo;
+        $listaRequiredInputs[] = $conteudo;
         $listaRequiredInputs[] = $descricaoImagemA;
-        $listaRequiredInputs[] = $descricaoImagemB;
-        $listaRequiredInputs[]= $conteudo;
+        $listaRequiredInputs[] = $descricaoImagemB;        
+        $listaRequiredInputs[] = $previaDescricao;
                         
         $listaInput = [];
         $listaInput[] = $imagemA;
@@ -29,10 +31,10 @@
         $listaInput[] = $imagemPrevia;                
         
         if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ){
-            $objSobreProjeto = new \Tabela\SobreProjeto();
+            $objSobreProjeto = new \Tabela\SobreProjeto();                        
             
             $objSobreProjeto->titulo = $titulo;
-            $objSobreProjeto->previaImagem = $imagemPrevia;
+            $objSobreProjeto->conteudo = $conteudo;
             $objSobreProjeto->previaTexto = $previaDescricao;
             $objSobreProjeto->descricaoA = $descricaoImagemA;
             $objSobreProjeto->descricaoB = $descricaoImagemB;
@@ -47,15 +49,20 @@
             
             if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosSobreProjeto->previaImagem, $upload_dir ) ){
                 $objSobreProjeto->previaImagem = $imagemPrevia["name"];
-            }
-                        
-            if( empty($objSobreProjeto->buscar("id = 1")) ){
+            }                                    
+            
+            if( empty($buscaDados[0]) ) {
+                echo "INSERT";
                 $objSobreProjeto->inserir();
             }
-            else{
+            else
+            {
+                echo "UPDATE";
                 $objSobreProjeto->id = 1;
                 $objSobreProjeto->atualizar();
             }
+            
+            redirecionar_para("CMS_projeto.php");
         }
         
     }
@@ -116,7 +123,7 @@
                         <div id="container-pagina">
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Título</label>
-                                <input type="text" class="input-pagina" name="txtTitulo" required />
+                                <input type="text" class="input-pagina" name="txtTitulo" value="<?php echo $dadosSobreProjeto->titulo; ?>" required />
                             </div>
                             <div class="box-conteudo-pagina">
                                 <div class="box-input-imagem">

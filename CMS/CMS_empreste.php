@@ -30,7 +30,7 @@
                 $objEmpreste->imagemA = $imagemA["name"];
             }
             
-            if( empty($dadosEmpreste) )                 
+            if( empty($buscaDados[0]) )                 
             {                
                 echo "INSERT";
                 $objEmpreste->inserir();

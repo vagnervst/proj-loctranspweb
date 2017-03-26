@@ -51,7 +51,7 @@
                 $objSobreEmpresa->imagemB = $imagemB["name"];
             }
                         
-            if( empty($dadosSobreEmpresa) ) 
+            if( empty($buscaDados[0]) ) 
             {                                
                 $objSobreEmpresa->inserir();
             } 
