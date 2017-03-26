@@ -3,48 +3,40 @@
     $dadosHome = new \Tabela\Home();
     $buscaDados = $dadosHome->buscar("id = 1");
 
-    if( !empty($buscaDados[0]) ) $dadosHome = $bucasDados[0];
+    if( !empty($buscaDados[0]) ) $dadosHome = $buscaDados[0];
 
-    $form = ( isset($_POST['formSubmit']) )? $_POST["formSubmit"] : null;
+    $formSubmit = ( isset($_POST['formSubmit']) )? $_POST["formSubmit"] : null;
 
     $upload_dir = "../img/uploads/conteudo/home";
-    if( !empty($formSubmit) ) {
-        $previaDescricao = ( isset($_POST["txtPreviaDescricao"]))? $_POST["txtPreviaDescricao"] : null;
-        $imagemPrevia = ( isset($_FILES["imagemPrevia"]) )? $_FILES["imagemPrevia"] : null;
+    if( !empty($formSubmit) ) {        
         $titulo = ( isset($_POST["txtTitulo"]) )? $_POST["txtTitulo"] : null;
         $imagemA = ( isset($_FILES["imagemA"]) )? $_FILES["imagemA"] : null;
         
-        $listaRequiredInputs = [];        
-        $listaRequiredInputs[] = $titulo;       
-        $listaRequiredInputs[] = $previaDescricao;
+        $listaRequiredInputs = [];
+        $listaRequiredInputs[] = $titulo;
         
         $listInput = [];
         $listaInput[] = $imagemA;
-        $listaInput[] = $imagemPrevia;
         
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ){
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files( $listaInput ) ) {
             $objHome = new \Tabela\Home();
-
-            $objHome->previaTexto = $previaDescricao;
+            
             $objHome->titulo = $titulo;
             
-            if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosHome->previaImagem, $upload_dir ) ){
-                $objHome->previaImagem = $imagemPrevia["name"];
-            }
-            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosHome->imagemA, $upload_dir ) ){
+            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosHome->imagemA, $upload_dir ) ) {
                 $objHome->imagemA = $imagemA["name"];
             }
             
-            if( empty($bucasrDados[0]) ) {
-                echo "INSERT";
+            if( empty($buscaDados[0]) ) {
                 $objHome->inserir();
             }
-            else{
-                echo "UPDATE";
+            else
+            {
                 $objHome->id = 1;
                 $objHome->atualizar();
             }
         }
+        
         redirecionar_para("CMS_adm_home.php");
     }
 ?>
@@ -89,17 +81,7 @@
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Home - Como funciona</a>
                 </div>
                 <form action="CMS_adm_home.php" method="post" name="formConteudo" enctype="multipart/form-data">
-                    <div class="box-conteudo">
-                        <p class="titulo-sessao">Prévia</p>
-                        <div id="container-previa">
-                            <div class="box-input-imagem">
-                                <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosHome->previaImagem, $upload_dir); ?>)"></span>
-                                <input class="input" type="file" name="imagemPrevia" />
-                            </div>
-                            <div id="box-texto-previa">
-                                <textarea id="input-previa" placeholder="Texto previa" name="txtPreviaDescricao" required><?php echo $dadosHome->previaTexto; ?></textarea>
-                            </div>
-                        </div>
+                    <div class="box-conteudo">                        
                         <p class="titulo-sessao">Página</p>
                         <div id="container-pagina">
                             <div class="box-input-pagina">
