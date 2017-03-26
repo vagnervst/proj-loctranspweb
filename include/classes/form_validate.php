@@ -14,7 +14,7 @@
                 
                 $repeticoes = 0;
                 for($i = 0; $i < count($listaInput); ++$i) {
-                    if( $input["name"] == $listaInput[$i]["name"] ) ++$repeticoes;
+                    if( !empty($input["name"]) && !empty($listaInput[$i]["name"]) && $input["name"] == $listaInput[$i]["name"] ) ++$repeticoes;
                 }
                 
                 if( $repeticoes > 1 ) return true;
