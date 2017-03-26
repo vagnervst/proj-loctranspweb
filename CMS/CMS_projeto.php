@@ -36,6 +36,7 @@
             $objSobreProjeto->previaTexto = $previaDescricao;
             $objSobreProjeto->descricaoA = $descricaoImagemA;
             $objSobreProjeto->descricaoB = $descricaoImagemB;
+            $objSobreProjeto->conteudo = $conteudo;
             
             if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosSobreProjeto->imagemA, $upload_dir ) ){
                 $objSobreProjeto->imagemA = $imagemA["name"];
@@ -57,6 +58,7 @@
                 $objSobreProjeto->atualizar();
             }
         }
+        redirecionar_para("CMS_projeto.php");
         
     }
 ?>
@@ -116,7 +118,7 @@
                         <div id="container-pagina">
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Título</label>
-                                <input type="text" class="input-pagina" name="txtTitulo" required />
+                                <input type="text" class="input-pagina" name="txtTitulo" required value="<?php echo $dadosSobreProjeto->titulo; ?>"/>
                             </div>
                             <div class="box-conteudo-pagina">
                                 <div class="box-input-imagem">
