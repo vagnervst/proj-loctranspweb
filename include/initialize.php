@@ -7,6 +7,8 @@
     require_once("classes/tbl_empreste.php");
     require_once("classes/tbl_sobre_projeto.php");
     require_once("classes/tbl_beneficios_projeto.php");
+    require_once("classes/tbl_usuario_cs.php");
+    require_once("classes/tbl_nivel_acesso_cs.php");
     require_once("classes/form_validate.php");
     require_once("classes/file.php");
     require_once("functions.php");

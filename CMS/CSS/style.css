@@ -27,7 +27,7 @@ body {
     margin: 0;
     background-color: white;
     width: 100%;
-    height:100%;
+    height: 100%;
 }
 
 html {
@@ -359,6 +359,31 @@ header #box-cabecalho #box-conta #botao-logout{
 .box-conteudo .box-conteudo-menu .titulo-conteudo-menu a{
     color: white;
     font-size: 16px;
+}
+
+.box-conteudo .lista-wrapper {
+    width: 707px;
+    max-height: 500px;
+    margin: 15px 0px;
+    overflow: auto;
+    float: left;
+}
+
+.box-conteudo .box-operacoes {
+    display: block;
+    width: 130px;
+    background-color: #d3d3d3;
+    float: right;
+    padding: 10px;
+}
+
+.box-conteudo .box-operacoes #menu-operacoes li {
+    display: inline-block;
+}
+
+.box-conteudo .box-operacoes #menu-operacoes li .botao-operacao {
+    width: 100px;
+    padding: 10px 0px;
 }
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
@@ -711,7 +736,7 @@ header #box-cabecalho #box-conta #botao-logout{
 /****************ADMINISTRADORES*****************/
 
 #pag-cityshare-adm{
-    height: 1000px;
+    height: 580px;
 }
 #pag-cityshare-adm .box-conteudo {
     width: 870px;
@@ -742,17 +767,20 @@ header #box-cabecalho #box-conta #botao-logout{
     width: 100%;
     height: 90px;
 }
-#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .nome-adm{
-    width: 100%;
-    height: 40px;
-    line-height: 30px;
-    margin-left: 10px;
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .box-info-label .label {
+    
 }
-#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .nivel-adm{
-    width: 100%;
-    height: 50px;
-    margin-left: 10px;
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .box-info-label .info {
+    font-style: italic;
 }
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .nome-adm {
+    
+}
+
+
 #pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-btn-edit{
     width: 100%;
     height: 20px;
@@ -800,12 +828,20 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 50px;
     display: inline-block;
 }
-#pag-cityshare-adm-edit .box-conteudo .container-campos .box-botao .preset-input-submit{
+#pag-cityshare-adm-edit .box-conteudo .container-campos .box-botao .preset-input-submit {
     width: 80px;
     height: 30px;
     float: left;
     margin-left: 25px;
     margin-top: 100px;
+}
+
+#pag-cityshare-adm-edit .box-conteudo .container-campos .box-botao .preset-botao {
+    width: 80px;
+    padding: 4px 0px;
+    float: left;
+    margin-top: 100px;
+    margin-left: 25px;
 }
 
 /****************HOME*****************/
