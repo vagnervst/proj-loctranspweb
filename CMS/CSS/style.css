@@ -407,20 +407,24 @@ header #box-cabecalho #box-conta #botao-logout{
     margin: 10px auto;
     padding: 5px;    
 }
+
 .box-conteudo #container-previa #box-texto-previa {
     width:470px;
     height: 235px;
     float: left;
     text-align: justify;
 }
+
 .img-beneficios{
     width: 350px;
     height: 250px;
     border-radius: 15px;
 }
+
 .box-conteudo #container-previa input{
     margin: 0px 10px;
 }
+
 .box-conteudo #container-previa #input-previa{
     height: 230px;
     width: 470px;
