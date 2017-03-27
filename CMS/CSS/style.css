@@ -1034,7 +1034,7 @@ header #box-cabecalho #box-conta #botao-logout{
     font-size: 20px;
     text-align: center;
 }
-#pag-cityshare-contato .box-conteudo #containner-fale-conosco{
+#pag-cityshare-contato .box-conteudo #container-fale-conosco{
     height: auto;
     width: 100%;
     margin-top: 20px;
@@ -1043,31 +1043,46 @@ header #box-cabecalho #box-conta #botao-logout{
     padding: 5px;
     
 }
+
 #pag-cityshare-contato .box-conteudo .item-fale-conosco{
     margin-left: auto;
     margin-right: auto ;
     width: 600px;
-    height: 50px ;
+    height: 50px;
 }
-#pag-cityshare-contato .box-conteudo #containner-fale-conosco .titulo-input{
+#pag-cityshare-contato .box-conteudo .box-input-pagina{
+    margin-left: auto;
+    margin-right: auto ;
+    width: 600px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+#pag-cityshare-contato .box-conteudo #container-fale-conosco .titulo-input{
     width: 100%;
     height: 20px;
     float: left;
 }
+
 #pag-cityshare-contato .box-conteudo  .input-pagina {
     width: 600px;
     height: 20px;
 }
 
-#pag-cityshare-contato .box-conteudo #containner-perguntas{
-    height: 500px;;
+#pag-cityshare-contato .box-conteudo #container-perguntas {
+    height: 700px;
     width: 100%;
     margin-top: 20px;
     margin-left: auto;
-    margin-right: auto;
-    overflow: auto;
+    margin-right: auto;    
 }
-#pag-cityshare-contato .box-conteudo #containner-perguntas .pergunta{
+
+#pag-cityshare-contato .box-conteudo #container-perguntas #wrapper-perguntas {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta {
     width: 610px; 
     height: 100px;
     border: solid 1px #e2e2e2;
@@ -1075,16 +1090,90 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-left: auto;
     margin-right: auto ;
 }
-#pag-cityshare-contato .box-conteudo  .box-botao{
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-inputs {
+    display: block;
+    width: 420px;
+    float: left;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-label-input {
+    
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-label-input .label {
+    display: block;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-label-input .input {
+    width: 400px;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-acoes {
+    float: left;
+    width: 100px;
+    margin-top: 15px;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-acoes .botao-remover {
+    display: block;
+    width: 80px;    
+    padding: 5px 0px;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-acoes .botao-submit {
+    display: block;
+    width: 80px;
+    height: 30px;    
+    margin-top: 10px;    
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .box-input-pagina {
+    width: 610px;
+    height: 50px;
+    border: solid 1px #e2e2e2;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto ;
+}
+
+#pag-cityshare-contato .box-conteudo  .box-botao {
     width: inherit;
     height: 50px;
     display: inline-block;
 }
-#pag-cityshare-contato .box-conteudo  .box-botao .preset-input-submit{
+
+#pag-cityshare-contato .box-conteudo  .box-botao .preset-input-submit {
     width: 100px;
     height: 40px;
     float: right;
     margin-right: 25px;
+}
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao {
+    text-align: center;
+    height: 200px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #bcbcbc;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao .box-label-input {
+    margin-bottom: 20px;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao .box-label-input .label {
+    display: block;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao .box-label-input .input {
+    width: 600px;
+}
+
+#pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao .preset-botao{
+    width: 100px;    
+    font-size: 30px;
+    font-weight: bold;    
 }
 /***************CLIENTES*******************/
 
