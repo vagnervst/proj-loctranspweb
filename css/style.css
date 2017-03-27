@@ -869,6 +869,108 @@ header #box-botao-filtragem {
 
 /*------------- PRESETS*/
 
+#container #box-login-fullscreen {   
+    display: none;    
+    width: 100%;
+    height: 100%;    
+    position: fixed;
+    z-index: 2;
+}
+
+#container #box-login-fullscreen #box-login {    
+    display: none;
+    background-image: url(../img/assets/background_login_fullscreen.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ebebeb;
+    width: 100%;
+    height: 100%;
+    padding-top: 200px;
+    position: fixed;
+    top: -2000px;
+}
+
+#container #box-login-fullscreen .slidedown-effect {
+    display: none;
+    background-color: #141619;
+    width: 100%;
+    height: 400px;
+    position: fixed;
+    top: -500px;        
+}
+
+#container #box-login-fullscreen .slidedown-effect.js-slidedown1 {        
+    background-image: url(../img/city_share_letreiro.png);
+    background-size: 592px 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#container #box-login-fullscreen #box-form-login {
+    width: 400px;
+    margin: 0 auto;     
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input {
+    margin: 10px 0px;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .label {
+    display: block;
+    font-size: 20px;
+    color: #557bc9;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input {    
+    width: 400px;
+    height: 40px;
+    color: black;
+    border-bottom: 1px solid black;
+    font-size: 17px;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input:focus {
+    border-bottom: 1px solid #a1aec9;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input::-webkit-input-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input:-moz-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input::moz-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input:ms-input-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .submit {
+    display: block;
+    width: 130px;
+    height: 50px;  
+    margin: 20px auto;
+}
+
+#container #box-login-fullscreen #box-login #botao-fechar-login {
+    display: block;
+    background-image: url(../img/icones/fechar-login.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 100px;
+    cursor: pointer;
+}
+
+/*------------- LOGIN FULLSCREEN*/
+
 .main {
     background-color: #ebebeb;
     min-height: 400px;

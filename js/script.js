@@ -636,6 +636,46 @@ $(document).ready(function() {
                 
             });
         }
+    }        
+    
+    function efeitoSlidedownLogin() {
+        var botaoLogin = $("#botao-login")[0];
+        $(botaoLogin).attr("href", "#");
+        
+        var loginFullscreen = $("#box-login-fullscreen")[0];
+        
+        if( botaoLogin !== undefined && loginFullscreen !== undefined ) {
+            
+            var boxLogin = $(loginFullscreen).children("#box-login")[0];
+            var slideDown1 = $(loginFullscreen).children(".js-slidedown1")[0];
+            var slideDown2 = $(loginFullscreen).children(".js-slidedown2")[0];
+            var botaoFechar = $(boxLogin).children("#botao-fechar-login")[0];
+            
+            $(botaoLogin).click(function() {
+                $(loginFullscreen).css("display", "block");
+                $(boxLogin).css("display", "block");
+                $(slideDown1).css("display", "block");                
+                
+                $(slideDown1).animate({
+                    top: '120%'
+                }, 2000);                                
+                
+                $(boxLogin).animate({
+                    top: '0px'
+                }, 1800);
+            });
+                        
+            $(botaoFechar).click(function() {
+                 $(boxLogin).animate({
+                    top: '-2000px'
+                }, 800, function() {
+                    $(loginFullscreen).css("display", "none");
+                    $(boxLogin).css("display", "none");                    
+                    $(slideDown1).css("display", "none");                    
+                    $(slideDown1).css("top", "-500px");                    
+                 });
+            });
+        }
     }
     
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
@@ -648,6 +688,7 @@ $(document).ready(function() {
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
         efeitoHoverLocadorDestaque();
+        efeitoSlidedownLogin();
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
         inicializarSlide();

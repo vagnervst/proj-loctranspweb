@@ -12,7 +12,7 @@
     </head>
     <body>
         <div id="container">
-            <?php require_once("layout/header.php"); ?>
+            <?php require_once("layout/header.php"); ?>            
             <div class="main" id="pag-home">
                 <div class="imagem-divisao-conteudo imagem-principal" id="banner-cityshare"></div>
                 <div class="box-conteudo">
