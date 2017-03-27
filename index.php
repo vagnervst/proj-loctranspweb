@@ -17,15 +17,14 @@
                 <div class="imagem-divisao-conteudo imagem-principal"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao conteudo-horizontal-ltr">
-                        <h1 class="titulo-apresentacao">O que é?</h1>
-                        <img class="imagem-apresentacao" src="img/image_teste.jpg" />
-                        <p class="texto-apresentacao">
-                            O City Share é um projeto da empresa de mesmo nome que consiste em um sistema de empréstimo de veículos implantado em municípios onde o usuário (físico ou jurídico) poderá disponibilizar sua bicicleta, moto ou carro o qual não utiliza ou tenha sobrando para aluguel.<br>
-                            O sistema é voltado tanto para usuários que desejam alugar quanto disponibilizar para aluguel. Nele você poderá encontrar o carro perfeito para passeios ou até mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa!<br>
-                            Tem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel!<br>
-                            Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!<br>
-                            <br>
-                            Cadastre-se agora e comece a usar o nosso sistema!
+                       <?php 
+                            $dadosProjeto = new \Tabela\SobreProjeto();
+                            $buscaProjeto = $dadosProjeto->buscar("id = 1");
+                            $dadosProjeto = ( !empty($buscaProjeto[0]) )? $buscaProjeto[0] : $dadosProjeto;
+                        ?>
+                        <h1 class="titulo-apresentacao"><?php echo $dadosProjeto->titulo; ?></h1>
+                        <img class="imagem-apresentacao" src="<?php echo File::read($dadosProjeto->previaImagem, "img/uploads/conteudo/sobre_projeto"); ?>" />
+                        <p class="texto-apresentacao"><?php echo $dadosProjeto->previaTexto; ?>
                             <span class="botao-exibir-mais"><a href="projeto.php">Ler mais...</a></span>
                         </p>
                     </section>
@@ -33,8 +32,13 @@
                 <div class="imagem-divisao-conteudo"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
-                        <h1 class="titulo-apresentacao">Como funciona?</h1>
-                        <img class="imagem-apresentacao" src="img/image_teste.jpg" />
+                       <?php 
+                            $dadosHome = new \Tabela\Home();
+                            $buscaHome = $dadosHome->buscar("id = 1");
+                            $dadosHome = ( !empty($buscaHome[0]) )? $buscaHome[0] : $dadosHome;
+                        ?>
+                        <h1 class="titulo-apresentacao"><?php echo $dadosHome->titulo; ?></h1>
+                        <img class="imagem-apresentacao" src="<?php echo File::read($dadosHome->imagemA, "img/uploads/conteudo/home"); ?>" />
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo"></div>                
@@ -58,10 +62,10 @@
                         </section>
                         <?php } ?>
                     </div>
-                </section>                
+                </section>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao conteudo-horizontal-rtl">
-                        <?php 
+                        <?php
                             $dadosBeneficiosProjeto = new \Tabela\BeneficiosProjeto();
                             $buscaBeneficios = $dadosBeneficiosProjeto->buscar("id = 1");
                             $dadosBeneficiosProjeto = ( !empty($buscaBeneficios[0]) )? $buscaBeneficios[0] : $dadosBeneficiosProjeto;
@@ -76,9 +80,10 @@
                 <div class="imagem-divisao-conteudo"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
-                        <?php 
+                        <?php
                             $dadosSobreEmpresa = new \Tabela\SobreEmpresa();
-                            $dadosSobreEmpresa = $dadosSobreEmpresa->buscar("id = 1")[0];
+                            $buscaEmpresa = $dadosSobreEmpresa->buscar("id = 1");
+                            $dadosSobreEmpresa = ( !empty($buscaEmpresa[0]) )? $buscaEmpresa[0] : $dadosSobreEmpresa;
                         ?>
                         <h1 class="titulo-apresentacao"><?php echo $dadosSobreEmpresa->titulo; ?></h1>
                         <p class="texto-apresentacao">
