@@ -1,6 +1,7 @@
 <header>
     <div id="box-cabecalho">
         <div id="mobile-botao-menu"></div>
+        <div id="logo-cityshare"></div>
         <?php if( !empty($contexto) && $contexto == "alugue" ) { ?>        
         <div id="desktop-botao-filtragem"></div>
         <!-- BOTAO FILTRAGEM DE VEÍCULOS DESKTOP -->

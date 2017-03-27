@@ -89,7 +89,7 @@
                                 <input type="text" class="input-pagina" name="txtTitulo" value="<?php echo $dadosHome->titulo; ?>" required/>
                             </div>
                             <div class="box-conteudo-pagina">
-                                <div class="box-input-imagem">
+                                <div class="box-input-imagem">                                    
                                     <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosHome->imagemA, $upload_dir); ?>)"></span>
                                     <input class="input" type="file" name="imagemA" />
                                 </div>
