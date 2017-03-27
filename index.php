@@ -6,7 +6,7 @@
     <head>
         <title>Home | City Share</title>
         <meta name="viewport" content="width=device-width" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="img/icones/logoCityShareIcon.png">
     </head>
@@ -46,7 +46,12 @@
                     <div id="horizontal-wrapper">
                         <?php for($i = 0; $i < 10; ++$i) { ?>
                         <section class="box-locador-destaque">
-                            <a href="perfil.php"><img class="foto-locador" src="img/link_face.jpg"/></a>
+                            <a href="perfil.php">
+                                <div class="box-effect">
+                                    <div class="hover-effect"></div>
+                                </div>
+                                <img class="foto-locador" src="img/link_face.jpg"/>
+                            </a>
                             <h1 class="nome-locador">Nome locador</h1>
                             <p class="localizacao-locador">Estado: SP</p>                        
                             <div class="box-avaliacoes">

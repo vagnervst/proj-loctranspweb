@@ -587,6 +587,57 @@ $(document).ready(function() {
         });
     }
     
+    function efeitoHoverLocadorDestaque() {
+        var pagina_home = $("#pag-home")[0];
+                
+        if( pagina_home !== undefined ) {
+            var locadores_destaque = $(".box-locador-destaque");
+            
+            $(locadores_destaque).mouseenter(function(e) {
+                var offsetX = e.offsetX;
+                //console.log(offsetX);
+                
+                var tamanhoBoxLocador = $(this).css("width");
+                tamanhoBoxLocador = tamanhoBoxLocador.substr(0, tamanhoBoxLocador.indexOf("px"));
+                
+                var hoverEffect = $(this).find(".hover-effect")[0];                
+                
+                var leftInicial;
+                var leftFinal;
+                var widthInicial;
+                var widthFinal;
+                if( offsetX <= tamanhoBoxLocador/2 ) {
+                    //Anima para a direita
+                    leftInicial = "-70px";
+                    leftFinal = "200px";
+                    widthInicial = "70px";
+                    widthFinal = "400px";
+                    
+                } else if( offsetX >= tamanhoBoxLocador/2 ) {
+                    //Anima para a esquerda
+                    leftInicial = "200px";
+                    leftFinal = "-70px";
+                    widthInicial = "400px";
+                    widthFinal = "70px";
+                }
+                                                
+                $(hoverEffect).css("left", leftInicial);
+                $(hoverEffect).css("width", widthInicial);
+                $(hoverEffect).css("display", "block");                                
+                
+                $(hoverEffect).animate({
+                    left: leftFinal,
+                    width: widthFinal
+                }, 1000, function() {
+                    $(hoverEffect).css("display", "none"); 
+                    $(hoverEffect).css("left", leftInicial);
+                    $(hoverEffect).css("width", widthFinal);                    
+                });
+                
+            });
+        }
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
                 
         inicializarMenusMobile();
@@ -596,6 +647,7 @@ $(document).ready(function() {
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
+        efeitoHoverLocadorDestaque();
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
         inicializarSlide();

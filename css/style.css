@@ -899,7 +899,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     .main .imagem-divisao-conteudo {
-        height: 400px;
+        height: 600px;
     }
 }
 
@@ -1196,8 +1196,13 @@ header #box-botao-filtragem {
     width: 240px;
     border-radius: 0px 0px 5px 5px;
     margin: 0 3px;
-    padding: 5px;
+    padding: 5px;    
     color: #202020;
+    transition: background-color .2s;
+}
+
+.main #container-locadores-destaque .box-locador-destaque:hover {
+    background-color: #fff;
 }
 
 @media (min-width: 1000px) {
@@ -1210,6 +1215,25 @@ header #box-botao-filtragem {
 @media (min-width: 520px) {
     .main #container-locadores-destaque .box-locador-destaque {
         margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 740px) {    
+    
+    #pag-home #container-locadores-destaque .box-locador-destaque .box-effect {
+        position: absolute;
+        height: 160px;
+        width: 180px;
+        overflow: hidden;
+    } 
+    
+    #pag-home #container-locadores-destaque .box-locador-destaque .hover-effect {
+        display: none;
+        position: absolute;
+        background-color: #a1aec9;
+        width: 50px;
+        height: 160px;                        
+        transform: skewX(-10deg);
     }
 }
 
