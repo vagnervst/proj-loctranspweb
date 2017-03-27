@@ -41,22 +41,62 @@
                 <div class="box-conteudo">
                     <div class="container-campos">
                         <div class="box-input-pagina">
-                            <label class="titulo-input">Nome</label>
+                            <label class="titulo-input">Titulo</label>
                             <input type="text" class="input-pagina">
                         </div>
-                        <div class="box-input-pagina">
-                            <label class="titulo-input">Usuário</label>
-                            <input type="text" class="input-pagina">
-                        </div>
-                        <div class="box-input-pagina">
-                            <label class="titulo-input">Senha</label>
-                            <input type="text" class="input-pagina">
-                        </div>
-                        <div class="box-input-pagina">
-                            <label class="titulo-input">Nível de Autentificação</label>
-                            <select>
-                                <option>Adm</option>
-                            </select>
+                        <div class="box-input-checkbox">
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
+                            <box class="box-checkbox">
+                                <input type="checkbox" class="input-checkbox"/>
+                                <label class="label-checkbox">Permissão</label>
+                            </box>
                         </div>
                         <div class="box-botao">
                             <input type="submit" class="preset-input-submit" value="Salvar">

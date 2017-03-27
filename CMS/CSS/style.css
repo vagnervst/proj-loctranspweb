@@ -452,6 +452,16 @@ header #box-cabecalho #box-conta #botao-logout{
     width: inherit;
     height: 60px;
 }
+.box-conteudo .container-campos .box-input-checkbox{
+    width: inherit;
+    height: auto;
+}
+.box-conteudo .container-campos .box-input-checkbox .box-checkbox{
+    width: 100%;
+    height: 20px;
+    display: block;
+    margin: 5px 10px;
+}
 
 .box-conteudo #container-pagina .box-input-pagina .titulo-input {
     width: 100%;

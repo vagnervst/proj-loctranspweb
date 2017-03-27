@@ -51,6 +51,11 @@
                             <a class="preset-botao" href="CMS_nivel_edit.php">Editar</a>
                         </div>
                     </div>
+                    <div class="box-operacoes">
+                        <ul id="menu-operacoes">
+                            <li><a class="preset-botao botao-operacao" href="CMS_nivel_edit.php">Novo</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <?php
