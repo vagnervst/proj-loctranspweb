@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbcityshare
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.19-MariaDB
+-- Server version	5.6.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -343,6 +343,34 @@ LOCK TABLES `tbl_cnh` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_contato`
+--
+
+DROP TABLE IF EXISTS `tbl_contato`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_contato` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(120) NOT NULL,
+  `email` varchar(70) NOT NULL,
+  `mensagem` varchar(400) NOT NULL,
+  `idAssunto` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `faleConosco_assunto` (`idAssunto`),
+  CONSTRAINT `faleConosco_assunto` FOREIGN KEY (`idAssunto`) REFERENCES `tbl_assunto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_contato`
+--
+
+LOCK TABLES `tbl_contato` WRITE;
+/*!40000 ALTER TABLE `tbl_contato` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_contato` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_deposito`
 --
 
@@ -455,13 +483,14 @@ DROP TABLE IF EXISTS `tbl_faleconosco`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_faleconosco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(120) NOT NULL,
-  `email` varchar(70) NOT NULL,
-  `mensagem` varchar(400) NOT NULL,
-  `idAssunto` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `faleConosco_assunto` (`idAssunto`),
-  CONSTRAINT `faleConosco_assunto` FOREIGN KEY (`idAssunto`) REFERENCES `tbl_assunto` (`id`)
+  `tituloA` varchar(70) DEFAULT NULL,
+  `tituloB` varchar(70) DEFAULT NULL,
+  `descricaoA` varchar(70) DEFAULT NULL,
+  `email` varchar(70) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `horarioAtendimento` varchar(20) DEFAULT NULL,
+  `endereco` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1146,7 +1175,7 @@ CREATE TABLE `tbl_sobreprojeto` (
 
 LOCK TABLES `tbl_sobreprojeto` WRITE;
 /*!40000 ALTER TABLE `tbl_sobreprojeto` DISABLE KEYS */;
-INSERT INTO `tbl_sobreprojeto` VALUES (1,'Sobre o projeto City Share','Com uma interface simples e intuitiva Ã© fÃ¡cil cadastrar seu veÃ­culo em nosso sistema e disponibilizÃ¡-lo para aluguel, com algumas poucas informaÃ§Ãµes vocÃª poderÃ¡ tanto alugar quanto disponibilizar um veÃ­culo de sua preferÃªncia. Nosso sistema busca reunir proprietÃ¡rios e usuÃ¡rios, e preza pelo bom relacionamento entre os mesmos, e para isso implantamos um sistema de reputaÃ§Ã£o para que o usuÃ¡rio saiba com quem estÃ¡ fazendo negÃ³cio, facilitando a transparÃªncia na hora da negociaÃ§Ã£o. E com o intuito de facilitar ainda mais a experiÃªncia para nossos usuÃ¡rios comuns, foi desenvolvido um aplicativo para smartphones onde vocÃª poderÃ¡ gerenciar todas as suas atividades como faz no desktop, porÃ©m diretamente do seu celular!','','','A cada dia que passa, mais pessoas realizam o sonho de comprar um carro ou uma moto, alguns atÃ© mesmo dois. Mas nÃ£o Ã© sempre que tais veÃ­culos sÃ£o utilizados, muitas das vezes eles ficam estacionados, fora de uso. Por outro lado exitem tambÃ©m aquelas pessoas que nÃ£o tem condiÃ§Ãµes de comprar efetivamente um veÃ­culo e geralmente se utilizam de transporte pÃºblico para se locomover. O projeto City Share nasceu da necessidade de tirar carros e bicicletas que estÃ£o obsoletas das garagens e colocÃ¡-los em circulaÃ§Ã£o, ajudando pessoas com a necessidade de um transporte a conseguir um de forma prÃ¡tica e rÃ¡pida. Pensando nisso, a City Share decidiu implantar o sistema de mesmo nome que permite que vocÃª alugue ou empreste um veÃ­culo para outra pessoa, melhorando assim o fluxo de veÃ­culos dentro do municÃ­pio que adotou o sistema.','O projeto jÃ¡ foi adotado em mais de 10 municÃ­pios e tem ganhado popularidade entre os usuarios comuns, muitos deles tem sua vida facilitada pelo sistema City Share e seu uso tem sido cada vez mais frequente, visto que a praticidade que o sistema proporciona Ã© grande. O projeto City Share tambÃ©m tem um papel importante na ecologia, visto que ele incentiva os usuÃ¡rios ao uso de veÃ­culos mais econÃ´micos por um perÃ­odo de tempo menor do que de costume, diminuindo a frequÃªncia de agentes poluentes ambientais, ou atÃ© mesmo anulando, como no caso das bicicletas. Recentemente temos cultivado parceria com outras empresas de aluguÃ©is de veÃ­culos, que utilizam o sistema da City Share para encontrar e fidelizar novos clientes, tendo em cada municÃ­pio uma agÃªncia onde poderÃ¡ ser feito o cadastro diretamente e vocÃª jÃ¡ poderÃ¡ sair com seu carro alugado.','O City Share Ã© um projeto da empresa de mesmo nome que consiste em um sistema de emprÃ©stimo de veÃ­culos implantado em municÃ­pios onde o usuÃ¡rio (fÃ­sico ou jurÃ­dico) poderÃ¡ disponibilizar sua bicicleta, moto ou carro o qual nÃ£o utiliza ou tenha sobrando para aluguel. O sistema Ã© voltado tanto para usuÃ¡rios que desejam alugar quanto disponibilizar para aluguel. Nele vocÃª poderÃ¡ encontrar o carro perfeito para passeios ou atÃ© mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa! Tem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel! Bicicletas tambÃ©m sÃ£o bem-vindas! Se vocÃª nÃ£o usa sua bicicleta, coloque-a em nosso site, com certeza alguÃ©m farÃ¡ bom uso dela, e vocÃª ainda ganha com isso!\r\nCadastre-se agora e comece a usar o nosso sistema!','perfil git.PNG');
+INSERT INTO `tbl_sobreprojeto` VALUES (1,'Sobre o projeto City Share','Com uma interface simples e intuitiva é fácil cadastrar seu veículo em nosso sistema e disponibilizá-lo para aluguel, com algumas poucas informações você poderá tanto alugar quanto disponibilizar um veículo de sua preferência. Nosso sistema busca reunir proprietários e usuários, e preza pelo bom relacionamento entre os mesmos, e para isso implantamos um sistema de reputação para que o usuário saiba com quem está fazendo negócio, facilitando a transparência na hora da negociação. E com o intuito de facilitar ainda mais a experiência para nossos usuários comuns, foi desenvolvido um aplicativo para smartphones onde você poderá gerenciar todas as suas atividades como faz no desktop, porém diretamente do seu celular!','','','A cada dia que passa, mais pessoas realizam o sonho de comprar um carro ou uma moto, alguns até mesmo dois. Mas não é sempre que tais veículos são utilizados, muitas das vezes eles ficam estacionados, fora de uso. Por outro lado exitem também aquelas pessoas que não tem condições de comprar efetivamente um veículo e geralmente se utilizam de transporte público para se locomover. O projeto City Share nasceu da necessidade de tirar carros e bicicletas que estão obsoletas das garagens e colocá-los em circulação, ajudando pessoas com a necessidade de um transporte a conseguir um de forma prática e rápida. Pensando nisso, a City Share decidiu implantar o sistema de mesmo nome que permite que você alugue ou empreste um veículo para outra pessoa, melhorando assim o fluxo de veí­culos dentro do município que adotou o sistema.','O projeto já foi adotado em mais de 10 municípios e tem ganhado popularidade entre os usuários comuns, muitos deles tem sua vida facilitada pelo sistema City Share e seu uso tem sido cada vez mais frequente, visto que a praticidade que o sistema proporciona é grande. O projeto City Share também tem um papel importante na ecologia, visto que ele incentiva os usuários ao uso de veículos mais econômicos por um período de tempo menor do que de costume, diminuindo a frequência de agentes poluentes ambientais, ou até mesmo anulando, como no caso das bicicletas. Recentemente temos cultivado parceria com outras empresas de aluguéis de veí­culos, que utilizam o sistema da City Share para encontrar e fidelizar novos clientes, tendo em cada municí­pio uma agência onde poderá ser feito o cadastro diretamente e você já poderá sair com seu carro alugado.','O City Share é um projeto da empresa de mesmo nome que consiste em um sistema de empréstimo de veí­culos implantado em municí­pios onde o usuário (físico ou jurí­dico) poderá disponibilizar sua bicicleta, moto ou carro o qual não utiliza ou tenha sobrando para aluguel. O sistema é voltado tanto para usuários que desejam alugar quanto disponibilizar para aluguel. Nele você poderá encontrar o carro perfeito para passeios ou até mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa! Tem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel! Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!\r\nCadastre-se agora e comece a usar o nosso sistema!','perfil git.PNG');
 /*!40000 ALTER TABLE `tbl_sobreprojeto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1464,4 +1493,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-26 23:32:24
+-- Dump completed on 2017-03-27  8:46:21
