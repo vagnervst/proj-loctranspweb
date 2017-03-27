@@ -2203,7 +2203,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 1000px) {
     #pag-contato .box-conteudo .box-conteudo-contato #info-contato {
-        width: 540px;
+        width: 500px;
     }
 }
 

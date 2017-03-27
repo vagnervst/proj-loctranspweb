@@ -58,7 +58,7 @@
                         </a>
                     </div>
                     <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
+                        <a class="titulo-conteudo-menu" href="CMS_contato.php">
                             <img src="Image/content_test.jpg" />
                             Contato
                         </a>

@@ -1,3 +1,4 @@
+<?php require_once("../include/initialize.php"); ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -42,7 +43,15 @@
                     <div class="titulo-sesssao">
                         Fale conosco
                     </div>
-                    <div id="containner-fale-conosco">
+                    <div id="container-fale-conosco">
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Título</label>
+                            <input type="text" class="input-pagina" name="txtTitulo" value="" required/>
+                        </div>
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Descrição</label>
+                            <input type="text" class="input-pagina" name="txtTitulo" value="" required/>
+                        </div>
                         <div class="item-fale-conosco">
                             <div class="titulo-input">
                                 Email
@@ -67,56 +76,59 @@
                             </div>
                             <input type="text" class="input-pagina">
                         </div>
-                        
-                    
                     </div>
-                    
-                    
                     <div class="titulo-sesssao">
                         Perguntas frequentes
                     </div>
-                    <div id="containner-perguntas">
-                        <div class="pergunta">
-                            <div class="titulo-input">
-                                Pergunta 
-                            </div>
-                            <input type="text" class="input-pagina">
-                            <div class="titulo-input">
-                                Resposta 
-                            </div>
-                            <input type="text" class="input-pagina">
+                    <div id="container-perguntas">
+                        <div class="box-input-pagina">
+                            <label class="titulo-input">Título</label>
+                            <input type="text" class="input-pagina" name="txtTitulo" value="" required/>
                         </div>
-                        <div class="pergunta">
-                            <div class="titulo-input">
-                                Pergunta 
-                            </div>
-                            <input type="text" class="input-pagina">
-                            <div class="titulo-input">
-                                Resposta 
-                            </div>
-                            <input type="text" class="input-pagina">
+                        <div class="pergunta-combotao">
+                            <form method="post" action="#" id="form-add-pergunta">
+                                <div class="box-label-input">
+                                    <label class="titulo-input"><span class="label">Pergunta</span>
+                                        <input class="input-pagina input" type="text" name="txtPergunta">
+                                    </label>
+                                </div>
+                                <div class="box-label-input">
+                                    <label class="titulo-input"><span class="label">Resposta</span>
+                                        <input class="input-pagina input" type="text" name="txtResposta">
+                                    </label>
+                                </div>
+                                <input class="preset-botao" type="submit" name="btnAdd" value="+">
+                            </form>
                         </div>
-                        <div class="pergunta">
-                            <div class="titulo-input">
-                                Pergunta 
+                        <div id="wrapper-perguntas">
+                            <?php 
+                                $buscaPerguntas = new \Tabela\PerguntasFrequentes();
+                                $listaPerguntas = $buscaPerguntas->buscar();
+
+                                foreach( $listaPerguntas as $pergunta ) { 
+                            ?>
+                            <div class="pergunta" data-id="<?php echo $pergunta->id; ?>">
+                                <form class="form-pergunta" method="post" action="#">
+                                    <div class="box-inputs">
+                                        <div class="box-label-input">
+                                            <label class="titulo-input"><span class="label">Pergunta</span>
+                                                <input type="text" class="input-pagina input" name="txtPergunta" value="<?php echo $pergunta->pergunta; ?> ">
+                                            </label>
+                                        </div>
+                                        <div class="box-label-input">
+                                            <label class="titulo-input"><span class="label">Resposta</span>
+                                                <input type="text" class="input-pagina input" name="txtResposta" value="<?php echo $pergunta->resposta; ?> ">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="box-acoes">
+                                        <a class="preset-botao botao-remover" href="#">Remover</a>
+                                        <input class="preset-botao botao-submit" type="submit" value="Salvar"/>
+                                    </div>
+                                </form>
                             </div>
-                            <input type="text" class="input-pagina">
-                            <div class="titulo-input">
-                                Resposta 
-                            </div>
-                            <input type="text" class="input-pagina">
+                            <?php } ?>
                         </div>
-                        <div class="pergunta">
-                            <div class="titulo-input">
-                                Pergunta 
-                            </div>
-                            <input type="text" class="input-pagina">
-                            <div class="titulo-input">
-                                Resposta 
-                            </div>
-                            <input type="text" class="input-pagina">
-                        </div>
-                    
                     </div>
                     <div class="box-botao">
                         <input type="submit" class="preset-input-submit" value="Salvar">
