@@ -109,6 +109,16 @@ header #box-cabecalho #mobile-botao-menu {
     }
 }
 
+@media (min-width: 740px) {
+    header #box-cabecalho #logo-cityshare {        
+        background-image: url(../img/logo_cityshare.png);   
+        background-size: contain;
+        background-repeat: no-repeat;        
+        margin-left: 100px;
+        float: left;
+    }
+}
+
 header #box-cabecalho #menu-navegacao {
     display: none;
 }
@@ -309,15 +319,14 @@ header #box-botao-filtragem {
     width: 40px;
     height: 40px;
     position: relative;
-    border-top: 0px;
-    cursor: pointer;
+    border-top: 0px;    
     float: left;
     z-index: 1;
 }
 
 @media (min-width: 740px) {
     #mobile-botao-filtragem-ativo {
-        display: none;
+        display: none;        
     }
     
     #desktop-botao-filtragem {        
@@ -874,13 +883,14 @@ header #box-botao-filtragem {
 
 @media (min-width: 520px) {
     #pag-home {
-        padding-top: 35px;
+        padding-top: 45px;
     }
 }
 
 .main .imagem-divisao-conteudo {
-    background-image: url(../img/image_teste.jpg);
+    background-image: url(../img/banner_cityshare.jpg);
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     width: 100%;
     height: 300px;
@@ -893,8 +903,23 @@ header #box-botao-filtragem {
     }
 }
 
-.main .imagem-divisao-conteudo:nth-child(1) {
-    background-image: url(../img/image_teste2.jpg);
+#pag-home #banner-cityshare {
+    background-image: url(../img/banner_cityshare.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+#pag-home #banner1 {
+    background-image: url(../img/banner_carro1.jpg);
+}
+
+#pag-home #banner2 {
+    background-image: url(../img/banner_cidade1.jpg);
+}
+
+#pag-home #banner3 {
+    background-image: url(../img/banner_cidade2.jpeg);
 }
 
 .main .box-conteudo {
