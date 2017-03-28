@@ -587,6 +587,97 @@ $(document).ready(function() {
         });
     }
     
+    function efeitoHoverLocadorDestaque() {
+        var pagina_home = $("#pag-home")[0];
+                
+        if( pagina_home !== undefined ) {
+            var locadores_destaque = $(".box-locador-destaque");
+            
+            $(locadores_destaque).mouseenter(function(e) {
+                var offsetX = e.offsetX;
+                //console.log(offsetX);
+                
+                var tamanhoBoxLocador = $(this).css("width");
+                tamanhoBoxLocador = tamanhoBoxLocador.substr(0, tamanhoBoxLocador.indexOf("px"));
+                
+                var hoverEffect = $(this).find(".hover-effect")[0];                
+                
+                var leftInicial;
+                var leftFinal;
+                var widthInicial;
+                var widthFinal;
+                if( offsetX <= tamanhoBoxLocador/2 ) {
+                    //Anima para a direita
+                    leftInicial = "-70px";
+                    leftFinal = "200px";
+                    widthInicial = "70px";
+                    widthFinal = "400px";
+                    
+                } else if( offsetX >= tamanhoBoxLocador/2 ) {
+                    //Anima para a esquerda
+                    leftInicial = "200px";
+                    leftFinal = "-70px";
+                    widthInicial = "400px";
+                    widthFinal = "70px";
+                }
+                                                
+                $(hoverEffect).css("left", leftInicial);
+                $(hoverEffect).css("width", widthInicial);
+                $(hoverEffect).css("display", "block");                                
+                
+                $(hoverEffect).animate({
+                    left: leftFinal,
+                    width: widthFinal
+                }, 1000, function() {
+                    $(hoverEffect).css("display", "none"); 
+                    $(hoverEffect).css("left", leftInicial);
+                    $(hoverEffect).css("width", widthFinal);                    
+                });
+                
+            });
+        }
+    }        
+    
+    function efeitoSlidedownLogin() {
+        var botaoLogin = $("#botao-login")[0];
+        $(botaoLogin).removeAttr("href");
+        
+        var loginFullscreen = $("#box-login-fullscreen")[0];
+        
+        if( botaoLogin !== undefined && loginFullscreen !== undefined ) {
+            
+            var boxLogin = $(loginFullscreen).children("#box-login")[0];
+            var slideDown1 = $(loginFullscreen).children(".js-slidedown1")[0];
+            var slideDown2 = $(loginFullscreen).children(".js-slidedown2")[0];
+            var botaoFechar = $(boxLogin).children("#botao-fechar-login")[0];
+            
+            $(botaoLogin).click(function() {
+                $(loginFullscreen).css("display", "block");
+                $(boxLogin).css("display", "block");
+                $(slideDown1).css("display", "block");                
+                
+                $(slideDown1).animate({
+                    top: '120%'
+                }, 2000);                                
+                
+                $(boxLogin).animate({
+                    top: '0px'
+                }, 1800);
+            });
+                        
+            $(botaoFechar).click(function() {
+                 $(boxLogin).animate({
+                    top: '-2000px'
+                }, 800, function() {
+                    $(loginFullscreen).css("display", "none");
+                    $(boxLogin).css("display", "none");                    
+                    $(slideDown1).css("display", "none");                    
+                    $(slideDown1).css("top", "-500px");                    
+                 });
+            });
+        }
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
                 
         inicializarMenusMobile();
@@ -596,6 +687,8 @@ $(document).ready(function() {
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
+        efeitoHoverLocadorDestaque();
+        efeitoSlidedownLogin();
         inicializarMenusDesktop();
         inicializarEtapasCadastro();
         inicializarSlide();

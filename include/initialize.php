@@ -10,6 +10,8 @@
     require_once("classes/tbl_usuario_cs.php");
     require_once("classes/tbl_nivel_acesso_cs.php");
     require_once("classes/tbl_home.php");
+    require_once("classes/tbl_perguntas_frequentes.php");
+    require_once("classes/tbl_fale_conosco.php");
     require_once("classes/form_validate.php");
     require_once("classes/file.php");
     require_once("functions.php");

@@ -1,4 +1,6 @@
 <?php
+    require_once("include/initialize.php");
+
     $contatoSubmit = ( isset($_POST["contatoSubmit"]) )? $_POST["contatoSubmit"] : null;
     if( isset( $contatoSubmit ) ) {
         $nome = isset( $_POST["txtNome"] )? $_POST["txtNome"] : null;
@@ -10,7 +12,10 @@
         echo $email . "<br/>";
         echo $assunto . "<br/>";
         echo $mensagem . "<br/>";
-    }
+    }    
+
+    $dadosFaleConosco = new \Tabela\FaleConosco();
+    $dadosFaleConosco = $dadosFaleConosco->buscar("id = 1")[0];
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,57 +32,34 @@
             <div class="main" id="pag-contato">
                 <div class="box-conteudo">
                     <section class="box-conteudo-faq">
-                        <h1 class="titulo-faq">Perguntas Frequentes</h1>
+                        <h1 class="titulo-faq"><?php echo $dadosFaleConosco->tituloB; ?></h1>
                         <div id="faq-accordion">
+                            <?php
+                                $listaPerguntas = new \Tabela\PerguntasFrequentes();
+                                $listaPerguntas = $listaPerguntas->buscar();
+                                foreach( $listaPerguntas as $pergunta ) {
+                            ?>
                             <div class="faq">
-                                <p class="faq-desc">Aonde devo ir para pegar o veículo?</p>
-                                <div class="faq-answer"><p>A retirada do carro deve ser combinada com o proprietário, fica a critério de ambos escolherem um local favorável para retirada do veículo.</p></div>
+                                <p class="faq-desc"><?php echo $pergunta->pergunta; ?></p>
+                                <div class="faq-answer"><p><?php echo $pergunta->resposta; ?></p></div>
                             </div>
-                            <div class="faq">
-                                <p class="faq-desc">Como é feito o pagamento?</p>
-                                <div class="faq-answer"><p>O pagamento deve ser feito em conjunto com a retirada do veículo no local combinado para evitar inconveniências à ambos os negociantes.</p></div>
-                            </div>
-                            <div class="faq">
-                                <p class="faq-desc">Quem é responsável pelo combustível durante a locação?</p>
-                                <div class="faq-answer"><p>É imprescindível que o usuário que alugou o veículo o devolva com o tanque cheio assim como foi entregue, caso esse critério não seja cumprido, o valor complementar do combustível será cobrado como taxa no momento da devolução.</p></div>
-                            </div>
-                            <div class="faq">
-                                <p class="faq-desc">Eu preciso avaliar o proprietário do carro após o aluguel?</p>
-                                <div class="faq-answer"><p>Após devolver o carro, ambos os usuários (Proprietário e Condutor) poderão avaliar a experiência que tiveram com a transação. Essa avaliação será disponibilizada no perfil do usuário e servirá como base para as transações futuras do usuário no site da City Share. </p></div>
-                            </div>
-                            <div class="faq">
-                                <p class="faq-desc">Um familiar/amigo também pode dirigir o carro durante a locação?</p>
-                                <div class="faq-answer"><p>Sim, você pode cadastrar outras CNH caso não esteja apto a dirigir, mas tenha em mente que as CNH extras cadastradas devem estar válidas e sem qualquer restrição de uso.</p></div>
-                            </div>
-                            <div class="faq">
-                                <p class="faq-desc">O que acontece se eu atrasar para devolver o carro?</p>
-                                <div class="faq-answer"><p>Existe uma pequena taxa de atraso acumulativa a qual deve ser paga caso o veículo não seja entregue no dia e local combinados. Porém damos ao usuário uma tolerância de no máximo 30 minutos depois do prazo, após isso a taxa será aplicada.</p></div>
-                            </div>
-                            <div class="faq">
-                                <p class="faq-desc">Eu serei cobrado caso a minha solicitação de reserva não seja aceita pelo proprietário?</p>
-                                <div class="faq-answer"><p>Não. Já que o pagamento da diária ocorre no momento da retirada, você não será cobrado previamente pelo veículo alugado.</p></div>
-                            </div>
-                            <div class="faq">
-                                <p class="faq-desc">Como entro em contato com o proprietário do veículo?</p>
-                                <div class="faq-answer"><p>Após enviar uma solicitação de aluguel para o proprietário, o mesmo deverá confirmá-la caso queira realmente alugar o veículo. Quando confirmada, ambos, proprietário e usuário receberão os dados para entrar em contato um com o outro.</p></div>
-                            </div>
+                            <?php } ?>
                         </div>                        
                     </section>
                 </div>           
                 <div class="box-conteudo">
                     <section class="box-conteudo-contato">
-                        <h1 class="titulo-contato">Fale Conosco</h1>
-                        <p class="subtitulo">Não sanou sua dúvida? Contate-nos!</p>
+                        <h1 class="titulo-contato"><?php echo $dadosFaleConosco->tituloA; ?></h1>
+                        <p class="subtitulo"><?php echo $dadosFaleConosco->descricaoA; ?></p>
                         <div id="info-contato">
                             <p class="label">E-mail:</p>
-                            <p class="info">contato@cityshare.com.br</p>
+                            <p class="info"><?php echo $dadosFaleConosco->email; ?></p>
                             <p class="label">Telefone:</p>
-                            <p class="info">(11)3061-5678</p>                            
+                            <p class="info"><?php echo $dadosFaleConosco->telefone; ?></p>                            
                             <p class="label">Atendimento:</p>
-                            <p class="info">Das 09h às 18h</p>                            
+                            <p class="info"><?php echo $dadosFaleConosco->horarioAtendimento; ?></p>                            
                             <p class="label">Endereço:</p>
-                            <p class="info">Rua Gustavo da Silveira, 23 - Vila Santa Catarina<br>
-                            CEP 04376-002 - São Paulo/SP</p>
+                            <p class="info"><?php echo $dadosFaleConosco->endereco; ?></p>
                         </div>
                         <div id="container-form-contato">
                             <form method="post" action="contato.php">

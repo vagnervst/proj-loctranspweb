@@ -121,13 +121,14 @@
 
             private function get_array_from_resultado($resultado_sql) {
                 $listaObjetos = [];
+                
+                if( $resultado_sql ) {
+                    while($item = mysqli_fetch_assoc($resultado_sql)) {
+                        $objeto = $this->get_object_from_assoc_result($item);
 
-                while($item = mysqli_fetch_assoc($resultado_sql)) {
-                    $objeto = $this->get_object_from_assoc_result($item);
-
-                    $listaObjetos[] = $objeto;
+                        $listaObjetos[] = $objeto;
+                    }
                 }
-
                 return $listaObjetos;
             }
 
