@@ -2215,6 +2215,12 @@ header #box-botao-filtragem {
     font-size: 19px;
 }
 
+@media (min-width: 740px)  {
+    #pag-contato .box-conteudo #info-contato .info {
+        width: 400px;
+    }
+}
+
 #pag-contato .box-conteudo .box-contato {
     margin-top: 20px;
 }
