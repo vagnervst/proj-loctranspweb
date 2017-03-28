@@ -20,7 +20,7 @@
                        <?php 
                             $dadosProjeto = new \Tabela\SobreProjeto();
                             $buscaProjeto = $dadosProjeto->buscar("id = 1");
-                            $dadosProjeto = ( !empty($buscaProjeto[0]) )? $buscaProjeto[0] : $dadosProjeto;
+                            $dadosProjeto = ( !empty($buscaProjeto[0]) )? $buscaProjeto[0]:$dadosProjeto;
                         ?>
                         <h1 class="titulo-apresentacao"><?php echo $dadosProjeto->titulo; ?></h1>
                         <img class="imagem-apresentacao" src="<?php echo File::read($dadosProjeto->previaImagem, "img/uploads/conteudo/sobre_projeto"); ?>" />
