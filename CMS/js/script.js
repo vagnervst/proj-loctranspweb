@@ -39,6 +39,7 @@ $(document).ready(function() {
     function inicializarAJAXPerguntas() {
         var form = $("#form-add-pergunta")[0];
         var formPergunta = $(".form-pergunta");
+        var botaoRemoverPergunta = $(formPergunta).find(".botao-remover");
         
         if( form !== undefined ) {            
             $(form).submit(function(e) {
@@ -52,15 +53,16 @@ $(document).ready(function() {
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(data) {
-                        var wrapper_perguntas = $("#wrapper-perguntas")[0];
-                        
+                    success: function(data) {                        
+                        var wrapper_perguntas = $("#wrapper-perguntas")[0];                        
                         wrapper_perguntas.innerHTML = data;
+                        
+                        $(form).trigger("reset");
                     }
                 });
             });
             
-            $(formPergunta).submit(function(e) {
+            $( document ).on("submit", ".pergunta .form-pergunta", function(e) {
                 e.preventDefault();
                 
                 var formData = new FormData(this);                
@@ -76,6 +78,27 @@ $(document).ready(function() {
                     contentType: false,
                     processData: false,
                     success: function(data) {
+                        var wrapper_perguntas = $("#wrapper-perguntas")[0];
+                        
+                        wrapper_perguntas.innerHTML = data;
+                    }
+                });
+            });
+            
+            $( document ).on("click", ".form-pergunta .botao-remover", function() {
+                var boxPergunta = $(this).parents(".pergunta")[0];
+                var id = $(boxPergunta).attr("data-id");
+                
+                var formData = new FormData();
+                formData.append("id", id);
+                
+                $.ajax({
+                    url: "apis/crud_perguntas.php?modo=delete",
+                    method: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {                        
                         var wrapper_perguntas = $("#wrapper-perguntas")[0];
                         
                         wrapper_perguntas.innerHTML = data;

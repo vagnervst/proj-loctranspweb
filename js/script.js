@@ -640,7 +640,7 @@ $(document).ready(function() {
     
     function efeitoSlidedownLogin() {
         var botaoLogin = $("#botao-login")[0];
-        $(botaoLogin).attr("href", "#");
+        $(botaoLogin).removeAttr("href");
         
         var loginFullscreen = $("#box-login-fullscreen")[0];
         

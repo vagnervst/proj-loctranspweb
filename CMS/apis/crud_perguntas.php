@@ -20,6 +20,12 @@
         $objPergunta->resposta = $resposta;
         
         $objPergunta->atualizar();
+    } elseif( $modo == "delete" ) {
+        $objPergunta = new \Tabela\PerguntasFrequentes();
+        $id = ( isset( $_POST["id"] ) )? $_POST["id"] : null;
+        
+        $objPergunta->id = $id;
+        $objPergunta->deletar();
     }
 
 ?>
@@ -30,22 +36,22 @@
 
     foreach( $listaPerguntas as $pergunta ) { 
 ?>
-<div class="pergunta">
-    <form method="post" action="#">
+<div class="pergunta" data-id="<?php echo $pergunta->id; ?>">
+    <form class="form-pergunta" method="post">
         <div class="box-inputs">
             <div class="box-label-input">
                 <label class="titulo-input"><span class="label">Pergunta</span>
-                    <input type="text" class="input-pagina input" value="<?php echo $pergunta->pergunta; ?> ">
+                    <input type="text" class="input-pagina input" name="txtPergunta" value="<?php echo $pergunta->pergunta; ?> ">
                 </label>
             </div>
             <div class="box-label-input">
                 <label class="titulo-input"><span class="label">Resposta</span>
-                    <input type="text" class="input-pagina input" value="<?php echo $pergunta->resposta; ?> ">
+                    <input type="text" class="input-pagina input" name="txtResposta" value="<?php echo $pergunta->resposta; ?> ">
                 </label>
             </div>
         </div>
         <div class="box-acoes">
-            <a class="preset-botao botao-remover" href="#">Remover</a>
+            <span class="preset-botao botao-remover">Remover</span>
             <input class="preset-botao botao-submit" type="submit" value="Salvar"/>
         </div>
     </form>
