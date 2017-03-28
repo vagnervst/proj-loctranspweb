@@ -133,8 +133,12 @@
             }
 
             public function executarQuery($sql) {
-                $db = new Database();                
-                return $db->query($sql);
+                $db = new Database();                                
+                $resultado = $db->query($sql);
+                
+                if( mysqli_insert_id($db->conexao) != 0 ) return mysqli_insert_id($db->conexao);
+                
+                return $resultado;
             }                
 
             public function buscar($where="") {                
@@ -167,10 +171,10 @@
 
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
-                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                
+                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                                                
                 
                 return $this->executarQuery($sql);
-            }
+            }                        
         }
     }
 ?>
