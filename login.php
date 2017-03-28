@@ -5,6 +5,8 @@
         $email = ( $_POST["txtEmail"] )? $_POST["txtEmail"] : null;
         $senha = ( $_POST["txtSenha"] )? $_POST["txtSenha"] : null;                
     }
+
+    $contexto = "login";
 ?>
 <!DOCTYPE html>
 <html>

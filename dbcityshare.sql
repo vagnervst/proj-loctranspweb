@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbcityshare
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.19-MariaDB
+-- Server version	5.6.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -238,17 +238,17 @@ DROP TABLE IF EXISTS `tbl_beneficiosprojeto`;
 CREATE TABLE `tbl_beneficiosprojeto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(70) NOT NULL,
-  `introducao` varchar(200) NOT NULL,
+  `introducao` text NOT NULL,
   `imagemA` varchar(50) DEFAULT NULL,
   `imagemB` varchar(50) DEFAULT NULL,
   `imagemC` varchar(50) DEFAULT NULL,
-  `descricaoA` varchar(300) NOT NULL,
-  `descricaoB` varchar(300) NOT NULL,
-  `descricaoC` varchar(300) NOT NULL,
+  `descricaoA` text NOT NULL,
+  `descricaoB` text NOT NULL,
+  `descricaoC` text NOT NULL,
   `previaImagem` varchar(50) DEFAULT NULL,
-  `previaTexto` varchar(200) NOT NULL,
+  `previaTexto` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,6 +257,7 @@ CREATE TABLE `tbl_beneficiosprojeto` (
 
 LOCK TABLES `tbl_beneficiosprojeto` WRITE;
 /*!40000 ALTER TABLE `tbl_beneficiosprojeto` DISABLE KEYS */;
+INSERT INTO `tbl_beneficiosprojeto` VALUES (1,'Por que utilizar os serviÃ§os City Share?','Veja aqui alguns dos benefÃ­cios que o nosso projeto pode proporcionar:','velbebravo.PNG','vlcsnap-2017-01-07-14h21m19s016.png','color-wheel-poster.jpg','- VocÃª tem remuneraÃ§Ã£o pelo veÃ­culo alugado, pagando apenas uma pequena taxa que varia de acordo com o tipo de veÃ­culo cadastrado em nosso sistema.\r\n- Com a facilidade do sistema City Share vocÃª poderÃ¡ cadastrar ou alugar um veÃ­culo em questÃ£o de minutos, sem nenhuma burocracia envolvida. Mas fique atento aos requisitos mÃ­nimos que o seu veÃ­culo precisa atender para ser cadastrado.\r\n- Tenha sua agÃªncia divulgada caso utilize o sistema City Share na sua empresa.','- VocÃª nÃ£o paga pelo valor total do veÃ­culo, apenas a diÃ¡ria de uso prescrita pelo proprietÃ¡rio do vÃ©iculo que estÃ¡ alugando.\r\n- VocÃª encontra uma grande variedade de veÃ­culos disponÃ­veis, podendo encontrar um para cada situaÃ§Ã£o.\r\n- Pague somente no momento da retirada, evitando inconveniÃªncias.','- Negocie diretamente, o sistema permite uma negociaÃ§Ã£o direta entre usuÃ¡rios, facilitando na transparÃªncia e facilitando a transaÃ§Ã£o.\r\n- TransaÃ§Ãµes sÃ£o seguras, o pagamento por dÃ©bito auxilia na concretizaÃ§Ã£o da negociaÃ§Ã£o, diminuindo em muito as chances de falhas na mesma.\r\n- Com o nosso sistema de filtragem dentro do site encontre o veÃ­culo mais prÃ³ximo de vocÃª, evitando longas deslocaÃ§Ãµes atÃ© o local da negociaÃ§Ã£o.','perfil git.PNG','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\nRemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\nO Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\nPague somente pelo uso e nÃ£o pela propriedade do carro.');
 /*!40000 ALTER TABLE `tbl_beneficiosprojeto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,6 +343,34 @@ LOCK TABLES `tbl_cnh` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_contato`
+--
+
+DROP TABLE IF EXISTS `tbl_contato`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_contato` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(120) NOT NULL,
+  `email` varchar(70) NOT NULL,
+  `mensagem` varchar(400) NOT NULL,
+  `idAssunto` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `faleConosco_assunto` (`idAssunto`),
+  CONSTRAINT `faleConosco_assunto` FOREIGN KEY (`idAssunto`) REFERENCES `tbl_assunto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_contato`
+--
+
+LOCK TABLES `tbl_contato` WRITE;
+/*!40000 ALTER TABLE `tbl_contato` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_contato` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_deposito`
 --
 
@@ -402,7 +431,7 @@ DROP TABLE IF EXISTS `tbl_empreste`;
 CREATE TABLE `tbl_empreste` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(70) NOT NULL,
-  `descricao` varchar(800) NOT NULL,
+  `descricao` text NOT NULL,
   `imagemA` varchar(50) DEFAULT NULL,
   `tituloA` varchar(70) NOT NULL,
   PRIMARY KEY (`id`)
@@ -454,13 +483,14 @@ DROP TABLE IF EXISTS `tbl_faleconosco`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_faleconosco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(120) NOT NULL,
-  `email` varchar(70) NOT NULL,
-  `mensagem` varchar(400) NOT NULL,
-  `idAssunto` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `faleConosco_assunto` (`idAssunto`),
-  CONSTRAINT `faleConosco_assunto` FOREIGN KEY (`idAssunto`) REFERENCES `tbl_assunto` (`id`)
+  `tituloA` varchar(70) DEFAULT NULL,
+  `tituloB` varchar(70) DEFAULT NULL,
+  `descricaoA` varchar(70) DEFAULT NULL,
+  `email` varchar(70) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `horarioAtendimento` varchar(20) DEFAULT NULL,
+  `endereco` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -557,6 +587,31 @@ LOCK TABLES `tbl_historicoalteracaopedido` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_home`
+--
+
+DROP TABLE IF EXISTS `tbl_home`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_home` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(70) NOT NULL,
+  `imagemA` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_home`
+--
+
+LOCK TABLES `tbl_home` WRITE;
+/*!40000 ALTER TABLE `tbl_home` DISABLE KEYS */;
+INSERT INTO `tbl_home` VALUES (1,'Como funciona?','logo\\_eita\\_1.jpg');
+/*!40000 ALTER TABLE `tbl_home` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_itenspedido`
 --
 
@@ -644,7 +699,7 @@ CREATE TABLE `tbl_nivelacesso_cs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -653,6 +708,7 @@ CREATE TABLE `tbl_nivelacesso_cs` (
 
 LOCK TABLES `tbl_nivelacesso_cs` WRITE;
 /*!40000 ALTER TABLE `tbl_nivelacesso_cs` DISABLE KEYS */;
+INSERT INTO `tbl_nivelacesso_cs` VALUES (1,'Administrador');
 /*!40000 ALTER TABLE `tbl_nivelacesso_cs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1070,14 +1126,14 @@ DROP TABLE IF EXISTS `tbl_sobreempresa`;
 CREATE TABLE `tbl_sobreempresa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(70) NOT NULL,
-  `introducao` varchar(400) NOT NULL,
+  `introducao` text NOT NULL,
   `imagemA` varchar(50) DEFAULT NULL,
   `tituloA` varchar(50) NOT NULL,
-  `descricaoA` varchar(1000) NOT NULL,
+  `descricaoA` text NOT NULL,
   `imagemB` varchar(50) DEFAULT NULL,
   `tituloB` varchar(50) NOT NULL,
-  `descricaoB` varchar(1000) NOT NULL,
-  `previaTexto` varchar(400) NOT NULL,
+  `descricaoB` text NOT NULL,
+  `previaTexto` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1088,7 +1144,7 @@ CREATE TABLE `tbl_sobreempresa` (
 
 LOCK TABLES `tbl_sobreempresa` WRITE;
 /*!40000 ALTER TABLE `tbl_sobreempresa` DISABLE KEYS */;
-INSERT INTO `tbl_sobreempresa` VALUES (1,'Sobre a Empresa','O Projeto City Share sÃ³ foi possÃ­vel por conta da parceria entre duas empresas, que trabalharam em conjunto para trazer essa soluÃ§Ã£o atÃ© vocÃª! ConheÃ§a aqui um pouco sobre ambas as empresas envolvidas:','logo city share v2.jpg','City Share','A empresa â€œCity Shareâ€ Ã© uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o territÃ³rio nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar trÃªs, que sÃ£o eles: BicicletÃ¡rios,  Miniparques em vagas de rua e EspaÃ§os de convivÃªncia, gastronomia e arte. Com 5 anos de vida, a City Share tem ganhado espaÃ§o no mercado com seus projetos inovadores e parceirias duradouras. Sua trajetÃ³ria conta com os mais diversos projetos desenvolvidos para melhorias em municÃ­pios, todos muito bem implantados, e isso trouxe a confianÃ§a dos clientes atÃ© a City Share, que a cada dia conquista mais espaÃ§o no ramo.','logo\\_eita\\_2.jpg','E.I.T.A.','OriginÃ¡rio da Nova ZelÃ¢ndia, O grupo E.I.T.A. foi fundado por trÃªs pessoas que compartilhavam do mesmo ideal, desenvolver soluÃ§Ãµes para problemas.\r\n                            A empresa comeÃ§ou como uma simples agÃªncia de soluÃ§Ãµes e hoje Ã© uma das lÃ­deres de mercado de desenvolvimento de softwares. Atuando hÃ¡ mais de 10 anos no mercado, a E.I.T.A. soluÃ§Ãµes Ã© conhecida pela fidelizaÃ§Ã£o dos seus clientes destacando-se assim das demais empresas do ramo. Em seus 11 anos de vida, a E.I.T.A. tem expandido cada vez mais seu negÃ³cio, tendo filiais espalhadas pela Europa e AmÃ©ricas. Sua filial no Brasil, jÃ¡ estÃ¡ hÃ¡ 3 anos atuando no mercado. A equipe da E.I.T.A. jÃ¡ conta com mais de 1000 funcionÃ¡rios por filial onde pelo menos 300 deles atuam na Ã¡rea de TI, O foco atual da empresa.','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\n\r\n- RemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\n\r\n- O Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\n\r\n- Pague somente pelo uso e nÃ£o pela propriedade do carro.');
+INSERT INTO `tbl_sobreempresa` VALUES (1,'Sobre a Empresa','O Projeto City Share sÃ³ foi possÃ­vel por conta da parceria entre duas empresas, que trabalharam em conjunto para trazer essa soluÃ§Ã£o atÃ© vocÃª! ConheÃ§a aqui um pouco sobre ambas as empresas envolvidas:','perfil git.PNG','City Share','A empresa â€œCity Shareâ€ Ã© uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o territÃ³rio nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar trÃªs, que sÃ£o eles: BicicletÃ¡rios,  Miniparques em vagas de rua e EspaÃ§os de convivÃªncia, gastronomia e arte. Com 5 anos de vida, a City Share tem ganhado espaÃ§o no mercado com seus projetos inovadores e parceirias duradouras. Sua trajetÃ³ria conta com os mais diversos projetos desenvolvidos para melhorias em municÃ­pios, todos muito bem implantados, e isso trouxe a confianÃ§a dos clientes atÃ© a City Share, que a cada dia conquista mais espaÃ§o no ramo.','logo\\_eita\\_1.jpg','E.I.T.A.','OriginÃ¡rio da Nova ZelÃ¢ndia, O grupo E.I.T.A. foi fundado por trÃªs pessoas que compartilhavam do mesmo ideal, desenvolver soluÃ§Ãµes para problemas.\r\n                            A empresa comeÃ§ou como uma simples agÃªncia de soluÃ§Ãµes e hoje Ã© uma das lÃ­deres de mercado de desenvolvimento de softwares. Atuando hÃ¡ mais de 10 anos no mercado, a E.I.T.A. soluÃ§Ãµes Ã© conhecida pela fidelizaÃ§Ã£o dos seus clientes destacando-se assim das demais empresas do ramo. Em seus 11 anos de vida, a E.I.T.A. tem expandido cada vez mais seu negÃ³cio, tendo filiais espalhadas pela Europa e AmÃ©ricas. Sua filial no Brasil, jÃ¡ estÃ¡ hÃ¡ 3 anos atuando no mercado. A equipe da E.I.T.A. jÃ¡ conta com mais de 1000 funcionÃ¡rios por filial onde pelo menos 300 deles atuam na Ã¡rea de TI, O foco atual da empresa.','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\n\r\n- RemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\n\r\n- O Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\n\r\n- Pague somente pelo uso e nÃ£o pela propriedade do carro.');
 /*!40000 ALTER TABLE `tbl_sobreempresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1102,12 +1158,12 @@ DROP TABLE IF EXISTS `tbl_sobreprojeto`;
 CREATE TABLE `tbl_sobreprojeto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(70) NOT NULL,
-  `conteudo` varchar(400) NOT NULL,
+  `conteudo` text NOT NULL,
   `imagemA` varchar(50) DEFAULT NULL,
   `imagemB` varchar(50) DEFAULT NULL,
-  `descricaoA` varchar(400) NOT NULL,
-  `descricaoB` varchar(400) NOT NULL,
-  `previaTexto` varchar(200) NOT NULL,
+  `descricaoA` text NOT NULL,
+  `descricaoB` text NOT NULL,
+  `previaTexto` text NOT NULL,
   `previaImagem` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -1119,7 +1175,7 @@ CREATE TABLE `tbl_sobreprojeto` (
 
 LOCK TABLES `tbl_sobreprojeto` WRITE;
 /*!40000 ALTER TABLE `tbl_sobreprojeto` DISABLE KEYS */;
-INSERT INTO `tbl_sobreprojeto` VALUES (1,'weqwe','','logo city share v2.jpg','paleta de cores.jpg','qweq','qweqwe','qweqwe','logo prototipo.jpg');
+INSERT INTO `tbl_sobreprojeto` VALUES (1,'Sobre o projeto City Share','Com uma interface simples e intuitiva é fácil cadastrar seu veículo em nosso sistema e disponibilizá-lo para aluguel, com algumas poucas informações você poderá tanto alugar quanto disponibilizar um veículo de sua preferência. Nosso sistema busca reunir proprietários e usuários, e preza pelo bom relacionamento entre os mesmos, e para isso implantamos um sistema de reputação para que o usuário saiba com quem está fazendo negócio, facilitando a transparência na hora da negociação. E com o intuito de facilitar ainda mais a experiência para nossos usuários comuns, foi desenvolvido um aplicativo para smartphones onde você poderá gerenciar todas as suas atividades como faz no desktop, porém diretamente do seu celular!','','','A cada dia que passa, mais pessoas realizam o sonho de comprar um carro ou uma moto, alguns até mesmo dois. Mas não é sempre que tais veículos são utilizados, muitas das vezes eles ficam estacionados, fora de uso. Por outro lado exitem também aquelas pessoas que não tem condições de comprar efetivamente um veículo e geralmente se utilizam de transporte público para se locomover. O projeto City Share nasceu da necessidade de tirar carros e bicicletas que estão obsoletas das garagens e colocá-los em circulação, ajudando pessoas com a necessidade de um transporte a conseguir um de forma prática e rápida. Pensando nisso, a City Share decidiu implantar o sistema de mesmo nome que permite que você alugue ou empreste um veículo para outra pessoa, melhorando assim o fluxo de veí­culos dentro do município que adotou o sistema.','O projeto já foi adotado em mais de 10 municípios e tem ganhado popularidade entre os usuários comuns, muitos deles tem sua vida facilitada pelo sistema City Share e seu uso tem sido cada vez mais frequente, visto que a praticidade que o sistema proporciona é grande. O projeto City Share também tem um papel importante na ecologia, visto que ele incentiva os usuários ao uso de veículos mais econômicos por um período de tempo menor do que de costume, diminuindo a frequência de agentes poluentes ambientais, ou até mesmo anulando, como no caso das bicicletas. Recentemente temos cultivado parceria com outras empresas de aluguéis de veí­culos, que utilizam o sistema da City Share para encontrar e fidelizar novos clientes, tendo em cada municí­pio uma agência onde poderá ser feito o cadastro diretamente e você já poderá sair com seu carro alugado.','O City Share é um projeto da empresa de mesmo nome que consiste em um sistema de empréstimo de veí­culos implantado em municí­pios onde o usuário (físico ou jurí­dico) poderá disponibilizar sua bicicleta, moto ou carro o qual não utiliza ou tenha sobrando para aluguel. O sistema é voltado tanto para usuários que desejam alugar quanto disponibilizar para aluguel. Nele você poderá encontrar o carro perfeito para passeios ou até mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa! Tem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel! Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!\r\nCadastre-se agora e comece a usar o nosso sistema!','perfil git.PNG');
 /*!40000 ALTER TABLE `tbl_sobreprojeto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1348,7 +1404,7 @@ CREATE TABLE `tbl_usuario_cs` (
   PRIMARY KEY (`id`),
   KEY `usuario_nivelAcessoCS` (`idNivelAcesso`),
   CONSTRAINT `usuario_nivelAcessoCS` FOREIGN KEY (`idNivelAcesso`) REFERENCES `tbl_nivelacesso_cs` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1357,6 +1413,7 @@ CREATE TABLE `tbl_usuario_cs` (
 
 LOCK TABLES `tbl_usuario_cs` WRITE;
 /*!40000 ALTER TABLE `tbl_usuario_cs` DISABLE KEYS */;
+INSERT INTO `tbl_usuario_cs` VALUES (1,'Usuario','Administrador CS','admin','123',1);
 /*!40000 ALTER TABLE `tbl_usuario_cs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1436,4 +1493,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-25 20:22:05
+-- Dump completed on 2017-03-27  8:46:21

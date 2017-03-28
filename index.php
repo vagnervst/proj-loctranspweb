@@ -6,15 +6,15 @@
     <head>
         <title>Home | City Share</title>
         <meta name="viewport" content="width=device-width" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="img/icones/logoCityShareIcon.png">
     </head>
     <body>
         <div id="container">
-            <?php require_once("layout/header.php"); ?>
+            <?php require_once("layout/header.php"); ?>            
             <div class="main" id="pag-home">
-                <div class="imagem-divisao-conteudo imagem-principal"></div>
+                <div class="imagem-divisao-conteudo imagem-principal" id="banner-cityshare"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao conteudo-horizontal-ltr">
                        <?php 
@@ -29,7 +29,7 @@
                         </p>
                     </section>
                 </div>
-                <div class="imagem-divisao-conteudo"></div>
+                <div class="imagem-divisao-conteudo" id="banner1"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
                        <?php 
@@ -41,12 +41,17 @@
                         <img class="imagem-apresentacao" src="<?php echo File::read($dadosHome->imagemA, "img/uploads/conteudo/home"); ?>" />
                     </section>
                 </div>
-                <div class="imagem-divisao-conteudo"></div>                
+                <div class="imagem-divisao-conteudo" id="banner2"></div>                
                 <section id="container-locadores-destaque">
                     <div id="horizontal-wrapper">
                         <?php for($i = 0; $i < 10; ++$i) { ?>
                         <section class="box-locador-destaque">
-                            <a href="perfil.php"><img class="foto-locador" src="img/link_face.jpg"/></a>
+                            <a href="perfil.php">
+                                <div class="box-effect">
+                                    <div class="hover-effect"></div>
+                                </div>
+                                <img class="foto-locador" src="img/link_face.jpg"/>
+                            </a>
                             <h1 class="nome-locador">Nome locador</h1>
                             <p class="localizacao-locador">Estado: SP</p>                        
                             <div class="box-avaliacoes">
@@ -70,14 +75,14 @@
                             $buscaBeneficios = $dadosBeneficiosProjeto->buscar("id = 1");
                             $dadosBeneficiosProjeto = ( !empty($buscaBeneficios[0]) )? $buscaBeneficios[0] : $dadosBeneficiosProjeto;
                         ?>
-                        <h1 class="titulo-apresentacao"><?php echo $dadosBeneficiosProjeto->titulo; ?></h1>
-                        <img class="imagem-apresentacao" src="img/image_teste.jpg" />
+                        <h1 class="titulo-apresentacao"><?php echo $dadosBeneficiosProjeto->titulo; ?></h1>                        
+                        <img class="imagem-apresentacao" src="<?php echo File::read($dadosBeneficiosProjeto->previaImagem, "img/uploads/conteudo/beneficios_projeto"); ?>" />
                         <p class="texto-apresentacao"><?php echo $dadosBeneficiosProjeto->previaTexto; ?>
                             <span class="botao-exibir-mais"><a href="beneficios.php">Ler mais...</a></span>
                         </p>
                     </section>
                 </div>
-                <div class="imagem-divisao-conteudo"></div>
+                <div class="imagem-divisao-conteudo" id="banner3"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
                         <?php
