@@ -1069,6 +1069,14 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 20px;
 }
 
+#pag-cityshare-contato .box-conteudo #container-fale-conosco .botao-submit {
+    display: block;
+    width: 100px;
+    padding: 5px 0px;
+    margin: 20px auto;
+}
+
+
 #pag-cityshare-contato .box-conteudo #container-perguntas {
     height: 700px;
     width: 100%;
@@ -1150,12 +1158,15 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-right: 25px;
 }
 #pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao {
+    background-color: #f9f9f9;
     text-align: center;
+    width: 620px;
     height: 200px;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    border-bottom: 1px solid #bcbcbc;
+    border: 1px solid #dcdcdc;
+    
 }
 
 #pag-cityshare-contato .box-conteudo #container-perguntas .pergunta-combotao .box-label-input {
@@ -1175,6 +1186,7 @@ header #box-cabecalho #box-conta #botao-logout{
     font-size: 30px;
     font-weight: bold;    
 }
+
 /***************CLIENTES*******************/
 
 #pag-clientes-usuarios .box-conteudo {
