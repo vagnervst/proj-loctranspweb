@@ -189,6 +189,7 @@ header #box-cabecalho #box-conta #box-login-cadastro .botao-conta {
     border: 1px solid #a1aec9;
     border-radius: 2px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 header #box-cabecalho #box-conta #box-login-cadastro .botao-conta:hover,
@@ -869,6 +870,108 @@ header #box-botao-filtragem {
 
 /*------------- PRESETS*/
 
+#container #box-login-fullscreen {   
+    display: none;    
+    width: 100%;
+    height: 100%;    
+    position: fixed;
+    z-index: 2;
+}
+
+#container #box-login-fullscreen #box-login {    
+    display: none;
+    background-image: url(../img/assets/background_login_fullscreen.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ebebeb;
+    width: 100%;
+    height: 100%;
+    padding-top: 200px;
+    position: fixed;
+    top: -2000px;
+}
+
+#container #box-login-fullscreen .slidedown-effect {
+    display: none;
+    background-color: #141619;
+    width: 100%;
+    height: 400px;
+    position: fixed;
+    top: -500px;        
+}
+
+#container #box-login-fullscreen .slidedown-effect.js-slidedown1 {        
+    background-image: url(../img/city_share_letreiro.png);
+    background-size: 592px 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#container #box-login-fullscreen #box-form-login {
+    width: 400px;
+    margin: 0 auto;     
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input {
+    margin: 10px 0px;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .label {
+    display: block;
+    font-size: 20px;
+    color: #557bc9;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input {    
+    width: 400px;
+    height: 40px;
+    color: black;
+    border-bottom: 1px solid black;
+    font-size: 17px;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input:focus {
+    border-bottom: 1px solid #a1aec9;
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input::-webkit-input-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input:-moz-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input::moz-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .box-label-input .input:ms-input-placeholder {
+    color: #555;    
+}
+
+#container #box-login-fullscreen #box-form-login .submit {
+    display: block;
+    width: 130px;
+    height: 50px;  
+    margin: 20px auto;
+}
+
+#container #box-login-fullscreen #box-login #botao-fechar-login {
+    display: block;
+    background-image: url(../img/icones/fechar-login.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 100px;
+    cursor: pointer;
+}
+
+/*------------- LOGIN FULLSCREEN*/
+
 .main {
     background-color: #ebebeb;
     min-height: 400px;
@@ -899,7 +1002,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     .main .imagem-divisao-conteudo {
-        height: 400px;
+        height: 600px;
     }
 }
 
@@ -1196,8 +1299,13 @@ header #box-botao-filtragem {
     width: 240px;
     border-radius: 0px 0px 5px 5px;
     margin: 0 3px;
-    padding: 5px;
+    padding: 5px;    
     color: #202020;
+    transition: background-color .2s;
+}
+
+.main #container-locadores-destaque .box-locador-destaque:hover {
+    background-color: #fff;
 }
 
 @media (min-width: 1000px) {
@@ -1210,6 +1318,25 @@ header #box-botao-filtragem {
 @media (min-width: 520px) {
     .main #container-locadores-destaque .box-locador-destaque {
         margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 740px) {    
+    
+    #pag-home #container-locadores-destaque .box-locador-destaque .box-effect {
+        position: absolute;
+        height: 160px;
+        width: 180px;
+        overflow: hidden;
+    } 
+    
+    #pag-home #container-locadores-destaque .box-locador-destaque .hover-effect {
+        display: none;
+        position: absolute;
+        background-color: #a1aec9;
+        width: 50px;
+        height: 160px;                        
+        transform: skewX(-10deg);
     }
 }
 
@@ -3736,7 +3863,7 @@ header #box-botao-filtragem {
     width: 150px;
     padding: 15px 0px;
     margin: 20px;
-    font-size: 20px;
+    font-size: 20px;    
 }
 
 @media (min-width: 740px) {

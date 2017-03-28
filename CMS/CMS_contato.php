@@ -86,7 +86,7 @@
                             <input type="text" class="input-pagina" name="txtTitulo" value="" required/>
                         </div>
                         <div class="pergunta-combotao">
-                            <form method="post" action="#" id="form-add-pergunta">
+                            <form method="post" id="form-add-pergunta">
                                 <div class="box-label-input">
                                     <label class="titulo-input"><span class="label">Pergunta</span>
                                         <input class="input-pagina input" type="text" name="txtPergunta">
@@ -108,7 +108,7 @@
                                 foreach( $listaPerguntas as $pergunta ) { 
                             ?>
                             <div class="pergunta" data-id="<?php echo $pergunta->id; ?>">
-                                <form class="form-pergunta" method="post" action="#">
+                                <form class="form-pergunta" method="post">
                                     <div class="box-inputs">
                                         <div class="box-label-input">
                                             <label class="titulo-input"><span class="label">Pergunta</span>
@@ -122,7 +122,7 @@
                                         </div>
                                     </div>
                                     <div class="box-acoes">
-                                        <a class="preset-botao botao-remover" href="#">Remover</a>
+                                        <span class="preset-botao botao-remover">Remover</span>
                                         <input class="preset-botao botao-submit" type="submit" value="Salvar"/>
                                     </div>
                                 </form>

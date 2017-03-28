@@ -1,3 +1,4 @@
+<?php if( !isset($contexto) ) $contexto = ""; ?>
 <header>
     <div id="box-cabecalho">
         <div id="mobile-botao-menu"></div>
@@ -20,7 +21,7 @@
             ?>
             <?php if( !$contaAtiva ) { ?>
             <div id="box-login-cadastro">
-                <a class="botao-conta" href="login.php">Entrar</a>
+                <a class="botao-conta" id="botao-login" href="login.php">Entrar</a>
                 <a class="botao-conta" id="botao-cadastro" href="cadastro.php">Cadastre-se</a>
             </div>
             <?php } else { ?>
@@ -77,7 +78,31 @@
         <li><a class="preset-botao" href="index.php">HOME</a></li>
         <li><a class="preset-botao" href="alugue.php">ALUGUE</a></li>
         <li><a class="preset-botao" href="empreste.php">EMPRESTE</a></li>
-        <li><a class="preset-botao" href="contato.php">CONTATO</a></li>                    
+        <li><a class="preset-botao" href="contato.php">CONTATO</a></li>
     </ul>
 </div>
 <!-- MENU DE PAGINAS - MOBILE -->
+<?php if( $contexto != "login" ) { ?>
+<div id="box-login-fullscreen">
+   <div id="box-login">
+        <div id="box-form-login">
+            <form method="post" action="login.php">
+                <div class="box-label-input">
+                    <label><span class="label">Email</span>
+                        <input class="preset-input-text input" type="text" name="loginEmail" placeholder="Digite seu email">
+                    </label>
+                </div>
+                <div class="box-label-input">
+                    <label><span class="label">Senha</span>
+                        <input class="preset-input-text input" type="password" name="loginSenha" placeholder="Digite sua senha">
+                    </label>
+                </div>
+                <input class="preset-input-submit submit" type="submit" name="loginSubmit" value="Entrar" />
+            </form>
+        </div>
+        <span id="botao-fechar-login"></span>
+    </div>                
+    <div class="slidedown-effect js-slidedown1"></div>
+</div>
+<!-- LOGIN FULLSCREEN -->
+<?php } ?>
