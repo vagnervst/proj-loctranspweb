@@ -6,7 +6,7 @@
             public static $primary_key = "id";
             
             public $id;
-            public $nome;
+            public $nome;                    
         }
     }
 ?>

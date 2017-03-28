@@ -119,7 +119,7 @@
                 return $objeto;
             }
 
-            private function get_array_from_resultado($resultado_sql) {
+            protected function get_array_from_resultado($resultado_sql) {
                 $listaObjetos = [];
                 
                 if( $resultado_sql ) {
@@ -135,7 +135,7 @@
             public function executarQuery($sql) {
                 $db = new Database();                                
                 $resultado = $db->query($sql);
-                
+                                
                 if( mysqli_insert_id($db->conexao) != 0 ) return mysqli_insert_id($db->conexao);
                 
                 return $resultado;
@@ -165,7 +165,7 @@
                 $sql = "DELETE FROM " . $this::$nome_tabela . " ";
                 $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key() . " ";
                 $sql .= "LIMIT 1";
-
+                echo $sql;
                 return $this->executarQuery($sql);
             }
 

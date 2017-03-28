@@ -456,10 +456,12 @@ header #box-cabecalho #box-conta #botao-logout{
     width: inherit;
     height: 60px;
 }
+
 .box-conteudo .container-campos .box-input-checkbox{
     width: inherit;
     height: auto;
 }
+
 .box-conteudo .container-campos .box-input-checkbox .box-checkbox{
     width: 100%;
     height: 20px;
@@ -768,7 +770,7 @@ header #box-cabecalho #box-conta #botao-logout{
     padding: 5px;
 }
 
-#pag-cityshare-adm .box-conteudo .box-conteudo-adm .titulo-conteudo-adm{
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .titulo-conteudo-adm {
     width: 100%;
     height: 30px;
     line-height: 30px;
@@ -777,13 +779,15 @@ header #box-cabecalho #box-conta #botao-logout{
     font-size: 18px;
     color: white;
 }
-#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info{
+
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info {
     width: 100%;
     height: 90px;
 }
 
-#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .box-info-label .label {
-    
+#pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .box-info-label {
+    display: block;
+    height: 90px;   
 }
 
 #pag-cityshare-adm .box-conteudo .box-conteudo-adm .box-adm-info .box-info-label .info {
@@ -824,6 +828,11 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 20px;
     float: left;
 }
+
+#pag-cityshare-adm-edit .box-conteudo .container-campos .box-input-pagina .titulo-input .label {
+    display: block;
+}
+
 #pag-cityshare-adm-edit .box-conteudo .container-campos .box-input-pagina .input-pagina{
     width: 400px;
     height: 20px;
