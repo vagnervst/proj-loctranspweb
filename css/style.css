@@ -1576,6 +1576,7 @@ header #box-botao-filtragem {
 #pag-listagem-veiculos .box-conteudo #box-pesquisa #botao-pesquisa {
     width: 70px;
     height: 40px;
+    float: right;
 }
 
 @media (min-width: 740px) {
@@ -2249,6 +2250,12 @@ header #box-botao-filtragem {
 
 #pag-contato .box-conteudo .box-conteudo-contato .box-contato {
     position: relative;
+}
+
+@media (min-width: 740px) {
+    #pag-contato .box-conteudo .box-conteudo-contato .box-contato {
+        width: 600px;
+    }
 }
 
 #pag-contato .box-conteudo .box-contato .label-input-contato {
@@ -3896,7 +3903,9 @@ header #box-botao-filtragem {
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
 footer {
-    background-color: #a1aec9;
+    background-color: #141619;
+    background-image: url(../img/assets/textura_footer.jpg);
+    background-size: contain;    
     width: 100%;
     height: auto;
     padding: 10px 0px;
@@ -3932,7 +3941,7 @@ footer #box-rodape #box-mapa-site {
 }
 
 footer #box-rodape #box-mapa-site h1 {
-    color: black;
+    color: white;
     font-size: 22px;    
     margin-bottom: 5px;    
 }
@@ -3958,7 +3967,7 @@ footer #box-rodape #box-mapa-site #lista-paginas li {
 }
 
 footer #box-rodape #box-mapa-site #lista-paginas li a {
-    color: black;
+    color: white;
     font-size: 18px;
     padding: 12px;
     display: block;
@@ -3967,20 +3976,20 @@ footer #box-rodape #box-mapa-site #lista-paginas li a {
 @media (min-width: 740px) {
     footer #box-rodape #box-mapa-site #lista-paginas li a {
         font-size: 15px;
-        padding: 5px;
+        padding: 4px;
     }
 }
 
 footer #box-rodape #declaracao-copyright {
-    color: black;
+    display: block;
+    color: white;
     text-align: center;
     font-size: 15px;
 }
 
 @media (min-width: 740px) {
     footer #box-rodape #declaracao-copyright {        
-        margin-top: 230px;
-        text-align: right;
+        margin-top: 230px;        
     }
 }
 
