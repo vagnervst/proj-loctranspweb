@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Home - Como funciona</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Home</a>
                 </div>
                 <form action="CMS_adm_home.php" method="post" name="formConteudo" enctype="multipart/form-data">
                     <div class="box-conteudo">                        

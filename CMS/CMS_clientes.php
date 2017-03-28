@@ -51,16 +51,7 @@
                             Planos de conta 
                         </a>
                     </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-                            Permissões
-                        </a>
-                    </div>
-                    
-                    
                 </div>
-                
             </div>
             <?php
                 include("layout/footer.php");
