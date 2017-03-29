@@ -15,7 +15,8 @@
     }    
 
     $dadosFaleConosco = new \Tabela\FaleConosco();
-    $dadosFaleConosco = $dadosFaleConosco->buscar("id = 1")[0];
+    $buscaDados = $dadosFaleConosco->buscar("id = 1");
+    if( !empty($buscaDados[0]) ) $dadosFaleConosco = $buscaDados[0];
 ?>
 <!DOCTYPE html>
 <html>

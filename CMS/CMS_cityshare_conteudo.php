@@ -68,7 +68,13 @@
                             <img src="Image/content_test.jpg" />
                             Sobre o Projeto
                         </a>
-                    </div>                    
+                    </div>
+                    <div class="box-conteudo-menu">                        
+                        <a class="titulo-conteudo-menu" href="CMS_contato.php">
+                            <img src="Image/content_test.jpg" />
+                            Contato
+                        </a>
+                    </div>
                 </div>
             </div>
             <?php

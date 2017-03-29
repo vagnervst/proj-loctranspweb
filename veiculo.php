@@ -9,8 +9,54 @@
     </head>
     <body>
         <div id="container">
-            <?php require_once("layout/header.php"); ?>
-            <div class="main" id="pag-detalhes-veiculo">                
+            <?php require_once("layout/header.php"); ?>            
+            <div class="main" id="pag-detalhes-veiculo">
+                <div id="container-modals">
+                    <section class="modal js-modal1">
+                        <h1 class="titulo">Dados Pessoais</h1>
+                        <div class="box-label-info">
+                            <p class="label">Nome:</p>
+                            <p class="info">XXXX</p>
+                        </div>
+                        <div class="box-label-info">
+                            <p class="label">Valor do Combustível (L):</p>
+                            <p class="info">XXXX</p>
+                        </div>
+                        <div class="box-label-info">
+                            <p class="label">Valor por Quilometragem Excedida:</p>
+                            <p class="info">XXXX</p>
+                        </div>
+                        <div class="box-label-info">
+                            <p class="label">Valor das Diárias:</p>
+                            <p class="info">XXXX</p>
+                        </div>
+                        <div class="box-info-horizontal">
+                            <div class="box-label-info">
+                                <p class="label">Retirada</p>
+                                <p class="info">XX/XX/XX XX:XX</p>
+                            </div>
+                            <div class="box-label-info">
+                                <p class="label">Entrega</p>
+                                <p class="info">XX/XX/XX XX:XX</p>
+                            </div>
+                        </div>
+                        <div class="box-label-input">
+                            <label><span class="label">CNH:</span>
+                                <select class="preset-input-select input">
+                                    <option selected disabled>Selecione a CNH</option>
+                                </select>
+                            </label>
+                        </div>
+                        <span class="preset-botao btn-avancar js-modal2">Confirmar</span>
+                    </section>
+                    <section class="modal js-modal2">
+                        <div class="box-confirmacao">
+                            <h1 class="titulo">Solicitação Enviada</h1>
+                            <p class="descricao">Aguarde confirmação do locador</p>
+                        </div>
+                        <span class="preset-botao btn-avancar" id="botao-concluido">Ok</span>
+                    </section>
+                </div>
                 <div id="slide-imagens-veiculo">
                     <span class="botao-slide" id="botao-prev"></span>
                     <span class="botao-slide" id="botao-next"></span>
@@ -78,7 +124,7 @@
                                         <input class="preset-input-text hora-input" type="text" placeholder="XX:XX" />
                                     </div>                                
                                 </div>
-                                <a class="preset-botao" id="botao-alugar" href="#">Alugar</a>
+                                <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
                             </div>
                         </div>
                     </section>
