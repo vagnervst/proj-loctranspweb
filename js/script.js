@@ -594,8 +594,7 @@ $(document).ready(function() {
             var locadores_destaque = $(".box-locador-destaque");
             
             $(locadores_destaque).mouseenter(function(e) {
-                var offsetX = e.offsetX;
-                //console.log(offsetX);
+                var offsetX = e.offsetX;                
                 
                 var tamanhoBoxLocador = $(this).css("width");
                 tamanhoBoxLocador = tamanhoBoxLocador.substr(0, tamanhoBoxLocador.indexOf("px"));
@@ -631,9 +630,9 @@ $(document).ready(function() {
                 }, 1000, function() {
                     $(hoverEffect).css("display", "none"); 
                     $(hoverEffect).css("left", leftInicial);
-                    $(hoverEffect).css("width", widthFinal);                    
-                });
-                
+                    $(hoverEffect).css("width", widthFinal);                                        
+                });                                
+                                
             });
         }
     }        
