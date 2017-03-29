@@ -1,10 +1,25 @@
+<?php
+    require_once("../include/initialize.php");
+
+    $submit = ( isset($_POST["btnSubmit"]) )? $_POST["btnSubmit"] : null;
+    
+    if( isset( $submit ) ) {
+        $usuario = ( isset($_POST["txtusuario"]) )? $_POST["txtusuario"] : null;
+        $senha = ( isset($_POST["txtsenha"]) )? $_POST["txtsenha"] : null;
+        
+        $objUsuario = \Tabela\UsuarioCS::login( $usuario, $senha );
+        
+        if( !empty( $objUsuario ) ) {
+            //Login realizado com sucesso...
+            redirecionar_para("CMS_Home.php");
+        }
+    }
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>
-            CMS - Login | City Share
-		</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>CMS - Login | City Share</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
 	</head>
 	<body >
@@ -15,12 +30,12 @@
                 </div>
             </header>
             <div class="conteudo" id="content_login">
-                <form name="frmCMSlogin" method="post" action="CMS_home.php" id="form_login">
+                <form name="frmCMSlogin" method="post" action="index.php" id="form_login">
                     <label>Usuário
-                        <input type="text" name="CMSusuario" class="text-input" required/></label>
+                        <input type="text" name="txtusuario" class="text-input" required/></label>
                     <label>Senha
-                        <input type="password" name="CMSsenha" class="text-input" required/></label>
-                    <input type="submit" value="Entrar" name="CMSsubmit" class="submit-input"/>
+                        <input type="password" name="txtsenha" class="text-input" required/></label>
+                    <input type="submit" value="Entrar" name="btnSubmit" class="submit-input"/>
                 </form>
             </div>
             <div class="conteudo" id="footer_login">

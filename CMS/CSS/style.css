@@ -333,6 +333,14 @@ header #box-cabecalho #box-conta #botao-logout{
     float: left ;
 }
 
+#box-erros {
+    padding: 10px;
+}
+
+#box-erros #erros li {
+    color: red;
+}
+
 .box-conteudo .box-conteudo-menu {
     width: 150px;
     height: 150px;
