@@ -678,8 +678,70 @@ $(document).ready(function() {
         }
     }
     
-    if( tamanhoTela.indexOf("mobile") != -1 ) {                
+    function definirBotaoModal(botao, modalAlvo) {
+        $(botao).click(function() {
+            var modalAtual = $(botao).parents(".modal")[0];
+            var containerModals = $("#container-modals")[0];
+            
+            $(modalAtual).css("display", "none");
+            $(containerModals).css("display", "block");
+            $(modalAlvo).css("display", "block");
+        });
+    }
+    
+    function getClasseModal(elemento) {
+        var classes = elemento.className;
                 
+        var indiceClasseModal = classes.indexOf("js-modal");                
+        var classeModal = classes.substr(indiceClasseModal, classes.length);
+        return classeModal;
+    }
+    
+    function ocultarModais(listaModais) {
+        for( var i = 0; i < listaModais.length; ++i ) {
+            $(listaModais).css("display", "none");
+            var containerModals = $("#container-modals")[0];
+            $(containerModals).css("display", "none");
+        }
+    }
+    
+    function inicializarModaisLocacao() {
+        var pagVeiculo = $("#pag-detalhes-veiculo")[0];
+                
+        if( pagVeiculo !== undefined ) {
+            
+            var containerModals = $("#container-modals")[0];
+            var modals = $(containerModals).children(".modal");
+            
+            var botaoAlugar = $(pagVeiculo).find("#botao-alugar")[0];                        
+            var modalAlvo = $(containerModals).find( "." + getClasseModal(botaoAlugar) )[0];
+                        
+            definirBotaoModal(botaoAlugar, modalAlvo);
+            
+            var botaoConcluido = $("#botao-concluido")[0];            
+            
+            for( var i = 0; i < modals.length; ++i ) {
+                var botaoTransferencia = $(modals[i]).children(".btn-avancar")[0];
+                var modalAlvo = $(containerModals).children( "." + getClasseModal(botaoTransferencia) )[0]; 
+                
+                definirBotaoModal(botaoTransferencia, modalAlvo);
+            }
+            
+            $(containerModals).click(function(e) {
+                if( $(e.target).parents(".modal")[0] !== undefined || $(e.target).hasClass("modal")) return;
+                
+                ocultarModais(modals);               
+            });
+            
+            $(botaoConcluido).click(function(e) {                                
+                ocultarModais(modals);               
+            });
+        }
+    }
+    
+    if( tamanhoTela.indexOf("mobile") != -1 ) {                
+        
+        inicializarModaisLocacao();
         inicializarMenusMobile();
         inicializarEtapasCadastro();
         inicializarSlide();
@@ -687,6 +749,7 @@ $(document).ready(function() {
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
+        inicializarModaisLocacao();
         efeitoHoverLocadorDestaque();
         efeitoSlidedownLogin();
         inicializarMenusDesktop();

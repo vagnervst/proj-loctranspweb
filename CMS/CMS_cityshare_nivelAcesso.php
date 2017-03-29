@@ -1,3 +1,6 @@
+<?php
+    require_once("../include/initialize.php");
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -36,20 +39,27 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_nivelAcesso.php" class="link-caminho" >Níveis de Acesso</a>
+                    <a href="CMS_home.php" class="link-caminho">Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_nivelAcesso.php" class="link-caminho" >Níveis de Acesso</a>
                 </div>
                 <div class="box-conteudo">
-                    <div class="box-conteudo-adm">
-                        <div class="titulo-conteudo-adm">
-                            Título Nível
+                   <div class="lista-wrapper">
+                        <?php
+                            $listaNiveisAcesso = new \Tabela\NivelAcessoCS();
+                            $listaNiveisAcesso = $listaNiveisAcesso->buscar();
+
+                            foreach( $listaNiveisAcesso as $nivelAcesso ) {
+                        ?>
+                        <div class="box-conteudo-adm">
+                            <div class="titulo-conteudo-adm"><p><?php echo $nivelAcesso->nome; ?></p></div>
+                            <div class="box-adm-info">
+                                <p class="label">Número de usuarios:</p>
+                                <p class="info">X</p>
+                            </div>
+                            <div class="box-btn-edit">
+                                <a class="preset-botao" href="CMS_nivel_edit.php?id=<?php echo $nivelAcesso->id; ?>">Editar</a>
+                            </div>
                         </div>
-                        <div class="box-adm-info">
-                            <p class="nome-adm">Número de usuarios:XXXXX</p>
-                            <p class="nivel-adm">Nivel de Autenticação:XXXXXX</p>
-                        </div>
-                        <div class="box-btn-edit">
-                            <a class="preset-botao" href="CMS_nivel_edit.php">Editar</a>
-                        </div>
+                        <?php } ?>
                     </div>
                     <div class="box-operacoes">
                         <ul id="menu-operacoes">

@@ -11,6 +11,7 @@
             public $usuario;
             public $senha;
             public $idNivelAcesso;
+            public $fixo;
             
             public function getUsuarios() {
                 $sql = "SELECT u.id, u.nome, u.sobrenome, u.usuario, u.senha, n.id AS idNivelAcesso, n.nome AS nivelAcesso ";

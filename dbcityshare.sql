@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbcityshare
 -- ------------------------------------------------------
--- Server version	5.6.10-log
+-- Server version	5.5.5-10.1.19-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -33,15 +33,6 @@ CREATE TABLE `acessorioveiculo_tipoveiculo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `acessorioveiculo_tipoveiculo`
---
-
-LOCK TABLES `acessorioveiculo_tipoveiculo` WRITE;
-/*!40000 ALTER TABLE `acessorioveiculo_tipoveiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `acessorioveiculo_tipoveiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `agencia_perfilnivelacesso_juridico`
 --
 
@@ -57,15 +48,6 @@ CREATE TABLE `agencia_perfilnivelacesso_juridico` (
   CONSTRAINT `agencia_perfilnivelacesso_juridico_ibfk_2` FOREIGN KEY (`idPerfilNivelAcesso`) REFERENCES `tbl_perfilnivelacesso_juridico` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `agencia_perfilnivelacesso_juridico`
---
-
-LOCK TABLES `agencia_perfilnivelacesso_juridico` WRITE;
-/*!40000 ALTER TABLE `agencia_perfilnivelacesso_juridico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `agencia_perfilnivelacesso_juridico` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `nivelacesso_permissaocs`
@@ -85,15 +67,6 @@ CREATE TABLE `nivelacesso_permissaocs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `nivelacesso_permissaocs`
---
-
-LOCK TABLES `nivelacesso_permissaocs` WRITE;
-/*!40000 ALTER TABLE `nivelacesso_permissaocs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nivelacesso_permissaocs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `permissao_nivelacesso_juridico`
 --
 
@@ -111,15 +84,6 @@ CREATE TABLE `permissao_nivelacesso_juridico` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `permissao_nivelacesso_juridico`
---
-
-LOCK TABLES `permissao_nivelacesso_juridico` WRITE;
-/*!40000 ALTER TABLE `permissao_nivelacesso_juridico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `permissao_nivelacesso_juridico` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_acessorioveiculo`
 --
 
@@ -132,15 +96,6 @@ CREATE TABLE `tbl_acessorioveiculo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_acessorioveiculo`
---
-
-LOCK TABLES `tbl_acessorioveiculo` WRITE;
-/*!40000 ALTER TABLE `tbl_acessorioveiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_acessorioveiculo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_agencia`
@@ -166,15 +121,6 @@ CREATE TABLE `tbl_agencia` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_agencia`
---
-
-LOCK TABLES `tbl_agencia` WRITE;
-/*!40000 ALTER TABLE `tbl_agencia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_agencia` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_assunto`
 --
 
@@ -187,16 +133,6 @@ CREATE TABLE `tbl_assunto` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_assunto`
---
-
-LOCK TABLES `tbl_assunto` WRITE;
-/*!40000 ALTER TABLE `tbl_assunto` DISABLE KEYS */;
-INSERT INTO `tbl_assunto` VALUES (2,'Sugestão'),(3,'SugestÃ£o'),(4,'SugestÃ£o\\_'),(5,'SugestÃ£o\\%'),(6,'SugestÃ£o\''),(7,'SugestÃ£o'),(8,'123'),(9,'12.3'),(10,'12.3'),(11,'12.3'),(12,'12.3'),(13,'12.3'),(14,'123'),(15,'123'),(16,'123'),(17,'123'),(18,'123'),(19,'123'),(20,'123'),(21,'123'),(22,'123'),(23,'123'),(24,'123'),(25,'123'),(26,'123'),(27,'123'),(28,'123'),(29,'123'),(30,'123'),(31,'123'),(32,'123'),(33,'123'),(34,'123'),(35,'123'),(36,'12.3'),(37,'123'),(38,'123'),(39,'1\\23'),(40,'\\%'),(41,'\\_'),(42,'123.456');
-/*!40000 ALTER TABLE `tbl_assunto` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_avaliacao`
@@ -218,15 +154,6 @@ CREATE TABLE `tbl_avaliacao` (
   CONSTRAINT `usuarioAvaliador_avaliacao` FOREIGN KEY (`idUsuarioAvaliador`) REFERENCES `tbl_usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_avaliacao`
---
-
-LOCK TABLES `tbl_avaliacao` WRITE;
-/*!40000 ALTER TABLE `tbl_avaliacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_avaliacao` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_beneficiosprojeto`
@@ -252,16 +179,6 @@ CREATE TABLE `tbl_beneficiosprojeto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_beneficiosprojeto`
---
-
-LOCK TABLES `tbl_beneficiosprojeto` WRITE;
-/*!40000 ALTER TABLE `tbl_beneficiosprojeto` DISABLE KEYS */;
-INSERT INTO `tbl_beneficiosprojeto` VALUES (1,'Por que utilizar os serviÃ§os City Share?','Veja aqui alguns dos benefÃ­cios que o nosso projeto pode proporcionar:','velbebravo.PNG','vlcsnap-2017-01-07-14h21m19s016.png','color-wheel-poster.jpg','- VocÃª tem remuneraÃ§Ã£o pelo veÃ­culo alugado, pagando apenas uma pequena taxa que varia de acordo com o tipo de veÃ­culo cadastrado em nosso sistema.\r\n- Com a facilidade do sistema City Share vocÃª poderÃ¡ cadastrar ou alugar um veÃ­culo em questÃ£o de minutos, sem nenhuma burocracia envolvida. Mas fique atento aos requisitos mÃ­nimos que o seu veÃ­culo precisa atender para ser cadastrado.\r\n- Tenha sua agÃªncia divulgada caso utilize o sistema City Share na sua empresa.','- VocÃª nÃ£o paga pelo valor total do veÃ­culo, apenas a diÃ¡ria de uso prescrita pelo proprietÃ¡rio do vÃ©iculo que estÃ¡ alugando.\r\n- VocÃª encontra uma grande variedade de veÃ­culos disponÃ­veis, podendo encontrar um para cada situaÃ§Ã£o.\r\n- Pague somente no momento da retirada, evitando inconveniÃªncias.','- Negocie diretamente, o sistema permite uma negociaÃ§Ã£o direta entre usuÃ¡rios, facilitando na transparÃªncia e facilitando a transaÃ§Ã£o.\r\n- TransaÃ§Ãµes sÃ£o seguras, o pagamento por dÃ©bito auxilia na concretizaÃ§Ã£o da negociaÃ§Ã£o, diminuindo em muito as chances de falhas na mesma.\r\n- Com o nosso sistema de filtragem dentro do site encontre o veÃ­culo mais prÃ³ximo de vocÃª, evitando longas deslocaÃ§Ãµes atÃ© o local da negociaÃ§Ã£o.','perfil git.PNG','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\nRemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\nO Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\nPague somente pelo uso e nÃ£o pela propriedade do carro.');
-/*!40000 ALTER TABLE `tbl_beneficiosprojeto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_categoriaveiculo`
 --
 
@@ -282,15 +199,6 @@ CREATE TABLE `tbl_categoriaveiculo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_categoriaveiculo`
---
-
-LOCK TABLES `tbl_categoriaveiculo` WRITE;
-/*!40000 ALTER TABLE `tbl_categoriaveiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_categoriaveiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_cidade`
 --
 
@@ -308,15 +216,6 @@ CREATE TABLE `tbl_cidade` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_cidade`
---
-
-LOCK TABLES `tbl_cidade` WRITE;
-/*!40000 ALTER TABLE `tbl_cidade` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_cidade` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_cnh`
 --
 
@@ -332,15 +231,6 @@ CREATE TABLE `tbl_cnh` (
   CONSTRAINT `usuario_cnh` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_cnh`
---
-
-LOCK TABLES `tbl_cnh` WRITE;
-/*!40000 ALTER TABLE `tbl_cnh` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_cnh` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_contato`
@@ -362,15 +252,6 @@ CREATE TABLE `tbl_contato` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_contato`
---
-
-LOCK TABLES `tbl_contato` WRITE;
-/*!40000 ALTER TABLE `tbl_contato` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_contato` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_deposito`
 --
 
@@ -389,15 +270,6 @@ CREATE TABLE `tbl_deposito` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_deposito`
---
-
-LOCK TABLES `tbl_deposito` WRITE;
-/*!40000 ALTER TABLE `tbl_deposito` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_deposito` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_duracaomeses`
 --
 
@@ -411,15 +283,6 @@ CREATE TABLE `tbl_duracaomeses` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_duracaomeses`
---
-
-LOCK TABLES `tbl_duracaomeses` WRITE;
-/*!40000 ALTER TABLE `tbl_duracaomeses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_duracaomeses` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_empreste`
@@ -439,16 +302,6 @@ CREATE TABLE `tbl_empreste` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_empreste`
---
-
-LOCK TABLES `tbl_empreste` WRITE;
-/*!40000 ALTER TABLE `tbl_empreste` DISABLE KEYS */;
-INSERT INTO `tbl_empreste` VALUES (1,'Quer lucrar com seu veÃ­culo?','Lucrar com seu veÃ­culo aqui na City Share Ã© fÃ¡cil e prÃ¡tico, nosso sistema foi desenvolvido especialmente para facilitar esse processo para vocÃª usuÃ¡rio, mas tenha em mente que existem tambÃ©m critÃ©rios a serem seguidos. Entenda melhor o processo de cadastro.','logo\\_eita\\_2.jpg','Como funciona?');
-/*!40000 ALTER TABLE `tbl_empreste` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_estado`
 --
 
@@ -464,15 +317,6 @@ CREATE TABLE `tbl_estado` (
   CONSTRAINT `estado_pais` FOREIGN KEY (`idPais`) REFERENCES `tbl_pais` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_estado`
---
-
-LOCK TABLES `tbl_estado` WRITE;
-/*!40000 ALTER TABLE `tbl_estado` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_estado` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_faleconosco`
@@ -491,17 +335,8 @@ CREATE TABLE `tbl_faleconosco` (
   `horarioAtendimento` varchar(20) DEFAULT NULL,
   `endereco` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_faleconosco`
---
-
-LOCK TABLES `tbl_faleconosco` WRITE;
-/*!40000 ALTER TABLE `tbl_faleconosco` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_faleconosco` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_formapagamento`
@@ -516,15 +351,6 @@ CREATE TABLE `tbl_formapagamento` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_formapagamento`
---
-
-LOCK TABLES `tbl_formapagamento` WRITE;
-/*!40000 ALTER TABLE `tbl_formapagamento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_formapagamento` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_funcionario`
@@ -549,15 +375,6 @@ CREATE TABLE `tbl_funcionario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_funcionario`
---
-
-LOCK TABLES `tbl_funcionario` WRITE;
-/*!40000 ALTER TABLE `tbl_funcionario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_funcionario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_historicoalteracaopedido`
 --
 
@@ -578,15 +395,6 @@ CREATE TABLE `tbl_historicoalteracaopedido` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_historicoalteracaopedido`
---
-
-LOCK TABLES `tbl_historicoalteracaopedido` WRITE;
-/*!40000 ALTER TABLE `tbl_historicoalteracaopedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_historicoalteracaopedido` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_home`
 --
 
@@ -600,16 +408,6 @@ CREATE TABLE `tbl_home` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_home`
---
-
-LOCK TABLES `tbl_home` WRITE;
-/*!40000 ALTER TABLE `tbl_home` DISABLE KEYS */;
-INSERT INTO `tbl_home` VALUES (1,'Como funciona?','logo\\_eita\\_1.jpg');
-/*!40000 ALTER TABLE `tbl_home` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_itenspedido`
@@ -627,15 +425,6 @@ CREATE TABLE `tbl_itenspedido` (
   CONSTRAINT `veiculo_itensPedido` FOREIGN KEY (`idVeiculo`) REFERENCES `tbl_veiculo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_itenspedido`
---
-
-LOCK TABLES `tbl_itenspedido` WRITE;
-/*!40000 ALTER TABLE `tbl_itenspedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_itenspedido` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_licencadesktop`
@@ -657,15 +446,6 @@ CREATE TABLE `tbl_licencadesktop` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_licencadesktop`
---
-
-LOCK TABLES `tbl_licencadesktop` WRITE;
-/*!40000 ALTER TABLE `tbl_licencadesktop` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_licencadesktop` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_marcaveiculo`
 --
 
@@ -680,15 +460,6 @@ CREATE TABLE `tbl_marcaveiculo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_marcaveiculo`
---
-
-LOCK TABLES `tbl_marcaveiculo` WRITE;
-/*!40000 ALTER TABLE `tbl_marcaveiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_marcaveiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_nivelacesso_cs`
 --
 
@@ -699,18 +470,8 @@ CREATE TABLE `tbl_nivelacesso_cs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_nivelacesso_cs`
---
-
-LOCK TABLES `tbl_nivelacesso_cs` WRITE;
-/*!40000 ALTER TABLE `tbl_nivelacesso_cs` DISABLE KEYS */;
-INSERT INTO `tbl_nivelacesso_cs` VALUES (1,'Administrador');
-/*!40000 ALTER TABLE `tbl_nivelacesso_cs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_nivelacesso_juridico`
@@ -728,15 +489,6 @@ CREATE TABLE `tbl_nivelacesso_juridico` (
   CONSTRAINT `perfil_nivelAcessoJuridico` FOREIGN KEY (`idPerfilNivelAcesso`) REFERENCES `tbl_perfilnivelacesso_juridico` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_nivelacesso_juridico`
---
-
-LOCK TABLES `tbl_nivelacesso_juridico` WRITE;
-/*!40000 ALTER TABLE `tbl_nivelacesso_juridico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_nivelacesso_juridico` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_notificacao`
@@ -765,15 +517,6 @@ CREATE TABLE `tbl_notificacao` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_notificacao`
---
-
-LOCK TABLES `tbl_notificacao` WRITE;
-/*!40000 ALTER TABLE `tbl_notificacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_notificacao` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_pais`
 --
 
@@ -786,15 +529,6 @@ CREATE TABLE `tbl_pais` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_pais`
---
-
-LOCK TABLES `tbl_pais` WRITE;
-/*!40000 ALTER TABLE `tbl_pais` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_pais` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_pedido`
@@ -833,15 +567,6 @@ CREATE TABLE `tbl_pedido` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_pedido`
---
-
-LOCK TABLES `tbl_pedido` WRITE;
-/*!40000 ALTER TABLE `tbl_pedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_pedido` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_pendencia`
 --
 
@@ -864,15 +589,6 @@ CREATE TABLE `tbl_pendencia` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_pendencia`
---
-
-LOCK TABLES `tbl_pendencia` WRITE;
-/*!40000 ALTER TABLE `tbl_pendencia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_pendencia` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_percentuallucro`
 --
 
@@ -886,15 +602,6 @@ CREATE TABLE `tbl_percentuallucro` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_percentuallucro`
---
-
-LOCK TABLES `tbl_percentuallucro` WRITE;
-/*!40000 ALTER TABLE `tbl_percentuallucro` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_percentuallucro` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_perfilnivelacesso_juridico`
@@ -914,15 +621,6 @@ CREATE TABLE `tbl_perfilnivelacesso_juridico` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_perfilnivelacesso_juridico`
---
-
-LOCK TABLES `tbl_perfilnivelacesso_juridico` WRITE;
-/*!40000 ALTER TABLE `tbl_perfilnivelacesso_juridico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_perfilnivelacesso_juridico` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_perguntasfrequentes`
 --
 
@@ -938,15 +636,6 @@ CREATE TABLE `tbl_perguntasfrequentes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_perguntasfrequentes`
---
-
-LOCK TABLES `tbl_perguntasfrequentes` WRITE;
-/*!40000 ALTER TABLE `tbl_perguntasfrequentes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_perguntasfrequentes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_permissao_cs`
 --
 
@@ -957,17 +646,8 @@ CREATE TABLE `tbl_permissao_cs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_permissao_cs`
---
-
-LOCK TABLES `tbl_permissao_cs` WRITE;
-/*!40000 ALTER TABLE `tbl_permissao_cs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_permissao_cs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_permissaoconta`
@@ -984,15 +664,6 @@ CREATE TABLE `tbl_permissaoconta` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_permissaoconta`
---
-
-LOCK TABLES `tbl_permissaoconta` WRITE;
-/*!40000 ALTER TABLE `tbl_permissaoconta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_permissaoconta` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_permissaojuridico`
 --
 
@@ -1005,15 +676,6 @@ CREATE TABLE `tbl_permissaojuridico` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_permissaojuridico`
---
-
-LOCK TABLES `tbl_permissaojuridico` WRITE;
-/*!40000 ALTER TABLE `tbl_permissaojuridico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_permissaojuridico` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_planoconta`
@@ -1035,15 +697,6 @@ CREATE TABLE `tbl_planoconta` (
   CONSTRAINT `planoConta_duracaoMeses` FOREIGN KEY (`duracaoMeses`) REFERENCES `tbl_duracaomeses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_planoconta`
---
-
-LOCK TABLES `tbl_planoconta` WRITE;
-/*!40000 ALTER TABLE `tbl_planoconta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_planoconta` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_publicacao`
@@ -1085,15 +738,6 @@ CREATE TABLE `tbl_publicacao` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_publicacao`
---
-
-LOCK TABLES `tbl_publicacao` WRITE;
-/*!40000 ALTER TABLE `tbl_publicacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_publicacao` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_sexo`
 --
 
@@ -1106,15 +750,6 @@ CREATE TABLE `tbl_sexo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_sexo`
---
-
-LOCK TABLES `tbl_sexo` WRITE;
-/*!40000 ALTER TABLE `tbl_sexo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_sexo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_sobreempresa`
@@ -1139,16 +774,6 @@ CREATE TABLE `tbl_sobreempresa` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_sobreempresa`
---
-
-LOCK TABLES `tbl_sobreempresa` WRITE;
-/*!40000 ALTER TABLE `tbl_sobreempresa` DISABLE KEYS */;
-INSERT INTO `tbl_sobreempresa` VALUES (1,'Sobre a Empresa','O Projeto City Share sÃ³ foi possÃ­vel por conta da parceria entre duas empresas, que trabalharam em conjunto para trazer essa soluÃ§Ã£o atÃ© vocÃª! ConheÃ§a aqui um pouco sobre ambas as empresas envolvidas:','perfil git.PNG','City Share','A empresa â€œCity Shareâ€ Ã© uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o territÃ³rio nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar trÃªs, que sÃ£o eles: BicicletÃ¡rios,  Miniparques em vagas de rua e EspaÃ§os de convivÃªncia, gastronomia e arte. Com 5 anos de vida, a City Share tem ganhado espaÃ§o no mercado com seus projetos inovadores e parceirias duradouras. Sua trajetÃ³ria conta com os mais diversos projetos desenvolvidos para melhorias em municÃ­pios, todos muito bem implantados, e isso trouxe a confianÃ§a dos clientes atÃ© a City Share, que a cada dia conquista mais espaÃ§o no ramo.','logo\\_eita\\_1.jpg','E.I.T.A.','OriginÃ¡rio da Nova ZelÃ¢ndia, O grupo E.I.T.A. foi fundado por trÃªs pessoas que compartilhavam do mesmo ideal, desenvolver soluÃ§Ãµes para problemas.\r\n                            A empresa comeÃ§ou como uma simples agÃªncia de soluÃ§Ãµes e hoje Ã© uma das lÃ­deres de mercado de desenvolvimento de softwares. Atuando hÃ¡ mais de 10 anos no mercado, a E.I.T.A. soluÃ§Ãµes Ã© conhecida pela fidelizaÃ§Ã£o dos seus clientes destacando-se assim das demais empresas do ramo. Em seus 11 anos de vida, a E.I.T.A. tem expandido cada vez mais seu negÃ³cio, tendo filiais espalhadas pela Europa e AmÃ©ricas. Sua filial no Brasil, jÃ¡ estÃ¡ hÃ¡ 3 anos atuando no mercado. A equipe da E.I.T.A. jÃ¡ conta com mais de 1000 funcionÃ¡rios por filial onde pelo menos 300 deles atuam na Ã¡rea de TI, O foco atual da empresa.','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\n\r\n- RemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\n\r\n- O Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\n\r\n- Pague somente pelo uso e nÃ£o pela propriedade do carro.');
-/*!40000 ALTER TABLE `tbl_sobreempresa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_sobreprojeto`
 --
 
@@ -1170,16 +795,6 @@ CREATE TABLE `tbl_sobreprojeto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_sobreprojeto`
---
-
-LOCK TABLES `tbl_sobreprojeto` WRITE;
-/*!40000 ALTER TABLE `tbl_sobreprojeto` DISABLE KEYS */;
-INSERT INTO `tbl_sobreprojeto` VALUES (1,'Sobre o projeto City Share','Com uma interface simples e intuitiva é fácil cadastrar seu veículo em nosso sistema e disponibilizá-lo para aluguel, com algumas poucas informações você poderá tanto alugar quanto disponibilizar um veículo de sua preferência. Nosso sistema busca reunir proprietários e usuários, e preza pelo bom relacionamento entre os mesmos, e para isso implantamos um sistema de reputação para que o usuário saiba com quem está fazendo negócio, facilitando a transparência na hora da negociação. E com o intuito de facilitar ainda mais a experiência para nossos usuários comuns, foi desenvolvido um aplicativo para smartphones onde você poderá gerenciar todas as suas atividades como faz no desktop, porém diretamente do seu celular!','','','A cada dia que passa, mais pessoas realizam o sonho de comprar um carro ou uma moto, alguns até mesmo dois. Mas não é sempre que tais veículos são utilizados, muitas das vezes eles ficam estacionados, fora de uso. Por outro lado exitem também aquelas pessoas que não tem condições de comprar efetivamente um veículo e geralmente se utilizam de transporte público para se locomover. O projeto City Share nasceu da necessidade de tirar carros e bicicletas que estão obsoletas das garagens e colocá-los em circulação, ajudando pessoas com a necessidade de um transporte a conseguir um de forma prática e rápida. Pensando nisso, a City Share decidiu implantar o sistema de mesmo nome que permite que você alugue ou empreste um veículo para outra pessoa, melhorando assim o fluxo de veí­culos dentro do município que adotou o sistema.','O projeto já foi adotado em mais de 10 municípios e tem ganhado popularidade entre os usuários comuns, muitos deles tem sua vida facilitada pelo sistema City Share e seu uso tem sido cada vez mais frequente, visto que a praticidade que o sistema proporciona é grande. O projeto City Share também tem um papel importante na ecologia, visto que ele incentiva os usuários ao uso de veículos mais econômicos por um período de tempo menor do que de costume, diminuindo a frequência de agentes poluentes ambientais, ou até mesmo anulando, como no caso das bicicletas. Recentemente temos cultivado parceria com outras empresas de aluguéis de veí­culos, que utilizam o sistema da City Share para encontrar e fidelizar novos clientes, tendo em cada municí­pio uma agência onde poderá ser feito o cadastro diretamente e você já poderá sair com seu carro alugado.','O City Share é um projeto da empresa de mesmo nome que consiste em um sistema de empréstimo de veí­culos implantado em municí­pios onde o usuário (físico ou jurí­dico) poderá disponibilizar sua bicicleta, moto ou carro o qual não utiliza ou tenha sobrando para aluguel. O sistema é voltado tanto para usuários que desejam alugar quanto disponibilizar para aluguel. Nele você poderá encontrar o carro perfeito para passeios ou até mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa! Tem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel! Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!\r\nCadastre-se agora e comece a usar o nosso sistema!','perfil git.PNG');
-/*!40000 ALTER TABLE `tbl_sobreprojeto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_statuspedido`
 --
 
@@ -1192,15 +807,6 @@ CREATE TABLE `tbl_statuspedido` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_statuspedido`
---
-
-LOCK TABLES `tbl_statuspedido` WRITE;
-/*!40000 ALTER TABLE `tbl_statuspedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_statuspedido` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_statuspublicacao`
@@ -1217,15 +823,6 @@ CREATE TABLE `tbl_statuspublicacao` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_statuspublicacao`
---
-
-LOCK TABLES `tbl_statuspublicacao` WRITE;
-/*!40000 ALTER TABLE `tbl_statuspublicacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_statuspublicacao` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_tipocombustivel`
 --
 
@@ -1238,15 +835,6 @@ CREATE TABLE `tbl_tipocombustivel` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_tipocombustivel`
---
-
-LOCK TABLES `tbl_tipocombustivel` WRITE;
-/*!40000 ALTER TABLE `tbl_tipocombustivel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_tipocombustivel` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_tipoconta`
@@ -1263,15 +851,6 @@ CREATE TABLE `tbl_tipoconta` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_tipoconta`
---
-
-LOCK TABLES `tbl_tipoconta` WRITE;
-/*!40000 ALTER TABLE `tbl_tipoconta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_tipoconta` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_tipopedido`
 --
 
@@ -1284,15 +863,6 @@ CREATE TABLE `tbl_tipopedido` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_tipopedido`
---
-
-LOCK TABLES `tbl_tipopedido` WRITE;
-/*!40000 ALTER TABLE `tbl_tipopedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_tipopedido` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_tipoveiculo`
@@ -1309,15 +879,6 @@ CREATE TABLE `tbl_tipoveiculo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_tipoveiculo`
---
-
-LOCK TABLES `tbl_tipoveiculo` WRITE;
-/*!40000 ALTER TABLE `tbl_tipoveiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_tipoveiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_transmissaoveiculo`
 --
 
@@ -1330,15 +891,6 @@ CREATE TABLE `tbl_transmissaoveiculo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_transmissaoveiculo`
---
-
-LOCK TABLES `tbl_transmissaoveiculo` WRITE;
-/*!40000 ALTER TABLE `tbl_transmissaoveiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_transmissaoveiculo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_usuario`
@@ -1379,15 +931,6 @@ CREATE TABLE `tbl_usuario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_usuario`
---
-
-LOCK TABLES `tbl_usuario` WRITE;
-/*!40000 ALTER TABLE `tbl_usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_usuario_cs`
 --
 
@@ -1401,21 +944,12 @@ CREATE TABLE `tbl_usuario_cs` (
   `usuario` varchar(20) NOT NULL,
   `senha` varchar(70) NOT NULL,
   `idNivelAcesso` int(11) NOT NULL,
+  `fixo` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario_nivelAcessoCS` (`idNivelAcesso`),
   CONSTRAINT `usuario_nivelAcessoCS` FOREIGN KEY (`idNivelAcesso`) REFERENCES `tbl_nivelacesso_cs` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_usuario_cs`
---
-
-LOCK TABLES `tbl_usuario_cs` WRITE;
-/*!40000 ALTER TABLE `tbl_usuario_cs` DISABLE KEYS */;
-INSERT INTO `tbl_usuario_cs` VALUES (1,'Usuario','Administrador CS','admin','123',1);
-/*!40000 ALTER TABLE `tbl_usuario_cs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_veiculo`
@@ -1450,15 +984,6 @@ CREATE TABLE `tbl_veiculo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_veiculo`
---
-
-LOCK TABLES `tbl_veiculo` WRITE;
-/*!40000 ALTER TABLE `tbl_veiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_veiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tipoconta_permissaoconta`
 --
 
@@ -1474,15 +999,6 @@ CREATE TABLE `tipoconta_permissaoconta` (
   CONSTRAINT `tipoconta_permissaoconta_ibfk_2` FOREIGN KEY (`idPermissaoConta`) REFERENCES `tbl_permissaoconta` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tipoconta_permissaoconta`
---
-
-LOCK TABLES `tipoconta_permissaoconta` WRITE;
-/*!40000 ALTER TABLE `tipoconta_permissaoconta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tipoconta_permissaoconta` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1493,4 +1009,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-27  8:46:21
+-- Dump completed on 2017-03-28 16:58:12

@@ -50,19 +50,7 @@
                             <img src="Image/content_test.jpg" />                        
                             Níveis de acesso
                         </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-                            Permissões
-                        </a>
-                    </div>
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_contato.php">
-                            <img src="Image/content_test.jpg" />
-                            Contato
-                        </a>
-                    </div>
+                    </div>                                       
                     <div class="box-conteudo-menu">                        
                         <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
                             <img src="Image/content_test.jpg" />
