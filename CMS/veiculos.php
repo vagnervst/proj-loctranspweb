@@ -36,31 +36,37 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
+                        <a class="titulo-conteudo-menu" href="modelos_veiculos.php">
                             <img src="Image/content_test.jpg" />
-                            Conteudo
+                            Modelos
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_nivelAcesso.php">
+                        <a class="titulo-conteudo-menu" href="categorias_veiculos.php">
                             <img src="Image/content_test.jpg" />                        
-                            Níveis de acesso
+                            Categorias
                         </a>
                     </div>                                       
                     <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
+                        <a class="titulo-conteudo-menu" href="tipos_veiculos.php">
                             <img src="Image/content_test.jpg" />
-                            Administradores
+                            Tipos
                         </a>
                     </div>                                       
                     <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="veiculos.php">
+                        <a class="titulo-conteudo-menu" href="marcas_veiculos.php">
                             <img src="Image/content_test.jpg" />
-                            Veiculos
+                            Marcas
+                        </a>
+                    </div>                                       
+                    <div class="box-conteudo-menu">                        
+                        <a class="titulo-conteudo-menu" href="acessorios_veiculos.php">
+                            <img src="Image/content_test.jpg" />
+                            Acessórios
                         </a>
                     </div>
                 </div>
