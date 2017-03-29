@@ -1246,7 +1246,28 @@ header #box-cabecalho #box-conta #botao-logout{
 }
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
+#pag-tipo-veiculo .box-conteudo .container-campos .container-add {
+    margin: 0px 100px;
+}
 
+#pag-tipo-veiculo .box-conteudo .container-campos .container-add .box-label-input {
+    margin-bottom: 20px;
+}
+
+#pag-tipo-veiculo .box-conteudo .container-campos .container-add .box-label-input .label {
+    display: block;
+}
+
+#pag-tipo-veiculo .box-conteudo .container-campos .container-add .box-label-input .input {
+    width: 600px;
+}
+
+#pag-tipo-veiculo .box-conteudo .container-campos .container-add .preset-botao{
+    width: 100px;    
+    font-size: 30px;
+    font-weight: bold;    
+}
+/***************VEÍCULOS*******************/
 footer{
     background-color: #202020;
     width: 1070px;
