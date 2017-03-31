@@ -1269,10 +1269,20 @@ header #box-cabecalho #box-conta #botao-logout{
     width: 600px;
 }
 
-#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .preset-botao{
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo input[type="submit"] {
     width: 100px;    
     font-size: 30px;
     font-weight: bold;    
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .horizontal-input-wraper {
+    display: block;
+    width: 200px;
+    float: left;
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .preset-botao {
+    font-size: 18px;
 }
 
 #pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-listagem-tipo .tabela-tipo{

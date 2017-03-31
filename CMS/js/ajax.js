@@ -105,7 +105,7 @@ $(document).ready(function() {
             var botao_remocao = $(formInfoVeiculo).find("#botao-remover")[0];
             
             $(botao_remocao).click(function() {
-                var idVeiculo= $(formInfoVeiculo).data("idVeiculo");
+                var idVeiculo = $(formInfoVeiculo).data("idVeiculo");
                 
                 var dados = new FormData();
                 dados.append("idVeiculo", idVeiculo);
@@ -152,8 +152,117 @@ $(document).ready(function() {
         }
     }
     
+    //-------------------------------------------- TIPO DE VEICULO
+    
+    function construir_tabela_tipo_veiculo(json_lista_tipo) {
+        
+        var conteudo_tabela = "";        
+        for(var i = 0; i < json_lista_tipo.length; ++i) {
+            conteudo_tabela += '<tr class="registro-tipo">'
+            conteudo_tabela += '<td>' + json_lista_tipo[i].titulo + '</td>'
+            conteudo_tabela += '<td><span class="preset-botao botao-editar">Editar</span></td>'
+            conteudo_tabela += '</tr>'
+        }
+        
+        var tabela = document.createElement("table");
+        tabela.className = "tabela-tipo";
+        
+        tabela.innerHTML = '<tr id="colunas-label">\
+                                <td class="coluna-tipo">Tipo</td>\
+                                <td>Operações</td>\
+                            </tr>' + conteudo_tabela;                
+        
+        return tabela;
+    }
+    
+    function exibir_lista_tipo(pagina, json_lista_tipo) {        
+        var json = JSON.parse(json_lista_tipo);
+        
+        var tabela_resultante = construir_tabela_tipo_veiculo(json);
+        var box_listagem_tipo = $(".box-listagem-tipo")[0];
+        
+        box_listagem_tipo.innerHTML = "";
+        $(box_listagem_tipo).append(tabela_resultante);
+        
+        inicializar_botao_edicao_tipo(json);
+    }
+    
+    function inicializar_ajax_modificacao_tipo() {
+        var pagina_tipo = $("#pag-tipo-veiculo")[0];
+        
+        if( pagina_tipo !== undefined ) {
+            var form = $(pagina_tipo).find("#form-modificacao")[0];
+            
+            $(form).submit(function(e) {
+                e.preventDefault();
+                
+                var modo_formulario = ( $(this).hasClass("js-modo-insercao") )? "insert" : "update";
+                
+                var dados_formulario = new FormData(this);
+                dados_formulario.append("modo", modo_formulario);
+                
+                if( modo_formulario === "update" ) {
+                    var idTipo =  $(form).data("idTipo");
+                    dados_formulario.append("idTipo", idTipo);
+                }
+                
+                ajax_transferir_dados_para_api("apis/crud_tipo_veiculo.php", "POST", dados_formulario, function(dados_api) {                    
+                    exibir_lista_tipo(pagina_tipo, dados_api);
+                    
+                    if( modo_formulario === "update" ) {
+                        $(form).removeData("idTipo");
+                        $(form).addClass("js-modo-insercao");
+                        $(form).removeClass("js-modo-edicao");
+                    }
+                });
+            });
+        }
+    }
+    
+    function inicializar_ajax_remocao_tipo() {
+        var pagina_tipo = $("#pag-tipo-veiculo")[0];
+        
+        if( pagina_tipo !== undefined ) { 
+            var form = $(pagina_tipo).find("#form-modificacao")[0];
+            
+            var botao_remocao = $(form).find("#botao-remover")[0];
+            
+            $(botao_remocao).click(function() {                
+                var idTipo =  $(form).data("idTipo");
+                
+                var dados = new FormData();
+                dados.append("idTipo", idTipo);
+                dados.append("modo", "delete");
+                
+                ajax_transferir_dados_para_api("apis/crud_tipo_veiculo.php", "POST", dados, function(dados_api) {                    
+                    exibir_lista_tipo(pagina_tipo, dados_api);
+                    
+                    $(form).trigger("reset");
+                    $(form).removeData("idTipo");
+                    $(form).addClass("js-modo-insercao");
+                    $(form).removeClass("js-modo-edicao");
+                });
+            });
+        }
+    }
+    
+    function inicializar_lista_tipos() {
+        var pagina_tipo = $("#pag-tipo-veiculo")[0];
+        
+        if( pagina_tipo !== undefined ) {
+            $.ajax({url: 'apis/crud_tipo_veiculo.php', success: function(dados_api) {                
+                exibir_lista_tipo(pagina_tipo, dados_api);
+            }});
+        }
+    }
+    
+    //--------------------------------------------
+    
     inicializar_lista_veiculos();
     inicializar_ajax_modificacao_veiculos();
     preparar_formulario_edicao_veiculos();
     inicializar_ajax_remocao_veiculos();
+    inicializar_ajax_modificacao_tipo();
+    inicializar_ajax_remocao_tipo();
+    inicializar_lista_tipos();
 });
