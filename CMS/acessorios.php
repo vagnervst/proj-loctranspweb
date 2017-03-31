@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
+<?php 
+     require_once("../include/initialize.php"); 
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +15,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-home">
+            <div class="CMS_main" id="pag-acessorio-veiculo">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -39,35 +42,25 @@
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a>
                 </div>
                 <div class="box-conteudo">
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="modelos_veiculos.php">
-                            <img src="Image/content_test.jpg" />
-                            Modelos
-                        </a>
+                    <div id="box-novo-registro" >
+                        <div class="titulo-sessao"> Cadastro de acessório</div>
+                        <div id="box-campos-acessorio">
+                            <div class="box-input-pagina">
+                                <label class="titulo-input">Titulo acessorio</label>
+                                <input type="text" name="txt_titulo" class="input-pagina">
+                            </div>
+                            <div id="box-input-pagina">
+                                <label class="titulo-input">Tipo de Veículo</label>
+                                <select >
+                                    <option><?php echo($row['titulo']); ?></option>
+                                </select>
+                            </div>
+                        </div>
+                        
                     </div>
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="categorias_veiculos.php">
-                            <img src="Image/content_test.jpg" />                        
-                            Categorias
-                        </a>
-                    </div>                                       
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="tipos_veiculos.php">
-                            <img src="Image/content_test.jpg" />
-                            Tipos
-                        </a>
-                    </div>                                       
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="marcas_veiculos.php">
-                            <img src="Image/content_test.jpg" />
-                            Marcas
-                        </a>
-                    </div>                                       
-                    <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="acessorios_veiculos.php">
-                            <img src="Image/content_test.jpg" />
-                            Acessórios
-                        </a>
+                    <div class="titulo-sessao"> Cadastro de acessório</div>
+                    <div id="box-listagem-acessorios">
+                    
                     </div>
                 </div>
             </div>

@@ -28,5 +28,5 @@
                 return mysqli_query($this->conexao, $sql);
             }
         }
-    }
+     }
 ?>
