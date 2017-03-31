@@ -1273,6 +1273,50 @@ header #box-cabecalho #box-conta #botao-logout{
 /*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo {
+    margin: 0px 100px;
+    background-color: white;
+    border: 1px solid #cecece;
+    padding: 10px;
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .box-label-input {
+    margin-bottom: 20px;
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .box-label-input .label {
+    display: block;
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .box-label-input .input {
+    width: 600px;
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .preset-botao{
+    width: 100px;    
+    font-size: 30px;
+    font-weight: bold;    
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-listagem-tipo .tabela-tipo{
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+}
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-listagem-tipo .tabela-tipo #colunas-label{
+    display: block;
+    background-color: aliceblue;
+    border-bottom: 1px solid #bababa;
+    margin-top: 50px;
+}
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-listagem-tipo .tabela-tipo #colunas-label .coluna-tipo{
+    width: 100px;
+    border-right: 1px solid #bababa;
+}
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-listagem-tipo .tabela-tipo #colunas-label td{
+    width: 100px;
+}
+/***************VEÍCULOS*******************/
 
 #pag-adm-veiculos {
     height: 1020px;
@@ -1441,6 +1485,7 @@ header #box-cabecalho #box-conta #botao-logout{
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos #box-paginas #info-pagina {
     display: inline-block;
 }
+/*---- PAGINA ADM DE VEICULOS CITY SHARE ----*/
 
 /*---- PAGINA ADM DE VEICULOS CITY SHARE ----*/
 
