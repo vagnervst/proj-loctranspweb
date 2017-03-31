@@ -5,14 +5,7 @@
     require_once("../include/classes/tbl_fabricante_veiculo.php");
     require_once("../include/classes/tbl_tipo_combustivel.php");
     require_once("../include/classes/tbl_tipo_veiculo.php");
-    require_once("../include/classes/tbl_categoria_veiculo.php");
-
-    $modo = ( isset( $_GET["modo"] ) )? $_GET["modo"] : null;
-    $texto_botao = ( $modo == "update" )? "Salvar" : "Adicionar";
-	
-	if( $modo == "insert" ) {
-		
-	}
+    require_once("../include/classes/tbl_categoria_veiculo.php");    
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -177,7 +170,7 @@
                                     <a class="preset-botao botao" id="botao-remover" href="#">Remover</a>                                    
                                     <div class="box-salvar-cancelar">                                        
                                         <input class="preset-botao botao" id="botao-cancelar" type="reset" value="Cancelar" />                                        
-                                        <input class="preset-input-submit botao" type="submit" name="btnSubmit" value="<?php echo $texto_botao; ?>" />
+                                        <input class="preset-input-submit botao" type="submit" name="btnSubmit" value="Salvar" />
                                     </div>
                                 </div>
                             </form>                         
@@ -262,9 +255,7 @@
                                 <input class="preset-input-submit" id="botao-buscar" type="submit" name="btnBuscar" value="Buscar"/>
                             </form>
                         </div>
-                        <div id="box-listagem-veiculos">
-                            
-                        </div>
+                        <div id="box-listagem-veiculos"></div>
                     </div>                    
                 </div>
             </div>

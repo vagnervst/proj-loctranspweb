@@ -1251,6 +1251,10 @@ header #box-cabecalho #box-conta #botao-logout{
 
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 
+#pag-adm-veiculos {
+    height: 1020px;
+}
+
 #pag-adm-veiculos .box-conteudo #box-form-veiculo {
     background-color: #ffffff;
     width: 600px;
@@ -1363,10 +1367,12 @@ header #box-cabecalho #box-conta #botao-logout{
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos {    
     display: block;    
     width: 800px;
+    height: 100%;
     margin: 0 auto;
 }
 
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos .tabela-veiculos {
+    display: block;
     width: 750px;
     margin: 0 auto;    
 }
@@ -1387,18 +1393,28 @@ header #box-cabecalho #box-conta #botao-logout{
     border-right: 1px solid #bababa;
 }
 
+#pag-adm-veiculos .box-conteudo #box-listagem-veiculos .tabela-veiculos tr td .botao-editar {
+    display: block;
+    width: 80px;
+}
+
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos .tabela-veiculos tr .coluna-nome {
     width: 120px;
 }
 
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos #box-paginas {
     display: block;    
-    width: 200px;
+    width: 300px;
     margin: 10px auto;
     text-align: center;
 }
 
-#pag-adm-veiculos .box-conteudo #box-listagem-veiculos #box-paginas a,
+#pag-adm-veiculos .box-conteudo #box-listagem-veiculos #box-paginas .botao-paginas {
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#pag-adm-veiculos .box-conteudo #box-listagem-veiculos #box-paginas span,
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos #box-paginas #info-pagina {
     display: inline-block;
 }

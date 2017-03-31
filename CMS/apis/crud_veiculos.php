@@ -1,10 +1,10 @@
 <?php
+    $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
+          
     require_once("../../include/initialize.php");
     require_once("../../include/classes/tbl_veiculo.php");
-    require_once("../../include/classes/tbl_tipo_veiculo.php");
-
-	$modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
-	
+    require_once("../../include/classes/tbl_tipo_veiculo.php");	    
+    
     $idVeiculo = ( isset($_POST["idVeiculo"]) )? $_POST["idVeiculo"] : null;
     $nome = ( isset($_POST["txtNome"]) )? $_POST["txtNome"] : null;
     $precoMedio = ( isset($_POST["txtPrecoMedio"]) )? $_POST["txtPrecoMedio"] : null;
@@ -17,8 +17,8 @@
     $idFabricante = ( isset($_POST["slFabricante"]) )? $_POST["slFabricante"] : null;
     $idTransmissao = ( isset($_POST["slTransmissao"]) )? $_POST["slTransmissao"] : null;
 
-	$objVeiculo = new \Tabela\Veiculo();
-        
+    $objVeiculo = new \Tabela\Veiculo();
+
     $objVeiculo->nome = $nome;
     $objVeiculo->precoMedio = $precoMedio;
     $objVeiculo->ano = $ano;
@@ -32,14 +32,15 @@
 
     if( $modo == "insert" ) {
         //$objVeiculo->inserir();
-	} elseif( $modo == "update" ) {
+    } elseif( $modo == "update" ) {
         $objVeiculo->id = (int) $idVeiculo;
         $objVeiculo->atualizar();
-	} elseif( $modo == "delete" ) {
+    } elseif( $modo == "delete" ) {
         $objVeiculo->id = (int) $idVeiculo;
         $objVeiculo->deletar();
-	}
+    }
 ?>
+<?php if( 1 == 2 ) { ?>
 <table class="tabela-veiculos">
     <tr id="colunas-label">
         <td class="coluna-nome">Nome</td>
@@ -65,19 +66,19 @@
         if( $modo == "filtragem" ) {
             $listaVeiculos = $objVeiculo->buscar("nome LIKE '{$busca}'");
         } else {
-            $listaVeiculos = $objVeiculo->getVeiculos();
+            $listaVeiculos = $objVeiculo->getVeiculos(15, 1);
         }
     
         foreach( $listaVeiculos as $veiculo ) {
     ?>
-    <tr>
+    <tr class="registro-veiculo" data-info='{ "cod" : "<?php echo $veiculo->id; ?>"}'>
         <td class="coluna-nome"><?php echo $veiculo->nome; ?></td>
         <td><?php echo $veiculo->tipo; ?></td>
         <td><?php echo $veiculo->categoria; ?></td>
         <td><?php echo $veiculo->fabricante; ?></td>
         <td><?php echo $veiculo->ano; ?></td>
         <td><?php echo $veiculo->precoMedio; ?></td>
-        <td><a href="modelos_veiculo.php?modo=update">Editar</a></td>
+        <td><span class="preset-botao botao-editar">Editar</span></td>
     </tr>
     <?php } ?>
 </table>
@@ -86,3 +87,25 @@
     <p id="info-pagina">1 - 5</p>
     <a href="#">Próxima</a>
 </div>
+<?php } ?>
+
+<?php
+    $filtragemNome = ( isset( $_POST["txtBusca"] ) )? $_POST["txtBusca"] : null;
+    $filtragemCod = ( isset( $_POST["txtCod"] ) )? $_POST["txtCod"] : null;
+    $filtragemPrecoMinimo = ( isset( $_POST["txtPrecoMinimo"] ) )? $_POST["txtPrecoMinimo"] : null;
+    $filtragemTipo = ( isset( $_POST["slTipo"] ) )? $_POST["slTipo"] : null;
+    $filtragemFabricante = ( isset( $_POST["slFabricante"] ) )? $_POST["slFabricante"] : null;        
+    $filtragemCategoria = ( isset( $_POST["slCategoria"] ) )? $_POST["slCategoria"] : null;
+    $filtragemCombustivel = ( isset( $_POST["slCombustivel"] ) )? $_POST["slCombustivel"] : null;
+
+    $idTipo = new \Tabela\TipoVeiculo();
+    $idTipo = $idTipo->buscar("WHERE nome = '$filtragemTipo'");
+
+    if( $modo == "filtragem" ) {
+        $listaVeiculos = $objVeiculo->buscar("nome LIKE '{$busca}'");
+    } else {
+        $listaVeiculos = $objVeiculo->getVeiculos(15, 1);
+    }
+
+    echo json_encode($listaVeiculos);
+?>

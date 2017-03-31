@@ -17,15 +17,15 @@
             public $idTipoVeiculo;
             public $idTransmissao;
             
-            public function getVeiculos($registros_por_pagina = null, $salto = null) {
+            public function getVeiculos($registros_por_pagina = null, $pagina_atual = null) {
                 //Retorna a relação de veiculos, fabricantes, combustivel, categoria, tipo e transmissao
                 
-                $sql = "SELECT v.id, v.nome, v.tipoMotor, v.precoMedio, v.ano, v.qtdPortas, c.nome AS categoria, f.nome AS fabricante, cb.nome AS combustivel, t.titulo AS tipo, tr.titulo AS transmissao ";
+                $sql = "SELECT v.id, v.nome, v.tipoMotor, v.precoMedio, v.ano, v.qtdPortas, v.idCategoriaVeiculo, c.nome AS categoria, v.idFabricante, f.nome AS fabricante, v.idTipoCombustivel, cb.nome AS combustivel, v.idTipoVeiculo, t.titulo AS tipo, v.idTransmissao, tr.titulo AS transmissao ";
                 $sql .= "FROM {$this::$nome_tabela} AS v ";
                 $sql .= "INNER JOIN tbl_categoriaveiculo AS c ";
                 $sql .= "ON c.id = v.idCategoriaVeiculo ";
                 $sql .= "INNER JOIN tbl_fabricanteveiculo AS f ";
-                $sql .= "ON f.id = f.id ";
+                $sql .= "ON f.id = v.idFabricante ";
                 $sql .= "INNER JOIN tbl_tipocombustivel AS cb ";
                 $sql .= "ON cb.id = v.idTipoCombustivel ";
                 $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
@@ -33,9 +33,11 @@
                 $sql .= "INNER JOIN tbl_transmissaoveiculo AS tr ";
                 $sql .= "ON tr.id = v.idTransmissao";                                                                
                 
-                if( !empty($registros_por_pagina) && !empty($salto) ) {
+                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
+                    $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
+                    
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
-                    $sql .= "OFFSET " . $salto;
+                    $sql .= "OFFSET " . $registros_a_ignorar;
                 }
                 
                 $resultado = $this->executarQuery( $sql );
