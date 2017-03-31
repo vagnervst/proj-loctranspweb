@@ -21,6 +21,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>CMS - Login | City Share</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
+        <link rel="icon" href="../img/icones/logoCityShareIcon.png">
 	</head>
 	<body >
         <div id="main_login">
