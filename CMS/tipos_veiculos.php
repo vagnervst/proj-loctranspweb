@@ -49,14 +49,24 @@
                 </div>
                 <form>
                     <div class="box-conteudo">
-                        <div class="container-campos">
-                            <div class="container-add">
+                        <div class="box-tipo-veiculo">
+                            <div class="box-form-tipo">
                                 <div class="box-label-input">
                                 <label class="titulo-input"><span class="label">Tipo</span>
                                     <input class="input-pagina input" type="text" name="txtPergunta">
                                 </label>
                                 </div>
                                 <input class="preset-botao" type="submit" name="btnAdd" value="+" />
+                            </div>
+                            <div class="box-listagem-tipo">
+                                <table class="tabela-tipo">
+                                    <tbody>
+                                        <tr id="colunas-label">
+                                            <td class="coluna-tipo">Tipo</td>
+                                            <td>Operações</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div></div>
