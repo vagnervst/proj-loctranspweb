@@ -6,6 +6,7 @@
             CMS - Início | City Share
 		</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
+        <link rel="icon" href="../img/icones/logoCityShareIcon.png">
 	</head>
 	<body>
         <div id="container">
