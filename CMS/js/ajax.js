@@ -71,13 +71,8 @@ $(document).ready(function() {
                     dados_formulario.append("idVeiculo", id_registro_selecionado);
                 }
                 
-                transferir_dados_formulario_ajax("apis/crud_veiculos.php", "POST", dados_formulario, function(dados) {
-                    var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
-                                        
-                    var json = JSON.parse(dados);
-                    var tabela = construir_tabela_veiculos(json);
-                    box_listagem_veiculos.innerHTML = "";
-                    $(box_listagem_veiculos).append( tabela );
+                transferir_dados_formulario_ajax("apis/crud_veiculos.php", "POST", dados_formulario, function(dados_api) {
+                    exibir_lista_veiculos(pagina_veiculos, dados_api);
                     
                     $(formInfoVeiculo).trigger("reset");
                     
@@ -85,9 +80,41 @@ $(document).ready(function() {
                         $(formInfoVeiculo).removeData("idVeiculo");
                     }
                 });
-            });
-            
+            });            
         }
+    }
+    
+    function inicializar_ajax_remocao_veiculos() {
+        var pagina_veiculos = $("#pag-adm-veiculos")[0];
+        
+        if( pagina_veiculos !== undefined ) { 
+            var formInfoVeiculo = $("#form-info-veiculo")[0];
+            
+            var botao_remocao = $(formInfoVeiculo).find("#botao-remover")[0];
+            
+            $(botao_remocao).click(function() {
+                var idVeiculo= $(formInfoVeiculo).data("idVeiculo");
+                
+                var dados = new FormData();
+                dados.append("idVeiculo", idVeiculo);
+                dados.append("modo", "delete");
+                
+                transferir_dados_formulario_ajax("apis/crud_veiculos.php", "POST", dados, function(dados_api) {
+                    exibir_lista_veiculos(pagina_veiculos, dados_api);                    
+                    
+                    $(formInfoVeiculo).trigger("reset");
+                });
+            });
+        }
+    }
+    
+    function exibir_lista_veiculos(pagina_veiculos, string_json_lista_veiculos) {
+        var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
+                                        
+        var json = JSON.parse(string_json_lista_veiculos);
+        var tabela = construir_tabela_veiculos(json);
+        box_listagem_veiculos.innerHTML = "";
+        $(box_listagem_veiculos).append( tabela );                        
     }
     
     function inicializar_lista_veiculos() {
@@ -95,10 +122,9 @@ $(document).ready(function() {
         
         if( pagina_veiculos !== undefined ) {
             $.ajax({url: 'apis/crud_veiculos.php', success: function(dados_api) {
-                var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
+                exibir_lista_veiculos(pagina_veiculos, dados_api);                
                 
-                var json = JSON.parse(dados_api);                
-                $(box_listagem_veiculos).append(construir_tabela_veiculos(json));
+                var json = JSON.parse(dados_api); 
                 inicializar_botao_edicao_veiculos(json);
             }});
         }
@@ -106,4 +132,6 @@ $(document).ready(function() {
     
     inicializar_lista_veiculos();
     inicializar_ajax_modificacao_veiculos();
+    preparar_formulario_edicao_veiculos();
+    inicializar_ajax_remocao_veiculos();
 });

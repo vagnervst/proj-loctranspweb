@@ -31,7 +31,7 @@
     $objVeiculo->idTransmissao = (int) $idTransmissao;
 
     if( $modo == "insert" ) {
-        //$objVeiculo->inserir();
+        $objVeiculo->inserir();
     } elseif( $modo == "update" ) {
         $objVeiculo->id = (int) $idVeiculo;
         $objVeiculo->atualizar();

@@ -167,7 +167,7 @@
                                     </div>                                    
                                 </div>
                                 <div class="horizontal-input-wrapper" id="box-acoes">                                    
-                                    <a class="preset-botao botao" id="botao-remover" href="#">Remover</a>                                    
+                                    <span class="preset-botao botao" id="botao-remover">Remover</span>
                                     <div class="box-salvar-cancelar">                                        
                                         <input class="preset-botao botao" id="botao-cancelar" type="reset" value="Cancelar" />                                        
                                         <input class="preset-input-submit botao" type="submit" name="btnSubmit" value="Salvar" />
