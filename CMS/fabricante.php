@@ -15,7 +15,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-acessorio-veiculo">
+            <div class="CMS_main" id="pag-fabricante-veiculo">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -39,21 +39,15 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a>><a href="#" class="link-caminho"> Acessórios</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a>><a href="#" class="link-caminho"> Fabricantes</a>
                 </div>
                 <div class="box-conteudo">
                     <div id="box-novo-registro" >
-                        <div class="titulo-sessao"> Cadastro de acessório</div>
+                        <div class="titulo-sessao"> Cadastro de fabricante</div>
                         <div id="box-campos-acessorio">
                             <div class="box-input-pagina">
-                                <label class="titulo-input">Titulo acessorio</label>
+                                <label class="titulo-input">Titulo fabricante</label>
                                 <input type="text" name="txt_titulo" class="input-pagina">
-                            </div>
-                            <div id="box-input-pagina">
-                                <label class="titulo-input">Tipo de Veículo</label>
-                                <select >
-                                    <option>1</option>
-                                </select>
                             </div>
                             <input type="submit" value="Adicionar" name="btn_adicionar" class="btn">
                             
@@ -65,17 +59,18 @@
                         </div>
                         
                     </div>
-                    <div class="titulo-sessao"> Acessórios cadastrados</div>
+                    <div class="titulo-sessao"> Fabricantes  cadastrados</div>
                     <div id="box-listagem-acessorios">
                         <form action="#" method="post">
                             <div class="item-acessorio">
                                 <label for="txt_titulo" class="input-label" > Titulo :</label>
                                 <input type="text" name="txt_titulo" class="input">
-                                <input type="submit" name="btn_editar" value="Salvar" class="btn_enviar"> 
+                                <input type="submit" name="btn_editar" class="btn_enviar" value="Salvar"> 
                             </div>
                         
                         </form>
                         
+                    
                     </div>
                 </div>
             </div>
@@ -84,4 +79,5 @@
             ?>
         </div>      
 	</body>
+</html>
 </html>
