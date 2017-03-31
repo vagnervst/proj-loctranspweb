@@ -2,9 +2,11 @@
     require_once("../include/initialize.php");
 
     $id = ( isset($_GET["id"]) )? $_GET["id"] : null;
-
+    
     $textoBotao = "";
     $dadosUsuario = new \Tabela\UsuarioCS();
+
+    $erros = [];
     if( empty($id) ) {
         $textoBotao = "Adicionar";
     } elseif( !empty($id) ) {
@@ -17,13 +19,17 @@
         $sobrenome = ( isset($_POST["txtSobrenome"]) )? $_POST["txtSobrenome"] : null;
         $usuario = ( isset($_POST["txtUsuario"]) )? $_POST["txtUsuario"] : null;
         $senha = ( isset($_POST["txtSenha"]) )? $_POST["txtSenha"] : null;
+        $novaSenha = ( isset($_POST["txtNovaSenha"]) )? $_POST["txtNovaSenha"] : null;
         $nivelAcesso = ( isset($_POST["slNivelAcesso"]) )? $_POST["slNivelAcesso"] : null;
         
         $listaRequiredInputs = [];
         $listaRequiredInputs[] = $nome;
         $listaRequiredInputs[] = $sobrenome;
         $listaRequiredInputs[] = $usuario;
-        $listaRequiredInputs[] = $senha;
+        
+        if( empty( $id ) ) {
+            $listaRequiredInputs[] = $senha;
+        }
         
         if( !FormValidator::has_empty_input( $listaRequiredInputs ) ) {
         
@@ -32,16 +38,30 @@
             $objUsuario->nome = $nome;
             $objUsuario->sobrenome = $sobrenome;
             $objUsuario->usuario = $usuario;
-            $objUsuario->senha = $senha;
-            $objUsuario->idNivelAcesso = $nivelAcesso;
+            
+            if( empty( $id ) ) $objUsuario->senha = Autenticacao::hash( $senha );
+            
+            $objUsuario->idNivelAcesso = $nivelAcesso;            
 
-            if( empty($id) ) {
-                $objUsuario->inserir();            
+            if( empty($id) ) {                
+                $objUsuario->inserir();
+                redirecionar_para("CMS_cityshare_adm.php");
             } else {
-                $objUsuario->atualizar();
-            }
-
-            redirecionar_para("CMS_cityshare_adm.php");
+                
+                if( !empty($senha) && !empty($novaSenha) ) {
+                    
+                    if( \Tabela\UsuarioCS::login( $usuario, $senha ) ) {
+                        $objUsuario->senha = Autenticacao::hash( $novaSenha );
+                        $objUsuario->atualizar();
+                        redirecionar_para("CMS_adm_edit.php?id={$id}");
+                    } else {
+                        $erros[] = "Senha incorreta.";
+                    }
+                } else {
+                    $objUsuario->atualizar();
+                    redirecionar_para("CMS_adm_edit.php?id={$id}");
+                }                                   
+            }            
         }
         
     } elseif( isset($_GET["remover"] ) ) {
@@ -53,7 +73,7 @@
         redirecionar_para("CMS_cityshare_adm.php");
     }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -96,6 +116,17 @@
                 </div>
                 <div class="box-conteudo">
                     <div class="container-campos">
+                        <?php 
+                            if( !empty($erros) ) { 
+                        ?>
+                            <div id="box-erros">
+                                <ul id="erros">
+                                    <?php foreach($erros as $itemErro) {?>
+                                    <li><?php echo $itemErro; ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
                        <form method="post" action="CMS_adm_edit.php<?php echo ( !empty($id) )? "?id=" . $id : ""; ?>">
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Nome</label>
@@ -111,8 +142,18 @@
                             </div>
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Senha</label>
-                                <input type="password" class="input-pagina" value="<?php echo $dadosUsuario->senha; ?>" name="txtSenha">
+                                <input type="password" class="input-pagina" name="txtSenha">
                             </div>
+                            <?php
+                                if( !empty($id) ) {
+                            ?>
+                            <div class="box-input-pagina">
+                                <label class="titulo-input">Nova Senha</label>
+                                <input type="password" class="input-pagina" name="txtNovaSenha">
+                            </div>
+                            <?php
+                                }
+                            ?>
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Nível de Autentificação</label>
                                 <select name="slNivelAcesso">
