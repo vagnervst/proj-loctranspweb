@@ -17,8 +17,39 @@ function set_campos_formulario(formulario, lista_chave_valor) {
     }
 }
 
-function definir_acao_botao_edicao_veiculos(botao, registro, lista_registros_tabela, json_lista_veiculos) {
+function inicializar_botoes_paginacao(pagina_atual, itens_por_pagina, total_itens, callback) {
+    var pagina_veiculos = $("#pag-adm-veiculos")[0];
     
+    if( pagina_veiculos !== undefined ) {        
+        var botao_anterior = $("#btn-prev")[0];
+        var botao_proxima = $("#btn-next")[0];
+        
+        var total_paginas = total_itens/itens_por_pagina;
+        
+        if( !Number.isInteger(total_paginas) ) {
+            total_paginas = Math.ceil(total_paginas);
+        }
+                        
+        var proxima_pagina = pagina_atual + 1;        
+        
+        if( proxima_pagina >= total_paginas ) {
+            proxima_pagina = total_paginas;
+        }
+        
+        var pagina_anterior = pagina_atual - 1;
+        
+        if( pagina_anterior < 1 ) {
+            pagina_anterior = 1;
+        }
+        
+        $(botao_proxima).click(function() {
+            callback( proxima_pagina );
+        });
+        
+        $(botao_anterior).click(function() {
+            callback( pagina_anterior );
+        });
+    }
 }
 
 function inicializar_botao_edicao_veiculos(json_lista_veiculos) {

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    function transferir_dados_formulario_ajax(url, metodo, dados, callback) {
+    function ajax_transferir_dados_para_api(url, metodo, dados, callback) {
         $.ajax({
             url: url,
             method: metodo,
@@ -14,7 +14,7 @@ $(document).ready(function() {
     }
     
     function construir_tabela_veiculos(lista_veiculos_json) {
-        
+    
         var conteudo_tabela = "";
         for( var i = 0; i < lista_veiculos_json.length; ++i ) {
             var registro = lista_veiculos_json[i];
@@ -30,10 +30,11 @@ $(document).ready(function() {
                         </tr>';
         }                
         
+        
         conteudo_tabela += '<div id="box-paginas">\
-                                <span class="preset-botao botao-paginas" href="#">Anterior</span>\
+                                <span class="preset-botao botao-paginas" id="btn-prev">Anterior</span>\
                                 <p id="info-pagina">1 - 5</p>\
-                                <span class="preset-botao botao-paginas" href="#">Próxima</span>\
+                                <span class="preset-botao botao-paginas" id="btn-next">Próxima</span>\
                             </div>'
         
         var tabela = document.createElement("table");
@@ -51,7 +52,18 @@ $(document).ready(function() {
                 
         return tabela;
     }
+    
+    function ir_para_pagina( pagina_alvo ) {
+        var dados = new FormData();
+        dados.append("numeroPagina", pagina_alvo);
+        
+        ajax_transferir_dados_para_api("apis/crud_veiculos.php", "POST", dados, function(dados_api) {
             
+            var pagina_veiculos = $("#pag-adm-veiculos")[0];
+            exibir_lista_veiculos(pagina_veiculos, dados_api)
+        });
+    }
+    
     function inicializar_ajax_modificacao_veiculos() {                
         var pagina_veiculos = $("#pag-adm-veiculos")[0];
         
@@ -71,7 +83,7 @@ $(document).ready(function() {
                     dados_formulario.append("idVeiculo", id_registro_selecionado);
                 }
                 
-                transferir_dados_formulario_ajax("apis/crud_veiculos.php", "POST", dados_formulario, function(dados_api) {
+                ajax_transferir_dados_para_api("apis/crud_veiculos.php", "POST", dados_formulario, function(dados_api) {
                     exibir_lista_veiculos(pagina_veiculos, dados_api);
                     
                     $(formInfoVeiculo).trigger("reset");
@@ -99,7 +111,7 @@ $(document).ready(function() {
                 dados.append("idVeiculo", idVeiculo);
                 dados.append("modo", "delete");
                 
-                transferir_dados_formulario_ajax("apis/crud_veiculos.php", "POST", dados, function(dados_api) {
+                ajax_transferir_dados_para_api("apis/crud_veiculos.php", "POST", dados, function(dados_api) {
                     exibir_lista_veiculos(pagina_veiculos, dados_api);                    
                     
                     $(formInfoVeiculo).trigger("reset");
@@ -108,24 +120,34 @@ $(document).ready(function() {
         }
     }
     
+    function capturar_info_paginacao(json_lista_veiculos) {
+        var info_paginacao = json_lista_veiculos[ json_lista_veiculos.length-1 ];
+        json_lista_veiculos.pop();
+        
+        return info_paginacao;
+    }
+    
     function exibir_lista_veiculos(pagina_veiculos, string_json_lista_veiculos) {
         var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
                                         
-        var json = JSON.parse(string_json_lista_veiculos);
-        var tabela = construir_tabela_veiculos(json);
+        var json_lista_veiculos = JSON.parse(string_json_lista_veiculos);        
+        
+        var info_paginacao = capturar_info_paginacao(json_lista_veiculos);        
+        
+        var tabela = construir_tabela_veiculos(json_lista_veiculos);
         box_listagem_veiculos.innerHTML = "";
-        $(box_listagem_veiculos).append( tabela );                        
+        $(box_listagem_veiculos).append( tabela );        
+        
+        inicializar_botao_edicao_veiculos(json_lista_veiculos);        
+        inicializar_botoes_paginacao(info_paginacao["paginaAtual"], info_paginacao["registrosPorPagina"], info_paginacao["totalRegistros"], ir_para_pagina);
     }
-    
+            
     function inicializar_lista_veiculos() {
         var pagina_veiculos = $("#pag-adm-veiculos")[0];
         
         if( pagina_veiculos !== undefined ) {
-            $.ajax({url: 'apis/crud_veiculos.php', success: function(dados_api) {
-                exibir_lista_veiculos(pagina_veiculos, dados_api);                
-                
-                var json = JSON.parse(dados_api); 
-                inicializar_botao_edicao_veiculos(json);
+            $.ajax({url: 'apis/crud_veiculos.php', success: function(dados_api) {                
+                exibir_lista_veiculos(pagina_veiculos, dados_api);
             }});
         }
     }

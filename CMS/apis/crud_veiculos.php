@@ -40,55 +40,6 @@
         $objVeiculo->deletar();
     }
 ?>
-<?php if( 1 == 2 ) { ?>
-<table class="tabela-veiculos">
-    <tr id="colunas-label">
-        <td class="coluna-nome">Nome</td>
-        <td>Tipo</td>
-        <td>Categoria</td>
-        <td>Fabricante</td>                                    
-        <td>Ano</td>
-        <td>Preço</td>
-        <td>Operações</td>
-    </tr>
-    <?php
-        $filtragemNome = ( isset( $_POST["txtBusca"] ) )? $_POST["txtBusca"] : null;
-        $filtragemCod = ( isset( $_POST["txtCod"] ) )? $_POST["txtCod"] : null;
-        $filtragemPrecoMinimo = ( isset( $_POST["txtPrecoMinimo"] ) )? $_POST["txtPrecoMinimo"] : null;
-        $filtragemTipo = ( isset( $_POST["slTipo"] ) )? $_POST["slTipo"] : null;
-        $filtragemFabricante = ( isset( $_POST["slFabricante"] ) )? $_POST["slFabricante"] : null;        
-        $filtragemCategoria = ( isset( $_POST["slCategoria"] ) )? $_POST["slCategoria"] : null;
-        $filtragemCombustivel = ( isset( $_POST["slCombustivel"] ) )? $_POST["slCombustivel"] : null;
-        
-        $idTipo = new \Tabela\TipoVeiculo();
-        $idTipo = $idTipo->buscar("WHERE nome = '$filtragemTipo'");
-        
-        if( $modo == "filtragem" ) {
-            $listaVeiculos = $objVeiculo->buscar("nome LIKE '{$busca}'");
-        } else {
-            $listaVeiculos = $objVeiculo->getVeiculos(15, 1);
-        }
-    
-        foreach( $listaVeiculos as $veiculo ) {
-    ?>
-    <tr class="registro-veiculo" data-info='{ "cod" : "<?php echo $veiculo->id; ?>"}'>
-        <td class="coluna-nome"><?php echo $veiculo->nome; ?></td>
-        <td><?php echo $veiculo->tipo; ?></td>
-        <td><?php echo $veiculo->categoria; ?></td>
-        <td><?php echo $veiculo->fabricante; ?></td>
-        <td><?php echo $veiculo->ano; ?></td>
-        <td><?php echo $veiculo->precoMedio; ?></td>
-        <td><span class="preset-botao botao-editar">Editar</span></td>
-    </tr>
-    <?php } ?>
-</table>
-<div id="box-paginas">
-    <a href="#">Anterior</a>
-    <p id="info-pagina">1 - 5</p>
-    <a href="#">Próxima</a>
-</div>
-<?php } ?>
-
 <?php
     $filtragemNome = ( isset( $_POST["txtBusca"] ) )? $_POST["txtBusca"] : null;
     $filtragemCod = ( isset( $_POST["txtCod"] ) )? $_POST["txtCod"] : null;
@@ -100,12 +51,15 @@
 
     $idTipo = new \Tabela\TipoVeiculo();
     $idTipo = $idTipo->buscar("WHERE nome = '$filtragemTipo'");
-
+    
+    $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
+    $itens_por_pagina = 15;
+    
     if( $modo == "filtragem" ) {
         $listaVeiculos = $objVeiculo->buscar("nome LIKE '{$busca}'");
     } else {
-        $listaVeiculos = $objVeiculo->getVeiculos(15, 1);
-    }
-
+        $listaVeiculos = $objVeiculo->getVeiculos($itens_por_pagina, $pagina);
+    }    
+    
     echo json_encode($listaVeiculos);
 ?>
