@@ -1,3 +1,104 @@
+function get_input_by_name(nome, lista_input) {
+    for(var i = 0; i < lista_input.length; ++i) {
+        if( lista_input[i].name == nome ) return lista_input[i];
+    }
+    
+    return null;
+}
+
+function set_campos_formulario(formulario, lista_chave_valor) {
+    var campos = formulario.elements;
+    get_input_by_name('', campos);
+    
+    for(var nome_campo in lista_chave_valor) {
+        var campo = get_input_by_name(nome_campo, campos);
+        
+        campo.value = lista_chave_valor[nome_campo];
+    }
+}
+
+function inicializar_botoes_paginacao(pagina_atual, itens_por_pagina, total_itens, callback) {
+    var pagina_veiculos = $("#pag-adm-veiculos")[0];
+    
+    if( pagina_veiculos !== undefined ) {        
+        var botao_anterior = $("#btn-prev")[0];
+        var botao_proxima = $("#btn-next")[0];
+        
+        var total_paginas = total_itens/itens_por_pagina;
+        
+        if( !Number.isInteger(total_paginas) ) {
+            total_paginas = Math.ceil(total_paginas);
+        }
+                        
+        var proxima_pagina = pagina_atual + 1;        
+        
+        if( proxima_pagina >= total_paginas ) {
+            proxima_pagina = total_paginas;
+        }
+        
+        var pagina_anterior = pagina_atual - 1;
+        
+        if( pagina_anterior < 1 ) {
+            pagina_anterior = 1;
+        }
+        
+        $(botao_proxima).click(function() {
+            callback( proxima_pagina );
+        });
+        
+        $(botao_anterior).click(function() {
+            callback( pagina_anterior );
+        });
+    }
+}
+
+function inicializar_botao_edicao_veiculos(json_lista_veiculos) {
+    var pagina_veiculos = $("#pag-adm-veiculos")[0];
+
+    if( pagina_veiculos !== undefined ) {
+                
+        $(pagina_veiculos).on("click", ".botao-editar", function() {
+            var registro = $(this).parents(".registro-veiculo")[0];
+            
+            var lista_registros_tabela = $(pagina_veiculos).find(".registro-veiculo");
+            
+            var indice_registro_selecionado = lista_registros_tabela.index(registro);
+                        
+            var json_registro_selecionado = json_lista_veiculos[indice_registro_selecionado];
+
+            var formInfoVeiculo = $("#form-info-veiculo")[0];
+            $(formInfoVeiculo).data("idVeiculo", json_registro_selecionado.id);                
+            
+            var lista_dados = {}; 
+            lista_dados['txtNome'] = json_registro_selecionado.nome;
+            lista_dados['txtPortas'] = json_registro_selecionado.qtdPortas;
+            lista_dados['txtMotor'] = json_registro_selecionado.tipoMotor;
+            lista_dados['txtAno'] = json_registro_selecionado.ano;
+            lista_dados['slTransmissao'] = json_registro_selecionado.idTransmissao;
+            lista_dados['txtPrecoMedio'] = json_registro_selecionado.precoMedio;
+            lista_dados['slFabricante'] = json_registro_selecionado.idFabricante;
+            lista_dados['slCombustivel'] = json_registro_selecionado.idTipoCombustivel;
+            lista_dados['slTipo'] = json_registro_selecionado.idTipoVeiculo;
+            lista_dados['slCategoria'] = json_registro_selecionado.idCategoriaVeiculo;                        
+            
+            set_campos_formulario(formInfoVeiculo, lista_dados);
+            $("html, body").animate({ scrollTop: $(formInfoVeiculo).offset().top-50 }, 0);
+            $(formInfoVeiculo).removeClass("js-modo-insercao");
+            $(formInfoVeiculo).addClass("js-modo-edicao");
+        });
+    }
+}
+
+function preparar_formulario_edicao_veiculos() {
+    var formInfoVeiculo = $("#form-info-veiculo")[0];
+    
+    $(formInfoVeiculo).on("reset", function(e) {            
+        $(this).removeData("idVeiculo");
+        $(this).addClass("js-modo-insercao");
+        $(this).removeClass("js-modo-edicao");
+    });
+}
+
 $(document).ready(function() {
     
     function definirBotaoSelecaoImagem(botao, inputFile) {
@@ -107,8 +208,7 @@ $(document).ready(function() {
             });
         }
     }
-    
+            
     inicializarAJAXPerguntas();
-    inicializarBotoesSelecaoImagem();
-        
+    inicializarBotoesSelecaoImagem();            
 });
