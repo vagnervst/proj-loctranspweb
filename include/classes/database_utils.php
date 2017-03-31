@@ -97,7 +97,7 @@
             
             function preparar_valor_exibicao($valor) {
                 $valor = htmlentities($valor);
-                $valor = str_replace("\\", "", $valor);
+                $valor = str_replace("\\", "", $valor);                
                 
                 return $valor;
             }
@@ -165,7 +165,7 @@
                 $sql = "DELETE FROM " . $this::$nome_tabela . " ";
                 $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key() . " ";
                 $sql .= "LIMIT 1";
-                echo $sql;
+                
                 return $this->executarQuery($sql);
             }
 
