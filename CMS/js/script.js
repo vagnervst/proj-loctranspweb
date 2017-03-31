@@ -89,6 +89,40 @@ function inicializar_botao_edicao_veiculos(json_lista_veiculos) {
     }
 }
 
+//-------------------------------------------- TIPO DE VEICULO
+
+function inicializar_botao_edicao_tipo(json_lista_tipo) {
+    var pagina_tipo = $("#pag-tipo-veiculo")[0];
+
+    if( pagina_tipo !== undefined ) {
+        
+        $(pagina_tipo).on("click", ".botao-editar", function() {
+            var registro = $(this).parents(".registro-tipo")[0];
+            
+            var lista_registros_tabela = $(pagina_tipo).find(".registro-tipo");
+            
+            var indice_registro_selecionado = lista_registros_tabela.index(registro);
+            var registro_selecionado = json_lista_tipo[indice_registro_selecionado];
+            
+            console.log(json_lista_tipo);
+            console.log(lista_registros_tabela);
+            return;
+            
+            var form = $(pagina_tipo).find("#form-modificacao")[0];
+            $(form).data("idTipo", registro_selecionado.id);                        
+            
+            var lista_dados = {};
+            lista_dados['txtTipoVeiculo'] = registro_selecionado.titulo;
+            
+            set_campos_formulario(form, lista_dados);
+            $(form).removeClass("js-modo-insercao");
+            $(form).addClass("js-modo-edicao");
+        });
+    }
+}
+
+//--------------------------------------------
+
 function preparar_formulario_edicao_veiculos() {
     var formInfoVeiculo = $("#form-info-veiculo")[0];
     
@@ -208,7 +242,7 @@ $(document).ready(function() {
             });
         }
     }
-            
+    
     inicializarAJAXPerguntas();
     inicializarBotoesSelecaoImagem();            
 });

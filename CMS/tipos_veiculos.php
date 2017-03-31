@@ -1,11 +1,6 @@
 <?php
     require_once("../include/initialize.php");
-    $dadosTipoVeiculo = new \Tabela\TipoVeiculo();
-    $id = (isset($_GET["id"]))? (int) $_GET["id"] : null;
-    $buscaDados = $dadosTipoVeiculo->buscar("id = {$id}");
-
-    if( !empty($buscaDados[0]) ) $dadosTipoVeiculo = $buscaDados[0];
-
+    require_once("../include/classes/tbl_tipo_veiculo.php");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,32 +41,26 @@
                 </div>
                 <div id="box-caminho">
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> ><a href="#" class="link-caminho"> Tipos</a>
-                </div>
-                <form>
-                    <div class="box-conteudo">
-                        <div class="box-tipo-veiculo">
-                            <div class="box-form-tipo">
+                </div>                
+                <div class="box-conteudo">
+                    <div class="box-tipo-veiculo">
+                        <div class="box-form-tipo">
+                            <form class="js-modo-insercao" method="post" action="#" id="form-modificacao">
                                 <div class="box-label-input">
                                 <label class="titulo-input"><span class="label">Tipo</span>
-                                    <input class="input-pagina input" type="text" name="txtPergunta">
+                                    <input class="input-pagina input" type="text" name="txtTipoVeiculo">
                                 </label>
                                 </div>
                                 <input class="preset-botao" type="submit" name="btnAdd" value="+" />
-                            </div>
-                            <div class="box-listagem-tipo">
-                                <table class="tabela-tipo">
-                                    <tbody>
-                                        <tr id="colunas-label">
-                                            <td class="coluna-tipo">Tipo</td>
-                                            <td>Operações</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                <div class="horizontal-input-wrapper">
+                                    <input class="preset-botao" type="reset" value="Cancelar" />
+                                    <span class="preset-botao" id="botao-remover">Remover</span>
+                                </div>
+                            </form>
                         </div>
-                        <div></div>
-                    </div>
-                </form>
+                        <div class="box-listagem-tipo"></div>
+                    </div>                        
+                </div>
             </div>
             <?php
                 include("layout/footer.php");
