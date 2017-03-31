@@ -97,7 +97,7 @@
             
             function preparar_valor_exibicao($valor) {
                 $valor = htmlentities($valor);
-                $valor = str_replace("\\", "", $valor);
+                $valor = str_replace("\\", "", $valor);                
                 
                 return $valor;
             }

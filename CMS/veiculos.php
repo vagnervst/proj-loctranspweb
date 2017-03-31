@@ -40,7 +40,7 @@
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="modelos_veiculos.php">
+                        <a class="titulo-conteudo-menu" href="modelos_veiculo.php">
                             <img src="Image/content_test.jpg" />
                             Modelos
                         </a>
