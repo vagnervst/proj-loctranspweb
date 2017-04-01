@@ -10,8 +10,7 @@
             public $sobrenome;
             public $usuario;
             public $senha;
-            public $idNivelAcesso;
-            public $fixo;
+            public $idNivelAcesso;            
             
             public function getUsuarios() {
                 $sql = "SELECT u.id, u.nome, u.sobrenome, u.usuario, u.senha, n.id AS idNivelAcesso, n.nome AS nivelAcesso ";
@@ -20,6 +19,22 @@
                 $sql .= "ON u.idNivelAcesso = n.id";
                 
                 return $this->executarQuery($sql);
+            }
+            
+            public static function login($usuario, $senha) {
+                $usuarioObj = new \Tabela\UsuarioCS();
+                $buscaUsuario = $usuarioObj->buscar("usuario = '" . $usuario . "'");
+                
+                if( !empty($buscaUsuario[0]) ) {
+
+                    $usuarioObj = $buscaUsuario[0];
+                    $hash = $usuarioObj->senha;
+
+                    $is_senha_correta = \Autenticacao::verificar( $senha, $hash );
+                    
+                    if( $is_senha_correta ) return $usuarioObj;
+                    return null;
+                }
             }
         }
         

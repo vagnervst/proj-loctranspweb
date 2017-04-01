@@ -1,3 +1,7 @@
+<?php
+    require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_tipo_veiculo.php");
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -6,14 +10,13 @@
             CMS - Conteúdo | City Share
 		</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
-        <link rel="icon" href="../img/icones/logoCityShareIcon.png">
 	</head>
 	<body>
         <div id="container">
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-clientes-usuarios">
+            <div class="CMS_main" id="pag-tipo-veiculo">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -37,20 +40,26 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                        <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a> > <a href="CMS_usuario.php" class="link-caminho" >Usuarios</a>
-                    </div>
-                    <div id="box-pesquisa">
-                        <form method="post" action="CMS_usuario.php"> 
-                            <input id="search" type="search" placeholder="Pesquisar"  ><input id="btn-pesquisar"type="submit" value="pesquisar">
-                                   
-                       </form>
-                    </div>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> ><a href="#" class="link-caminho"> Tipos</a>
+                </div>                
                 <div class="box-conteudo">
-                    <div class="box-usuario">
-                        <div class="nome-usuario">jose bezerra</div>
-                        <div class="cont-usuario">Email : jbezerra</div>
-                        <div class="cont-usuario">Tipo : jbezerra</div>
-                    </div>
+                    <div class="box-tipo-veiculo">
+                        <div class="box-form-tipo">
+                            <form class="js-modo-insercao" method="post" action="#" id="form-modificacao">
+                                <div class="box-label-input">
+                                <label class="titulo-input"><span class="label">Tipo</span>
+                                    <input class="input-pagina input" type="text" name="txtTipoVeiculo">
+                                </label>
+                                </div>
+                                <input class="preset-botao" type="submit" name="btnAdd" value="+" />
+                                <div class="horizontal-input-wrapper">
+                                    <input class="preset-botao" type="reset" value="Cancelar" />
+                                    <span class="preset-botao" id="botao-remover">Remover</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="box-listagem-tipo"></div>
+                    </div>                        
                 </div>
             </div>
             <?php

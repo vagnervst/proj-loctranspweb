@@ -2149,8 +2149,8 @@ header #box-botao-filtragem {
 #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {    
     display: none;
     width: 300px;    
-    background-color: #202020;
-    color: white;
+    background-color: #e2e2e2;
+    color: #202020;
     float: left;
 }
 
