@@ -6,9 +6,20 @@ function get_input_by_name(nome, lista_input) {
     return null;
 }
 
+function alterar_modo_formulario_para(formulario, modo) {    
+    if( modo === "edicao" ) {
+        console.log("ALTERANDO PARA EDICAO");
+        $( formulario ).addClass( "js-modo-edicao" );
+        $( formulario ).removeClass( "js-modo-insercao" );
+    } else if( modo === "insercao" ) {
+        console.log("ALTERANDO PARA INSERCAO");
+        $( formulario ).addClass( "js-modo-insercao" );
+        $( formulario ).removeClass( "js-modo-edicao" );
+    }
+}
+
 function set_campos_formulario(formulario, lista_chave_valor) {
-    var campos = formulario.elements;
-    get_input_by_name('', campos);
+    var campos = formulario.elements;    
     
     for(var nome_campo in lista_chave_valor) {
         var campo = get_input_by_name(nome_campo, campos);
@@ -17,38 +28,89 @@ function set_campos_formulario(formulario, lista_chave_valor) {
     }
 }
 
-function inicializar_botoes_paginacao(pagina_atual, itens_por_pagina, total_itens, callback) {
+function get_campos_formulario(formulario) {
+    var campos_formulario = formulario.elements;
+    
+    var name_campos = [];
+    for( var i = 0; i < campos_formulario.length; ++i ) {
+        var campo = campos_formulario[i];
+                
+        if( campo.name !== undefined && campo.name.length > 0 && campo.type !== "submit" && campo.type !== "reset" ) name_campos.push(campo.name);
+    }
+    
+    return name_campos;
+}
+
+function inicializar_botao_edicao_registro(pagina_listagem_registros, formulario_edicao_registro, nome_campo_id_registro, classe_botao_edicao, classe_tr_registro, lista_relacao_campo_propriedade, lista_tr_registros, json_lista_registros) {
+    $(pagina_listagem_registros).off("click", classe_botao_edicao);
+    
+    $(pagina_listagem_registros).on("click", classe_botao_edicao, function() {
+        var registro = $(this).parents(classe_tr_registro)[0];
+        
+        var indice_registro_selecionado = lista_tr_registros.index(registro);
+        
+        var json_registro_selecionado = json_lista_registros[ indice_registro_selecionado ];
+        
+        $(formulario_edicao_registro).data(nome_campo_id_registro, json_registro_selecionado.id);
+                
+        var lista_dados_para_form = {};
+        
+        for( var i = 0; i < lista_relacao_campo_propriedade.length; ++i ) {
+            var campo_propriedade = lista_relacao_campo_propriedade[i];
+            
+            lista_dados_para_form[ campo_propriedade.nomeCampo ] = json_registro_selecionado[campo_propriedade.propriedade];
+        }
+                
+        set_campos_formulario( formulario_edicao_registro, lista_dados_para_form );
+        
+        $("html, body").animate({ scrollTop: $(formulario_edicao_registro).offset().top-50 }, 100);
+        
+        alterar_modo_formulario_para(formulario_edicao_registro, "edicao");
+    });
+}
+
+function get_total_paginas(total_itens, itens_por_pagina) {
+    var total_paginas = total_itens/itens_por_pagina;
+        
+    if( !Number.isInteger(total_paginas) ) {
+        total_paginas = Math.ceil(total_paginas);
+    }
+    
+    return total_paginas;
+}
+
+function inicializar_botoes_paginacao(botao_pagina_anterior, botao_proxima_pagina, pagina_atual, itens_por_pagina, total_itens, callback) {
+    var total_paginas = get_total_paginas(total_itens, itens_por_pagina);            
+
+    var proxima_pagina = pagina_atual + 1;        
+
+    if( proxima_pagina >= total_paginas ) {
+        proxima_pagina = total_paginas;        
+    }
+
+    var pagina_anterior = pagina_atual - 1;
+
+    if( pagina_anterior < 1 ) {
+        pagina_anterior = 1;        
+    }
+
+    $(botao_proxima_pagina).click(function() {
+        callback( proxima_pagina );
+    });
+
+    $(botao_pagina_anterior).click(function() {
+        callback( pagina_anterior );
+    });
+}
+
+function inicializar_botoes_paginacao_veiculos(pagina_atual, itens_por_pagina, total_itens, callback) {
     var pagina_veiculos = $("#pag-adm-veiculos")[0];
     
     if( pagina_veiculos !== undefined ) {        
         var botao_anterior = $("#btn-prev")[0];
         var botao_proxima = $("#btn-next")[0];
         
-        var total_paginas = total_itens/itens_por_pagina;
-        
-        if( !Number.isInteger(total_paginas) ) {
-            total_paginas = Math.ceil(total_paginas);
-        }
-                        
-        var proxima_pagina = pagina_atual + 1;        
-        
-        if( proxima_pagina >= total_paginas ) {
-            proxima_pagina = total_paginas;
-        }
-        
-        var pagina_anterior = pagina_atual - 1;
-        
-        if( pagina_anterior < 1 ) {
-            pagina_anterior = 1;
-        }
-        
-        $(botao_proxima).click(function() {
-            callback( proxima_pagina );
-        });
-        
-        $(botao_anterior).click(function() {
-            callback( pagina_anterior );
-        });
+        inicializar_botoes_paginacao(botao_anterior, botao_proxima, pagina_atual, itens_por_pagina, total_itens, callback);
     }
 }
 
@@ -56,36 +118,25 @@ function inicializar_botao_edicao_veiculos(json_lista_veiculos) {
     var pagina_veiculos = $("#pag-adm-veiculos")[0];
 
     if( pagina_veiculos !== undefined ) {
-                
-        $(pagina_veiculos).on("click", ".botao-editar", function() {
-            var registro = $(this).parents(".registro-veiculo")[0];
-            
-            var lista_registros_tabela = $(pagina_veiculos).find(".registro-veiculo");
-            
-            var indice_registro_selecionado = lista_registros_tabela.index(registro);
-                        
-            var json_registro_selecionado = json_lista_veiculos[indice_registro_selecionado];
-
-            var formInfoVeiculo = $("#form-info-veiculo")[0];
-            $(formInfoVeiculo).data("idVeiculo", json_registro_selecionado.id);                
-            
-            var lista_dados = {}; 
-            lista_dados['txtNome'] = json_registro_selecionado.nome;
-            lista_dados['txtPortas'] = json_registro_selecionado.qtdPortas;
-            lista_dados['txtMotor'] = json_registro_selecionado.tipoMotor;
-            lista_dados['txtAno'] = json_registro_selecionado.ano;
-            lista_dados['slTransmissao'] = json_registro_selecionado.idTransmissao;
-            lista_dados['txtPrecoMedio'] = json_registro_selecionado.precoMedio;
-            lista_dados['slFabricante'] = json_registro_selecionado.idFabricante;
-            lista_dados['slCombustivel'] = json_registro_selecionado.idTipoCombustivel;
-            lista_dados['slTipo'] = json_registro_selecionado.idTipoVeiculo;
-            lista_dados['slCategoria'] = json_registro_selecionado.idCategoriaVeiculo;                        
-            
-            set_campos_formulario(formInfoVeiculo, lista_dados);
-            $("html, body").animate({ scrollTop: $(formInfoVeiculo).offset().top-50 }, 0);
-            $(formInfoVeiculo).removeClass("js-modo-insercao");
-            $(formInfoVeiculo).addClass("js-modo-edicao");
-        });
+        
+        var formInfoVeiculo = $("#form-info-veiculo")[0];
+        
+        var relacao_campo_propriedade = [
+            { nomeCampo : 'txtNome', propriedade : 'nome' },
+            { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
+            { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
+            { nomeCampo : 'txtAno', propriedade : 'ano' },
+            { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },
+            { nomeCampo : 'txtPrecoMedio', propriedade : 'precoMedio' },
+            { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
+            { nomeCampo : 'slCombustivel', propriedade : 'idTipoCombustivel' },
+            { nomeCampo : 'slTipo', propriedade : 'idTipoVeiculo' },
+            { nomeCampo : 'slCategoria', propriedade : 'idCategoriaVeiculo' },
+        ];                
+        
+        var lista_registros_tabela = $(pagina_veiculos).find(".registro-veiculo");
+        
+        inicializar_botao_edicao_registro( pagina_veiculos, formInfoVeiculo, "idVeiculo", ".botao-editar", ".registro-veiculo", relacao_campo_propriedade, lista_registros_tabela, json_lista_veiculos);
     }
 }
 

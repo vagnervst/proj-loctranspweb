@@ -1,4 +1,9 @@
 <?php
+    if( $_SERVER["REQUEST_METHOD"] !== "POST" ) { 
+        //header("HTTP/1.1 403");
+        //exit;
+    }
+    
     $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
           
     require_once("../../include/initialize.php");
