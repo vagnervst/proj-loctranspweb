@@ -43,28 +43,40 @@
     } elseif( $modo == "delete" ) {
         $objVeiculo->id = (int) $idVeiculo;
         $objVeiculo->deletar();
-    }
-?>
-<?php
-    $filtragemNome = ( isset( $_POST["txtBusca"] ) )? $_POST["txtBusca"] : null;
-    $filtragemCod = ( isset( $_POST["txtCod"] ) )? $_POST["txtCod"] : null;
-    $filtragemPrecoMinimo = ( isset( $_POST["txtPrecoMinimo"] ) )? $_POST["txtPrecoMinimo"] : null;
-    $filtragemTipo = ( isset( $_POST["slTipo"] ) )? $_POST["slTipo"] : null;
-    $filtragemFabricante = ( isset( $_POST["slFabricante"] ) )? $_POST["slFabricante"] : null;        
-    $filtragemCategoria = ( isset( $_POST["slCategoria"] ) )? $_POST["slCategoria"] : null;
-    $filtragemCombustivel = ( isset( $_POST["slCombustivel"] ) )? $_POST["slCombustivel"] : null;
+    } 
 
-    $idTipo = new \Tabela\TipoVeiculo();
-    $idTipo = $idTipo->buscar("WHERE nome = '$filtragemTipo'");
-    
+    $listaVeiculos = null;
+    $query_pesquisa = null;
+
+    if( $modo == "pesquisa" ) {
+        
+        $db = new \DB\Database();        
+                
+        $filtragem_nome = ( isset( $_POST["txtNome"] ) )? mysqli_real_escape_string($db->conexao, $_POST["txtNome"]) : null;        
+        $filtragem_cod = ( isset( $_POST["txtCod"] ) )? $_POST["txtCod"] : null;
+        $filtragem_precoMinimo = ( isset( $_POST["txtPrecoMinimo"] ) )? mysqli_real_escape_string($db->conexao, $_POST["txtPrecoMinimo"]) : null;
+        $filtragem_idTipo = ( isset( $_POST["slTipo"] ) )? $_POST["slTipo"] : null;
+        $filtragem_idFabricante = ( isset( $_POST["slFabricante"] ) )? $_POST["slFabricante"] : null;        
+        $filtragem_idCategoria = ( isset( $_POST["slCategoria"] ) )? $_POST["slCategoria"] : null;
+        $filtragem_idCombustivel = ( isset( $_POST["slCombustivel"] ) )? $_POST["slCombustivel"] : null;                
+        
+        $lista_parametros_pesquisa = [];
+        
+        if( !empty($filtragem_nome) ) $lista_parametros_pesquisa[] = "v.nome LIKE '{$filtragem_nome}'";
+        if( !empty($filtragem_cod) ) $lista_parametros_pesquisa[] = "v.id = {$filtragem_cod}";
+        if( !empty($filtragem_precoMinimo) ) $lista_parametros_pesquisa[] = "v.precoMedio >= '{$filtragem_precoMinimo}'";
+        if( !empty($filtragem_idTipo) ) $lista_parametros_pesquisa[] = "v.idTipoVeiculo = {$filtragem_idTipo}";
+        if( !empty($filtragem_idFabricante) ) $lista_parametros_pesquisa[] = "v.idFabricante = {$filtragem_idFabricante}";
+        if( !empty($filtragem_idCategoria) ) $lista_parametros_pesquisa[] = "v.idCategoriaVeiculo = {$filtragem_idCategoria}";
+        if( !empty($filtragem_idCombustivel) ) $lista_parametros_pesquisa[] = "v.idTipoCombustivel = {$filtragem_idCombustivel}";
+        
+        $query_pesquisa = implode($lista_parametros_pesquisa, ' OR ');
+    }
+
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;
-    
-    if( $modo == "filtragem" ) {
-        $listaVeiculos = $objVeiculo->buscar("nome LIKE '{$busca}'");
-    } else {
-        $listaVeiculos = $objVeiculo->getVeiculos($itens_por_pagina, $pagina);
-    }    
-    
+
+    $listaVeiculos = $objVeiculo->getVeiculos($itens_por_pagina, $pagina, $query_pesquisa);  
+            
     echo json_encode($listaVeiculos);
 ?>
