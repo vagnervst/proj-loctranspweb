@@ -51,7 +51,7 @@
                 <div class="box-conteudo">                    
                     <div id="box-veiculos">
                         <div id="box-form-veiculo">
-                            <form class="js-modo-insercao" id="form-info-veiculo" method="post" action="#">
+                            <form class="js-modo-insert" id="form-info-veiculo" method="post" action="#">
                                 <div class="box-label-input" id="box-nome">
                                     <label><span class="label">Nome</span>
                                         <input class="input" type="text" name="txtNome"/>
@@ -168,7 +168,7 @@
                                     </div>                                    
                                 </div>
                                 <div class="horizontal-input-wrapper" id="box-acoes">                                    
-                                    <span class="preset-botao botao" id="botao-remover">Remover</span>
+                                    <span class="preset-botao botao js-botao-remocao" id="botao-remover">Remover</span>
                                     <div class="box-salvar-cancelar">                                        
                                         <input class="preset-botao botao" id="botao-cancelar" type="reset" value="Cancelar" />                                        
                                         <input class="preset-input-submit botao" type="submit" name="btnSubmit" value="Salvar" />

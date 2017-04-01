@@ -224,7 +224,42 @@ $(document).ready(function() {
         
         if( pagina_veiculos !== undefined ) {
             $.ajax({url: 'apis/crud_veiculos.php', success: function(dados_api) {                
-                exibir_lista_veiculos(pagina_veiculos, dados_api);
+                //exibir_lista_veiculos(pagina_veiculos, dados_api);            
+            
+                var formulario_veiculos = new AjaxForm(JSON.parse(dados_api));
+                
+                //formulario_veiculos.jsonRegistros = ;
+                
+                formulario_veiculos.colunas_tabela_propriedades_json = [
+                    {nome: "Nome", propriedadeJson: "nome"},
+                    {nome: "Tipo", propriedadeJson: "tipo"},
+                    {nome: "Categoria", propriedadeJson: "categoria"},
+                    {nome: "Fabricante", propriedadeJson: "fabricante"},
+                    {nome: "Ano", propriedadeJson: "ano"},
+                    {nome: "Preço", propriedadeJson: "precoMedio"},
+                ];                                               
+                
+                var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
+                
+                formulario_veiculos.urlApi = "apis/crud_veiculos.php";                
+                formulario_veiculos.containerTabela = box_listagem_veiculos;
+                formulario_veiculos.formulario = $("#form-info-veiculo")[0];
+                
+                formulario_veiculos.relacao_campo_propriedade = [
+                    { nomeCampo : 'txtNome', propriedade : 'nome' },
+                    { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
+                    { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
+                    { nomeCampo : 'txtAno', propriedade : 'ano' },
+                    { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },
+                    { nomeCampo : 'txtPrecoMedio', propriedade : 'precoMedio' },
+                    { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
+                    { nomeCampo : 'slCombustivel', propriedade : 'idTipoCombustivel' },
+                    { nomeCampo : 'slTipo', propriedade : 'idTipoVeiculo' },
+                    { nomeCampo : 'slCategoria', propriedade : 'idCategoriaVeiculo' },
+                ];
+                
+                formulario_veiculos.inicializar();
+                
             }});
         }
     }
@@ -233,7 +268,7 @@ $(document).ready(function() {
     
     function construir_tabela_tipo_veiculo(json_lista_tipo) {
         
-        var conteudo_tabela = "";        
+        var conteudo_tabela = "";
         for(var i = 0; i < json_lista_tipo.length; ++i) {
             conteudo_tabela += '<tr class="registro-tipo">'
             conteudo_tabela += '<td>' + json_lista_tipo[i].titulo + '</td>'
@@ -341,9 +376,9 @@ $(document).ready(function() {
     //------------------------------------------------------- FUNCOES ADM TIPO DE VEICULOS
     
     inicializar_lista_veiculos();
-    inicializar_ajax_modificacao_veiculos();
-    preparar_formulario_edicao_veiculos();
-    inicializar_ajax_remocao_veiculos();
+    //inicializar_ajax_modificacao_veiculos();
+    //preparar_formulario_edicao_veiculos();
+    //inicializar_ajax_remocao_veiculos();
     inicializar_ajax_modificacao_tipo();
     inicializar_ajax_remocao_tipo();
     inicializar_lista_tipos();
