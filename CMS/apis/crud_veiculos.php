@@ -10,7 +10,7 @@
     require_once("../../include/classes/tbl_veiculo.php");
     require_once("../../include/classes/tbl_tipo_veiculo.php");	    
     
-    $idVeiculo = ( isset($_POST["idVeiculo"]) )? $_POST["idVeiculo"] : null;
+    $idVeiculo = ( isset($_POST["id"]) )? $_POST["id"] : null;
     $nome = ( isset($_POST["txtNome"]) )? $_POST["txtNome"] : null;
     $precoMedio = ( isset($_POST["txtPrecoMedio"]) )? $_POST["txtPrecoMedio"] : null;
     $ano = ( isset($_POST["txtAno"]) )? $_POST["txtAno"] : null;
@@ -34,7 +34,7 @@
     $objVeiculo->idTipoCombustivel = (int) $idCombustivel;
     $objVeiculo->idFabricante = (int) $idFabricante;
     $objVeiculo->idTransmissao = (int) $idTransmissao;
-
+    
     if( $modo == "insert" ) {
         $objVeiculo->inserir();
     } elseif( $modo == "update" ) {
