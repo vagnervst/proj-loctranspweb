@@ -17,7 +17,7 @@
             public $idTipoVeiculo;
             public $idTransmissao;
             
-            public function getVeiculos($registros_por_pagina = null, $pagina_atual = null) {
+            public function getVeiculos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 //Retorna a relação de veiculos, fabricantes, combustivel, categoria, tipo e transmissao
                 
                 $sql = "SELECT v.id, v.nome, v.tipoMotor, v.precoMedio, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
@@ -34,7 +34,11 @@
                 $sql .= "ON t.id = v.idTipoVeiculo ";
                 $sql .= "INNER JOIN tbl_transmissaoveiculo AS tr ";
                 $sql .= "ON tr.id = v.idTransmissao";                                                                
-                                
+                
+                if( !empty($where) ) {
+                    $sql .= " WHERE " . $where;
+                }
+                
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                     $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
                     
