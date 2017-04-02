@@ -1,4 +1,5 @@
 function Ajax() {
+        
     this.transferir_dados_para_api = function(url, metodo, dados, callback) {
         $.ajax({
             url: url,
