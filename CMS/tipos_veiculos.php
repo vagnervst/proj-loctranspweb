@@ -50,12 +50,12 @@
                                 <label class="titulo-input"><span class="label">Tipo</span>
                                     <input class="input-pagina input" type="text" name="txtTipoVeiculo">
                                 </label>
-                                </div>
-                                <input class="preset-botao" type="submit" name="btnAdd" value="+" />
+                                </div>                                
                                 <div class="horizontal-input-wrapper">
-                                    <input class="preset-botao" type="reset" value="Cancelar" />
-                                    <span class="preset-botao" id="botao-remover">Remover</span>
+                                    <input class="preset-botao" id="botao-cancelar" type="reset" value="Cancelar" />
+                                    <span class="preset-botao js-botao-remocao" id="botao-remover">Remover</span>
                                 </div>
+                                <input class="preset-botao" type="submit" name="btnAdd" value="Salvar" />
                             </form>
                         </div>
                         <div class="box-listagem-tipo"></div>

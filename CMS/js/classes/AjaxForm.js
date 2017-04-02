@@ -20,10 +20,10 @@ function AjaxForm() {
         icone_carregamento.style.margin = "0 auto";        
         
         $(this.containerTabela).append( icone_carregamento );
-    }
+    }        
     
-    this.atualizar_info_json = function(string_lista_json) {        
-        this.jsonRegistros = JSON.parse(string_lista_json);
+    this.atualizar_info_json = function(string_lista_json) {
+        this.jsonRegistros = $.parseJSON(string_lista_json);
         
         this.infoPaginas = this.jsonRegistros.pop();
         this.infoPaginas["totalPaginas"] = this.get_total_paginas();
@@ -131,9 +131,10 @@ function AjaxForm() {
         
         var total_paginas = this.infoPaginas["totalPaginas"];
         conteudo_tabela += '<div id="box-table-paginas">';
-        conteudo_tabela += '<span class="preset-botao botao-paginas" id="btn-prev">Anterior</span>';
+                
+        conteudo_tabela += '<span class="preset-botao botao-paginas" id="btn-prev">Anterior</span>';        
         conteudo_tabela += '<p id="info-pagina">' + this.infoPaginas["paginaAtual"] + ' - ' + total_paginas  + '</p>';
-        conteudo_tabela += '<span class="preset-botao botao-paginas" id="btn-next">Próxima</span>';
+        conteudo_tabela += '<span class="preset-botao botao-paginas" id="btn-next">Próxima</span>';        
         
         var container_tabela = document.createElement("div");
         container_tabela.id = "container-ajax-form-table";
@@ -145,32 +146,29 @@ function AjaxForm() {
         return this.tabela;
     };
     
-    this.prepararBotoesPaginacao = function(callback) {
+    this.prepararBotoesPaginacao = function() {
         var botao_proxima_pagina = $(this.tabela).find("#btn-next")[0];
         var botao_pagina_anterior = $(this.tabela).find("#btn-prev")[0];
         
         var proxima_pagina = this.infoPaginas["paginaAtual"] + 1;        
 
-        if( proxima_pagina >= this.infoPaginas["totalPaginas"] ) {
-            proxima_pagina = this.infoPaginas["totalPaginas"];        
-        }
-
-        var pagina_anterior = this.infoPaginas["paginaAtual"] - 1;
-
-        if( pagina_anterior < 1 ) {
-            pagina_anterior = 1;        
-        }
+        var pagina_anterior = this.infoPaginas["paginaAtual"] - 1;        
                 
         var objeto_ajaxform = this;
-        $(botao_proxima_pagina).click(function() {
-            
-            objeto_ajaxform.ir_para_pagina(proxima_pagina);            
-        });
+        
+        if( this.infoPaginas["paginaAtual"] < this.infoPaginas["totalPaginas"] ) {
+            $(botao_proxima_pagina).click(function() {
 
-        $(botao_pagina_anterior).click(function() {
-            
-            objeto_ajaxform.ir_para_pagina(pagina_anterior);
-        });
+                objeto_ajaxform.ir_para_pagina(proxima_pagina);            
+            });
+        }
+        
+        if( pagina_anterior > 0 ) {
+            $(botao_pagina_anterior).click(function() {
+
+                objeto_ajaxform.ir_para_pagina(pagina_anterior);
+            });
+        }
     };
     
     this.prepararBotoesEdicao = function() {
@@ -235,7 +233,7 @@ function AjaxForm() {
         });
                 
         $(this.formulario).on("reset", function() {
-            $(self).removeData("id");
+            $(self).removeData("id");            
             self.alterar_modo_crud_para( "insert" );
         });
                 
@@ -264,20 +262,22 @@ function AjaxForm() {
     
     this.prepararFormularioPesquisa = function() {
         
-        var self = this;
-        $(this.formularioPesquisa).submit(function(e){
-            e.preventDefault();
-            self.exibirIconeCarregamento();
-            
-            var dados_para_api = new FormData(this);
-            dados_para_api.append( "modo", "pesquisa" );
-            
-            var ajax = new Ajax();            
-            ajax.transferir_dados_para_api( self.urlApi, "POST", dados_para_api, function(dados_api) {                                
-                self.atualizar_info_json(dados_api);
-                self.inicializar(false);
+        if( this.formularioPesquisa !== undefined ) {
+            var self = this;
+            $(this.formularioPesquisa).submit(function(e){
+                e.preventDefault();
+                self.exibirIconeCarregamento();
+
+                var dados_para_api = new FormData(this);
+                dados_para_api.append( "modo", "pesquisa" );
+
+                var ajax = new Ajax();            
+                ajax.transferir_dados_para_api( self.urlApi, "POST", dados_para_api, function(dados_api) {                                
+                    self.atualizar_info_json(dados_api);
+                    self.inicializar(false);
+                });
             });
-        });
+        }
     }        
         
     this.inicializar = function(prepararFormularios=true) {
@@ -286,12 +286,10 @@ function AjaxForm() {
         var self = this;
         $.ajax({url: this.urlApi, success: function(string_dados_api) {            
             if( prepararFormularios ) {
-                self.jsonRegistros = JSON.parse(string_dados_api);
-                self.infoPaginas = self.jsonRegistros.pop();
-                self.infoPaginas["totalPaginas"] = self.get_total_paginas();
+                self.atualizar_info_json( string_dados_api );            
                 
                 self.prepararFormulario();
-                self.prepararFormularioPesquisa();
+                self.prepararFormularioPesquisa();                
             }                        
                                     
             self.exibirTabela();            

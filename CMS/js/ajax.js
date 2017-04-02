@@ -46,7 +46,7 @@ $(document).ready(function() {
                 { nomeCampo : 'slCombustivel', propriedade: 'idTipoCombustivel' }
             ];
 
-            formulario_veiculos.inicializar();                        
+            formulario_veiculos.inicializar();
         }
     }
     
@@ -147,11 +147,37 @@ $(document).ready(function() {
     function inicializar_lista_tipos() {
         var pagina_tipo = $("#pag-tipo-veiculo")[0];
         
-        if( pagina_tipo !== undefined ) {
+        if( pagina_tipo !== undefined ) {                                                    
             
-            ajax_transferir_dados_para_api("apis/crud_tipo_veiculo.php", "POST", null, function(dados_api) {
-                exibir_lista_tipo(pagina_tipo, dados_api);
-            });                        
+            var formulario_tipos_veiculo = new AjaxForm();            
+
+            formulario_tipos_veiculo.colunas_tabela_propriedades_json = [
+                {nome: "Titulo", propriedadeJson: "titulo"}                
+            ];                                               
+
+            var box_listagem_tipos = $(pagina_tipo).find(".box-listagem-tipo")[0];
+            console.log(box_listagem_tipos);
+            
+            formulario_tipos_veiculo.urlApi = "apis/crud_tipo_veiculo.php";                
+            formulario_tipos_veiculo.containerTabela = box_listagem_tipos;
+            formulario_tipos_veiculo.formulario = $("#form-modificacao")[0];
+            //formulario_tipos_veiculo.formularioPesquisa = null;
+
+            formulario_tipos_veiculo.relacao_campo_propriedade = [
+                { nomeCampo : 'txtTipoVeiculo', propriedade : 'titulo' }
+            ];
+
+            /*formulario_tipos_veiculo.relacao_campo_propriedade_pesquisa = [
+                { nomeCampo : 'txtCod', propriedade: 'id' },
+                { nomeCampo : 'txtPrecoMinimo', propriedade: 'precoMedio' },
+                { nomeCampo : 'slTipo', propriedade: 'idTipoVeiculo' },
+                { nomeCampo : 'slFabricante', propriedade: 'idFabricante' },
+                { nomeCampo : 'txtNome', propriedade: 'nome' },
+                { nomeCampo : 'slCategoria', propriedade: 'idCategoriaVeiculo' },
+                { nomeCampo : 'slCombustivel', propriedade: 'idTipoCombustivel' }
+            ];*/
+
+            formulario_tipos_veiculo.inicializar();                                              
         }
     }
     
