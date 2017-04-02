@@ -6,7 +6,7 @@ function Ajax() {
             method: metodo,
             data: dados,
             contentType: false,
-            processData: false,
+            processData: false,            
             success: function(dados_retorno) {                        
                 if( callback !== undefined ) callback(dados_retorno);
             }

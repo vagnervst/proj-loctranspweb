@@ -4,7 +4,7 @@
     
     $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
 
-    $id = ( isset($_POST["idTipo"]) )? $_POST["idTipo"] : null;
+    $id = ( isset($_POST["id"]) )? $_POST["id"] : null;
     $nomeTipo = ( isset($_POST["txtTipoVeiculo"]) )? $_POST["txtTipoVeiculo"] : null;
     
     $objTipoVeiculo = new \Tabela\TipoVeiculo();
@@ -21,7 +21,10 @@
     }
 ?>
 <?php
-    $lista_tipo = $objTipoVeiculo->buscar();
+    $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
+    $itens_por_pagina = 15;
     
+    $lista_tipo = $objTipoVeiculo->getTipos($itens_por_pagina, $pagina);    
+
     echo json_encode($lista_tipo);
 ?>
