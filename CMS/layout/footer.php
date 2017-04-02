@@ -8,5 +8,5 @@
     <script src="js/classes/Ajax.js"></script>
     <script src="js/classes/AjaxForm.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/ajax.js"></script>
+    <script src="js/forms.js"></script>
 </footer>  
