@@ -77,6 +77,8 @@
     $itens_por_pagina = 15;
 
     $listaVeiculos = $objVeiculo->getVeiculos($itens_por_pagina, $pagina, $query_pesquisa);  
-            
+    
+    sleep(1);
+    
     echo json_encode($listaVeiculos);
 ?>

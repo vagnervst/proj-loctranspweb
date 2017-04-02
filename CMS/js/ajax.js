@@ -3,56 +3,50 @@ $(document).ready(function() {
     function inicializar_lista_veiculos() {
         var pagina_veiculos = $("#pag-adm-veiculos")[0];
         
-        if( pagina_veiculos !== undefined ) {
-            $.ajax({url: 'apis/crud_veiculos.php', success: function(dados_api) {                
-                //exibir_lista_veiculos(pagina_veiculos, dados_api);            
+        if( pagina_veiculos !== undefined ) {            
             
-                var formulario_veiculos = new AjaxForm();
-                
-                //formulario_veiculos.jsonRegistros = ;
-                
-                formulario_veiculos.colunas_tabela_propriedades_json = [
-                    {nome: "Nome", propriedadeJson: "nome"},
-                    {nome: "Tipo", propriedadeJson: "tipo"},
-                    {nome: "Categoria", propriedadeJson: "categoria"},
-                    {nome: "Fabricante", propriedadeJson: "fabricante"},
-                    {nome: "Ano", propriedadeJson: "ano"},
-                    {nome: "Preço", propriedadeJson: "precoMedio"},
-                ];                                               
-                
-                var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
-                
-                formulario_veiculos.urlApi = "apis/crud_veiculos.php";                
-                formulario_veiculos.containerTabela = box_listagem_veiculos;
-                formulario_veiculos.formulario = $("#form-info-veiculo")[0];
-                formulario_veiculos.formularioPesquisa = $("#box-filtragem-veiculos form")[0];
-                
-                formulario_veiculos.relacao_campo_propriedade = [
-                    { nomeCampo : 'txtNome', propriedade : 'nome' },
-                    { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
-                    { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
-                    { nomeCampo : 'txtAno', propriedade : 'ano' },
-                    { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },
-                    { nomeCampo : 'txtPrecoMedio', propriedade : 'precoMedio' },
-                    { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
-                    { nomeCampo : 'slCombustivel', propriedade : 'idTipoCombustivel' },
-                    { nomeCampo : 'slTipo', propriedade : 'idTipoVeiculo' },
-                    { nomeCampo : 'slCategoria', propriedade : 'idCategoriaVeiculo' },
-                ];
-                
-                formulario_veiculos.relacao_campo_propriedade_pesquisa = [
-                    { nomeCampo : 'txtCod', propriedade: 'id' },
-                    { nomeCampo : 'txtPrecoMinimo', propriedade: 'precoMedio' },
-                    { nomeCampo : 'slTipo', propriedade: 'idTipoVeiculo' },
-                    { nomeCampo : 'slFabricante', propriedade: 'idFabricante' },
-                    { nomeCampo : 'txtNome', propriedade: 'nome' },
-                    { nomeCampo : 'slCategoria', propriedade: 'idCategoriaVeiculo' },
-                    { nomeCampo : 'slCombustivel', propriedade: 'idTipoCombustivel' }
-                ];
-                
-                formulario_veiculos.inicializar();
-                
-            }});
+            var formulario_veiculos = new AjaxForm();            
+
+            formulario_veiculos.colunas_tabela_propriedades_json = [
+                {nome: "Nome", propriedadeJson: "nome"},
+                {nome: "Tipo", propriedadeJson: "tipo"},
+                {nome: "Categoria", propriedadeJson: "categoria"},
+                {nome: "Fabricante", propriedadeJson: "fabricante"},
+                {nome: "Ano", propriedadeJson: "ano"},
+                {nome: "Preço", propriedadeJson: "precoMedio"},
+            ];                                               
+
+            var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
+
+            formulario_veiculos.urlApi = "apis/crud_veiculos.php";                
+            formulario_veiculos.containerTabela = box_listagem_veiculos;
+            formulario_veiculos.formulario = $("#form-info-veiculo")[0];
+            formulario_veiculos.formularioPesquisa = $("#box-filtragem-veiculos form")[0];
+
+            formulario_veiculos.relacao_campo_propriedade = [
+                { nomeCampo : 'txtNome', propriedade : 'nome' },
+                { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
+                { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
+                { nomeCampo : 'txtAno', propriedade : 'ano' },
+                { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },
+                { nomeCampo : 'txtPrecoMedio', propriedade : 'precoMedio' },
+                { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
+                { nomeCampo : 'slCombustivel', propriedade : 'idTipoCombustivel' },
+                { nomeCampo : 'slTipo', propriedade : 'idTipoVeiculo' },
+                { nomeCampo : 'slCategoria', propriedade : 'idCategoriaVeiculo' },
+            ];
+
+            formulario_veiculos.relacao_campo_propriedade_pesquisa = [
+                { nomeCampo : 'txtCod', propriedade: 'id' },
+                { nomeCampo : 'txtPrecoMinimo', propriedade: 'precoMedio' },
+                { nomeCampo : 'slTipo', propriedade: 'idTipoVeiculo' },
+                { nomeCampo : 'slFabricante', propriedade: 'idFabricante' },
+                { nomeCampo : 'txtNome', propriedade: 'nome' },
+                { nomeCampo : 'slCategoria', propriedade: 'idCategoriaVeiculo' },
+                { nomeCampo : 'slCombustivel', propriedade: 'idTipoCombustivel' }
+            ];
+
+            formulario_veiculos.inicializar();                        
         }
     }
     
@@ -157,11 +151,7 @@ $(document).ready(function() {
             
             ajax_transferir_dados_para_api("apis/crud_tipo_veiculo.php", "POST", null, function(dados_api) {
                 exibir_lista_tipo(pagina_tipo, dados_api);
-            });
-            
-            /*$.ajax({url: 'apis/crud_tipo_veiculo.php', success: function(dados_api) {                
-                
-            }});*/
+            });                        
         }
     }
     

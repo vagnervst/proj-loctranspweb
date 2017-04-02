@@ -12,6 +12,16 @@ function AjaxForm() {
                     
     //--------------------------------- METODOS UTILITARIOS
     
+    this.exibirIconeCarregamento = function() {        
+        this.containerTabela.innerHTML = "";
+        var icone_carregamento = document.createElement("img");
+        icone_carregamento.src = "../img/loading_cityshare.gif";
+        icone_carregamento.style.display = "block";
+        icone_carregamento.style.margin = "0 auto";        
+        
+        $(this.containerTabela).append( icone_carregamento );
+    }
+    
     this.atualizar_info_json = function(string_lista_json) {        
         this.jsonRegistros = JSON.parse(string_lista_json);
         
@@ -20,6 +30,8 @@ function AjaxForm() {
     }
     
     this.ir_para_pagina = function(pagina_alvo) {
+        this.exibirIconeCarregamento();
+        
         var dados_para_api = new FormData();
         dados_para_api.append("numeroPagina", pagina_alvo);
         
@@ -196,6 +208,7 @@ function AjaxForm() {
         var self = this;
         $(this.formulario).submit(function(e) {
             e.preventDefault();
+            self.exibirIconeCarregamento();
             
             var dados_formulario = new FormData(this);            
             dados_formulario.append( "modo", self.modoCRUD );
@@ -228,6 +241,7 @@ function AjaxForm() {
                 
         if( botao_remocao !== undefined ) {            
             $(botao_remocao).click(function() {
+                self.exibirIconeCarregamento();
                 
                 var id_registro = $(self.formulario).data( "id" );                
                 
@@ -253,6 +267,7 @@ function AjaxForm() {
         var self = this;
         $(this.formularioPesquisa).submit(function(e){
             e.preventDefault();
+            self.exibirIconeCarregamento();
             
             var dados_para_api = new FormData(this);
             dados_para_api.append( "modo", "pesquisa" );
@@ -266,6 +281,8 @@ function AjaxForm() {
     }        
         
     this.inicializar = function(prepararFormularios=true) {
+        this.exibirIconeCarregamento();        
+        
         var self = this;
         $.ajax({url: this.urlApi, success: function(string_dados_api) {            
             if( prepararFormularios ) {
