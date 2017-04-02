@@ -188,14 +188,13 @@ DROP TABLE IF EXISTS `tbl_categoriaveiculo`;
 CREATE TABLE `tbl_categoriaveiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
+  `percentualLucro` decimal(5,2) NOT NULL,
+  `valorMinimoVeiculo` decimal(9,2) DEFAULT '0.00',
   `idTipoVeiculo` int(11) NOT NULL,
-  `idPercentualLucro` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tipoVeiculo_categoriaVeiculo` (`idTipoVeiculo`),
-  KEY `percentualLucro_categoriaVeiculo` (`idPercentualLucro`),
-  CONSTRAINT `percentualLucro_categoriaVeiculo` FOREIGN KEY (`idPercentualLucro`) REFERENCES `tbl_percentuallucro` (`id`),
   CONSTRAINT `tipoVeiculo_categoriaVeiculo` FOREIGN KEY (`idTipoVeiculo`) REFERENCES `tbl_tipoveiculo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +315,20 @@ CREATE TABLE `tbl_estado` (
   KEY `estado_pais` (`idPais`),
   CONSTRAINT `estado_pais` FOREIGN KEY (`idPais`) REFERENCES `tbl_pais` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_fabricanteveiculo`
+--
+
+DROP TABLE IF EXISTS `tbl_fabricanteveiculo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_fabricanteveiculo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,20 +455,6 @@ CREATE TABLE `tbl_licencadesktop` (
   PRIMARY KEY (`id`),
   KEY `licencaDesktop_duracaoMeses` (`idDuracaoMeses`),
   CONSTRAINT `licencaDesktop_duracaoMeses` FOREIGN KEY (`idDuracaoMeses`) REFERENCES `tbl_duracaomeses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tbl_marcaveiculo`
---
-
-DROP TABLE IF EXISTS `tbl_marcaveiculo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_marcaveiculo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -589,21 +588,6 @@ CREATE TABLE `tbl_pendencia` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `tbl_percentuallucro`
---
-
-DROP TABLE IF EXISTS `tbl_percentuallucro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_percentuallucro` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `percentual` decimal(5,2) NOT NULL,
-  `valorMinimoVeiculo` decimal(9,2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `tbl_perfilnivelacesso_juridico`
 --
 
@@ -724,7 +708,6 @@ CREATE TABLE `tbl_publicacao` (
   `idAgencia` int(11) DEFAULT NULL,
   `idUsuario` int(11) NOT NULL,
   `idFuncionario` int(11) DEFAULT NULL,
-  `idTransmissao` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `publicacao_statusPublicacao` (`idStatusPublicacao`),
   KEY `publicacao_agencia` (`idAgencia`),
@@ -833,7 +816,7 @@ CREATE TABLE `tbl_tipocombustivel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -875,7 +858,7 @@ CREATE TABLE `tbl_tipoveiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -889,7 +872,7 @@ CREATE TABLE `tbl_transmissaoveiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -964,6 +947,7 @@ CREATE TABLE `tbl_veiculo` (
   `tipoMotor` varchar(5) NOT NULL,
   `precoMedio` decimal(9,2) NOT NULL,
   `ano` int(4) NOT NULL,
+  `qtdPortas` int(1) NOT NULL,
   `idCategoriaVeiculo` int(11) NOT NULL,
   `idFabricante` int(11) NOT NULL,
   `idTipoCombustivel` int(11) NOT NULL,
@@ -976,11 +960,11 @@ CREATE TABLE `tbl_veiculo` (
   KEY `veiculo_tipoVeiculo` (`idTipoVeiculo`),
   KEY `veiculo_transmissaoVeiculo` (`idTransmissao`),
   CONSTRAINT `veiculo_categoriaVeiculo` FOREIGN KEY (`idCategoriaVeiculo`) REFERENCES `tbl_categoriaveiculo` (`id`),
-  CONSTRAINT `veiculo_fabricanteVeiculo` FOREIGN KEY (`idFabricante`) REFERENCES `tbl_marcaveiculo` (`id`),
+  CONSTRAINT `veiculo_fabricanteVeiculo` FOREIGN KEY (`idFabricante`) REFERENCES `tbl_fabricanteveiculo` (`id`),
   CONSTRAINT `veiculo_tipoCombustivel` FOREIGN KEY (`idTipoCombustivel`) REFERENCES `tbl_tipocombustivel` (`id`),
   CONSTRAINT `veiculo_tipoVeiculo` FOREIGN KEY (`idTipoVeiculo`) REFERENCES `tbl_tipoveiculo` (`id`),
   CONSTRAINT `veiculo_transmissaoVeiculo` FOREIGN KEY (`idTransmissao`) REFERENCES `tbl_transmissaoveiculo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1009,4 +993,4 @@ CREATE TABLE `tipoconta_permissaoconta` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-28 16:58:12
+-- Dump completed on 2017-04-02  4:54:31
