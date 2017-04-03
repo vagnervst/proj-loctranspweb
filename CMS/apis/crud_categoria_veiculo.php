@@ -4,7 +4,7 @@
     
     $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
 
-    $id = ( isset($_POST["id"]) )? $_POST["id"] : null;        
+    $id = ( isset($_POST["id"]) )? $_POST["id"] : null;
     $nomeCategoria = ( isset( $_POST["txtNomeCategoria"] ) )? $_POST["txtNomeCategoria"] : null;
     $percentualLucro = ( isset( $_POST["txtPercentualLucro"] ) )? $_POST["txtPercentualLucro"] : null;
     $valorMinimoVeiculo = ( isset( $_POST["txtvalorMinimoVeiculo"] ) )? $_POST["txtvalorMinimoVeiculo"] : null;

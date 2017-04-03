@@ -59,9 +59,9 @@
                         </a>
                     </div>                                       
                     <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="marcas_veiculos.php">
+                        <a class="titulo-conteudo-menu" href="fabricantes_veiculos.php">
                             <img src="Image/content_test.jpg" />
-                            Marcas
+                            Fabricantes
                         </a>
                     </div>                                       
                     <div class="box-conteudo-menu">                        

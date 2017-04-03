@@ -52,8 +52,8 @@
                             <input type="submit" value="Adicionar" name="btn_adicionar" class="btn">
                             
                             <div id="box-btn-exc-cancelar">
-                                <span type="submit"  name="btn_adicionar" class="btn">Excluir </span>
-                                <span type="submit"  name="btn_adicionar" class="btn">Cancelar </span>
+                                <span type="submit"  name="btn_adicionar" class="btn">Excluir</span>
+                                <span type="submit"  name="btn_adicionar" class="btn">Cancelar</span>
                             </div>
                             
                         </div>

@@ -45,28 +45,55 @@ function AjaxForm() {
         });
     }     
     
+    this.is_array_input_name = function(nome) {
+        if( nome.indexOf("[]") !== -1 ) return true;
+        
+        return false;
+    }
+    
     this.get_input_by_name = function(nome, lista_input) {
+        
+        var lista_inputs_encontrados = [];        
         for(var i = 0; i < lista_input.length; ++i) {
-            if( lista_input[i].name == nome ) return lista_input[i];
+            if( lista_input[i].name === nome ) lista_inputs_encontrados.push(lista_input[i]);
         }
 
+        return lista_inputs_encontrados;
+    }
+    
+    this.get_registro_from_id = function(lista_registros, id) {
+        for( var i = 0; i < lista_registros.length; ++i ) {
+            if( lista_registros[i].id === id ) return lista_registros[i];
+        }
+        
         return null;
     }
     
     this.set_campos_formulario = function() {        
         var campos = this.formulario.elements;    
-        
-        console.log(this);
+                
         for(var nome_campo in this.lista_chave_valor_formulario) {            
-            var campo = this.get_input_by_name(nome_campo, campos);
-
-            campo.value = this.lista_chave_valor_formulario[nome_campo];
+            var campos_encontrados = this.get_input_by_name(nome_campo, campos);            
+            
+            for( var i = 0; i < campos_encontrados.length; ++i ) {
+                var campo = campos_encontrados[i];                                
+                var valor_registro_json = this.lista_chave_valor_formulario[nome_campo];                                            
+                
+                if( this.is_array_input_name( nome_campo ) ) {
+                    var id_checkbox = campo.value;
+                    var registro_checkbox_json = this.get_registro_from_id( valor_registro_json, id_checkbox );
+                    
+                    if( registro_checkbox_json !== null ) $(campo).attr("checked", "true");
+                } else {
+                    campo.value = valor_registro_json;   
+                }                
+            }                        
         }
     }
     
     this.exibirTabela = function() {
         this.containerTabela.innerHTML = "";
-        $(this.containerTabela).append( this.prepararTabela() );        
+        $(this.containerTabela).append( this.prepararTabela() );
     };
     
     this.alterar_modo_crud_para = function(modo_crud) {
@@ -177,8 +204,10 @@ function AjaxForm() {
     this.prepararBotoesEdicao = function() {
         
         var self = this;
-        $(this.tabela).off("click", ".bota-editar");
+        $(this.tabela).off("click", ".botao-editar");
         $(this.tabela).on("click", ".botao-editar", function() {
+            $(self.formulario).find('input:checkbox').removeAttr('checked');
+            
             var registro_selecionado = $(this).parents(".registro")[0];            
             
             var lista_registros_tabela = $(self.tabela).find(".registro");
@@ -186,6 +215,8 @@ function AjaxForm() {
             var indice_registro_selecionado = lista_registros_tabela.index(registro_selecionado);
             
             var json_registro_selecionado = self.jsonRegistros[ indice_registro_selecionado ];
+            
+            console.log(json_registro_selecionado);
             
             $( self.formulario ).data( "id", json_registro_selecionado.id );
             
@@ -218,11 +249,12 @@ function AjaxForm() {
                 var id_registro_selecionado = $(self.formulario).data( "id" );                
                 
                 dados_formulario.append( "id", id_registro_selecionado );
-            }
+            }                        
             
             var ajax = new Ajax();
             ajax.transferir_dados_para_api( self.urlApi, "POST", dados_formulario, function(dados_api) {
                 $(self.formulario).trigger("reset");                                
+                $(this).find('input:checkbox').removeAttr('checked');
                 
                 self.atualizar_info_json(dados_api);
                 self.inicializar(false);
@@ -238,13 +270,15 @@ function AjaxForm() {
         $(this.formulario).on("reset", function() {
             $(self).removeData("id");            
             self.alterar_modo_crud_para( "insert" );
+            $(this).find('input:checkbox').removeAttr('checked');
         });
                 
-        if( botao_remocao !== undefined ) {            
+        if( botao_remocao !== undefined ) {
+            
             $(botao_remocao).click(function() {
                 self.exibirIconeCarregamento();
                 
-                var id_registro = $(self.formulario).data( "id" );                
+                var id_registro = $(self.formulario).data( "id" );
                 
                 var dados_para_api = new FormData();
                 dados_para_api.append( "id", id_registro );
@@ -253,8 +287,11 @@ function AjaxForm() {
                 dados_para_api.append( "modo", self.modoCRUD );
                 
                 var ajax = new Ajax();
+                
                 ajax.transferir_dados_para_api( self.urlApi, "POST", dados_para_api, function(dados_api) {
+                    console.log( dados_api );
                     $(self.formulario).trigger("reset");
+                    $(self.formulario).find('input:checkbox').removeAttr('checked');
                     
                     self.atualizar_info_json(dados_api);
                     self.inicializar(false);
