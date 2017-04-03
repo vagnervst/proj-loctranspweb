@@ -76,9 +76,7 @@
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;
 
-    $listaVeiculos = $objVeiculo->getVeiculos($itens_por_pagina, $pagina, $query_pesquisa);  
-    
-    sleep(1);
+    $listaVeiculos = $objVeiculo->getVeiculos($itens_por_pagina, $pagina, $query_pesquisa);
     
     echo json_encode($listaVeiculos);
 ?>
