@@ -1,13 +1,14 @@
 $(document).ready(function() {
              
     function inicializar_lista_veiculos() {
-        var pagina_veiculos = $("#pag-adm-veiculos")[0];
+        var pagina_veiculos = $("#pag-adm-veiculos")[0];        
         
         if( pagina_veiculos !== undefined ) {            
             
             var formulario_veiculos = new AjaxForm();            
 
             formulario_veiculos.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
                 {nome: "Nome", propriedadeJson: "nome"},
                 {nome: "Tipo", propriedadeJson: "tipo"},
                 {nome: "Categoria", propriedadeJson: "categoria"},
@@ -23,7 +24,7 @@ $(document).ready(function() {
             formulario_veiculos.formulario = $("#form-info-veiculo")[0];
             formulario_veiculos.formularioPesquisa = $("#box-filtragem-veiculos form")[0];
 
-            formulario_veiculos.relacao_campo_propriedade = [
+            formulario_veiculos.relacao_campo_propriedade = [                
                 { nomeCampo : 'txtNome', propriedade : 'nome' },
                 { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
                 { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
@@ -50,7 +51,7 @@ $(document).ready(function() {
         }
     }
     
-    //------------------------------------------------------- FUNCOES ADM VEICULOS        
+    //------------------------------------------------------- FUNCAO ADM VEICULOS        
     
     function inicializar_lista_tipos() {
         var pagina_tipo = $("#pag-tipo-veiculo")[0];
@@ -63,8 +64,7 @@ $(document).ready(function() {
                 {nome: "Titulo", propriedadeJson: "titulo"}                
             ];                                               
 
-            var box_listagem_tipos = $(pagina_tipo).find(".box-listagem-tipo")[0];
-            console.log(box_listagem_tipos);
+            var box_listagem_tipos = $(pagina_tipo).find(".box-listagem-tipo")[0];            
             
             formulario_tipos_veiculo.urlApi = "apis/crud_tipo_veiculo.php";                
             formulario_tipos_veiculo.containerTabela = box_listagem_tipos;
@@ -78,8 +78,41 @@ $(document).ready(function() {
         }
     }
     
-    //------------------------------------------------------- FUNCOES ADM TIPO DE VEICULOS
+    //------------------------------------------------------- FUNCAO ADM TIPOS DE VEICULO
     
-    inicializar_lista_veiculos();    
+    function inicializar_lista_categorias() {
+        var pagina_categoria = $("#pag-categorias-veiculos")[0];
+        
+        if( pagina_categoria !== undefined ) {                                                                
+            var formulario_categorias_veiculo = new AjaxForm();            
+
+            formulario_categorias_veiculo.colunas_tabela_propriedades_json = [
+                {nome: "Titulo", propriedadeJson: "nome"},
+                {nome: "Lucro (%)", propriedadeJson: "percentualLucro"},
+                {nome: "Valor Mínimo do Veículo", propriedadeJson: "valorMinimoVeiculo"},
+                {nome: "Tipo de Veículo", propriedadeJson: "tituloTipo"},
+            ];                                               
+
+            var box_listagem_categorias = $(pagina_categoria).find("#box-listagem-categorias")[0];            
+            
+            formulario_categorias_veiculo.urlApi = "apis/crud_categoria_veiculo.php";                
+            formulario_categorias_veiculo.containerTabela = box_listagem_categorias;
+            formulario_categorias_veiculo.formulario = $("#form-modificacao")[0];            
+
+            formulario_categorias_veiculo.relacao_campo_propriedade = [
+                { nomeCampo : 'txtNomeCategoria', propriedade : 'nome' },
+                { nomeCampo : 'txtPercentualLucro', propriedade : 'percentualLucro' },
+                { nomeCampo : 'txtvalorMinimoVeiculo', propriedade : 'valorMinimoVeiculo' },
+                { nomeCampo : 'sltipoVeiculo', propriedade : 'idTipoVeiculo' },
+            ];            
+
+            formulario_categorias_veiculo.inicializar();                                              
+        }
+    }
+    
+    //------------------------------------------------------- FUNCAO ADM CATEGORIAS DE VEICULO
+    
+    inicializar_lista_veiculos();
     inicializar_lista_tipos();
+    inicializar_lista_categorias();
 });

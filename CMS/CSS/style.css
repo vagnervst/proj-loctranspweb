@@ -1615,7 +1615,7 @@ header #box-cabecalho #box-conta #botao-logout{
 
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos .ajax-form-table tr .form-coluna1,
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos .ajax-form-table tr td.form-campo1 {
-    width: 120px;
+    width: 53px;
 }
 
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos .ajax-form-table {
@@ -1623,6 +1623,40 @@ header #box-cabecalho #box-conta #botao-logout{
 }
 
 /*---- PAGINA ADM DE VEICULOS CITY SHARE ----*/
+
+#pag-categorias-veiculos .box-conteudo #box-form-categoria {
+    background-color: #ffffff;
+    width: 405px;
+    height: 190px;
+    padding: 5px;
+    padding-bottom: 0px;
+    border: 1px solid #cecece;
+    margin: 0 auto;
+}
+
+#pag-categorias-veiculos .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table tr td {
+    width: 172px;
+}
+
+#pag-categorias-veiculos .box-conteudo  #box-listagem-categorias #container-ajax-form-table #box-table-paginas {
+    margin-top: 360px;
+}
+
+#pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao #box-acoes #box-salvar-cancelar {
+    float: right;
+}
+
+#pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao #box-acoes .botao {
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #botao-remover,
+#pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
+    display: none;
+}
+
+/*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
 
 footer{
     background-color: #202020;

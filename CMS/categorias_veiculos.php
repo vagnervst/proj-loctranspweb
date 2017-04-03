@@ -16,7 +16,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-adm-veiculos">
+            <div class="CMS_main" id="pag-categorias-veiculos">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -40,40 +40,51 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho">Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_nivelAcesso.php" class="link-caminho" >Administração de Veículos</a>
+                    <a href="CMS_home.php" class="link-caminho">Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> > <a href="categorias_veiculos.php" class="link-caminho" >Categorias</a>
                 </div>
                 <div class="box-conteudo">
-                    <div id="box-form-veiculo">
-                        <form>
+                    <div id="box-form-categoria">
+                        <form class="js-modo-insert" method="post" action="#" id="form-modificacao">
                             <div class="box-label-input">
                                 <label><span class="label">Nome da categoria:</span>
-                                    <input class="input" type="text" name="txt_nome_categoria" />
+                                    <input class="input" type="text" name="txtNomeCategoria" />
                                 </label>
                             </div>
                             <div class="box-label-input">
                                 <label><span class="label">Percentual de lucro:</span>
-                                    <input class="input" type="text" name="txt_percentual_categoria" />
+                                    <input class="input" type="text" name="txtPercentualLucro" />
                                 </label>
                             </div>
                             <div class="box-label-input">
                                 <label><span class="label">Valor mínimo do veículo:</span>
-                                    <input class="input" type="text" name="txt_valor_categoria" />
+                                    <input class="input" type="text" name="txtvalorMinimoVeiculo" />
                                 </label>
                             </div>
                             <div class="box-label-input">
                                 <label><span class="label">Tipo de veículo:</span>
-                                    <select name="txt_tipo_categoria">
-                                        <option value="valor_categoria">Valor</option>
+                                    <select name="sltipoVeiculo">
+                                        <option selected disabled>Selecione um tipo de veículo</option>
+                                        <?php
+                                            $listaTiposVeiculo = new \Tabela\TipoVeiculo();
+                                            $listaTiposVeiculo = $listaTiposVeiculo->buscar();
+                                            
+                                            foreach( $listaTiposVeiculo as $tipoVeiculo ) {
+                                        ?>
+                                        <option value="<?php echo $tipoVeiculo->id; ?>"><?php echo $tipoVeiculo->titulo; ?></option>
+                                        <?php } ?>
                                     </select>
                                 </label>
                             </div>
-                            <div class="box-salvar-cancelar">                                        
-                                <input class="preset-botao botao" id="botao-cancelar" type="reset" value="Cancelar" />                                        
-                                <input class="preset-input-submit botao" type="submit" name="btnSubmit" value="Salvar" />
-                            </div>
-                        </form>
-                        <div id="box-listagem-categorias"></div>
+                            <div id="box-acoes">
+                                <span class="preset-botao botao js-botao-remocao" id="botao-remover">Remover</span>
+                                <div id="box-salvar-cancelar">                                
+                                    <input class="preset-botao botao" id="botao-cancelar" type="reset" value="Cancelar" />
+                                    <input class="preset-input-submit botao" type="submit" name="btnSubmit" value="Salvar" />
+                                </div>
+                            </div>                  
+                        </form>                        
                     </div>
+                    <div id="box-listagem-categorias"></div>
                 </div>
             </div>
             <?php

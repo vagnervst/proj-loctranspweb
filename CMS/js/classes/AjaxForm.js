@@ -15,7 +15,7 @@ function AjaxForm() {
     this.exibirIconeCarregamento = function() {        
         this.containerTabela.innerHTML = "";
         var icone_carregamento = document.createElement("img");
-        icone_carregamento.src = "../img/loading_cityshare.gif";
+        icone_carregamento.src = "../img/loading_cityshare_black.gif";
         icone_carregamento.style.display = "block";
         icone_carregamento.style.margin = "0 auto";        
         
@@ -23,6 +23,7 @@ function AjaxForm() {
     }        
     
     this.atualizar_info_json = function(string_lista_json) {
+        console.log(string_lista_json);
         this.jsonRegistros = $.parseJSON(string_lista_json);
         
         this.infoPaginas = this.jsonRegistros.pop();
@@ -108,6 +109,8 @@ function AjaxForm() {
             var coluna = this.colunas_tabela_propriedades_json[i];
             conteudo_tabela += '<td class="form-coluna' + Number(i+1) + '">' + coluna.nome + '</td>';
         }
+        
+        conteudo_tabela += '<td class="form-coluna-acoes">Ações</td>';
         
         for( var i = 0; i < this.jsonRegistros.length; ++i ) {
             var registro = this.jsonRegistros[i];
