@@ -1624,6 +1624,10 @@ header #box-cabecalho #box-conta #botao-logout{
 
 /*---- PAGINA ADM DE VEICULOS CITY SHARE ----*/
 
+#pag-categorias-veiculos {
+    height: 850px;   
+}
+
 #pag-categorias-veiculos .box-conteudo #box-form-categoria {
     background-color: #ffffff;
     width: 405px;
@@ -1634,12 +1638,12 @@ header #box-cabecalho #box-conta #botao-logout{
     margin: 0 auto;
 }
 
-#pag-categorias-veiculos .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table tr td {
-    width: 172px;
+#pag-categorias-veiculos .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table {
+    height: 550px;
 }
 
-#pag-categorias-veiculos .box-conteudo  #box-listagem-categorias #container-ajax-form-table #box-table-paginas {
-    margin-top: 360px;
+#pag-categorias-veiculos .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table tr td {
+    width: 172px;
 }
 
 #pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao #box-acoes #box-salvar-cancelar {
