@@ -22,7 +22,7 @@
     }
 
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
-    $itens_por_pagina = 15;
+    $itens_por_pagina = 17;
     
     $lista_fabricantes = $objFabricanteVeiculo->getFabricante($itens_por_pagina, $pagina);    
 

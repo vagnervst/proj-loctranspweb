@@ -1431,6 +1431,9 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-right: 40px;
     margin-top: 10px;
 }
+#box-listagem-fabricantes .ajax-form-table {
+    height: 600px;
+}
 
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
