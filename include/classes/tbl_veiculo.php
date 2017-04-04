@@ -33,11 +33,13 @@
                 $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
                 $sql .= "ON t.id = v.idTipoVeiculo ";
                 $sql .= "INNER JOIN tbl_transmissaoveiculo AS tr ";
-                $sql .= "ON tr.id = v.idTransmissao";                                                                
+                $sql .= "ON tr.id = v.idTransmissao";
                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
+                
+                $sql .= " ORDER BY v.nome";
                 
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                     $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
