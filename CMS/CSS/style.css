@@ -1644,6 +1644,45 @@ header #box-cabecalho #box-conta #botao-logout{
 }
 
 /*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
+/*---- PAGINA ADM DE PLANO DE CONTA CITY SHARE ----*/
+
+#pag-plano-conta {
+    height: 850px;   
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria {
+    background-color: #ffffff;
+    width: 405px;
+    height: auto;
+    padding: 5px;
+    padding-bottom: 0px;
+    border: 1px solid #cecece;
+    margin: 0 auto;
+}
+
+#pag-plano-conta .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table {
+    height: 550px;
+}
+
+#pag-plano-conta .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table tr td {
+    width: 172px;
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao #box-acoes #box-salvar-cancelar {
+    float: right;
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao #box-acoes .botao {
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #botao-remover,
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
+    display: none;
+}
+
+/*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
 
 footer{
     background-color: #202020;
