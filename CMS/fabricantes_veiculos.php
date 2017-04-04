@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <?php 
      require_once("../include/initialize.php"); 
 ?>
@@ -43,35 +43,24 @@
                 </div>
                 <div class="box-conteudo">
                     <div id="box-novo-registro" >
-                        <div class="titulo-sessao"> Cadastro de fabricante</div>
-                        <div id="box-campos-acessorio">
-                            <div class="box-input-pagina">
-                                <label class="titulo-input">Titulo fabricante</label>
-                                <input type="text" name="txt_titulo" class="input-pagina">
+                        <form class="js-modo-insert" method="post" action="#" id="form-modificacao">
+                            <div class="titulo-sessao"> Cadastro de fabricante</div>
+                            <div id="box-campos-acessorio">
+                                <div class="box-input-pagina">
+                                    <label class="titulo-input">Titulo fabricante</label>
+                                    <input type="text" name="txt_titulo" class="input-pagina" required>
+                                </div>
+                                <span type="submit" class="preset-botao js-botao-remocao btn" name="btn_adicionar">Excluir</span>
+                                <div id="box-salvar-cancelar">                                
+                                    <input type="reset"  class="preset-input-submit btn" value="Cancelar" required>
+                                    <input type="submit" value="Salvar" name="btn_adicionar" class="preset-input-submit btn">
+                                </div>
+
                             </div>
-                            <input type="submit" value="Adicionar" name="btn_adicionar" class="btn">
-                            
-                            <div id="box-btn-exc-cancelar">
-                                <span type="submit"  name="btn_adicionar" class="btn">Excluir</span>
-                                <span type="submit"  name="btn_adicionar" class="btn">Cancelar</span>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    <div class="titulo-sessao"> Fabricantes  cadastrados</div>
-                    <div id="box-listagem-acessorios">
-                        <form action="#" method="post">
-                            <div class="item-acessorio">
-                                <label for="txt_titulo" class="input-label" > Titulo :</label>
-                                <input type="text" name="txt_titulo" class="input">
-                                <input type="submit" name="btn_editar" class="btn_enviar" value="Salvar"> 
-                            </div>
-                        
                         </form>
-                        
-                    
                     </div>
+                    <div class="titulo-sessao">Fabricantes  cadastrados</div>
+                    <div id="box-listagem-fabricantes"></div>
                 </div>
             </div>
             <?php
@@ -79,5 +68,4 @@
             ?>
         </div>      
 	</body>
-</html>
 </html>
