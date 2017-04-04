@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a>><a href="#" class="link-caminho"> Acessórios</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a> ><a href="acessorios_veiculos.php" class="link-caminho"> Acessórios</a>
                 </div>
                 <div class="box-conteudo">
                     <div id="box-novo-registro" >
