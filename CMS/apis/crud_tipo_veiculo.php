@@ -17,10 +17,10 @@
         $objTipoVeiculo->atualizar();
     } elseif( $modo == "delete" ) {
         $objTipoVeiculo->id = (int) $id;
+        $objTipoVeiculo->eliminar_relacionamentos_a_acessorio();
         $objTipoVeiculo->deletar();
     }
-?>
-<?php
+
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;
     

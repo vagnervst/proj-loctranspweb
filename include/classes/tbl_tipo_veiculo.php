@@ -4,6 +4,7 @@
         class TipoVeiculo extends \DB\DatabaseUtils {
             public static $nome_tabela = "tbl_tipoveiculo";
             public static $primary_key = "id";
+            
             public $id;
             public $titulo;
             
@@ -35,6 +36,15 @@
                 $resultado[] = $info_paginacao;
                 
                 return $resultado;
+            }
+            
+            public function eliminar_relacionamentos_a_acessorio() {
+                $nome_tabela_relacionamento = "acessorioveiculo_tipoveiculo";
+                
+                $sql = "DELETE FROM " . $nome_tabela_relacionamento . " ";
+                $sql .= "WHERE idTipoVeiculo = " . $this->id;
+                
+                return $this->executarQuery( $sql );
             }
         }
     }

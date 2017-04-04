@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <?php 
      require_once("../include/initialize.php"); 
 ?>
@@ -50,17 +50,16 @@
                                     <label class="titulo-input">Titulo fabricante</label>
                                     <input type="text" name="txt_titulo" class="input-pagina" required>
                                 </div>
-                                <input type="submit" value="Salvar" name="btn_adicionar" class="btn">
-
-                                <div id="box-btn-exc-cancelar">
-                                    <span type="submit" class="js-botao-remocao btn" name="btn_adicionar" >Excluir </span>
-                                    <input type="reset"  class="btn" value="Cancelar" required>
+                                <span type="submit" class="preset-botao js-botao-remocao btn" name="btn_adicionar">Excluir</span>
+                                <div id="box-salvar-cancelar">                                
+                                    <input type="reset"  class="preset-input-submit btn" value="Cancelar" required>
+                                    <input type="submit" value="Salvar" name="btn_adicionar" class="preset-input-submit btn">
                                 </div>
 
                             </div>
                         </form>
                     </div>
-                    <div class="titulo-sessao"> Fabricantes  cadastrados</div>
+                    <div class="titulo-sessao">Fabricantes  cadastrados</div>
                     <div id="box-listagem-fabricantes"></div>
                 </div>
             </div>
@@ -69,5 +68,4 @@
             ?>
         </div>      
 	</body>
-</html>
 </html>

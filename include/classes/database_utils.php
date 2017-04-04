@@ -171,7 +171,7 @@
             public function deletar() {
                 $sql = "DELETE FROM " . $this::$nome_tabela . " ";
                 $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key() . " ";
-                $sql .= "LIMIT 1";                                
+                $sql .= "LIMIT 1";                                                                
                 
                 return $this->executarQuery($sql);
             }

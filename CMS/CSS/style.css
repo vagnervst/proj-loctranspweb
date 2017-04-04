@@ -1305,104 +1305,81 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 870px;
     
 }
+
 #pag-acessorio-veiculo .box-conteudo #box-novo-registro {
-    width: 100% ;
+    width: 600px;
+    height: 320px;
+    margin: 0 auto;
+}
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #titulo-input {
+    width: 400px;
+}
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #input-tipo-veiculo {
+    width: 200px;
+}
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio .botao {
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #botoes-acao {
+    margin: 10px 0px;
+}
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #box-tipos-veiculo {
+    background-color: #f7f7f7;
+    border: 1px solid #cccccc;
     height: 200px;
+    overflow: auto;
 }
-#pag-acessorio-veiculo .box-conteudo #box-novo-registro .btn{
-    height: 30px;
-    width: 80px;
-    border: 0 ;
-    background-color: #3e3e3e ;
-    color: #fff ;
-    margin-left: 40px;
-    margin-top: 10px;
-    float: left ;
-    text-align: center ;
-    line-height: 30px;
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #botoes-acao #box-cancelar-adicionar {    
+    float: right;
 }
-#pag-acessorio-veiculo .box-conteudo #box-novo-registro .btn : hover {
-    background-color: #989898 ;
-    
-}
-#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-btn-exc-cancelar {
-    width: auto;
-    height: 50px;
-    float: right ;
-    margin-right: 40px;
-}
+
 #pag-acessorio-veiculo .box-conteudo #box-listagem-acessorios {
     height: 670px;
     width: 100% ;
     overflow: auto ;
 }
-#pag-acessorio-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio {
-    height: 50px ;
-    width: 100% ;
-    background-color: #e2e2e2 ;
-    line-height: 50px;
-    margin-bottom: 10px;
-    
-    
-}
-#pag-acessorio-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .input-label {
-    margin-left: 30px;
-}
-#pag-acessorio-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .input {
-    margin-left: 30px;
-    width: 400px;
-    height: 20px;
-    
-}
-#pag-acessorio-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .btn_enviar {
-    height: 30px;
-    width: 80px;
-    border: 0 ;
-    background-color: #3e3e3e ;
-    color: #fff ;
-    float: right ;
-    margin-right: 40px;
-    margin-top: 10px;
-}
 
+#pag-acessorio-veiculo .box-conteudo #box-listagem-acessorios .ajax-form-table {
+    height: 540px;
+}
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
+
 /*=-=-=-=-=-==-=-=-=-=PAGINA Fabricante-==-=-==-=-=-=-=-=-=-=-*/
 #pag-fabricante-veiculo .box-conteudo {
     height: 870px;
-    
 }
+
 #pag-fabricante-veiculo .box-conteudo #box-novo-registro {
     width: 100% ;
     height: 200px;
 }
-#pag-fabricante-veiculo .box-conteudo #box-novo-registro .btn{
-    height: 30px;
-    width: 80px;
-    border: 0 ;
-    background-color: #3e3e3e ;
-    color: #fff ;
-    margin-left: 40px;
-    margin-top: 10px;
-    float: left ;
-    text-align: center ;
-    line-height: 30px;
+
+#pag-fabricante-veiculo .box-conteudo #box-novo-registro .btn {    
+    width: 100px;    
+    padding: 5px 0px;
 }
-#pag-fabricante-veiculo .box-conteudo #box-novo-registro .btn : hover {
-    background-color: #989898 ;
-    
-}
-#pag-fabricante-veiculo .box-conteudo #box-novo-registro #box-btn-exc-cancelar {
+
+#pag-fabricante-veiculo .box-conteudo #box-novo-registro #box-salvar-cancelar {
     width: auto;
     height: 50px;
     float: right ;
     margin-right: 40px;
 }
+
 #pag-fabricante-veiculo.box-conteudo #box-listagem-acessorios {
     height: 670px;
     width: 100% ;
     overflow: auto ;
 }
+
 #pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio {
     height: 50px ;
     width: 100% ;
@@ -1412,18 +1389,21 @@ header #box-cabecalho #box-conta #botao-logout{
     
     
 }
+
 #pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .input-label {
     margin-left: 30px;
 }
+
 #pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .input {
     margin-left: 30px;
     width: 400px;
     height: 20px;
     
 }
+
 #pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .btn_enviar {
-    height: 30px;
-    width: 80px;
+    height: 40px;
+    width: 100px;
     border: 0 ;
     background-color: #3e3e3e ;
     color: #fff ;
@@ -1431,10 +1411,10 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-right: 40px;
     margin-top: 10px;
 }
+
 #box-listagem-fabricantes .ajax-form-table {
     height: 600px;
 }
-
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
 
