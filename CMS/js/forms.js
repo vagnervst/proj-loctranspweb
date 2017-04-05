@@ -137,8 +137,37 @@ $(document).ready(function() {
     
     //------------------------------------------------------- FUNCAO ADM CATEGORIAS DE VEICULO
     
+    function inicializar_lista_acessorios() {
+        var pagina_acessorio = $("#pag-acessorio-veiculo")[0];
+        
+        if( pagina_acessorio !== undefined ) {                                                                
+            var formulario_acessorios_veiculo = new AjaxForm();            
+
+            formulario_acessorios_veiculo.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Titulo", propriedadeJson: "nome"}
+            ];                                               
+
+            var box_listagem_acessorios = $(pagina_acessorio).find("#box-listagem-acessorios")[0];            
+            
+            formulario_acessorios_veiculo.urlApi = "apis/crud_acessorio_veiculo.php";                
+            formulario_acessorios_veiculo.containerTabela = box_listagem_acessorios;
+            formulario_acessorios_veiculo.formulario = $("#form-modificacao-acessorio")[0];            
+
+            formulario_acessorios_veiculo.relacao_campo_propriedade = [
+                { nomeCampo : 'txtTitulo', propriedade : 'nome' },
+                { nomeCampo : 'chkTipoVeiculo[]', propriedade : 'listaTiposVeiculo' }
+            ];            
+
+            formulario_acessorios_veiculo.inicializar();
+        }
+    }
+    
+    //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO        
+    
     inicializar_lista_veiculos();
     inicializar_lista_tipos();
     inicializar_lista_categorias();
-    inicializar_lista_fabricantes() ;
+    inicializar_lista_acessorios();
+    inicializar_lista_fabricantes();
 });

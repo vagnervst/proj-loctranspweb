@@ -1,18 +1,21 @@
 <?php
     namespace Tabela {
         
-        class TipoVeiculo extends \DB\DatabaseUtils {
-            public static $nome_tabela = "tbl_tipoveiculo";
+        class LicencaDesktop extends \DB\DatabaseUtils {
+            public static $nome_tabela = "tbl_licencadesktop";
             public static $primary_key = "id";
             
             public $id;
-            public $titulo;
+            public $nome;
+            public $conexoesSimultaneas;
+            public $preco;
+            public $duracaoMeses;
             
             public function getTipos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
-                $sql = "SELECT id, titulo ";
+                $sql = "SELECT id, nome, conexoesSimultaneas, preco, duracaoMeses";
                 $sql .= "FROM {$this::$nome_tabela} ";
                 
-                if( !empty($where) ) {
+                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
                 
@@ -21,12 +24,12 @@
                     
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }                                
+                }
                 
                 $resultado = $this->executarQuery( $sql );
                 $resultado = $this->get_array_from_resultado( $resultado );
                 
-                $total_veiculos = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
+                $total_licencas = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
                 
                 $info_paginacao = [];
                 $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_veiculos )[0];
@@ -36,15 +39,6 @@
                 $resultado[] = $info_paginacao;
                 
                 return $resultado;
-            }
-            
-            public function eliminar_relacionamentos_a_acessorio() {
-                $nome_tabela_relacionamento = "acessorioveiculo_tipoveiculo";
-                
-                $sql = "DELETE FROM " . $nome_tabela_relacionamento . " ";
-                $sql .= "WHERE idTipoVeiculo = " . $this->id;
-                
-                return $this->executarQuery( $sql );
             }
         }
     }
