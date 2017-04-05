@@ -85,6 +85,7 @@
                             </div>                  
                         </form>                        
                     </div>
+                    <div class="titulo-sessao">Planos  cadastrados</div>
                     <div id="box-listagem-planos"></div>
                 </div>
             </div>

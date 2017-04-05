@@ -179,7 +179,7 @@
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
                 $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";
-                
+                                
                 return $this->executarQuery($sql);
             }                        
         }
