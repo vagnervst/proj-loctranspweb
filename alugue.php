@@ -1,3 +1,10 @@
+<?php
+    require_once("include/initialize.php");
+    require_once("include/classes/tbl_veiculo.php");
+    require_once("include/classes/tbl_publicacao.php");
+    $dadosPublicacao = new \Tabela\Publicacao();
+    $dadosVeiculo = new \Tabela\Veiculo();
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -95,7 +102,12 @@
                         <input class="preset-input-submit " id="botao-pesquisa" type="submit" value="Buscar" />
                     </div>
                     <div id="lista-veiculos">
-                        <?php for($i = 0; $i < 10; ++$i) { ?>
+                        <?php 
+                            $listaPublicacao = $dadosPublicacao->buscar();
+                        
+                            
+                            foreach( $listaPublicacao as $publicacao ) { 
+                        ?>
                         <section class="box-veiculo">
                             <a href="veiculo.php"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
                             <div class="box-info-veiculo">                                
