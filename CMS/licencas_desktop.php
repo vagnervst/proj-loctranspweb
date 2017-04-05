@@ -45,16 +45,16 @@
                         <form class="js-modo-insercao" method="post" action="#" id="form-modificacao">
                             <div class="box-label-input">
                                 <label class="titulo-input"><span class="label">Licença</span>
-                                    <input class="input-pagina input" type="text" name="txtNomeLicenca" />
+                                    <input class="input-pagina input" type="text" name="txtNomeLicenca" required/>
                                 </label>
                                 <label class="titulo-input"><span class="label">Conexões Simultâneas</span>
-                                    <input class="input-pagina input" type="text" name="txtConexoesLicenca" />
+                                    <input class="input-pagina input" type="text" name="txtConexoesLicenca" required/>
                                 </label>
                                 <label class="titulo-input"><span class="label">Preço</span>
-                                    <input class="input-pagina input" type="text" name="txtPrecoLicenca" />
+                                    <input class="input-pagina input" type="text" name="txtPrecoLicenca" required/>
                                 </label>
                                 <label class="titulo-input"><span class="label">Duração</span>
-                                    <input class="input-pagina input" type="text" name="txtDuracaoLicenca" />
+                                    <input class="input-pagina input" type="text" name="txtDuracaoLicenca" required/>
                                 </label>
                             </div>
                             <div class="horizontal-input-wrapper">
