@@ -1,3 +1,6 @@
+<?php
+    require_once("../include/classes/sessao.php");
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -39,31 +42,42 @@
                 <div id="box-caminho">
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
                 </div>
+                <?php                
+                    $lista_permissoes_usuario = $sessao->get("id_permissoes");
+                ?>
                 <div class="box-conteudo">
+                    <?php if( in_array(7, $lista_permissoes_usuario) ) { ?>                  
                     <div class="box-conteudo-menu">
                         <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
                             <img src="Image/content_test.jpg" />
                             Conteudo
                         </a>
                     </div>
+                    <?php } ?>
+                    <?php if( in_array(8, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
                         <a class="titulo-conteudo-menu" href="CMS_cityshare_nivelAcesso.php">
                             <img src="Image/content_test.jpg" />                        
                             Níveis de acesso
                         </a>
-                    </div>                                       
+                    </div>
+                    <?php } ?>
+                    <?php if( in_array(9, $lista_permissoes_usuario) ) { ?>                                     
                     <div class="box-conteudo-menu">                        
                         <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
                             <img src="Image/content_test.jpg" />
                             Administradores
                         </a>
-                    </div>                                       
+                    </div> 
+                    <?php } ?>
+                    <?php if( in_array(10, $lista_permissoes_usuario) ) { ?>                                      
                     <div class="box-conteudo-menu">                        
                         <a class="titulo-conteudo-menu" href="veiculos.php">
                             <img src="Image/content_test.jpg" />
                             Veiculos
                         </a>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <?php

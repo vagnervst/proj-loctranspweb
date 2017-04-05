@@ -1,3 +1,7 @@
+<?php
+    require_once("../include/initialize.php");
+    require_once("../include/classes/sessao.php");    
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
