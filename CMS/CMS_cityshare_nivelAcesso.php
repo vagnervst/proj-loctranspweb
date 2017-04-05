@@ -15,6 +15,10 @@
         <div id="container">
             <?php
                 include("layout/header.php");
+            
+                $id_permissoes = $sessao->get("id_permissoes");
+            
+                if( !in_array(8, $id_permissoes) ) redirecionar_para( "index.php" );
             ?>
             <div class="CMS_main" id="pag-cityshare-adm">
                 <div class="box-menu-lateral">

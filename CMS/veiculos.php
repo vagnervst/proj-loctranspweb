@@ -12,6 +12,10 @@
         <div id="container">
             <?php
                 include("layout/header.php");
+            
+                $id_permissoes = $sessao->get("id_permissoes");
+            
+                if( !in_array(10, $id_permissoes) ) redirecionar_para( "index.php" );
             ?>
             <div class="CMS_main" id="pag-home">
                 <div class="box-menu-lateral">

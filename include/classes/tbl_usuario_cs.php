@@ -12,11 +12,15 @@
             public $senha;
             public $idNivelAcesso;            
             
-            public function getUsuarios() {
+            public function getUsuarios($where = null) {
                 $sql = "SELECT u.id, u.nome, u.sobrenome, u.usuario, u.senha, n.id AS idNivelAcesso, n.nome AS nivelAcesso ";
                 $sql .= "FROM tbl_usuario_cs AS u ";
                 $sql .= "INNER JOIN tbl_nivelacesso_cs AS n ";
                 $sql .= "ON u.idNivelAcesso = n.id";
+                
+                if( $where !== null ) {
+                    $sql .= " WHERE " . $where;
+                }                                
                 
                 return $this->executarQuery($sql);
             }
@@ -35,6 +39,10 @@
                     if( $is_senha_correta ) return $usuarioObj;
                     return null;
                 }
+            }
+            
+            public function getPermissoes() {
+                
             }
         }
         

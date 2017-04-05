@@ -1,5 +1,8 @@
 <?php
     require_once("../include/initialize.php");
+    require_once("../include/classes/sessao.php");
+    require_once("../include/classes/tbl_usuario_cs.php");
+    require_once("../include/classes/tbl_nivel_acesso_cs.php");
 
     $submit = ( isset($_POST["btnSubmit"]) )? $_POST["btnSubmit"] : null;
     
@@ -11,6 +14,14 @@
         
         if( !empty( $objUsuario ) ) {
             //Login realizado com sucesso...
+            $sessao = new Sessao();
+            $sessao->put("id_usuario", $objUsuario->id);
+            
+            $lista_id_permissoes = new \Tabela\NivelAcessoCS();
+            $lista_id_permissoes = $lista_id_permissoes->getNivelAcesso_permissoes( $objUsuario->idNivelAcesso );
+            
+            $sessao->put("id_permissoes", $lista_id_permissoes);
+            
             redirecionar_para("CMS_Home.php");
         }
     }
