@@ -135,7 +135,7 @@ $(document).ready(function() {
         }
     }
     
-    //------------------------------------------------------- FUNCAO ADM CATEGORIAS DE VEICULO
+    //------------------------------------------------------- FUNCAO ADM fabricantes DE VEICULO
     
     function inicializar_lista_acessorios() {
         var pagina_acessorio = $("#pag-acessorio-veiculo")[0];
@@ -194,8 +194,47 @@ $(document).ready(function() {
             formulario_licenca_desktop.inicializar();
         } 
     }
-    //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO        
+    //------------------------------------------------------- FUNCAO ADM LICENCA DESKTOP       
     
+    function inicializar_lista_plano_conta() {
+        var pagina_plano_conta = $("#pag-plano-conta")[0];
+        
+        if( pagina_plano_conta !== undefined ) {
+            var formulario_plano_conta = new AjaxForm();
+            
+            formulario_plano_conta.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Nome", propriedadeJson: "nome"},
+                {nome: "Preco", propriedadeJson: "preco"},
+                {nome: "Duração Meses", propriedadeJson: "duracaoMeses"},
+                {nome: "Limite Publicação", propriedadeJson: "limitePublicacao"},
+                {nome: "Descrição plano", propriedadeJson: "descPlano"},
+                {nome: "Dias Analise de  Publicacao", propriedadeJson: "diasAnalisePublicacao"}
+
+
+            ];
+            
+            var box_listagem_planos = $(pagina_plano_conta).find("#box-listagem-planos")[0];
+            
+            formulario_plano_conta.urlApi = "apis/crud_plano_conta.php";
+            formulario_plano_conta.containerTabela = box_listagem_planos ;
+            formulario_plano_conta.formulario = $("#form-plano-conta")[0];
+            
+            formulario_plano_conta.relacao_campo_propriedade = [
+                { nomeCampo : 'txtNomePlano', propriedade : 'nome' },
+                { nomeCampo : 'txtPreco', propriedade : 'preco' },
+                { nomeCampo : 'txtDuracaoMeses', propriedade : 'duracaoMeses' },
+                { nomeCampo : 'txtLimitePublicacoes', propriedade : 'limitePublicacao' },
+                { nomeCampo : 'txtDiasAnalise', propriedade : 'descPlano' },
+                { nomeCampo : 'txtDuracaoMeses', propriedade : 'diasAnalisePublicacao' }
+            ];
+            
+            formulario_plano_conta.inicializar();
+        } 
+    }
+    //------------------------------------------------------- FUNCAO ADM PLANO CONTA        
+    
+    inicializar_lista_plano_conta();
     inicializar_lista_veiculos();
     inicializar_lista_tipos();
     inicializar_lista_categorias();

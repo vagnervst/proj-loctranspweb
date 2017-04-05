@@ -52,7 +52,7 @@
                                 </div>
                                 <span type="submit" class="preset-botao js-botao-remocao btn" name="btn_adicionar">Excluir</span>
                                 <div id="box-salvar-cancelar">                                
-                                    <input type="reset"  class="preset-input-submit btn" value="Cancelar" required>
+                                    <input type="reset"  class="btn" value="Cancelar" required>
                                     <input type="submit" value="Salvar" name="btn_adicionar" class="preset-input-submit btn">
                                 </div>
 
