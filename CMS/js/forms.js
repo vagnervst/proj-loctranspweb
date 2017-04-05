@@ -163,7 +163,7 @@ $(document).ready(function() {
         }
     }
     
-    //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO
+    //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO        
     
     inicializar_lista_veiculos();
     inicializar_lista_tipos();

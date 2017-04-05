@@ -13,7 +13,7 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-clientes-usuarios">
+            <div class="CMS_main" id="pag-desktop">
                 <div class="box-menu-lateral">
                      <div class="menu-lateral">
                         <ul>
@@ -37,20 +37,20 @@
                     </div>
                 </div>
                 <div id="box-caminho">
-                        <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a> > <a href="CMS_usuario.php" class="link-caminho" >Usuarios</a>
-                    </div>
-                    <div id="box-pesquisa">
-                        <form method="post" action="CMS_usuario.php"> 
-                            <input id="search-input" type="search" placeholder="Pesquisar" />
-                            <input class="preset-input-submit"type="submit" value="pesquisar" />
-                                   
-                       </form>
-                    </div>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Desktop</a>
+                </div>
                 <div class="box-conteudo">
-                    <div class="box-usuario">
-                        <div class="nome-usuario">jose bezerra</div>
-                        <div class="cont-usuario">Email : jbezerra</div>
-                        <div class="cont-usuario">Tipo : jbezerra</div>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="licencas_desktop.php">
+                            <img src="Image/content_test.jpg" />                        
+                            Licenças Desktop 
+                        </a>
+                    </div>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="#">
+                            <img src="Image/content_test.jpg" />                        
+                            Estatística Desktop 
+                        </a>
                     </div>
                 </div>
             </div>
