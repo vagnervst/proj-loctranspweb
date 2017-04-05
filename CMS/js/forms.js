@@ -163,6 +163,37 @@ $(document).ready(function() {
         }
     }
     
+    //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO
+    function inicializar_lista_licenca_desktop() {
+        var pagina_licenca = $("#pag-licenca-desktop")[0];
+        
+        if( pagina_licenca !== undefined ) {
+            var formulario_licenca_desktop = new AjaxForm();
+            
+            formulario_licenca_desktop.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Titulo", propriedadeJson: "nome"},
+                {nome: "Conexões Simultâneas", propriedadeJson: "conexoesSimultaneas"},
+                {nome: "Preço", propriedadeJson: "preco"},
+                {nome: "Duração de Meses", propriedadeJson: "duracaoMeses"}
+            ];
+            
+            var box_listagem_licencas = $(pagina_licenca).find(".box-listagem-licencas")[0];
+            
+            formulario_licenca_desktop.urlApi = "apis/crud_licenca_desktop.php";
+            formulario_licenca_desktop.containerTabela = box_listagem_licencas;
+            formulario_licenca_desktop.formulario = $("#form-modificacao")[0];
+            
+            formulario_licenca_desktop.relacao_campo_propriedade = [
+                { nomeCampo : 'txtNomeLicenca', propriedade : 'nome' },
+                { nomeCampo : 'txtConexoesLicenca', propriedade : 'conexoesSimultaneas' },
+                { nomeCampo : 'txtPrecoLicenca', propriedade : 'preco' },
+                { nomeCampo : 'txtDuracaoLicenca', propriedade : 'duracaoMeses' }
+            ];
+            
+            formulario_licenca_desktop.inicializar();
+        } 
+    }
     //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO        
     
     inicializar_lista_veiculos();
@@ -170,4 +201,5 @@ $(document).ready(function() {
     inicializar_lista_categorias();
     inicializar_lista_acessorios();
     inicializar_lista_fabricantes();
+    inicializar_lista_licenca_desktop();
 });
