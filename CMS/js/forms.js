@@ -164,10 +164,12 @@ $(document).ready(function() {
     }
     
     //------------------------------------------------------- FUNCAO ADM ACESSORIOS DE VEICULO
+    
     function inicializar_lista_licenca_desktop() {
         var pagina_licenca = $("#pag-licenca-desktop")[0];
         
         if( pagina_licenca !== undefined ) {
+            
             var formulario_licenca_desktop = new AjaxForm();
             
             formulario_licenca_desktop.colunas_tabela_propriedades_json = [
@@ -178,7 +180,7 @@ $(document).ready(function() {
                 {nome: "Duração de Meses", propriedadeJson: "duracaoMeses"}
             ];
             
-            var box_listagem_licencas = $(pagina_licenca).find(".box-listagem-licencas")[0];
+            var box_listagem_licencas = $(pagina_licenca).find("#box-listagem-licencas")[0];
             
             formulario_licenca_desktop.urlApi = "apis/crud_licenca_desktop.php";
             formulario_licenca_desktop.containerTabela = box_listagem_licencas;

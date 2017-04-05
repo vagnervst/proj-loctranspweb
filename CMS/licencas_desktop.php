@@ -30,7 +30,7 @@
                                 <img src="Image/50x50.gif"/>
                             </li>
                             <li class="botao-menu-lateral">
-                                <a href="#">Desktop</a>
+                                <a href="desktop.php">Desktop</a>
                                 <img src="Image/50x50.gif"/>
                             </li>
                         </ul>
@@ -64,7 +64,7 @@
                             <input class="preset-botao" type="submit" name="btnAdd" value="Salvar" />
                         </form>
                     </div>
-                    <div class="box-listagem-licencas"></div>
+                    <div id="box-listagem-licencas"></div>
                 </div>
             </div>
             <?php
