@@ -41,7 +41,8 @@
                     </div>
                     <div id="box-pesquisa">
                         <form method="post" action="CMS_usuario.php"> 
-                            <input id="search" type="search" placeholder="Pesquisar"  ><input id="btn-pesquisar"type="submit" value="pesquisar">
+                            <input id="search-input" type="search" placeholder="Pesquisar" />
+                            <input class="preset-input-submit"type="submit" value="pesquisar" />
                                    
                        </form>
                     </div>

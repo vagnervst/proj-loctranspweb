@@ -1284,23 +1284,20 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-bottom: 20px;
     
 }
-#pag-clientes-usuarios #box-pesquisa #search {
-    height: 30px;
+#pag-clientes-usuarios #box-pesquisa #search-input {
     width: 700px;
-    border-radius: 8px;
-    border: 0 ;
-    background-color: none ;
+    height: 25px;
     margin-left: 10px;
+    float: left;
 }
-#pag-clientes-usuarios #box-pesquisa #btn-pesquisar {
-    height: 30px;
+#pag-clientes-usuarios #box-pesquisa .preset-input-submit{
     width: 70px;
-    border-radius: 8px;
-    border: 0 ;
-    background-color: #c2c2c2 ;
-    margin-left: 10px;
+    height: 25px;
+    margin-left: 5px;
 }
-/*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
+
+/*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
+
 #pag-acessorio-veiculo .box-conteudo {
     height: 870px;
     
@@ -1414,6 +1411,40 @@ header #box-cabecalho #box-conta #botao-logout{
 
 #box-listagem-fabricantes .ajax-form-table {
     height: 600px;
+}
+
+/*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
+
+#pag-licenca-desktop .box-conteudo .box-form-licenca {
+    margin: 0px 100px;
+    background-color: white;
+    border: 1px solid #cecece;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+#pag-licenca-desktop .box-conteudo .box-form-licenca input[type="submit"] {
+    display: block;
+    width: 100px; 
+    padding: 5px 0;  
+    margin-left: auto;
+}
+
+#pag-licenca-desktop .box-conteudo .box-form-licenca .horizontal-input-wrapper {
+    display: block;
+    width: 300px;
+    float: left;
+}
+
+#pag-licenca-desktop .box-conteudo .box-form-licenca .horizontal-input-wrapper input {
+    margin-top: 5px;
+}
+
+#pag-licenca-desktop .box-conteudo .box-form-licenca .preset-botao {
+    width: 100px;
+    padding: 5px 0px;
+    font-size: 15px;
 }
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
@@ -1640,6 +1671,45 @@ header #box-cabecalho #box-conta #botao-logout{
 
 #pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #botao-remover,
 #pag-categorias-veiculos .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
+    display: none;
+}
+
+/*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
+/*---- PAGINA ADM DE PLANO DE CONTA CITY SHARE ----*/
+
+#pag-plano-conta {
+    height: 850px;   
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria {
+    background-color: #ffffff;
+    width: 405px;
+    height: auto;
+    padding: 5px;
+    padding-bottom: 0px;
+    border: 1px solid #cecece;
+    margin: 0 auto;
+}
+
+#pag-plano-conta .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table {
+    height: 550px;
+}
+
+#pag-plano-conta .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table tr td {
+    width: 172px;
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao #box-acoes #box-salvar-cancelar {
+    float: right;
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao #box-acoes .botao {
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #botao-remover,
+#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
     display: none;
 }
 
