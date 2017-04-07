@@ -2,8 +2,6 @@
     require_once("include/initialize.php");
     require_once("include/classes/tbl_veiculo.php");
     require_once("include/classes/tbl_publicacao.php");
-    $dadosPublicacao = new \Tabela\Publicacao();
-    $dadosVeiculo = new \Tabela\Veiculo();
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -103,27 +101,30 @@
                     </div>
                     <div id="lista-veiculos">
                         <?php 
-                            $listaPublicacao = $dadosPublicacao->buscar();
-                        
+                            $dadosPublicacao = new \Tabela\Publicacao();
+                            $pagina_atual = ( isset($_GET['p']) )? $_GET["p"] : 1;
+                            $itens_por_pagina = 10;
                             
+                            $listaPublicacao = $dadosPublicacao->getPublicacao( $itens_por_pagina, $pagina_atual );
+                                                        
                             foreach( $listaPublicacao as $publicacao ) { 
                         ?>
                         <section class="box-veiculo">
-                            <a href="veiculo.php"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
+                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
                             <div class="box-info-veiculo">                                
-                                <h1 class="titulo-veiculo">Nome do Veículoaaaaaaaaaaaa</h1>
+                                <h1 class="titulo-veiculo"><?php echo $publicacao->titulo; ?></h1>
                                 <div class="box-valor-diaria">
-                                    <p class="valor-diaria">R$00,00
+                                    <p class="valor-diaria">R$<?php echo $publicacao->valorDiaria; ?>
                                         <span class="label-diaria">diária</span>
                                     </p>
                                 </div>
                             </div>
-                            <p class="modelo-veiculo">Modelo do veículo</p>
+                            <p class="modelo-veiculo"><?php echo $publicacao->modelo; ?></p>
                             <div class="box-info-valores">
                                 <p class="valor-combustivel">Valor do Combustível</p>
-                                <p class="valor">R$00,00</p>
+                                <p class="valor">R$<?php echo $publicacao->valorCombustivel; ?></p>
                                 <p class="valor-quilometragem">Valor por Quilometragem Excedida</p>
-                                <p class="valor">R$00,00</p>
+                                <p class="valor">R$<?php echo $publicacao->valorQuilometragem; ?></p>
                             </div>
                             <div class="box-avaliacoes">
                                 <div class="container-icone-avaliacoes">
