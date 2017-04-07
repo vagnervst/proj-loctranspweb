@@ -11,8 +11,8 @@
             public $preco;
             public $duracaoMeses;
             
-            public function getTipos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
-                $sql = "SELECT id, nome, conexoesSimultaneas, preco, duracaoMeses";
+            public function getLicencas($registros_por_pagina = null, $pagina_atual = null, $where = null) {
+                $sql = "SELECT id, nome, conexoesSimultaneas, preco, duracaoMeses ";
                 $sql .= "FROM {$this::$nome_tabela} ";
                 
                  if( !empty($where) ) {
@@ -32,7 +32,7 @@
                 $total_licencas = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
                 
                 $info_paginacao = [];
-                $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_veiculos )[0];
+                $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_licencas )[0];
                 $info_paginacao["paginaAtual"] = (int) $pagina_atual;
                 $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
                 

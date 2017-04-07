@@ -43,13 +43,13 @@
                     <div class="box-conteudo-menu">
                         <a class="titulo-conteudo-menu" href="licencas_desktop.php">
                             <img src="Image/content_test.jpg" />                        
-                            Licenças Desktop 
+                            Licenças Desktop
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
                         <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-                            Estatística Desktop 
+                            <img src="Image/content_test.jpg" />
+                            Estatística Desktop
                         </a>
                     </div>
                 </div>
