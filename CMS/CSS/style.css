@@ -248,9 +248,9 @@ header #box-cabecalho #box-image-logo{
     background-color: #a1aec9;
 }
 header #box-cabecalho #box-image-logo img{
-    width: 180px;
+    width: 130px;
     height: 140px;
-    margin: 5px 10px;
+    margin: 5px 30px;
 }
 header #box-cabecalho #box-conta{
     width: 300px;
@@ -1711,10 +1711,15 @@ footer #box-rodape{
     height: inherit;
 }
 
-footer #box-rodape #box-logo-rodape{
+footer #box-rodape #box-logo-rodape {
     width: 250px;
-    height: 200px;    
-    background-color: aqua;
+    height: 200px;
+}
+footer #box-rodape #box-logo-rodape img {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: auto 50px;
 }
 
 .CMS_main{

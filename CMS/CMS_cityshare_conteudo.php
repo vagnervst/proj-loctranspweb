@@ -18,64 +18,43 @@
                 if( !in_array(7, $id_permissoes) ) redirecionar_para( "index.php" );
             ?>
             <div class="CMS_main" id="pag-cityshare-conteudo">
-                <div class="box-menu-lateral">
-                     <div class="menu-lateral">
-                        <ul>
-                            <li class="botao-menu-lateral">
-                                <a href="CMS_home.php">Home</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                            <li class="botao-menu-lateral">
-                                <a href="CMS_clientes.php">Clientes</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                            <li class="botao-menu-lateral">
-                                <a href="CMS_cityshare.php">City Share</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                            <li class="botao-menu-lateral">
-                                <a href="#">Desktop</a>
-                                <img src="Image/50x50.gif"/>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_adm_home.php">
+                        <a class="titulo-conteudo-menu" href="adm_home.php">
                             <img src="Image/content_test.jpg" />
                             Home
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_empresa.php">
+                        <a class="titulo-conteudo-menu" href="empresa.php">
                             <img src="Image/content_test.jpg" />
                             Sobre a Empresa
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_empreste.php">
+                        <a class="titulo-conteudo-menu" href="empreste.php">
                             <img src="Image/content_test.jpg" />
                             Empreste
                         </a>
                     </div>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_beneficios.php">
+                        <a class="titulo-conteudo-menu" href="beneficios.php">
                             <img src="Image/content_test.jpg" />
                             Benefícios do Projeto
                         </a>
                     </div>                    
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_projeto.php">
+                        <a class="titulo-conteudo-menu" href="projeto.php">
                             <img src="Image/content_test.jpg" />
                             Sobre o Projeto
                         </a>
                     </div>
                     <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_contato.php">
+                        <a class="titulo-conteudo-menu" href="contato.php">
                             <img src="Image/content_test.jpg" />
                             Contato
                         </a>

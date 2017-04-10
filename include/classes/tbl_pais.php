@@ -1,15 +1,12 @@
 <?php
     namespace Tabela {
         
-        class Estado extends \DB\DatabaseUtils {
-            public static $nome_tabela = "tbl_estado";
+        class Pais extends \DB\DatabaseUtils {
+            public static $nome_tabela = "tbl_pais";
             public static $primary_key = "id";
-
+            
             public $id;
             public $nome;
-            public $idPais;
-
         }
-        
     }
 ?>
