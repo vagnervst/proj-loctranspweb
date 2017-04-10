@@ -1,6 +1,8 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_tipo_veiculo.php");
+    require_once("../include/classes/tbl_tipo_combustivel.php");
+    require_once("../include/classes/tbl_transmissao.php");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,10 +49,44 @@
                         <div class="box-form-tipo">
                             <form class="js-modo-insercao" method="post" action="#" id="form-modificacao">
                                 <div class="box-label-input">
-                                <label class="titulo-input"><span class="label">Tipo</span>
-                                    <input class="input-pagina input" type="text" name="txtTipoVeiculo">
-                                </label>
-                                </div>                                
+                                    <label class="titulo-input"><span class="label">Tipo</span>
+                                        <input class="input-pagina input" type="text" name="txtTipoVeiculo">
+                                    </label>
+                                </div>
+                                <div id="box-lista-combustivel">
+                                   <h3>Combustível</h3>
+                                    <?php 
+                                    $lista_combustivel = new \Tabela\TipoCombustivel();
+                                    $lista_combustivel = $lista_combustivel->buscar();
+                                    
+                                    foreach( $lista_combustivel as $combustivel ) {
+                                    ?>
+                                    <div class="box-combustivel">
+                                        <label>
+                                            <input type="checkbox" name="chkTipoCombustivel[]" value="<?php echo $combustivel->id; ?>"/><?php echo $combustivel->nome; ?>
+                                        </label>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div id="box-lista-transmissao">
+                                   <h3>Transmissão</h3>
+                                    <?php 
+                                    $lista_transmissao = new \Tabela\TransmissaoVeiculo();
+                                    $lista_transmissao = $lista_transmissao->buscar();
+                                    
+                                    foreach( $lista_transmissao as $transmissao ) {
+                                    ?>
+                                    <div class="box-combustivel">
+                                        <label>
+                                            <input type="checkbox" name="chkTransmissao[]" value="<?php echo $transmissao->id; ?>"/><?php echo $transmissao->titulo; ?>
+                                        </label>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
                                 <div class="horizontal-input-wrapper">
                                     <input class="preset-botao" id="botao-cancelar" type="reset" value="Cancelar" />
                                     <span class="preset-botao js-botao-remocao" id="botao-remover">Remover</span>

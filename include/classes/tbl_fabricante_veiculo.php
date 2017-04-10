@@ -1,7 +1,7 @@
 <?php
     namespace Tabela {
         
-        class fabricanteVeiculo extends \DB\DatabaseUtils {
+        class FabricanteVeiculo extends \DB\DatabaseUtils {
             public static $nome_tabela = "tbl_fabricanteveiculo";
             public static $primary_key = "id";
 
@@ -25,23 +25,61 @@
                     $sql .= "OFFSET " . $registros_a_ignorar;
                 }     
                 
-                $resultado = $this->executarQuery( $sql );
-                $resultado = $this->get_array_from_resultado( $resultado );
+                $lista_fabricantes = $this->executarQuery( $sql );
+                $lista_fabricantes = $this->get_array_from_resultado( $lista_fabricantes );
 
-                $total_fabricante = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
-
-                $info_paginacao = [];
-                $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_fabricante )[0];
-                $info_paginacao["paginaAtual"] = (int) $pagina_atual;
-                $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
-
-                $resultado[] = $info_paginacao;
-
-                return $resultado;
+                foreach( $lista_fabricantes as $fabricante ) {
+                    $sql = "SELECT t.* ";
+                    $sql .= "FROM tbl_tipoveiculo AS t ";
+                    $sql .= "INNER JOIN fabricanteveiculo_tipoveiculo AS ft ";
+                    $sql .= "ON ft.idTipo = t.id ";
+                    $sql .= "INNER JOIN tbl_fabricanteveiculo AS f ";
+                    $sql .= "ON f.id = ft.idFabricante ";
+                    $sql .= "WHERE f.id = {$fabricante->id}";                                        
+                    
+                    $lista_tipos_veiculo = [];
+                    
+                    $busca_tipos_veiculo = $this->executarQuery( $sql );
+                    while( $tipo_veiculo = mysqli_fetch_assoc($busca_tipos_veiculo) ) {
+                        $objTipoVeiculo = new TipoVeiculo();
+                        $objTipoVeiculo->id = $tipo_veiculo["id"];
+                        $objTipoVeiculo->titulo = $tipo_veiculo["titulo"];
+                        
+                        $lista_tipos_veiculo[] = $objTipoVeiculo;
+                    }
+                                        
+                    $fabricante->listaTiposVeiculo = $lista_tipos_veiculo;
+                }
                 
+                $total_fabricante = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
+                
+                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
+                    $info_paginacao = [];
+                    $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_fabricante )[0];
+                    $info_paginacao["paginaAtual"] = (int) $pagina_atual;
+                    $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
+
+                    $lista_fabricantes[] = $info_paginacao;
+                }
+                
+                return $lista_fabricantes;                
             }
             
+            public function eliminar_relacionamentos_a_tipo_veiculo() {
+                $sql = "DELETE FROM fabricanteveiculo_tipoveiculo "; 
+                $sql .= "WHERE idFabricante = {$this->id}";
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
+            }
             
+            public function relacionar_a_tipo_veiculo($idTipoVeiculo) {
+                $sql = "INSERT INTO fabricanteveiculo_tipoveiculo(idFabricante, idTipo) ";
+                $sql .= "VALUES({$this->id}, {$idTipoVeiculo})";
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
+            }
             
         }
     }

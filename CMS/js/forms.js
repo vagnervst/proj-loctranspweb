@@ -71,7 +71,9 @@ $(document).ready(function() {
             formulario_tipos_veiculo.formulario = $("#form-modificacao")[0];            
 
             formulario_tipos_veiculo.relacao_campo_propriedade = [
-                { nomeCampo : 'txtTipoVeiculo', propriedade : 'titulo' }
+                { nomeCampo : 'txtTipoVeiculo', propriedade : 'titulo' },
+                { nomeCampo : 'chkTipoCombustivel[]', propriedade : 'listaTipoCombustivel' },
+                { nomeCampo : 'chkTransmissao[]', propriedade : 'listaTransmissao' }
             ];            
 
             formulario_tipos_veiculo.inicializar();                                              
@@ -129,6 +131,7 @@ $(document).ready(function() {
 
             formulario_fabricante_veiculo.relacao_campo_propriedade = [
                 { nomeCampo : 'txt_titulo', propriedade : 'nome' },
+                { nomeCampo : 'chkTipoVeiculo[]', propriedade : 'listaTiposVeiculo' }
             ];            
 
             formulario_fabricante_veiculo.inicializar();                                              

@@ -453,7 +453,7 @@ header #box-cabecalho #box-conta #botao-logout{
     height: 1220px;
 }
 
-.box-conteudo .titulo-sessao{
+.box-conteudo .titulo-sessao {
     width: 100%;
     height: 30px;
     font-size: 20px;
@@ -1356,7 +1356,7 @@ header #box-cabecalho #box-conta #botao-logout{
 
 #pag-fabricante-veiculo .box-conteudo #box-novo-registro {
     width: 100% ;
-    height: 200px;
+    height: 280px;    
 }
 
 #pag-fabricante-veiculo .box-conteudo #box-novo-registro .btn {    
@@ -1371,42 +1371,17 @@ header #box-cabecalho #box-conta #botao-logout{
     margin-right: 40px;
 }
 
-#pag-fabricante-veiculo.box-conteudo #box-listagem-acessorios {
-    height: 670px;
-    width: 100% ;
-    overflow: auto ;
+#pag-fabricante-veiculo #box-novo-registro #box-campos-fabricante #box-tipos-veiculo {
+    background-color: #cecece;
+    height: 100px;
+    overflow-y: auto;
+    padding: 5px;
+    margin: 10px 0px;
+    border: 1px solid #bfbfbf;
 }
 
-#pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio {
-    height: 50px ;
-    width: 100% ;
-    background-color: #e2e2e2 ;
-    line-height: 50px;
-    margin-bottom: 10px;
-    
-    
-}
-
-#pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .input-label {
-    margin-left: 30px;
-}
-
-#pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .input {
-    margin-left: 30px;
-    width: 400px;
-    height: 20px;
-    
-}
-
-#pag-fabricante-veiculo .box-conteudo #box-listagem-acessorios .item-acessorio .btn_enviar {
-    height: 40px;
-    width: 100px;
-    border: 0 ;
-    background-color: #3e3e3e ;
-    color: #fff ;
-    float: right ;
-    margin-right: 40px;
-    margin-top: 10px;
+#pag-fabricante-veiculo #box-novo-registro #box-campos-fabricante #box-acoes {
+    padding: 0px 5px;
 }
 
 #box-listagem-fabricantes .ajax-form-table {
@@ -1487,6 +1462,13 @@ header #box-cabecalho #box-conta #botao-logout{
     display: block;
     width: 300px;    
     float: left;
+}
+
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo #box-lista-combustivel,
+#pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo #box-lista-transmissao {
+    background-color: #efefef;
+    border: 1px solid #d9d9d9;
+    margin: 10px 0px;
 }
 
 #pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-form-tipo .preset-botao {

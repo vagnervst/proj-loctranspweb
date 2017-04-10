@@ -22,20 +22,125 @@
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
                 }                                
+                                                
+                $lista_tipos = $this->executarQuery( $sql );
+                $lista_tipos = $this->get_array_from_resultado( $lista_tipos );
+                                
+                foreach( $lista_tipos as $tipo ) {
+                    $lista_combustiveis = [];
+                    $lista_transmissao = [];
+                    
+                    $sqlCombustiveis = "SELECT c.* ";
+                    $sqlCombustiveis .= "FROM tbl_tipocombustivel AS c ";
+                    $sqlCombustiveis .= "INNER JOIN tipoveiculo_tipocombustivel AS vc ";
+                    $sqlCombustiveis .= "ON vc.idTipoCombustivel = c.id ";
+                    $sqlCombustiveis .= "INNER JOIN tbl_tipoveiculo AS v ";
+                    $sqlCombustiveis .= "ON v.id = vc.idTipoVeiculo ";
+                    $sqlCombustiveis .= "WHERE v.id = {$tipo->id}";
+                    
+                    $busca_combustiveis = $this->executarQuery( $sqlCombustiveis );
+                    while( $combustivel = mysqli_fetch_assoc( $busca_combustiveis ) ) {
+                        $objCombustivel = new \Tabela\TipoCombustivel();
+                        $objCombustivel->id = $combustivel["id"];
+                        $objCombustivel->nome = $combustivel["nome"];
+                        
+                        $lista_combustiveis[] = $objCombustivel;
+                    }
+                    
+                    $sqlTransmissoes = "SELECT t.* ";
+                    $sqlTransmissoes .= "FROM tbl_transmissaoveiculo AS t ";
+                    $sqlTransmissoes .= "INNER JOIN tipoveiculo_transmissaoveiculo AS vt ";
+                    $sqlTransmissoes .= "ON vt.idTransmissaoVeiculo = t.id ";
+                    $sqlTransmissoes .= "INNER JOIN tbl_tipoveiculo AS tv ";
+                    $sqlTransmissoes .= "ON tv.id = vt.idTipoVeiculo ";
+                    $sqlTransmissoes .= "WHERE tv.id = {$tipo->id}";
+                    
+                    $busca_transmissoes = $this->executarQuery( $sqlTransmissoes );
+                    while( $transmissao = mysqli_fetch_assoc($busca_transmissoes) ) {
+                        $objTransmissao = new \Tabela\TransmissaoVeiculo();
+                        $objTransmissao->id = $transmissao["id"];
+                        $objTransmissao->titulo = $transmissao["titulo"];
+                        
+                        $lista_transmissao[] = $objTransmissao;
+                    }
+                    
+                    $tipo->listaTipoCombustivel = $lista_combustiveis;
+                    $tipo->listaTransmissao = $lista_transmissao;
+                }                                                            
+                
+                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
+                    $total_registros = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
+                    
+                    $info_paginacao = [];
+                    $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_registros )[0];
+                    $info_paginacao["paginaAtual"] = (int) $pagina_atual;
+                    $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
+
+                    $lista_tipos[] = $info_paginacao;
+                }
+                
+                return $lista_tipos;
+            }
+            
+            public function getFabricantesRelacionados() {
+                $sql = "SELECT f.* ";
+                $sql .= "FROM tbl_fabricanteveiculo AS f ";
+                $sql .= "INNER JOIN fabricanteveiculo_tipoveiculo AS ft ";
+                $sql .= "ON ft.idFabricante = f.id ";
+                $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
+                $sql .= "ON t.id = ft.idTipo ";
+                $sql .= "WHERE t.id = {$this->id}";
+                                
+                $resultado = $this->executarQuery( $sql );
+                $lista_fabricantes = [];
+                
+                while( $fabricante = mysqli_fetch_assoc($resultado) ) {
+                    $objFabricante = new FabricanteVeiculo();
+                    $objFabricante->id = (int) $fabricante["id"];
+                    $objFabricante->nome = $fabricante["nome"];
+                    
+                    $lista_fabricantes[] = $objFabricante;
+                }
+                
+                return $lista_fabricantes;
+            }
+            
+            public function getCombustiveisRelacionados() {
+                $sql = "SELECT c.* ";
+                $sql .= "FROM tbl_tipocombustivel AS c ";
+                $sql .= "INNER JOIN tipoveiculo_tipocombustivel AS vc ";
+                $sql .= "ON vc.idTipoVeiculo = {$this->id}";
                 
                 $resultado = $this->executarQuery( $sql );
-                $resultado = $this->get_array_from_resultado( $resultado );
+                $lista_combustivel = [];
+                while( $combustivel = mysqli_fetch_assoc( $resultado ) ) {
+                    $objCombustivel = new \Tabela\TipoCombustivel();
+                    $objCombustivel->id = $combustivel["id"];
+                    $objCombustivel->nome = $combustivel["nome"];
+                    
+                    $lista_combustivel[] = $objCombustivel;
+                }
                 
-                $total_veiculos = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
+                return $lista_combustivel;
+            }
+            
+            public function getTransmissoesRelacionadas() {
+                $sql = "SELECT t.* ";
+                $sql .= "FROM tbl_transmissaoveiculo AS t ";
+                $sql .= "INNER JOIN tipoveiculo_transmissaoveiculo AS vt ";
+                $sql .= "ON vt.idTipoVeiculo = {$this->id}";
                 
-                $info_paginacao = [];
-                $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_veiculos )[0];
-                $info_paginacao["paginaAtual"] = (int) $pagina_atual;
-                $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
+                $resultado = $this->executarQuery( $sql );
+                $lista_transmissao = [];
+                while( $transmissao = mysqli_fetch_assoc( $resultado ) ) {
+                    $objTransmissao = new \Tabela\TransmissaoVeiculo();
+                    $objTransmissao->id = $transmissao["id"];
+                    $objTransmissao->titulo = $transmissao["titulo"];
+                    
+                    $lista_transmissao[] = $objTransmissao;
+                }
                 
-                $resultado[] = $info_paginacao;
-                
-                return $resultado;
+                return $lista_transmissao;
             }
             
             public function eliminar_relacionamentos_a_acessorio() {
@@ -45,6 +150,38 @@
                 $sql .= "WHERE idTipoVeiculo = " . $this->id;
                 
                 return $this->executarQuery( $sql );
+            }
+            
+            public function eliminar_relacionamentos_a_combustivel() {
+                $sql = "DELETE FROM tipoveiculo_tipocombustivel ";
+                $sql .= "WHERE idTipoVeiculo = {$this->id}";
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
+            }
+            
+            public function relacionar_a_combustivel($idCombustivel) {
+                $sql = "INSERT INTO tipoveiculo_tipocombustivel(idTipoVeiculo, idTipoCombustivel) ";
+                $sql .= "VALUES({$this->id}, {$idCombustivel})";
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
+            }
+            
+            public function eliminar_relacionamentos_a_transmissao() {
+                $sql = "DELETE FROM tipoveiculo_transmissaoveiculo ";
+                $sql .= "WHERE idTipoVeiculo = {$this->id}";
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
+            }
+            
+            public function relacionar_a_transmissao($idTransmissao) {
+                $sql = "INSERT INTO tipoveiculo_transmissaoveiculo(idTipoVeiculo, idTransmissaoVeiculo) ";
+                $sql .= "VALUES({$this->id}, {$idTransmissao})";                                
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
             }
         }
     }

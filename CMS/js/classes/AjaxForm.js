@@ -79,9 +79,9 @@ function AjaxForm() {
                 var campo = campos_encontrados[i];                                
                 var valor_registro_json = this.lista_chave_valor_formulario[nome_campo];                                            
                 
-                if( this.is_array_input_name( nome_campo ) ) {
-                    var id_checkbox = campo.value;
-                    var registro_checkbox_json = this.get_registro_from_id( valor_registro_json, id_checkbox );
+                if( this.is_array_input_name( nome_campo ) ) {                    
+                    var id_checkbox = campo.value;                    
+                    var registro_checkbox_json = this.get_registro_from_id( valor_registro_json, id_checkbox );                   
                     
                     if( registro_checkbox_json !== null ) $(campo).attr("checked", "true");
                 } else {

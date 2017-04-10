@@ -1,11 +1,4 @@
 <?php
-    $login = ( isset($_POST["submitLogin"]) )? $_POST["submitLogin"] : null;
-
-    if( !empty($login) ) {
-        $email = ( $_POST["txtEmail"] )? $_POST["txtEmail"] : null;
-        $senha = ( $_POST["txtSenha"] )? $_POST["txtSenha"] : null;                
-    }
-
     $contexto = "login";
 ?>
 <!DOCTYPE html>
@@ -23,7 +16,7 @@
             <div class="main" id="pag-login">
                 <div class="imagem-divisao-conteudo imagem-principal"></div>
                 <div id="box-login">
-                    <form method="post" action="login.php">
+                    <form method="post" action="login_action.php">
                         <div class="label-input">
                             <label><span class="label">Email</span>
                                 <input class="preset-input-text input" type="text" name="txtEmail" />
