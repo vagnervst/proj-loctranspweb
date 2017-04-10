@@ -14,5 +14,8 @@
         </section>
         <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
     </div>
+    <script src="js/libs/jquery-3.1.1.min.js"></script>
+    <script src="js/classes/Ajax.js"></script>
+    <script src="js/forms.js"></script>
 </footer>
 <!-- RODAPÉ -->

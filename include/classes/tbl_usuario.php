@@ -8,10 +8,9 @@
             public $id;
             public $nome;
             public $sobrenome;
-            public $razaoSocial;
             public $sexo;
             public $cpf;
-            public $cnpj;
+            public $dataNascimento;
             public $telefone;
             public $celular;
             public $email;
@@ -19,8 +18,7 @@
             public $saldo;
             public $senha;
             public $autenticacaoDupla;
-            public $fotoPerfil;
-            public $idEstado;
+            public $fotoPerfil;            
             public $idCidade;
             public $idTipoConta;
             public $idPlanoConta;

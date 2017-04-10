@@ -3311,13 +3311,39 @@ header #box-botao-filtragem {
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .label-input {
+    width: 300px;
     margin-bottom: 20px;    
+}
+
+@media (min-width: 420px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input {
+        width: 390px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input {
+        width: 460px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input {
+        width: 660px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input {
+        width: 900px;
+    }
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .label-input .label .input-label {        
     display: block;
     text-align: left;
-    font-size: 20px;   
+    font-size: 20px;
+    color: #414141;
 }
 
 @media (min-width: 740px) {
@@ -3339,15 +3365,13 @@ header #box-botao-filtragem {
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .label-input .text-input {
-    width: 100%;
-    height: 50px;
-    font-size: 23px;
+    width: 100%;    
+    font-size: 18px;
 }
 
 @media (min-width: 740px) {
     #pag-cadastro .box-conteudo .box-cadastro .label-input .text-input {
-        width: 650px;
-        height: 30px;
+        width: 650px;        
         font-size: 18px;
     }
 }
@@ -3370,6 +3394,17 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-cadastro .box-conteudo .box-cadastro .label-input select {
+    font-size: 18px;
+    height: 53px;
+}
+
+@media (min-width: 520px) {
+    #pag-cadastro .box-conteudo .box-cadastro .label-input select {
+        
+    }
+}
+
 #pag-cadastro .box-conteudo .box-cadastro .input-foto {
     display: none;
 }
@@ -3379,6 +3414,7 @@ header #box-botao-filtragem {
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #fff;
+    background-position: center;
     width: 150px;
     height: 150px;
     border-radius: 10px;
@@ -3403,12 +3439,65 @@ header #box-botao-filtragem {
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container {
+    width: 300px;
     text-align: center;
+}
+
+@media (min-width: 420px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container {
+        width: 390px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container {
+        width: 460px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container {
+        width: 660px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container {
+        width: 900px;
+    }
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .titulo {
+    font-size: 20px;    
+    margin-bottom: 5px;    
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .label-input {
+    display: inline-block;
+    width: 300px;
+}
+
+@media (min-width: 520px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .label-input {
+        width: 220px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .label-input {
+        width: 300px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .label-input .input {
+        width: 300px;
+    }
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .button-link {
     display: inline-block;
-    width: 150px;
+    width: 130px;
 }
 
 @media (min-width: 740px) {
@@ -3417,12 +3506,48 @@ header #box-botao-filtragem {
     }
 }
 
-#pag-cadastro .box-conteudo #box-cartao-credito .horizontal-input-container .label-input {
-    display: inline-block;
+@media (min-width: 420px) {
+    #pag-cadastro .box-conteudo .box-cadastro .box-data-nascimento .label-input,
+    #pag-cadastro .box-conteudo .box-cadastro .box-data-nascimento .label-input .input {
+        width: 360px;
+    }    
 }
 
-#pag-cadastro .box-conteudo #box-cartao-credito .horizontal-input-container .label-input .text-input {
-    width: 140px;
+@media (min-width: 520px) {
+    #pag-cadastro .box-conteudo .box-cadastro .box-data-nascimento .label-input,
+    #pag-cadastro .box-conteudo .box-cadastro .box-data-nascimento .label-input .input {
+        width: 150px;
+    }    
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo .box-cadastro .box-data-nascimento .label-input {
+        width: 200px;
+    }
+    
+    #pag-cadastro .box-conteudo .box-cadastro .box-data-nascimento .label-input .input {
+        width: 200px;
+    }    
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .box-sexo .label-input {
+    width: 200px;
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .box-sexo .titulo {
+    margin-bottom: 15px;
+}
+
+@media (min-width: 420px) {
+    #pag-cadastro .box-conteudo .box-cadastro .box-sexo .label-input {
+        width: 120px;
+    }
+}
+
+#pag-cadastro .box-conteudo .box-cadastro .box-sexo .label-input .label {
+    position: relative;
+    font-size: 18px;
+    bottom: 9px;
 }
 
 #pag-cadastro .box-conteudo .box-cadastro .box-localizacao .input-label {
@@ -3430,9 +3555,25 @@ header #box-botao-filtragem {
     width: 80px;
 }
 
-#pag-cadastro .box-conteudo .box-cadastro .box-localizacao .input {
+#pag-cadastro .box-conteudo .box-cadastro .input {    
     width: 100%;
     height: 50px;
+}
+
+#pag-cadastro .box-conteudo #container-cadastro-fisico #box-cartao-credito .horizontal-input-container .label-input {
+    width: 300px;
+}
+
+@media (min-width: 520px) {
+    #pag-cadastro .box-conteudo #container-cadastro-fisico #box-cartao-credito .horizontal-input-container .label-input {
+        width: 420px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-cadastro .box-conteudo #container-cadastro-fisico #box-cartao-credito .horizontal-input-container .label-input {
+        width: 320px;
+    }
 }
 
 #pag-cadastro .box-conteudo #container-cadastro-fisico #box-info-contato,
@@ -3838,9 +3979,9 @@ header #box-botao-filtragem {
 }
 
 #pag-publicar .titulo-separador {
-    background-color: #141619;
+    background-color: #c4c4c4;
     text-align: center;
-    color: white;
+    color: #626262;
     font-weight: bold;
     font-size: 20px;
     padding: 10px 0px;

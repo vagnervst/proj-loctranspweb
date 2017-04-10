@@ -53,12 +53,14 @@
                 
                 $total_veiculos = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
                 
-                $info_paginacao = [];
-                $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_veiculos )[0];
-                $info_paginacao["paginaAtual"] = (int) $pagina_atual;
-                $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
-                
-                $resultado[] = $info_paginacao;
+                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
+                    $info_paginacao = [];
+                    $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_veiculos )[0];
+                    $info_paginacao["paginaAtual"] = (int) $pagina_atual;
+                    $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
+
+                    $resultado[] = $info_paginacao;
+                }
                 
                 return $resultado;
             }

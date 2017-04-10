@@ -38,7 +38,7 @@
 
                 $statement = [];
                 for($i = 0; $i < count($propriedades); ++$i) {
-                    if( !$incluirPrimaryKey && $propriedades[$i] == $this::$primary_key ) continue;
+                    if( empty($this->get_valores()[$i]) || !$incluirPrimaryKey && $propriedades[$i] == $this::$primary_key ) continue;
 
                     $statement[] = $propriedades[$i];                    
                 }
@@ -54,7 +54,7 @@
                 $i = 0;
                 foreach( $valores as $key => $value ) {
                     ++$i;
-                    if( !$incluirPrimaryKey && $key == $this::$primary_key ) continue;
+                    if( empty($value) || !$incluirPrimaryKey && $key == $this::$primary_key ) continue;
 
                     $statement .= $this->preparar_valor($value);
                     if( $i < count($valores) ) $statement .= ", ";                
@@ -96,6 +96,7 @@
             }
             
             function preparar_valor_exibicao($valor) {
+                $valor = utf8_encode($valor);
                 $valor = htmlentities($valor);
                 $valor = str_replace("\\", "", $valor);                
                 
@@ -146,16 +147,9 @@
 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }
+                }                               
                 
-                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
-                    $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
-                    
-                    $sql .= " LIMIT " . $registros_por_pagina . " ";
-                    $sql .= "OFFSET " . $registros_a_ignorar;
-                }
-                
-                $resultado = $this->executarQuery($sql);
+                $resultado = $this->executarQuery($sql);                                
                 
                 return $this->get_array_from_resultado($resultado);            
             }                
@@ -178,7 +172,7 @@
 
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
-                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";
+                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                                                
                 
                 return $this->executarQuery($sql);
             }                        

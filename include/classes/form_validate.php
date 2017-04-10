@@ -22,5 +22,12 @@
             
             return false;
         }
+        
+        public static function prepare_time_input_for_mysql( $time_input ) {
+            $time_input = str_replace("/", "-", $time_input);            
+            $time_input = strftime( "%Y-%m-%d", strtotime( $time_input ));
+            
+            return $time_input;
+        }
     }
 ?>
