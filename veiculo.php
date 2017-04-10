@@ -1,3 +1,17 @@
+<?php
+    require_once("include/functions.php");
+    require_once("include/initialize.php");
+    require_once("include/classes/tbl_publicacao.php");
+
+    $id_publicacao = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
+    
+    if( $id_publicacao == null ) redirecionar_para("index.php");
+
+    $info_publicacao = new \Tabela\Publicacao();
+    $info_publicacao->buscar("id = " . $id_publicacao);
+
+    echo $info_publicacao->titulo;
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -48,7 +62,7 @@
                             </label>
                         </div>
                         <span class="preset-botao btn-avancar js-modal2">Confirmar</span>
-                    </section>
+                    </section>                    
                     <section class="modal js-modal2">
                         <div class="box-confirmacao">
                             <h1 class="titulo">Solicitação Enviada</h1>
