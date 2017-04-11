@@ -106,11 +106,11 @@
                             $itens_por_pagina = 10;
                             
                             $listaPublicacao = $dadosPublicacao->getPublicacao( $itens_por_pagina, $pagina_atual );
-                                                        
+                            
                             foreach( $listaPublicacao as $publicacao ) { 
                         ?>
                         <section class="box-veiculo">
-                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
+                            <a href="veiculo.php?id=<?php echo $publicacao->idPublicacao; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
                             <div class="box-info-veiculo">                                
                                 <h1 class="titulo-veiculo"><?php echo $publicacao->titulo; ?></h1>
                                 <div class="box-valor-diaria">
@@ -119,7 +119,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <p class="modelo-veiculo"><?php echo $publicacao->modelo; ?></p>
+                            <p class="modelo-veiculo"><?php echo $publicacao->modeloVeiculo; ?></p>
                             <div class="box-info-valores">
                                 <p class="valor-combustivel">Valor do Combustível</p>
                                 <p class="valor">R$<?php echo $publicacao->valorCombustivel; ?></p>

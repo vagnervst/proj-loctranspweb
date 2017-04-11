@@ -677,8 +677,38 @@ $(document).ready(function() {
         }
     }
     
-    function definirBotaoModal(botao, modalAlvo) {
+    function definirBotaoModal(botao, modalAlvo) {        
         $(botao).click(function() {
+            
+            if( this.id === "btn-confirmar-info" ) {
+                var select_cnh = $("#select-cnh")[0];
+                var id_cnh = select_cnh.value;
+                
+                if( isNaN(id_cnh) ) return;
+                
+                var data_retirada = $("#data-retirada")[0];
+                var hora_retirada = $("#hora-retirada")[0];
+                var data_devolucao = $("#data-devolucao")[0];
+                var hora_devolucao = $("#hora-devolucao")[0];
+                
+                var data_hora_retirada = preparar_data(data_retirada.value, hora_retirada.value);
+                var data_hora_devolucao = preparar_data(data_devolucao.value, hora_devolucao.value);
+                
+                var parametros_get = window.location.search;
+                var id_publicacao = parametros_get.substr( parametros_get.indexOf("id=")+3, parametros_get.length );   
+                
+                var dados_api = new FormData();
+                dados_api.append( "idPublicacao", id_publicacao );
+                dados_api.append( "idCnh", id_cnh );
+                dados_api.append( "dataRetirada", data_hora_retirada.toLocaleString( "en-US" ) );
+                dados_api.append( "dataDevolucao", data_hora_devolucao.toLocaleString( "en-US" ) );
+                
+                var ajax = new Ajax();
+                ajax.transferir_dados_para_api("apis/gerar_pedido.php", "POST", dados_api, function(resultado) {
+                    console.log(resultado);
+                });
+            }
+            
             var modalAtual = $(botao).parents(".modal")[0];
             var containerModals = $("#container-modals")[0];
             
@@ -732,14 +762,112 @@ $(document).ready(function() {
                 ocultarModais(modals);               
             });
             
-            $(botaoConcluido).click(function(e) {                                
-                ocultarModais(modals);               
+            $(botaoConcluido).click(function(e) {                
+                ocultarModais(modals);
             });
         }
     }
     
+    function preparar_data(data, hora) {
+        data = data.split('/');
+        
+        data = data.reverse();
+        for( var i = 0; i < data.length; ++i ) {
+            data[i] = Number( data[i] );
+        }
+        
+        data = data.join('/')
+        data += " " + hora + ":00";
+        return new Date(data);
+    }
+    
+    function calcular_diarias(data_hora_retirada, data_hora_devolucao) {
+        var diarias = Math.floor( ( data_hora_retirada - data_hora_devolucao ) / (1000 * 60 * 60 * 24) )+1;
+                        
+        return diarias;
+    }
+    
+    function calcular_valor_total_diarias(data_retirada, hora_retirada, data_devolucao, hora_devolucao) {
+        var data_hora_retirada = preparar_data(data_retirada, hora_retirada);
+        var data_hora_devolucao = preparar_data(data_devolucao, hora_devolucao);
+        
+        if( isNaN(data_hora_retirada.getTime()) || isNaN(data_hora_devolucao.getTime()) ) return false;
+        
+        var diarias = calcular_diarias( data_hora_devolucao.getTime(), data_hora_retirada.getTime() );        
+        
+        var parametros_get = window.location.search;
+        var id_publicacao = parametros_get.substr( parametros_get.indexOf("id=")+3, parametros_get.length );
+        
+        var dados_api = new FormData();
+        dados_api.append( "idPublicacao", id_publicacao );
+        
+        var ajax = new Ajax();
+        ajax.transferir_dados_para_api("apis/get_info_publicacao.php", "POST", dados_api, function(resultado) {
+            var json_info_publicacao = JSON.parse( resultado );
+            
+            var valor_diaria = Number( json_info_publicacao.valorDiaria );
+            
+            var valor_total_diarias = diarias * valor_diaria;
+            
+            var label_total_diarias = $("#label-total-diarias")[0];
+            var valor_formatado = (valor_total_diarias).toLocaleString("pt-BR", {
+                style: "currency", 
+                currency: "BRL", 
+                minimunFractionDigits: 2
+            });
+            
+            label_total_diarias.innerHTML = valor_formatado;
+        });
+        
+        return true;
+    }        
+    
+    function atualizarLabelsModalLocacao() {
+        var data_retirada = $("#data-retirada")[0];
+        var hora_retirada = $("#hora-retirada")[0];
+        var data_devolucao = $("#data-devolucao")[0];
+        var hora_devolucao = $("#hora-devolucao")[0];                            
+        
+        if( calcular_valor_total_diarias( data_retirada.value, hora_retirada.value, data_devolucao.value, hora_devolucao.value ) ) {
+        
+            var label_data_retirada = $("#label-data-retirada")[0];
+            var label_data_devolucao = $("#label-data-devolucao")[0];
+
+            var data_retirada_formatada = preparar_data( data_retirada.value, hora_retirada.value ).toLocaleString();
+            data_retirada_formatada = data_retirada_formatada.substr(0, data_retirada_formatada.length-3);
+
+            var data_devolucao_formatada = preparar_data( data_devolucao.value, hora_devolucao.value ).toLocaleString();
+            data_devolucao_formatada = data_devolucao_formatada.substr(0, data_devolucao_formatada.length-3);
+
+            label_data_retirada.innerHTML = data_retirada_formatada;
+            label_data_devolucao.innerHTML = data_devolucao_formatada;
+        }
+    }
+    
+    function definirAcaoDataLocacao(input_data, input_hora) {
+        
+        $(input_data).change(function() {
+            atualizarLabelsModalLocacao();
+        });
+        
+        $(input_hora).change(function() {
+            atualizarLabelsModalLocacao();
+        });
+    }
+    
+    function inicializarPreenchimentoDatasLocacao() {
+        var data_retirada = $("#data-retirada")[0];
+        var hora_retirada = $("#hora-retirada")[0];
+        var data_devolucao = $("#data-devolucao")[0];
+        var hora_devolucao = $("#hora-devolucao")[0];
+        
+        definirAcaoDataLocacao( data_retirada, hora_retirada );
+        definirAcaoDataLocacao( data_devolucao, hora_devolucao );
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
         
+        inicializarPreenchimentoDatasLocacao();
         inicializarModaisLocacao();
         inicializarMenusMobile();
         inicializarEtapasCadastro();
@@ -748,6 +876,7 @@ $(document).ready(function() {
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
+        inicializarPreenchimentoDatasLocacao();
         inicializarModaisLocacao();
         efeitoHoverLocadorDestaque();
         efeitoSlidedownLogin();
