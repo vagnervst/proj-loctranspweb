@@ -1,18 +1,31 @@
 <?php
     require_once("../include/initialize.php");
-    require_once("../include/classes/tbl_tipo_veiculo.php");
+    require_once("../include/classes/tbl_veiculo.php");
+    require_once("../include/classes/tbl_tipo_combustivel.php");
     require_once("../include/classes/tbl_transmissao.php");
     
-    $idTipoVeiculo = ( isset($_POST["idTipoVeiculo"]) )? $_POST["idTipoVeiculo"] : null;
-    
-    if( !empty( $idTipoVeiculo ) ) {
-        $lista_transmissao = new \Tabela\TipoVeiculo();
-        $lista_transmissao->id = $idTipoVeiculo;
-        $lista_transmissao = $lista_transmissao->getTransmissoesRelacionadas();            
+    $idVeiculo = ( isset($_POST["idVeiculo"]) )? $_POST["idVeiculo"] : null;
+    $idTipoCombustivel = ( isset($_POST["idTipoCombustivel"]) )? $_POST["idTipoCombustivel"] : null;
+
+    if( !empty($idVeiculo) ) {
         
-        echo "<option selected disabled>Selecione um tipo de transmissão</option>";
-        foreach( $lista_transmissao as $transmissao ) {
-            echo '<option value="' . $transmissao->id . '">' . $transmissao->titulo . "</option>";
+        $codigoVeiculo = new \Tabela\Veiculo();
+        $codigoVeiculo = $codigoVeiculo->buscar("id = {$idVeiculo}")[0];
+        $codigoVeiculo = $codigoVeiculo->codigo;
+        
+        if( !empty( $codigoVeiculo ) ) {
+            
+            $busca_veiculo = new \Tabela\Veiculo();
+            
+            $lista_veiculo = $busca_veiculo->getVeiculos(null, null, "codigo = {$codigoVeiculo} AND idTipoCombustivel = {$idTipoCombustivel}", "idTransmissao");
+                        
+            echo "<option selected disabled>Selecione um tipo de transmissão</option>";
+            foreach( $lista_veiculo as $veiculo ) {
+                $transmissao = new \Tabela\TransmissaoVeiculo();
+                $transmissao = $transmissao->buscar("id = {$veiculo->idTransmissao}")[0];
+                
+                echo '<option value="' . $transmissao->id . '">' . $transmissao->titulo . "</option>";
+            }
         }
     }
 ?>

@@ -52,6 +52,11 @@
                     <div id="box-veiculos">
                         <div id="box-form-veiculo">
                             <form class="js-modo-insert" id="form-info-veiculo" method="post" action="#">
+                                <div class="box-label-input" id="box-cod">
+                                    <label><span class="label">Cod</span>
+                                        <input class="input" type="text" name="txtCod"/>
+                                    </label>
+                                </div>
                                 <div class="box-label-input" id="box-nome">
                                     <label><span class="label">Nome</span>
                                         <input class="input" type="text" name="txtNome"/>

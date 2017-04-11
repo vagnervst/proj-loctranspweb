@@ -6,7 +6,7 @@
 
     if( !empty( $id_fabricante ) ) {
         $lista_veiculos = new \Tabela\Veiculo();
-        $lista_veiculos = $lista_veiculos->getVeiculos(null, null, "idFabricante = {$id_fabricante}");
+        $lista_veiculos = $lista_veiculos->getVeiculos(null, null, "idFabricante = {$id_fabricante}", "codigo");
         
         echo '<option selected disabled>Selecione um modelo</option>';
         foreach($lista_veiculos as $veiculo) {

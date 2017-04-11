@@ -143,6 +143,28 @@
                 return $lista_transmissao;
             }
             
+            public function getAcessoriosRelacionados() {
+                $sql = "SELECT a.* ";
+                $sql .= "FROM tbl_acessorioveiculo AS a ";
+                $sql .= "INNER JOIN acessorioveiculo_tipoveiculo AS av ";
+                $sql .= "ON av.idAcessorio = a.id ";
+                $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
+                $sql .= "ON t.id = av.idTipoVeiculo ";
+                $sql .= "WHERE t.id = {$this->id}";
+                
+                $lista_acessorios = [];
+                $resultado = $this->executarQuery( $sql );
+                while( $acessorio = mysqli_fetch_assoc($resultado) ) {
+                    $objAcessorio = new \Tabela\AcessorioVeiculo();
+                    $objAcessorio->id = $acessorio["id"];
+                    $objAcessorio->nome = $acessorio["nome"];
+                    
+                    $lista_acessorios[] = $objAcessorio;
+                }
+                
+                return $lista_acessorios;
+            }
+            
             public function eliminar_relacionamentos_a_acessorio() {
                 $nome_tabela_relacionamento = "acessorioveiculo_tipoveiculo";
                 

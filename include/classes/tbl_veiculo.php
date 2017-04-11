@@ -6,6 +6,7 @@
             public static $primary_key = "id";
 
             public $id;
+            public $codigo;
             public $nome;
             public $tipoMotor;
             public $precoMedio;
@@ -17,10 +18,10 @@
             public $idTipoVeiculo;
             public $idTransmissao;
             
-            public function getVeiculos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
+            public function getVeiculos($registros_por_pagina = null, $pagina_atual = null, $where = null, $group = null) {
                 //Retorna a relação de veiculos, fabricantes, combustivel, categoria, tipo e transmissao
                 
-                $sql = "SELECT v.id, v.nome, v.tipoMotor, v.precoMedio, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
+                $sql = "SELECT v.id, v.codigo, v.nome, v.tipoMotor, v.precoMedio, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
                 $sql .= "c.nome AS categoria, v.idFabricante, f.nome AS fabricante, v.idTipoCombustivel, cb.nome AS combustivel, ";
                 $sql .= "v.idTipoVeiculo, t.titulo AS tipo, v.idTransmissao, tr.titulo AS transmissao ";
                 $sql .= "FROM {$this::$nome_tabela} AS v ";
@@ -37,6 +38,10 @@
                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
+                }
+                
+                if( !empty($group) ) {
+                    $sql .= " GROUP BY " . $group;
                 }
                 
                 $sql .= " ORDER BY v.nome";

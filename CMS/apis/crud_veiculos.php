@@ -11,6 +11,7 @@
     require_once("../../include/classes/tbl_tipo_veiculo.php");	    
     
     $idVeiculo = ( isset($_POST["id"]) )? $_POST["id"] : null;
+    $codigoVeiculo = ( isset($_POST["txtCod"]) )? $_POST["txtCod"] : null;
     $nome = ( isset($_POST["txtNome"]) )? $_POST["txtNome"] : null;
     $precoMedio = ( isset($_POST["txtPrecoMedio"]) )? $_POST["txtPrecoMedio"] : null;
     $ano = ( isset($_POST["txtAno"]) )? $_POST["txtAno"] : null;
@@ -24,6 +25,7 @@
 
     $objVeiculo = new \Tabela\Veiculo();
 
+    $objVeiculo->codigo = $codigoVeiculo;
     $objVeiculo->nome = $nome;
     $objVeiculo->precoMedio = $precoMedio;
     $objVeiculo->ano = $ano;
@@ -63,7 +65,7 @@
         $lista_parametros_pesquisa = [];
         
         if( !empty($filtragem_nome) ) $lista_parametros_pesquisa[] = "v.nome LIKE '{$filtragem_nome}'";
-        if( !empty($filtragem_cod) ) $lista_parametros_pesquisa[] = "v.id = {$filtragem_cod}";
+        if( !empty($filtragem_cod) ) $lista_parametros_pesquisa[] = "v.codigo = {$filtragem_cod}";
         if( !empty($filtragem_precoMinimo) ) $lista_parametros_pesquisa[] = "v.precoMedio >= '{$filtragem_precoMinimo}'";
         if( !empty($filtragem_idTipo) ) $lista_parametros_pesquisa[] = "v.idTipoVeiculo = {$filtragem_idTipo}";
         if( !empty($filtragem_idFabricante) ) $lista_parametros_pesquisa[] = "v.idFabricante = {$filtragem_idFabricante}";
