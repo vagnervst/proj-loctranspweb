@@ -2,7 +2,7 @@
     require_once("../../include/initialize.php");
     require_once("../../include/classes/tbl_licenca_desktop.php");
     
-    $modo = ( isset($_POST["id"]) )? $_POST["id"] : null;
+    $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
 
     $id = ( isset($_POST["id"]) )? $_POST["id"] : null;
     $nomeLicenca = ( isset($_POST["txtNomeLicenca"]) )? $_POST["txtNomeLicenca"] : null;
@@ -15,7 +15,7 @@
     $objLicencaDesktop->conexoesSimultaneas = $conexoesSimultaneas;
     $objLicencaDesktop->preco = $preco;
     $objLicencaDesktop->duracaoMeses = $duracaoMeses;
-
+    
     if( $modo == "insert" ) {
         $objLicencaDesktop->inserir();
     } elseif( $modo == "update" ) {
@@ -29,7 +29,7 @@
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;
 
-    $lista_licenca = $objLicencaDesktop->getTipos($itens_por_pagina, $pagina);
+    $lista_licenca = $objLicencaDesktop->getLicencas($itens_por_pagina, $pagina);
 
     echo json_encode($lista_licenca);
 ?>
