@@ -4135,6 +4135,125 @@ header #box-botao-filtragem {
 
 /*------------- EMPRESTE*/
 
+#pag-solicitacoes #container-modo-visualizacao {
+    background-color: #d6d6d6;    
+    padding-top: 10px;
+}
+
+#pag-solicitacoes #container-modo-visualizacao #box-botoes {
+    display: block;
+    width: 305px;
+    margin: auto;    
+    padding: 5px 0px;
+}
+
+#pag-solicitacoes #container-modo-visualizacao #box-botoes .botao {
+    width: 150px;
+    padding: 10px 0px;
+}
+
+#pag-solicitacoes .box-conteudo #box-filtragem {
+    margin: 10px 0px;
+}
+
+#pag-solicitacoes .box-conteudo #box-filtragem #select-status {
+    width: 310px;
+    height: 50px;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido {
+    background-color: aliceblue;
+    width: 300px;
+    height: 223px;
+    border: 1px solid #cecece;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info {
+    height: 112px;    
+    float: left;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-foto-pedido {
+    width: 110px;
+    height: 113px;    
+    float: left;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-foto-pedido img {
+    width: 110px;
+    height: 113px;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-info-pedido {
+    width: 188px;
+    height: 112px;    
+    float: left;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-info-pedido .valor-diaria {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-info-pedido .modelo-veiculo {
+    text-align: center;
+    padding: 5px 0px;
+    border-top: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+    margin-bottom: 3px;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-info-pedido .box-icone-data {
+    margin: 1px 0px;
+    float: right;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-info-pedido .box-icone-data .icone {    
+    width: 25px;
+    height: 25px;
+    float: left;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info .box-info-pedido .box-icone-data .data {
+    width: 135px;
+    height: 17px;
+    padding: 4px 0px;
+    padding-left: 5px;
+    float: left;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-info-locador {
+    background-color: #141619;
+    width: 290px;
+    height: 100px;
+    padding: 5px;
+    border-top: 1px solid #c4c4c4;
+    float: left;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-info-locador .info-locador {
+    height: 100px;
+    padding-right: 5px;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-info-locador .info-locador .nome-locador {
+    color: white;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-info-locador .info-locador .box-avaliacoes {
+    margin-top: 15px;
+}
+
+#pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-info-locador .status {
+    color: white;
+    font-size: 19px;
+    border-bottom: 1px solid #585858;
+    margin-bottom: 10px;
+}
+
+/*------------- SOLICITACOES*/
+
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
 footer {
