@@ -2,15 +2,24 @@
     require_once("include/functions.php");
     require_once("include/initialize.php");
     require_once("include/classes/tbl_publicacao.php");
+    require_once("include/classes/tbl_usuario.php");
+    require_once("include/classes/tbl_cnh.php");
+    require_once("include/classes/sessao.php");
 
     $id_publicacao = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     if( $id_publicacao == null ) redirecionar_para("index.php");
 
     $info_publicacao = new \Tabela\Publicacao();
-    $info_publicacao->buscar("id = " . $id_publicacao);
-
-    echo $info_publicacao->titulo;
+    $info_publicacao = $info_publicacao->getPublicacao(null, null, "p.id = " . $id_publicacao)[0];
+        
+    $id_usuario = new Sessao();
+    $id_usuario = $id_usuario->get("idUsuario");        
+    
+    $info_usuario = new \Tabela\Usuario();
+    if( !empty($id_usuario) ) {    
+        $info_usuario = $info_usuario->buscar( "id = {$id_usuario}" )[0];
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,38 +39,46 @@
                         <h1 class="titulo">Dados Pessoais</h1>
                         <div class="box-label-info">
                             <p class="label">Nome:</p>
-                            <p class="info">XXXX</p>
+                            <p class="info"><?php echo $info_usuario->nome . " " . $info_usuario->sobrenome; ?></p>
                         </div>
                         <div class="box-label-info">
                             <p class="label">Valor do Combustível (L):</p>
-                            <p class="info">XXXX</p>
+                            <p class="info"><?php echo $info_publicacao->valorCombustivel; ?></p>
                         </div>
                         <div class="box-label-info">
                             <p class="label">Valor por Quilometragem Excedida:</p>
-                            <p class="info">XXXX</p>
+                            <p class="info"><?php echo $info_publicacao->valorQuilometragem; ?></p>
                         </div>
                         <div class="box-label-info">
                             <p class="label">Valor das Diárias:</p>
-                            <p class="info">XXXX</p>
+                            <p class="info" id="label-total-diarias">XXXX</p>
                         </div>
                         <div class="box-info-horizontal">
                             <div class="box-label-info">
                                 <p class="label">Retirada</p>
-                                <p class="info">XX/XX/XX XX:XX</p>
+                                <p class="info" id="label-data-retirada">XX/XX/XX XX:XX</p>
                             </div>
                             <div class="box-label-info">
                                 <p class="label">Entrega</p>
-                                <p class="info">XX/XX/XX XX:XX</p>
+                                <p class="info" id="label-data-devolucao">XX/XX/XX XX:XX</p>
                             </div>
                         </div>
                         <div class="box-label-input">
                             <label><span class="label">CNH:</span>
-                                <select class="preset-input-select input">
+                                <select class="preset-input-select input" id="select-cnh">
                                     <option selected disabled>Selecione a CNH</option>
+                                    <?php
+                                        $lista_cnh = $info_usuario->getListaCnh();
+                                        foreach( $lista_cnh as $cnh ) {
+                                    ?>
+                                    <option value="<?php echo $cnh->id; ?>"><?php echo $cnh->numeroRegistro; ?></option>
+                                    <?php
+                                        }
+                                    ?>
                                 </select>
                             </label>
                         </div>
-                        <span class="preset-botao btn-avancar js-modal2">Confirmar</span>
+                        <span class="preset-botao btn-avancar js-modal2" id="btn-confirmar-info">Confirmar</span>
                     </section>                    
                     <section class="modal js-modal2">
                         <div class="box-confirmacao">
@@ -94,25 +111,25 @@
                 </div>
                 <div class="box-conteudo">                        
                     <section class="box-veiculo">                        
-                        <h1 id="titulo-veiculo">Titulo da Publicação</h1>
-                        <p id="modelo-veiculo">Modelo do Veículo</p>
+                        <h1 id="titulo-veiculo"><?php echo $info_publicacao->titulo; ?></h1>
+                        <p id="modelo-veiculo"><?php echo $info_publicacao->modeloVeiculo; ?></p>
                         <div id="info-veiculo">
                             <div id="box-valores-veiculo">
                                 <div class="box-label-valor">
                                     <p class="label">Diária:</p>
-                                    <p class="valor">R$00,00</p>
+                                    <p class="valor">R$<?php echo $info_publicacao->valorDiaria; ?></p>
                                 </div>
                                 <div class="box-label-valor">
                                     <p class="label">Combustível (L):</p>
-                                    <p class="valor">R$00,00</p>
+                                    <p class="valor">R$<?php echo $info_publicacao->valorCombustivel; ?></p>
                                 </div>
                                 <div class="box-label-valor">
                                     <p class="label">Valor por Distância Excedida (Km):</p>
-                                    <p class="valor">R$00,00</p>
+                                    <p class="valor">R$<?php echo $info_publicacao->valorQuilometragem; ?></p>
                                 </div>
                                 <div class="box-label-valor" id="box-limite-distancia">
                                     <p class="label">Limite de Distância (Km):</p>
-                                    <p class="valor">99999</p>
+                                    <p class="valor"><?php echo $info_publicacao->limiteQuilometragem; ?></p>
                                 </div>
                             </div>                            
                             <div id="box-locacao">
@@ -120,22 +137,22 @@
                                     <p class="titulo">Retirada</p>
                                     <div class="box-label-data">                                    
                                         <p class="label">Data:</p>
-                                        <input class="preset-input-text data-input" type="text" placeholder="XX/XX/XX" />
+                                        <input class="preset-input-text data-input" id="data-retirada" type="text" placeholder="XX/XX/XX" />
                                     </div>
                                     <div class="box-label-data">                                    
                                         <p class="label">Hora:</p>
-                                        <input class="preset-input-text hora-input" type="text" placeholder="XX:XX" />
+                                        <input class="preset-input-text hora-input" id="hora-retirada" type="text" placeholder="XX:XX" />
                                     </div>                                
                                 </div>
                                 <div class="box-data">
                                     <p class="titulo">Devolução</p>
                                     <div class="box-label-data">                                    
                                         <p class="label">Data:</p>
-                                        <input class="preset-input-text data-input" type="text" placeholder="XX/XX/XX" />
+                                        <input class="preset-input-text data-input" id="data-devolucao" type="text" placeholder="XX/XX/XX" />
                                     </div>
-                                    <div class="box-label-data">                                    
+                                    <div class="box-label-data">
                                         <p class="label">Hora:</p>
-                                        <input class="preset-input-text hora-input" type="text" placeholder="XX:XX" />
+                                        <input class="preset-input-text hora-input" id="hora-devolucao" type="text" placeholder="XX:XX" />
                                     </div>                                
                                 </div>
                                 <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
@@ -146,7 +163,7 @@
                 <section id="box-previa-locador">
                     <img id="imagem-locador" src="img/image_teste.jpg" />
                     <div id="info-locador">
-                        <h1 id="nome-locador">Nome do Locador</h1>
+                        <h1 id="nome-locador"><?php echo $info_publicacao->nomeLocador . " " . $info_publicacao->sobrenomeLocador; ?></h1>
                         <div id="box-reputacao-locador">
                             <p id="label-reputacao">Reputação do locador</p>
                             <div class="container-icone-avaliacoes">
@@ -164,9 +181,7 @@
                         <section id="box-especificacoes-veiculos">
                             <h1 id="titulo">Especificações</h1>
                             <p id="titulo-descricao">Descrição</p>
-                            <p id="conteudo-descricao">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio sem, imperdiet non lacus vel, dictum venenatis mi. Cras porttitor nec orci in semper. Etiam viverra fringilla metus posuere ultricies. Nullam non ipsum sit amet nisl lobortis convallis. Pellentesque nec purus ligula. Maecenas bibendum pharetra tellus et sagittis. Cras aliquam condimentum metus, tristique dapibus felis. Proin id risus commodo, consectetur ligula sit amet, vestibulum velit. Fusce vel rutrum diam. Aliquam dolor eros, vestibulum id ipsum ac, interdum lobortis arcu. Etiam eget nibh at libero pharetra efficitur. Pellentesque libero orci, congue quis lectus at, posuere rhoncus orci. Ut urna lectus, sodales et urna nec, faucibus sodales magna.
-                            </p>
+                            <p id="conteudo-descricao"><?php echo $info_publicacao->descricao; ?></p>
                             <section id="box-acessorios-veiculo">
                                 <h1 id="titulo-acessorios">Acessórios</h1>
                                 <ul id="lista-acessorios">

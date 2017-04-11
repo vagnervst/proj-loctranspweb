@@ -25,15 +25,22 @@
             public $idFuncionario;
             public $idVeiculo;
             
-            function getPublicacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
+            function getPublicacao($where = null) {
                 
-                $sql = "SELECT p.id, p.titulo, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, ";
-                $sql .= "p.imagemPrincipal, ";
-                $sql .= "p.idStatusPublicacao, ";
-                $sql .= "v.nome AS modelo ";
+                $sql = "SELECT p.id AS idPublicacao, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, ";
+                $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, ";
+                $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
+                $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
+                $sql .= "f.id AS idFuncionario ";
                 $sql .= "FROM tbl_publicacao AS p ";
                 $sql .= "INNER JOIN tbl_veiculo AS v ";
-                $sql .= "ON p.idVeiculo = v.id";
+                $sql .= "ON v.id = p.idVeiculo ";
+                $sql .= "LEFT JOIN tbl_usuario AS u ";
+                $sql .= "ON u.id = p.idUsuario ";
+                $sql .= "LEFT JOIN tbl_funcionario AS f ";
+                $sql .= "ON f.id = p.idFuncionario ";
+                $sql .= "LEFT JOIN tbl_agencia AS a ";
+                $sql .= "ON a.id = p.idAgencia";
 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
@@ -44,20 +51,11 @@
 
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }                                
+                }
                 
                 $resultado = $this->executarQuery( $sql );
                                 
-                $resultado = $this->get_array_from_resultado( $resultado );                
-                
-                /*$total_publicacoes = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
-                
-                $info_paginacao = [];
-                $info_paginacao["totalRegistros"] = (int) mysqli_fetch_array( $total_publicacoes )[0];
-                $info_paginacao["paginaAtual"] = (int) $pagina_atual;
-                $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
-                
-                $resultado[] = $info_paginacao;*/
+                $resultado = $this->get_array_from_resultado( $resultado );                                                
                 
                 return $resultado;
             }

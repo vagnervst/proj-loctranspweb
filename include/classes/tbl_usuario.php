@@ -23,6 +23,27 @@
             public $idTipoConta;
             public $idPlanoConta;
             public $idLicencaDesktop;
+            
+            public function getListaCnh() {
+                $sql = "SELECT * ";
+                $sql .= "FROM tbl_cnh ";
+                $sql .= "WHERE idUsuario = " . $this->id;
+                
+                $resultado = $this->executarQuery( $sql );
+            
+                $lista_cnh = [];
+                while( $cnh = mysqli_fetch_assoc($resultado) ) {
+                    $objCnh = new \Tabela\Cnh();
+                    
+                    $objCnh->id = (int) $cnh["id"];
+                    $objCnh->numeroRegistro = (int) $cnh["numeroRegistro"];
+                    $objCnh->idUsuario = (int) $cnh["idUsuario"];
+                    
+                    $lista_cnh[] = $objCnh;
+                }
+                
+                return $lista_cnh;
+            }
         }
         
     }
