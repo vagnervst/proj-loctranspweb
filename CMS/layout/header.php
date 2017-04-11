@@ -15,7 +15,7 @@
 <header>
     <div id="box-cabecalho">
         <div id="box-image-logo">
-            <img src="Image/logo_test.jpg" />
+            <img src="Image/logo_cityshare.png" />
         </div>
         <div id="box-conta">
             <div id="box-imagem-usuario">
