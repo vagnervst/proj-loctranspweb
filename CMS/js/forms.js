@@ -8,7 +8,7 @@ $(document).ready(function() {
             var formulario_veiculos = new AjaxForm();            
 
             formulario_veiculos.colunas_tabela_propriedades_json = [
-                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Cod", propriedadeJson: "codigo"},
                 {nome: "Nome", propriedadeJson: "nome"},
                 {nome: "Tipo", propriedadeJson: "tipo"},
                 {nome: "Categoria", propriedadeJson: "categoria"},
@@ -25,6 +25,7 @@ $(document).ready(function() {
             formulario_veiculos.formularioPesquisa = $("#box-filtragem-veiculos form")[0];
 
             formulario_veiculos.relacao_campo_propriedade = [                
+                { nomeCampo : 'txtCod', propriedade : 'codigo' },
                 { nomeCampo : 'txtNome', propriedade : 'nome' },
                 { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
                 { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
@@ -38,7 +39,7 @@ $(document).ready(function() {
             ];
 
             formulario_veiculos.relacao_campo_propriedade_pesquisa = [
-                { nomeCampo : 'txtCod', propriedade: 'id' },
+                { nomeCampo : 'txtCod', propriedade: 'codigo' },
                 { nomeCampo : 'txtPrecoMinimo', propriedade: 'precoMedio' },
                 { nomeCampo : 'slTipo', propriedade: 'idTipoVeiculo' },
                 { nomeCampo : 'slFabricante', propriedade: 'idFabricante' },

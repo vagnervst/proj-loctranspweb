@@ -1,5 +1,6 @@
 <?php
     namespace Tabela {
+
         class Publicacao extends \DB\DatabaseUtils {
             public static $nome_tabela = "tbl_publicacao";
             public static $primary_key = "id";
@@ -22,6 +23,7 @@
             public $idAgencia;
             public $idUsuario;
             public $idFuncionario;
+            public $idVeiculo;
             
             function getPublicacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 

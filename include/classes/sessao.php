@@ -2,7 +2,9 @@
     class Sessao {
         
         function __construct() {
-            session_start();
+            if( session_status() == PHP_SESSION_NONE ) {
+                session_start();
+            }
         }
         
         public function put($chave, $valor) {
@@ -10,7 +12,7 @@
         }
         
         public function get($chave) {
-            return $_SESSION[$chave];
+            return isset( $_SESSION[$chave] )? $_SESSION[$chave] : null;
         }
         
         public function remove($chave) {

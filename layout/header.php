@@ -1,4 +1,10 @@
-<?php if( !isset($contexto) ) $contexto = ""; ?>
+<?php 
+    require_once("include/initialize.php");
+    require_once("include/classes/sessao.php");
+    require_once("include/classes/tbl_usuario.php");
+
+    if( !isset($contexto) ) $contexto = ""; 
+?>
 <header>
     <div id="box-cabecalho">
         <div id="mobile-botao-menu"></div>
@@ -15,24 +21,35 @@
                 <li class="botao-menu"><a href="contato.php">Contato</a></li>
             </ul>
         </div>
-        <div id="box-conta">
-            <?php
-                $contaAtiva = false;
+        <div id="box-conta">            
+            <?php 
+                $sessao = new Sessao();                
+                if( empty($sessao->get("idUsuario")) ) { 
             ?>
-            <?php if( !$contaAtiva ) { ?>
             <div id="box-login-cadastro">
                 <a class="botao-conta" id="botao-login" href="login.php">Entrar</a>
                 <a class="botao-conta" id="botao-cadastro" href="cadastro.php">Cadastre-se</a>
             </div>
             <?php } else { ?>
+            <?php
+                $idUsuario = $sessao->get("idUsuario");
+                
+                $usuario = new \Tabela\Usuario();
+                $usuario = $usuario->buscar("id = {$idUsuario}")[0];
+                
+                if( empty( $usuario ) ) redirecionar_para("logout_action.php");
+            ?>
             <div id="box-info-conta">
                 <span id="icone-notificacao"></span>
-                <div id="imagem-perfil">                            
-                    <img src="img/link_face.jpg" />
+                <div id="imagem-perfil">
+                    <?php 
+                          $caminhoFoto = "img/uploads/usuarios/usr_" . $usuario->id;                           
+                    ?>
+                    <img src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>" />
                 </div>
                 <div id="box-info-usuario">
-                    <p id="nome-usuario">Nome do Usuario</p>
-                    <a id="botao-logout" href="#">Sair</a>
+                    <p id="nome-usuario"><?php echo $usuario->nome . " " . substr($usuario->sobrenome, 0, 1); ?></p>
+                    <a id="botao-logout" href="logout_action.php">Sair</a>
                 </div>
                 <div class="js-popup-painel" id="box-menu-usuario">
                     <ul id="menu-usuario">
@@ -86,18 +103,18 @@
 <div id="box-login-fullscreen">
    <div id="box-login">
         <div id="box-form-login">
-            <form method="post" action="login.php">
+            <form method="post" action="login_action.php">
                 <div class="box-label-input">
                     <label><span class="label">Email</span>
-                        <input class="preset-input-text input" type="text" name="loginEmail" placeholder="Digite seu email">
+                        <input class="preset-input-text input" type="text" name="txtEmail" placeholder="Digite seu email">
                     </label>
                 </div>
                 <div class="box-label-input">
                     <label><span class="label">Senha</span>
-                        <input class="preset-input-text input" type="password" name="loginSenha" placeholder="Digite sua senha">
+                        <input class="preset-input-text input" type="password" name="txtSenha" placeholder="Digite sua senha">
                     </label>
                 </div>
-                <input class="preset-input-submit submit" type="submit" name="loginSubmit" value="Entrar" />
+                <input class="preset-input-submit submit" type="submit" name="submitLogin" value="Entrar" />
             </form>
         </div>
         <span id="botao-fechar-login"></span>

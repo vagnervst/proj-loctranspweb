@@ -1507,8 +1507,17 @@ header #box-cabecalho #box-conta #botao-logout{
     margin: 5px 0px;
 }
 
+#pag-adm-veiculos .box-conteudo #box-form-veiculo #box-cod,
+#pag-adm-veiculos .box-conteudo #box-form-veiculo #box-nome {
+    display: inline-block;
+}
+
+#pag-adm-veiculos .box-conteudo #box-form-veiculo #box-cod .input {
+    width: 100px;    
+}
+
 #pag-adm-veiculos .box-conteudo #box-form-veiculo #box-nome .input {
-    width: 595px;    
+    width: 480px;    
 }
 
 #pag-adm-veiculos .box-conteudo #box-form-veiculo #box-transmissao .input {

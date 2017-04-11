@@ -1,5 +1,6 @@
 <?php
     require_once("include/initialize.php");
+    require_once("include/functions.php");
     require_once("include/classes/database.php");
     require_once("include/classes/tbl_usuario.php");
     require_once("include/classes/autenticacao.php");
@@ -20,6 +21,8 @@
             $sessao = new Sessao();
             
             $sessao->put("idUsuario", $usuarioAlvo->id);
+            
+            redirecionar_para("index.php");
         }
     }
 ?>
