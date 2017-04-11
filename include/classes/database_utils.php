@@ -158,7 +158,7 @@
                 $sql = "UPDATE " . $this::$nome_tabela . " ";
                 $sql .= "SET " . $this->get_update_valores($this) . " ";                        
                 $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();
-                                
+                echo $sql;
                 return $this->executarQuery($sql);
             }
 
@@ -172,7 +172,8 @@
 
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
-                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                
+                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                       
+                echo $sql;
                 
                 return $this->executarQuery($sql);
             }                        
