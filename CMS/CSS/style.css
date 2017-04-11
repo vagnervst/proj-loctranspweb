@@ -1387,6 +1387,44 @@ header #box-cabecalho #box-conta #botao-logout{
 #box-listagem-fabricantes .ajax-form-table {
     height: 600px;
 }
+/*=-=-=-=-=-==-=-=-=-=PAGINA Banco-==-=-==-=-=-=-=-=-=-=-*/
+#pag-banco .box-conteudo {
+    height: 870px;
+}
+
+#pag-banco .box-conteudo #box-novo-registro {
+    width: 100% ;
+    height: 330px;    
+}
+
+#pag-banco .box-conteudo #box-novo-registro .btn {    
+    width: 100px;    
+    padding: 5px 0px;
+}
+
+#pag-banco .box-conteudo #box-novo-registro #box-salvar-cancelar {
+    width: auto;
+    height: 50px;
+    float: right ;
+    margin-right: 40px;
+}
+
+#pag-banco #box-novo-registro #box-campos-fabricante #box-tipos-veiculo {
+    background-color: #cecece;
+    height: 100px;
+    overflow-y: auto;
+    padding: 5px;
+    margin: 10px 0px;
+    border: 1px solid #bfbfbf;
+}
+
+#pag-banco #box-novo-registro #box-campos-fabricante #box-acoes {
+    padding: 0px 5px;
+}
+
+#box-listagem-fabricantes .ajax-form-table {
+    height: 600px;
+}
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA ACESSORIO-==-=-==-=-=-=-=-=-=-=-*/
 
