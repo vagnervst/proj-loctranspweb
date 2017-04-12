@@ -27,7 +27,7 @@
                 <div class="box-conteudo">
                    <?php if( in_array(5, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_usuario.php">
+                        <a class="titulo-conteudo-menu" href="usuario.php">
                             <img src="Image/content_test.jpg" />
                             Usuario
                         </a>

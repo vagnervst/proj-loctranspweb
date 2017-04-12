@@ -83,7 +83,7 @@
             <div class="CMS_main" id="pag-cityshare-empresa">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> &gt; <a href="CMS_cityshare.php" class="link-caminho"> City Share</a> &gt; <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> &gt; <a href="#" class="link-caminho">Sobre a Empresa</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> &gt; <a href="cityshare.php" class="link-caminho"> City Share</a> &gt; <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> &gt; <a href="#" class="link-caminho">Sobre a Empresa</a>
                 </div>
                 <form action="empresa.php" method="post" name="formConteudo" enctype="multipart/form-data">
                     <div class="box-conteudo">

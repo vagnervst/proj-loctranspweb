@@ -21,7 +21,7 @@
             <div class="CMS_main" id="pag-tipo-veiculo">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> ><a href="#" class="link-caminho"> Tipos</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> ><a href="#" class="link-caminho"> Tipos</a>
                 </div>                
                 <div class="box-conteudo">
                     <div class="box-tipo-veiculo">
