@@ -37,6 +37,7 @@ html {
 
 a {
     text-decoration: none;
+    color: black ;
 }
 
 .preset-input-text {
@@ -1741,7 +1742,67 @@ header #box-cabecalho #box-conta #botao-logout{
 #pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
     display: none;
 }
+/************CRUD FALE CONOSCO *********/
+#pag-fale-conosco {
+    height: 850px;   
+}
+#pag-fale-conosco #filtrar-por {
+    font-size: 18px;
+    margin-left: 50px;
+    height: 50px;    
+    float: right ;
+    overflow: auto ;
+}
+#pag-fale-conosco #filtrar-por select {
+    
+}
+#pag-fale-conosco #listagem-contatos-feitos{
+    width: 100% ;
+    height: 730px;
+    overflow: auto ;
+}
+#pag-fale-conosco #listagem-contatos-feitos a {
+    text-decoration: none ;
+    background-color: black ;
+    
+}
+#pag-fale-conosco #listagem-contatos-feitos .item-contato {
+    margin:  0 auto ;
+    width: 700px;
+    height: 30px;
+    margin-bottom: 5px ;
+    background-color: #cecece;
+    color:  #202020 ;
+}
 
+#pag-fale-conosco #listagem-contatos-feitos .item-contato .nome-contato {
+    float: left ;
+    height: 30px; 
+    line-height: 30px;
+    width: 400px;
+    
+}
+#pag-fale-conosco #listagem-contatos-feitos .assunto-contato {
+    float: left ;
+    height: 30px; 
+    line-height: 30px;
+    width: 300px;
+
+}
+#pag-resposta-contato{
+    height: 850px; 
+}
+#pag-resposta-contato #base-resposta {
+    width: 600px;
+    height: 400px ;
+    margin: 0 auto ;
+    background-color: antiquewhite ;
+    padding-top: 20px;
+} 
+#pag-resposta-contato #base-resposta p {
+    padding-left: 50px;
+    font-size: 18px;
+}
 /*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
 
 footer{
