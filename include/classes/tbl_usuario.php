@@ -28,7 +28,7 @@
                 $sql = "SELECT * ";
                 $sql .= "FROM tbl_cnh ";
                 $sql .= "WHERE idUsuario = " . $this->id;
-                
+            
                 $resultado = $this->executarQuery( $sql );
             
                 $lista_cnh = [];
@@ -63,7 +63,7 @@
             }
             
             public function getDetalhesUsuario($where = null) {
-                $sql = "SELECT u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
+                $sql = "SELECT u.id, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
                 $sql .= "u.telefone, u.celular, u.email, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, t.titulo AS tipoConta, ";
                 $sql .= "p.nome AS planoConta, ld.nome AS licencaDesktop ";

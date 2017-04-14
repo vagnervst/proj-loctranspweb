@@ -293,7 +293,68 @@ $(document).ready(function() {
             });
         }
     }
+
+    function inicializar_painel_info_usuario() {
+        var pagina_info_usuarios = $("#pag-info-usuarios")[0];
+        
+        if( pagina_info_usuarios !== undefined ) {
+            var botao_informacoes = $("#botao-informacoes")[0];
+            var botao_publicacao = $("#botao-publicacoes")[0];
+            var botao_pedidos = $("#botao-pedidos")[0];                        
+            
+            var box_info_pessoais = $(".box-info-pessoais")[0];
+            var box_conteudo_painel = $("#container-publicacoes-pedidos")[0];
+            
+            var dados_api = new FormData();
+            //dados_api.append("idUsuario", id);
+            
+            var imagem_carregamento = document.createElement("img");
+            imagem_carregamento.src = "../img/loading_cityshare_black.gif";                        
+            imagem_carregamento.style.display = "block";
+            imagem_carregamento.style.margin = "auto";
+            imagem_carregamento.style.marginTop = "200px";
+            
+            $(botao_informacoes).click(function() {
+                box_conteudo_painel.innerHTML = "";
+                box_conteudo_painel.style.display = "none";
+                box_info_pessoais.style.display = "block";                
+            });
+            
+            $(botao_publicacao).click(function() {
+                
+                box_info_pessoais.style.display = "none";
+                box_conteudo_painel.innerHTML = "";
+                
+                box_conteudo_painel.style.display = "block";
+                box_conteudo_painel.appendChild( imagem_carregamento );
+                
+                var ajax = new Ajax();
+                ajax.transferir_dados_para_api("apis/get_publicacoes_usuario.php", "POST", dados_api, function(resultado) {                    
+                    box_conteudo_painel.innerHTML = resultado;
+                })
+                
+            });
+            
+            $(botao_pedidos).click(function() {
+                
+                box_info_pessoais.style.display = "none";
+                box_conteudo_painel.innerHTML = "";
+                
+                box_conteudo_painel.style.display = "block";
+                box_conteudo_painel.appendChild( imagem_carregamento );
+                
+                var ajax = new Ajax();
+                ajax.transferir_dados_para_api("apis/get_pedidos_usuario.php", "POST", dados_api, function(resultado) {
+                    box_conteudo_painel.innerHTML = resultado;
+                })
+                
+            });
+        }
+    }
+    
+    //--------------------------------------------
     
     inicializarAJAXPerguntas();
-    inicializarBotoesSelecaoImagem();            
+    inicializarBotoesSelecaoImagem();
+    inicializar_painel_info_usuario();
 });

@@ -1,12 +1,13 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_usuario.php");
+	require_once("../include/classes/tbl_cnh.php");
     
     $id = ( isset($_GET["id"]) )? $_GET["id"] : null;
     
     $dadosUsuario = new \Tabela\Usuario();
     $dadosUsuario = $dadosUsuario->getDetalhesUsuario("u.id = {$id}")[0];
-    $listaCnh = $dadosUsuario->getListaCnh($);
+    $listaCnh = $dadosUsuario->getListaCnh();
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,9 +31,9 @@
                 </div>
                 <div class="box-conteudo">
                     <div class="container-botoes-usuario">
-                        <span class="preset-botao">Informações Pessoais</span>
-                        <span class="preset-botao">Publicações</span>
-                        <span class="preset-botao">Pedidos</span>
+                        <span class="preset-botao" id="botao-informacoes">Informações</span>
+                        <span class="preset-botao" id="botao-publicacoes">Publicações</span>
+                        <span class="preset-botao" id="botao-pedidos">Pedidos</span>
                     </div>
                     <div class="box-info-pessoais">
                         <section>
@@ -96,6 +97,7 @@
                             </div>
                         </section>
                     </div>
+					<div id="container-publicacoes-pedidos"></div>
                 </div>
             </div>
             <?php

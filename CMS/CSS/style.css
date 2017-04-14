@@ -1307,7 +1307,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-info-usuarios .container-botoes-usuario {
-    width: 100%;
+    width: 800px;
     height: 40px;
     background-color: #a1aec9;
     padding-top: 5px;
@@ -1315,11 +1315,9 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-info-usuarios .container-botoes-usuario .preset-botao {
-    height: 100%;
-    line-height: 40px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: 10px;
+    width: 100px;
+    padding: 10px 0px;
+    margin-left: 5px;
 }
 
 #pag-info-usuarios .box-conteudo .box-info-pessoais {
@@ -1356,6 +1354,10 @@ header #box-cabecalho #box-conta #botao-logout {
     width: 100%;
     float: left;
     font-size: 20px;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos {
+    display: none;
 }
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
@@ -1443,6 +1445,44 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-fabricante-veiculo #box-novo-registro #box-campos-fabricante #box-acoes {
+    padding: 0px 5px;
+}
+
+#box-listagem-fabricantes .ajax-form-table {
+    height: 600px;
+}
+/*=-=-=-=-=-==-=-=-=-=PAGINA Banco-==-=-==-=-=-=-=-=-=-=-*/
+#pag-banco .box-conteudo {
+    height: 870px;
+}
+
+#pag-banco .box-conteudo #box-novo-registro {
+    width: 100% ;
+    height: 330px;    
+}
+
+#pag-banco .box-conteudo #box-novo-registro .btn {    
+    width: 100px;    
+    padding: 5px 0px;
+}
+
+#pag-banco .box-conteudo #box-novo-registro #box-salvar-cancelar {
+    width: auto;
+    height: 50px;
+    float: right ;
+    margin-right: 40px;
+}
+
+#pag-banco #box-novo-registro #box-campos-fabricante #box-tipos-veiculo {
+    background-color: #cecece;
+    height: 100px;
+    overflow-y: auto;
+    padding: 5px;
+    margin: 10px 0px;
+    border: 1px solid #bfbfbf;
+}
+
+#pag-banco #box-novo-registro #box-campos-fabricante #box-acoes {
     padding: 0px 5px;
 }
 
