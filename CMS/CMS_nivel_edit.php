@@ -76,7 +76,7 @@
             <div class="CMS_main" id="pag-cityshare-adm-edit">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_nivelAcesso.php" class="link-caminho" >Níveis de Acesso</a> > <a href="#" class="link-caminho" >Editar/Novo</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_nivelAcesso.php" class="link-caminho" >Níveis de Acesso</a> > <a href="#" class="link-caminho" >Editar/Novo</a>
                 </div>
                 <form action="CMS_nivel_edit.php<?php echo (!empty($id))? "?id=" . $id : ""; ?>" method="post" enctype="multipart/form-data">
                     <div class="box-conteudo">

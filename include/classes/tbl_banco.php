@@ -9,8 +9,13 @@
             public $codigo ;
             public $nome;
             public $qtdDigitosVerificadores;
+<<<<<<< HEAD
+            
+            public function getFabricante($registros_por_pagina, $pagina_atual, $where = null) {
+=======
         
         public function getBanco($registros_por_pagina, $pagina_atual, $where = null) {
+>>>>>>> ea4701fb51ed36bdfde44ac3c14704dfc858b501
                 $sql = "SELECT b.* ";
                 $sql .= "FROM {$this::$nome_tabela} AS b ";
                 
@@ -45,12 +50,15 @@
                 
                 return $listaBanco;                
             }
+<<<<<<< HEAD
+=======
             public function deletarReferencias($id){
                 $sql = "delete from tbl_conta_bancaria where idBanco =".$id ;
                 mysqli_query($sql);
             }
             
         
+>>>>>>> ea4701fb51ed36bdfde44ac3c14704dfc858b501
         }
     }
 ?>
