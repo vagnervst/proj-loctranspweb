@@ -267,11 +267,9 @@ $(document).ready(function() {
             formulario_tipo_cartao.inicializar();
         }
     }
-    //------------------------------------------------------- FUNCAO ADM PLANO CONTA        
     
-    
-
     //------------------------------------------------------- FUNCAO ADM PLANO CONTA  
+    
     function inicializar_lista_bancos() {
         var pagina_banco = $("#pag-banco")[0];
         
