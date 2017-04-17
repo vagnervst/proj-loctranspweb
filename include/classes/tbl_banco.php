@@ -6,12 +6,11 @@
             public static $primary_key = "id";
 
             public $id;
-            public $codigo ;
+            public $codigo;
             public $nome;
             public $qtdDigitosVerificadores;
             
-        }
-        public function getFabricante($registros_por_pagina, $pagina_atual, $where = null) {
+            public function getFabricante($registros_por_pagina, $pagina_atual, $where = null) {
                 $sql = "SELECT b.* ";
                 $sql .= "FROM {$this::$nome_tabela} AS b ";
                 
@@ -44,9 +43,8 @@
                     $listaBanco[] = $info_paginacao;
                 }
                 
-                return $listaBanco;                
+                return $listaBanco;
             }
-        
-        
+        }
     }
 ?>
