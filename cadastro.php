@@ -269,7 +269,7 @@
                                 <div class="horizontal-input-container box-localizacao">
                                    <div class="label-input">
                                         <label class="label"><span class="input-label">Estado*:</span>
-                                            <select class="preset-input-select input" name="slEstado">
+                                            <select class="preset-input-select input js-select-estado" name="slEstado">
                                                 <option selected disabled>Selecione...</option>
                                                 <?php 
                                                     $lista_estados = new \Tabela\Estado();
@@ -284,16 +284,8 @@
                                     </div>
                                     <div class="label-input">
                                         <label class="label"><span class="input-label">Cidade*:</span>
-                                            <select class="preset-input-select input" name="slCidade">
+                                            <select class="preset-input-select input js-select-cidade" name="slCidade">
                                                 <option selected disabled>Selecione...</option>
-                                                <?php 
-                                                    $lista_cidades = new \Tabela\Cidade();
-                                                    $lista_cidades = $lista_cidades->buscar();
-                                                
-                                                    foreach( $lista_cidades as $cidade ) { 
-                                                ?>
-                                                <option value="<?php echo $cidade->id; ?>"><?php echo $cidade->nome; ?></option>
-                                                <?php } ?>
                                             </select>
                                         </label>
                                     </div>                                    
