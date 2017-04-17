@@ -41,7 +41,7 @@
                 $sql .= "ON f.id = p.idFuncionario ";
                 $sql .= "LEFT JOIN tbl_agencia AS a ";
                 $sql .= "ON a.id = p.idAgencia";
-
+                
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
                 }                
