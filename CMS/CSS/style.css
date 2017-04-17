@@ -1361,6 +1361,69 @@ header #box-cabecalho #box-conta #botao-logout {
     display: none;
 }
 
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao {
+    width: 220px;
+    height: 170px;
+    background-color: #a1aec9;
+    margin: 20px 30px;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao img {
+    width: 150px;
+    height: 110px;
+    margin: 5px 35px;
+    background-color: white;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao .titulo-publicacao {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao .status-publicacao {
+    width: 100%;
+    text-align: center;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .titulo-pedidos {
+    margin: 10px 20px;
+    font-size: 20px;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido {
+    width: 700px;
+    height: 40px;
+    margin: auto 20px;
+    border: 1px solid grey;
+    font-size: 18px;
+    background-color: #a1aec9;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido .locador-pedido {
+    width: 220px;
+    height: 100%;
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido .data-pedido {
+    width: 233px;
+    height: 100%;
+    float: left;
+    padding-top: 10px;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido .status-pedido {
+    width: 220px;
+    height: 100%;
+    float: left;
+    text-align: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
 /*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
 
 #pag-acessorio-veiculo .box-conteudo {
