@@ -19,7 +19,7 @@
         }
         
         public static function read($nome_arquivo, $pasta) {
-            if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return "img/no_image.jpg";
+            if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return $pasta . "no_image.jpg";
             
             return File::codificar_caminho($nome_arquivo, $pasta);
         }

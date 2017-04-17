@@ -305,8 +305,12 @@ $(document).ready(function() {
             var box_info_pessoais = $(".box-info-pessoais")[0];
             var box_conteudo_painel = $("#container-publicacoes-pedidos")[0];
             
+            var id = window.location.toString();
+            id = id.substr( id.indexOf("id=")+3, id.length );
+            id = Number(id);
+            
             var dados_api = new FormData();
-            //dados_api.append("idUsuario", id);
+            dados_api.append("idUsuario", id);
             
             var imagem_carregamento = document.createElement("img");
             imagem_carregamento.src = "../img/loading_cityshare_black.gif";                        
