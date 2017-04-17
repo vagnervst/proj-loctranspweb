@@ -1263,7 +1263,7 @@ header #box-cabecalho #box-conta #botao-logout {
     width: 260px;
     height: 150px;
     float: left;
-    background-color: #e2e2e2;
+    background-color: #a1aec9;
     margin: 5px;
     border-radius: 0px 0px 2px 2px;
     padding: 5px;
@@ -1274,6 +1274,7 @@ header #box-cabecalho #box-conta #botao-logout {
     line-height: 30px;
     text-align: center ;
     border-bottom: solid 2px ;
+    font-size: 20px;
     
 }
 #pag-clientes-usuarios .box-conteudo .box-usuario .cont-usuario {
@@ -1365,7 +1366,8 @@ header #box-cabecalho #box-conta #botao-logout {
     width: 220px;
     height: 170px;
     background-color: #a1aec9;
-    margin: 20px 30px;
+    margin: 20px 25px;
+    float: left;
 }
 
 #pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao img {
@@ -1394,7 +1396,7 @@ header #box-cabecalho #box-conta #botao-logout {
 #pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido {
     width: 700px;
     height: 40px;
-    margin: auto 20px;
+    margin: 10px 20px;
     border: 1px solid grey;
     font-size: 18px;
     background-color: #a1aec9;
