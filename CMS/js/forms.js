@@ -86,7 +86,8 @@ $(document).ready(function() {
     function inicializar_lista_categorias() {
         var pagina_categoria = $("#pag-categorias-veiculos")[0];
         
-        if( pagina_categoria !== undefined ) {                                                                
+        if( pagina_categoria !== undefined ) {
+            
             var formulario_categorias_veiculo = new AjaxForm();            
 
             formulario_categorias_veiculo.colunas_tabela_propriedades_json = [
@@ -96,8 +97,7 @@ $(document).ready(function() {
                 {nome: "Tipo de Veículo", propriedadeJson: "tituloTipo"},
             ];                                               
 
-            var box_listagem_categorias = $(pagina_categoria).find("#box-listagem-categorias")[0];            
-            
+            var box_listagem_categorias = $(pagina_categoria).find("#box-listagem-categorias")[0];                        
             formulario_categorias_veiculo.urlApi = "apis/crud_categoria_veiculo.php";                
             formulario_categorias_veiculo.containerTabela = box_listagem_categorias;
             formulario_categorias_veiculo.formulario = $("#form-modificacao")[0];            

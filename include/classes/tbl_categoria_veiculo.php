@@ -32,7 +32,7 @@
                 
                 $resultado = $this->executarQuery( $sql );
                 $resultado = $this->get_array_from_resultado( $resultado );
-
+                
                 $total_veiculos = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
 
                 $info_paginacao = [];
@@ -40,8 +40,8 @@
                 $info_paginacao["paginaAtual"] = (int) $pagina_atual;
                 $info_paginacao["registrosPorPagina"] = (int) $registros_por_pagina;
 
-                $resultado[] = $info_paginacao;
-
+                $resultado[] = $info_paginacao;                                
+                
                 return $resultado;
             }
         }
