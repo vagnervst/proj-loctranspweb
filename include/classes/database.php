@@ -1,9 +1,9 @@
 <?php
     namespace DB {
         class Database {                
-            private $servidor = "localhost";
+            private $servidor = "10.107.140.37";
             private $usuario = "root";
-            private $senha = "root";
+            private $senha = "bcd127";
             private $banco = "dbcityshare";
             public $conexao;
 

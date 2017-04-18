@@ -28,29 +28,24 @@
             function getPublicacao($where = null) {
                 
                 $sql = "SELECT p.id AS idPublicacao, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, ";
-                $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, ";
+                $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, sp.titulo AS tituloStatus, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
                 $sql .= "f.id AS idFuncionario ";
                 $sql .= "FROM tbl_publicacao AS p ";
                 $sql .= "INNER JOIN tbl_veiculo AS v ";
                 $sql .= "ON v.id = p.idVeiculo ";
+                $sql .= "INNER JOIN tbl_statuspublicacao AS sp ";
+                $sql .= "ON sp.id = p.idStatusPublicacao ";
                 $sql .= "LEFT JOIN tbl_usuario AS u ";
                 $sql .= "ON u.id = p.idUsuario ";
                 $sql .= "LEFT JOIN tbl_funcionario AS f ";
                 $sql .= "ON f.id = p.idFuncionario ";
                 $sql .= "LEFT JOIN tbl_agencia AS a ";
                 $sql .= "ON a.id = p.idAgencia";
-
+                
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
-                }                
-
-                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
-                    $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
-
-                    $sql .= " LIMIT " . $registros_por_pagina . " ";
-                    $sql .= "OFFSET " . $registros_a_ignorar;
                 }
                 
                 $resultado = $this->executarQuery( $sql );

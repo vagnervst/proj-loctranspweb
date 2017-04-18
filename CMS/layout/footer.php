@@ -1,7 +1,7 @@
 <footer>
     <div id="box-rodape">
         <div id="box-logo-rodape">
-            <img />
+            <img src="Image/logo_cityshare.png" />
         </div>
     </div>
     <script src="js/libs/jquery-3.1.1.min.js"></script>

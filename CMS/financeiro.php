@@ -2,7 +2,7 @@
     require_once("../include/classes/sessao.php");
 ?>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>
@@ -16,36 +16,28 @@
             <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-clientes">
+            <div class="CMS_main" id="pag-financeiro">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
                 </div>
-                <?php                                        
+                <?php                
                     $lista_permissoes_usuario = $sessao->get("id_permissoes");
                 ?>
                 <div class="box-conteudo">
-                   <?php if( in_array(5, $lista_permissoes_usuario) ) { ?>
+                    <?php if( in_array(7, $lista_permissoes_usuario) ) { ?>                  
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="usuario.php">
+                        <a class="titulo-conteudo-menu" href="banco.php">
                             <img src="Image/content_test.jpg" />
-                            Usuario
+                            Bancos
                         </a>
                     </div>
                     <?php } ?>
-                    <?php if( in_array(6, $lista_permissoes_usuario) ) { ?>
+                    <?php if( in_array(8, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="#">
+                        <a class="titulo-conteudo-menu" href="cartao.php">
                             <img src="Image/content_test.jpg" />                        
-                            Planos de conta 
-                        </a>
-                    </div>
-                    <?php } ?>
-                    <?php if( in_array(7, $lista_permissoes_usuario) ) { ?>
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="#">
-                            <img src="Image/content_test.jpg" />                        
-							Contatos
+                            Cartões
                         </a>
                     </div>
                     <?php } ?>

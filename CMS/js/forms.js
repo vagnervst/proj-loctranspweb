@@ -238,8 +238,72 @@ $(document).ready(function() {
             formulario_plano_conta.inicializar();
         } 
     }
-    //------------------------------------------------------- FUNCAO ADM PLANO CONTA        
+
+    //------------------------------------------------------- FUNCAO ADM PLANO CONTA
     
+    function inicializar_lista_tipo_cartao() {
+        var pagina_tipo_cartao = $("#pag-tipo-cartao")[0];
+                
+        if( pagina_tipo_cartao !== undefined ) {
+            var formulario_tipo_cartao = new AjaxForm();
+            
+            formulario_tipo_cartao.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Bandeira", propriedadeJson: "titulo"},
+                {nome: "Qtd de Digitos Segurança", propriedadeJson: "qtdDigitosSeguranca"}
+            ];
+            
+            var box_listagem_tipos_cartao = $(pagina_tipo_cartao).find("#box-listagem-tipos-cartao")[0];
+            
+            formulario_tipo_cartao.urlApi = "apis/crud_tipos_cartao.php";
+            formulario_tipo_cartao.containerTabela = box_listagem_tipos_cartao ;
+            formulario_tipo_cartao.formulario = $("#form-tipo-cartao")[0];
+            
+            formulario_tipo_cartao.relacao_campo_propriedade = [
+                { nomeCampo : 'txtTipoCartao', propriedade : 'titulo' },
+                { nomeCampo : 'txtDigitos', propriedade : 'qtdDigitosSeguranca' }
+            ];
+            
+            formulario_tipo_cartao.inicializar();
+        }
+    }
+    
+    //------------------------------------------------------- FUNCAO ADM PLANO CONTA  
+    
+    function inicializar_lista_bancos() {
+        var pagina_banco = $("#pag-banco")[0];
+        
+        if( pagina_banco !== undefined ) {
+            var formulario_banco = new AjaxForm();
+            
+            formulario_banco.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Nome", propriedadeJson: "nome"},
+                {nome: "Codigo", propriedadeJson: "codigo"},
+                {nome: "qtd digitos", propriedadeJson: "qtdDigitosVerificadores"}
+
+            ];
+            
+            var box_listagem_bancos = $(pagina_banco).find("#box-listagem-bancos")[0];
+            
+            formulario_banco.urlApi = "apis/crud_banco.php";
+            formulario_banco.containerTabela = box_listagem_bancos ;
+            formulario_banco.formulario = $("#form-modificacao")[0];
+            
+            formulario_banco.relacao_campo_propriedade = [
+                { nomeCampo : 'txt_titulo', propriedade : 'nome' },
+                { nomeCampo : 'txt_codigo', propriedade : 'codigo' },
+                { nomeCampo : 'txt_qtd_digitos', propriedade : 'qtdDigitosVerificadores' }
+                
+            ];
+            
+            formulario_banco.inicializar();
+        } 
+    }
+    //------------------------------------------------------- FUNCAO Banco 
+    
+    inicializar_lista_bancos() ;
+    inicializar_lista_tipo_cartao();
     inicializar_lista_plano_conta();
     inicializar_lista_veiculos();
     inicializar_lista_tipos();

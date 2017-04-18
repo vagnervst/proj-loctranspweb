@@ -17,6 +17,27 @@
             public $idFuncionario;
             public $idCnh;
             public $idVeiculo;
+            
+            function getPedido($where = null) {
+                
+                $sql = "SELECT p.id AS idPedido, p.dataRetirada, p.dataEntrega, p.idUsuarioLocatario AS idLocatario, ";
+                $sql .= "u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, sp.titulo AS statusPedido ";
+                $sql .= "FROM tbl_pedido AS p ";
+                $sql .= "INNER JOIN tbl_usuario AS u ";
+                $sql .= "ON u.id = p.idUsuarioLocador ";
+                $sql .= "INNER JOIN tbl_statuspedido AS sp ";
+                $sql .= "ON sp.id = p.idStatusPedido";
+                
+                if( !empty($where) ) {
+                        $sql .= " WHERE " . $where;
+                }                                                                
+                
+                $resultado = $this->executarQuery( $sql );
+                                
+                $resultado = $this->get_array_from_resultado( $resultado );                                                
+                
+                return $resultado;
+            }
         }
 
     }

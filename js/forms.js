@@ -69,6 +69,29 @@ $(document).ready(function() {
             });
         }
     }
-    
+    function inicializar_form_cadastro() {
+        var pagina_cadastro_usuario = $("#pag-cadastro")[0];
+        
+        if ( pagina_cadastro_usuario !== undefined ) {
+            var select_estado = $(".js-select-estado")[0];
+            var select_cidade = $(".js-select-cidade")[0];
+            
+            $(select_estado).change(function() {
+                var id_estado = select_estado.value;
+                
+                var dados_api = new FormData();
+                
+                dados_api.append( "idEstado", id_estado );
+                
+                var ajax = new Ajax();
+                ajax.transferir_dados_para_api("apis/get_cidades.php", "POST", dados_api, function(resultado) {
+                    select_cidade.innerHTML = resultado;
+                    
+                    $(select_cidade).trigger("change");
+                });
+            });
+        }
+    }
+    inicializar_form_cadastro();
     inicializar_form_publicacao();
 });
