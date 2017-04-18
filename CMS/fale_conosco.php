@@ -21,7 +21,7 @@
             <div class="CMS_main" id="pag-fale-conosco">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Desktop</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Desktop</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="titulo-sessao"><p>Contatos Feitos</p></div>

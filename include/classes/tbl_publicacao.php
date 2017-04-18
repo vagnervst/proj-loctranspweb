@@ -27,7 +27,7 @@
             
             function getPublicacao($where = null) {
                 
-                $sql = "SELECT p.id AS idPublicacao, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, ";
+                $sql = "SELECT p.id, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, ";
                 $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, sp.titulo AS tituloStatus, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
