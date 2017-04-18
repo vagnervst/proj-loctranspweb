@@ -1962,12 +1962,17 @@ header #box-cabecalho #box-conta #botao-logout {
     width: 600px;
     height: 400px ;
     margin: 0 auto ;
-    background-color: antiquewhite ;
     padding-top: 20px;
 } 
 #pag-resposta-contato #base-resposta p {
     padding-left: 50px;
-    font-size: 18px;
+	height :50px ;
+    font-size: 20px;
+}
+#pag-resposta-contato #base-resposta textarea {
+	height:100px; 
+	width : 300px ; 
+	margin : 0 auto ; 
 }
 /*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
 
