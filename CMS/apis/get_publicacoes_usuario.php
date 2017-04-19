@@ -21,7 +21,7 @@
     <p class="titulo-publicacao"><?php echo $publicacao->titulo; ?></p>
     <div class="status-detalhes">
         <p class="status-publicacao">Status: <?php echo $publicacao->tituloStatus; ?></p>
-        <a class="preset-botao" href="detalhes_publicacao.php?idUsuario=<?php echo $id ?>&idPublicacao=<?php echo $publicacao->idPublicacao; ?>">i</a>
+        <a class="preset-botao" href="detalhes_publicacao.php?idUsuario=<?php echo $id ?>&idPublicacao=<?php echo $publicacao->id; ?>">i</a>
     </div>    
 </div>
 <?php } ?>
