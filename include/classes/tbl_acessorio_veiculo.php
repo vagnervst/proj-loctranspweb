@@ -11,7 +11,7 @@
             public function getAcessorios($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 $sql = "SELECT id, nome ";
                 $sql .= "FROM {$this::$nome_tabela} ";
-                
+
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
