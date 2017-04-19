@@ -30,6 +30,6 @@
     $itens_por_pagina = 15;
     
     $lista_categorias = $objCategoriaVeiculo->getCategorias($itens_por_pagina, $pagina);    
-
-    echo json_encode($lista_categorias);
+    
+    echo json_encode($lista_categorias);    
 ?>

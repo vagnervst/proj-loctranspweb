@@ -42,7 +42,7 @@
                     <div id="listagem-contatos-feitos">
                         <?php
                             $listaContatos = new \Tabela\Contato();
-                            $listaContatos = $listaContatos->getInfoContato("");
+                            $listaContatos = $listaContatos->getInfoContato("respondido = 0");
 
                                 foreach( $listaContatos as $contato ) {
                             ?>

@@ -6,12 +6,19 @@
     
     $utils = new \DB\DatabaseUtils(); 
     $idContato = ( isset($_GET["id"]) )? $_GET["id"] : null;
-
-    if( empty($idContato) ) redirecionar_para("fale_conosco.php");
-    
     $infoContato = new \Tabela\Contato();
-    $infoContato = $infoContato->getInfoContato( "c.id = {$idContato}" )[0];   
+
+    if(isset($_POST['btn-resposta'])){
+        $resposta=$_POST['txt_resposta'];
+        $update = $infoContato-> updateContato( $resposta , $idContato );
+        header("location:fale_conosco.php");
+           
+    }
+    //if( empty($idContato) ) redirecionar_para("fale_conosco.php");
     
+   
+    $infoContato = $infoContato->getInfoContato( "c.id = {$idContato}" )[0]; 
+
     
 ?>
 <!DOCTYPE html>
@@ -35,15 +42,17 @@
                     <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Desktop</a>
                 </div>
                 <div class="box-conteudo">
-                    <form>
+                    <form method="post" action="resposta_contato.php?id=<?php echo $idContato ?>"> 
                         <div id="base-resposta">
                             <p>Nome : <?php echo $infoContato->nome; ?>  </p>
                             <p>Email : <?php echo $infoContato->email; ?></p>
                             <p>assunto:<?php echo $infoContato->assunto; ?></p>
                             <p>Mensagem : <?php echo $infoContato->nome; ?></p>
                             <p>Resposta : </p>
-                            <input type="text">
-                            <input type="">
+							<textarea name="txt_resposta" rows = "20" >
+								
+							</textarea>
+							<input class ="preset-input-submit" name="btn-resposta" type="submit">
                             
                         </div>
                     </form>

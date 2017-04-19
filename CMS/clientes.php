@@ -41,6 +41,14 @@
                         </a>
                     </div>
                     <?php } ?>
+                    <?php if( in_array(7, $lista_permissoes_usuario) ) { ?>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="fale_conosco.php">
+                            <img src="Image/content_test.jpg" />                        
+							Contatos
+                        </a>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <?php

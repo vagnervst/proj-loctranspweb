@@ -6,11 +6,12 @@
             public static $primary_key = "id";
 
             public $id;
-            public $codigo ;
+            public $codigo;
             public $nome;
             public $qtdDigitosVerificadores;
         
-            public function getBanco($registros_por_pagina, $pagina_atual, $where = null) {
+
+        public function getBanco($registros_por_pagina, $pagina_atual, $where = null) {
 
                 $sql = "SELECT b.* ";
                 $sql .= "FROM {$this::$nome_tabela} AS b ";
@@ -44,9 +45,9 @@
                     $listaBanco[] = $info_paginacao;
                 }
                 
-                return $listaBanco;                
+                return $listaBanco;
             }
-
+            
             public function deletarReferencias($id){
                 $sql = "delete from tbl_conta_bancaria where idBanco =".$id ;
                 mysqli_query($sql);

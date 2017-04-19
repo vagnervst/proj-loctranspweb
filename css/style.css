@@ -4161,11 +4161,24 @@ header #box-botao-filtragem {
     height: 50px;
 }
 
+@media (min-width: 420px) {
+    #pag-solicitacoes .box-conteudo #box-filtragem #select-status {
+        width: 380px;
+    }
+}
+
 #pag-solicitacoes .box-conteudo #box-listagem .box-pedido {
     background-color: aliceblue;
     width: 300px;
     height: 223px;
     border: 1px solid #cecece;
+}
+
+@media (min-width: 420px) { 
+    #pag-solicitacoes .box-conteudo #box-listagem .box-pedido {
+        width: 375px;
+        height: 300px;
+    }
 }
 
 #pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-foto-info {
