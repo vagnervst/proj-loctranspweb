@@ -19,6 +19,9 @@
         <img src="<?php echo File::read($publicacao->imagemPrincipal, "../img/uploads/publicacoes/"); ?>"/>
     </div>
     <p class="titulo-publicacao"><?php echo $publicacao->titulo; ?></p>
-    <p class="status-publicacao"><?php echo $publicacao->tituloStatus; ?></p>
+    <div class="status-detalhes">
+        <p class="status-publicacao">Status: <?php echo $publicacao->tituloStatus; ?></p>
+        <a class="preset-botao" href="detalhes_publicacao.php?idUsuario=<?php echo $id ?>&idPublicacao=<?php echo $publicacao->idPublicacao; ?>">i</a>
+    </div>    
 </div>
 <?php } ?>

@@ -19,7 +19,7 @@
             <div class="CMS_main" id="pag-clientes">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a>
                 </div>
                 <?php                                        
                     $lista_permissoes_usuario = $sessao->get("id_permissoes");
@@ -35,7 +35,7 @@
                     <?php } ?>
                     <?php if( in_array(6, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="#">
+                        <a class="titulo-conteudo-menu" href="plano_conta.php">
                             <img src="Image/content_test.jpg" />                        
                             Planos de conta 
                         </a>

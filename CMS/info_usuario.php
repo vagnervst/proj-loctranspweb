@@ -27,7 +27,7 @@
             <div class="CMS_main" id="pag-info-usuarios">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a> > <a href="usuario.php" class="link-caminho" >Usuarios</a> > <a href="#" class="link-caminho" >Informações do usuário</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> > <a href="usuario.php" class="link-caminho" >Usuarios</a> > <a href="#" class="link-caminho" >Informações do usuário</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="container-botoes-usuario">
