@@ -137,22 +137,22 @@
                                     <p class="titulo">Retirada</p>
                                     <div class="box-label-data">                                    
                                         <p class="label">Data:</p>
-                                        <input class="preset-input-text data-input" id="data-retirada" type="text" placeholder="XX/XX/XX" />
+                                        <input class="preset-input-text data-input js-mask" id="data-retirada" type="text" placeholder="DD/MM/AA" data-mask="DD#/DD#/DD" />
                                     </div>
                                     <div class="box-label-data">                                    
                                         <p class="label">Hora:</p>
-                                        <input class="preset-input-text hora-input" id="hora-retirada" type="text" placeholder="XX:XX" />
+                                        <input class="preset-input-text hora-input js-mask" id="hora-retirada" type="text" placeholder="HH:MM" data-mask="DD#:DD" />
                                     </div>                                
                                 </div>
                                 <div class="box-data">
                                     <p class="titulo">Devolução</p>
                                     <div class="box-label-data">                                    
                                         <p class="label">Data:</p>
-                                        <input class="preset-input-text data-input" id="data-devolucao" type="text" placeholder="XX/XX/XX" />
+                                        <input class="preset-input-text data-input js-mask" id="data-devolucao" type="text" placeholder="DD/MM/AA" data-mask="DD#/DD#/DD" />
                                     </div>
                                     <div class="box-label-data">
                                         <p class="label">Hora:</p>
-                                        <input class="preset-input-text hora-input" id="hora-devolucao" type="text" placeholder="XX:XX" />
+                                        <input class="preset-input-text hora-input js-mask" id="hora-devolucao" type="text" placeholder="HH:MM" data-mask="DD#:DD" />
                                     </div>                                
                                 </div>
                                 <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
@@ -229,6 +229,7 @@
         </div>
         <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/classes/JSMask.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
