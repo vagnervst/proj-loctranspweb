@@ -7,10 +7,8 @@
 
     $formSubmit = ( isset($_POST['formSubmit']) )? $_POST["formSubmit"] : null;
 
-    $upload_dir = "../img/uploads/conteudo/home";
     if( !empty($formSubmit) ) {        
         $titulo = ( isset($_POST["txtTitulo"]) )? $_POST["txtTitulo"] : null;
-        $imagemA = ( isset($_FILES["imagemA"]) )? $_FILES["imagemA"] : null;
         
         $listaRequiredInputs = [];
         $listaRequiredInputs[] = $titulo;
@@ -18,14 +16,10 @@
         $listInput = [];
         $listaInput[] = $imagemA;
         
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files( $listaInput ) ) {
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) ) {
             $objHome = new \Tabela\Home();
             
-            $objHome->titulo = $titulo;
-            
-            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosHome->imagemA, $upload_dir ) ) {
-                $objHome->imagemA = $imagemA["name"];
-            }
+            $objHome->titulo = $titulo;            
             
             if( empty($buscaDados[0]) ) {
                 $objHome->inserir();
@@ -67,12 +61,6 @@
                             <div class="box-input-pagina">
                                 <label class="titulo-input">Título</label>
                                 <input type="text" class="input-pagina" name="txtTitulo" value="<?php echo $dadosHome->titulo; ?>" required/>
-                            </div>
-                            <div class="box-conteudo-pagina">
-                                <div class="box-input-imagem">                                    
-                                    <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosHome->imagemA, $upload_dir); ?>)"></span>
-                                    <input class="input" type="file" name="imagemA" />
-                                </div>
                             </div>
                             <div class="box-botao">
                                 <input type="submit" class="preset-input-submit" name="formSubmit" value="Salvar">

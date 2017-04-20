@@ -27,13 +27,14 @@
                         </select>
                     </div>
                     <div id="box-listagem">
+                       <?php for($i = 0; $i < 10; ++$i) { ?>
                         <div class="box-pedido">
                             <div class="wrapper-box-info">
                                 <div class="box-foto-info">
-                                    <div class="box-foto-pedido">
+                                    <div class="box-foto">
                                         <a href="#"><img class="foto-pedido" src="" /></a>
                                     </div>
-                                    <div class="box-info-pedido">
+                                    <div class="box-info">
                                         <p class="valor-diaria">R$XX,XX</p>
                                         <p class="modelo-veiculo">Modelo Veículo</p>
                                         <div class="box-icone-data">
@@ -50,7 +51,7 @@
                                     <div class="info-locador">
                                         <p class="status">Status</p>
                                         <p class="nome-locador">Nome Locador</p>
-                                        <div class="box-avaliacoes">                                            
+                                        <div class="box-avaliacoes">
                                             <div class="container-icone-avaliacoes">
                                                 <div class="icone-avaliacao"></div>
                                                 <div class="icone-avaliacao"></div>
@@ -61,7 +62,55 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>                                                        
+                        </div>
+                        <div class="box-solicitacao">
+                            <div class="wrapper-box-info">
+                                <div class="box-foto-info">
+                                    <div class="box-foto">
+                                        <a href="#"><img class="foto-pedido" src="" /></a>
+                                    </div>
+                                    <div class="box-info">
+                                        <p class="valor-diaria">R$XX,XX</p>
+                                        <p class="modelo-veiculo">Modelo Veículo</p>
+                                        <div class="box-icone-data">
+                                            <img class="icone" src="" />
+                                            <p class="data">XX/XX/XX XX:XX</p>
+                                        </div>
+                                        <div class="box-icone-data">
+                                            <img class="icone" src="" />
+                                            <p class="data">XX/XX/XX XX:XX</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-info-locatario">
+                                    <div class="info-locatario">
+                                        <p class="nome-locatario">Nome Locatario</p>
+                                        <p class="localizacao-locatario">SP, cidade</p>
+                                        <div class="box-avaliacoes">                                            
+                                            <div class="container-icone-avaliacoes">
+                                                <div class="icone-avaliacao"></div>
+                                                <div class="icone-avaliacao"></div>
+                                                <div class="icone-avaliacao"></div>
+                                                <div class="icone-avaliacao"></div>
+                                                <div class="icone-avaliacao"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-acoes">
+                                        <div class="box-botoes">
+                                            <span class="preset-botao botao">Aceitar</span>
+                                            <span class="preset-botao botao">Recusar</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <?php } ?>
+                        <div id="box-paginas">
+                            <span class="preset-botao botao-pagina">Anterior</span>
+                            <p class="numero-paginas">1 - 5</p>                            
+                            <span class="preset-botao botao-pagina">Próxima</span>
                         </div>
                     </div>
                 </div>

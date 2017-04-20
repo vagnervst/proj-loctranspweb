@@ -7,8 +7,12 @@
         <title>Home | City Share</title>
         <meta name="viewport" content="width=device-width" />
         <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="img/icones/logoCityShareIcon.png">
+        <style>
+            .edgeLoad-EDGE-62639122 { visibility:hidden; }
+        </style>
     </head>
     <body>
         <div id="container">
@@ -38,7 +42,9 @@
                             $dadosHome = ( !empty($buscaHome[0]) )? $buscaHome[0] : $dadosHome;
                         ?>
                         <h1 class="titulo-apresentacao"><?php echo $dadosHome->titulo; ?></h1>
-                        <img class="imagem-apresentacao" src="<?php echo File::read($dadosHome->imagemA, "img/uploads/conteudo/home"); ?>" />
+                        <div class="box-animacao">
+                            <div id="Stage" class="EDGE-62639122"></div>
+                        </div>
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo" id="banner2"></div>                
@@ -102,6 +108,7 @@
         </div>
         <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/anim_edgePreload.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
