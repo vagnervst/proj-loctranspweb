@@ -1570,6 +1570,18 @@ header #box-cabecalho #box-conta #botao-logout {
     display: inline-block;
 }
 
+#pag-detalhes-publicacao .box-conteudo .box-publicacao .conteudo-publicacao .info-publicacao {
+    width: 380px;
+    height: 600px;
+    background: #ffffff;
+    margin: 10px 10px;
+}
+
+#pag-detalhes-publicacao .box-conteudo .box-publicacao .conteudo-publicacao .info-publicacao .info {
+    width: 350px;
+    height: 30px;
+    padding: 5px;
+}
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
 
