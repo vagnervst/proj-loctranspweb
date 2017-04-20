@@ -54,6 +54,10 @@
                 
                 return $resultado;
             }
+            public function getDetalhesPublicacao($where = null) {
+                "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, v.id AS idVeiculo, v.nome AS modeloVeiculo,";
+                
+            }
         }
     }
 ?>

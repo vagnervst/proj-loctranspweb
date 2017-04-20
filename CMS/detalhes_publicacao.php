@@ -1,13 +1,18 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_publicacao.php");
+    require_once("../include/classes/tbl_veiculo.php");
     require_once("../include/classes/tbl_acessorio_veiculo.php");
     
     $idUsuario = ( isset($_GET["idUsuario"]) )? $_GET["idUsuario"] : null;
     $idPublicacao = ( isset($_GET["idPublicacao"]) )? $_GET["idPublicacao"] : null;
+    $idVeiculo = ( isset($_GET["idVeiculo"]) )? $_GET["idVeiculo"] : null;
     
     $dadosPublicacao = new \Tabela\Publicacao();
     $dadosUsuario = new \Tabela\Usuario();
+    $dadosAcessorio = new \Tabela\Veiculo();
+    $dadosVeiculo = $dadosAcessorio->getVeiculos("v.id = {$idVeiculo}")[0];
+    $dadosAcessorio = $dadosAcessorio->getAcessorios("v.id = {$idVeiculo}");
     $dadosPublicacao = $dadosPublicacao->getPublicacao("u.id = {$idUsuario} AND p.id = {$idPublicacao}")[0];
     $dadosUsuario  = $dadosUsuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];
 ?>
@@ -69,15 +74,18 @@
                             <div class="container-acessorios">
                                 <p class="subtitulo">Acessórios</p>
                                 <div class="box-acessorios">
-                                    <p>Acessorio A</p>
-                                    <p>Acessorio B</p>
-                                    <p>Acessorio C</p>
+                                    <?php foreach( $dadosAcessorio as $acessorio ) { ?>
+                                    <p><?php echo $acessorio->nome; ?></p>
+                                    <?php }?>
                                 </div>
                             </div>
                         </section>
                         <div class="separacao"></div>
                         <section class="conteudo-publicacao">
                             <p class="subtitulo">Detalhes Específicos do Veículo</p>
+                            <div class="info-publicacao">
+                                <p class="info"><?php echo $dadosVeiculo->combustivel; ?></p>
+                            </div>
                         </section>
                     </div>
                     <div class="lista-pedidos">
