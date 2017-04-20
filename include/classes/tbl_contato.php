@@ -25,6 +25,19 @@
                 $resultado = $this->executarQuery( $query );
                 return $this->get_array_from_resultado( $resultado );
             }
+            public function updateContato ($resposta  , $id){
+                $query = " UPDATE tbl_contato ";
+                $query.= " set resposta  =  '{$resposta}' , " ;
+                $query.= " respondido = 1 ";
+                $query.= " where id  = {$id}" ; 
+                
+                echo $query ;
+                
+                $resultado = $this->executarQuery( $query );
+                return $this->get_array_from_resultado( $resultado );
+                        
+                
+            }
         
         }        
         
