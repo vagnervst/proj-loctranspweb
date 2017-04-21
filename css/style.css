@@ -1002,15 +1002,23 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     .main .imagem-divisao-conteudo {
-        height: 600px;
+        height: 400px;
     }
 }
 
 #pag-home #banner-cityshare {
-    background-image: url(../img/banner_cityshare.jpg);
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+    background-color: black;
+    background-image: none;    
+    overflow: hidden;
+    position: relative;
+}
+
+#pag-home #banner-cityshare video {    
+    display: block;        
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #pag-home #banner1 {
@@ -1482,46 +1490,85 @@ header #box-botao-filtragem {
     }
 }
 
-#pag-home .box-animacao {     
+#pag-home #box-como-funciona {
+    background-color: #141619;
+    width: 100%;    
 }
 
-#pag-home .box-animacao #Stage {
+#pag-home #box-como-funciona .box-conteudo-apresentacao {
+    margin: 0;
+}
+
+#pag-home #box-como-funciona .titulo-apresentacao {
+    width: 300px;
+    color: white;
+    border-bottom: 1px solid #838383;
     margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+#pag-home #container-animacao-como-funciona {        
+    overflow: hidden;
 }
 
 @media (min-width: 420px) {
-    #pag-home .box-animacao {
-        margin-top: 30px;
-        margin-bottom: 10px;
+    #pag-home #container-animacao-como-funciona {
+        height: 230px;
+        padding-top: 30px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-home #container-animacao-como-funciona {
+        height: 250px;
+        padding-top: 50px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-home #container-animacao-como-funciona {
+        height: 270px;
+        padding-top: 70px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-home #container-animacao-como-funciona {
+        height: 310px;
+        padding-top: 110px;
+    }
+}
+
+#pag-home #container-animacao-como-funciona .box-animacao #Stage {
+    margin: 0 auto;
+    border-radius: 5px;    
+}
+
+@media (min-width: 420px) {
+    #pag-home #container-animacao-como-funciona .box-animacao {       
         transform: scale(1.2, 1.2);
     }
 }
 
 @media (min-width: 520px) {
-    #pag-home .box-animacao {
-        margin-top: 50px;
-        margin-bottom: 20px;
+    #pag-home #container-animacao-como-funciona .box-animacao {
         transform: scale(1.4, 1.4);
     }
 }
 
 @media (min-width: 740px) {
-    #pag-home .box-animacao {
-        margin-top: 70px;
-        margin-bottom: 50px;
+    #pag-home #container-animacao-como-funciona .box-animacao {
         transform: scale(1.6, 1.6);
     }
 }
 
 @media (min-width: 1000px) {
-    #pag-home .box-animacao {
-        margin-top: 110px;
-        margin-bottom: 90px;
+    #pag-home #container-animacao-como-funciona .box-animacao {
         transform: scale(2.0, 2.0);
     }
 }
 
-#pag-home .box-animacao .center-wrapper {
+#pag-home #container-animacao-como-funciona .box-animacao .center-wrapper {
     position: relative;
 }
 

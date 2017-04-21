@@ -18,7 +18,9 @@
         <div id="container">
             <?php require_once("layout/header.php"); ?>            
             <div class="main" id="pag-home">
-                <div class="imagem-divisao-conteudo imagem-principal" id="banner-cityshare"></div>
+                <div class="imagem-divisao-conteudo imagem-principal" id="banner-cityshare">
+                    <video src="videos/background_cityshare.mp4" autoplay loop></video>                    
+                </div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao conteudo-horizontal-ltr">
                        <?php 
@@ -34,7 +36,7 @@
                     </section>
                 </div>
                 <div class="imagem-divisao-conteudo" id="banner1"></div>
-                <div class="box-conteudo">
+                <div class="box-conteudo" id="box-como-funciona">
                     <section class="box-conteudo-apresentacao">
                        <?php 
                             $dadosHome = new \Tabela\Home();
@@ -42,8 +44,10 @@
                             $dadosHome = ( !empty($buscaHome[0]) )? $buscaHome[0] : $dadosHome;
                         ?>
                         <h1 class="titulo-apresentacao"><?php echo $dadosHome->titulo; ?></h1>
-                        <div class="box-animacao">
-                            <div id="Stage" class="EDGE-62639122"></div>
+                        <div id="container-animacao-como-funciona">
+                            <div class="box-animacao">
+                                <div id="Stage" class="EDGE-62639122"></div>
+                            </div>
                         </div>
                     </section>
                 </div>
