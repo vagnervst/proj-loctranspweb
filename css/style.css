@@ -52,7 +52,7 @@ a {
 /*------------------------------------------------------------------------- GERAL*/
 
 header {
-    background-color: #202020;    
+    background-color: #141619;    
     width: 100%;
     height: 60px;
     padding: 5px 0px;
@@ -973,7 +973,7 @@ header #box-botao-filtragem {
 /*------------- LOGIN FULLSCREEN*/
 
 .main {
-    background-color: #ebebeb;
+    background-color: #fcfcfc;
     min-height: 400px;
     padding-top: 75px;
     padding-bottom: 10px;  
@@ -1022,11 +1022,12 @@ header #box-botao-filtragem {
 }
 
 #pag-home #banner1 {
-    background-image: url(../img/banner_carro1.jpg);
+    background-image: url(../img/banner_cidade3.jpg);
+    background-attachment: local;
 }
 
 #pag-home #banner2 {
-    background-image: url(../img/banner_cidade1.jpg);
+    background-image: url(../img/banner_moto.jpg);
 }
 
 #pag-home #banner3 {
@@ -1241,7 +1242,7 @@ header #box-botao-filtragem {
 }
 
 .main #container-locadores-destaque {
-    background-color: #515e77;
+    background-color: #fafafa;
     height: 410px;   
     overflow-x: auto;
     padding: 5px;
@@ -1286,7 +1287,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     .main #container-locadores-destaque #horizontal-wrapper {
-        width: 680px; 
+        width: 700px; 
         height: 790px;
         text-align: center;
         margin: 0 auto;
@@ -1295,19 +1296,19 @@ header #box-botao-filtragem {
 
 @media (min-width: 1000px) {
     .main #container-locadores-destaque #horizontal-wrapper {
-        width: 960px; 
+        width: 970px; 
         height: 580px;
     }
 }
 
 .main #container-locadores-destaque .box-locador-destaque {    
-    display: inline-block;
-    background-color: #eaeaea;
+    display: inline-block;    
     width: 240px;
     border-radius: 0px 0px 5px 5px;
     margin: 0 3px;
     padding: 5px;    
     color: #202020;
+    border: 1px solid #dcdcdc;
     transition: background-color .2s;
 }
 
@@ -1332,8 +1333,8 @@ header #box-botao-filtragem {
     
     #pag-home #container-locadores-destaque .box-locador-destaque .box-effect {
         position: absolute;
-        height: 160px;
-        width: 180px;
+        height: 130px;
+        width: 150px;
         overflow: hidden;
     } 
     
@@ -1345,6 +1346,16 @@ header #box-botao-filtragem {
         height: 160px;                        
         transform: skewX(-10deg);
     }
+}
+
+@media (min-width: 1000px) {    
+    
+    #pag-home #container-locadores-destaque .box-locador-destaque .box-effect {
+        position: absolute;
+        height: 160px;
+        width: 180px;
+        overflow: hidden;
+    } 
 }
 
 .main #container-locadores-destaque .box-locador-destaque .foto-locador {
@@ -4222,6 +4233,65 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-empreste #banner1 {
+    background-image: url(../img/banner_financas.jpg);
+    background-attachment: local;
+}
+
+#pag-empreste #banner2 {
+    background-image: url(../img/banner_cadastrex400.jpg);
+    background-attachment: local;
+}
+
+@media (min-width: 740px) {
+    #pag-empreste #banner2 {
+        background-image: url(../img/banner_cadastre.jpg);
+        background-attachment: local;
+    }   
+}
+
+#pag-empreste #box-animacao {
+    background-color: #141619;
+    width: 100%;
+}
+
+#pag-empreste #box-animacao .box-conteudo-apresentacao {
+    margin: 0px;
+}
+
+#pag-empreste #box-animacao .box-conteudo-apresentacao .titulo-apresentacao {
+    color: white;
+}
+
+#pag-empreste #box-animacao .box-conteudo-apresentacao #container-animacao {
+    overflow: hidden;
+}
+
+#pag-empreste #box-animacao .box-conteudo-apresentacao #container-animacao #box-animacao-como-funciona #Stage {
+    margin: 0 auto;
+}
+
+@media (min-width: 420px) {
+    #pag-empreste #box-animacao .box-conteudo-apresentacao #container-animacao #box-animacao-como-funciona {
+        transform: scale(1.4, 1.4);
+        margin: 40px 0px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-empreste #box-animacao .box-conteudo-apresentacao #container-animacao #box-animacao-como-funciona {
+        transform: scale(1.5, 1.5);
+        margin: 45px 0px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-empreste #box-animacao .box-conteudo-apresentacao #container-animacao #box-animacao-como-funciona {
+        transform: scale(1.7, 1.7);
+        margin: 65px 0px;
+    }
+}
+
 /*------------- EMPRESTE*/
 
 #pag-solicitacoes #container-modo-visualizacao {
@@ -4728,7 +4798,7 @@ header #box-botao-filtragem {
 footer {
     background-color: #141619;
     background-image: url(../img/assets/textura_footer.jpg);
-    background-size: contain;    
+    background-size: cover;
     width: 100%;
     height: auto;
     padding: 10px 0px;

@@ -19,7 +19,7 @@
             <?php require_once("layout/header.php"); ?>            
             <div class="main" id="pag-home">
                 <div class="imagem-divisao-conteudo imagem-principal" id="banner-cityshare">
-                    <video src="videos/background_cityshare.mp4" autoplay loop></video>                    
+                    <video src="videos/background_cityshare2543x400.mp4" autoplay loop></video>                    
                 </div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao conteudo-horizontal-ltr">
@@ -112,7 +112,7 @@
         </div>
         <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
-        <script src="js/anim_edgePreload.js"></script>
+        <script src="js/anim_edgePreload_locacao.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
