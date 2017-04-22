@@ -52,8 +52,8 @@ if(document.addEventListener ){
    aLoader = [
       { load: "js/libs/jquery-2.0.3.min.js"},
       { load: "js/libs/edge.4.0.0.min.js"},
-      { load: "js/anim_edge.js"},
-      { load: "js/anim_edgeActions.js"}];
+      { load: "js/anim_edge_locacao.js"},
+      { load: "js/anim_edgeActions_locacao.js"}];
 
 if (AdobeEdge.bootstrapLoading) { signaledLoading = true; AdobeEdge.loadResources=doLoadResources; AdobeEdge.playWhenReady=playWhenReady; }
 

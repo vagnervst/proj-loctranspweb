@@ -16,31 +16,38 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="img/icones/logoCityShareIcon.png">
+        <style>
+            .edgeLoad-EDGE-135255358 { visibility:hidden; }
+        </style>
     </head>
     <body>
         <div id="container">
             <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-empreste">
-                <div class="imagem-divisao-conteudo imagem-principal"></div>
+                <div class="imagem-divisao-conteudo imagem-principal" id="banner1"></div>
                 <div class="box-conteudo">
                     <section class="box-conteudo-apresentacao">
                         <h1 class="titulo-apresentacao"><?php echo $dadosEmpreste->titulo; ?></h1>                        
                         <p class="texto-apresentacao"><?php echo $dadosEmpreste->descricao; ?></p>                        
                     </section>
                 </div>
-                <div class="imagem-divisao-conteudo"></div>
-                <div class="box-conteudo">
+                <div class="imagem-divisao-conteudo" id="banner2"></div>
+                <div class="box-conteudo" id="box-animacao">
                     <section class="box-conteudo-apresentacao">
                         <h1 class="titulo-apresentacao"><?php echo $dadosEmpreste->tituloA; ?></h1>
-                        <img class="imagem-apresentacao" src="<?php echo File::read($dadosEmpreste->imagemA, $pasta_imagens); ?>" />
+                        <div id="container-animacao">
+                            <div id="box-animacao-como-funciona">
+                                <div id="Stage" class="EDGE-135255358"></div>    
+                            </div>
+                        </div>
                     </section>
-                </div>
-                <div class="imagem-divisao-conteudo"></div>
+                </div>                
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>
         <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/anim_edgePreload_publicacao.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>

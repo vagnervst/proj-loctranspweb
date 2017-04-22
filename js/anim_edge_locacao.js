@@ -3,7 +3,7 @@
  */
 (function($, Edge, compId){
 //images folder
-var im='img/animacao_como_funciona/';
+var im='img/animacao_edge/';
 
 var fonts = {};
 var opts = {
