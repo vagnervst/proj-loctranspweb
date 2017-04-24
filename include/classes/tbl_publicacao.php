@@ -55,7 +55,7 @@
                 return $resultado;
             }
             public function getDetalhesPublicacao($where = null) {
-                $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, ";
+                $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, v.codigo, v.tipoMotor, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
