@@ -9,12 +9,9 @@
     $idVeiculo = ( isset($_GET["idVeiculo"]) )? $_GET["idVeiculo"] : null;
     
     $dadosPublicacao = new \Tabela\Publicacao();
-    $dadosUsuario = new \Tabela\Usuario();
     $dadosAcessorio = new \Tabela\Veiculo();
-    $dadosVeiculo = $dadosAcessorio->getVeiculos("v.id = {$idVeiculo}")[0];
     $dadosAcessorio = $dadosAcessorio->getAcessorios("v.id = {$idVeiculo}");
-    $dadosPublicacao = $dadosPublicacao->getPublicacao("u.id = {$idUsuario} AND p.id = {$idPublicacao}")[0];
-    $dadosUsuario  = $dadosUsuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];
+    $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao("u.id = {$idUsuario} AND p.id = {$idPublicacao} AND v.id = {$idVeiculo}")[0];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,7 +37,7 @@
                     <a class="preset-botao" id="botao-voltar" href="info_usuario.php?id=<?php echo $idUsuario ?>">←</a>
                     <div class="info-usuario">
                         <span class="dados-usuario">Nome: <?php echo $dadosPublicacao->nomeLocador; ?></span>
-                        <span class="dados-usuario">Localidade: <?php echo $dadosUsuario->estado . ", " . $dadosUsuario->cidade; ?></span>
+                        <span class="dados-usuario">Localidade: <?php echo $dadosPublicacao->estado . ", " . $dadosPublicacao->cidade; ?></span>
                         <div class="container-icone-avaliacoes">
                             <p class="titulo">Avaliação:</p>
                             <div class="icone-avaliacao"></div>
@@ -84,7 +81,10 @@
                         <section class="conteudo-publicacao">
                             <p class="subtitulo">Detalhes Específicos do Veículo</p>
                             <div class="info-publicacao">
-                                <p class="info"><?php echo $dadosVeiculo->combustivel; ?></p>
+                                <p class="info">Tipo de Combustível: <?php echo $dadosPublicacao->combustivel; ?></p>
+                                <p class="info">Tipo de Transmissão: <?php echo $dadosPublicacao->transmissao; ?></p>
+                                <p class="info">Fabricante: <?php echo $dadosPublicacao->fabricante; ?></p>
+                                <p class="info">Quantidade de portas: <?php echo $dadosPublicacao->qtdPortas; ?></p>
                             </div>
                         </section>
                     </div>
