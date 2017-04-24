@@ -53,7 +53,7 @@
                 </div>
                 <div class="js-popup-painel" id="box-menu-usuario">
                     <ul id="menu-usuario">
-                        <li><a href="#">Perfil</a></li>
+                        <li><a href="perfil.php">Perfil</a></li>
                         <li><a href="#">Configurações</a></li>
                         <li><a href="#">Sair</a></li>
                     </ul>

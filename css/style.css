@@ -3988,6 +3988,16 @@ header #box-botao-filtragem {
     text-align: right;
 }
 
+#pag-perfil-usuario .box-conteudo .botao-ver-mais {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    background-image: url("../img/icones/ver-mais.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
 /*------------- PERFIL USUARIO*/
 
 #pag-publicar .box-conteudo #container-imagens-veiculo {
