@@ -17,10 +17,10 @@
            <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-clientes">
+            <div class="CMS_main" id="pag-publicacao-detalhes">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a> ><a href="publicacao_detalhe.php" class="link-caminho"> Detalhes da Publicação</a>
                 </div>
                 <div class="box-publicacao">
                     <div id="nome-publicacao" class="boxes-publicacao">

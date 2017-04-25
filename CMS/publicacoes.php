@@ -1,6 +1,7 @@
 <?php
     require_once("../include/initialize.php");
-    require_once("../include/classes/sessao.php");    
+    require_once("../include/classes/sessao.php");
+    require_once("../include/classes/tbl_publicacao.php");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,10 +18,10 @@
            <?php
                 include("layout/header.php");
             ?>
-            <div class="CMS_main" id="pag-clientes">
+            <div class="CMS_main" id="pag-publicacao">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="CMS_clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a>
+                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a>
                 </div>
                 <a href="publicacao_detalhe.php">
                     <div class="box-publicacao-preview">
