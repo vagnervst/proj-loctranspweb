@@ -3,7 +3,7 @@
         class Database {                
             private $servidor = "localhost";
             private $usuario = "root";
-            private $senha = "root";
+            private $senha = "bcd127";
             private $banco = "dbcityshare";
             public $conexao;
 
@@ -16,8 +16,9 @@
             }
 
             private function conectar() {                
-                $this->conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->banco);
-                mysqli_set_charset($this->conexao, "utf-8");
+                $this->conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->banco);                
+                
+                mysqli_set_charset($this->conexao, "utf-8");                                                    
             }
 
             public function desconectar() {                

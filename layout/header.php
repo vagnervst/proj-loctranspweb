@@ -48,14 +48,14 @@
                     <img src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>" />
                 </div>
                 <div id="box-info-usuario">
-                    <p id="nome-usuario"><?php echo $usuario->nome . " " . substr($usuario->sobrenome, 0, 1); ?></p>
-                    <a id="botao-logout" href="logout_action.php">Sair</a>
+                    <p id="nome-usuario"><?php echo $usuario->nome . " " . substr($usuario->sobrenome, 0, 1); ?></p>                    
                 </div>
                 <div class="js-popup-painel" id="box-menu-usuario">
                     <ul id="menu-usuario">
-                        <li><a href="#">Perfil</a></li>
+                        <li><a href="perfil.php">Perfil</a></li>
+                        <li><a href="solicitacoes.php?user=<?php echo $idUsuario; ?>">Solicitações</a></li>
                         <li><a href="#">Configurações</a></li>
-                        <li><a href="#">Sair</a></li>
+                        <li><a href="logout_action.php">Sair</a></li>
                     </ul>
                 </div>
                 <!-- MENU DE USUÁRIO -->

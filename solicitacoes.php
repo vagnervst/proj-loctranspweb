@@ -16,8 +16,8 @@
             <div class="main" id="pag-solicitacoes">
                 <div id="container-modo-visualizacao">
                     <div id="box-botoes">
-                        <span class="preset-botao botao">Pedidos</span>
-                        <span class="preset-botao botao">Solicitações</span>
+                        <span class="preset-botao botao" id="btnPedidos">Pedidos</span>
+                        <span class="preset-botao botao" id="btnSolicitacoes">Solicitações</span>
                     </div>
                 </div>
                 <div class="box-conteudo">
@@ -26,99 +26,43 @@
                             <option selected disabled>Filtrar</option>
                         </select>
                     </div>
-                    <div id="box-listagem">
-                       <?php for($i = 0; $i < 10; ++$i) { ?>
-                        <div class="box-pedido">
-                            <div class="wrapper-box-info">
-                                <div class="box-foto-info">
-                                    <div class="box-foto">
-                                        <a href="#"><img class="foto-pedido" src="" /></a>
-                                    </div>
-                                    <div class="box-info">
-                                        <p class="valor-diaria">R$XX,XX</p>
-                                        <p class="modelo-veiculo">Modelo Veículo</p>
-                                        <div class="box-icone-data">
-                                            <img class="icone" src="" />
-                                            <p class="data">XX/XX/XX XX:XX</p>
-                                        </div>
-                                        <div class="box-icone-data">
-                                            <img class="icone" src="" />
-                                            <p class="data">XX/XX/XX XX:XX</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-info-locador">
-                                    <div class="info-locador">
-                                        <p class="status">Status</p>
-                                        <p class="nome-locador">Nome Locador</p>
-                                        <div class="box-avaliacoes">
-                                            <div class="container-icone-avaliacoes">
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                                                        
-                        </div>
-                        <div class="box-solicitacao">
-                            <div class="wrapper-box-info">
-                                <div class="box-foto-info">
-                                    <div class="box-foto">
-                                        <a href="#"><img class="foto-pedido" src="" /></a>
-                                    </div>
-                                    <div class="box-info">
-                                        <p class="valor-diaria">R$XX,XX</p>
-                                        <p class="modelo-veiculo">Modelo Veículo</p>
-                                        <div class="box-icone-data">
-                                            <img class="icone" src="" />
-                                            <p class="data">XX/XX/XX XX:XX</p>
-                                        </div>
-                                        <div class="box-icone-data">
-                                            <img class="icone" src="" />
-                                            <p class="data">XX/XX/XX XX:XX</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-info-locatario">
-                                    <div class="info-locatario">
-                                        <p class="nome-locatario">Nome Locatario</p>
-                                        <p class="localizacao-locatario">SP, cidade</p>
-                                        <div class="box-avaliacoes">                                            
-                                            <div class="container-icone-avaliacoes">
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                                <div class="icone-avaliacao"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-acoes">
-                                        <div class="box-botoes">
-                                            <span class="preset-botao botao">Aceitar</span>
-                                            <span class="preset-botao botao">Recusar</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <?php } ?>
-                        <div id="box-paginas">
-                            <span class="preset-botao botao-pagina">Anterior</span>
-                            <p class="numero-paginas">1 - 5</p>                            
-                            <span class="preset-botao botao-pagina">Próxima</span>
-                        </div>
-                    </div>
+                    <div id="box-listagem"></div>
+                    <span id="botao-exibir-mais" class="js-load-pedidos"></span>
                 </div>
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>
         <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/classes/Ajax.js"></script>
+        <script>
+                var box_listagem = $("#box-listagem")[0];
+                                
+                var dados = new FormData();
+                
+                var idUsuario = window.location.search;
+                idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length );
+                dados.append("idUsuario", idUsuario);                
+                
+                var imagem_carregamento = document.createElement("img");
+                imagem_carregamento.src = "img/loading_cityshare_black.gif";
+                imagem_carregamento.style.display = "block";
+                imagem_carregamento.style.margin = "0 auto";
+                box_listagem.appendChild( imagem_carregamento );
+                
+                var ajax = new Ajax();            
+                ajax.transferir_dados_para_api("apis/listagem_pedidos.php", "POST", dados, function(resultado) {
+                    box_listagem.innerHTML = resultado;
+                                        
+                    var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+                    
+                    if( resultado.length === 0 ) {
+                        botao_carregar_mais_pedidos.style.display = "none";
+                    } else {
+                        botao_carregar_mais_pedidos.style.display = "block";
+                    }
+                });
+        </script>
         <script src="js/script.js"></script>
     </body>
 </html>

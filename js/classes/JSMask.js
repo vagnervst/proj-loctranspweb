@@ -60,10 +60,9 @@ function JSMask() {
     }
     
     this.unformat_entrada = function( entrada, mascara_formatacao ) {
-        entrada = entrada.split('');        
+        entrada = entrada.split('');                
         
-        for( var i = 0; i < entrada.length; ++i ) {
-            console.log( mascara_formatacao[i] );
+        for( var i = 0; i < mascara_formatacao.length; ++i ) {            
             
             if( mascara_formatacao[i].indexOf( this.indicador_caractere_formatacao ) !== -1 ) {                
                 var caractere_fixo = mascara_formatacao[i][1];
@@ -93,8 +92,7 @@ function JSMask() {
         return false;
     }
     
-    this.formatar_entrada = function( entrada, mascara_formatacao ) {
-        console.log( mascara_formatacao );
+    this.formatar_entrada = function( entrada, mascara_formatacao ) {        
         var entrada_formatada = entrada.split('');
         
         for( var i = 0; i < entrada_formatada.length; ++i ) {
@@ -109,15 +107,17 @@ function JSMask() {
         }
         
         entrada_formatada = entrada_formatada.join('');
-        console.log( entrada_formatada );
-        //entrada_formatada = entrada_formatada.replace(',', '');
+        
+        entrada_formatada = entrada_formatada.replace(',', '');
         return entrada_formatada;
     }
     
     this.processar_entrada = function( entrada, caractere_pressionado, mascara ) {                
         mascara_entrada = this.preparar_mascara_entrada( mascara );
         var indice_a_inserir = this.capturar_indice_caractere_pressionado( this.unformat_entrada(entrada, this.preparar_mascara_formatacao(mascara)) );
-                
+        
+        if( indice_a_inserir >= mascara_entrada.length-1 ) return false;
+        
         return this.verificar_compatibilidade_entrada( caractere_pressionado, mascara_entrada, indice_a_inserir );
     }
     
@@ -156,8 +156,7 @@ function JSMask() {
     };   
 }
 
-$(document).ready(function() {
-    
+$(document).ready(function() {    
     var jsMask = new JSMask();
     jsMask.aplicar_mascara();
     

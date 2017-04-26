@@ -705,16 +705,21 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/gerar_pedido.php", "POST", dados_api, function(resultado) {
-                    console.log(resultado);
+                    
                 });
             }
             
             var modalAtual = $(botao).parents(".modal")[0];
             var containerModals = $("#container-modals")[0];
+                        
+            if( modalAlvo === undefined ) {                
+                ocultarModais( $(containerModals).find(".modal") );
+            } else {
+                $(containerModals).css("display", "block");    
+            }
             
-            $(modalAtual).css("display", "none");
-            $(containerModals).css("display", "block");
-            $(modalAlvo).css("display", "block");
+            $(modalAtual).css("display", "none");            
+            $(modalAlvo).css("display", "block");                        
         });
     }
     
@@ -726,17 +731,17 @@ $(document).ready(function() {
         return classeModal;
     }
     
-    function ocultarModais(listaModais) {
+    function ocultarModais(listaModais) {        
         for( var i = 0; i < listaModais.length; ++i ) {
             $(listaModais).css("display", "none");
-            var containerModals = $("#container-modals")[0];
+            var containerModals = $("#container-modals")[0];            
             $(containerModals).css("display", "none");
         }
     }
     
     function inicializarModaisLocacao() {
-        var pagVeiculo = $("#pag-detalhes-veiculo")[0];
-                
+        var pagVeiculo = $("#pag-detalhes-veiculo")[0];        
+        
         if( pagVeiculo !== undefined ) {
             
             var containerModals = $("#container-modals")[0];
@@ -865,6 +870,376 @@ $(document).ready(function() {
         definirAcaoDataLocacao( data_devolucao, hora_devolucao );
     }
     
+    function inicializarModaisPedido() {
+        var detalhesPedido = $("#pag-pedido")[0];
+        
+        if( detalhesPedido !== undefined ) {
+            var botao_local_retirada = $("#botao-local-retirada")[0];
+            var botao_solicitar_retirada = $("#botao-solicitar-retirada")[0];
+            var botao_visualizar_pendencias = $("#botao-visualizar-pendencias")[0];
+            var botao_cancelar_locacao = $("#botao-cancelar-locacao")[0];
+            
+            var containerModals = $("#container-modals")[0];
+            var modals = $(containerModals).children(".modal");
+            
+            var modal_local_retirada = $(containerModals).find( "." + getClasseModal(botao_local_retirada) )[0];
+            var modal_solicitar_retirada = $(containerModals).find( "." + getClasseModal(botao_solicitar_retirada) )[0];
+            var modal_visualizar_pendencias = $(containerModals).find( "." + getClasseModal(botao_visualizar_pendencias) )[0];
+            var modal_cancelar_locacao = $(containerModals).find( "." + getClasseModal(botao_cancelar_locacao) )[0];
+            
+            definirBotaoModal(botao_local_retirada, modal_local_retirada);
+            definirBotaoModal(botao_solicitar_retirada, modal_solicitar_retirada);
+            definirBotaoModal(botao_visualizar_pendencias, modal_visualizar_pendencias);
+            definirBotaoModal(botao_cancelar_locacao, modal_cancelar_locacao);
+            
+            $(".modal .botao-fechar").click(function(e) {
+                ocultarModais( modals );
+            });
+            
+            for( var i = 0; i < modals.length; ++i ) {
+                var botoesTransferencia = $(modals[i]).find(".btn-avancar");
+                
+                for( var x = 0; x < botoesTransferencia.length; ++x ) {
+                    var modalAlvo = $(containerModals).children( "." + getClasseModal(botoesTransferencia[x]) )[0];
+                    definirBotaoModal(botoesTransferencia[x], modalAlvo);                                        
+                }
+
+            }
+            
+            $(containerModals).click(function(e) {                
+                if( $(e.target).parents(".modal")[0] !== undefined || $(e.target).hasClass("modal")) return;                
+                
+                ocultarModais(modals);
+            });                        
+        }
+    }
+    
+    function ocultarSessoesPedido() {
+        var box_detalhes = $("#container-info-pedido")[0];
+        var box_acoes = $("#container-acoes-pedido")[0];
+        var box_historico = $("#container-historico-pedido")[0];
+        
+        $(box_detalhes).css("display", "none");
+        $(box_acoes).css("display", "none");
+        $(box_historico).css("display", "none");
+    }
+    
+    function inicializarBotoesSessaoPedido() {
+        
+        var pagPedido = $("#pag-pedido")[0];
+        
+        if( pagPedido !== undefined ) {
+            var botao_detalhes = $( "#botao-detalhes" )[0];
+            var botao_acoes = $( "#botao-acoes" )[0];
+            var botao_historico = $( "#botao-historico" )[0];
+            
+            $( botao_detalhes ).click(function(e) {                
+                var box_detalhes = $("#container-info-pedido")[0];
+                ocultarSessoesPedido();
+                
+                $(box_detalhes).css("display", "block");
+            });
+            
+            $( botao_acoes ).click(function(e) {                
+                var box_acoes = $("#container-acoes-pedido")[0];
+                ocultarSessoesPedido();
+                
+                $(box_acoes).css("display", "block");
+            });
+            
+            $( botao_historico ).click(function(e) {                
+                var box_historico = $("#container-historico-pedido")[0];
+                ocultarSessoesPedido();
+                
+                $(box_historico).css("display", "block");
+            });
+            
+        }        
+    }        
+    
+    function carregarListaPedidos(pagina_alvo, increment = false) {
+        var box_listagem = $("#box-listagem")[0];        
+        var conteudo_listagem = box_listagem.innerHTML;
+        
+        var imagem_carregamento = document.createElement("img");
+        imagem_carregamento.src = "img/loading_cityshare_black.gif";
+        imagem_carregamento.style.display = "block";
+        imagem_carregamento.style.margin = "0 auto";
+        
+        if( !increment ) {
+            box_listagem.innerHTML = "";
+        }
+        
+        box_listagem.appendChild( imagem_carregamento );
+        
+        var dados = new FormData();
+
+        var idUsuario = window.location.search;
+        idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length );                
+
+        dados.append("idUsuario", idUsuario);
+        dados.append("paginaAtual", pagina_alvo);                
+        
+        var ajax = new Ajax();        
+        ajax.transferir_dados_para_api("apis/listagem_pedidos.php", "POST", dados, function(resultado) {
+            
+            if( increment ) {
+                box_listagem.innerHTML = conteudo_listagem + resultado;                
+            } else {
+                box_listagem.innerHTML = resultado;
+            }
+            
+            var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+            
+            if( resultado.length === 0 ) {
+                botao_carregar_mais_pedidos.style.display = "none";
+            } else {
+                botao_carregar_mais_pedidos.style.display = "block";    
+            }
+            
+        });
+    }
+    
+    var lista_json_solicitacoes = [];
+    function carregarListaSolicitacoes(pagina_alvo, increment = false) {
+        var box_listagem = $("#box-listagem")[0];        
+        var conteudo_listagem = box_listagem.innerHTML;
+        
+        var imagem_carregamento = document.createElement("img");
+        imagem_carregamento.src = "img/loading_cityshare_black.gif";
+        imagem_carregamento.style.display = "block";
+        imagem_carregamento.style.margin = "0 auto";
+        
+        if( !increment ) {
+            box_listagem.innerHTML = "";
+        }
+        
+        box_listagem.appendChild( imagem_carregamento );
+        
+        var dados = new FormData();
+
+        var idUsuario = window.location.search;
+        idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length );                
+
+        dados.append("idUsuario", idUsuario);
+        dados.append("paginaAtual", pagina_alvo);                
+        
+        var ajax = new Ajax();        
+        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {            
+            lista_json_solicitacoes = JSON.parse(resultado);            
+            
+            if( increment ) {
+                box_listagem.innerHTML = conteudo_listagem + criarListaSolicitacoes(lista_json_solicitacoes);                
+            } else {
+                box_listagem.innerHTML = criarListaSolicitacoes(lista_json_solicitacoes);
+            }
+            
+            var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+            
+            if( lista_json_solicitacoes.length === 0 ) {
+                botao_carregar_mais_pedidos.style.display = "none";
+            } else {
+                botao_carregar_mais_pedidos.style.display = "block";    
+            }
+            
+        });
+    }
+        
+    function criarListaSolicitacoes(lista_json) {
+        var html = "";
+        for( var i = 0; i < lista_json.length; ++i ) {
+            var solicitacao = lista_json[i];
+            
+            if( solicitacao.idStatusPedido != 1 ) {
+                html += '<div class="box-solicitacao aceito">';
+            } else {
+                html += '<div class="box-solicitacao">';    
+            }
+                        
+            html += '<div class="wrapper-box-info">';
+            html += '<div class="box-foto-info">';
+            html += '<div class="box-foto">';
+            html += '<a href="#"><img class="foto-pedido" src="" /></a>';
+            html += '</div>';
+            html += '<div class="box-info">';
+            html += '<p class="valor-diaria">Total: R$' + solicitacao.valorTotal.toString().replace(".", ",") + '</p>';
+            html += '<p class="modelo-veiculo">' + solicitacao.veiculo + '</p>';
+            html += '<div class="box-icone-data">';
+            html += '<span class="icone retirada"></span>';
+            html += '<p class="data">' + solicitacao.dataRetirada + '</p>';
+            html += '</div>';
+            html += '<div class="box-icone-data">';
+            html += '<span class="icone entrega"></span>';
+            html += '<p class="data">' + solicitacao.dataEntrega + '</p>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';                        
+            html += '<div class="box-info-locatario">';            
+            html += '<div class="info-locatario">';
+            
+            if( solicitacao.idStatusPedido != 1 ) {
+                html += '<p class="status">' + solicitacao.statusPedido + '</p>';
+            }
+            
+            html += '<p class="nome-locatario">' + solicitacao.nomeLocatario + ' ' + solicitacao.sobrenomeLocatario[0] + '</p>';
+            html += '<p class="localizacao-locatario">' + solicitacao.estadoLocatario + ', ' + solicitacao.cidadeLocatario + '</p>';
+            
+            if( solicitacao.idStatusPedido == 1 ) {
+                html += '<div class="box-avaliacoes">';
+                html += '<div class="container-icone-avaliacoes">';
+                html += '<div class="icone-avaliacao"></div>';
+                html += '<div class="icone-avaliacao"></div>';
+                html += '<div class="icone-avaliacao"></div>';
+                html += '<div class="icone-avaliacao"></div>';
+                html += '<div class="icone-avaliacao"></div>';
+                html += '</div>';
+                html += '</div>';
+            }
+            
+            html += '</div>';            
+                        
+            if( solicitacao.idStatusPedido == 1 ) {
+                html += '<div class="box-acoes">';
+                html += '<div class="box-botoes">';
+                html += '<span class="preset-botao botao js-btn-aceitar">Aceitar</span>';
+                html += '<span class="preset-botao botao js-btn-recusar">Recusar</span>';
+                html += '</div>';
+                html += '</div>';
+            }
+                        
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+        }
+        
+        return html;
+    }
+    
+    var paginaAtual = 1;
+    function inicializarBotoesSessaoSolicitacoesEPedidos() {
+        var pagSolicitacoesPedidos = $("#pag-solicitacoes")[0];
+        
+        if( pagSolicitacoesPedidos !== undefined ) {
+            var botaoPedidos = $("#btnPedidos")[0];
+            var botaoSolicitacoes = $("#btnSolicitacoes")[0];
+                                                                                    
+            $( botaoPedidos ).click( function(e) {
+                paginaAtual = 1;
+                
+                var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+                botao_carregar_mais_pedidos.className = "js-load-pedidos";
+                botao_carregar_mais_pedidos.style.display = "none";
+                
+                carregarListaPedidos(paginaAtual);
+            });
+            
+            $(document).on("click", ".js-load-pedidos", function(e) {
+                ++paginaAtual;  
+                
+                carregarListaPedidos(paginaAtual, true);
+                var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+                botao_carregar_mais_pedidos.style.display = "none";
+            });
+            
+            $( botaoSolicitacoes ).click( function(e) {
+                paginaAtual = 1;
+                
+                var botao_carregar_mais_solicitacoes = $("#botao-exibir-mais")[0];
+                botao_carregar_mais_solicitacoes.className = "js-load-solicitacoes";
+                botao_carregar_mais_solicitacoes.style.display = "none";
+                
+                
+                carregarListaSolicitacoes(paginaAtual);
+            });
+            
+            $(document).on("click", ".js-load-solicitacoes", function(e) {
+                ++paginaAtual;  
+                
+                carregarListaSolicitacoes(paginaAtual, true);
+                var botao_carregar_mais_solicitacoes = $("#botao-exibir-mais")[0];
+                botao_carregar_mais_solicitacoes.style.display = "none";
+            });
+            
+            inicializarBotoesControleSolicitacao();
+        }
+    }
+    
+    function inicializarBotoesControleSolicitacao() {
+        var pagSolicitacoesPedidos = $("#pag-solicitacoes")[0];
+        
+        if( pagSolicitacoesPedidos !== undefined ) {
+            $(document).on("click", ".js-btn-recusar", function(e) {
+                var box_solicitacao_selecionada = $(this).parents(".box-solicitacao")[0];
+                
+                var box_listagem = $("#box-listagem")[0];
+                var lista_solicitacoes = box_listagem.childNodes;
+                
+                var indice_solicitacao_selecionada = $(lista_solicitacoes).index(box_solicitacao_selecionada);
+                
+                var solicitacao_selecionada = lista_json_solicitacoes[indice_solicitacao_selecionada];
+                                                
+                var dados = new FormData();
+                dados.append("idSolicitacao", solicitacao_selecionada.id);
+                dados.append("modo", "recusar");
+                
+                var ajax = new Ajax();
+                
+                var imagem_carregamento = document.createElement("img");
+                imagem_carregamento.src = "img/loading_cityshare_black.gif";
+                imagem_carregamento.style.display = "block";
+                imagem_carregamento.style.margin = "0 auto";
+                
+                box_solicitacao_selecionada.innerHTML = "";                
+                box_solicitacao_selecionada.appendChild( imagem_carregamento );
+                
+                ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                     
+                    lista_json_solicitacoes.splice(indice_solicitacao_selecionada, 1);
+                    
+                    box_listagem.removeChild( box_solicitacao_selecionada );
+                    
+                    if( lista_json_solicitacoes.length === 0 ) {
+                        var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+                        botao_carregar_mais_pedidos.style.display = "none";
+                    }
+                });
+            });
+            
+            $(document).on("click", ".js-btn-aceitar", function(e) {
+                var box_solicitacao_selecionada = $(this).parents(".box-solicitacao")[0];
+                
+                var box_listagem = $("#box-listagem")[0];
+                var lista_solicitacoes = box_listagem.childNodes;
+                
+                var indice_solicitacao_selecionada = $(lista_solicitacoes).index(box_solicitacao_selecionada);
+                                
+                var solicitacao_selecionada = lista_json_solicitacoes[indice_solicitacao_selecionada];
+                                            
+                var dados = new FormData();
+                dados.append("idSolicitacao", solicitacao_selecionada.id);
+                dados.append("modo", "aceitar");
+                
+                var ajax = new Ajax();
+                
+                var imagem_carregamento = document.createElement("img");
+                imagem_carregamento.src = "img/loading_cityshare_black.gif";
+                imagem_carregamento.style.display = "block";
+                imagem_carregamento.style.margin = "0 auto";
+                
+                box_listagem.innerHTML = "";
+                box_listagem.appendChild( imagem_carregamento );
+                
+                ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                     
+                    carregarListaSolicitacoes( paginaAtual );
+                    
+                    if( lista_json_solicitacoes.length === 0 ) {
+                        var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+                        botao_carregar_mais_pedidos.style.display = "none";
+                    }
+                });
+            });
+        }
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
         
         inicializarPreenchimentoDatasLocacao();
@@ -873,6 +1248,9 @@ $(document).ready(function() {
         inicializarEtapasCadastro();
         inicializarSlide();
         inicializarSelecionadorImagensVeiculo();
+        inicializarModaisPedido();
+        inicializarBotoesSessaoPedido();
+        inicializarBotoesSessaoSolicitacoesEPedidos();
         
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
         
@@ -884,6 +1262,9 @@ $(document).ready(function() {
         inicializarEtapasCadastro();
         inicializarSlide();
         inicializarSelecionadorImagensVeiculo();
+        inicializarModaisPedido();
+        inicializarBotoesSessaoSolicitacoesEPedidos();
+        
     }
     
     $('.faq').click(function (){
