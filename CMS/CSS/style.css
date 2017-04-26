@@ -1309,7 +1309,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-info-usuarios .container-botoes-usuario {
-    width: 820px;
+    width: 800px;
     height: 40px;
     background-color: #a1aec9;
     padding-top: 5px;
@@ -1368,7 +1368,6 @@ header #box-cabecalho #box-conta #botao-logout {
     background-color: #a1aec9;
     margin: 20px 25px;
     float: left;
-    padding: 5px;
 }
 
 #pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao img {
@@ -1384,24 +1383,10 @@ header #box-cabecalho #box-conta #botao-logout {
     text-align: center;
 }
 
-#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao .status-detalhes {
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao .status-publicacao {
     width: 100%;
-}
-
-#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao .status-detalhes .status-publicacao {
-    width: 190px;
     text-align: center;
-    float: left;
 }
-
-#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-publicacao .status-detalhes .preset-botao {
-    width: 25px;
-    height: 20px;
-    float: left;
-    font-size: 20px;
-    border-radius: 15px;
-}
-
 
 #pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .titulo-pedidos {
     margin: 10px 20px;
@@ -1570,6 +1555,18 @@ header #box-cabecalho #box-conta #botao-logout {
     display: inline-block;
 }
 
+#pag-detalhes-publicacao .box-conteudo .box-publicacao .conteudo-publicacao .info-publicacao {
+    width: 380px;
+    height: 600px;
+    background: #ffffff;
+    margin: 10px 10px;
+}
+
+#pag-detalhes-publicacao .box-conteudo .box-publicacao .conteudo-publicacao .info-publicacao .info {
+    width: 350px;
+    height: 30px;
+    padding: 5px;
+}
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
 
@@ -2150,4 +2147,120 @@ footer #box-rodape #box-logo-rodape img {
     width: 1080px;
     height: 100%;
     background-color: #ebebeb;
+}
+/****************PÁG.PUBLICAÇÕES*****************/
+#pag-publicacao .box-publicacao-preview {
+    width: 815px;
+    height: 100px;
+    margin-left: 5px;
+    background-color:#a1aec9;
+    float: left;
+    border-radius: 2px;
+}
+
+#pag-publicacao .box-publicacao-preview .box-publicacao-imagem {
+    width: 120px;
+    height: 80px;
+    margin: 10px;
+    float: left;
+}
+
+#pag-publicacao .box-publicacao-preview .box-publicacao-imagem .publicacao-imagem {
+    width: 120px;
+    height: 80px;
+}
+
+#pag-publicacao .box-publicacao-dados {
+    width: 331px;
+    height: 100px;
+    float: left;
+    margin-top: 10px;
+    
+}
+
+#pag-publicacao .box-publicacao-status {
+    text-align: right;
+    width: 324px;
+    height: 90px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#pag-publicacao-detalhes .box-publicacao {
+    width: 815px;
+    height: 725px;
+    margin-left: 5px;
+    background-color:#a1aec9;
+    float: left;
+    border-radius: 2px;
+}
+
+#pag-publicacao-detalhes .boxes-publicacao {
+    margin: 5px;
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+}
+
+#pag-publicacao-detalhes #nome-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #imagens-publicacao {
+    height: 120px;
+    float: left;
+    clear: both;
+    border: solid 1px #000000;
+}
+
+#pag-publicacao-detalhes #modelo-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #proprietario-publicacao {
+    float: left;
+    clear: both;
+    margin: 5px;
+    height: 50px;
+    line-height: 50px
+}
+
+#pag-publicacao-detalhes #reputacao-publicacao {
+    float:left; 
+    margin: 5px;
+    height: 50px;
+    line-height: 50px
+}
+
+#pag-publicacao-detalhes #data-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #diaria-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #combustivel-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #distancia-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #status-publicacao {
+    float: left;
+    clear: both;
+}
+
+#pag-publicacao-detalhes #botoes-publicacao {
+    float: right;
+    clear: both;
 }
