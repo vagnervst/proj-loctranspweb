@@ -16,8 +16,9 @@
             }
 
             private function conectar() {                
-                $this->conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->banco);
-                mysqli_set_charset($this->conexao, "utf-8");
+                $this->conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->banco);                
+                
+                mysqli_set_charset($this->conexao, "utf-8");                                                    
             }
 
             public function desconectar() {                
