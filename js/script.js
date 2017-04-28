@@ -1240,6 +1240,43 @@ $(document).ready(function() {
         }
     }
     
+    function criarListaPublicacoesUsuario( lista_json ) {
+        var html = "";
+        
+        for( var i = 0; i <lista_json.length; i++ ) {
+            var publicacao = lista_json[i];
+            
+            html += '<div class="box-publicacao">';
+            html += '<a href="veiculo.php">';
+            html += '<div class="foto-publicacao" style="background-image: url("img/uploads/publicacoes/")")"></div>';
+            html += '</a>';
+            html += '<section class="box-info-publicacao">';
+            html += '<h1 class="titulo">'+ publicacao.titulo +'</h1>';
+            html += '<p class="modelo-veiculo">'+ publicacao.modeloVeiculo +'</p>';
+            html += '<div class="box-diaria">';
+            html += '<p class="diaria">R$'+ publicacao.valorDiarai.toString().replace(".", ","); +'</p>';
+            html += '<p class="label-diaria">diária</p>';
+            html += '</div>';
+            html += '</section>';
+            html += '</div>';
+        }
+        
+        return html;
+    }
+    
+    function inicializarBotaoPublicacaoUsuario() {
+        var pagPerfilUsuario = $("#pag-perfil-usuario")[0]];
+        
+        if( pagPerfilUsuario !== undefined ) {
+            var paginaAtual = 1;
+            var botaoVerMais = $("#botao-ver-mais")[0];
+            
+            $( botaoVerMais ).click( function(e) {
+                
+            });
+        }
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
         
         inicializarPreenchimentoDatasLocacao();
