@@ -1,5 +1,6 @@
 <?php              
     require_once("../../include/initialize.php");
+    require_once("../../include/classes/tbl_tipo_veiculo.php");
     require_once("../../include/classes/tbl_fabricante_veiculo.php");
     
     $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;

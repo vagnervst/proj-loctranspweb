@@ -1,5 +1,8 @@
 <?php 
-    require_once("../include/initialize.php"); 
+    require_once("../include/initialize.php");    
+    require_once("../include/classes/tbl_fale_conosco.php");
+    require_once("../include/classes/tbl_perguntas_frequentes.php");
+
     $dadosFaleConosco = new \Tabela\FaleConosco();
     $buscaDados = $dadosFaleConosco->buscar("id = 1");
     
@@ -65,7 +68,10 @@
             <div class="CMS_main" id="pag-cityshare-contato">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> &gt; <a href="cityshare.php" class="link-caminho"> City Share</a> &gt; <a href="CMS_cityshare_conteudo.php" class="link-caminho">Conteúdo</a> &gt; <a href="contato.php" class="link-caminho" >Contato</a>
+                    <a href="home.php" class="link-caminho" >Home</a> &gt; 
+                    <a href="cityshare.php" class="link-caminho"> City Share</a> &gt; 
+                    <a href="cityshare_conteudo.php" class="link-caminho">Conteúdo</a> &gt; 
+                    <a href="contato.php" class="link-caminho" >Contato</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="titulo-sesssao">

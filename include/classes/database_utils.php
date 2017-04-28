@@ -95,10 +95,9 @@
                 return $valor;
             }
             
-            function preparar_valor_exibicao($valor) {
-                $valor = utf8_encode($valor);
-                $valor = htmlentities($valor);
-                $valor = str_replace("\\", "", $valor);                
+            function preparar_valor_exibicao($valor) {                                                
+                //$valor = htmlentities($valor);
+                $valor = str_replace("\\", "", $valor);
                 
                 return $valor;
             }

@@ -1,5 +1,6 @@
 <?php
     require_once("include/initialize.php");
+    require_once("include/classes/tbl_empreste.php");
     
     $dadosEmpreste = new \Tabela\Empreste();
     $buscaDados = $dadosEmpreste->buscar("id = 1");

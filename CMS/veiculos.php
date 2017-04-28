@@ -20,7 +20,9 @@
             <div class="CMS_main" id="pag-home">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> ><a href="#" class="link-caminho"> Veículos</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt; 
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt; 
+                    <a href="#" class="link-caminho">Veículos</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="box-conteudo-menu">

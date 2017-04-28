@@ -1,5 +1,6 @@
 <?php
     require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_usuario_cs.php");
     $administradoresCS = new \Tabela\UsuarioCS();
     $administradoresCS = $administradoresCS->getUsuarios();
 ?>
@@ -43,14 +44,14 @@
                                 </div>
                             </div>
                             <div class="box-btn-edit">
-                                <a class="preset-botao botao-operacoes" href="CMS_adm_edit.php?id=<?php echo $administrador["id"]; ?>">Editar</a>
+                                <a class="preset-botao botao-operacoes" href="administrador.php?id=<?php echo $administrador["id"]; ?>">Editar</a>
                             </div>
                         </div>
                         <?php } ?>
                     </div>
                     <div class="box-operacoes">
                         <ul id="menu-operacoes">
-                            <li><a class="preset-botao botao-operacao" href="CMS_adm_edit.php">Novo</a></li>
+                            <li><a class="preset-botao botao-operacao" href="administrador.php">Novo</a></li>
                         </ul>
                     </div>
                 </div>                

@@ -54,7 +54,7 @@
                 }                                                                
                 
                 $resultado = $this->executarQuery( $sql );
-                $resultado = $this->get_array_from_resultado( $resultado );
+                $resultado = $this->get_array_from_resultado( $resultado );                                
                 
                 $total_veiculos = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
                 

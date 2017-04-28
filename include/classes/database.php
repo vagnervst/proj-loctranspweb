@@ -1,9 +1,9 @@
 <?php
     namespace DB {
         class Database {                
-            private $servidor = "10.107.144.46";
+            private $servidor = "localhost";
             private $usuario = "root";
-            private $senha = "bcd127";
+            private $senha = "root";
             private $banco = "dbcityshare";
             public $conexao;
 
@@ -17,8 +17,16 @@
 
             private function conectar() {                
                 $this->conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->banco);                
+                    
+                $this->query("SET NAMES 'utf8'");
+                $this->query('SET character_set_connection=utf8');
+                $this->query('SET character_set_client=utf8');
+                $this->query('SET character_set_results=utf8');
                 
-                mysqli_set_charset($this->conexao, "utf-8");                                                    
+                if( !mysqli_set_charset($this->conexao, "utf8") ) {                    
+                    printf("Houve um erro ao tentar definir o character set: %s", mysqli_error($this->conexao));
+                    exit;
+                }
             }
 
             public function desconectar() {                

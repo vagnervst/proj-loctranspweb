@@ -1,6 +1,7 @@
 <?php
     require_once("include/initialize.php");
-    
+    require_once("include/classes/tbl_beneficios_projeto.php");
+
     $dadosBeneficiosProjeto = new \Tabela\BeneficiosProjeto();
     $buscaDados = $dadosBeneficiosProjeto->buscar("id = 1");
     

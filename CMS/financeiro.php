@@ -19,7 +19,9 @@
             <div class="CMS_main" id="pag-financeiro">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt;
+                    <a href="#" class="link-caminho">Financeiro</a>
                 </div>
                 <?php                
                     $lista_permissoes_usuario = $sessao->get("id_permissoes");

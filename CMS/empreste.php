@@ -1,5 +1,7 @@
 <?php
     require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_empreste.php");
+
     $dadosEmpreste = new \Tabela\Empreste();
     $buscaDados = $dadosEmpreste->buscar("id = 1");
     
@@ -64,7 +66,10 @@
             <div class="CMS_main" id="pag-cityshare-empreste">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Empreste</a>
+                    <a href="home.php" class="link-caminho" >Home</a> &gt;
+                    <a href="cityshare.php" class="link-caminho"> City Share</a> &gt;
+                    <a href="cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> &gt;
+                    <a href="#" class="link-caminho">Empreste</a>
                 </div>
                 <form action="empreste.php" method="post" enctype="multipart/form-data">
                     <div class="box-conteudo">                        
@@ -81,17 +86,13 @@
                                     <textarea name="txtDescricao"><?php echo $dadosEmpreste->descricao; ?></textarea>
                                 </div>
                             </div>
-                            <p class="titulo-conteudo">Título do Conteúdo</p>
+                            <p class="titulo-conteudo">Instruções de Empréstimo</p>
                             <div class="box-conteudo-pagina">
                                 <div class="conteudo-texto-2">
                                     <div class="box-input-pagina">
                                         <label class="titulo-input">Título</label>
                                         <input class="input-pagina" type="text" name="txtTituloA" value="<?php echo $dadosEmpreste->tituloA; ?>">
                                     </div>
-                                </div>
-                                <div class="box-input-imagem">
-                                    <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosEmpreste->imagemA, $upload_dir); ?>)"></span>
-                                    <input class="input" type="file" name="imagemA" />
                                 </div>
                             </div>
                             <div class="box-botao">

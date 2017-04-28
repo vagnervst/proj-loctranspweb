@@ -1,5 +1,7 @@
 <?php
     require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_sobre_projeto.php");
+
     $dadosSobreProjeto = new \Tabela\SobreProjeto();
     $buscaDados = $dadosSobreProjeto->buscar("id = 1");
     
@@ -30,7 +32,7 @@
         $listaInput[] = $imagemB;
         $listaInput[] = $imagemPrevia;                
         
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ){
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) ){
             $objSobreProjeto = new \Tabela\SobreProjeto();                        
             
             $objSobreProjeto->titulo = $titulo;
@@ -40,33 +42,29 @@
             $objSobreProjeto->descricaoB = $descricaoImagemB;
             $objSobreProjeto->conteudo = $conteudo;
             
-            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosSobreProjeto->imagemA, $upload_dir ) ){
-                $objSobreProjeto->imagemA = $imagemA["name"];
+            if( File::replace( $imagemA, "imagemA." . pathinfo($imagemA["name"])["extension"], $dadosSobreProjeto->imagemA, $upload_dir ) ){
+                $objSobreProjeto->imagemA = "imagemA." . pathinfo($imagemA["name"])["extension"];
             }
             
-            if( File::replace( $imagemB["tmp_name"], $imagemB["name"], $dadosSobreProjeto->imagemB, $upload_dir ) ){
-                $objSobreProjeto->imagemB = $imagemB["name"];
+            if( File::replace( $imagemB, "imagemB." . pathinfo($imagemB["name"])["extension"], $dadosSobreProjeto->imagemB, $upload_dir ) ){
+                $objSobreProjeto->imagemB = "imagemB." . pathinfo($imagemB["name"])["extension"];
             }
             
-            if( File::replace( $imagemPrevia["tmp_name"], $imagemPrevia["name"], $dadosSobreProjeto->previaImagem, $upload_dir ) ){
-                $objSobreProjeto->previaImagem = $imagemPrevia["name"];
+            if( File::replace( $imagemPrevia, "imagemPrevia." . pathinfo($imagemPrevia["name"])["extension"], $dadosSobreProjeto->previaImagem, $upload_dir ) ){
+                $objSobreProjeto->previaImagem = "imagemPrevia." . pathinfo($imagemPrevia["name"])["extension"];
             }                                    
             
-            if( empty($buscaDados[0]) ) {
-                echo "INSERT";
+            if( empty($buscaDados[0]) ) {                
                 $objSobreProjeto->inserir();
             }
             else
-            {
-                echo "UPDATE";
+            {                
                 $objSobreProjeto->id = 1;
                 $objSobreProjeto->atualizar();
             }
             
             redirecionar_para("projeto.php");
-        }
-        redirecionar_para("projeto.php");
-        
+        }                
     }
 ?>
 <!DOCTYPE html>
@@ -87,7 +85,10 @@
             <div class="CMS_main" id="pag-cityshare-projeto">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Sobre o Projeto</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt; 
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt; 
+                    <a href="cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> &gt; 
+                    <a href="#" class="link-caminho">Sobre o Projeto</a>
                 </div>
                 <form action="projeto.php" method="post" name="formConteudo" enctype="multipart/form-data">
                     <div class="box-conteudo">
@@ -95,7 +96,7 @@
                         <div id="container-previa">
                             <div class="box-input-imagem">
                                 <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosSobreProjeto->previaImagem, $upload_dir); ?>)"></span>
-                                <input class="input" type="file" name="imagemPrevia" />
+                                <input class="input" type="file" name="imagemPrevia" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             </div>
                             <div id="box-texto-previa">
                                 <textarea id="input-previa" placeholder="Texto previa" name="txtPreviaDescricao" required><?php echo $dadosSobreProjeto->previaTexto; ?></textarea>
@@ -110,7 +111,7 @@
                             <div class="box-conteudo-pagina">
                                 <div class="box-input-imagem">
                                     <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosSobreProjeto->imagemA, $upload_dir); ?>)"></span>
-                                    <input class="input" type="file" name="imagemA" />
+                                    <input class="input" type="file" name="imagemA" accept="image/jpg, image/jpeg, image/png, image/gif" />
                                 </div>
                                 <div class="conteudo-texto">
                                     <label class="titulo-input">Descrição</label>
@@ -120,7 +121,7 @@
                             <div class="box-conteudo-pagina">
                                 <div class="box-input-imagem">
                                     <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosSobreProjeto->imagemB, $upload_dir); ?>)"></span>
-                                    <input class="input" type="file" name="imagemB" />
+                                    <input class="input" type="file" name="imagemB" accept="image/jpg, image/jpeg, image/png, image/gif" />
                                 </div>
                                 <div class="conteudo-texto">
                                     <label class="titulo-input">Descrição</label>

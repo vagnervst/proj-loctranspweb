@@ -1,5 +1,6 @@
 <?php
     require_once("include/initialize.php");
+    require_once("include/classes/tbl_sobre_empresa.php");
 
     $dadosSobreEmpresa = new \Tabela\SobreEmpresa();
     $dadosSobreEmpresa = $dadosSobreEmpresa->buscar("id = 1")[0];
