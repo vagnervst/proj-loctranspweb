@@ -110,7 +110,7 @@
                             foreach( $listaPublicacao as $publicacao ) { 
                         ?>
                         <section class="box-veiculo">
-                            <a href="veiculo.php?id=<?php echo $publicacao->idPublicacao; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
+                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
                             <div class="box-info-veiculo">                                
                                 <h1 class="titulo-veiculo"><?php echo $publicacao->titulo; ?></h1>
                                 <div class="box-valor-diaria">

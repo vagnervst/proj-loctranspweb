@@ -35,7 +35,7 @@
                 $sql .= "ON t.id = v.idTipoVeiculo ";
                 $sql .= "INNER JOIN tbl_transmissaoveiculo AS tr ";
                 $sql .= "ON tr.id = v.idTransmissao";
-                
+            
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
@@ -51,7 +51,7 @@
                     
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }                                
+                }                                                                
                 
                 $resultado = $this->executarQuery( $sql );
                 $resultado = $this->get_array_from_resultado( $resultado );                                
@@ -68,6 +68,26 @@
                 }
                 
                 return $resultado;
+            }
+            
+            public function getAcessorios($where = null) {
+                
+                $sql = "SELECT a.id, a.nome, v.idTipoVeiculo ";
+                $sql .= "FROM tbl_acessorioveiculo AS a ";
+                $sql .= "INNER JOIN tbl_veiculo AS v ";
+                $sql .= "INNER JOIN acessorioveiculo_tipoveiculo AS act ";
+                $sql .= "ON a.id = act.idAcessorio AND v.idTipoVeiculo = act.idTipoVeiculo";
+                
+                if( !empty($where) ) {
+                    $sql .= " WHERE " . $where;
+                }
+                
+                $resultado = $this->executarQuery( $sql );
+                
+                $resultado = $this->get_array_from_resultado( $resultado );
+                
+                return $resultado;
+                
             }
         }
         

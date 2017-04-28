@@ -49,6 +49,14 @@
                         </a>
                     </div>
                     <?php } ?>
+                    <?php if( in_array(8, $lista_permissoes_usuario) ) { ?>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="publicacoes.php">
+                            <img src="Image/content_test.jpg" />                        
+							Publicações
+                        </a>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <?php
