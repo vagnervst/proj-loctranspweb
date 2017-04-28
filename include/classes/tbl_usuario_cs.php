@@ -28,12 +28,12 @@
             public static function login($usuario, $senha) {
                 $usuarioObj = new \Tabela\UsuarioCS();
                 $buscaUsuario = $usuarioObj->buscar("usuario = '" . $usuario . "'");
-                
+                                                
                 if( !empty($buscaUsuario[0]) ) {
 
                     $usuarioObj = $buscaUsuario[0];
-                    $hash = $usuarioObj->senha;
-
+                    $hash = $usuarioObj->senha;                                        
+                    
                     $is_senha_correta = \Autenticacao::verificar( $senha, $hash );
                     
                     if( $is_senha_correta ) return $usuarioObj;

@@ -3,14 +3,15 @@
     require_once("../include/classes/sessao.php");
     require_once("../include/classes/tbl_usuario_cs.php");
     require_once("../include/classes/tbl_nivel_acesso_cs.php");
+    require_once("../include/classes/autenticacao.php");
 
     $submit = ( isset($_POST["btnSubmit"]) )? $_POST["btnSubmit"] : null;
-    
+
     if( isset( $submit ) ) {
         $usuario = ( isset($_POST["txtusuario"]) )? $_POST["txtusuario"] : null;
-        $senha = ( isset($_POST["txtsenha"]) )? $_POST["txtsenha"] : null;
+        $senha = ( isset($_POST["txtsenha"]) )? $_POST["txtsenha"] : null;                
         
-        $objUsuario = \Tabela\UsuarioCS::login( $usuario, $senha );
+        $objUsuario = \Tabela\UsuarioCS::login( $usuario, $senha );                
         
         if( !empty( $objUsuario ) ) {
             //Login realizado com sucesso...
