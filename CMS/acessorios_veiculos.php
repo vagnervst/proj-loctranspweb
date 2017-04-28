@@ -19,7 +19,10 @@
             <div class="CMS_main" id="pag-acessorio-veiculo">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> ><a href="acessorios_veiculos.php" class="link-caminho"> Acessórios</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt; 
+                    <a href="cityshare.php" class="link-caminho"> City Share</a> &gt; 
+                    <a href="veiculos.php" class="link-caminho"> Veículos</a> &gt; 
+                    <a href="acessorios_veiculos.php" class="link-caminho">Acessórios</a>
                 </div>
                 <div class="box-conteudo">
                     <div id="box-novo-registro" >

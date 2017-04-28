@@ -14,13 +14,8 @@
 ?>
 <header>
     <div id="box-cabecalho">
-        <div id="box-image-logo">
-            <img src="Image/logo_cityshare.png" />
-        </div>
-        <div id="box-conta">
-            <div id="box-imagem-usuario">
-                <img src="Image/olamarilene.jpg"/>
-            </div>
+        <div id="box-image-logo"></div>
+        <div id="box-conta">            
             <div id="box-info-usuario">
                 <p id="nome-usuario"><?php echo $dados_usuario["nome"] . " " . substr($dados_usuario["sobrenome"], 0, 1) ?></p>
                 <p id="nivel-usuario"><?php echo $dados_usuario["nivelAcesso"]; ?></p>

@@ -2,7 +2,7 @@
      <div class="menu-lateral">
         <ul>
             <li class="botao-menu-lateral">
-                <a href="CMS_home.php">Home</a>
+                <a href="home.php">Home</a>
                 <img src="Image/icon-home.png"/>
             </li>
             <li class="botao-menu-lateral">

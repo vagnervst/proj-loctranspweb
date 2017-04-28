@@ -1,17 +1,15 @@
 <?php
     require_once("include/initialize.php");
+    require_once("include/classes/tbl_assunto.php");
+    require_once("include/classes/tbl_perguntas_frequentes.php");
+    require_once("include/classes/tbl_fale_conosco.php");
 
     $contatoSubmit = ( isset($_POST["contatoSubmit"]) )? $_POST["contatoSubmit"] : null;
     if( isset( $contatoSubmit ) ) {
         $nome = isset( $_POST["txtNome"] )? $_POST["txtNome"] : null;
         $email = isset( $_POST["txtEmail"] )? $_POST["txtEmail"] : null;
         $assunto = isset( $_POST["slAssunto"] )? $_POST["slAssunto"] : null;
-        $mensagem = isset( $_POST["txtaMensagem"] )? $_POST["txtaMensagem"] : null;
-        
-        echo $nome . "<br/>";
-        echo $email . "<br/>";
-        echo $assunto . "<br/>";
-        echo $mensagem . "<br/>";
+        $mensagem = isset( $_POST["txtaMensagem"] )? $_POST["txtaMensagem"] : null;        
     }    
 
     $dadosFaleConosco = new \Tabela\FaleConosco();
@@ -32,12 +30,16 @@
             <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-contato">
                 <div class="box-conteudo">
-                    <section class="box-conteudo-faq">
-                        <h1 class="titulo-faq"><?php echo $dadosFaleConosco->tituloB; ?></h1>
+                    <?php
+                        $listaPerguntas = new \Tabela\PerguntasFrequentes();
+                        $listaPerguntas = $listaPerguntas->buscar();
+
+                        if( count($listaPerguntas) > 0 ) {
+                    ?>
+                    <section class="box-conteudo-faq">                        
+                        <h1 class="titulo-faq"><?php echo $dadosFaleConosco->tituloB; ?></h1>                        
                         <div id="faq-accordion">
-                            <?php
-                                $listaPerguntas = new \Tabela\PerguntasFrequentes();
-                                $listaPerguntas = $listaPerguntas->buscar();
+                            <?php                                
                                 foreach( $listaPerguntas as $pergunta ) {
                             ?>
                             <div class="faq">
@@ -45,8 +47,9 @@
                                 <div class="faq-answer"><p><?php echo $pergunta->resposta; ?></p></div>
                             </div>
                             <?php } ?>
-                        </div>                        
+                        </div>                                                
                     </section>
+                    <?php } ?>
                 </div>           
                 <div class="box-conteudo">
                     <section class="box-conteudo-contato">
@@ -77,10 +80,15 @@
                                     </div>
                                     <div class="label-input-contato">
                                         <label class="label-contato">Assunto*:
-                                            <select class="select-input preset-input-select" name="slAssunto">                                                
-                                                <option selected disabled>Escolha um assunto</option>
-                                                <?php for($i = 0; $i < 10; ++$i) { ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <select class="select-input preset-input-select" name="slAssunto">                     
+                                                <option selected disabled>Escolha um assunto</option>       
+                                                <?php 
+                                                    $buscaAssunto = new \Tabela\Assunto();
+                                                    $listaAssunto = $buscaAssunto->buscar();
+                                                    
+                                                    for($i = 0; $i < count($listaAssunto); ++$i) { 
+                                                ?>
+                                                <option value="<?php echo $listaAssunto[$i]->id; ?>"><?php echo $listaAssunto[$i]->titulo; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </label>

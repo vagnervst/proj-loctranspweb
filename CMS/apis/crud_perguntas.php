@@ -1,5 +1,6 @@
 <?php
     require_once("../../include/initialize.php");
+    require_once("../../include/classes/tbl_perguntas_frequentes.php");
 
     $pergunta = ( isset( $_POST["txtPergunta"] ) )? $_POST["txtPergunta"] : null;
     $resposta = ( isset( $_POST["txtResposta"] ) )? $_POST["txtResposta"] : null;

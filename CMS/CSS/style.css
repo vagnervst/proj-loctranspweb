@@ -25,7 +25,7 @@ time, mark, audio, video {
 
 body {
     margin: 0;
-    background-color: white;
+    background-image: url(../Image/bg.jpg);
     width: 100%;
     height: 100%;
 }
@@ -231,11 +231,12 @@ a {
 }
 
 header {
-    background-color: #a1aec9;
+    background-color: #141619;
     width: 1080px;
-    height: 150px;
+    height: 200px;
     margin: 0 auto;
     border-bottom: 5px solid #141619;
+    padding: 5px 0px;
 }
 header #box-cabecalho {
     width: inherit;
@@ -243,33 +244,21 @@ header #box-cabecalho {
     margin: 0 auto;
 }
 header #box-cabecalho #box-image-logo {
-    width: 200px;
-    height: 150px;
+    background-image: url(../Image/city_share_cms.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 200px;
+    margin-left: 10px;
     float: left;
-    background-color: #a1aec9;
-}
-header #box-cabecalho #box-image-logo img {
-    width: 130px;
-    height: 140px;
-    margin: 5px 30px;
 }
 header #box-cabecalho #box-conta {
-    width: 300px;
+    width: 200px;
     height: 120px;
     margin: 15px;
     float: right;
     background-color: #ebebeb;
-    border-radius: 2px;
-}
-header #box-cabecalho #box-conta #box-imagem-usuario {
-    width: 100px;
-    height: 120px;
-    float: left;
-}
-header #box-cabecalho #box-conta #box-imagem-usuario img {
-    width: 80px;
-    height: 100px;
-    margin: 10px;
+    border-radius: 2px 2px 2px 10px;
 }
 header #box-cabecalho #box-conta #box-info-usuario {
     width: 200px;
@@ -283,8 +272,7 @@ header #box-cabecalho #box-conta #box-info-usuario #nome-usuario {
     text-align: center;
 }
 header #box-cabecalho #box-conta #box-info-usuario #nivel-usuario {
-    font-size: 14px;
-    font-weight: bold;    
+    font-size: 14px;       
     margin-top: 5px;
     text-align: center;
 }
@@ -382,8 +370,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 .box-conteudo {
-    width: 870px;
-    height: 100%;
+    width: 870px;    
     float: left ;
 }
 
@@ -451,7 +438,7 @@ header #box-cabecalho #box-conta #botao-logout {
 /*---- PAGINA ADM DE CONTEÚDO CITY SHARE ----*/
 /*pagina de beneficios */
 #pag-cityshare-beneficios {
-    height: 1220px;
+    height: 1240px;
 }
 
 .box-conteudo .titulo-sessao {
@@ -1143,7 +1130,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-cityshare-contato .box-conteudo  .input-pagina {
-    width: 600px;
+    width: 490px;
     height: 20px;
 }
 
@@ -1153,7 +1140,6 @@ header #box-cabecalho #box-conta #botao-logout {
     padding: 5px 0px;
     margin: 20px auto;
 }
-
 
 #pag-cityshare-contato .box-conteudo #container-perguntas {
     height: 700px;
@@ -1179,7 +1165,7 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-cityshare-contato .box-conteudo #container-perguntas .pergunta .box-inputs {
     display: block;
-    width: 420px;
+    width: 510px;
     float: left;
 }
 
@@ -1987,11 +1973,11 @@ header #box-cabecalho #box-conta #botao-logout {
 #pag-tipo-cartao .box-conteudo #box-form-categoria {
     background-color: #ffffff;
     width: 405px;
-    height: auto;
+    height: 118px;
     padding: 5px;
     padding-bottom: 0px;
     border: 1px solid #cecece;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 #pag-tipo-cartao .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table {
@@ -2002,17 +1988,26 @@ header #box-cabecalho #box-conta #botao-logout {
     width: 172px;
 }
 
-#pag-tipo-cartao .box-conteudo #box-form-categoria #form-modificacao #box-acoes #box-salvar-cancelar {
+#pag-tipo-cartao .box-conteudo #box-form-categoria #form-tipo-cartao #box-acoes #box-salvar-cancelar {
     float: right;
 }
 
-#pag-tipo-cartao .box-conteudo #box-form-categoria #form-modificacao #box-acoes .botao {
+#pag-tipo-cartao .box-conteudo #box-form-categoria #form-tipo-cartao #box-acoes .botao {
     width: 100px;
     padding: 5px 0px;
+
 }
 
-#pag-tipo-cartao .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #botao-remover,
-#pag-tipo-cartao .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
+#pag-tipo-cartao .box-conteudo #box-form-categoria #form-tipo-cartao #box-acoes {
+    margin: 5px 0px;
+}
+
+#pag-tipo-cartao .box-conteudo #box-form-categoria #form-tipo-cartao.js-modo-insert #box-acoes #box-salvar-cancelar {
+    float: right;
+}
+
+#pag-tipo-cartao .box-conteudo #box-form-categoria #form-tipo-cartao.js-modo-insert #box-acoes #botao-remover,
+#pag-tipo-cartao .box-conteudo #box-form-categoria #form-tipo-cartao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
     display: none;
 }
 
@@ -2126,8 +2121,7 @@ footer {
     width: 1070px;
     height: 200px;
     margin: 0 auto;
-    padding: 5px;
-    
+    padding: 5px;    
 }
 
 footer #box-rodape {
@@ -2138,12 +2132,6 @@ footer #box-rodape {
 footer #box-rodape #box-logo-rodape {
     width: 250px;
     height: 200px;
-}
-footer #box-rodape #box-logo-rodape img {
-    float: left;
-    width: 150px;
-    height: 150px;
-    margin: auto 50px;
 }
 
 .CMS_main {

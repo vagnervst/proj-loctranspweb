@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
-require_once("../include/initialize.php");
-require_once("../include/classes/tbl_tipo_veiculo.php");
+    require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_tipo_veiculo.php");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -19,7 +19,10 @@ require_once("../include/classes/tbl_tipo_veiculo.php");
             <div class="CMS_main" id="pag-fabricante-veiculo">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho">Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> ><a href="fabricantes_veiculos.php" class="link-caminho"> Fabricantes</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="cityshare.php" class="link-caminho"> City Share</a> &gt;
+                    <a href="veiculos.php" class="link-caminho"> Veículos</a> &gt;
+                    <a href="fabricantes_veiculos.php" class="link-caminho"> Fabricantes</a>
                 </div>
                 <div class="box-conteudo">
                     <div id="box-novo-registro">

@@ -22,7 +22,7 @@
             
             $sessao->put("id_permissoes", $lista_id_permissoes);
             
-            redirecionar_para("CMS_Home.php");
+            redirecionar_para("home.php");
         }
     }
 ?>

@@ -189,11 +189,29 @@ $(document).ready(function() {
     function definirBotaoSelecaoImagem(botao, inputFile) {
         $(botao).click(function() {            
             inputFile.click();
-
+            
+            $(inputFile).off("change");
             $(inputFile).change(function() {            
+                var tamanho_limite_mb = 2;
+                var arquivo = this.files[0];
+                var tamanho_arquivo_mb = Math.floor(( arquivo.size / 1024 )/1024);                                
+                var extensao_arquivo = arquivo.type.substr( arquivo.type.indexOf("/")+1, arquivo.type.length );
+                
+                var extensoes_permitidas = ["jpg", "png", "jpeg", "gif"];
+                
+                if( tamanho_arquivo_mb >= tamanho_limite_mb ) {
+                    alert("O arquivo selecionado excede o tamanho maximo de 2MB!");
+                    return;
+                }
+                
+                if( extensoes_permitidas.indexOf( extensao_arquivo ) === -1 ) {
+                    alert("Tipo de arquivo invalido!");
+                    return;
+                }
+                
                 var reader = new FileReader();
                 
-                reader.onload = function(e) {
+                reader.onload = function(e) {                    
                     $(this).attr("src", e.target.result);
                 }
 

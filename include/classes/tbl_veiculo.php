@@ -21,7 +21,7 @@
             public function getVeiculos($registros_por_pagina = null, $pagina_atual = null, $where = null, $group = null) {
                 //Retorna a relação de veiculos, fabricantes, combustivel, categoria, tipo e transmissao
                 
-                $sql = "SELECT v.id, v.codigo, v.nome, v.tipoMotor, v.precoMedio, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
+                $sql = "SELECT v.id, v.codigo, v.nome, v.tipoMotor, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
                 $sql .= "c.nome AS categoria, v.idFabricante, f.nome AS fabricante, v.idTipoCombustivel, cb.nome AS combustivel, ";
                 $sql .= "v.idTipoVeiculo, t.titulo AS tipo, v.idTransmissao, tr.titulo AS transmissao ";
                 $sql .= "FROM {$this::$nome_tabela} AS v ";
@@ -54,7 +54,7 @@
                 }                                
                 
                 $resultado = $this->executarQuery( $sql );
-                $resultado = $this->get_array_from_resultado( $resultado );
+                $resultado = $this->get_array_from_resultado( $resultado );                                
                 
                 $total_veiculos = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
                 

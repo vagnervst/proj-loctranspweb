@@ -73,12 +73,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="horizontal-input-wrapper" id="box-detalhes">
-                                    <div class="box-label-input" id="box-preco">
-                                        <label><span class="label">Preço Médio</span>
-                                            <input class="input" type="text" name="txtPrecoMedio"/>
-                                        </label>
-                                    </div>
+                                <div class="horizontal-input-wrapper" id="box-detalhes">                                    
                                     <div class="box-label-input">
                                         <label><span class="label">Fabricante</span>
                                             <select class="input" name="slFabricante">

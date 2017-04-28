@@ -1,11 +1,20 @@
 <?php
     class File {
         
-        public static function upload($nome_temporario, $nome_arquivo, $pasta) {            
-            if( empty($nome_temporario) || empty($nome_arquivo) ) return false;            
+        private static $extensoes_imagem = ["jpg", "png", "jpeg", "gif"];
+        
+        private static function verificar_extensao($nome_arquivo) {
+            $extensao_imagem = pathinfo($nome_arquivo["name"])["extension"];
+            $extensao_imagem = strtolower($extensao_imagem);
+            
+            return in_array( $extensao_imagem, File::$extensoes_imagem );
+        }
+        
+        public static function upload($arquivo, $nome_arquivo, $pasta) {            
+            if( empty($arquivo["tmp_name"]) || empty($nome_arquivo) || !File::verificar_extensao($arquivo) ) return false;
             $nome_arquivo = basename($nome_arquivo);
             
-            return move_uploaded_file($nome_temporario, $pasta . "/" . $nome_arquivo);
+            return move_uploaded_file($arquivo["tmp_name"], $pasta . "/" . $nome_arquivo);
         }
         
         private static function codificar_caminho($nome_arquivo, $pasta) {
@@ -19,7 +28,7 @@
         }
         
         public static function read($nome_arquivo, $pasta) {
-            if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return $pasta . "no_image.jpg";
+            if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return $pasta . "/no_image.jpg";
             
             return File::codificar_caminho($nome_arquivo, $pasta);
         }
@@ -30,8 +39,9 @@
             return unlink( $pasta . "/" . $nome_arquivo );
         }
         
-        public static function replace($nome_temporario, $nome_arquivo, $nome_arquivo_antigo="", $pasta) {                                                                        
-            if( File::upload( $nome_temporario, $nome_arquivo, $pasta ) ) {
+        public static function replace($arquivo, $nome_arquivo, $nome_arquivo_antigo="", $pasta) {                                                                        
+            
+            if( File::upload( $arquivo, $nome_arquivo, $pasta ) ) {                
                 
                 if( !empty($nome_arquivo_antigo) && $nome_arquivo != $nome_arquivo_antigo ) {                
                     File::remove($nome_arquivo_antigo, $pasta);

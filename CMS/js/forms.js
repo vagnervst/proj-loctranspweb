@@ -13,8 +13,7 @@ $(document).ready(function() {
                 {nome: "Tipo", propriedadeJson: "tipo"},
                 {nome: "Categoria", propriedadeJson: "categoria"},
                 {nome: "Fabricante", propriedadeJson: "fabricante"},
-                {nome: "Ano", propriedadeJson: "ano"},
-                {nome: "Preço", propriedadeJson: "precoMedio"},
+                {nome: "Ano", propriedadeJson: "ano"}                
             ];                                               
 
             var box_listagem_veiculos = $(pagina_veiculos).find("#box-listagem-veiculos")[0];
@@ -30,8 +29,7 @@ $(document).ready(function() {
                 { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
                 { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
                 { nomeCampo : 'txtAno', propriedade : 'ano' },
-                { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },
-                { nomeCampo : 'txtPrecoMedio', propriedade : 'precoMedio' },
+                { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },                
                 { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
                 { nomeCampo : 'slCombustivel', propriedade : 'idTipoCombustivel' },
                 { nomeCampo : 'slTipo', propriedade : 'idTipoVeiculo' },

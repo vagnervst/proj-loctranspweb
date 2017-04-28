@@ -1,5 +1,6 @@
 <?php
     require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_beneficios_projeto.php");
     $dadosBeneficiosProjeto = new \Tabela\BeneficiosProjeto();
     $buscaDados = $dadosBeneficiosProjeto->buscar("id = 1");
     
@@ -34,7 +35,7 @@
         $listaInput[] = $imagemC;
         $listaInput[] = $previaImagem;
         
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ) {            
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) ) {            
             $objBeneficiosProjeto = new \Tabela\BeneficiosProjeto();
                         
             $objBeneficiosProjeto->titulo = $titulo; 
@@ -44,26 +45,27 @@
             $objBeneficiosProjeto->descricaoC = $descricaoC;
             $objBeneficiosProjeto->previaTexto = $previaTexto;
             
-            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosBeneficiosProjeto->imagemA, $upload_dir ) ) {
-                $objBeneficiosProjeto->imagemA = $imagemA["name"];
+            echo "1";
+            if( !empty($imagemA["name"]) && File::replace( $imagemA, "beneficio_imagem_A." . pathinfo($imagemA["name"])["extension"], $dadosBeneficiosProjeto->imagemA, $upload_dir ) ) {
+                $objBeneficiosProjeto->imagemA = "beneficio_imagem_A." . pathinfo($imagemA["name"])["extension"];
             }
-
-            if( File::replace( $imagemB["tmp_name"], $imagemB["name"], $dadosBeneficiosProjeto->imagemB, $upload_dir ) ) {
-                $objBeneficiosProjeto->imagemB = $imagemB["name"];
+            echo "2";
+            if( !empty($imagemB["name"]) && File::replace( $imagemB, "beneficio_imagem_B." . pathinfo($imagemB["name"])["extension"], $dadosBeneficiosProjeto->imagemB, $upload_dir ) ) {
+                $objBeneficiosProjeto->imagemB = "beneficio_imagem_B." . pathinfo($imagemB["name"])["extension"];
             }
-            
-            if( File::replace( $imagemC["tmp_name"], $imagemC["name"], $dadosBeneficiosProjeto->imagemC, $upload_dir ) ) {
-                $objBeneficiosProjeto->imagemC = $imagemC["name"];
+            echo "3";
+            if( !empty($imagemC["name"]) && File::replace( $imagemC, "beneficio_imagem_C." . pathinfo($imagemC["name"])["extension"], $dadosBeneficiosProjeto->imagemC, $upload_dir ) ) {
+                $objBeneficiosProjeto->imagemC = "beneficio_imagem_C." . pathinfo($imagemC["name"])["extension"];
             }
-            
-            if( File::replace( $previaImagem["tmp_name"], $previaImagem["name"], $dadosBeneficiosProjeto->previaImagem, $upload_dir ) ) {
-                $objBeneficiosProjeto->previaImagem = $previaImagem["name"];
+            echo "4";
+            if( !empty($previaImagem["name"]) && File::replace( $previaImagem, "beneficio_imagem_previa." . pathinfo($previaImagem["name"])["extension"], $dadosBeneficiosProjeto->previaImagem, $upload_dir ) ) {
+                $objBeneficiosProjeto->previaImagem = "beneficio_imagem_previa." . pathinfo($previaImagem["name"])["extension"];
             }
-            
+            echo "5";
             if( empty($buscaDados[0]) )
             {                                
                 $objBeneficiosProjeto->inserir();
-            } 
+            }
             else 
             {                
                 $objBeneficiosProjeto->id = 1;
@@ -92,7 +94,10 @@
             <div class="CMS_main" id="pag-cityshare-beneficios">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> > <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> > <a href="#" class="link-caminho">Benefícios do Projeto</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt; 
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt; 
+                    <a href="cityshare_conteudo.php" class="link-caminho">Conteúdo</a> &gt; 
+                    <a href="#" class="link-caminho">Benefícios do Projeto</a>
                 </div>
                 <form action="beneficios.php" method="post" enctype="multipart/form-data">
                     <div class="box-conteudo">
@@ -100,7 +105,7 @@
                         <div id="container-previa">
                             <div class="box-input-imagem">
                                 <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosBeneficiosProjeto->previaImagem, $upload_dir); ?>)"></span>
-                                <input class="input" type="file" name="previaImagem" />
+                                <input class="input" type="file" name="previaImagem" accept="image/jpg, image/jpeg, image/png, image/gif" />
                             </div>
                             <div id="box-texto-previa">
                                 <textarea id="input-previa" name="txtPreviaTexto" placeholder="Texto previa"><?php echo $dadosBeneficiosProjeto->previaTexto; ?></textarea>
@@ -120,7 +125,7 @@
                                 <div class="box-conteudo-pagina">
                                     <div class="box-input-imagem">
                                         <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosBeneficiosProjeto->imagemA, $upload_dir); ?>)"></span>
-                                        <input class="input" type="file" name="imagemA" value="<?php echo $dadosBeneficiosProjeto->imagemA; ?>" />
+                                        <input class="input" type="file" name="imagemA" accept="image/jpg, image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="conteudo-texto">
                                         <textarea name="txtDescricaoA"><?php echo $dadosBeneficiosProjeto->descricaoA; ?></textarea>
@@ -129,7 +134,7 @@
                                 <div class="box-conteudo-pagina">
                                     <div class="box-input-imagem">
                                         <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosBeneficiosProjeto->imagemB, $upload_dir); ?>)"></span>
-                                        <input class="input" type="file" name="imagemB" value="<?php echo $dadosBeneficiosProjeto->imagemB; ?>" />
+                                        <input class="input" type="file" name="imagemB" accept="image/jpg, image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="conteudo-texto">
                                         <textarea name="txtDescricaoB"><?php echo $dadosBeneficiosProjeto->descricaoB; ?></textarea>
@@ -138,7 +143,7 @@
                                 <div class="box-conteudo-pagina">
                                     <div class="box-input-imagem">
                                         <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosBeneficiosProjeto->imagemC, $upload_dir); ?>)"></span>
-                                        <input class="input" type="file" name="imagemC" value="<?php echo $dadosBeneficiosProjeto->imagemC; ?>" />
+                                        <input class="input" type="file" name="imagemC" accept="image/jpg, image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="conteudo-texto">
                                         <textarea name="txtDescricaoC"><?php echo $dadosBeneficiosProjeto->descricaoC; ?></textarea>

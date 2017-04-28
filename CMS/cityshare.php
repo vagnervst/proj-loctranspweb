@@ -19,7 +19,8 @@
             <div class="CMS_main" id="pag-home">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="#" class="link-caminho"> City Share</a> 
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="#" class="link-caminho">City Share</a>
                 </div>
                 <?php                
                     $lista_permissoes_usuario = $sessao->get("id_permissoes");
@@ -27,7 +28,7 @@
                 <div class="box-conteudo">
                     <?php if( in_array(7, $lista_permissoes_usuario) ) { ?>                  
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_conteudo.php">
+                        <a class="titulo-conteudo-menu" href="cityshare_conteudo.php">
                             <img src="Image/content_test.jpg" />
                             Conteudo
                         </a>
@@ -35,7 +36,7 @@
                     <?php } ?>
                     <?php if( in_array(8, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_nivelAcesso.php">
+                        <a class="titulo-conteudo-menu" href="cityshare_nivelAcesso.php">
                             <img src="Image/content_test.jpg" />                        
                             Níveis de acesso
                         </a>
@@ -43,7 +44,7 @@
                     <?php } ?>
                     <?php if( in_array(9, $lista_permissoes_usuario) ) { ?>                                     
                     <div class="box-conteudo-menu">                        
-                        <a class="titulo-conteudo-menu" href="CMS_cityshare_adm.php">
+                        <a class="titulo-conteudo-menu" href="cityshare_adm.php">
                             <img src="Image/content_test.jpg" />
                             Administradores
                         </a>

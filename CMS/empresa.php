@@ -1,5 +1,6 @@
 <?php
     require_once("../include/initialize.php");
+    require_once("../include/classes/tbl_sobre_empresa.php");
     $dadosSobreEmpresa = new \Tabela\SobreEmpresa();
     $buscaDados = $dadosSobreEmpresa->buscar("id = 1");
     
@@ -31,8 +32,8 @@
         $listaInput = [];
         $listaInput[] = $imagemA;
         $listaInput[] = $imagemB;
-        
-        if( !FormValidator::has_empty_input( $listaRequiredInputs ) && !FormValidator::has_repeated_files($listaInput) ) {            
+                
+        if( !FormValidator::has_empty_input( $listaRequiredInputs ) ) {            
             $objSobreEmpresa = new \Tabela\SobreEmpresa();
                         
             $objSobreEmpresa->titulo = $titulo; 
@@ -41,25 +42,25 @@
             $objSobreEmpresa->descricaoA = $descricaoImagemA;            
             $objSobreEmpresa->tituloB = $tituloImagemB;
             $objSobreEmpresa->descricaoB = $descricaoImagemB;            
-            $objSobreEmpresa->previaTexto = $previaDescricao;                                    
-                                                   
-            if( File::replace( $imagemA["tmp_name"], $imagemA["name"], $dadosSobreEmpresa->imagemA, $upload_dir ) ) {
-                $objSobreEmpresa->imagemA = $imagemA["name"];
+            $objSobreEmpresa->previaTexto = $previaDescricao;
+                        
+            if( !empty($imagemA["name"]) && File::replace( $imagemA, "sobre_empresa_img_A." . pathinfo($imagemA["name"])["extension"], $dadosSobreEmpresa->imagemA, $upload_dir ) ) {
+                $objSobreEmpresa->imagemA = "sobre_empresa_img_A." . pathinfo($imagemA["name"])["extension"];
             }
-
-            if( File::replace( $imagemB["tmp_name"], $imagemB["name"], $dadosSobreEmpresa->imagemB, $upload_dir ) ) {
-                $objSobreEmpresa->imagemB = $imagemB["name"];
+            
+            if( !empty($imagemB["name"]) && File::replace( $imagemB, "sobre_empresa_img_B." . pathinfo($imagemB["name"])["extension"], $dadosSobreEmpresa->imagemB, $upload_dir ) ) {
+                $objSobreEmpresa->imagemB = "sobre_empresa_img_B." . pathinfo($imagemB["name"])["extension"];
             }
                         
             if( empty($buscaDados[0]) ) 
             {                                
                 $objSobreEmpresa->inserir();
-            } 
+            }
             else 
             {                
                 $objSobreEmpresa->id = 1;
                 $objSobreEmpresa->atualizar();
-            }            
+            }
         }
         
         redirecionar_para("empresa.php");
@@ -83,7 +84,10 @@
             <div class="CMS_main" id="pag-cityshare-empresa">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> &gt; <a href="cityshare.php" class="link-caminho"> City Share</a> &gt; <a href="CMS_cityshare_conteudo.php" class="link-caminho" >Conteúdo</a> &gt; <a href="#" class="link-caminho">Sobre a Empresa</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt;
+                    <a href="cityshare_conteudo.php" class="link-caminho">Conteúdo</a> &gt;
+                    <a href="#" class="link-caminho">Sobre a Empresa</a>
                 </div>
                 <form action="empresa.php" method="post" name="formConteudo" enctype="multipart/form-data">
                     <div class="box-conteudo">
@@ -105,8 +109,8 @@
                             </div>
                             <div class="box-conteudo-pagina">                                
                                 <div class="box-input-imagem">
-                                    <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosSobreEmpresa->imagemA, $upload_dir); ?>)"></span>
-                                    <input class="input" type="file" name="imagemA" />
+                                    <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosSobreEmpresa->imagemA, $upload_dir); ?>)"></span>                                    
+                                    <input class="input" type="file" name="imagemA" accept=".jpg, .jpeg, .png, .gif" />                                    
                                 </div>
                                 <div class="conteudo-titulo">
                                     <label class="titulo-input">Título</label>
@@ -120,7 +124,7 @@
                             <div class="box-conteudo-pagina">
                                 <div class="box-input-imagem">
                                     <span class="botao-imagem conteudo-image" id="box-img-previa" style="background-image: url(<?php echo File::read($dadosSobreEmpresa->imagemB, $upload_dir); ?>)"></span>
-                                    <input class="input" type="file" name="imagemB" />
+                                    <input class="input" type="file" name="imagemB" accept="image/jpg, image/jpeg, image/png, image/gif" />
                                 </div>
                                 <div class="conteudo-titulo">
                                     <label class="titulo-input">Título</label>

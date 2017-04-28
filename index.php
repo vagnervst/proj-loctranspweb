@@ -1,12 +1,16 @@
-<?php 
+<?php
     require_once("include/initialize.php");
+    require_once("include/classes/tbl_sobre_projeto.php");
+    require_once("include/classes/tbl_home.php");
+    require_once("include/classes/tbl_beneficios_projeto.php");
+    require_once("include/classes/tbl_sobre_empresa.php");    
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Home | City Share</title>
         <meta name="viewport" content="width=device-width" />
-        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="img/icones/logoCityShareIcon.png">
@@ -14,7 +18,7 @@
             .edgeLoad-EDGE-62639122 { visibility:hidden; }
         </style>
     </head>
-    <body>
+    <body>       
         <div id="container">
             <?php require_once("layout/header.php"); ?>            
             <div class="main" id="pag-home">
