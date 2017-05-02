@@ -1265,16 +1265,63 @@ $(document).ready(function() {
     }
     
     function inicializarBotaoPublicacaoUsuario() {
-        var pagPerfilUsuario = $("#pag-perfil-usuario")[0]];
+        var pagPerfilUsuario = $("#pag-perfil-usuario")[0];
         
         if( pagPerfilUsuario !== undefined ) {
             var paginaAtual = 1;
             var botaoVerMais = $("#botao-ver-mais")[0];
             
             $( botaoVerMais ).click( function(e) {
+                ++paginaAtual;  
                 
+                carregarListaSolicitacoes(paginaAtual, true);
+                var botao_carregar_mais_publicacoes = $("#botao-ver-mais")[0];
+                botao_carregar_mais_publicacoes.style.display = "none";
             });
         }
+    }
+    
+    function carregarListaPublicacaoUsuario(pagina_alvo, increment = false) {
+        var box_info_publicacao = $("#box-info-publicacao")[0];        
+        var conteudo_listagem = box_info_publicacao.innerHTML;
+        
+        var imagem_carregamento = document.createElement("img");
+        imagem_carregamento.src = "img/loading_cityshare_black.gif";
+        imagem_carregamento.style.display = "block";
+        imagem_carregamento.style.margin = "0 auto";
+        
+        if( !increment ) {
+            box_info_publicacao.innerHTML = "";
+        }
+        
+        box_info_publicacao.appendChild( imagem_carregamento );
+        
+        var dados = new FormData();
+
+        var idUsuario = window.location.search;
+        idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length );                
+
+        dados.append("idUsuario", idUsuario);
+        dados.append("paginaAtual", pagina_alvo);                
+        
+        var ajax = new Ajax();        
+        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {
+            
+            if( increment ) {
+                box_info_publicacao.innerHTML = conteudo_listagem + resultado;              
+            } else {
+                box_info_publicacao.innerHTML = resultado;
+            }
+            
+            var botao_carregar_mais_pedidos = $("#botao-ver-mais")[0];
+            
+            if( resultado.length === 0 ) {
+                botao_carregar_mais_pedidos.style.display = "none";
+            } else {
+                botao_carregar_mais_pedidos.style.display = "block";    
+            }
+            
+        });
     }
     
     if( tamanhoTela.indexOf("mobile") != -1 ) {                
@@ -1301,6 +1348,7 @@ $(document).ready(function() {
         inicializarSelecionadorImagensVeiculo();
         inicializarModaisPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
+        inicializarBotaoPublicacaoUsuario();
         
     }
     

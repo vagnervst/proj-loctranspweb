@@ -92,7 +92,7 @@
                 return $resultado;
             } 
             
-            public function getDetalhesPublicacao($where = null) {
+            public function getDetalhesPublicacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, ";
@@ -125,7 +125,7 @@
                 $sql .= "ON u.idCidade = c.id ";
                 $sql .= "INNER JOIN tbl_estado AS e ";
                 $sql .= "ON c.idEstado = e.id ";
-                
+                //echo $sql;
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
                 }
