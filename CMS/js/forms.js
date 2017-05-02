@@ -29,6 +29,7 @@ $(document).ready(function() {
                 { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
                 { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
                 { nomeCampo : 'txtAno', propriedade : 'ano' },
+                { nomeCampo : 'txtTanque', propriedade : 'tanque' },
                 { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },                
                 { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
                 { nomeCampo : 'slCombustivel', propriedade : 'idTipoCombustivel' },

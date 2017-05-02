@@ -1,12 +1,10 @@
 <?php
-    require_once("include/initialize.php");
-    require_once("include/classes/sessao.php");
+    require_once("include/initialize.php");    
     require_once("include/classes/tbl_usuario.php");
     require_once("include/classes/tbl_publicacao.php");
+        
+    $idUsuario = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
-    $sessao = new Sessao();
-    $idUsuario = $sessao->get("idUsuario");
-
     $detalhes_usuario = new \Tabela\Usuario();
     $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];    
 ?>
@@ -44,7 +42,7 @@
                             </section>
                         </div>                        
                     </div>
-                    <section id="box-info-publicacoes">
+                    <section id="container-publicacoes">
                         <div class="wrapper-publicacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
                     </section>

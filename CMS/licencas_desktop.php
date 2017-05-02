@@ -16,7 +16,7 @@
             <div class="CMS_main" id="pag-licenca-desktop">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="desktop.php" class="link-caminho"> Desktop</a > ><a href="#.php" class="link-caminho"> Licenças Desktop</a>
+                    <a href="home.php" class="link-caminho" >Home</a> ><a href="desktop.php" class="link-caminho"> Desktop</a > ><a href="#.php" class="link-caminho"> Licenças Desktop</a>
                 </div>
                 <div class="box-conteudo">
                     <div class="titulo-sessao">Cadastro de Licenças</div>

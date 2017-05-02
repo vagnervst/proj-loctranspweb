@@ -1147,8 +1147,7 @@ $(document).ready(function() {
                 var botao_carregar_mais_solicitacoes = $("#botao-exibir-mais")[0];
                 botao_carregar_mais_solicitacoes.className = "js-load-solicitacoes";
                 botao_carregar_mais_solicitacoes.style.display = "none";
-                
-                
+                                
                 carregarListaSolicitacoes(paginaAtual);
             });
             
@@ -1254,7 +1253,7 @@ $(document).ready(function() {
             html += '<h1 class="titulo">'+ publicacao.titulo +'</h1>';
             html += '<p class="modelo-veiculo">'+ publicacao.modeloVeiculo +'</p>';
             html += '<div class="box-diaria">';
-            html += '<p class="diaria">R$'+ publicacao.valorDiarai.toString().replace(".", ","); +'</p>';
+            html += '<p class="diaria">R$'+ publicacao.valorDiaria.toString().replace(".", ","); +'</p>';
             html += '<p class="label-diaria">diária</p>';
             html += '</div>';
             html += '</section>';
@@ -1271,18 +1270,22 @@ $(document).ready(function() {
             var paginaAtual = 1;
             var botaoVerMais = $("#botao-ver-mais")[0];
             
+            carregarListaPublicacaoUsuario(paginaAtual, false);
+            
+            $( botaoVerMais ).off("click");
             $( botaoVerMais ).click( function(e) {
                 ++paginaAtual;  
                 
-                carregarListaSolicitacoes(paginaAtual, true);
+                carregarListaPublicacaoUsuario(paginaAtual, true);
                 var botao_carregar_mais_publicacoes = $("#botao-ver-mais")[0];
                 botao_carregar_mais_publicacoes.style.display = "none";
-            });
+            });            
         }
     }
-    
+
+    var lista_json_publicacoes = [];
     function carregarListaPublicacaoUsuario(pagina_alvo, increment = false) {
-        var box_info_publicacao = $("#box-info-publicacao")[0];        
+        var box_info_publicacao = $("#container-publicacoes .wrapper-publicacoes")[0];        
         var conteudo_listagem = box_info_publicacao.innerHTML;
         
         var imagem_carregamento = document.createElement("img");
@@ -1295,7 +1298,7 @@ $(document).ready(function() {
         }
         
         box_info_publicacao.appendChild( imagem_carregamento );
-        
+
         var dados = new FormData();
 
         var idUsuario = window.location.search;
@@ -1305,26 +1308,28 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {
+        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {            
+            
+            lista_json_publicacoes = JSON.parse( resultado );
             
             if( increment ) {
-                box_info_publicacao.innerHTML = conteudo_listagem + resultado;              
+                box_info_publicacao.innerHTML = conteudo_listagem + criarListaPublicacoesUsuario( lista_json_publicacoes );              
             } else {
-                box_info_publicacao.innerHTML = resultado;
+                box_info_publicacao.innerHTML = criarListaPublicacoesUsuario( lista_json_publicacoes );
             }
+
+            var botao_carregar_mais_publicacoes = $("#botao-ver-mais")[0];            
             
-            var botao_carregar_mais_pedidos = $("#botao-ver-mais")[0];
-            
-            if( resultado.length === 0 ) {
-                botao_carregar_mais_pedidos.style.display = "none";
+            if( lista_json_publicacoes.length === 0 ) {                
+                botao_carregar_mais_publicacoes.style.display = "none";
             } else {
-                botao_carregar_mais_pedidos.style.display = "block";    
+                botao_carregar_mais_publicacoes.style.display = "block";
             }
             
         });
     }
     
-    if( tamanhoTela.indexOf("mobile") != -1 ) {                
+    if( tamanhoTela.indexOf("mobile") != -1 ) {
         
         inicializarPreenchimentoDatasLocacao();
         inicializarModaisLocacao();
@@ -1335,8 +1340,9 @@ $(document).ready(function() {
         inicializarModaisPedido();
         inicializarBotoesSessaoPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
-        
-    } else if( tamanhoTela.indexOf("desktop") != -1 ) {                
+        inicializarBotaoPublicacaoUsuario();
+
+    } else if( tamanhoTela.indexOf("desktop") != -1 ) {
         
         inicializarPreenchimentoDatasLocacao();
         inicializarModaisLocacao();
@@ -1349,7 +1355,7 @@ $(document).ready(function() {
         inicializarModaisPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
         inicializarBotaoPublicacaoUsuario();
-        
+
     }
     
     $('.faq').click(function (){
