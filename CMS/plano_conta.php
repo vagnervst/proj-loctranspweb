@@ -19,7 +19,7 @@
             <div class="CMS_main" id="pag-plano-conta">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho">Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="plano_conta.php" class="link-caminho"> Planos de Conta</a>
+                    <a href="home.php" class="link-caminho">Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="plano_conta.php" class="link-caminho"> Planos de Conta</a>
                 </div>
                 <div class="box-conteudo">
                     <div id="box-form-categoria">

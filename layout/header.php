@@ -52,7 +52,7 @@
                 </div>
                 <div class="js-popup-painel" id="box-menu-usuario">
                     <ul id="menu-usuario">
-                        <li><a href="perfil.php">Perfil</a></li>
+                        <li><a href="perfil.php?id=<?php echo $idUsuario; ?>">Perfil</a></li>
                         <li><a href="solicitacoes.php?user=<?php echo $idUsuario; ?>">Solicitações</a></li>
                         <li><a href="#">Configurações</a></li>
                         <li><a href="logout_action.php">Sair</a></li>

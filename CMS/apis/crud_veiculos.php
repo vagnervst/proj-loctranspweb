@@ -12,6 +12,7 @@
     $ano = ( isset($_POST["txtAno"]) )? $_POST["txtAno"] : null;
     $motor = ( isset($_POST["txtMotor"]) )? $_POST["txtMotor"] : null;
     $portas = ( isset($_POST["txtPortas"]) )? $_POST["txtPortas"] : null;		
+    $tanque = ( isset($_POST["txtTanque"]) )? $_POST["txtTanque"] : null;
     $idCategoria = ( isset($_POST["slCategoria"]) )? $_POST["slCategoria"] : null;
     $idTipo = ( isset($_POST["slTipo"]) )? $_POST["slTipo"] : null;
     $idCombustivel = ( isset($_POST["slCombustivel"]) )? $_POST["slCombustivel"] : null;
@@ -24,6 +25,7 @@
     $objVeiculo->nome = $nome;
     $objVeiculo->precoMedio = $precoMedio;
     $objVeiculo->ano = $ano;
+    $objVeiculo->tanque = $tanque;
     $objVeiculo->tipoMotor = $motor;
     $objVeiculo->qtdPortas = (int) $portas;
     $objVeiculo->idCategoriaVeiculo = (int) $idCategoria;

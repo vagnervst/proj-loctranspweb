@@ -125,9 +125,16 @@
                 $sql .= "ON u.idCidade = c.id ";
                 $sql .= "INNER JOIN tbl_estado AS e ";
                 $sql .= "ON c.idEstado = e.id ";
-                //echo $sql;
+                
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
+                }
+                
+                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
+                    $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
+
+                    $sql .= " LIMIT " . $registros_por_pagina . " ";
+                    $sql .= "OFFSET " . $registros_a_ignorar;
                 }
                 
                 $resultado = $this->executarQuery( $sql );

@@ -1085,7 +1085,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 /***************CONTATO*******************/
 #pag-cityshare-contato {
-    height: 1250px;
+    height: 1420px;
     
 }
 #pag-cityshare-contato .box-conteudo {
@@ -1150,7 +1150,10 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-cityshare-contato .box-conteudo #container-perguntas #wrapper-perguntas {
-    max-height: 400px;
+    max-height: 430px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #dcdcdc;
     overflow-y: auto;
 }
 
