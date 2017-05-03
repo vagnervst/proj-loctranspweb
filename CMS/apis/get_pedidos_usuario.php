@@ -18,5 +18,6 @@
     <p class="locador-pedido"><?php echo $pedido->nomeLocador; ?></p>
     <p class="data-pedido"><?php echo $pedido->dataRetirada; ?></p>
     <p class="status-pedido"><?php echo $pedido->statusPedido; ?></p>
+    <a class="preset-botao" href="detalhes_pedido.php?idUsuario=<?php echo $id ?>&idPedido=<?php echo $pedido->idPedido; ?>">i</a>
 </div>
 <?php } ?>
