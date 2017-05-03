@@ -20,7 +20,7 @@
             
             function getPedido($where = null) {
                 
-                $sql = "SELECT p.id AS idPedido, p.dataRetirada, p.dataEntrega, p.idUsuarioLocatario AS idLocatario, ";
+                $sql = "SELECT p.id AS idPedido, p.idPublicacao, p.dataRetirada, p.dataEntrega, p.idUsuarioLocatario AS idLocatario, ";
                 $sql .= "u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, sp.titulo AS statusPedido ";
                 $sql .= "FROM tbl_pedido AS p ";
                 $sql .= "INNER JOIN tbl_usuario AS u ";

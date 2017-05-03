@@ -28,7 +28,6 @@
                         <form method="post" action="usuario.php"> 
                             <input id="search-input" type="search" placeholder="Pesquisar" />
                             <input class="preset-input-submit"type="submit" value="pesquisar" />
-                                   
                        </form>
                     </div>
                 <div class="box-conteudo">
