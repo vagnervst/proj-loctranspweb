@@ -1398,7 +1398,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido {
-    width: 700px;
+    width: 800px;
     height: 40px;
     margin: 10px 20px;
     border: 1px solid grey;
@@ -1428,6 +1428,19 @@ header #box-cabecalho #box-conta #botao-logout {
     text-align: right;
     padding-top: 10px;
     padding-right: 10px;
+}
+
+#pag-info-usuarios .box-conteudo #container-publicacoes-pedidos .box-pedido .preset-botao {
+    width: 25px;
+    height: 20px;
+    float: left;
+    margin: 10px 40px;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+#pag-detalhes-publicacao {
+    height: 1200px;
 }
 
 #pag-detalhes-publicacao .box-conteudo {
@@ -1486,7 +1499,7 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-detalhes-publicacao .box-conteudo .box-publicacao {
     width: 850px;
-    height: 600px;
+    height: 650px;
 }
 
 #pag-detalhes-publicacao .box-conteudo .box-publicacao .separacao {
@@ -1559,6 +1572,73 @@ header #box-cabecalho #box-conta #botao-logout {
     display: inline-block;
 }
 
+#pag-detalhes-publicacao .box-conteudo .lista-pedidos {
+    width: 600px;
+    height: 250px;
+    overflow: auto;
+    border: 1px solid #cecece;
+    margin: 30px 100px;
+    background-color: white;
+    float: left;
+}
+
+#pag-detalhes-publicacao .box-conteudo .lista-pedidos .pedido {
+    width: 600px;
+    height: 20px;
+    text-align: center;
+    border-bottom: 1px solid #cecece;
+}
+
+#pag-detalhes-publicacao .box-conteudo .lista-pedidos .pedido .link {
+    width: 600px;
+    height: 20px;
+}
+
+#pag-detalhes-publicacao .box-conteudo .lista-pedidos .pedido .campo-pedido {
+    width: 150px;
+    height: 20px;
+    float: left;
+}
+
+#pag-detalhes-publicacao .box-conteudo .lista-pedidos .pedido .data-pedido {
+    width: 300px;
+    height: 20px;
+    float: left;
+}
+
+#pag-detalhes-publicacao .box-conteudo .titulo-pedidos {
+    width: 100%;
+    height: 30px;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-left: 380px;
+}
+
+#pag-detalhes-pedido .box-conteudo #botao-voltar {
+    width: 40px;
+    height: 25px;
+    font-size: 36px;
+    margin-left: 10px;
+    line-height: 25px;
+    padding: 5px;
+}
+
+#pag-detalhes-pedido .box-conteudo .box-info-pedido {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #cecece;
+}
+
+#pag-detalhes-pedido .box-conteudo .box-info-pedido .info-pedido {
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    border-bottom: 1px solid #cecece;
+    margin-bottom: 15px;
+}
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
 
