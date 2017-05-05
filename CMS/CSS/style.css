@@ -1248,7 +1248,7 @@ header #box-cabecalho #box-conta #botao-logout {
     height: 830px;
     overflow: auto;
 }
-#pag-clientes-usuarios .box-conteudo .box-usuario {
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario {
     width: 260px;
     height: 150px;
     float: left;
@@ -1257,7 +1257,7 @@ header #box-cabecalho #box-conta #botao-logout {
     border-radius: 0px 0px 2px 2px;
     padding: 5px;
 }
-#pag-clientes-usuarios .box-conteudo .box-usuario .nome-usuario {
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .nome-usuario {
     width: 100%;
     height: 30px;
     line-height: 30px;
@@ -1266,7 +1266,7 @@ header #box-cabecalho #box-conta #botao-logout {
     font-size: 20px;
     
 }
-#pag-clientes-usuarios .box-conteudo .box-usuario .cont-usuario {
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .cont-usuario {
     width: 100%;
     height: 50px;
     line-height: 50px;
@@ -1287,7 +1287,7 @@ header #box-cabecalho #box-conta #botao-logout {
     margin-left: 5px;
 }
 
-#pag-clientes-usuarios .box-conteudo .box-usuario .box-botao .preset-botao {
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .box-botao .preset-botao {
     float: right;
     width: 60px;
 }
@@ -2221,4 +2221,134 @@ footer #box-rodape #box-logo-rodape {
     width: 1080px;
     height: 100%;
     background-color: #ebebeb;
+}
+
+/*---- PAGINA PUBLICAÇÕES ----*/
+
+#pag-publicacao {
+    height: 1020px;
+}
+
+#pag-publicacao .box-publicacao-preview {
+    width: 815px;
+    height: 100px;
+    margin-left: 5px;
+    background-color:#a1aec9;
+    float: left;
+    border-radius: 2px;
+    margin: 5px 5px;
+}
+
+#pag-publicacao .box-publicacao-preview .box-publicacao-imagem {
+    width: 120px;
+    height: 80px;
+    margin: 10px;
+    float: left;
+}
+
+#pag-publicacao .box-publicacao-preview .box-publicacao-imagem .publicacao-imagem {
+    width: 120px;
+    height: 80px;
+    
+}
+
+#pag-publicacao .box-publicacao-preview .box-publicacao-dados {
+    width: 331px;
+    height: 100px;
+    float: left;
+    margin-top: 10px;
+    
+}
+
+#pag-publicacao .box-publicacao-preview .box-publicacao-status {
+    text-align: right;
+    width: 324px;
+    height: 90px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#pag-publicacao-detalhes .box-publicacao {
+    width: 815px;
+    height: 725px;
+    margin-left: 5px;
+    background-color:#a1aec9;
+    float: left;
+    border-radius: 2px;
+}
+
+#pag-publicacao-detalhes .box-publicacao .boxes-publicacao {
+    margin: 5px;
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+}
+
+ #pag-publicacao-detalhes .box-publicacao #nome-publicacao {
+    font-size: 23px;
+    text-align: center;
+}
+
+#pag-publicacao-detalhes .box-publicacao #imagens-publicacao {
+    height: 120px;
+    
+    
+    border: solid 1px #000000;
+}
+
+#pag-publicacao-detalhes .box-publicacao #modelo-publicacao {
+    
+    
+}
+
+#pag-publicacao-detalhes .box-publicacao #proprietario-publicacao {
+    
+    
+    margin: 5px;
+    height: 50px;
+    line-height: 50px
+}
+
+#pag-publicacao-detalhes .box-publicacao #reputacao-publicacao {
+    
+    margin: 5px;
+    height: 50px;
+    line-height: 50px
+}
+
+#pag-publicacao-detalhes .box-publicacao #data-publicacao {
+    
+    
+}
+
+#pag-publicacao-detalhes .box-publicacao #diaria-publicacao {
+    
+    
+}
+
+#pag-publicacao-detalhes .box-publicacao #combustivel-publicacao {
+    
+    
+}
+
+#pag-publicacao-detalhes .box-publicacao #distancia-publicacao {
+    
+    
+}
+
+#pag-publicacao-detalhes .box-publicacao #status-publicacao {
+    
+    
+}
+
+#pag-publicacao-detalhes .box-publicacao #botoes-publicacao {
+    margin: 0px 300px;
+}
+
+#pag-publicacao-detalhes .box-publicacao #botoes-publicacao .preset-botao {
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    margin: 0px 10px;
 }

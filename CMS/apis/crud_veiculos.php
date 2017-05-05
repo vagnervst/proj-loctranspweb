@@ -18,7 +18,7 @@
     $idCombustivel = ( isset($_POST["slCombustivel"]) )? $_POST["slCombustivel"] : null;
     $idFabricante = ( isset($_POST["slFabricante"]) )? $_POST["slFabricante"] : null;
     $idTransmissao = ( isset($_POST["slTransmissao"]) )? $_POST["slTransmissao"] : null;
-
+    
     $objVeiculo = new \Tabela\Veiculo();
 
     $objVeiculo->codigo = $codigoVeiculo;

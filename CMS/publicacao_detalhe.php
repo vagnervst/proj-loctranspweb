@@ -54,7 +54,7 @@
                         status
                     </div>
                     <div id="botoes-publicacao" class="boxes-publicacao">
-                        aprovar|recusar
+                        <span class="preset-botao aprovar">aprovar</span><span class="preset-botao recusar">recusar</span>
                     </div>
                 </div>
             </div>
