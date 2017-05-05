@@ -92,7 +92,7 @@
                 return $resultado;
             } 
             
-            public function getDetalhesPublicacao($where = null) {
+            public function getDetalhesPublicacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, ";
@@ -128,6 +128,13 @@
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
+                }
+                
+                if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
+                    $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
+
+                    $sql .= " LIMIT " . $registros_por_pagina . " ";
+                    $sql .= "OFFSET " . $registros_a_ignorar;
                 }
                 
                 $resultado = $this->executarQuery( $sql );

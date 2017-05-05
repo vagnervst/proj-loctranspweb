@@ -22,20 +22,19 @@
             <div class="CMS_main" id="pag-clientes-usuarios">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                        <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> > <a href="usuario.php" class="link-caminho" >Usuarios</a>
+                        <a href="home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> > <a href="usuario.php" class="link-caminho" >Usuarios</a>
                     </div>
                     <div id="box-pesquisa">
-                        <form method="post" action="usuario.php"> 
-                            <input id="search-input" type="search" placeholder="Pesquisar" />
-                            <input class="preset-input-submit"type="submit" value="pesquisar" />
-                                   
+                        <form method="post" action="#"> 
+                            <input id="search-input" type="search" name="txtPesquisa" placeholder="Pesquisar" />
+                            <input class="preset-input-submit" name="btnBuscar" type="submit" value="Pesquisar" />
                        </form>
                     </div>
                 <div class="box-conteudo">
                     <?php
                         foreach( $usuarios as $usuario ){
                     ?>
-                    <div class="box-usuario">
+                    <div class="box-listagem-usuario">
                         <div class="nome-usuario"><?php echo $usuario->nome; ?></div>
                         <div class="cont-usuario">Email: <?php echo $usuario->email; ?></div>
                         <div class="cont-usuario">Tipo: <?php echo $usuario->tipoConta; ?></div>

@@ -20,7 +20,7 @@
             <div class="CMS_main" id="pag-publicacao-detalhes">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a> ><a href="publicacao_detalhe.php" class="link-caminho"> Detalhes da Publicação</a>
+                    <a href="home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a> ><a href="publicacao_detalhe.php" class="link-caminho"> Detalhes da Publicação</a>
                 </div>
                 <div class="box-publicacao">
                     <div id="nome-publicacao" class="boxes-publicacao">
@@ -54,7 +54,7 @@
                         status
                     </div>
                     <div id="botoes-publicacao" class="boxes-publicacao">
-                        aprovar|recusar
+                        <span class="preset-botao aprovar">aprovar</span><span class="preset-botao recusar">recusar</span>
                     </div>
                 </div>
             </div>

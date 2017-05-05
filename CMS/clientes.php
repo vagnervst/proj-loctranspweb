@@ -19,7 +19,7 @@
             <div class="CMS_main" id="pag-clientes">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a>
+                    <a href="home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a>
                 </div>
                 <?php                                        
                     $lista_permissoes_usuario = $sessao->get("id_permissoes");

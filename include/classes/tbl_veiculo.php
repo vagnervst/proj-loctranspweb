@@ -11,6 +11,7 @@
             public $tipoMotor;
             public $precoMedio;
             public $ano;
+            public $tanque;
             public $qtdPortas;
             public $idCategoriaVeiculo;
             public $idFabricante;
@@ -21,7 +22,7 @@
             public function getVeiculos($registros_por_pagina = null, $pagina_atual = null, $where = null, $group = null) {
                 //Retorna a relação de veiculos, fabricantes, combustivel, categoria, tipo e transmissao
                 
-                $sql = "SELECT v.id, v.codigo, v.nome, v.tipoMotor, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
+                $sql = "SELECT v.id, v.codigo, v.nome, v.tipoMotor, v.ano, v.qtdPortas, v.idCategoriaVeiculo, v.tanque, ";
                 $sql .= "c.nome AS categoria, v.idFabricante, f.nome AS fabricante, v.idTipoCombustivel, cb.nome AS combustivel, ";
                 $sql .= "v.idTipoVeiculo, t.titulo AS tipo, v.idTransmissao, tr.titulo AS transmissao ";
                 $sql .= "FROM {$this::$nome_tabela} AS v ";

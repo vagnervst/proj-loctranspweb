@@ -1,14 +1,10 @@
 <?php
-    require_once("include/initialize.php");
-    require_once("include/classes/sessao.php");
+    require_once("include/initialize.php");    
     require_once("include/classes/tbl_usuario.php");
-    require_once("include/classes/tbl_estado.php");
-    require_once("include/classes/tbl_cidade.php");
     require_once("include/classes/tbl_publicacao.php");
+        
+    $idUsuario = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
-    $sessao = new Sessao();
-    $idUsuario = $sessao->get("idUsuario");
-
     $detalhes_usuario = new \Tabela\Usuario();
     $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];    
 ?>
@@ -46,31 +42,8 @@
                             </section>
                         </div>                        
                     </div>
-                    <section id="box-info-publicacoes">
-                        <?php
-                            $publicacoes = new \Tabela\Publicacao();
-                            $publicacoes = $publicacoes->getDetalhesPublicacao("u.id = {$idUsuario}");
-                        ?>
-                        <div class="wrapper-publicacoes">
-                            <h1 id="titulo">Publicações</h1>
-                            <div id="container-publicacoes">
-                                <?php foreach( $publicacoes as $publicacao ){ ?>
-                                <div class="box-publicacao">
-                                    <a href="veiculo.php">
-                                        <div class="foto-publicacao" style="background-image: url("<?php echo File::read($publicacao->imagemPrincipal, "img/uploads/publicacoes/")?>")"></div>
-                                    </a>
-                                    <section class="box-info-publicacao">
-                                        <h1 class="titulo"><?php echo $publicacao->titulo; ?></h1>
-                                        <p class="modelo-veiculo"><?php echo $publicacao->modeloVeiculo; ?></p>
-                                        <div class="box-diaria">
-                                            <p class="diaria">R$<?php echo $publicacao->valorDiaria; ?></p>
-                                            <p class="label-diaria">diária</p>
-                                        </div>
-                                    </section>                                
-                                </div>
-                                <?php } ?>
-                            </div>
-                        </div>
+                    <section id="container-publicacoes">
+                        <div class="wrapper-publicacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
                     </section>
                 </div>                

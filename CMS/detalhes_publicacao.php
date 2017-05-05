@@ -1,6 +1,7 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_publicacao.php");
+    require_once("../include/classes/tbl_pedido.php");
     require_once("../include/classes/tbl_veiculo.php");
     require_once("../include/classes/tbl_acessorio_veiculo.php");
     
@@ -10,8 +11,10 @@
     
     $dadosPublicacao = new \Tabela\Publicacao();
     $dadosAcessorio = new \Tabela\Veiculo();
+    $dadosPedido = new \Tabela\Pedido();
     $dadosAcessorio = $dadosAcessorio->getAcessorios("v.id = {$idVeiculo}");
     $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao("u.id = {$idUsuario} AND p.id = {$idPublicacao} AND v.id = {$idVeiculo}")[0];
+    $dadosPedido = $dadosPedido->getPedido("p.idPublicacao = {$idPublicacao}");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,7 +34,7 @@
             <div class="CMS_main" id="pag-detalhes-publicacao">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="CMS_home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> > <a href="usuario.php" class="link-caminho" >Usuarios</a> > <a href="info_usuario.php?id=<?php echo $idUsuario ?>" class="link-caminho" >Informações do usuário</a> > <a href="#" class="link-caminho" >Detalhes Publicação</a>
+                    <a href="home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> > <a href="usuario.php" class="link-caminho" >Usuarios</a> > <a href="info_usuario.php?id=<?php echo $idUsuario ?>" class="link-caminho" >Informações do usuário</a> > <a href="#" class="link-caminho" >Detalhes Publicação</a>
                 </div>
                 <div class="box-conteudo">
                     <a class="preset-botao" id="botao-voltar" href="info_usuario.php?id=<?php echo $idUsuario ?>">←</a>
@@ -88,8 +91,19 @@
                             </div>
                         </section>
                     </div>
+                    <p class="titulo-pedidos">Pedidos</p>
                     <div class="lista-pedidos">
-                        
+                        <?php
+                            foreach( $dadosPedido as $pedido ){
+                        ?>
+                        <div class="pedido">
+                            <a class="link" href="detalhes_pedido.php?idUsuario=<?php echo $idUsuario; ?>&idPedido=<?php echo $pedido->idPedido; ?>">
+                                <p class="campo-pedido"><?php echo $pedido->nomeLocador; ?></p>
+                                <p class="data-pedido"><?php echo $pedido->dataRetirada . " / " . $pedido->dataEntrega; ?></p>
+                                <p class="campo-pedido"><?php echo $pedido->statusPedido; ?></p>
+                            </a>
+                        </div>
+                        <?php }?>
                     </div>
                 </div>
             </div>

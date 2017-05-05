@@ -126,6 +126,7 @@ function inicializar_botao_edicao_veiculos(json_lista_veiculos) {
             { nomeCampo : 'txtPortas', propriedade : 'qtdPortas' },
             { nomeCampo : 'txtMotor', propriedade : 'tipoMotor' },
             { nomeCampo : 'txtAno', propriedade : 'ano' },
+            { nomeCampo : 'txtTanque', propriedade : 'tanque' },
             { nomeCampo : 'slTransmissao', propriedade : 'idTransmissao' },
             { nomeCampo : 'txtPrecoMedio', propriedade : 'precoMedio' },
             { nomeCampo : 'slFabricante', propriedade : 'idFabricante' },
