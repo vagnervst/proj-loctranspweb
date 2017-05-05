@@ -1,7 +1,7 @@
 <?php
     require_once("include/initialize.php");  
     require_once("include/classes/sessao.php");
-    require_once("classes/tbl_usuario.php");
+    require_once("include/classes/tbl_usuario.php");
     
     if( isset($_POST["submitLogin"]) ) {
         $db = new \DB\Database();

@@ -2,6 +2,7 @@
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_pedido.php");
     require_once("../include/classes/tbl_publicacao.php");
+    require_once("../include/classes/tbl_alteracao_pedido.php");
     require_once("../include/classes/sessao.php");
 
     $idPublicacao = ( isset( $_POST["idPublicacao"] ) )? (int) $_POST["idPublicacao"] : null;
@@ -10,9 +11,7 @@
     $idCnh = ( isset( $_POST["idCnh"] ) )? (int) $_POST["idCnh"] : null;
     
     if( !empty( $idPublicacao ) ) {
-        $objPedido = new \Tabela\Pedido();                                
-        
-        echo "CNH: " . $idCnh;
+        $objPedido = new \Tabela\Pedido();                    
         
         $dataRetirada = strtotime( $dataRetirada );
         $dataDevolucao = strtotime( $dataDevolucao );
@@ -34,9 +33,12 @@
         $sessao = new Sessao();
         $id_usuario_locatario = (int) $sessao->get("idUsuario");
         
+        $objPedido->valorDiaria = $info_publicacao->valorDiaria;
+        $objPedido->valorCombustivel = $info_publicacao->valorCombustivel;
+        $objPedido->valorQuilometragem = $info_publicacao->valorQuilometragem;
         $objPedido->dataRetirada = $dataRetirada;
         $objPedido->dataEntrega = $dataDevolucao;
-        $objPedido->idPublicacao = (int) $info_publicacao->idPublicacao;
+        $objPedido->idPublicacao = (int) $info_publicacao->id;
         $objPedido->idUsuarioLocador = $id_usuario_locador;
         $objPedido->idUsuarioLocatario = $id_usuario_locatario;
         $objPedido->idStatusPedido = $id_status_aguardando_aprovacao;
@@ -46,6 +48,13 @@
         $objPedido->idCnh = $idCnh;
         $objPedido->idVeiculo = $id_veiculo;
         
-        $objPedido->inserir();
+        $idPedido = $objPedido->inserir();
+        
+        $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
+        $historicoAlteracaoPedido->dataOcorrencia = strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()) );
+        $historicoAlteracaoPedido->idPedido = $idPedido;
+        $historicoAlteracaoPedido->idStatus = $id_status_aguardando_aprovacao;
+        
+        $historicoAlteracaoPedido->inserir();
     }
 ?>

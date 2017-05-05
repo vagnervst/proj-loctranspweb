@@ -11,8 +11,8 @@
     if( $id_publicacao == null ) redirecionar_para("index.php");
 
     $info_publicacao = new \Tabela\Publicacao();
-    $info_publicacao = $info_publicacao->getPublicacao(null, null, "p.id = " . $id_publicacao)[0];
-        
+    $info_publicacao = $info_publicacao->getDetalhesPublicacao("p.id = " . $id_publicacao)[0];            
+
     $id_usuario = new Sessao();
     $id_usuario = $id_usuario->get("idUsuario");        
     
@@ -137,7 +137,7 @@
                                     <p class="titulo">Retirada</p>
                                     <div class="box-label-data">                                    
                                         <p class="label">Data:</p>
-                                        <input class="preset-input-text data-input js-mask" id="data-retirada" type="text" placeholder="DD/MM/AA" data-mask="DD#/DD#/DD" />
+                                        <input class="preset-input-text data-input js-mask" id="data-retirada" type="text" placeholder="DD/MM/AAAA" data-mask="DD#/DD#/DDDD" />
                                     </div>
                                     <div class="box-label-data">                                    
                                         <p class="label">Hora:</p>
@@ -148,7 +148,7 @@
                                     <p class="titulo">Devolução</p>
                                     <div class="box-label-data">                                    
                                         <p class="label">Data:</p>
-                                        <input class="preset-input-text data-input js-mask" id="data-devolucao" type="text" placeholder="DD/MM/AA" data-mask="DD#/DD#/DD" />
+                                        <input class="preset-input-text data-input js-mask" id="data-devolucao" type="text" placeholder="DD/MM/AAAA" data-mask="DD#/DD#/DDDD" />
                                     </div>
                                     <div class="box-label-data">
                                         <p class="label">Hora:</p>
