@@ -59,18 +59,38 @@ function JSMask() {
         return mascara;
     }
     
-    this.unformat_entrada = function( entrada, mascara_formatacao ) {
-        entrada = entrada.split('');                
+    this.capturar_caracteres_formatacao = function(mascara_formatacao) {
+        var caracteres = [];
         
         for( var i = 0; i < mascara_formatacao.length; ++i ) {            
             
             if( mascara_formatacao[i].indexOf( this.indicador_caractere_formatacao ) !== -1 ) {                
                 var caractere_fixo = mascara_formatacao[i][1];
                 
-                if( entrada[i] === caractere_fixo ) {
-                    entrada.splice(i, 1);
+                var existente = false;
+                for( var x = 0; x < caracteres.length; ++x ) {
+                    if( caracteres[x] === caractere_fixo ) existente = true;
+                }
+                
+                if( !existente ) {
+                    caracteres.push(caractere_fixo);
                 }
             }            
+        }
+        
+        return caracteres;
+    }
+    
+    this.unformat_entrada = function( entrada, mascara_formatacao ) {
+        
+        var caracteres_formatacao = this.capturar_caracteres_formatacao(mascara_formatacao);
+        
+        for( var i = 0; i < caracteres_formatacao.length; ++i ) {
+            var caractere = caracteres_formatacao[i];
+            
+            while( entrada.indexOf( caractere ) != -1 ) {
+                entrada = entrada.replace(caractere, "");
+            }
         }
         
         return entrada;
@@ -114,9 +134,10 @@ function JSMask() {
     
     this.processar_entrada = function( entrada, caractere_pressionado, mascara ) {                
         mascara_entrada = this.preparar_mascara_entrada( mascara );
-        var indice_a_inserir = this.capturar_indice_caractere_pressionado( this.unformat_entrada(entrada, this.preparar_mascara_formatacao(mascara)) );
+        var entrada_sem_formatacao = this.unformat_entrada(entrada, this.preparar_mascara_formatacao(mascara));
+        var indice_a_inserir = this.capturar_indice_caractere_pressionado( entrada_sem_formatacao );
         
-        if( indice_a_inserir >= mascara_entrada.length-1 ) return false;
+        if( entrada_sem_formatacao.length + caractere_pressionado.length > mascara_entrada.length ) return false;
         
         return this.verificar_compatibilidade_entrada( caractere_pressionado, mascara_entrada, indice_a_inserir );
     }

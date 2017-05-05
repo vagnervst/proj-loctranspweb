@@ -4316,6 +4316,10 @@ header #box-botao-filtragem {
     }   
 }
 
+#pag-solicitacoes .box-conteudo {
+    height: 800px;
+}
+
 #pag-solicitacoes #container-modo-visualizacao {
     background-color: #d6d6d6;    
     padding-top: 10px;
@@ -4823,6 +4827,15 @@ header #box-botao-filtragem {
     font-size: 19px;
     border-bottom: 1px solid #585858;
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 740px) {
+    #pag-solicitacoes .box-conteudo #box-listagem .box-pedido .wrapper-box-info .box-info-locador .status {
+        font-size: 16px;
+    }
 }
 
 #pag-solicitacoes .box-conteudo #box-listagem .box-solicitacao .wrapper-box-info .box-info-locatario .status {
@@ -4966,6 +4979,7 @@ header #box-botao-filtragem {
 
 #pag-pedido {
     min-height: 845px;
+    overflow: hidden;
 }
 
 @media (min-width: 520px) {
@@ -5002,6 +5016,7 @@ header #box-botao-filtragem {
     border-radius: 5px;
     border: 2px solid #a1aec9;
     z-index: 2;
+    display: none;
 }
 
 #pag-pedido #modal-confirmacao-local,
@@ -5036,6 +5051,12 @@ header #box-botao-filtragem {
     margin: 5px 0px;
 }
 
+#pag-pedido .box-modal-pedido .box-avaliacao .txt-comentario-avaliacao {
+    width: 285px;
+    height: 55px;
+    resize: none;
+}
+
 #pag-pedido .box-modal-pedido .box-avaliacao .box-botoes-avaliacao {
     text-align: center;
 }
@@ -5048,6 +5069,11 @@ header #box-botao-filtragem {
     display: inline-block;
     position: relative;
     cursor: pointer;
+    transition: all .2s;
+}
+
+#pag-pedido .box-modal-pedido .box-avaliacao .box-botoes-avaliacao .botao-avaliacao.ativo {
+    background-image: url(../img/icones/avaliacao.png);
 }
 
 #pag-pedido .box-modal-pedido .botao-fechar {
@@ -5153,7 +5179,7 @@ header #box-botao-filtragem {
     position: absolute;
     width: 65px;
     margin-left: 220px;
-    margin-top: -160px;
+    margin-top: -165px;
 }
 
 @media (min-width: 520px) {
@@ -5177,8 +5203,18 @@ header #box-botao-filtragem {
     height: 55px;
     width: 55px;    
     padding: 5px;
+    right: 0px;
     border: 0px solid #d3d3d3;
     border-radius: 10px;
+    transition: all .2s;
+    margin: 3px 0px;
+}
+
+#pag-pedido .box-contato-locador .box-contato.ativo {
+    background-color: #141619;
+    width: 220px;
+    position: relative;
+    right: 140px;    
 }
 
 @media (min-width: 740px) {
@@ -5195,9 +5231,14 @@ header #box-botao-filtragem {
     display: none;
     width: 160px;
     position: relative;
-    bottom: 18px;
+    top: 18px;
     font-size: 18px;
     color: white;
+    float: right;    
+}
+
+#pag-pedido .box-contato-locador .box-contato.ativo .info-contato.ativo {
+    
 }
 
 @media (min-width: 740px) {
@@ -5223,7 +5264,7 @@ header #box-botao-filtragem {
 }
 
 #pag-pedido .box-contato-locador .box-contato .icone-contato {
-    display: inline-block;
+    display: block;
     background-color: white;
     background-size: 32px 32px;
     background-repeat: no-repeat;
@@ -5231,7 +5272,8 @@ header #box-botao-filtragem {
     width: 52px;
     height: 52px;
     border: 2px solid #557bc9;
-    border-radius: 30px;    
+    border-radius: 30px;
+    float: left;
 } 
 
 @media (min-width: 740px) {

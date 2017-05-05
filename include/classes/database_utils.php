@@ -71,7 +71,7 @@
                 return $valor;
             }
             
-            private function get_valor_escapado($valor) {
+            protected function get_valor_escapado($valor) {
                 $db = new Database();
                 
                 $tipoValor = gettype($valor);
@@ -146,7 +146,7 @@
 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }                               
+                }                                
                 
                 $resultado = $this->executarQuery($sql);                                
                 

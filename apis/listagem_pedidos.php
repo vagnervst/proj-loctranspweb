@@ -8,34 +8,34 @@
     $registrosPorPagina = 10;
 
     $buscaPedido = new \Tabela\Pedido();
-    $listaPedidos = $buscaPedido->listarPedidos($registrosPorPagina, $paginaAtual, "p.idStatusPedido = 1 AND locatario.id = {$idUsuario}");
+    $listaPedidos = $buscaPedido->listarPedidos($registrosPorPagina, $paginaAtual, "p.idStatusPedido != 10 AND locatario.id = {$idUsuario}");
 
-    for( $i = 0; $i < count($listaPedidos); ++$i ) {        
+    foreach( $listaPedidos as $pedido ) {        
 ?>
 <div class="box-pedido">
     <div class="wrapper-box-info">
         <div class="box-foto-info">
             <div class="box-foto">
-                <a href="#"><img class="foto-pedido" src="" /></a>
+                <a href="pedido.php?id=<?php echo $pedido->id; ?>"><img class="foto-pedido" src="" /></a>
             </div>
             <div class="box-info">
-                <p class="valor-diaria">Total: R$<?php echo str_replace(".", ",", $listaPedidos[$i]->valorDiaria); ?></p>
-                <p class="modelo-veiculo"><?php echo $listaPedidos[$i]->veiculo; ?></p>
+                <p class="valor-diaria">Total: R$<?php echo str_replace(".", ",", $pedido->valorDiaria); ?></p>
+                <p class="modelo-veiculo"><?php echo $pedido->veiculo; ?></p>
                 <div class="box-icone-data">
                     <span class="icone retirada"></span>
-                    <p class="data"><?php echo $listaPedidos[$i]->dataRetirada; ?></p>
+                    <p class="data"><?php echo date( "d/M/Y - H:i", strtotime($pedido->dataRetirada) ); ?></p>
                 </div>
                 <div class="box-icone-data">
                     <span class="icone entrega"></span>
-                    <p class="data"><?php echo $listaPedidos[$i]->dataEntrega; ?></p>
+                    <p class="data"><?php echo date( "d/M/Y - H:i", strtotime($pedido->dataEntrega) ); ?></p>
                 </div>
             </div>
         </div>
         <div class="box-info-locador">
             <div class="info-locador">
-                <p class="status"><?php echo $listaPedidos[$i]->statusPedido; ?></p>
+                <p class="status"><?php echo $pedido->statusPedido; ?></p>
                 <p class="nome-locador">
-                <?php echo $listaPedidos[$i]->nomeLocador . " " . $listaPedidos[$i]->sobrenomeLocador[0]; ?>
+                <?php echo $pedido->nomeLocador . " " . $pedido->sobrenomeLocador[0]; ?>
                 </p>
                 <div class="box-avaliacoes">
                     <div class="container-icone-avaliacoes">
