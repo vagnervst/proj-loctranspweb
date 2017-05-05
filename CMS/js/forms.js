@@ -51,6 +51,26 @@ $(document).ready(function() {
         }
     }
     
+    function inicializar_lista_usuarios() {
+        var pagina_usuarios = $("#pag-clientes-usuarios")[0];
+        
+        if( pagina_usuarios !== undefined ) {
+            
+            var formulario_usuarios = new AjaxForm();            
+            var box_listagem_usuarios = $(pagina_usuarios).find(".box-listagem-usuarios")[0];
+            
+            formulario_usuarios.urlApi = "apis/get_usuarios.php";
+            formulario_usuarios.containerTabela = box_listagem_usuarios;
+            formulario_usuarios.formularioPesquisa = $("#box-pesquisa form")[0];
+            
+            formulario_usuarios.relacao_campo_propriedade_pesquisa = [
+                { nomeCampo : 'txtPesquisa', propriedade : 'nome' }
+            ];
+            
+            formulario_usuarios.inicializar();
+        }
+    }
+    
     //------------------------------------------------------- FUNCAO ADM VEICULOS        
     
     function inicializar_lista_tipos() {
@@ -310,4 +330,5 @@ $(document).ready(function() {
     inicializar_lista_acessorios();
     inicializar_lista_fabricantes();
     inicializar_lista_licenca_desktop();
+    inicializar_lista_usuarios();
 });
