@@ -45,7 +45,7 @@
                 return $lista_cnh;
             }
             
-            public function getUsuario() {
+            public function getUsuario($where = null ) {
                 $sql = "SELECT u.id, u.nome, u.email, t.titulo as tipoConta ";
                 $sql .= "FROM tbl_usuario as u ";
                 $sql .= "INNER JOIN tbl_tipoconta as t ";
