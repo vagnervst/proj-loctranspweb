@@ -375,8 +375,41 @@ $(document).ready(function() {
         }
     }
     
+    function inicializarBotoesAnalisePublicacao() {
+        var botao_aceitar = $(".js-btn-aprovar")[0];
+        var botao_recusar = $(".js-btn-recusar")[0];
+        
+        if( botao_aceitar !== undefined ) {
+            $(botao_aceitar).click(function(e) {
+                var idPublicacao = window.location.search;
+                idPublicacao = idPublicacao.substr( idPublicacao.indexOf("?id=")+4, idPublicacao.length );
+                
+                var data = new FormData();
+                data.append("idPublicacao", idPublicacao);
+                data.append("modo", "aceitar");
+                
+                var ajax = new Ajax();
+                ajax.transferir_dados_para_api("apis/analise_publicacao.php", "POST", data );
+            });
+        }
+        
+        if( botao_recusar !== undefined ) {
+            $(botao_recusar).click(function(e) {
+                var idPublicacao = window.location.search;
+                idPublicacao = idPublicacao.substr( idPublicacao.indexOf("?id=")+4, idPublicacao.length );
+                
+                var data = new FormData();
+                data.append("idPublicacao", idPublicacao);
+                data.append("modo", "recusar");
+                
+                var ajax = new Ajax();
+                ajax.transferir_dados_para_api("apis/analise_publicacao.php", "POST", data );
+            });
+        }
+    }
     //--------------------------------------------
     
+    inicializarBotoesAnalisePublicacao();
     inicializarAJAXPerguntas();
     inicializarBotoesSelecaoImagem();
     inicializar_painel_info_usuario();

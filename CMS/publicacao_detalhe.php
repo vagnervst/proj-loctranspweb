@@ -1,6 +1,12 @@
 <?php
     require_once("../include/initialize.php");
-    require_once("../include/classes/sessao.php");    
+    require_once("../include/classes/sessao.php");
+    require_once("../include/classes/tbl_publicacao.php");
+
+    $idPublicacao = ( isset($_GET["id"]) )? $_GET["id"] : null;
+
+    $dadosPublicacao = new \Tabela\Publicacao();
+    $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao(null, null, "p.id = {$idPublicacao}")[0];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,37 +30,41 @@
                 </div>
                 <div class="box-publicacao">
                     <div id="nome-publicacao" class="boxes-publicacao">
-                        nome publicação
+                        <?php echo $dadosPublicacao->titulo; ?>
                     </div>
-                    <div id="imagens-publicacao" class="boxes-publicacao">
-                        imagens
+                    <div id="imagens-publicacao">
+                        <img src="<?php File::read($dadosPublicacao->imagemPrincipal, "../../img/uploads/publicacoes/");?>"/>
+                        <img src="<?php File::read($dadosPublicacao->imagemA, "../../img/uploads/publicacoes/");?>"/>
+                        <img src="<?php File::read($dadosPublicacao->imagemB, "../../img/uploads/publicacoes/");?>"/>
+                        <img src="<?php File::read($dadosPublicacao->imagemC, "../../img/uploads/publicacoes/");?>"/>
+                        <img src="<?php File::read($dadosPublicacao->imagemD, "../../img/uploads/publicacoes/");?>"/>
                     </div>
                     <div id="modelo-publicacao" class="boxes-publicacao">
-                        nome do modelo
+                        Modelo: <?php echo $dadosPublicacao->modeloVeiculo; ?>
                     </div>
-                    <div id="proprietario-publicacao" >
-                        proprietario
+                    <div id="proprietario-publicacao" class="boxes-publicacao">
+                        Proprietário: <?php echo $dadosPublicacao->nomeLocador; ?>
                     </div>
-                    <div id="reputacao-publicacao" >
+                    <div id="reputacao-publicacao" class="boxes-publicacao">
                         reputação
                     </div>
                     <div id="data-publicacao" class="boxes-publicacao">
-                        data
+                        Data da Publicação: <?php echo $dadosPublicacao->dataPublicacao; ?>
                     </div>
                     <div id="diaria-publicacao" class="boxes-publicacao">
-                        diaria
+                        Diária: R$<?php echo $dadosPublicacao->valorDiaria; ?>
                     </div>
                     <div id="combustivel-publicacao" class="boxes-publicacao">
-                        combustivel
+                        Tipo de Combustível: <?php echo $dadosPublicacao->combustivel; ?>
                     </div>
                     <div id="distancia-publicacao" class="boxes-publicacao">
-                        distancia
+                        Kms Rodados: <?php echo $dadosPublicacao->quilometragemAtual; ?>
                     </div>
                     <div id="status-publicacao" class="boxes-publicacao">
                         status
                     </div>
-                    <div id="botoes-publicacao" class="boxes-publicacao">
-                        <span class="preset-botao aprovar">aprovar</span><span class="preset-botao recusar">recusar</span>
+                    <div id="botoes-publicacao">
+                        <span class="preset-botao js-btn-aprovar">aprovar</span><span class="preset-botao js-btn-recusar">recusar</span>
                     </div>
                 </div>
             </div>
