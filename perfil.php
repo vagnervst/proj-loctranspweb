@@ -42,6 +42,10 @@
                             </section>
                         </div>                        
                     </div>
+                    <div class="botoes-publicacao-avaliacao">
+                        <span class="preset-botao js-btn-publicacao">Publicações</span>
+                        <span class="preset-botao js-btn-avaliacao">Avaliações</span>
+                    </div>
                     <section id="container-publicacoes">
                         <div class="wrapper-publicacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
