@@ -3,7 +3,10 @@
     require_once("include/classes/tbl_sobre_projeto.php");
     require_once("include/classes/tbl_home.php");
     require_once("include/classes/tbl_beneficios_projeto.php");
-    require_once("include/classes/tbl_sobre_empresa.php");    
+    require_once("include/classes/tbl_sobre_empresa.php");
+    require_once("include/classes/tbl_usuario.php");
+
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -58,7 +61,15 @@
                 <div class="imagem-divisao-conteudo" id="banner2"></div>                
                 <section id="container-locadores-destaque">
                     <div id="horizontal-wrapper">
-                        <?php for($i = 0; $i < 10; ++$i) { ?>
+                        <?php 
+                            $dadosUsuarios = new \Tabela\Usuario();
+                            $limite = "";
+                            
+                            $listaUsuario = $dadosUsuarios ->getDetalhesUsuario( );
+                            
+                            foreach( $listaUsuario as $usuario ) { 
+                            
+                        ?>
                         <section class="box-locador-destaque">
                             <a href="perfil.php">
                                 <div class="box-effect">
@@ -66,8 +77,8 @@
                                 </div>
                                 <img class="foto-locador" src="img/link_face.jpg"/>
                             </a>
-                            <h1 class="nome-locador">Nome locador</h1>
-                            <p class="localizacao-locador">Estado: SP</p>                        
+                            <h1 class="nome-locador"><?php echo $usuario->nome; ?></h1>
+                            <p class="localizacao-locador">Estado: <?php echo $usuario->estado; ?></p>                        
                             <div class="box-avaliacoes">
                                 <p class="avaliacoes-locador">Avaliações: 41</p>
                                 <div class="container-icone-avaliacoes">
