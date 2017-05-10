@@ -2317,3 +2317,18 @@ footer #box-rodape #box-logo-rodape {
     line-height: 25px;
     margin: 0px 10px;
 }
+/*---- PAGINA DE ESTATISTICAS CITY SHARE ----*/
+
+.box-grafico{
+    width: 813px;
+    height: 650px;
+    background-color: white;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+.nome-grafico{
+    width: 813px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
