@@ -75,18 +75,26 @@
                                 <div class="box-effect">
                                     <div class="hover-effect"></div>
                                 </div>
-                                <img class="foto-locador" src="img/link_face.jpg"/>
+                                <img class="foto-locador" src="img/uploads/usuarios/<?php echo $usuario->fotoPerfil; ?>"/>
                             </a>
                             <h1 class="nome-locador"><?php echo $usuario->nome; ?></h1>
                             <p class="localizacao-locador">Estado: <?php echo $usuario->estado; ?></p>                        
                             <div class="box-avaliacoes">
-                                <p class="avaliacoes-locador">Avaliações: 41</p>
+                                <p class="avaliacoes-locador">Avaliações: <?php echo $usuario->qtdAvaliacoes; ?></p>
                                 <div class="container-icone-avaliacoes">
+                                    <?php 
+                                        $usuario->qtdAvaliacoes; 
+                                        $a = 0 ; 
+                                
+                                        while($a < $usuario->mediaNotas){
+                                
+                                
+                                    ?>
                                     <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
+                                    <?php 
+                                        $a++ ;
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </section>
