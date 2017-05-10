@@ -1341,10 +1341,10 @@ header #box-botao-filtragem {
     #pag-home #container-locadores-destaque .box-locador-destaque .hover-effect {
         display: none;
         position: absolute;
-        background-color: #a1aec9;
+        background-color: rgba(161, 174, 201, 0.65);
         width: 50px;
         height: 160px;                        
-        transform: skewX(-10deg);
+        transform: skewX(-15deg);
     }
 }
 
