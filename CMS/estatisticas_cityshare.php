@@ -6,7 +6,7 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>
-            CMS - Financeiro | City Share
+            CMS - Estatísticas | City Share
 		</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
         <link rel="icon" href="../img/icones/logoCityShareIcon.png">
@@ -21,36 +21,22 @@
                 <div id="box-caminho">
                     <a href="home.php" class="link-caminho">Home</a> &gt;
                     <a href="cityshare.php" class="link-caminho">City Share</a> &gt;
-                    <a href="financeiro.php" class="link-caminho">Financeiro</a>
+                    <a href="financeiro.php" class="link-caminho">Financeiro</a> &gt;
+                    <a href="estatisticas_cityshare.php" class="link-caminho">Estatísticas</a>
                 </div>
-                <?php                
-                    $lista_permissoes_usuario = $sessao->get("id_permissoes");
-                ?>
-                <div class="box-conteudo">
-                    <?php if( in_array(7, $lista_permissoes_usuario) ) { ?>                  
+                <div class="box-conteudo">                
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="banco.php">
+                        <a class="titulo-conteudo-menu" href="estatisticas_publicacoes.php">
                             <img src="Image/content_test.jpg" />
-                            Bancos
+                            Publicações
                         </a>
                     </div>
-                    <?php } ?>
-                    <?php if( in_array(8, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="cartao.php">
+                        <a class="titulo-conteudo-menu" href="estatisticas_diarias.php">
                             <img src="Image/content_test.jpg" />                        
-                            Cartões
+                            Valor das díarias
                         </a>
                     </div>
-                    <?php } ?>
-                    <?php if( in_array(9, $lista_permissoes_usuario) ) { ?>
-                    <div class="box-conteudo-menu">
-                        <a class="titulo-conteudo-menu" href="estatisticas_cityshare.php">
-                            <img src="Image/content_test.jpg" />                        
-                            Estatísticas
-                        </a>
-                    </div>
-                    <?php } ?>
                 </div>
             </div>
             <?php
