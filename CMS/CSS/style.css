@@ -1333,15 +1333,32 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-info-usuarios .box-conteudo .box-info-pessoais section .box-dados-cnh {
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 100px;
     margin: 20px;
 }
 
-#pag-info-usuarios .box-conteudo .box-info-pessoais section .box-dados-cnh label{
+#pag-info-usuarios .box-conteudo .box-info-pessoais section .box-dados-cnh label {
     width: 100%;
-    float: left;
+    height: 20px;
     font-size: 20px;
+}
+
+#pag-info-usuarios .box-conteudo .box-info-pessoais section .box-dados-cnh .box-cnh {
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    border: 1px solid #cecece;
+    overflow: auto;
+}
+
+#pag-info-usuarios .box-conteudo .box-info-pessoais section .box-dados-cnh .txt-cnh {
+    background-color: white;
+    width: 100%;
+    height: 20px;
+    float: left;
+    padding-top: 2px;
+    border-bottom: 1px solid #cecece;
 }
 
 #pag-info-usuarios .box-conteudo #container-publicacoes-pedidos {

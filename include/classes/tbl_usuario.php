@@ -63,7 +63,7 @@
             }
             
             public function getDetalhesUsuario($where = null) {
-                $sql = "SELECT u.fotoPerfil , u.id, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
+                $sql = "SELECT u.id, u.fotoPerfil, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
                 $sql .= "u.telefone, u.celular, u.email, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, t.titulo AS tipoConta, ";
                 $sql .= "p.nome AS planoConta, ld.nome AS licencaDesktop, ";                
@@ -81,13 +81,14 @@
                 $sql .= "INNER JOIN tbl_planoconta AS p ";
                 $sql .= "ON u.idPlanoConta = p.id ";
                 $sql .= "INNER JOIN tbl_licencadesktop AS ld ";
+
                 $sql .= "ON u.idLicencaDesktop = ld.id "; 
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
                 }
                 
-                $sql .= " order by mediaNotas desc  limit  10" ; 
+                $sql .= " ORDER BY mediaNotas DESC LIMIT 10";                                                                    
                 
                 $resultado = $this->executarQuery( $sql );
                                 
