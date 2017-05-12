@@ -1341,10 +1341,10 @@ header #box-botao-filtragem {
     #pag-home #container-locadores-destaque .box-locador-destaque .hover-effect {
         display: none;
         position: absolute;
-        background-color: #a1aec9;
+        background-color: rgba(161, 174, 201, 0.65);
         width: 50px;
         height: 160px;                        
-        transform: skewX(-10deg);
+        transform: skewX(-15deg);
     }
 }
 
@@ -3888,6 +3888,39 @@ header #box-botao-filtragem {
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes .icone-avaliacao {
     width: 20px;
     height: 20px;
+}
+
+#pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
+    background-color: #a1aec9;
+    padding: 10px 0px;
+    text-align: center;
+    border: 1px solid #9f9f9f;
+    margin-top: 5px;
+    color: white;
+}
+
+#pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao .preset-botao {
+    width: 90px;
+    height: 25px;
+    line-height: 25px;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
+        width: 374px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
+        width: 444px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
+        width: 99.6%;
+    }
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-publicacoes #titulo {
