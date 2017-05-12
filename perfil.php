@@ -6,7 +6,7 @@
     $idUsuario = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     $detalhes_usuario = new \Tabela\Usuario();
-    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];        
+    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];       
 ?>
 <!doctype html>
 <html>
@@ -25,8 +25,8 @@
                     <div id="box-info-usuario">
                         <div id="box-info-pessoal-usuario">
                             <div id="box-foto">
-                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
-                                <img id="foto-usuario" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
+                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>                                
+                                <img id="foto-usuario" src="<?php echo File::read($detalhes_usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </div>
                             <section id="box-info">
                                 <h1 id="nome"><?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome; ?></h1>
