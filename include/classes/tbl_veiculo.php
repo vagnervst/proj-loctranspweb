@@ -30,11 +30,11 @@
                 $sql .= "ON c.id = v.idCategoriaVeiculo ";
                 $sql .= "INNER JOIN tbl_fabricanteveiculo AS f ";
                 $sql .= "ON f.id = v.idFabricante ";
-                $sql .= "INNER JOIN tbl_tipocombustivel AS cb ";
+                $sql .= "LEFT JOIN tbl_tipocombustivel AS cb ";
                 $sql .= "ON cb.id = v.idTipoCombustivel ";
                 $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
                 $sql .= "ON t.id = v.idTipoVeiculo ";
-                $sql .= "INNER JOIN tbl_transmissaoveiculo AS tr ";
+                $sql .= "LEFT JOIN tbl_transmissaoveiculo AS tr ";
                 $sql .= "ON tr.id = v.idTransmissao";
             
                 if( !empty($where) ) {

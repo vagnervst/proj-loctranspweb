@@ -11,7 +11,7 @@
             </li>
             <li class="botao-menu-lateral">
                 <a href="cityshare.php">City Share</a>
-                <img src="Image/logoCityShareIcon.png"/>
+                <img src="Image/logoCityShareIconMenu.png"/>
             </li>
             <li class="botao-menu-lateral">
                 <a href="desktop.php">Desktop</a>

@@ -110,9 +110,7 @@ $(document).ready(function() {
             var formulario_categorias_veiculo = new AjaxForm();            
 
             formulario_categorias_veiculo.colunas_tabela_propriedades_json = [
-                {nome: "Titulo", propriedadeJson: "nome"},
-                {nome: "Lucro (%)", propriedadeJson: "percentualLucro"},
-                {nome: "Valor Mínimo do Veículo", propriedadeJson: "valorMinimoVeiculo"},
+                {nome: "Titulo", propriedadeJson: "nome"},                
                 {nome: "Tipo de Veículo", propriedadeJson: "tituloTipo"},
             ];                                               
 
@@ -122,9 +120,7 @@ $(document).ready(function() {
             formulario_categorias_veiculo.formulario = $("#form-modificacao")[0];            
 
             formulario_categorias_veiculo.relacao_campo_propriedade = [
-                { nomeCampo : 'txtNomeCategoria', propriedade : 'nome' },
-                { nomeCampo : 'txtPercentualLucro', propriedade : 'percentualLucro' },
-                { nomeCampo : 'txtvalorMinimoVeiculo', propriedade : 'valorMinimoVeiculo' },
+                { nomeCampo : 'txtNomeCategoria', propriedade : 'nome' },                
                 { nomeCampo : 'sltipoVeiculo', propriedade : 'idTipoVeiculo' },
             ];            
 
@@ -303,10 +299,10 @@ $(document).ready(function() {
 
             ];
             
-            var box_listagem_bancos = $(pagina_banco).find("#box-listagem-bancos")[0];
+            var box_listagem_percentuais = $(pagina_banco).find("#box-listagem-bancos")[0];
             
             formulario_banco.urlApi = "apis/crud_banco.php";
-            formulario_banco.containerTabela = box_listagem_bancos ;
+            formulario_banco.containerTabela = box_listagem_percentuais ;
             formulario_banco.formulario = $("#form-modificacao")[0];
             
             formulario_banco.relacao_campo_propriedade = [
@@ -319,6 +315,40 @@ $(document).ready(function() {
             formulario_banco.inicializar();
         } 
     }
+    
+    //------------------------------------------------------- FUNCAO ADM PENDENCIAS
+    
+    function inicializar_lista_percentual() {
+        var pagina_percentual = $("#pag-percentual-lucro")[0];
+        
+        if( pagina_percentual !== undefined ) {
+            var formulario_percentual = new AjaxForm();
+
+            formulario_percentual.colunas_tabela_propriedades_json = [
+                {nome: "Cod", propriedadeJson: "id"},
+                {nome: "Percentual", propriedadeJson: "percentual"},
+                {nome: "Valor Mínimo", propriedadeJson: "valorMinimo"},
+                {nome: "Tipo de Veículo", propriedadeJson: "tipoVeiculo"},
+                {nome: "Categoria", propriedadeJson: "categoriaVeiculo"}
+            ];
+
+            var box_listagem_percentuais = $(pagina_percentual).find("#box-listagem-percentuais")[0];
+
+            formulario_percentual.urlApi = "apis/crud_percentual.php";
+            formulario_percentual.containerTabela = box_listagem_percentuais;
+            formulario_percentual.formulario = $("#form-modificacao")[0];
+
+            formulario_percentual.relacao_campo_propriedade = [
+                { nomeCampo : 'slTipoVeiculo', propriedade : 'idTipoVeiculo' },
+                { nomeCampo : 'slCategoriaVeiculo', propriedade : 'idCategoria' },
+                { nomeCampo : 'txtPercentualLucro', propriedade : 'percentual' },
+                { nomeCampo : 'txtValorMinimoVeiculo', propriedade : 'valorMinimo' }
+            ];
+
+            formulario_percentual.inicializar();
+        }
+    }
+    
     //------------------------------------------------------- FUNCAO Banco 
     
     inicializar_lista_bancos() ;
@@ -331,4 +361,5 @@ $(document).ready(function() {
     inicializar_lista_fabricantes();
     inicializar_lista_licenca_desktop();
     inicializar_lista_usuarios();
+    inicializar_lista_percentual();
 });

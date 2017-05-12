@@ -39,7 +39,7 @@
         <div id="main_login">
             <header class="conteudo">
                 <div id="banner_login">
-                    <img src="Image/banner_test.jpg">
+                    <img src="Image/banner_login.png">
                 </div>
             </header>
             <div class="conteudo" id="content_login">

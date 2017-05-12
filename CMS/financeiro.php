@@ -6,7 +6,7 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>
-            CMS - Conteúdo | City Share
+            CMS - Financeiro | City Share
 		</title>
         <link rel="stylesheet" type="text/css" href="CSS/Style.css">
         <link rel="icon" href="../img/icones/logoCityShareIcon.png">
@@ -21,7 +21,7 @@
                 <div id="box-caminho">
                     <a href="home.php" class="link-caminho">Home</a> &gt;
                     <a href="cityshare.php" class="link-caminho">City Share</a> &gt;
-                    <a href="#" class="link-caminho">Financeiro</a>
+                    <a href="financeiro.php" class="link-caminho">Financeiro</a>
                 </div>
                 <?php                
                     $lista_permissoes_usuario = $sessao->get("id_permissoes");
@@ -40,6 +40,20 @@
                         <a class="titulo-conteudo-menu" href="cartao.php">
                             <img src="Image/content_test.jpg" />                        
                             Cartões
+                        </a>
+                    </div>
+                    <?php } ?>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="percentual.php">
+                            <img src="Image/content_test.jpg" />                        
+                            Percentuais de Lucro
+                        </a>
+                    </div>
+                    <?php if( in_array(9, $lista_permissoes_usuario) ) { ?>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="estatisticas_cityshare.php">
+                            <img src="Image/content_test.jpg" />                        
+                            Estatísticas
                         </a>
                     </div>
                     <?php } ?>

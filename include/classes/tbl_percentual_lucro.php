@@ -1,20 +1,24 @@
 <?php
     namespace Tabela {
         
-        class CategoriaVeiculo extends \DB\DatabaseUtils {
-            public static $nome_tabela = "tbl_categoriaveiculo";
+        class PercentualLucro extends \DB\DatabaseUtils {
+            public static $nome_tabela = "tbl_percentual_lucro";
             public static $primary_key = "id";
 
             public $id;
-            public $nome;            
+            public $percentual;
+            public $valorMinimo;
+            public $idCategoria;
             public $idTipoVeiculo;
-        
-            public function getCategorias($registros_por_pagina, $pagina_atual, $where = null) {
-                $sql = "SELECT c.id, c.nome, c.idTipoVeiculo, t.titulo AS tituloTipo ";
-                $sql .= "FROM {$this::$nome_tabela} AS c ";
-                $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
-                $sql .= "ON t.id = c.idTipoVeiculo";
-
+            
+            public function getPercentuais($registros_por_pagina, $pagina_atual, $where = null) {
+                $sql = "SELECT pl.id, pl.percentual, pl.valorMinimo, c.id AS idCategoria, c.nome AS categoriaVeiculo, tv.id AS idTipoVeiculo, tv.titulo AS tipoVeiculo ";
+                $sql .= "FROM tbl_percentual_lucro AS pl ";
+                $sql .= "INNER JOIN tbl_categoriaveiculo AS c ";
+                $sql .= "ON c.id = pl.idCategoria ";
+                $sql .= "INNER JOIN tbl_tipoveiculo AS tv ";
+                $sql .= "ON tv.id = pl.idTipoVeiculo";
+                
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
@@ -41,7 +45,7 @@
                 $resultado[] = $info_paginacao;                                
                 
                 return $resultado;
-            }                        
+            }
         }
     }
 ?>

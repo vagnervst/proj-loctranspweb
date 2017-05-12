@@ -107,9 +107,12 @@
             
             public function getCombustiveisRelacionados() {
                 $sql = "SELECT c.* ";
-                $sql .= "FROM tbl_tipocombustivel AS c ";
+                $sql .= "FROM tbl_tipoveiculo AS t ";
                 $sql .= "INNER JOIN tipoveiculo_tipocombustivel AS vc ";
-                $sql .= "ON vc.idTipoVeiculo = {$this->id}";
+                $sql .= "ON vc.idTipoVeiculo = t.id ";
+                $sql .= "INNER JOIN tbl_tipocombustivel AS c ";
+                $sql .= "ON c.id = vc.idTipoCombustivel ";
+                $sql .= "WHERE t.id = {$this->id}";
                 
                 $resultado = $this->executarQuery( $sql );
                 $lista_combustivel = [];
@@ -120,15 +123,18 @@
                     
                     $lista_combustivel[] = $objCombustivel;
                 }
-                
+                echo $sql;
                 return $lista_combustivel;
             }
             
             public function getTransmissoesRelacionadas() {
-                $sql = "SELECT t.* ";
-                $sql .= "FROM tbl_transmissaoveiculo AS t ";
-                $sql .= "INNER JOIN tipoveiculo_transmissaoveiculo AS vt ";
-                $sql .= "ON vt.idTipoVeiculo = {$this->id}";
+                $sql = "SELECT tr.* ";
+                $sql .= "FROM tbl_tipoveiculo AS t ";
+                $sql .= "INNER JOIN tipoveiculo_transmissaoveiculo AS tt ";
+                $sql .= "ON tt.idTipoVeiculo = t.id ";
+                $sql .= "INNER JOIN tbl_transmissaoveiculo AS tr ";
+                $sql .= "ON tr.id = tt.idTransmissaoVeiculo ";
+                $sql .= "WHERE t.id = {$this->id}";
                 
                 $resultado = $this->executarQuery( $sql );
                 $lista_transmissao = [];
@@ -139,7 +145,7 @@
                     
                     $lista_transmissao[] = $objTransmissao;
                 }
-                
+                echo $sql;
                 return $lista_transmissao;
             }
             
@@ -201,6 +207,14 @@
             public function relacionar_a_transmissao($idTransmissao) {
                 $sql = "INSERT INTO tipoveiculo_transmissaoveiculo(idTipoVeiculo, idTransmissaoVeiculo) ";
                 $sql .= "VALUES({$this->id}, {$idTransmissao})";                                
+                
+                $resultado = $this->executarQuery( $sql );
+                return $resultado;
+            }
+            
+            public function eliminar_relacionamentos_a_fabricante() {
+                $sql = "DELETE FROM fabricanteveiculo_tipoveiculo ";
+                $sql .= "WHERE idTipo = {$this->id}";
                 
                 $resultado = $this->executarQuery( $sql );
                 return $resultado;

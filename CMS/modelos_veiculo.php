@@ -25,7 +25,10 @@
             <div class="CMS_main" id="pag-adm-veiculos">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="home.php" class="link-caminho">Home</a> ><a href="cityshare.php" class="link-caminho"> City Share</a> ><a href="veiculos.php" class="link-caminho"> Veículos</a> > <a href="modelos_veiculo.php" class="link-caminho" >Modelos</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt;
+                    <a href="veiculos.php" class="link-caminho"> Veículos</a> &gt;
+                    <a href="modelos_veiculo.php" class="link-caminho" >Modelos</a>
                 </div>
                 <div class="box-conteudo">                    
                     <div id="box-veiculos">
@@ -64,16 +67,8 @@
                                     </div>                                    
                                     <div class="box-label-input" id="box-transmissao">
                                         <label><span class="label">Transmissão</span>
-                                            <select class="input" name="slTransmissao">
+                                            <select id="slTransmissao" class="input" name="slTransmissao">
                                                 <option selected disabled>Selecione a transmissão</option>
-                                                <?php
-                                                    $listaTransmissoes = new \Tabela\TransmissaoVeiculo();
-                                                    $listaTransmissoes = $listaTransmissoes->buscar();
-                                                
-                                                    foreach( $listaTransmissoes as $transmissao ) {
-                                                ?>
-                                                <option value="<?php echo $transmissao->id;?>"><?php echo $transmissao->titulo;?></option>
-                                                <?php } ?>
                                             </select>
                                         </label>
                                     </div>
@@ -81,35 +76,15 @@
                                 <div class="horizontal-input-wrapper" id="box-detalhes">                                    
                                     <div class="box-label-input">
                                         <label><span class="label">Fabricante</span>
-                                            <select class="input" name="slFabricante">
+                                            <select id="slFabricante" class="input" name="slFabricante">
                                                 <option selected disabled>Selecione o fabricante</option>
-                                                <?php
-                                                    $listaFabricante = new \Tabela\FabricanteVeiculo();
-                                                    $listaFabricante = $listaFabricante->buscar();
-                                                
-                                                    foreach($listaFabricante as $fabricante) {
-                                                ?>
-                                                <option value="<?php echo $fabricante->id;?>"><?php echo $fabricante->nome;?></option>
-                                                <?php
-                                                    }
-                                                ?>
                                             </select>
                                         </label>
                                     </div>
                                     <div class="box-label-input">
                                         <label><span class="label">Combustível</span>
-                                            <select class="input" name="slCombustivel">
+                                            <select id="slCombustivel" class="input" name="slCombustivel">
                                                 <option selected disabled>Selecione o combustível</option>
-                                                <?php
-                                                    $listaCombustivel = new \Tabela\TipoCombustivel();
-                                                    $listaCombustivel = $listaCombustivel->buscar();
-                                                
-                                                    foreach($listaCombustivel as $combustivel) {
-                                                ?>
-                                                <option value="<?php echo $combustivel->id;?>"><?php echo $combustivel->nome;?></option>
-                                                <?php
-                                                    }
-                                                ?>
                                             </select>
                                         </label>
                                     </div>
@@ -118,7 +93,7 @@
                                     <h1 class="titulo">Filtragem</h1>                                    
                                     <div class="box-label-input">
                                         <label><span class="label">Tipo</span>
-                                            <select class="input" name="slTipo">
+                                            <select id="slTipoVeiculo" class="input" name="slTipo">
                                                 <option selected disabled>Selecione o tipo</option>
                                                 <?php
                                                     $listaTipoVeiculo = new \Tabela\TipoVeiculo();
@@ -135,18 +110,8 @@
                                     </div>
                                     <div class="box-label-input">
                                         <label><span class="label">Categoria</span>
-                                            <select class="input" name="slCategoria">
-                                                <option selected disabled>Selecione a categoria</option>
-                                                <?php
-                                                    $listaCategoriaVeiculo = new \Tabela\CategoriaVeiculo();
-                                                    $listaCategoriaVeiculo = $listaCategoriaVeiculo->buscar();
-                                                
-                                                    foreach($listaCategoriaVeiculo as $categoriaVeiculo) {
-                                                ?>
-                                                <option value="<?php echo $categoriaVeiculo->id; ?>"><?php echo $categoriaVeiculo->nome; ?></option>
-                                                <?php
-                                                    }
-                                                ?>
+                                            <select id="slCategoriaVeiculo" class="input" name="slCategoria">
+                                                <option selected disabled>Selecione uma Categoria</option>
                                             </select>
                                         </label>
                                     </div>                                    
@@ -176,7 +141,7 @@
                                     <div class="box-label-input">
                                         <label><span class="label">Tipo</span>
                                             <select class="input" name="slTipo">
-                                                <option selected></option>
+                                                <option selected disabled>Selecione um tipo</option>
                                                 <?php                                                                                                    
                                                     foreach($listaTipoVeiculo as $tipoVeiculo) {
                                                 ?>
@@ -190,7 +155,7 @@
                                     <div class="box-label-input">
                                         <label><span class="label">Fabricante</span>
                                             <select class="input" name="slFabricante">
-                                                <option selected></option>
+                                                <option selected disabled>Selecione um fabricante</option>
                                                 <?php
                                                     foreach($listaFabricante as $fabricante) {
                                                 ?>
