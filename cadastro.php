@@ -116,7 +116,7 @@
             
         } elseif( $id_usuario_inserido && $idTipoConta == $idContaFisica ) {
             
-            $pasta_usuario = "img/uploads/usuarios/usr_" . $id_usuario_inserido;
+            $pasta_usuario = "img/uploads/usuarios/";
             if( mkdir( $pasta_usuario, 0777 ) ) {
                 
                 if( File::upload($fotoPerfil["tmp_name"], $fotoPerfil["name"], $pasta_usuario) ) {

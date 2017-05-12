@@ -194,16 +194,16 @@ $(document).ready(function() {
     function prepararSessaoCadastro(boxSessaoCadastro) {
         //Captura todas as etapas de uma sessao de cadastro, e seus botoes de transferencia
         //para inicializar as transicoes
-        var etapas = capturarEtapas(boxSessaoCadastro);                
+        var etapas = capturarEtapas(boxSessaoCadastro);
                 
         for( var i = 0; i < etapas.length; ++i ) {
-            var listaBotoesTransf = capturarBotoesTransferencia(etapas[i]);            
+            var listaBotoesTransf = capturarBotoesTransferencia(etapas[i]);
             
-            for( var x = 0; x < listaBotoesTransf.length; ++x ) {                
+            for( var x = 0; x < listaBotoesTransf.length; ++x ) {
                 definirTransferencia( listaBotoesTransf[x], boxSessaoCadastro );
             }
         }
-    }    
+    }
     
     function isTipoContaAtivo(boxCadastro) {
         //Retorna true se o formulario de cadastro for o ativo no momento
@@ -314,13 +314,11 @@ $(document).ready(function() {
         listaFormCadastro.push( boxSessaoCadastroJuridico );                
         
         $(botaoCadastroFisico).click(function(){
-            setStatusTipoContaUnico(listaFormCadastro, 0, true);
-            //executarTransicaoFormulario(listaFormCadastro);
+            setStatusTipoContaUnico(listaFormCadastro, 0, true);            
         });
         
         $(botaoCadastroJuridico).click(function(){
-            setStatusTipoContaUnico(listaFormCadastro, 1, true);
-            //executarTransicaoFormulario(listaFormCadastro);
+            setStatusTipoContaUnico(listaFormCadastro, 1, true);            
         });
     }
     
@@ -1710,7 +1708,67 @@ $(document).ready(function() {
             
         });
     }
-
+    
+    function ativarBotaoFormularioConfiguracao(botao) {
+        $("#box-botoes .botao").removeClass("ativo");
+        
+        $(botao).addClass("ativo");
+    }
+    
+    function exibirFormularioConfiguracao(formulario) {
+        var box_form = $("#box-form")[0];
+        
+        $( box_form.children ).css("display", "none");
+        $( formulario ).css("display", "block");
+    }
+    
+    function inicializarSessoesConfiguracaoConta() {
+        var pagina_configuracao_conta = $("#pag-config-perfil");
+        
+        if( pagina_configuracao_conta !== undefined ) {
+                                    
+            $(".js-botao-pessoais").click(function(e) {
+                var formularioAlvo = $("#form-info-pessoais")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-contato").click(function(e) {
+                var formularioAlvo = $("#form-info-contato")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-financeiro").click(function(e) {
+                var formularioAlvo = $("#form-info-financeiro")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-conducao").click(function(e) {
+                var formularioAlvo = $("#form-info-conducao")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-autenticacao").click(function(e) {
+                var formularioAlvo = $("#form-info-autenticacao")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            var botao_foto = $("#botao-foto")[0];
+            var input_foto = $("#input-foto")[0];
+            
+            definirBotaoSelecaoImagem( botao_foto, input_foto );
+        }
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {
         
         inicializarPreenchimentoDatasLocacao();
@@ -1723,7 +1781,8 @@ $(document).ready(function() {
         inicializarBotoesSessaoPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
         inicializarBotaoPublicacaoUsuario();
-
+        inicializarSessoesConfiguracaoConta();
+        
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {
         
         inicializarPreenchimentoDatasLocacao();
@@ -1737,6 +1796,7 @@ $(document).ready(function() {
         inicializarModaisPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
         inicializarBotaoPublicacaoUsuario();
+        inicializarSessoesConfiguracaoConta();
 
     }
     

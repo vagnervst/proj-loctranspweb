@@ -39,7 +39,7 @@
             return unlink( $pasta . "/" . $nome_arquivo );
         }
         
-        public static function replace($arquivo, $nome_arquivo, $nome_arquivo_antigo="", $pasta) {                                                                        
+        public static function replace($arquivo, $nome_arquivo, $nome_arquivo_antigo="", $pasta) {
             
             if( File::upload( $arquivo, $nome_arquivo, $pasta ) ) {                
                 
