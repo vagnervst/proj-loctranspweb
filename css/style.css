@@ -3970,7 +3970,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-        width: 374px;
+        width: 378px;
     }
 }
 
@@ -3982,7 +3982,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-        width: 99.6%;
+        width: 100%;
     }
 }
 
@@ -4110,7 +4110,7 @@ header #box-botao-filtragem {
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao {
     background-color: #efefef;
     padding: 5px;
-    height: 130px;
+    height: 150px;
     border: 1px solid #a7a7a7;
     margin: 5px 0px;
 }
@@ -4146,6 +4146,8 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+    width: 85px;
+    margin: 5px;
     height: 20px;
     float: left;
     font-size: 20px;
@@ -4153,7 +4155,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
-        width: 100px;
+        width: 95px;
     }
 }
 
@@ -4171,17 +4173,41 @@ header #box-botao-filtragem {
 
 @media (min-width: 1000px) {
     #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
-        width: 295px;
+        width: 285px;
     }
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
-    width: 868px;
     height: 70px;
     margin: 10px;
     background-color: white;
     border: 1px solid #cecece;
 }
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 345px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 420px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 620px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 865px;
+    }
+}
+
 /*------------- PERFIL USUARIO*/
 
 #pag-publicar .box-conteudo #container-imagens-veiculo {
