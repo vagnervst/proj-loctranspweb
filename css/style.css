@@ -4046,6 +4046,81 @@ header #box-botao-filtragem {
     cursor: pointer;
 }
 
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao {
+    background-color: #efefef;
+    padding: 5px;
+    height: 130px;
+    border: 1px solid #a7a7a7;
+    margin: 5px 0px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+    width: 100%;
+    height: 40px;
+    display: inline-block;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 315px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 415px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 630px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 888px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+    height: 20px;
+    float: left;
+    font-size: 20px;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 100px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 115px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 195px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 295px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+    width: 868px;
+    height: 70px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #cecece;
+}
 /*------------- PERFIL USUARIO*/
 
 #pag-publicar .box-conteudo #container-imagens-veiculo {
