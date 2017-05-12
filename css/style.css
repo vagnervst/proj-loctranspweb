@@ -3970,7 +3970,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-        width: 374px;
+        width: 378px;
     }
 }
 
@@ -3982,7 +3982,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-        width: 99.6%;
+        width: 100%;
     }
 }
 
@@ -4105,6 +4105,107 @@ header #box-botao-filtragem {
     margin: 0px auto;
     margin-top: 10px;
     cursor: pointer;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao {
+    background-color: #efefef;
+    padding: 5px;
+    height: 150px;
+    border: 1px solid #a7a7a7;
+    margin: 5px 0px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+    width: 100%;
+    height: 40px;
+    display: inline-block;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 315px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 415px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 630px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 888px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+    width: 85px;
+    margin: 5px;
+    height: 20px;
+    float: left;
+    font-size: 20px;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 95px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 115px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 195px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 285px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+    height: 70px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #cecece;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 345px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 420px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 620px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 865px;
+    }
 }
 
 /*------------- PERFIL USUARIO*/
