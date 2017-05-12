@@ -804,12 +804,16 @@ header #box-botao-filtragem {
     display: inline-block;        
 }
 
-.container-icone-avaliacoes .icone-avaliacao {
+.container-icone-avaliacoes .icone-avaliacao {    
     background: url(../img/icones/avaliacao.png);
     background-size: contain;
     width: 30px;
     height: 30px;
     display: inline-block;
+}
+
+.container-icone-avaliacoes .icone-avaliacao.inativa {
+    background-image: url(../img/icones/avaliacao-inativa.png);
 }
 
 .preset-input-text {
@@ -3750,7 +3754,7 @@ header #box-botao-filtragem {
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
     width: 304px;
-    height: 105px;
+    height: 125px;
     padding: 2px;
     border: 1px solid #a7a7a7;
 }
@@ -3778,39 +3782,71 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto {    
-    width: 90px;
+    width: 110px;
     text-align: center;
     float: left;
 }
 
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto {
+        width: 125px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto {
+        width: 190px;
+    }
+}
+
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto #foto-usuario {    
-    width:  180px;
-    height: 180px;
+    width:  100px;
+    height: 100px;
     border: 2px solid #ebebeb;
     border-radius: 5px 50px 50px 50px;        
 }
 
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto #foto-usuario {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto #foto-usuario {
+        width: 185px;
+        height: 185px;
+    }
+}
+
+ #foto-usuario-index {
+    width:  180px;
+    height: 160px;
+}
+
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {    
-    width: 210px;
+    width: 190px;
     height: 105px;
     float: right;
 }
 
 @media (min-width: 420px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
-        width: 255px;
+        width: 245px;
+        height: 125px;
     }
 }
 
 @media (min-width: 520px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
-        width: 320px;
+        width: 315px;
     }
 }
 
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
-        width: 530px;
+        width: 450px;
         height: 190px;
     }
 }
@@ -3835,6 +3871,7 @@ header #box-botao-filtragem {
     }
 }
 
+
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info {
     font-size: 15px;
     font-weight: bold;
@@ -3855,7 +3892,7 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
-    width: 210px;
+    width: 190px;
     text-align: right;
     border-top: 1px solid #ebebeb;
     padding-top: 2px;
@@ -3863,20 +3900,21 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
-        width: 255px;
+        width: 245px;
+        margin-top: 18px;
     }
 }
 
 @media (min-width: 520px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
-        width: 320px;
+        width: 315px;
     }
 }
 
 @media (min-width: 740px) {
-    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {        
-        width: 530px;
-        margin-top: 27px;
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes {
+        width: 450px;
+        margin-top: 25px;
     }
 }
 
@@ -3886,6 +3924,29 @@ header #box-botao-filtragem {
         margin-top: 10px;
     }
 }
+/*Caixa de Saldo*/
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {
+        width: 374px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {
+        width: 444px;        
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
+        border: 0px;
+        width: 99.6%;
+        height: 191px;
+        border-right: 1px solid #b9b9b9;
+        float: left;
+    }
+}
+/*Caixa de Saldo*/
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes .icone-avaliacao {
     width: 20px;

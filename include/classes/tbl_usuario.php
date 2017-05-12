@@ -81,7 +81,8 @@
                 $sql .= "INNER JOIN tbl_planoconta AS p ";
                 $sql .= "ON u.idPlanoConta = p.id ";
                 $sql .= "INNER JOIN tbl_licencadesktop AS ld ";
-                $sql .= "ON u.idLicencaDesktop = ld.id ";             
+
+                $sql .= "ON u.idLicencaDesktop = ld.id "; 
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;

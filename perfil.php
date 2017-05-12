@@ -25,7 +25,8 @@
                     <div id="box-info-usuario">
                         <div id="box-info-pessoal-usuario">
                             <div id="box-foto">
-                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>                                
+                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
+
                                 <img id="foto-usuario" src="<?php echo File::read($detalhes_usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </div>
                             <section id="box-info">
