@@ -75,7 +75,8 @@
                                 <div class="box-effect">
                                     <div class="hover-effect"></div>
                                 </div>
-                                <img class="foto-locador" src="img/uploads/usuarios/<?php echo $usuario->fotoPerfil; ?>"/>
+                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
+                                <img class="foto-locador" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </a>
                             <h1 class="nome-locador"><?php echo $usuario->nome; ?></h1>
                             <p class="localizacao-locador">Estado: <?php echo $usuario->estado; ?></p>                        
@@ -92,6 +93,13 @@
                                     ?>
                                     <div class="icone-avaliacao"></div>
                                     <?php 
+                                        $a++ ;
+                                        }
+                                        echo $a;
+                                        while ($a < 5 ){
+                                            ?>
+                                        <div class="icone-avaliacao-inativa"></div>
+                                    <?php
                                         $a++ ;
                                         }
                                     ?>
