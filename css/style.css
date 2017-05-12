@@ -6063,6 +6063,49 @@ header #box-botao-filtragem {
 }
 
 /*------------- DETALHES PERFIL*/
+/*=========================================*/
+#pag-perfil-usuario #box-inf-financeiras {
+    height: 300px;
+    width: 320px;
+    background-color: aqua ;
+    margin:  0 auto ;
+}
+
+@media(min-width: 420px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 300px;
+        width: 380px;
+        background-color: aqua ;
+        margin:  0 auto ;
+    }  
+}
+@media(min-width: 520px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 300px;
+        width: 440px;
+        background-color: aqua ;
+        margin:  0 auto ;
+    }  
+}
+@media(min-width: 720px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 300px;
+        width: 650px;
+        background-color: aqua ;
+        margin:  0 auto ;
+    }  
+}
+@media(min-width: 1000px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 300px;
+        width: 900px;
+        background-color: aqua ;
+        margin:  0 auto ;
+    }  
+}
+
+
+
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 

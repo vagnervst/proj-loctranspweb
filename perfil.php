@@ -2,11 +2,15 @@
     require_once("include/initialize.php");    
     require_once("include/classes/tbl_usuario.php");
     require_once("include/classes/tbl_publicacao.php");
+    require_once("include/classes/sessao.php");
+
         
-    $idUsuario = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
+    $idUsuariopublico = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     $detalhes_usuario = new \Tabela\Usuario();
-    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];       
+    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuariopublico}")[0]; 
+    
+
 ?>
 <!doctype html>
 <html>
@@ -35,11 +39,26 @@
                                 <p class="label-info">Empréstimos: <span class="info"><?php echo $detalhes_usuario->qtdEmprestimos; ?></span></p>
                                 <p class="label-info">Locações: <span class="info"><?php echo $detalhes_usuario->qtdLocacoes; ?></span></p>
                                 <div class="container-icone-avaliacoes">
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
-                                    <div class="icone-avaliacao"></div>
+                                    <?php 
+                                        $detalhes_usuario->qtdAvaliacoes; 
+                                        
+                                        
+                                        $lista_estrelas = [
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa"
+                                        ];                                                                                
+                                                                                                                
+                                        for( $i = 0; $i < $detalhes_usuario->mediaNotas; ++$i ) {
+                                            $lista_estrelas[$i] = "icone-avaliacao";                           
+                                        }                                                                            
+                                
+                                        foreach( $lista_estrelas as $classe_estrela ) {
+                                            echo "<div class=\"" . $classe_estrela . "\"></div>";
+                                        }                                                                        
+                                    ?>
                                 </div>
                             </section>
                         </div>                        
@@ -52,7 +71,28 @@
                         <div class="wrapper-publicacoes-avaliacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
                     </section>
-                </div>                
+                    <?php 
+                        $sessao = new Sessao;
+                        $idUsuariologado = $sessao->get("idUsuario");
+                        echo $idUsuariopublico ;
+                        echo $idUsuariologado ;
+                    
+                        if($idUsuariopublico == $idUsuariologado ){
+                            ?>
+                            <div id="box-inf-financeiras">
+                            <?php ?>
+                            </div>
+                            <?php
+                        }
+                            
+                        
+                            
+                        
+                    ?>
+                    
+                </div>       
+                
+                
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>
