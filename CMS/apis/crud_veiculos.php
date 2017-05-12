@@ -5,20 +5,20 @@
     require_once("../../include/classes/tbl_veiculo.php");
     require_once("../../include/classes/tbl_tipo_veiculo.php");	    
     
-    $idVeiculo = ( isset($_POST["id"]) )? $_POST["id"] : null;
-    $codigoVeiculo = ( isset($_POST["txtCod"]) )? $_POST["txtCod"] : null;
+    $idVeiculo = ( isset($_POST["id"]) )? (int) $_POST["id"] : null;
+    $codigoVeiculo = ( isset($_POST["txtCod"]) )? (double) $_POST["txtCod"] : null;
     $nome = ( isset($_POST["txtNome"]) )? $_POST["txtNome"] : null;
     $precoMedio = ( isset($_POST["txtPrecoMedio"]) )? $_POST["txtPrecoMedio"] : null;
-    $ano = ( isset($_POST["txtAno"]) )? $_POST["txtAno"] : null;
+    $ano = ( isset($_POST["txtAno"]) )? (int) $_POST["txtAno"] : null;
     $motor = ( isset($_POST["txtMotor"]) )? $_POST["txtMotor"] : null;
-    $portas = ( isset($_POST["txtPortas"]) )? $_POST["txtPortas"] : null;		
+    $portas = ( isset($_POST["txtPortas"]) )? (int) $_POST["txtPortas"] : null;		
     $tanque = ( isset($_POST["txtTanque"]) )? $_POST["txtTanque"] : null;
-    $idCategoria = ( isset($_POST["slCategoria"]) )? $_POST["slCategoria"] : null;
-    $idTipo = ( isset($_POST["slTipo"]) )? $_POST["slTipo"] : null;
-    $idCombustivel = ( isset($_POST["slCombustivel"]) )? $_POST["slCombustivel"] : null;
-    $idFabricante = ( isset($_POST["slFabricante"]) )? $_POST["slFabricante"] : null;
-    $idTransmissao = ( isset($_POST["slTransmissao"]) )? $_POST["slTransmissao"] : null;
-    
+    $idCategoria = ( isset($_POST["slCategoria"]) )? (int) $_POST["slCategoria"] : null;
+    $idTipo = ( isset($_POST["slTipo"]) )? (int) $_POST["slTipo"] : null;
+    $idCombustivel = ( isset($_POST["slCombustivel"]) )? (int) $_POST["slCombustivel"] : null;
+    $idFabricante = ( isset($_POST["slFabricante"]) )? (int) $_POST["slFabricante"] : null;
+    $idTransmissao = ( isset($_POST["slTransmissao"]) )? (int) $_POST["slTransmissao"] : null;        
+
     $objVeiculo = new \Tabela\Veiculo();
 
     $objVeiculo->codigo = $codigoVeiculo;
@@ -27,14 +27,14 @@
     $objVeiculo->ano = $ano;
     $objVeiculo->tanque = $tanque;
     $objVeiculo->tipoMotor = $motor;
-    $objVeiculo->qtdPortas = (int) $portas;
-    $objVeiculo->idCategoriaVeiculo = (int) $idCategoria;
-    $objVeiculo->idTipoVeiculo = (int) $idTipo;
-    $objVeiculo->idTipoCombustivel = (int) $idCombustivel;
-    $objVeiculo->idFabricante = (int) $idFabricante;
-    $objVeiculo->idTransmissao = (int) $idTransmissao;
-    
-    if( $modo == "insert" ) {
+    $objVeiculo->qtdPortas = $portas;
+    $objVeiculo->idCategoriaVeiculo = $idCategoria;
+    $objVeiculo->idTipoVeiculo = $idTipo;
+    $objVeiculo->idTipoCombustivel = $idCombustivel;
+    $objVeiculo->idFabricante = $idFabricante;
+    $objVeiculo->idTransmissao = $idTransmissao;
+
+    if( $modo == "insert" ) {        
         $objVeiculo->inserir();
     } elseif( $modo == "update" ) {
         $objVeiculo->id = (int) $idVeiculo;

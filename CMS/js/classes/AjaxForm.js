@@ -22,8 +22,7 @@ function AjaxForm() {
         $(this.containerTabela).append( icone_carregamento );
     }        
     
-    this.atualizar_info_json = function(string_lista_json) {
-        console.log(string_lista_json);
+    this.atualizar_info_json = function(string_lista_json) {        
         this.jsonRegistros = $.parseJSON(string_lista_json);
         
         this.infoPaginas = this.jsonRegistros.pop();
@@ -214,9 +213,7 @@ function AjaxForm() {
             
             var indice_registro_selecionado = lista_registros_tabela.index(registro_selecionado);
             
-            var json_registro_selecionado = self.jsonRegistros[ indice_registro_selecionado ];
-            
-            console.log(json_registro_selecionado);
+            var json_registro_selecionado = self.jsonRegistros[ indice_registro_selecionado ];                        
             
             $( self.formulario ).data( "id", json_registro_selecionado.id );
             
@@ -253,6 +250,7 @@ function AjaxForm() {
             
             var ajax = new Ajax();
             ajax.transferir_dados_para_api( self.urlApi, "POST", dados_formulario, function(dados_api) {
+                console.log(dados_api);
                 $(self.formulario).trigger("reset");                                
                 $(this).find('input:checkbox').removeAttr('checked');
                 
@@ -325,7 +323,7 @@ function AjaxForm() {
         
         var self = this;
         $.ajax({url: this.urlApi, success: function(string_dados_api) {            
-            if( prepararFormularios ) {
+            if( prepararFormularios ) {                                
                 self.atualizar_info_json( string_dados_api );            
                 
                 self.prepararFormulario();

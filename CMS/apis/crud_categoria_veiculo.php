@@ -5,15 +5,11 @@
     $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
 
     $id = ( isset($_POST["id"]) )? $_POST["id"] : null;
-    $nomeCategoria = ( isset( $_POST["txtNomeCategoria"] ) )? $_POST["txtNomeCategoria"] : null;
-    $percentualLucro = ( isset( $_POST["txtPercentualLucro"] ) )? $_POST["txtPercentualLucro"] : null;
-    $valorMinimoVeiculo = ( isset( $_POST["txtvalorMinimoVeiculo"] ) )? $_POST["txtvalorMinimoVeiculo"] : null;
+    $nomeCategoria = ( isset( $_POST["txtNomeCategoria"] ) )? $_POST["txtNomeCategoria"] : null;    
     $id_tipoVeiculo = ( isset( $_POST["sltipoVeiculo"] ) )? $_POST["sltipoVeiculo"] : null;
 
     $objCategoriaVeiculo = new \Tabela\CategoriaVeiculo();
     $objCategoriaVeiculo->nome = $nomeCategoria;
-    $objCategoriaVeiculo->percentualLucro = $percentualLucro;
-    $objCategoriaVeiculo->valorMinimoVeiculo = $valorMinimoVeiculo;
     $objCategoriaVeiculo->idTipoVeiculo = $id_tipoVeiculo;
     
     if( $modo == "insert" ) {

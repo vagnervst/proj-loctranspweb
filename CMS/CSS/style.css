@@ -24,15 +24,14 @@ time, mark, audio, video {
 /*------------------------------------------------------------------------- CSS RESET*/
 
 body {
+    display: flex;
     margin: 0;
     background-image: url(../Image/bg.jpg);
-    width: 100%;
-    height: 100%;
 }
 
 html {
     width: 100%;
-    height:100%;
+    height: 100%;
 }
 
 a {
@@ -110,7 +109,10 @@ a {
 .ajax-form-table tr td {        
     display: inline-block;
     width: 98px;
-    padding: 5px 0px;    
+    padding: 5px 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .ajax-form-table tr td:not(:last-child) {
@@ -145,8 +147,7 @@ a {
 
 /*---- PAGINA DE LOGIN DO CMS ----*/
 #main_login {
-    width: 500px;
-    height: 100%;
+    width: 500px;    
     margin: 0 auto;
     background-color: #ebebeb;
 }
@@ -158,11 +159,11 @@ a {
 }
 
 #main_login #banner_login {    
-    height: 300px;
+    height: 200px;
 }
 
 #main_login #content_login {    
-    height: 400px;
+    height: 100%;
     background-color: #ebebeb;
     align-content: center;
 }
@@ -211,22 +212,18 @@ a {
     height: 60px;
     line-height: 60px;
     text-align: center;
-    background-color: #a1aec9;
-    position:absolute;
-	bottom:0;
-	
+    background-color: #a1aec9;	
 }
 
 #main_login #form_login {
-    width: 160px;
+    width: 200px;
     margin: 0 auto;
     padding-top: 195px;
     padding-right: 140px;    
 }
 /*---- PAGINA HOME DO CMS ----*/
 #container {
-    width: 1000px;
-    height: 100%;
+    width: 1000px;    
     margin: 0 auto;
 }
 
@@ -1866,7 +1863,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-tipo-veiculo .box-conteudo .box-tipo-veiculo .box-listagem-tipo .ajax-form-table {
-    height: 530px;
+    height: 430px;
 }
 
 /***************VEÍCULOS*******************/
@@ -1911,7 +1908,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-adm-veiculos .box-conteudo #box-form-veiculo .horizontal-input-wrapper .box-label-input .input {
-    width: 80px;
+    width: 95px;
 }
 
 #pag-adm-veiculos .box-conteudo #box-form-veiculo .horizontal-input-wrapper#box-detalhes #box-preco .input {
@@ -1995,7 +1992,7 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-adm-veiculos .box-conteudo #box-listagem-veiculos {
     display: block;
-    width: 750px;
+    width: 655px;
     height: 520px;
     margin: 0 auto;
 }
@@ -2292,19 +2289,14 @@ footer #box-rodape #box-logo-rodape {
 
 #pag-publicacao-detalhes .box-publicacao #imagens-publicacao {
     height: 120px;
-    
-    
     border: solid 1px #000000;
 }
 
 #pag-publicacao-detalhes .box-publicacao #modelo-publicacao {
     
-    
 }
 
 #pag-publicacao-detalhes .box-publicacao #proprietario-publicacao {
-    
-    
     margin: 5px;
     height: 50px;
     line-height: 50px
@@ -2319,26 +2311,21 @@ footer #box-rodape #box-logo-rodape {
 
 #pag-publicacao-detalhes .box-publicacao #data-publicacao {
     
-    
 }
 
 #pag-publicacao-detalhes .box-publicacao #diaria-publicacao {
-    
     
 }
 
 #pag-publicacao-detalhes .box-publicacao #combustivel-publicacao {
     
-    
 }
 
 #pag-publicacao-detalhes .box-publicacao #distancia-publicacao {
     
-    
 }
 
 #pag-publicacao-detalhes .box-publicacao #status-publicacao {
-    
     
 }
 
@@ -2351,4 +2338,47 @@ footer #box-rodape #box-logo-rodape {
     height: 25px;
     line-height: 25px;
     margin: 0px 10px;
+}
+
+/*--------PERCENTUAL---------*/
+
+#pag-percentual-lucro .box-conteudo #box-form-percentual {
+    height: 250px;
+}
+
+#pag-percentual-lucro #form-modificacao {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#pag-percentual-lucro #form-modificacao .select {
+    width: 200px;
+}
+
+#pag-percentual-lucro #form-modificacao #box-acoes {
+    margin-top: 20px;
+}
+
+#pag-percentual-lucro #form-modificacao #box-acoes #botao-remover {
+    float: left;
+    width: 100px;
+    padding: 4px 0px;
+}
+
+#pag-percentual-lucro #form-modificacao #box-acoes #box-salvar-cancelar {
+    display: block;
+    width: 300px;
+    margin-left: 50px;
+    float: left;
+}
+
+#pag-percentual-lucro #form-modificacao #box-acoes #box-salvar-cancelar .botao {
+    display: inline-block;
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#pag-percentual-lucro .box-conteudo #box-listagem-percentuais {
+    width: 600px;
+    margin: 0 auto;
 }
