@@ -6,19 +6,19 @@
     $idUsuario = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     $detalhes_usuario = new \Tabela\Usuario();
-    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];    
+    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];        
 ?>
 <!doctype html>
 <html>
     <head>
-        <title>Perfil de <?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome[0]; ?> |City Share</title>
+        <title>Perfil de <?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome[0]; ?> | City Share</title>
         <meta name="viewport" content="width=device-width" />
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="img/icones/logoCityShareIcon.png">
     </head>
     <body>
-        <div id="container">            
+        <div id="container">
             <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-perfil-usuario">
                 <div class="box-conteudo">

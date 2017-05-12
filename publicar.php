@@ -34,7 +34,7 @@
         $limiteQuilometragem = ( isset($_POST["txtLimiteQuilometragem"]) )? mysqli_real_escape_string( $db->conexao, $_POST["txtLimiteQuilometragem"] ) : null;
         $valorQuilometragem = ( isset($_POST["txtValorQuilometragem"]) )? mysqli_real_escape_string( $db->conexao, $_POST["txtValorQuilometragem"] ) : null;
         $acessorios = ( isset($_POST["chkAcessorio"]) )? $_POST["chkAcessorio"] : null;
-        
+            
         $lista_required_input = [];
         $lista_required_input[] = $titulo;
         $lista_required_input[] = $descricao;
@@ -61,10 +61,10 @@
             $publicacao->quilometragemAtual = $quilometragemAtual;
             $publicacao->limiteQuilometragem = $limiteQuilometragem;            
             $publicacao->dataPublicacao = get_data_atual();
-            $publicacao->idVeiculo = $id_modelo;                        
+            $publicacao->idVeiculo = $id_modelo;
             
-            $status_publicacao_disponivel = 1;
-            $publicacao->idStatusPublicacao = $status_publicacao_disponivel;
+            $status_publicacao_pendente = 3;
+            $publicacao->idStatusPublicacao = $status_publicacao_pendente;
             
             $sessao = new Sessao();
                                     
