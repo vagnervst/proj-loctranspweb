@@ -82,11 +82,12 @@
                 $sql .= "ON u.idPlanoConta = p.id ";
                 $sql .= "INNER JOIN tbl_licencadesktop AS ld ";
                 $sql .= "ON u.idLicencaDesktop = ld.id "; 
-                $sql .= "order by mediaNotas desc  limit  10" ; 
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
                 }
+                
+                $sql .= " order by mediaNotas desc  limit  10" ; 
                 
                 $resultado = $this->executarQuery( $sql );
                                 

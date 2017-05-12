@@ -804,12 +804,16 @@ header #box-botao-filtragem {
     display: inline-block;        
 }
 
-.container-icone-avaliacoes .icone-avaliacao {
+.container-icone-avaliacoes .icone-avaliacao {    
     background: url(../img/icones/avaliacao.png);
     background-size: contain;
     width: 30px;
     height: 30px;
     display: inline-block;
+}
+
+.container-icone-avaliacoes .icone-avaliacao.inativa {
+    background-image: url(../img/icones/avaliacao-inativa.png);
 }
 
 .preset-input-text {
@@ -3788,6 +3792,12 @@ header #box-botao-filtragem {
     height: 180px;
     border: 2px solid #ebebeb;
     border-radius: 5px 50px 50px 50px;        
+}
+ #foto-usuario-index {
+    width:  180px;
+    height: 160px;
+    
+    
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {    

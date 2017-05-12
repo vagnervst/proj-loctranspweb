@@ -69,12 +69,12 @@
                             
                         ?>
                         <section class="box-locador-destaque">
-                            <a href="perfil.php">
+                            <a href="perfil.php?id=<?php echo $usuario->id; ?>">
                                 <div class="box-effect">
                                     <div class="hover-effect"></div>
                                 </div>
                                 <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
-                                <img class="foto-locador" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
+                                <img id="foto-usuario-index" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </a>
                             <p class="localizacao-locador">Estado: SP</p>
                             <h1 class="nome-locador"><?php echo $usuario->nome; ?></h1>
@@ -84,23 +84,23 @@
                                 <div class="container-icone-avaliacoes">
                                     <?php 
                                         $usuario->qtdAvaliacoes; 
-                                        $a = 0 ; 
+                                        
+                                        
+                                        $lista_estrelas = [
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa",
+                                            "icone-avaliacao inativa"
+                                        ];                                                                                
+                                                                                                                
+                                        for( $i = 0; $i < $usuario->mediaNotas; ++$i ) {
+                                            $lista_estrelas[$i] = "icone-avaliacao";                           
+                                        }                                                                            
                                 
-                                        while($a < $usuario->mediaNotas){
-                                
-                                
-                                    ?>
-                                    <div class="icone-avaliacao"></div>
-                                    <?php 
-                                        $a++ ;
-                                        }
-                                        echo $a;
-                                        while ($a < 5 ){
-                                            ?>
-                                        <div class="icone-avaliacao-inativa"></div>
-                                    <?php
-                                        $a++ ;
-                                        }
+                                        foreach( $lista_estrelas as $classe_estrela ) {
+                                            echo "<div class=\"" . $classe_estrela . "\"></div>";
+                                        }                                                                        
                                     ?>
                                 </div>
                             </div>
