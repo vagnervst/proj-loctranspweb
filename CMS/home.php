@@ -19,8 +19,7 @@
             ?>
             <div class="CMS_main" id="pag-home">
                 <?php include("layout/menu.php") ?>
-                <div class="box-conteudo">
-                </div>
+                <div class="box-conteudo"></div>
             </div>
             <?php
                 include("layout/footer.php");

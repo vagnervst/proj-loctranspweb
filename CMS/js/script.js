@@ -373,6 +373,29 @@ $(document).ready(function() {
                 
             });
         }
+    }    
+    
+    //-------------------------------------------- SCRIPT DE RELAÇÃO DE SELECTS
+    
+    function relacionar_selects(selectBase, selectAlvo, url_api, nome_campo) {
+        $( selectBase ).change(function(e) {
+            var ajax = new Ajax();
+
+            var valor = this.value;
+            var dados = new FormData();
+            dados.append(nome_campo, valor);
+            
+            ajax.transferir_dados_para_api(url_api, 'POST', dados, function(resultado) {                                
+                console.log(resultado);
+                $(selectAlvo).removeAttr("disabled");
+                selectAlvo.innerHTML = resultado;
+                
+                if( $(selectAlvo).children().length == 1 ) {
+                    $(selectAlvo).attr("disabled", "true");
+                }
+                
+            });
+        });
     }
     
     function inicializarBotoesAnalisePublicacao() {
@@ -409,8 +432,38 @@ $(document).ready(function() {
     }
     //--------------------------------------------
     
+    function inicializarFormularioCadastroPercentual() {
+        var pag_percentual_lucro = $("#pag-percentual-lucro")[0];
+        
+        if( pag_percentual_lucro !== undefined ) {
+            var select_tipo_veiculo = $("#slTipoVeiculo")[0];
+            var select_categoria_veiculo = $("#slCategoriaVeiculo")[0];                            
+            
+            relacionar_selects( select_tipo_veiculo, select_categoria_veiculo, "../apis/get_categorias.php", "idTipoVeiculo" );
+        }
+    }
+    
+    function inicializarFormularioCadastroVeiculo() {
+        var pag_modelo_veiculo = $("#pag-adm-veiculos")[0];
+        
+        if( pag_modelo_veiculo !== undefined ) {
+            var select_fabricantes = $("#slFabricante")[0];
+            var select_combustivel = $("#slCombustivel")[0];
+            var select_transmissao = $("#slTransmissao")[0];
+            var select_tipo = $("#slTipoVeiculo")[0];
+            var select_categoria = $("#slCategoriaVeiculo")[0];
+            
+            relacionar_selects(select_tipo, select_fabricantes, "../apis/get_fabricantes.php", "idTipoVeiculo");
+            relacionar_selects(select_tipo, select_categoria, "../apis/get_categorias.php", "idTipoVeiculo");
+            relacionar_selects(select_tipo, select_combustivel, "../apis/get_combustiveis_tipo_veiculo.php", "idTipoVeiculo");
+            relacionar_selects(select_tipo, select_transmissao, "../apis/get_transmissoes_tipo_veiculo.php", "idTipoVeiculo");
+        }
+    }
+    
     inicializarBotoesAnalisePublicacao();
     inicializarAJAXPerguntas();
     inicializarBotoesSelecaoImagem();
     inicializar_painel_info_usuario();
+    inicializarFormularioCadastroPercentual();
+    inicializarFormularioCadastroVeiculo();
 });

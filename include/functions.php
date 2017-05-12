@@ -12,6 +12,10 @@
     function get_data_atual_mysql() {
         return strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()));
     }
+    
+    function get_data_mysql( $time ) {
+        return strftime( "%Y-%m-%d", $time);
+    }
 
     function formatar_data($formato = null, $data) {
         setlocale(LC_TIME, 'ptb');

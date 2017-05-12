@@ -25,7 +25,8 @@
                     <div id="box-info-usuario">
                         <div id="box-info-pessoal-usuario">
                             <div id="box-foto">
-                                <img id="foto-usuario" src="img/link_face.jpg"/>
+                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
+                                <img id="foto-usuario" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </div>
                             <section id="box-info">
                                 <h1 id="nome"><?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome; ?></h1>
@@ -46,8 +47,8 @@
                         <span class="preset-botao js-btn-publicacao">Publicações</span>
                         <span class="preset-botao js-btn-avaliacao">Avaliações</span>
                     </div>
-                    <section id="container-publicacoes">
-                        <div class="wrapper-publicacoes"></div>
+                    <section id="container-publicacoes-avaliacoes">
+                        <div class="wrapper-publicacoes-avaliacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
                     </section>
                 </div>                

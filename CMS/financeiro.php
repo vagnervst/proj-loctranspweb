@@ -43,6 +43,12 @@
                         </a>
                     </div>
                     <?php } ?>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="percentual.php">
+                            <img src="Image/content_test.jpg" />                        
+                            Percentuais de Lucro
+                        </a>
+                    </div>
                     <?php if( in_array(9, $lista_permissoes_usuario) ) { ?>
                     <div class="box-conteudo-menu">
                         <a class="titulo-conteudo-menu" href="estatisticas_cityshare.php">

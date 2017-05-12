@@ -16,7 +16,15 @@
             }                
 
             public function get_propriedades_valores() {
-                return get_object_vars($this);
+                $valores = get_object_vars($this);
+                
+                for( $i = 0; $i < count($valores); ++$i ) {
+                    if( isset($valores[$i]) && $valores[$i] == null ) {
+                        unset($valores[$i]);
+                    }
+                }
+                
+                return $valores;
             }
 
             public function get_update_valores() {
@@ -47,15 +55,15 @@
             }
 
             public function get_valores_preparados($incluirPrimaryKey=true) {
-                $valores = $this->get_propriedades_valores();
-
+                $valores = $this->get_propriedades_valores();                
+                
                 $statement = "";
 
                 $i = 0;
-                foreach( $valores as $key => $value ) {
+                foreach( $valores as $key => $value ) {                    
                     ++$i;
-                    if( empty($value) || !$incluirPrimaryKey && $key == $this::$primary_key ) continue;
-
+                    if( empty($value) || !$incluirPrimaryKey && $key == $this::$primary_key ) continue;                    
+                    
                     $statement .= $this->preparar_valor($value);
                     if( $i < count($valores) ) $statement .= ", ";                
                 }
@@ -71,7 +79,7 @@
                 return $valor;
             }
             
-            protected function get_valor_escapado($valor) {
+            public function get_valor_escapado($valor) {
                 $db = new Database();
                 
                 $tipoValor = gettype($valor);
@@ -112,14 +120,14 @@
                 $objeto = new $nomeClasse;                                
 
                 $keys = array_keys($resultado);
-                for($i = 0; $i < count($keys); ++$i) {
+                for($i = 0; $i < count($keys); ++$i) {                    
                     $objeto->$keys[$i] = $this->preparar_valor_exibicao($resultado[$keys[$i]]);
                 }
 
                 return $objeto;
             }
 
-            protected function get_array_from_resultado($resultado_sql) {
+            public function get_array_from_resultado($resultado_sql) {
                 $listaObjetos = [];
                 
                 if( $resultado_sql ) {
@@ -146,7 +154,7 @@
 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }                                
+                }                                                                
                 
                 $resultado = $this->executarQuery($sql);                                
                 
@@ -171,8 +179,8 @@
 
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
-                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";
-
+                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                                                
+                
                 return $this->executarQuery($sql);
             }                        
         }

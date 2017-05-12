@@ -2,7 +2,7 @@
     require_once("../../include/initialize.php");
     require_once("../../include/classes/tbl_tipo_veiculo.php");
     require_once("../../include/classes/tbl_tipo_combustivel.php");
-    require_once("../../include/classes/tbl_transmissao.php");
+    require_once("../../include/classes/tbl_transmissao.php");    
     
     $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
 
@@ -50,6 +50,7 @@
         $objTipoVeiculo->eliminar_relacionamentos_a_acessorio();
         $objTipoVeiculo->eliminar_relacionamentos_a_combustivel();       
         $objTipoVeiculo->eliminar_relacionamentos_a_transmissao();
+        $objTipoVeiculo->eliminar_relacionamentos_a_fabricante();
         $objTipoVeiculo->deletar();
     }
 

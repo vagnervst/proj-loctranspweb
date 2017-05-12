@@ -194,16 +194,16 @@ $(document).ready(function() {
     function prepararSessaoCadastro(boxSessaoCadastro) {
         //Captura todas as etapas de uma sessao de cadastro, e seus botoes de transferencia
         //para inicializar as transicoes
-        var etapas = capturarEtapas(boxSessaoCadastro);                
+        var etapas = capturarEtapas(boxSessaoCadastro);
                 
         for( var i = 0; i < etapas.length; ++i ) {
-            var listaBotoesTransf = capturarBotoesTransferencia(etapas[i]);            
+            var listaBotoesTransf = capturarBotoesTransferencia(etapas[i]);
             
-            for( var x = 0; x < listaBotoesTransf.length; ++x ) {                
+            for( var x = 0; x < listaBotoesTransf.length; ++x ) {
                 definirTransferencia( listaBotoesTransf[x], boxSessaoCadastro );
             }
         }
-    }    
+    }
     
     function isTipoContaAtivo(boxCadastro) {
         //Retorna true se o formulario de cadastro for o ativo no momento
@@ -314,13 +314,11 @@ $(document).ready(function() {
         listaFormCadastro.push( boxSessaoCadastroJuridico );                
         
         $(botaoCadastroFisico).click(function(){
-            setStatusTipoContaUnico(listaFormCadastro, 0, true);
-            //executarTransicaoFormulario(listaFormCadastro);
+            setStatusTipoContaUnico(listaFormCadastro, 0, true);            
         });
         
         $(botaoCadastroJuridico).click(function(){
-            setStatusTipoContaUnico(listaFormCadastro, 1, true);
-            //executarTransicaoFormulario(listaFormCadastro);
+            setStatusTipoContaUnico(listaFormCadastro, 1, true);            
         });
     }
     
@@ -1645,6 +1643,25 @@ $(document).ready(function() {
         return html;
     }
     
+    function criarListaAvaliacoesUsuario( lista_json ) {
+        var html = "";
+        
+        for( var i = 0; i<lista_json.length; i++ ) {
+            var avaliacao = lista_json[i];
+            
+            html += '<div class="box-avaliacao">';
+            html += '<div class="info-avaliador">';
+            html += '<div class="info-detalhes">'+ avaliacao.nomeAvaliador +'</div>';
+            html += '<div class="info-detalhes">'+ avaliacao.dataAvaliacao +'</div>';
+            html += '<div class="info-detalhes">'+ avaliacao.nota.toString(); +'</div>';
+            html += '</div>';
+            html += '<div class="mensagem">'+ avaliacao.mensagem +'</div>';
+            html += '</div>';
+        }
+        
+        return html;
+    }
+    
     function inicializarBotaoPublicacaoUsuario() {
         var pagPerfilUsuario = $("#pag-perfil-usuario")[0];
         
@@ -1667,7 +1684,7 @@ $(document).ready(function() {
 
     var lista_json_publicacoes = [];
     function carregarListaPublicacaoUsuario(pagina_alvo, increment = false) {
-        var box_info_publicacao = $("#container-publicacoes .wrapper-publicacoes")[0];        
+        var box_info_publicacao = $("#container-publicacoes-avaliacoes .wrapper-publicacoes-avaliacoes")[0];        
         var conteudo_listagem = box_info_publicacao.innerHTML;
         
         var imagem_carregamento = document.createElement("img");
@@ -1690,7 +1707,7 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {            
+        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {
             
             lista_json_publicacoes = JSON.parse( resultado );
             
@@ -1710,7 +1727,127 @@ $(document).ready(function() {
             
         });
     }
+    
+    var lista_json_avaliacoes = [];
+    function carregarListaAvaliacaoUsuario(pagina_alvo, increment = false) {
+        var box_info_avaliacao = $("#container-publicacao-avaliacoes .wrapper-publicacoes-avaliacoes")[0];
+        var conteudo_listagem = box_info_avaliacao.innerHTML;
+        
+        var imagem_carregamento = document.createElement("img");
+        imagem_carregamento.src = "img/loading_cityshare_black.gif";
+        imagem_carregamento.style.display = "block";
+        imagem_carregamento.style.margin = "0 auto";
+        
+        if( !increment ) {
+            box_info_avaliacao.innerHTML = "";
+        }
+        
+        box_info_avaliacao.appendChild( imagem_carregamento );
+        
+        var dados = new FormData();
+        
+        var idUsuario = window.location.search;
+        idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length ); 
+    }
+    
+    function inicializarBotoesPublicacaoAvaliacao() {
+        var pagina_perfil_publico = $("#pag-perfil-usuario")[0];
+        var box_conteudo = $("#container-publicacoes")[0];
+        var conteudo_publicacoes = $("#container-publicacoes-avaliacoes .wrapper-publicacoes-avaliacoes")[0];
+        var conteudo_listagem = conteudo_publicacoes.innerHTML;
+        
+        if( pagina_perfil_publico !== undefined ) {
+            var botao_publicacoes = $(".js-btn-publicacao")[0];
+            var botao_avaliacoes = $(".js-btn-avaliacao")[0];
+            var paginaAtual = 1;
+            var increment = false;
+            
+            var idUsuario = window.location.toString();
+            idUsuario = idUsuario.substr( idUsuario.indexOf("id=")+3, idUsuario.length );
+            id = Number(idUsuario);
+            
+            var dados_api = new FormData();
+            dados_api.append("idUsuario", id);
+            
+            var imagem_carregamento = document.createElement("img");
+            imagem_carregamento.src = "img/loading_cityshare_black.gif";
+            
+            imagem_carregamento.style.display = "block";
+            imagem_carregamento.style.margin = "auto";
+            imagem_carregamento.style.marginTop = "200px";
+            
+            $(botao_publicacoes).click(function() {
+                conteudo_publicacoes.style.display = "block";
+                carregarListaPublicacaoUsuario();
+            });
+            
+            $(botao_avaliacoes).click(function() {
+                
+            });
 
+        }
+    }
+
+    function ativarBotaoFormularioConfiguracao(botao) {
+        $("#box-botoes .botao").removeClass("ativo");
+        
+        $(botao).addClass("ativo");
+    }
+    
+    function exibirFormularioConfiguracao(formulario) {
+        var box_form = $("#box-form")[0];
+        
+        $( box_form.children ).css("display", "none");
+        $( formulario ).css("display", "block");
+    }
+    
+    function inicializarSessoesConfiguracaoConta() {
+        var pagina_configuracao_conta = $("#pag-config-perfil");
+        
+        if( pagina_configuracao_conta !== undefined ) {
+                                    
+            $(".js-botao-pessoais").click(function(e) {
+                var formularioAlvo = $("#form-info-pessoais")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-contato").click(function(e) {
+                var formularioAlvo = $("#form-info-contato")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-financeiro").click(function(e) {
+                var formularioAlvo = $("#form-info-financeiro")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-conducao").click(function(e) {
+                var formularioAlvo = $("#form-info-conducao")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            $(".js-botao-autenticacao").click(function(e) {
+                var formularioAlvo = $("#form-info-autenticacao")[0];
+                exibirFormularioConfiguracao( formularioAlvo );
+                
+                ativarBotaoFormularioConfiguracao(this);
+            });
+            
+            var botao_foto = $("#botao-foto")[0];
+            var input_foto = $("#input-foto")[0];
+            
+            definirBotaoSelecaoImagem( botao_foto, input_foto );
+        }
+    }
+    
     if( tamanhoTela.indexOf("mobile") != -1 ) {
         
         inicializarPreenchimentoDatasLocacao();
@@ -1723,7 +1860,9 @@ $(document).ready(function() {
         inicializarBotoesSessaoPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
         inicializarBotaoPublicacaoUsuario();
-
+        inicializarBotoesPublicacaoAvaliacao();
+        inicializarSessoesConfiguracaoConta();
+        
     } else if( tamanhoTela.indexOf("desktop") != -1 ) {
         
         inicializarPreenchimentoDatasLocacao();
@@ -1737,11 +1876,11 @@ $(document).ready(function() {
         inicializarModaisPedido();
         inicializarBotoesSessaoSolicitacoesEPedidos();
         inicializarBotaoPublicacaoUsuario();
-
+        inicializarBotoesPublicacaoAvaliacao();       
+        inicializarSessoesConfiguracaoConta();
     }
     
-    $('.faq').click(function (){
-        console.log(this);
+    $('.faq').click(function (){        
         $(this).find('.faq-answer').slideToggle('fast');
     });
 });

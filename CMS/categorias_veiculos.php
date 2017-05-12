@@ -19,9 +19,9 @@
             <div class="CMS_main" id="pag-categorias-veiculos">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="home.php" class="link-caminho">Home</a> &gt; 
-                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt; 
-                    <a href="veiculos.php" class="link-caminho">Veículos</a> &gt; 
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="cityshare.php" class="link-caminho">City Share</a> &gt;
+                    <a href="veiculos.php" class="link-caminho">Veículos</a> &gt;
                     <a href="categorias_veiculos.php" class="link-caminho">Categorias</a>
                 </div>
                 <div class="box-conteudo">
@@ -30,16 +30,6 @@
                             <div class="box-label-input">
                                 <label><span class="label">Nome da categoria:</span>
                                     <input class="input" type="text" name="txtNomeCategoria" />
-                                </label>
-                            </div>
-                            <div class="box-label-input">
-                                <label><span class="label">Percentual de lucro:</span>
-                                    <input class="input" type="text" name="txtPercentualLucro" />
-                                </label>
-                            </div>
-                            <div class="box-label-input">
-                                <label><span class="label">Valor mínimo do veículo:</span>
-                                    <input class="input" type="text" name="txtvalorMinimoVeiculo" />
                                 </label>
                             </div>
                             <div class="box-label-input">

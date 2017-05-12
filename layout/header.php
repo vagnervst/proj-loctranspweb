@@ -43,7 +43,7 @@
                 <span id="icone-notificacao"></span>
                 <div id="imagem-perfil">
                     <?php 
-                          $caminhoFoto = "img/uploads/usuarios/usr_" . $usuario->id;                           
+                          $caminhoFoto = "img/uploads/usuarios/";
                     ?>
                     <img src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>" />
                 </div>
@@ -54,7 +54,7 @@
                     <ul id="menu-usuario">
                         <li><a href="perfil.php?id=<?php echo $idUsuario; ?>">Perfil</a></li>
                         <li><a href="solicitacoes.php?user=<?php echo $idUsuario; ?>">Solicitações</a></li>
-                        <li><a href="#">Configurações</a></li>
+                        <li><a href="configuracoes.php">Configurações</a></li>
                         <li><a href="logout_action.php">Sair</a></li>
                     </ul>
                 </div>
