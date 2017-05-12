@@ -1341,10 +1341,10 @@ header #box-botao-filtragem {
     #pag-home #container-locadores-destaque .box-locador-destaque .hover-effect {
         display: none;
         position: absolute;
-        background-color: #a1aec9;
+        background-color: rgba(161, 174, 201, 0.65);
         width: 50px;
         height: 160px;                        
-        transform: skewX(-10deg);
+        transform: skewX(-15deg);
     }
 }
 
@@ -3505,11 +3505,11 @@ header #box-botao-filtragem {
     }
 }
 
-#pag-cadastro .box-conteudo .box-cadastro .input-foto {
+.input-foto {
     display: none;
 }
 
-#pag-cadastro .box-conteudo .box-cadastro .botao-foto {
+.botao-foto {
     background-image: url(../img/icones/icone-imagem.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -3734,16 +3734,19 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-perfil-usuario .box-conteudo #box-info-usuario {
+    box-shadow: 1px 1px 1px #eaeaea;
+}
+
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario {
-        background-color: #ebebeb;
+        background-color: #f8f8f8;
         height: 195px;
         border: 1px solid #b9b9b9;
     }
 }
 
-#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {    
-    background-color: #ebebeb;
+#pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
     width: 304px;
     height: 105px;
     padding: 2px;
@@ -3898,8 +3901,8 @@ header #box-botao-filtragem {
 
 #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao .preset-botao {
     width: 90px;
-    height: 25px;
-    line-height: 25px;
+    height: 30px;
+    line-height: 30px;
 }
 
 @media (min-width: 420px) {
@@ -3930,11 +3933,19 @@ header #box-botao-filtragem {
     color: white;
 }
 
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes {
+    min-height: 500px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes wrapper-publicacoes-avaliacoes {
+
+}
+
 #pag-perfil-usuario .box-conteudo #container-publicacoes .wrapper-publicacoes {
         
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao {
     background-color: #efefef;
     padding: 5px;
     height: 130px;
@@ -3942,7 +3953,7 @@ header #box-botao-filtragem {
     margin: 5px 0px;
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .foto-publicacao {    
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .foto-publicacao {    
     background-image: url(../img/tesla1.jpg);
     background-size: cover;
     background-repeat: no-repeat;    
@@ -3953,12 +3964,12 @@ header #box-botao-filtragem {
 }
 
 @media (min-width: 420px) {
-    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .foto-publicacao {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .foto-publicacao {
         width: 160px;
     }
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao {
     width: 160px;
     height: 122px;
     padding: 5px;
@@ -3966,40 +3977,40 @@ header #box-botao-filtragem {
 }
 
 @media (min-width: 420px) {
-    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao {
         width: 195px;
     }
 }
 
 @media (min-width: 520px) {
-    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao {
         width: 265px;
     }
 }
 
 @media (min-width: 740px) {
-    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao {
         width: 465px;
     }
 }
 
 @media (min-width: 1000px) {
-    #pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao {
         width: 715px;
     }
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .titulo {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .titulo {
     font-size: 18px;
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .modelo-veiculo {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .modelo-veiculo {
     background-color: #e0e0e0;
     padding: 2px;
     font-style: italic;
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .box-diaria {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .box-diaria {
     width: 70px;
     padding: 5px;
     margin-top: 30px;
@@ -4007,12 +4018,12 @@ header #box-botao-filtragem {
     border-top: 1px solid #a7a7a7;
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .box-diaria .diaria {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .box-diaria .diaria {
     font-size: 20px;
     font-weight: bold;
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes .box-publicacao .box-info-publicacao .box-diaria .label-diaria {
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .box-diaria .label-diaria {
     text-align: right;
 }
 
@@ -5606,6 +5617,51 @@ header #box-botao-filtragem {
 
 /*------------- DETALHES PEDIDO*/
 
+#pag-config-perfil {
+    background-color: inherit;
+    min-height: 85vh;
+}
+
+#pag-config-perfil .box-label-input {
+    margin: 15px 0px;
+    text-align: left;
+}
+
+@media (min-width: 740px) {
+    #pag-config-perfil .box-label-input {
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+#pag-config-perfil .box-label-input .label {
+    display: block;
+}
+
+#pag-config-perfil .box-label-input .input {
+    width: 290px;
+    height: 30px;
+}
+
+@media (min-width: 420px) {
+    #pag-config-perfil .box-label-input .input {
+        width: 370px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-config-perfil .box-label-input .input {
+        width: 400px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-config-perfil .box-label-input .input {
+        width: 400px;
+    }
+}
+
 #pag-config-perfil #box-botoes {    
     width: 300px;
     text-align: center;
@@ -5629,6 +5685,21 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-config-perfil #box-botoes .botao.ativo .icone {
+    background-color: #141619;    
+}
+
+@media (min-width: 740px) {
+    #pag-config-perfil #box-botoes .botao.ativo {
+        background-color: #557bc9;
+        color: white;
+    }
+    
+    #pag-config-perfil #box-botoes .botao.ativo .icone {
+        background-color: #3b568d;
+    }
+}
+
 #pag-config-perfil #box-botoes .botao .label {
     display: none;
 }
@@ -5646,11 +5717,16 @@ header #box-botao-filtragem {
     margin: 0px 2px;
 }
 
+#pag-config-perfil #box-botoes .botao:hover .icone {
+    background-color: #141619;
+}
+
 #pag-config-perfil #box-botoes #botao-pessoais .icone {
     background-image: url(../img/icones/pessoal-black.png);
 }
 
-#pag-config-perfil #box-botoes #botao-pessoais:hover .icone {
+#pag-config-perfil #box-botoes #botao-pessoais.ativo .icone,
+#pag-config-perfil #box-botoes #botao-pessoais:hover .icone {    
     background-image: url(../img/icones/pessoal-white.png);
 }
 
@@ -5658,6 +5734,7 @@ header #box-botao-filtragem {
     background-image: url(../img/icones/telefone.png);
 }
 
+#pag-config-perfil #box-botoes #botao-contato.ativo .icone,
 #pag-config-perfil #box-botoes #botao-contato:hover .icone {
     background-image: url(../img/icones/telefone-white.png);
 }
@@ -5666,6 +5743,7 @@ header #box-botao-filtragem {
     background-image: url(../img/icones/carteira-black.png);
 }
 
+#pag-config-perfil #box-botoes #botao-financeiro.ativo .icone,
 #pag-config-perfil #box-botoes #botao-financeiro:hover .icone {
     background-image: url(../img/icones/carteira-white.png);
 }
@@ -5674,6 +5752,7 @@ header #box-botao-filtragem {
     background-image: url(../img/icones/volante-black.png);
 }
 
+#pag-config-perfil #box-botoes #botao-conducao.ativo .icone,
 #pag-config-perfil #box-botoes #botao-conducao:hover .icone {
     background-image: url(../img/icones/volante-white.png);
 }
@@ -5682,6 +5761,7 @@ header #box-botao-filtragem {
     background-image: url(../img/icones/chave-black.png);
 }
 
+#pag-config-perfil #box-botoes #botao-autenticacao.ativo .icone,
 #pag-config-perfil #box-botoes #botao-autenticacao:hover .icone {
     background-image: url(../img/icones/chave-white.png);
 }
@@ -5693,6 +5773,10 @@ header #box-botao-filtragem {
 }
 
 @media (min-width: 740px) {
+    #pag-config-perfil #box-botoes {
+        margin: 0;
+    }
+    
     #pag-config-perfil #box-botoes .botao {
         display: block;    
         background-color: #e2e2e2;
@@ -5733,11 +5817,13 @@ header #box-botao-filtragem {
 }
 
 #pag-config-perfil #box-form {
-    background-color: white;
+    background-color: #f7f7f7;
     width: 300px;
-    height: 300px;
+    min-height: 400px;
     margin: 5px auto;
-    border: 2px solid #d4d4d4;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px #c9c9c9;
 }
 
 @media (min-width: 420px) {
@@ -5749,6 +5835,7 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-config-perfil #box-form {        
         width: 450px; 
+        margin: 10px 0px;        
         float: left;
     }
 }
@@ -5760,30 +5847,62 @@ header #box-botao-filtragem {
     }
 }
 
-#pag-config-perfil #box-form .form-conta {    
-    height: 100%;
+#pag-config-perfil #box-form .botao-submit {
+    width: 130px;
+    padding: 10px 0px;
+}
+
+@media (min-width: 740px) {    
+    #pag-config-perfil #box-form .botao-submit {
+        width: 100px;
+        padding: 7px 0px;
+    }
+}
+
+#pag-config-perfil #box-form .form-conta {
     display: none;
+    padding: 5px;    
+    text-align: center;
+}
+
+#pag-config-perfil #box-form .form-conta .titulo-sessao {
+    padding: 5px;
+    border-bottom: 1px solid #d4d4d4;
+    font-weight: bold;
+    color: #5c5c5c;
 }
 
 #pag-config-perfil #box-form #form-info-pessoais {
     display: block;
-    background-color: red;
 }
 
 #pag-config-perfil #box-form #form-info-contato {
-    background-color: yellow;
+    display: none;
 }
 
 #pag-config-perfil #box-form #form-info-financeiro {
-    background-color: aqua;
+    display: none;
+}
+
+#pag-config-perfil #box-form #form-info-financeiro .input-validade {
+    width: 250px;
+    margin: 15px auto;
+}
+
+#pag-config-perfil #box-form #form-info-financeiro .input-validade .label-validade {
+    color: gray;
+}
+
+#pag-config-perfil #box-form #form-info-financeiro .input-validade .input {
+    width: 90px;
 }
 
 #pag-config-perfil #box-form #form-info-conducao {
-    background-color: green;
+    display: none;
 }
 
 #pag-config-perfil #box-form #form-info-autenticacao {
-    background-color: purple;
+    display: none;
 }
 
 /*------------- DETALHES PERFIL*/

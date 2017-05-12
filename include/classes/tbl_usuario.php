@@ -63,12 +63,14 @@
             }
             
             public function getDetalhesUsuario($where = null) {
-                $sql = "SELECT u.id, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
+                $sql = "SELECT u.fotoPerfil , u.id, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
                 $sql .= "u.telefone, u.celular, u.email, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, t.titulo AS tipoConta, ";
                 $sql .= "p.nome AS planoConta, ld.nome AS licencaDesktop, ";                
                 $sql .= "( SELECT COUNT(id) FROM tbl_pedido WHERE idUsuarioLocador = u.id ) AS qtdEmprestimos, ";
-                $sql .= "( SELECT COUNT(id) FROM tbl_pedido WHERE idUsuarioLocatario = u.id ) AS qtdLocacoes ";
+                $sql .= "( SELECT COUNT(id) FROM tbl_pedido WHERE idUsuarioLocatario = u.id ) AS qtdLocacoes, ";
+                $sql .= "( SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id ) AS qtdAvaliacoes, ";
+                $sql .= "(SELECT  AVG(a.nota) FROM  tbl_avaliacao a WHERE idUsuarioAvaliado = u.id ) AS mediaNotas ";
                 $sql .= "FROM tbl_usuario AS u ";
                 $sql .= "INNER JOIN tbl_cidade AS c ";
                 $sql .= "ON u.idCidade = c.id ";
@@ -79,7 +81,8 @@
                 $sql .= "INNER JOIN tbl_planoconta AS p ";
                 $sql .= "ON u.idPlanoConta = p.id ";
                 $sql .= "INNER JOIN tbl_licencadesktop AS ld ";
-                $sql .= "ON u.idLicencaDesktop = ld.id ";                                
+                $sql .= "ON u.idLicencaDesktop = ld.id "; 
+                $sql .= "order by mediaNotas desc  limit  10" ; 
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
