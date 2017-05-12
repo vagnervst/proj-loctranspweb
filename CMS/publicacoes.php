@@ -27,14 +27,14 @@
                 </div>
                 <?php 
                     $lista_publicacoes = new \Tabela\Publicacao();
-                    $lista_publicacoes = $lista_publicacoes->getPublicacaoPaginacao();
+                    $lista_publicacoes = $lista_publicacoes->getPublicacaoPaginacao(10, 1, "p.idStatusPublicacao = 3");
                     
                     for( $i = 0; $i < count( $lista_publicacoes ); ++$i ) {
                         $publicacao = $lista_publicacoes[$i];
                         $dataAtual = time();
                         $diasRestantes = (($dataAtual - strtotime($publicacao->dataPublicacao))/(60*60*24));                                                
                 ?>
-                <a href="publicacao_detalhe.php">
+                <a href="publicacao_detalhe.php?id=<?php echo $publicacao->id; ?>">
                     <div class="box-publicacao-preview">
                         <div class="box-publicacao-imagem">
                             <img src="Image/content_test.jpg" class="publicacao-imagem">
@@ -44,8 +44,16 @@
                             <?php echo $publicacao->nomeLocador . " " . $publicacao->sobrenomeLocador[0] ?>
                         </div>
                         <div class="box-publicacao-status">
-                            pendente<br>
-                            5 dias
+                            <?php
+                                if( $publicacao->idStatusPublicacao == 2 ) {
+                                    echo "Recusada";
+                                } elseif ( $publicacao->idStatusPublicacao == 1 ) {
+                                    echo "Aprovada";
+                                } else {
+                                    echo "Pendente";
+                                }
+                            ?><br>
+                            <?php echo $diasRestantes; ?>
                         </div>
                     </div>
                 </a>

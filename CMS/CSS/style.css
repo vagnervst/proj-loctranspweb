@@ -2270,7 +2270,8 @@ footer #box-rodape #box-logo-rodape {
     width: 815px;
     height: 725px;
     margin-left: 5px;
-    background-color:#a1aec9;
+    background-color: white;
+    border: 1px solid #cecece;
     float: left;
     border-radius: 2px;
 }
@@ -2280,6 +2281,8 @@ footer #box-rodape #box-logo-rodape {
     width: 800px;
     height: 50px;
     line-height: 50px;
+    margin-left: 15px;
+    font-size: 20px;
 }
 
  #pag-publicacao-detalhes .box-publicacao #nome-publicacao {
@@ -2326,7 +2329,17 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao-detalhes .box-publicacao #status-publicacao {
-    
+    border: solid 1px #000000;
+    margin: 5px;
+    width: 800px;
+    height: 120px;
+    line-height: 50px;
+}
+
+#pag-publicacao-detalhes .box-publicacao #imagens-publicacao img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
 }
 
 #pag-publicacao-detalhes .box-publicacao #botoes-publicacao {
@@ -2339,7 +2352,21 @@ footer #box-rodape #box-logo-rodape {
     line-height: 25px;
     margin: 0px 10px;
 }
+/*---- PAGINA DE ESTATISTICAS CITY SHARE ----*/
 
+.box-grafico{
+    width: 813px;
+    height: 650px;
+    background-color: white;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+.nome-grafico{
+    width: 813px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
 /*--------PERCENTUAL---------*/
 
 #pag-percentual-lucro .box-conteudo #box-form-percentual {
@@ -2381,4 +2408,5 @@ footer #box-rodape #box-logo-rodape {
 #pag-percentual-lucro .box-conteudo #box-listagem-percentuais {
     width: 600px;
     margin: 0 auto;
+  
 }
