@@ -5,8 +5,18 @@
     require_once("include/classes/tbl_conta_bancaria.php");
     require_once("include/classes/tbl_tipo_cartao_credito.php");
     require_once("include/classes/tbl_banco.php");
+    require_once("include/classes/tbl_estado.php");
+    require_once("include/classes/tbl_cidade.php");
+    require_once("include/classes/tbl_cnh.php");
+    require_once("include/classes/sessao.php");
         
-    $idUsuario = ( $_GET["id"] )? (int) $_GET["id"] : null;        
+    $sessao = new Sessao();
+    $idUsuario = (int) $sessao->get("idUsuario");
+    
+    if( empty($idUsuario) ) {
+        redirecionar_para("index.php");
+        exit;
+    }
 
     $usuario = new \Tabela\Usuario();
     $usuario = $usuario->buscar("id = {$idUsuario}")[0];
@@ -20,6 +30,8 @@
     $contaBancaria = ( isset($contaBancaria[0]) )? $contaBancaria[0] : new \Tabela\ContaBancaria();        
 
     $formSubmit = ( isset($_POST["formSubmit"]) )? $_POST["formSubmit"] : null;
+    $formSubmitFinanceiro = ( isset($_POST["formSubmitFinanceiro"]) )? $_POST["formSubmitFinanceiro"] : null;
+
     $pasta_usuario = "img/uploads/usuarios";
     if( !empty($formSubmit) ) {
 
@@ -35,15 +47,7 @@
         $id_cidade = ( isset($_POST["slCidade"]) )? (int) $_POST["slCidade"] : null;
         $telefone = ( isset($_POST["txtTelefone"]) )? $_POST["txtTelefone"] : null;
         $celular = ( isset($_POST["txtCelular"]) )? $_POST["txtCelular"] : null;
-        $email = ( isset($_POST["txtEmail"]) )? $_POST["txtEmail"] : null;
-        $id_tipoCartao = ( isset($_POST["slTipoCartao"]) )? (int) $_POST["slTipoCartao"] : null;
-        $numeroCartao = ( isset($_POST["txtNumeroCartao"]) )? $_POST["txtNumeroCartao"] : null;
-        $validadeCartaoMes = ( isset($_POST["txtValidadeCartaoMes"]) )? $_POST["txtValidadeCartaoMes"] : null;
-        $validadeCartaoAno = ( isset($_POST["txtValidadeCartaoAno"]) )? $_POST["txtValidadeCartaoAno"] : null;
-        $id_banco = ( isset($_POST["slBanco"]) )? (int) $_POST["slBanco"] : null;
-        $numeroAgencia = ( isset($_POST["txtNumeroAgencia"]) )? $_POST["txtNumeroAgencia"] : null;
-        $numeroConta = ( isset($_POST["txtNumeroConta"]) )? $_POST["txtNumeroConta"] : null;
-        $digitoVerificador = ( isset($_POST["txtDigitoVerificador"]) )? $_POST["txtDigitoVerificador"] : null;
+        $email = ( isset($_POST["txtEmail"]) )? $_POST["txtEmail"] : null;                                                                
         $numeroCnh = ( isset($_POST["txtNumeroCnh"]) )? $_POST["txtNumeroCnh"] : null;
         $senha = ( isset($_POST["txtSenha"]) )? $_POST["txtSenha"] : null;
         $confirmarSenha = ( isset($_POST["txtConfirmarSenha"]) )? $_POST["txtConfirmarSenha"] : null;
@@ -68,6 +72,46 @@
         $usuario->atualizar();
         
         redirecionar_para("configuracoes.php?id={$idUsuario}");
+    }
+
+    if( !empty($formSubmitFinanceiro) ) {
+        $id_tipoCartao = ( isset($_POST["slTipoCartao"]) )? (int) $_POST["slTipoCartao"] : null;
+        $numeroCartao = ( isset($_POST["txtNumeroCartao"]) )? $_POST["txtNumeroCartao"] : null;        
+        $validadeCartao = ( isset($_POST["txtValidadeCartao"]) )? $_POST["txtValidadeCartao"] : null;
+        $id_banco = ( isset($_POST["slBanco"]) )? (int) $_POST["slBanco"] : null;
+        $numeroAgencia = ( isset($_POST["txtNumeroAgencia"]) )? $_POST["txtNumeroAgencia"] : null;
+        $numeroConta = ( isset($_POST["txtNumeroConta"]) )? $_POST["txtNumeroConta"] : null;
+        $digitoVerificador = ( isset($_POST["txtDigitoVerificador"]) )? $_POST["txtDigitoVerificador"] : null;
+        
+        $cartaoCreditoUsuario = new \Tabela\CartaoCredito();        
+        $cartaoCreditoUsuario = $cartaoCreditoUsuario->buscar("idUsuario = {$idUsuario}");
+        
+        if( isset( $cartaoCreditoUsuario[0] ) ) {
+            $cartaoCreditoUsuario = $cartaoCreditoUsuario[0];
+            $cartaoCreditoUsuario->numero = $numeroCartao;
+            
+            $validadeCartao = str_replace("/", "-", $validadeCartao);            
+            $validadeCartao = strtotime( $validadeCartao );
+                    
+            $data_validade = get_data_mysql( $validadeCartao );            
+            
+            $cartaoCreditoUsuario->vencimento = $data_validade;
+            $cartaoCreditoUsuario->idTipo = $id_tipoCartao;
+            $cartaoCreditoUsuario->atualizar();                                    
+        }
+        
+        $contaBancariaUsuario = new \Tabela\ContaBancaria();        
+        $contaBancariaUsuario = $contaBancariaUsuario->buscar("idUsuario = {$idUsuario}");
+        
+        if( isset( $contaBancariaUsuario[0] ) ) {
+            $contaBancariaUsuario = $contaBancariaUsuario[0];
+            $contaBancariaUsuario->numeroAgencia = $numeroAgencia;
+            $contaBancariaUsuario->conta = $numeroConta;
+            $contaBancariaUsuario->digito = $digitoVerificador;
+            $contaBancariaUsuario->idBanco = $id_banco;
+            $contaBancariaUsuario->atualizar();
+        }
+        
     }
 ?>
 <!DOCTYPE html>
@@ -158,13 +202,35 @@
                                     <label><span class="label">Estado:</span>
                                         <select name="slEstado" class="preset-input-select input">
                                             <option selected disabled>Selecione...</option>
+                                            <?php
+                                            $listaEstado = new \Tabela\Estado();
+                                            $listaEstado = $listaEstado->buscar();
+                                            $cidadeUsuario = new \Tabela\Cidade();
+                                            $cidadeUsuario = $cidadeUsuario->buscar("id = {$usuario->idCidade}")[0];
+                                            
+                                            $idEstadoUsuario = $cidadeUsuario->idEstado;
+                                            foreach( $listaEstado as $estado ) {
+                                            ?>
+                                            <option value="<?php echo $estado->id; ?>" <?php echo ( $estado->id == $idEstadoUsuario )? "selected" : ""; ?>><?php echo $estado->nome; ?></option>
+                                            <?php
+                                            }
+                                            ?>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="box-label-input">
                                     <label><span class="label">Cidade:</span>
                                         <select name="slCidade" class="preset-input-select input">
-                                            <option selected disabled>Selecione...</option>
+                                            <option selected disabled>Selecione...</option>  
+                                            <?php
+                                            $listaCidade = new \Tabela\Cidade();
+                                            $listaCidade = $listaCidade->buscar();
+                                            foreach( $listaCidade as $cidade ) {
+                                            ?>
+                                            <option value="<?php echo $cidade->id; ?>"  <?php echo ( $cidade->id == $usuario->idCidade )? "selected" : ""; ?>><?php echo $cidade->nome; ?></option>
+                                            <?php
+                                            }
+                                            ?>
                                         </select>
                                     </label>
                                 </div>
@@ -222,7 +288,7 @@
                                             $data_formatada = explode("-", $cartaoCredito->vencimento);
                                             $data_formatada = $data_formatada[2] . "/" . $data_formatada[0];                                                                                    
                                         ?>
-                                        <input type="text" name="txtValidadeCartaoMes" class="preset-input-text input" value="<?php echo $data_formatada; ?>" />
+                                        <input type="text" name="txtValidadeCartao" class="preset-input-text input" value="<?php echo $data_formatada; ?>" />
                                     </label>
                                 </div>
                                 <h2 class="titulo-sessao">Conta Bancária</h2>
@@ -258,24 +324,37 @@
                                         <input type="text" name="txtDigitoVerificador" class="preset-input-text input" value="<?php echo $contaBancaria->digito; ?>" />
                                     </label>
                                 </div>
-                                <input class="preset-input-submit botao-submit" type="submit" name="formSubmit" value="Salvar" />
+                                <input class="preset-input-submit botao-submit" type="submit" name="formSubmitFinanceiro" value="Salvar" />
                             </form>
                         </div>
-                        <div id="form-info-conducao" class="form-conta">
-                            <form method="POST" action="configuracoes.php?id=<?php echo $idUsuario; ?>">
-                                <div class="box-label-input">
+                        <div id="form-info-conducao" class="form-conta">                            
+                            <div class="box-label-input">
+                                <form method="post" action="apis/crud_cnh.php?modo=insert">
                                     <label><span class="label">CNH:</span>
-                                        <input type="text" name="txtNumeroCnh" class="preset-input-text input" value="<?php echo $contaBancaria->digito; ?>" />
+                                        <input type="text" name="txtNumeroRegistro" class="preset-input-text input" value="<?php echo $contaBancaria->digito; ?>" required />                                        
                                     </label>
+                                    <input class="preset-input-submit btn-adicionar" type="submit" value="" />
+                                </form>
+                            </div>
+                            <div id="container-cnh">
+                                <?php
+                                $buscaCnh = new \Tabela\Cnh();
+                                $listaCnhUsuario = $buscaCnh->buscar("idUsuario = {$usuario->id}");
+                                foreach( $listaCnhUsuario as $cnh ) {
+                                ?>
+                                <div class="box-cnh">
+                                    <form action="apis/crud_cnh.php?idCnh=<?php echo $cnh->id; ?>&modo=update" method="post">
+                                        <input type="text" class="preset-input-text input-numero-cnh" name="txtNumeroRegistro" placeholder="Digite o número da cnh" value="<?php echo $cnh->numeroRegistro; ?>" />
+                                        <div class="box-acoes">
+                                            <input type="submit" class="preset-input-submit editar" value="" />
+                                            <a href="apis/crud_cnh.php?idCnh=<?php echo $cnh->id; ?>&modo=delete" class="preset-botao remover"></a>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div id="container-cnh">
-                                    <div class="box-cnh">
-                                        <input type="text" class="preset-input-text" placeholder="Digite o número da cnh" />
-                                        <span class="preset-botao">+</span>
-                                    </div>
-                                </div>
-                                <input class="preset-input-submit botao-submit" type="submit" name="formSubmit" value="Salvar" />
-                            </form>
+                                <?php 
+                                }
+                                ?>
+                            </div>                            
                         </div>
                         <div id="form-info-autenticacao" class="form-conta">
                             <form method="POST" action="configuracoes.php?id=<?php echo $idUsuario; ?>">
