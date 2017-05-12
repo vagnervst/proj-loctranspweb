@@ -1730,7 +1730,7 @@ $(document).ready(function() {
     
     var lista_json_avaliacoes = [];
     function carregarListaAvaliacaoUsuario(pagina_alvo, increment = false) {
-        var box_info_avaliacao = $("#container-publicacao-avaliacoes .wrapper-publicacoes-avaliacoes")[0];
+        var box_info_avaliacao = $("#container-publicacoes-avaliacoes .wrapper-publicacoes-avaliacoes")[0];
         var conteudo_listagem = box_info_avaliacao.innerHTML;
         
         var imagem_carregamento = document.createElement("img");
@@ -1747,16 +1747,32 @@ $(document).ready(function() {
         var dados = new FormData();
         
         var idUsuario = window.location.search;
-        idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length ); 
+        idUsuario = idUsuario.substr( idUsuario.indexOf("user=") + 5, idUsuario.length );
+        
+        dados.append("idUsuario", idUsuario);
+        dados.append("paginaAtual", pagina_alvo);
+        
+        var ajax = new Ajax();
+        ajax.transferir_dados_para_api("apis/listagem_avaliacoes_usuario.php", "POST", dados, function(resultado) {
+           
+            lista_json_avaliacoes = JSON.parse( resultado );
+            
+            if( increment ) {
+                box_info_avaliacao.innerHTML = conteudo_listagem + criarListaAvaliacoesUsuario( lista_json_avaliacoes );
+            } else {
+                box_info_avaliacao.innerHTML = criarListaAvaliacoesUsuario( lista_json_avaliacoes );
+            }
+        });
     }
     
     function inicializarBotoesPublicacaoAvaliacao() {
         var pagina_perfil_publico = $("#pag-perfil-usuario")[0];
-        var box_conteudo = $("#container-publicacoes")[0];
-        var conteudo_publicacoes = $("#container-publicacoes-avaliacoes .wrapper-publicacoes-avaliacoes")[0];
-        var conteudo_listagem = conteudo_publicacoes.innerHTML;
         
         if( pagina_perfil_publico !== undefined ) {
+            
+            var box_conteudo = $("#container-publicacoes")[0];
+            var conteudo_publicacoes_avaliacoes = $("#container-publicacoes-avaliacoes .wrapper-publicacoes-avaliacoes")[0];
+            var conteudo_listagem = conteudo_publicacoes_avaliacoes.innerHTML;
             var botao_publicacoes = $(".js-btn-publicacao")[0];
             var botao_avaliacoes = $(".js-btn-avaliacao")[0];
             var paginaAtual = 1;
@@ -1777,12 +1793,13 @@ $(document).ready(function() {
             imagem_carregamento.style.marginTop = "200px";
             
             $(botao_publicacoes).click(function() {
-                conteudo_publicacoes.style.display = "block";
+                conteudo_publicacoes_avaliacoes.style.display = "block";
                 carregarListaPublicacaoUsuario();
             });
             
             $(botao_avaliacoes).click(function() {
-                
+                conteudo_publicacoes_avaliacoes.style.display = "block";
+                carregarListaAvaliacaoUsuario();
             });
 
         }
