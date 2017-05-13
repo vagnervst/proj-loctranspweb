@@ -6,7 +6,7 @@
     $idUsuario = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     $detalhes_usuario = new \Tabela\Usuario();
-    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];    
+    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0];
 ?>
 <!doctype html>
 <html>

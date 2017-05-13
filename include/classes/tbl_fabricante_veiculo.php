@@ -7,6 +7,7 @@
 
             public $id;
             public $nome;
+            public $visivel;
             
             public function getFabricante($registros_por_pagina, $pagina_atual, $where = null) {
                 $sql = "SELECT f.* ";

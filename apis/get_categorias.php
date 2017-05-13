@@ -6,7 +6,7 @@
 
     if( $idTipoVeiculo != null ) {
         $listaCategorias = new \Tabela\CategoriaVeiculo();
-        $listaCategorias = $listaCategorias->buscar("idTipoVeiculo = {$idTipoVeiculo}");
+        $listaCategorias = $listaCategorias->buscar("visivel = 1 AND idTipoVeiculo = {$idTipoVeiculo}");
         
         echo "<option selected disabled>Selecione uma Categoria</option>";
         foreach( $listaCategorias as $categoria ) {

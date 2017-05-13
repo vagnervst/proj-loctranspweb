@@ -36,8 +36,14 @@
                     ?>
                     <div class="box-listagem-usuario">
                         <div class="nome-usuario"><?php echo $usuario->nome; ?></div>
-                        <div class="cont-usuario">Email: <?php echo $usuario->email; ?></div>
-                        <div class="cont-usuario">Tipo: <?php echo $usuario->tipoConta; ?></div>
+                        <div class="box-label-info">
+                            <p class="label">Email:</p>
+                            <p class="info"><?php echo $usuario->email; ?></p>
+                        </div>
+                        <div class="box-label-info">
+                            <p class="label">Tipo:</p>
+                            <p class="info"><?php echo $usuario->tipoConta; ?></p>
+                        </div>
                         <div class="box-botao">
                             <a href="info_usuario.php?id=<?php echo $usuario->id; ?>" class="preset-botao">Ver mais</a>
                         </div>

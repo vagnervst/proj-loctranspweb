@@ -225,21 +225,24 @@ a {
 #container {
     width: 1000px;    
     margin: 0 auto;
+    box-shadow: 1px 1px 10px #484848;
 }
 
 header {
-    background-color: #141619;
+    background-color: #557bc9;
     width: 1080px;
     height: 200px;
     margin: 0 auto;
-    border-bottom: 5px solid #141619;
+    border-bottom: 1px solid #141619;
     padding: 5px 0px;
 }
+
 header #box-cabecalho {
     width: inherit;
     height: inherit;
     margin: 0 auto;
 }
+
 header #box-cabecalho #box-image-logo {
     background-image: url(../Image/city_share_cms.png);
     background-size: contain;
@@ -249,6 +252,7 @@ header #box-cabecalho #box-image-logo {
     margin-left: 10px;
     float: left;
 }
+
 header #box-cabecalho #box-conta {
     width: 200px;
     height: 120px;
@@ -257,17 +261,20 @@ header #box-cabecalho #box-conta {
     background-color: #ebebeb;
     border-radius: 2px 2px 2px 10px;
 }
+
 header #box-cabecalho #box-conta #box-info-usuario {
     width: 200px;
     height: 120px;
     float: left;
 }
+
 header #box-cabecalho #box-conta #box-info-usuario #nome-usuario {
     font-size: 16px;
     font-weight: bold;    
     margin-top: 10px;
     text-align: center;
 }
+
 header #box-cabecalho #box-conta #box-info-usuario #nivel-usuario {
     font-size: 14px;       
     margin-top: 5px;
@@ -286,32 +293,26 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 .CMS_main .box-menu-lateral {
-    width: 200px;
-    height: inherit;
-    background-color: #557bc9;
-    float: left ;
-    top: 0px;
-}
-.CMS_main .box-menu-lateral {
-    width: 200px;
+    width: 200px; 
     height: 100%;
-    background-color: #141619;
-    float: left ;
-    top: 0px;
+    background-color: #e0e0e0;    
     float: left;
-    padding: 0px 5px;
+    padding: 0px 0px;
 }
-.box-menu-lateral .menu-lateral {
-    width: 200px;
+
+.box-menu-lateral .menu-lateral {    
     height: 220px;
+    padding: 5px;
 }
+
 .box-menu-lateral .menu-lateral ul {
     list-style-type: none;
 }
+
 .box-menu-lateral .menu-lateral ul li {
     display: block;
-    background-color: #ebebeb;
-    width: 195px;
+    background-color: #fafafa;
+    width: 185px;
     height: 50px;
     text-align: center;
     line-height: 50px;
@@ -321,7 +322,8 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 .box-menu-lateral .menu-lateral ul li:hover {
-    background-color: #a1aec9;
+    background-color: #557bc9;
+    cursor: pointer;
 }
 
 .box-menu-lateral .menu-lateral ul li:hover a {
@@ -331,27 +333,47 @@ header #box-cabecalho #box-conta #botao-logout {
 .box-menu-lateral .menu-lateral ul li a {
     display: block;
     text-align: left;
-    width: 145px;
+    width: 115px;
     float: left;
     color: #000000;
+    padding-left: 20px;
 }
-.box-menu-lateral .menu-lateral ul li img {
+
+.box-menu-lateral .menu-lateral ul li .icone {
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 42px;
     height: 42px;
     margin: 3px;
+    float: right;
 }
-.box-menu-lateral .menu-lateral ul li img:hover {
-    cursor: pointer;
+
+.box-menu-lateral .menu-lateral ul #btn-home .icone {
+    background-image: url(../Image/icon-home.png);
 }
+
+.box-menu-lateral .menu-lateral ul #btn-cliente .icone {
+    background-image: url(../Image/icon-cliente.png);
+}
+
+.box-menu-lateral .menu-lateral ul #btn-city-share .icone {
+    background-image: url(../Image/logoCityShareIconMenu.png);
+}
+
+.box-menu-lateral .menu-lateral ul #btn-desktop .icone {
+    background-image: url(../Image/icon-desktop.png);
+}
+
 /*---- CABEÇALHO ----*/
 
 #box-caminho {
-    width: 800px;
+    width: 860px;
     height: 30px;    
     float: left ;
     line-height: 30px;
     font-size: 20px;
-    border-bottom: solid 2px #c3c3c3 ;
+    border-bottom: solid 1px #c3c3c3 ;
     padding-left: 20px;
     margin-bottom: 20px;
     color: #c2c2c2
@@ -1245,48 +1267,72 @@ header #box-cabecalho #box-conta #botao-logout {
     height: 830px;
     overflow: auto;
 }
+
 #pag-clientes-usuarios .box-conteudo .box-listagem-usuario {
     width: 260px;
-    height: 150px;
+    height: 165px;
     float: left;
-    background-color: #a1aec9;
+    background-color: #f5f5f5;
     margin: 5px;
-    border-radius: 0px 0px 2px 2px;
+    border-radius: 5px;
     padding: 5px;
+    box-shadow: 1px 1px 5px #c5c5c5;
+    border: 1px solid #d0d0d0;
 }
+
 #pag-clientes-usuarios .box-conteudo .box-listagem-usuario .nome-usuario {
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    text-align: center ;
-    border-bottom: solid 2px ;
+    width: 100%;    
+    text-align: center;
+    border-bottom: solid 1px #e4e4e4;
     font-size: 20px;
-    
+    margin-bottom: 10px;
+    padding: 5px 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .cont-usuario {
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
+
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .box-label-info {
+    margin-bottom: 2px;
 }
+
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .box-label-info .label {
+    font-style: italic;
+}
+
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .box-label-info .info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 #pag-clientes-usuarios #box-pesquisa {
     margin-bottom: 20px;
-    
 }
+
 #pag-clientes-usuarios #box-pesquisa #search-input {
     width: 700px;
     height: 25px;
     margin-left: 10px;
     float: left;
 }
+
 #pag-clientes-usuarios #box-pesquisa .preset-input-submit {
     width: 70px;
     height: 25px;
     margin-left: 5px;
 }
 
+#pag-clientes-usuarios .box-conteudo .box-listagem-usuario .box-botao {
+    width: 260px;
+    height: 32px;
+    margin-top: 15px;
+}
+
 #pag-clientes-usuarios .box-conteudo .box-listagem-usuario .box-botao .preset-botao {
     float: right;
-    width: 60px;
+    width: 100px;
+    padding: 5px 0px;
 }
 
 /*=-=-=-=-=-==-=-=-=-=INFORMAÇÕES DO CLIENTE-==-=-==-=-=-=-=-=-=-=-*/
@@ -1639,19 +1685,22 @@ header #box-cabecalho #box-conta #botao-logout {
 
 /*=-=-=-=-=-==-=-=-=-=PAGINA DESKTOP-==-=-==-=-=-=-=-=-=-=-*/
 
-#pag-acessorio-veiculo .box-conteudo {
-    height: 870px;
-    
+#pag-acessorio-veiculo {
+    height: 990px;    
 }
 
-#pag-acessorio-veiculo .box-conteudo #box-novo-registro {
-    width: 600px;
-    height: 320px;
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro {    
+    height: 340px;
     margin: 0 auto;
+}
+
+#pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio {
+    padding: 5px;
 }
 
 #pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #titulo-input {
     width: 400px;
+    margin-bottom: 10px;
 }
 
 #pag-acessorio-veiculo .box-conteudo #box-novo-registro #box-campos-acessorio #input-tipo-veiculo {
@@ -2097,35 +2146,40 @@ header #box-cabecalho #box-conta #botao-logout {
     height: 850px;   
 }
 
-#pag-plano-conta .box-conteudo #box-form-categoria {
+#pag-plano-conta .box-conteudo #box-form-plano {
     background-color: #ffffff;
     width: 405px;
     height: auto;
     padding: 5px;
     padding-bottom: 0px;
     border: 1px solid #cecece;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
-#pag-plano-conta .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table {
+#pag-plano-conta .box-conteudo  #box-listagem-planos #container-ajax-form-table .ajax-form-table {
     height: 550px;
 }
 
-#pag-plano-conta .box-conteudo  #box-listagem-categorias #container-ajax-form-table .ajax-form-table tr td {
-    width: 172px;
+#pag-plano-conta .box-conteudo  #box-listagem-planos #container-ajax-form-table .ajax-form-table tr td {
+    
 }
 
-#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao #box-acoes #box-salvar-cancelar {
+#pag-plano-conta .box-conteudo #box-form-plano #box-acoes #box-salvar-cancelar {
     float: right;
 }
 
-#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao #box-acoes .botao {
+#pag-plano-conta .box-conteudo #box-form-plano #box-acoes .botao {
     width: 100px;
     padding: 5px 0px;
 }
 
-#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #botao-remover,
-#pag-plano-conta .box-conteudo #box-form-categoria #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
+#pag-plano-conta .box-conteudo #box-form-plano textarea {
+    resize: none;
+    height: 70px;
+}
+
+#pag-plano-conta .box-conteudo #box-form-plano #form-modificacao.js-modo-insert #box-acoes #botao-remover,
+#pag-plano-conta .box-conteudo #box-form-plano #form-modificacao.js-modo-insert #box-acoes #box-salvar-cancelar #botao-cancelar {
     display: none;
 }
 /************CRUD FALE CONOSCO *********/
@@ -2197,7 +2251,7 @@ header #box-cabecalho #box-conta #botao-logout {
 /*---- PAGINA ADM DE CATEGORIAS DE VEICULO CITY SHARE ----*/
 
 footer {
-    background-color: #202020;
+    background-color: #141619;
     width: 1070px;
     height: 200px;
     margin: 0 auto;
@@ -2217,6 +2271,7 @@ footer #box-rodape #box-logo-rodape {
 .CMS_main {
     width: 1080px;
     height: 100%;
+    min-height: 500px;
     background-color: #ebebeb;
 }
 
