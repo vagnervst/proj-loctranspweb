@@ -27,12 +27,14 @@
                 </div>
                 <?php 
                     $lista_publicacoes = new \Tabela\Publicacao();
-                    $lista_publicacoes = $lista_publicacoes->getPublicacaoPaginacao(10, 1, "p.idStatusPublicacao = 3");
+                    $lista_publicacoes = $lista_publicacoes->getPublicacaoPaginacao(10, 1);
                     
                     for( $i = 0; $i < count( $lista_publicacoes ); ++$i ) {
                         $publicacao = $lista_publicacoes[$i];
                         $dataAtual = time();
-                        $diasRestantes = (($dataAtual - strtotime($publicacao->dataPublicacao))/(60*60*24));                                                
+                        $diasRestantes = (($dataAtual - strtotime($publicacao->dataPublicacao))/(60*60*24));   
+                        echo $publicacao->dataPublicacao ; 
+                        echo (strtotime($publicacao->dataPublicacao)/(60*60*24))."<br>" ; 
                 ?>
                 <a href="publicacao_detalhe.php?id=<?php echo $publicacao->id; ?>">
                     <div class="box-publicacao-preview">

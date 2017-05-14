@@ -37,6 +37,12 @@
                             Valor das díarias
                         </a>
                     </div>
+                    <div class="box-conteudo-menu">
+                        <a class="titulo-conteudo-menu" href="estatisticas_diarias.php">
+                            <img src="Image/content_test.jpg" />                        
+                            Lucro
+                        </a>
+                    </div>
                 </div>
             </div>
             <?php

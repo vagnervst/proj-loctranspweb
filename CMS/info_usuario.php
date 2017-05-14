@@ -3,10 +3,16 @@
     require_once("../include/classes/tbl_usuario.php");
 	require_once("../include/classes/tbl_cnh.php");
     
-    $id = ( isset($_GET["id"]) )? $_GET["id"] : null;
-    
+    $id = ( isset($_GET["id"]) )? $_GET["id"] : null;        
+
     $dadosUsuario = new \Tabela\Usuario();
-    $dadosUsuario = $dadosUsuario->getDetalhesUsuario("u.id = {$id}")[0];
+    $dadosUsuario = $dadosUsuario->getDetalhesUsuario("u.id = {$id}");
+    
+    if( empty($dadosUsuario[0]) ) {
+        redirecionar_para("home.php");
+    }
+    
+    $dadosUsuario = $dadosUsuario[0];
     $listaCnh = $dadosUsuario->getListaCnh();
 ?>
 <!DOCTYPE html>
@@ -81,11 +87,13 @@
                             </div>
                             <div class="box-dados-cnh">
                                 <label>CNH's Cadastrados:</label>
+                                <div class="box-cnh">
                                 <?php 
                                     foreach( $listaCnh as $cnh ){
                                 ?>
-                                    <p><?php echo $cnh->numeroRegistro; ?></p>
+                                    <p class="txt-cnh"><?php echo $cnh->numeroRegistro; ?></p>
                                 <?php } ?>
+                                </div>
                             </div>
                             <div class="box-dados">
                                 <label>Estado:</label>
