@@ -65,7 +65,7 @@
             
             public function getDetalhesUsuario($where = null) {
                 $sql = "SELECT u.id, u.fotoPerfil, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
-                $sql .= "u.telefone, u.celular, u.email, ";
+                $sql .= "u.telefone, u.celular, u.email, u.saldo, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, u.idTipoConta, t.titulo AS tipoConta, ";
                 $sql .= "p.nome AS planoConta, ld.nome AS licencaDesktop, ";                
                 $sql .= "( SELECT COUNT(id) FROM tbl_pedido WHERE idUsuarioLocador = u.id ) AS qtdEmprestimos, ";
@@ -86,7 +86,7 @@
                 $sql .= "ON u.idLicencaDesktop = ld.id "; 
                 
                 if( !empty($where) ) {
-                        $sql .= " WHERE " . $where;
+                    $sql .= " WHERE " . $where;
                 }
                 
                 $sql .= " ORDER BY mediaNotas DESC LIMIT 10";                                                                    
@@ -96,6 +96,28 @@
                 $resultado = $this->get_array_from_resultado( $resultado );                                                
                 
                 return $resultado;
+            }
+            
+            public function getLucroTotal() {
+                $sql = "SELECT SUM(datediff(p.dataEntrega, p.dataRetirada) * p.valorDiaria) AS lucroTotal ";
+                $sql .= "FROM tbl_pedido AS p ";
+                $sql .= "INNER JOIN tbl_statuspedido AS s ";
+                $sql .= "ON s.id = p.idStatusPedido ";
+                $sql .= "WHERE s.cod = 9 AND p.idUsuarioLocador = {$this->id} ";
+                $sql .= "GROUP BY p.idUsuarioLocador";
+                
+                $resultado = $this->executarQuery($sql);
+                return (double) mysqli_fetch_assoc($resultado)["lucroTotal"];
+            }
+            
+            public function getSaqueTotal() {
+                $sql = "SELECT SUM(d.valor) AS totalSaque ";
+                $sql .= "FROM tbl_deposito AS d ";
+                $sql .= "WHERE d.idUsuario = 23 ";
+                $sql .= "GROUP BY d.idUsuario";
+                
+                $resultado = $this->executarQuery($sql);
+                return (double) mysqli_fetch_assoc($resultado)["totalSaque"];
             }
         }
         

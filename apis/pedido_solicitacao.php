@@ -23,9 +23,9 @@
     
     $resultado = false;
     if( $idUsuario != -1 ) {
-    
+
         $infoPedido = new \Tabela\Pedido();
-        $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
+        $infoPedido = $infoPedido->listarPedidos(null, null, "id = {$idPedido}")[0];
 
         $is_locador = null;
         if( $infoPedido->idUsuarioLocador == $idUsuario ) {
@@ -53,7 +53,11 @@
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
                 $alteracaoPedido->idStatus = $id_aguardando_confirmacao_local_entrega;
-                $alteracaoPedido->inserir();                        
+                $alteracaoPedido->inserir();
+                
+                $usuario_locador = new \Tabela\Usuario("id = {$infoPedido->idUsuarioLocador}")[0];
+                $usuario_locador->saldo = $usuario_locador->saldo + $infoPedido->valorTotal;
+                $usuario_locador->atualizar();                
             }
 
         } elseif( $modo == $DEVOLUCAO ) {                

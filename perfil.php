@@ -1,8 +1,9 @@
 <?php
-    require_once("include/initialize.php");    
+    require_once("include/initialize.php");
     require_once("include/classes/tbl_usuario.php");
     require_once("include/classes/tbl_publicacao.php");
     require_once("include/classes/tbl_empresa.php");
+    require_once("include/classes/tbl_deposito.php");
     require_once("include/classes/sessao.php");
         
     $idUsuariopublico = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
@@ -12,7 +13,12 @@
     $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuariopublico}")[0]; 
     
     if(isset($_POST['btn-saque'])){
-        echo"vao se foderem";
+        
+        $objDeposito = new \Tabela\Deposito();
+        $objDeposito->valor = $detalhes_usuario->saldo;
+        $objDeposito->quando = get_data_atual_mysql();
+        $objDeposito->idUsuario = (int) $detalhes_usuario->id;
+        $objDeposito->inserir();
     }
     
     $is_juridico = ( $detalhes_usuario->idTipoConta == 2 )? true : false;
@@ -68,15 +74,15 @@
                                             "icone-avaliacao inativa",
                                             "icone-avaliacao inativa",
                                             "icone-avaliacao inativa"
-                                        ];                                                                                
+                                        ];
                                                                                                                 
                                         for( $i = 0; $i < $detalhes_usuario->mediaNotas; ++$i ) {
                                             $lista_estrelas[$i] = "icone-avaliacao";                           
-                                        }                                                                            
+                                        }
                                 
                                         foreach( $lista_estrelas as $classe_estrela ) {
                                             echo "<div class=\"" . $classe_estrela . "\"></div>";
-                                        }                                                                        
+                                        }
                                     ?>
                                 </div>
                             </section>
@@ -89,18 +95,19 @@
                         if($idUsuariopublico == $idUsuariologado ){
                             ?>
                             <div id="box-inf-financeiras">
-                                <p class="label-titulo-valor" >Saque disponível</p>
-                                <p class="label-valor">R$00,0000</p>
+                                <p class="label-titulo-valor" >Saldo disponível</p>
+                                <p class="label-valor">R$<?php echo str_replace(".", ",", $detalhes_usuario->saldo); ?></p>
+                                <?php if ($detalhes_usuario->saldo > 0 ){ ?>
                                 <div class="base-btn-sacar">
                                     <form action="perfil.php?id=<?php echo $_GET['id'] ?>" method="post">
                                         <input class="btn-sacar" value="Transferir" name="btn-saque" type="submit">
                                     </form>
                                 </div><br>
+                                <?php } ?>
                                 <p class="label-titulo-valor" >Total de ganhos</p>
-                                <p class="label-valor">R$00,0000</p><br>
+                                <p class="label-valor">R$<?php echo $detalhes_usuario->getLucroTotal(); ?></p><br>
                                 <p class="label-titulo-valor" >Total de saque </p>
-                                <p class="label-valor">R$00,0000</p>
-                                
+                                <p class="label-valor">R$<?php echo $detalhes_usuario->getSaqueTotal(); ?></p>
                             </div>
                             <?php
                         }
