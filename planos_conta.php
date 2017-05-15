@@ -30,14 +30,16 @@
             <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-planos-conta">
                 <div class="box-conteudo">
-                    <p>Planos de Conta</p>
-                    <p>Planos Web</p>
+                    <p class="titulo">Planos de Conta</p>
+                    <p class="subtitulo">Planos Web</p>
                     <div class="container-planos">
                         <div class="box-overflow">
-                        <?php   $planoConta = new \Tabela\PlanoConta();
-                                $planoConta = $planoConta->getPlanos(null, null, "visivel = 1");
-                                
-                                foreach( $planoConta as $plano ) { ?>
+                        <?php   
+                            $dadosPlanoConta = new \Tabela\PlanoConta();
+                            $listaPlanoConta = $dadosPlanoConta->getPlanos();
+                            
+                            foreach( $listaPlanoConta as $plano ) { 
+                        ?>
                             <div class="box-plano">
                                 <div class="titulo"><?php echo $plano->nome; ?></div>
                                 <div class="info-plano">
@@ -48,11 +50,11 @@
                                     <span class="preset-botao">Assinar</span>
                                 </div>
                             </div>
-                            <?php } ?>
+                        <?php } ?>
                         </div>
                     </div>
                     <?php if( $dadosUsuario->tipoConta == "Juridico" ) {  ?>
-                    <p>Planos Desktop</p>
+                    <p class="subtitulo">Planos Desktop</p>
                     <div class="container-planos">
                         <div class="box-overflow">
                             <div class="box-plano">
