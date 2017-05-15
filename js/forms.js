@@ -26,45 +26,73 @@ $(document).ready(function() {
         
         if( pagina_publicacao_veiculos !== undefined ) {
             var select_tipo_veiculo = $(".js-select-tipo-veiculo")[0];
-            var select_fabricante = $(".js-select-fabricante")[0];
-            var select_veiculo = $(".js-select-veiculo")[0];
+            var select_fabricante = $(".js-select-fabricante")[0];            
             var select_combustivel = $(".js-select-combustivel")[0];
-            var select_transmissao = $(".js-select-transmissao")[0];            
+            var select_transmissao = $(".js-select-transmissao")[0];
+            var select_portas = $(".js-select-portas")[0];
+            var select_veiculo = $(".js-select-veiculo")[0];
+            
             var box_acessorio = $(".box-acessorios")[0];
             
+            var ajaxFabricante;
+            var ajaxCombustivel;
+            var ajaxTransmissao;
+            var ajaxAcessorios;
             $(select_tipo_veiculo).change(function() {                
-                relacionar_selects(this, select_fabricante, "apis/get_fabricantes.php", "idTipoVeiculo");                
-            });
-            
-            $(select_fabricante).change(function() {
-                relacionar_selects(this, select_veiculo, "apis/get_veiculos.php", "idFabricante");                                
-            });
-            
-            $( select_veiculo ).change(function(e) {            
-                var id_veiculo = select_veiculo.value;
+                ajaxFabricante = relacionar_selects(this, select_fabricante, "apis/get_fabricantes.php", "idTipoVeiculo");
+                ajaxCombustivel = relacionar_selects(this, select_combustivel, "apis/get_combustiveis.php", "idTipoVeiculo");
+                ajaxTransmissao = relacionar_selects(this, select_transmissao, "apis/get_transmissoes.php", "idTipoVeiculo");                                
                 
-                var dados_api = new FormData();
-                dados_api.append("idVeiculo", id_veiculo);
+                ajaxAcessorios = new Ajax();
+                var data = new FormData();
+                data.append("idTipoVeiculo", this.value);
                 
-                var ajax = new Ajax();                
-                ajax.transferir_dados_para_api("apis/get_combustiveis.php", "POST", dados_api, function(resultado) {                   
-                    select_combustivel.innerHTML = resultado;
-                    $(select_combustivel).trigger("change");
+                ajaxAcessorios.transferir_dados_para_api("apis/get_acessorios.php", "POST", data, function(resultado) {
+                    box_acessorio.innerHTML = resultado;    
                 });
+                
             });
             
-            $( select_combustivel ).change(function() {
-                var id_veiculo = select_veiculo.value;
-                var id_combustivel = select_combustivel.value;
+            $( ".js-select-tipo-veiculo, .js-select-fabricante, .js-select-combustivel, .js-select-transmissao, .js-select-portas" ).change( function(e) {
                 
-                var dados_api = new FormData();
-                dados_api.append( "idVeiculo", id_veiculo );
-                dados_api.append( "idTipoCombustivel", id_combustivel );
+                var lista_ajax = [ajaxFabricante, ajaxCombustivel, ajaxTransmissao];
                 
-                var ajax = new Ajax();
-                ajax.transferir_dados_para_api("apis/get_transmissoes.php", "POST", dados_api, function(resultado) {                    
-                    select_transmissao.innerHTML = resultado;
+                $.when( lista_ajax ).done(function() {
+                
+                    var data = new FormData();
+                    if( !Number.isNaN( Number.parseInt(select_tipo_veiculo.value) ) ) {                    
+                        data.append("idTipo", select_tipo_veiculo.value);
+                    }
+
+                    if( !Number.isNaN( Number.parseInt(select_fabricante.value) ) ) {                    
+                        data.append("idFabricante", select_fabricante.value);
+                    }
+
+                    if( !Number.isNaN( Number.parseInt(select_combustivel.value) ) ) {                    
+                        data.append("idCombustivel", select_combustivel.value);
+                    }
+
+                    if( !Number.isNaN( Number.parseInt(select_transmissao.value) ) ) {                    
+                        data.append("idTransmissao", select_transmissao.value);
+                    }
+
+                    if( !Number.isNaN( Number.parseInt(select_portas.value) ) ) {                    
+                        data.append("qtdPortas", select_portas.value);
+                    }
+
+                    var ajax = new Ajax();
+                    ajax.transferir_dados_para_api("apis/get_veiculos.php", "POST", data, function(resultado) {
+                        $(select_veiculo).removeAttr("disabled");
+                        select_veiculo.innerHTML = resultado;                    
+
+                        if( $(select_veiculo).children().length === 1 ) {
+                            $(select_veiculo).attr("disabled", "true");
+                        }
+
+                    });
+                    
                 });
+
             });
         }
     }

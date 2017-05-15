@@ -93,7 +93,7 @@
             } 
             
             public function getDetalhesPublicacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
-                $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, p.dataPublicacao, p.quilometragemAtual, ";
+                $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, p.dataPublicacao, p.quilometragemAtual, p.limiteQuilometragem, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, v.codigo, v.tipoMotor, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
@@ -113,11 +113,11 @@
                 $sql .= "ON cv.id = v.idCategoriaVeiculo ";
                 $sql .= "INNER JOIN tbl_fabricanteveiculo AS fb ";
                 $sql .= "ON fb.id = v.idFabricante ";
-                $sql .= "INNER JOIN tbl_tipocombustivel AS cb ";
+                $sql .= "LEFT JOIN tbl_tipocombustivel AS cb ";
                 $sql .= "ON cb.id = v.idTipoCombustivel ";
                 $sql .= "INNER JOIN tbl_tipoveiculo AS tp ";
-                $sql .= "ON tp.id = v.idTipoVeiculo INNER JOIN ";
-                $sql .= "tbl_transmissaoveiculo AS tr ";
+                $sql .= "ON tp.id = v.idTipoVeiculo ";
+                $sql .= "LEFT JOIN tbl_transmissaoveiculo AS tr ";
                 $sql .= "ON tr.id = v.idTransmissao ";
                 $sql .= "LEFT JOIN tbl_usuario AS u ";
                 $sql .= "ON u.id = p.idUsuario ";
@@ -128,7 +128,7 @@
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
-                }
+                }                                
                 
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                     $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );

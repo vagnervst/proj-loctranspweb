@@ -38,17 +38,14 @@
         $lista_required_input = [];
         $lista_required_input[] = $titulo;
         $lista_required_input[] = $descricao;
-        $lista_required_input[] = $id_tipo;
-        $lista_required_input[] = $id_fabricante;
-        $lista_required_input[] = $id_modelo;
-        $lista_required_input[] = $id_combustivel;
-        $lista_required_input[] = $id_transmissao;
+        $lista_required_input[] = $id_tipo;        
+        $lista_required_input[] = $id_modelo;                
         $lista_required_input[] = $quilometragemAtual;
         $lista_required_input[] = $valorDiaria;
         $lista_required_input[] = $valorCombustivel;
         $lista_required_input[] = $limiteQuilometragem;
         $lista_required_input[] = $valorQuilometragem;
-        $lista_required_input[] = $acessorios;
+        $lista_required_input[] = $acessorios;                                
         
         if( !FormValidator::has_empty_input( $lista_required_input ) ) {
             $publicacao = new \Tabela\Publicacao();
@@ -69,36 +66,36 @@
             $sessao = new Sessao();
                                     
             $publicacao->idUsuario = (int) $sessao->get("idUsuario");
-            
+                        
             $id_publicacao = $publicacao->inserir();
             
             if( !empty($id_publicacao) ) {
                 $publicacao->id = $id_publicacao;
                 
-                $caminho = "img/uploads/publicacoes";                
-                
-                $nome_arquivo_principal = "post_" . $id_publicacao . "_imagem_principal." . end( explode( ".", $imagemPrincipal["name"] ) );
-                if( File::upload( $imagemPrincipal["tmp_name"], $nome_arquivo_principal, $caminho ) ) {
+                $caminho = "img/uploads/publicacoes";
+                                
+                $nome_arquivo_principal = "post_" . $id_publicacao . "_imagem_principal." . pathinfo( $imagemPrincipal["name"], PATHINFO_EXTENSION );                
+                if( File::upload( $imagemPrincipal, $nome_arquivo_principal, $caminho ) ) {
                     $publicacao->imagemPrincipal = $nome_arquivo_principal;
                 }
                 
-                $nome_arquivo_a = "post_" . $id_publicacao . "_imagem_a." . end( explode( ".", $imagemA["name"] ) );
-                if( File::upload( $imagemA["tmp_name"], $nome_arquivo_a, $caminho ) ) {
+                $nome_arquivo_a = "post_" . $id_publicacao . "_imagem_a." . pathinfo( $imagemA["name"], PATHINFO_EXTENSION );
+                if( File::upload( $imagemA, $nome_arquivo_a, $caminho ) ) {
                     $publicacao->imagemA = $nome_arquivo_a;
                 }
                 
-                $nome_arquivo_b = "post_" . $id_publicacao . "_imagem_b." . end( explode( ".", $imagemB["name"] ) );
-                if( File::upload( $imagemB["tmp_name"], $nome_arquivo_b, $caminho ) ) {
+                $nome_arquivo_b = "post_" . $id_publicacao . "_imagem_b." . pathinfo( $imagemB["name"], PATHINFO_EXTENSION );
+                if( File::upload( $imagemB, $nome_arquivo_b, $caminho ) ) {
                     $publicacao->imagemB = $nome_arquivo_b;
                 }
                 
-                $nome_arquivo_c = "post_" . $id_publicacao . "_imagem_c." . end( explode( ".", $imagemC["name"] ) );
-                if( File::upload( $imagemC["tmp_name"], $nome_arquivo_c, $caminho ) ) {
+                $nome_arquivo_c = "post_" . $id_publicacao . "_imagem_c." . pathinfo( $imagemC["name"], PATHINFO_EXTENSION );
+                if( File::upload( $imagemC, $nome_arquivo_c, $caminho ) ) {
                     $publicacao->imagemC = $nome_arquivo_c;
                 }
                 
-                $nome_arquivo_d = "post_" . $id_publicacao . "_imagem_d." . end( explode( ".", $imagemD["name"] ) );
-                if( File::upload( $imagemD["tmp_name"], $nome_arquivo_d, $caminho ) ) {
+                $nome_arquivo_d = "post_" . $id_publicacao . "_imagem_d." . pathinfo( $imagemD["name"], PATHINFO_EXTENSION );
+                if( File::upload( $imagemD, $nome_arquivo_d, $caminho ) ) {
                     $publicacao->imagemD = $nome_arquivo_d;
                 }
                 
@@ -127,25 +124,20 @@
                                     <div id="imagem-principal">
                                         <p id="label">Principal</p>
                                         <div class="box-botao-imagem">
-                                            <div class="imagem"></div>
-                                            <h1 class="label">A Definir</h1>
+                                            <div class="imagem"></div>                                            
                                         </div>
                                     </div>
                                     <div class="box-botao-imagem">
-                                        <div class="imagem"></div>
-                                        <h1 class="label">A Definir</h1>
+                                        <div class="imagem"></div>                                        
                                     </div>
                                     <div class="box-botao-imagem">
-                                        <div class="imagem"></div>
-                                        <h1 class="label">A Definir</h1>
+                                        <div class="imagem"></div>                                        
                                     </div>
                                     <div class="box-botao-imagem">
-                                        <div class="imagem"></div>
-                                        <h1 class="label">A Definir</h1>
+                                        <div class="imagem"></div>                                        
                                     </div>
                                     <div class="box-botao-imagem">
-                                        <div class="imagem"></div>
-                                        <h1 class="label">A Definir</h1>
+                                        <div class="imagem"></div>                                        
                                     </div>
                                 </div>
                                 <div id="file-inputs">
@@ -191,13 +183,7 @@
                                     <select class="preset-input-select js-select-fabricante" type="select" name="slFabricante">
                                         <option selected disabled>Selecione um fabricante</option>                                
                                     </select>
-                                </div>
-                                <div class="label-input">
-                                    <p class="label">Modelo</p>
-                                    <select class="preset-input-select js-select-veiculo" type="select" name="slModelo">
-                                        <option selected disabled>Selecione um modelo</option> 
-                                    </select>
-                                </div>
+                                </div>                                
                                 <div class="label-input">
                                     <p class="label">Tipo de Combustível</p>
                                     <select class="preset-input-select js-select-combustivel" type="select" name="slCombustivel">
@@ -208,6 +194,21 @@
                                     <p class="label">Transmissão</p>
                                     <select class="preset-input-select js-select-transmissao" type="select" name="slTransmissao">
                                         <option selected disabled>Selecione um tipo de transmissão</option>
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Portas</p>
+                                    <select class="preset-input-select js-select-portas" type="select" name="slTransmissao">
+                                        <option selected disabled>Selecione a quantidade de portas</option>
+                                        <option>0</option>
+                                        <option>2</option>
+                                        <option>4</option>                                        
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Modelo</p>
+                                    <select class="preset-input-select js-select-veiculo" type="select" name="slModelo">
+                                        <option selected disabled>Selecione um modelo</option> 
                                     </select>
                                 </div>
                                 <div class="label-input">
@@ -240,7 +241,9 @@
                     </div>
                     <h1 class="titulo-separador">Acessórios</h1>
                     <div class="box-conteudo">
-                        <div class="box-acessorios"></div>
+                        <div class="box-acessorios">
+                        
+                        </div>
                         <input class="preset-input-submit" id="botao-publicar" type="submit" value="Publicar" name="btnPublicar" />
                     </div>
                 </form>

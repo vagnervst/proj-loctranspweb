@@ -13,12 +13,12 @@
     $sql .= "ON a.idEmpresa = e.id AND a.id = p.idAgencia ";
     $sql .= "INNER JOIN tbl_cidade AS cUsuario ";
     $sql .= "ON cUsuario.id = u.idCidade ";
-    $sql .= "INNER JOIN tbl_cidade AS cAgencia ";
+    $sql .= "LEFT JOIN tbl_cidade AS cAgencia ";
     $sql .= "ON cAgencia.id = a.idCidade ";
     $sql .= "INNER JOIN tbl_estado AS eUsuario ";
     $sql .= "ON eUsuario.id = cUsuario.idEstado ";
-    $sql .= "INNER JOIN tbl_estado AS eAgencia ";
-    $sql .= "ON eAgencia.id = cAgencia.idEstado ";
+    $sql .= "LEFT JOIN tbl_estado AS eAgencia ";
+    $sql .= "ON eAgencia.id = cAgencia.idEstado "; 
 
     $db_utils = new \DB\DatabaseUtils();
     $resultado = $db_utils->executarQuery($sql);
