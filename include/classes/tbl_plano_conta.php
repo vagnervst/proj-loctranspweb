@@ -13,14 +13,14 @@
             public $descPlano;
             public $diasAnalisePublicacao;
         
-            public function getPlanos($registros_por_pagina, $pagina_atual, $where = null) {
-                $sql = "SELECT p.*";
+            public function getPlanos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
+                $sql = "SELECT p.* ";
                 $sql .= "FROM {$this::$nome_tabela} AS p ";
 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
-
+                
                 $sql .= " ORDER BY p.nome";
 
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {

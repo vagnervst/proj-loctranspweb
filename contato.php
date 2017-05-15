@@ -3,13 +3,34 @@
     require_once("include/classes/tbl_assunto.php");
     require_once("include/classes/tbl_perguntas_frequentes.php");
     require_once("include/classes/tbl_fale_conosco.php");
+    require_once("include/classes/tbl_contato.php");
 
     $contatoSubmit = ( isset($_POST["contatoSubmit"]) )? $_POST["contatoSubmit"] : null;
     if( isset( $contatoSubmit ) ) {
         $nome = isset( $_POST["txtNome"] )? $_POST["txtNome"] : null;
         $email = isset( $_POST["txtEmail"] )? $_POST["txtEmail"] : null;
         $assunto = isset( $_POST["slAssunto"] )? $_POST["slAssunto"] : null;
-        $mensagem = isset( $_POST["txtaMensagem"] )? $_POST["txtaMensagem"] : null;        
+        $mensagem = isset( $_POST["txtaMensagem"] )? $_POST["txtaMensagem"] : null;
+        
+        $lista_required_input = [];
+        $lista_required_input[] = $nome;
+        $lista_required_input[] = $email;
+        $lista_required_input[] = $assunto;
+        $lista_required_input[] = $mensagem;
+        
+        if( !FormValidator::has_empty_input( $lista_required_input ) ) {
+            $contato = new \Tabela\Contato();
+            
+            $contato->nome = $nome;
+            $contato->email = $email;
+            $contato->mensagem = $mensagem;
+            $contato->idAssunto = $assunto;
+            $contato->resposta = " ";
+            
+            $contato->inserir();
+        }
+        
+        
     }    
 
     $dadosFaleConosco = new \Tabela\FaleConosco();

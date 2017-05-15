@@ -5923,6 +5923,119 @@ header #box-botao-filtragem {
 
 /*------------- DETALHES PEDIDO*/
 
+#pag-planos-conta {
+    background-color: inherit;
+    min-height: 85vh;
+}
+
+#pag-planos-conta .box-conteudo {
+    height: 1000px;
+}
+
+
+@media (min-width: 420px) {
+    #pag-planos-conta .box-conteudo {
+        width: 420px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-planos-conta .box-conteudo {
+        width: 520px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-planos-conta .box-conteudo {
+        width: 740px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-planos-conta .box-conteudo {
+        width: 1000px;
+    }
+}
+
+#pag-planos-conta .box-conteudo .container-planos {
+    height: 430px;
+    margin: auto 0px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+@media (min-width: 420px) {
+    #pag-planos-conta .box-conteudo .container-planos {
+        width: 380px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-planos-conta .box-conteudo .container-planos {
+        width: 475px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-planos-conta .box-conteudo .container-planos {
+        width: 670px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-planos-conta .box-conteudo .container-planos {
+        width: 910px;
+    }
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow {
+    width: 1500px;
+    height: 400px;
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano {
+    width: 280px;
+    height: 380px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: #dedede;
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .titulo {
+    width: inherit;
+    height: 50px;
+    background-color: #557bc9;
+    text-align: center;
+    line-height: 50px;
+    font-size: 26px;
+    color: white;
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .info-plano {
+    width: inherit;
+    height: 280px;
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .info-plano .txt-info {
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .box-botao {
+    width: inherit;
+    height: 50px;
+}
+
+#pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .box-botao .preset-botao {
+    width: 70px;
+    height: 20px;
+    margin-left: 100px;
+}
+
+/*------------- PLANOS DE CONTA*/
+
 #pag-config-perfil {
     background-color: inherit;
     min-height: 85vh;
