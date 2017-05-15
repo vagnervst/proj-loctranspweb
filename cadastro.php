@@ -89,7 +89,7 @@
         if( $id_usuario_inserido && $idTipoConta == $idContaJuridica ) {
             
             $objEmpresa = new \Tabela\Empresa();
-            
+            $objEmpresa->logomarca = "company.png";
             $pasta_empresa = "img/uploads/empresas";            
             
             $nome_arquivo = "empresa_usr_" . $id_usuario_inserido . "." . pathinfo($fotoPerfil["name"], PATHINFO_EXTENSION);
@@ -101,8 +101,7 @@
             $objEmpresa->nomeFantasia = $nomeFantasia;
             $objEmpresa->cnpj = $cnpj;            
             $objEmpresa->idUsuarioJuridico = $id_usuario_inserido;
-            $objEmpresa->logomarca = "company.png";
-            
+                        
             $objEmpresa->inserir();
             
             $objContaBancaria = new \Tabela\ContaBancaria();

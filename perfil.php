@@ -2,8 +2,8 @@
     require_once("include/initialize.php");    
     require_once("include/classes/tbl_usuario.php");
     require_once("include/classes/tbl_publicacao.php");
+    require_once("include/classes/tbl_empresa.php");
     require_once("include/classes/sessao.php");
-
         
     $idUsuariopublico = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
@@ -14,7 +14,8 @@
     if(isset($_POST['btn-saque'])){
         echo"vao se foderem";
     }
-
+    
+    $is_juridico = ( $detalhes_usuario->idTipoConta == 2 )? true : false;
 ?>
 <!doctype html>
 <html>
@@ -33,8 +34,24 @@
                     <div id="box-info-usuario">
                         <div id="box-info-pessoal-usuario">
                             <div id="box-foto">
-                                <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
-                                <img id="foto-usuario" src="<?php echo File::read($detalhes_usuario->fotoPerfil, $caminhoFoto)?>"/>
+                                <?php                                     
+                                    $caminhoFoto = "";
+                                    $nome_arquivo = "";
+                                    if( $is_juridico ) {
+                                        $caminhoFoto = "img/uploads/empresas";
+                                        $empresaJuridico = new \Tabela\Empresa();
+                                        $empresaJuridico = $empresaJuridico->buscar("idUsuarioJuridico = {$detalhes_usuario->id}");
+                                        
+                                        if( count($empresaJuridico) == 1 ) {
+                                            $nome_arquivo = $empresaJuridico[0]->logomarca;                                            
+                                        }
+                                        
+                                    } else {
+                                        $caminhoFoto = "img/uploads/usuarios";    
+                                        $nome_arquivo = $detalhes_usuario->fotoPerfil;
+                                    }                                                                    
+                                ?>                    
+                                <img id="foto-usuario" src="<?php echo File::read($nome_arquivo, $caminhoFoto)?>"/>
                             </div>
                             <section id="box-info">
                                 <h1 id="nome"><?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome; ?></h1>
@@ -43,8 +60,7 @@
                                 <p class="label-info">Locações: <span class="info"><?php echo $detalhes_usuario->qtdLocacoes; ?></span></p>
                                 <div class="container-icone-avaliacoes">
                                     <?php 
-                                        $detalhes_usuario->qtdAvaliacoes; 
-                                        
+                                        $detalhes_usuario->qtdAvaliacoes;
                                         
                                         $lista_estrelas = [
                                             "icone-avaliacao inativa",
@@ -67,9 +83,8 @@
                         </div>                        
                     </div>
                     <?php 
-                        $sessao = new Sessao;
+                        $sessao = new Sessao();
                         $idUsuariologado = $sessao->get("idUsuario");
-                       
                     
                         if($idUsuariopublico == $idUsuariologado ){
                             ?>
