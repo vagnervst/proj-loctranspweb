@@ -1,10 +1,10 @@
-<?php        
-    $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
-          
+<?php                      
     require_once("../../include/initialize.php");
     require_once("../../include/classes/tbl_veiculo.php");
     require_once("../../include/classes/tbl_tipo_veiculo.php");	    
     
+    $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
+
     $idVeiculo = ( isset($_POST["id"]) )? (int) $_POST["id"] : null;
     $codigoVeiculo = ( isset($_POST["txtCod"]) )? (double) $_POST["txtCod"] : null;
     $nome = ( isset($_POST["txtNome"]) )? $_POST["txtNome"] : null;
@@ -34,18 +34,20 @@
     $objVeiculo->idFabricante = $idFabricante;
     $objVeiculo->idTransmissao = $idTransmissao;
 
-    if( $modo == "insert" ) {        
+    if( $modo == "insert" ) {
+        $objVeiculo->visivel = true;
         $objVeiculo->inserir();
     } elseif( $modo == "update" ) {
         $objVeiculo->id = (int) $idVeiculo;
         $objVeiculo->atualizar();
     } elseif( $modo == "delete" ) {
         $objVeiculo->id = (int) $idVeiculo;
-        $objVeiculo->deletar();
-    } 
+        $objVeiculo->visivel = false;
+        $objVeiculo->atualizar();
+    }
 
     $listaVeiculos = null;
-    $query_pesquisa = null;
+    $query_pesquisa = "v.visivel = 1";
 
     if( $modo == "pesquisa" ) {
         
@@ -60,7 +62,7 @@
         $filtragem_idCombustivel = ( isset( $_POST["slCombustivel"] ) )? $_POST["slCombustivel"] : null;                
         
         $lista_parametros_pesquisa = [];
-        
+                
         if( !empty($filtragem_nome) ) $lista_parametros_pesquisa[] = "v.nome LIKE '{$filtragem_nome}'";
         if( !empty($filtragem_cod) ) $lista_parametros_pesquisa[] = "v.codigo = {$filtragem_cod}";
         if( !empty($filtragem_precoMinimo) ) $lista_parametros_pesquisa[] = "v.precoMedio >= '{$filtragem_precoMinimo}'";
@@ -69,8 +71,12 @@
         if( !empty($filtragem_idCategoria) ) $lista_parametros_pesquisa[] = "v.idCategoriaVeiculo = {$filtragem_idCategoria}";
         if( !empty($filtragem_idCombustivel) ) $lista_parametros_pesquisa[] = "v.idTipoCombustivel = {$filtragem_idCombustivel}";
         
-        $query_pesquisa = implode($lista_parametros_pesquisa, ' OR ');
-    }
+        if( !empty($lista_parametros_pesquisa) ) {
+            $query_pesquisa .= " AND " . implode($lista_parametros_pesquisa, ' OR ');
+        }
+    }    
+    
+    //echo $query_pesquisa;
 
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;

@@ -97,7 +97,7 @@
                                                 <option selected disabled>Selecione o tipo</option>
                                                 <?php
                                                     $listaTipoVeiculo = new \Tabela\TipoVeiculo();
-                                                    $listaTipoVeiculo = $listaTipoVeiculo->buscar();
+                                                    $listaTipoVeiculo = $listaTipoVeiculo->buscar("visivel = 1");
                                                 
                                                     foreach($listaTipoVeiculo as $tipoVeiculo) {
                                                 ?>

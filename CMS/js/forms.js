@@ -46,7 +46,34 @@ $(document).ready(function() {
                 { nomeCampo : 'slCategoria', propriedade: 'idCategoriaVeiculo' },
                 { nomeCampo : 'slCombustivel', propriedade: 'idTipoCombustivel' }
             ];
-
+                
+            formulario_veiculos.preEdicaoFormulario = function(dados, callback) {
+                var select_fabricantes = $("#slFabricante")[0];
+                var select_combustivel = $("#slCombustivel")[0];
+                var select_transmissao = $("#slTransmissao")[0];
+                var select_tipo = $("#slTipoVeiculo")[0];
+                var select_categoria = $("#slCategoriaVeiculo")[0];
+                
+                //$(select_tipo).off("change");
+                select_tipo.value = dados.registroSelecionado.idTipoVeiculo;
+                
+                var ajax_fabricantes = relacionar_selects( select_tipo, select_fabricantes, "../apis/get_fabricantes.php", "idTipoVeiculo" );
+                var ajax_categorias = relacionar_selects( select_tipo, select_categoria, "../apis/get_categorias.php", "idTipoVeiculo" );
+                var ajax_combustiveis = relacionar_selects( select_tipo, select_combustivel, "../apis/get_combustiveis_tipo_veiculo.php", "idTipoVeiculo" );
+                var ajax_transmissoes = relacionar_selects( select_tipo, select_transmissao, "../apis/get_transmissoes_tipo_veiculo.php", "idTipoVeiculo" );
+                
+                var promises = [
+                    ajax_fabricantes,
+                    ajax_categorias,
+                    ajax_combustiveis,
+                    ajax_transmissoes
+                ];
+                
+                $.when.apply($, promises).then(function() {
+                    callback(); 
+                });                                
+            };
+            
             formulario_veiculos.inicializar();
         }
     }
@@ -224,15 +251,11 @@ $(document).ready(function() {
             var formulario_plano_conta = new AjaxForm();
             
             formulario_plano_conta.colunas_tabela_propriedades_json = [
-                {nome: "Cod", propriedadeJson: "id"},
-                {nome: "Nome", propriedadeJson: "nome"},
-                {nome: "Preco", propriedadeJson: "preco"},
-                {nome: "Duração Meses", propriedadeJson: "duracaoMeses"},
-                {nome: "Limite Publicação", propriedadeJson: "limitePublicacao"},
-                {nome: "Descrição plano", propriedadeJson: "descPlano"},
-                {nome: "Dias Analise de  Publicacao", propriedadeJson: "diasAnalisePublicacao"}
-
-
+                { nome: "Cod", propriedadeJson: "id" },
+                { nome: "Nome", propriedadeJson: "nome" },
+                { nome: "Preco", propriedadeJson: "preco" },
+                { nome: "Duração", propriedadeJson: "duracaoMeses" },                              
+                { nome: "Dias Analise de  Publicacao", propriedadeJson: "diasAnalisePublicacao" }
             ];
             
             var box_listagem_planos = $(pagina_plano_conta).find("#box-listagem-planos")[0];
@@ -246,8 +269,8 @@ $(document).ready(function() {
                 { nomeCampo : 'txtPreco', propriedade : 'preco' },
                 { nomeCampo : 'txtDuracaoMeses', propriedade : 'duracaoMeses' },
                 { nomeCampo : 'txtLimitePublicacoes', propriedade : 'limitePublicacao' },
-                { nomeCampo : 'txtDiasAnalise', propriedade : 'descPlano' },
-                { nomeCampo : 'txtDuracaoMeses', propriedade : 'diasAnalisePublicacao' }
+                { nomeCampo : 'txtDiasAnalise', propriedade : 'diasAnalisePublicacao' },
+                { nomeCampo : 'txtDescricaoPlano', propriedade : 'descPlano' }
             ];
             
             formulario_plano_conta.inicializar();

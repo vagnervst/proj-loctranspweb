@@ -8,8 +8,12 @@
     $idUsuariopublico = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     $detalhes_usuario = new \Tabela\Usuario();
+
     $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuariopublico}")[0]; 
     
+    if(isset($_POST['btn-saque'])){
+        echo"vao se foderem";
+    }
 
 ?>
 <!doctype html>
@@ -30,7 +34,6 @@
                         <div id="box-info-pessoal-usuario">
                             <div id="box-foto">
                                 <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
-
                                 <img id="foto-usuario" src="<?php echo File::read($detalhes_usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </div>
                             <section id="box-info">
@@ -63,32 +66,40 @@
                             </section>
                         </div>                        
                     </div>
+                    <?php 
+                        $sessao = new Sessao;
+                        $idUsuariologado = $sessao->get("idUsuario");
+                       
+                    
+                        if($idUsuariopublico == $idUsuariologado ){
+                            ?>
+                            <div id="box-inf-financeiras">
+                                <p class="label-titulo-valor" >Saque disponível</p>
+                                <p class="label-valor">R$00,0000</p>
+                                <div class="base-btn-sacar">
+                                    <form action="perfil.php?id=<?php echo $_GET['id'] ?>" method="post">
+                                        <input class="btn-sacar" value="Transferir" name="btn-saque" type="submit">
+                                    </form>
+                                </div><br>
+                                <p class="label-titulo-valor" >Total de ganhos</p>
+                                <p class="label-valor">R$00,0000</p><br>
+                                <p class="label-titulo-valor" >Total de saque </p>
+                                <p class="label-valor">R$00,0000</p>
+                                
+                            </div>
+                            <?php
+                        }
+                            
+                    ?>
                     <div class="botoes-publicacao-avaliacao">
-                        <span class="preset-botao js-btn-publicacao">Publicações</span>
+                        <span class="preset-botao js-btn-publicacao">Anúncios</span>
                         <span class="preset-botao js-btn-avaliacao">Avaliações</span>
                     </div>
                     <section id="container-publicacoes-avaliacoes">
                         <div class="wrapper-publicacoes-avaliacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
                     </section>
-                    <?php 
-                        $sessao = new Sessao;
-                        $idUsuariologado = $sessao->get("idUsuario");
-                        echo $idUsuariopublico ;
-                        echo $idUsuariologado ;
                     
-                        if($idUsuariopublico == $idUsuariologado ){
-                            ?>
-                            <div id="box-inf-financeiras">
-                            <?php ?>
-                            </div>
-                            <?php
-                        }
-                            
-                        
-                            
-                        
-                    ?>
                     
                 </div>       
                 

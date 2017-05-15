@@ -13,6 +13,7 @@
     $objFabricanteVeiculo->nome = $tituloFabricante;
     
     if( $modo == "insert" ) {
+        $objFabricanteVeiculo->visivel = true;
         $idFabricante = $objFabricanteVeiculo->inserir();
         
         $objFabricanteVeiculo->id = $idFabricante;
@@ -37,14 +38,14 @@
     } elseif( $modo == "delete" ) {
         $objFabricanteVeiculo->id = (int) $id;
         $objFabricanteVeiculo->eliminar_relacionamentos_a_tipo_veiculo();
-        
-        $objFabricanteVeiculo->deletar();
+        $objFabricanteVeiculo->visivel = false;
+        $objFabricanteVeiculo->atualizar();
     }
 
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 17;
     
-    $lista_fabricantes = $objFabricanteVeiculo->getFabricante($itens_por_pagina, $pagina);    
+    $lista_fabricantes = $objFabricanteVeiculo->getFabricante($itens_por_pagina, $pagina, "f.visivel = 1");    
 
     echo json_encode($lista_fabricantes);
 ?>

@@ -13,9 +13,10 @@
             public $dataNascimento;
             public $telefone;
             public $celular;
-            public $email;
+            public $emailContato;
             public $rg;
             public $saldo;
+            public $email;
             public $senha;
             public $autenticacaoDupla;
             public $fotoPerfil;            

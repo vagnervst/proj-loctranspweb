@@ -38,7 +38,7 @@ CREATE TABLE `acessorioveiculo_tipoveiculo` (
 
 LOCK TABLES `acessorioveiculo_tipoveiculo` WRITE;
 /*!40000 ALTER TABLE `acessorioveiculo_tipoveiculo` DISABLE KEYS */;
-INSERT INTO `acessorioveiculo_tipoveiculo` VALUES (1,1),(1,25),(1,27),(2,27),(2,29),(2,30);
+INSERT INTO `acessorioveiculo_tipoveiculo` VALUES (3,1),(3,25),(3,26),(1,1),(4,1),(4,25),(4,26),(4,27);
 /*!40000 ALTER TABLE `acessorioveiculo_tipoveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `fabricanteveiculo_tipoveiculo` (
 
 LOCK TABLES `fabricanteveiculo_tipoveiculo` WRITE;
 /*!40000 ALTER TABLE `fabricanteveiculo_tipoveiculo` DISABLE KEYS */;
-INSERT INTO `fabricanteveiculo_tipoveiculo` VALUES (4,1),(4,25),(4,26),(1,1),(1,26),(1,29),(3,1);
+INSERT INTO `fabricanteveiculo_tipoveiculo` VALUES (3,1),(4,1),(4,25),(4,26),(1,26);
 /*!40000 ALTER TABLE `fabricanteveiculo_tipoveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +123,7 @@ CREATE TABLE `nivelacesso_permissaocs` (
 
 LOCK TABLES `nivelacesso_permissaocs` WRITE;
 /*!40000 ALTER TABLE `nivelacesso_permissaocs` DISABLE KEYS */;
-INSERT INTO `nivelacesso_permissaocs` VALUES (1,5,0),(1,6,0),(1,7,0),(1,8,0),(1,9,0),(1,10,0),(3,7,0);
+INSERT INTO `nivelacesso_permissaocs` VALUES (3,7,0),(1,5,0),(1,6,0),(1,7,0),(1,8,0),(1,9,0),(1,10,0),(6,5,0),(6,6,0),(4,5,0);
 /*!40000 ALTER TABLE `nivelacesso_permissaocs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,6 @@ CREATE TABLE `publicacao_acessorioveiculo` (
 
 LOCK TABLES `publicacao_acessorioveiculo` WRITE;
 /*!40000 ALTER TABLE `publicacao_acessorioveiculo` DISABLE KEYS */;
-INSERT INTO `publicacao_acessorioveiculo` VALUES (34,1),(33,1),(35,1);
 /*!40000 ALTER TABLE `publicacao_acessorioveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,8 +163,9 @@ DROP TABLE IF EXISTS `tbl_acessorioveiculo`;
 CREATE TABLE `tbl_acessorioveiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `tbl_acessorioveiculo` (
 
 LOCK TABLES `tbl_acessorioveiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_acessorioveiculo` DISABLE KEYS */;
-INSERT INTO `tbl_acessorioveiculo` VALUES (1,'Acessorio A, B, e D'),(2,'Acessorio X');
+INSERT INTO `tbl_acessorioveiculo` VALUES (1,'Ar Condicionado',1),(2,'Acessorio B',1),(3,'Acessório C',1),(4,'teste',0);
 /*!40000 ALTER TABLE `tbl_acessorioveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,6 +212,35 @@ INSERT INTO `tbl_agencia` VALUES (7,'qwe','123','123','123',1,7),(8,'Agencia 1',
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_alteracao_pedido`
+--
+
+DROP TABLE IF EXISTS `tbl_alteracao_pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_alteracao_pedido` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dataOcorrencia` datetime NOT NULL,
+  `idStatus` int(11) NOT NULL,
+  `idPedido` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `historicoAlteracaoPedido_statusPedido` (`idStatus`),
+  KEY `pedido_historicoAlteracao` (`idPedido`),
+  CONSTRAINT `historicoAlteracaoPedido_statusPedido` FOREIGN KEY (`idStatus`) REFERENCES `tbl_statuspedido` (`id`),
+  CONSTRAINT `pedido_historicoAlteracao` FOREIGN KEY (`idPedido`) REFERENCES `tbl_pedido` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_alteracao_pedido`
+--
+
+LOCK TABLES `tbl_alteracao_pedido` WRITE;
+/*!40000 ALTER TABLE `tbl_alteracao_pedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_alteracao_pedido` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_assunto`
 --
 
@@ -222,7 +251,7 @@ CREATE TABLE `tbl_assunto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +260,7 @@ CREATE TABLE `tbl_assunto` (
 
 LOCK TABLES `tbl_assunto` WRITE;
 /*!40000 ALTER TABLE `tbl_assunto` DISABLE KEYS */;
-INSERT INTO `tbl_assunto` VALUES (2,'Sugestão'),(3,'SugestÃ£o'),(4,'SugestÃ£o\\_'),(5,'SugestÃ£o\\%'),(6,'SugestÃ£o\''),(7,'SugestÃ£o'),(8,'123'),(9,'12.3'),(10,'12.3'),(11,'12.3'),(12,'12.3'),(13,'12.3'),(14,'123'),(15,'123'),(16,'123'),(17,'123'),(18,'123'),(19,'123'),(20,'123'),(21,'123'),(22,'123'),(23,'123'),(24,'123'),(25,'123'),(26,'123'),(27,'123'),(28,'123'),(29,'123'),(30,'123'),(31,'123'),(32,'123'),(33,'123'),(34,'123'),(35,'123'),(36,'12.3'),(37,'123'),(38,'123'),(39,'1\\23'),(40,'\\%'),(41,'\\_'),(42,'123.456');
+INSERT INTO `tbl_assunto` VALUES (43,'Dúvidas Gerais'),(44,'Sugestão'),(45,'Reportar Problema'),(46,'Outro');
 /*!40000 ALTER TABLE `tbl_assunto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,6 +275,7 @@ CREATE TABLE `tbl_avaliacao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nota` int(1) NOT NULL,
   `mensagem` varchar(200) DEFAULT NULL,
+  `data` datetime DEFAULT NULL,
   `idUsuarioAvaliador` int(11) NOT NULL,
   `idUsuarioAvaliado` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -253,7 +283,7 @@ CREATE TABLE `tbl_avaliacao` (
   KEY `usuarioAvaliado_avaliacao` (`idUsuarioAvaliado`),
   CONSTRAINT `usuarioAvaliado_avaliacao` FOREIGN KEY (`idUsuarioAvaliado`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `usuarioAvaliador_avaliacao` FOREIGN KEY (`idUsuarioAvaliador`) REFERENCES `tbl_usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,6 +292,7 @@ CREATE TABLE `tbl_avaliacao` (
 
 LOCK TABLES `tbl_avaliacao` WRITE;
 /*!40000 ALTER TABLE `tbl_avaliacao` DISABLE KEYS */;
+INSERT INTO `tbl_avaliacao` VALUES (1,2,'qweqewq',NULL,24,23);
 /*!40000 ALTER TABLE `tbl_avaliacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,7 +318,7 @@ CREATE TABLE `tbl_banco` (
 
 LOCK TABLES `tbl_banco` WRITE;
 /*!40000 ALTER TABLE `tbl_banco` DISABLE KEYS */;
-INSERT INTO `tbl_banco` VALUES (5,123,'123',123);
+INSERT INTO `tbl_banco` VALUES (5,123,'Banco A',3);
 /*!40000 ALTER TABLE `tbl_banco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,7 +351,7 @@ CREATE TABLE `tbl_beneficiosprojeto` (
 
 LOCK TABLES `tbl_beneficiosprojeto` WRITE;
 /*!40000 ALTER TABLE `tbl_beneficiosprojeto` DISABLE KEYS */;
-INSERT INTO `tbl_beneficiosprojeto` VALUES (1,'Por que utilizar os serviÃ§os City Share?','Veja aqui alguns dos benefÃ­cios que o nosso projeto pode proporcionar:','velbebravo.PNG','vlcsnap-2017-01-07-14h21m19s016.png','color-wheel-poster.jpg','- VocÃª tem remuneraÃ§Ã£o pelo veÃ­culo alugado, pagando apenas uma pequena taxa que varia de acordo com o tipo de veÃ­culo cadastrado em nosso sistema.\r\n- Com a facilidade do sistema City Share vocÃª poderÃ¡ cadastrar ou alugar um veÃ­culo em questÃ£o de minutos, sem nenhuma burocracia envolvida. Mas fique atento aos requisitos mÃ­nimos que o seu veÃ­culo precisa atender para ser cadastrado.\r\n- Tenha sua agÃªncia divulgada caso utilize o sistema City Share na sua empresa.','- VocÃª nÃ£o paga pelo valor total do veÃ­culo, apenas a diÃ¡ria de uso prescrita pelo proprietÃ¡rio do vÃ©iculo que estÃ¡ alugando.\r\n- VocÃª encontra uma grande variedade de veÃ­culos disponÃ­veis, podendo encontrar um para cada situaÃ§Ã£o.\r\n- Pague somente no momento da retirada, evitando inconveniÃªncias.','- Negocie diretamente, o sistema permite uma negociaÃ§Ã£o direta entre usuÃ¡rios, facilitando na transparÃªncia e facilitando a transaÃ§Ã£o.\r\n- TransaÃ§Ãµes sÃ£o seguras, o pagamento por dÃ©bito auxilia na concretizaÃ§Ã£o da negociaÃ§Ã£o, diminuindo em muito as chances de falhas na mesma.\r\n- Com o nosso sistema de filtragem dentro do site encontre o veÃ­culo mais prÃ³ximo de vocÃª, evitando longas deslocaÃ§Ãµes atÃ© o local da negociaÃ§Ã£o.','perfil git.PNG','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\nRemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\nO Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\nPague somente pelo uso e nÃ£o pela propriedade do carro.');
+INSERT INTO `tbl_beneficiosprojeto` VALUES (1,'Por que utilizar os serviços City Share?','Veja aqui alguns dos benefí­cios que o nosso projeto pode proporcionar:','beneficio\\_imagem\\_A.jpg','beneficio\\_imagem\\_B.jpg','beneficio\\_imagem\\_C.jpg','- Você tem remuneração pelo veículo alugado, pagando apenas uma pequena taxa que varia de acordo com o tipo de veículo cadastrado em nosso sistema.\r\n- Com a facilidade do sistema City Share você poderá¡ cadastrar ou alugar um veículo em questão de minutos, sem nenhuma burocracia envolvida. Mas fique atento aos requisitos mínimos que o seu veículo precisa atender para ser cadastrado.\r\n- Tenha sua agência divulgada caso utilize o sistema City Share na sua empresa.','- Você não paga pelo valor total do veículo, apenas a diária de uso prescrita pelo proprietário do veículo que está alugando.\r\n- Você encontra uma grande variedade de veículos disponí­veis, podendo encontrar um para cada situação.\r\n- Pague somente no momento da retirada, evitando inconveniências.','- Negocie diretamente, o sistema permite uma negociação direta entre usuários, facilitando na transparência e facilitando a transação.\r\n- Transações são seguras, o pagamento por débito auxilia na concretização da negociação, diminuindo em muito as chances de falhas na mesma.\r\n- Com o nosso sistema de filtragem dentro do site encontre o veículo mais próximo de você, evitando longas deslocações até o local da negociação.','beneficio\\_imagem\\_previa.jpg','O projeto City Share traz também benefí­cios para quem o utiliza, sendo alguns deles:\r\nRemuneração pelo veí­culo alugado;\r\nO Sistema dinâmico permite que o veí­culo seja alugado em questão de minutos;\r\nPague somente pelo uso e não pela propriedade do carro.');
 /*!40000 ALTER TABLE `tbl_beneficiosprojeto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +366,6 @@ CREATE TABLE `tbl_cartao_credito` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `vencimento` date DEFAULT NULL,
-  `codigoSeguranca` int(4) DEFAULT NULL,
   `idUsuario` int(11) NOT NULL,
   `idTipo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -343,7 +373,7 @@ CREATE TABLE `tbl_cartao_credito` (
   KEY `idTipo` (`idTipo`),
   CONSTRAINT `tbl_cartao_credito_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `tbl_cartao_credito_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tbl_tipo_cartao_credito` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -352,7 +382,7 @@ CREATE TABLE `tbl_cartao_credito` (
 
 LOCK TABLES `tbl_cartao_credito` WRITE;
 /*!40000 ALTER TABLE `tbl_cartao_credito` DISABLE KEYS */;
-INSERT INTO `tbl_cartao_credito` VALUES (5,'123','2032-03-01',1,23,1);
+INSERT INTO `tbl_cartao_credito` VALUES (5,'123','1996-07-17',23,2),(6,'15141619','2033-07-01',26,2),(7,'15141619','2033-07-01',27,2),(8,'15141619','2033-07-01',28,2),(9,'15141619','2033-07-01',29,2),(10,'15141619','2033-07-01',30,2),(11,'15141619','2033-07-01',31,2),(12,'15141619','2033-07-01',32,2),(13,'15141619','2033-07-01',33,2),(14,'15141619','2033-07-01',34,2),(15,'15141619','2033-07-01',35,2),(16,'15141619','2033-07-01',36,2);
 /*!40000 ALTER TABLE `tbl_cartao_credito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,10 +399,11 @@ CREATE TABLE `tbl_categoriaveiculo` (
   `percentualLucro` decimal(5,2) NOT NULL,
   `valorMinimoVeiculo` decimal(9,2) DEFAULT '0.00',
   `idTipoVeiculo` int(11) NOT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `tipoVeiculo_categoriaVeiculo` (`idTipoVeiculo`),
   CONSTRAINT `tipoVeiculo_categoriaVeiculo` FOREIGN KEY (`idTipoVeiculo`) REFERENCES `tbl_tipoveiculo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -381,7 +412,7 @@ CREATE TABLE `tbl_categoriaveiculo` (
 
 LOCK TABLES `tbl_categoriaveiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_categoriaveiculo` DISABLE KEYS */;
-INSERT INTO `tbl_categoriaveiculo` VALUES (1,'Categoria B',25.00,30000.00,1),(2,'Categoria A',15.00,1000.00,25),(3,'Categoria C',10.00,5000.00,26),(5,'a',123.00,123.00,1),(6,'b',123.00,123.00,1),(7,'c',123.00,123.00,1),(8,'d',123.00,123.00,26),(9,'e',123.00,123.00,1),(10,'f',123.00,123.00,1),(11,'g',123.00,123.00,1),(12,'h',123.00,123.00,1),(13,'i',123.00,123.00,25),(14,'j',123.00,123.00,1),(15,'k',123.00,123.00,1),(16,'l',123.00,123.00,1),(17,'m',123.00,123.00,1);
+INSERT INTO `tbl_categoriaveiculo` VALUES (1,'Luxo',25.00,30000.00,1,1),(2,'Categoria A',15.00,1000.00,25,1),(13,'Esportivas',0.00,0.00,26,1),(14,'Domésticas',0.00,0.00,26,1),(15,'Passeio Popular',0.00,0.00,1,1),(16,'123',0.00,0.00,26,0);
 /*!40000 ALTER TABLE `tbl_categoriaveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,6 +444,30 @@ INSERT INTO `tbl_cidade` VALUES (1,'Carapicuiba',1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_cityshare`
+--
+
+DROP TABLE IF EXISTS `tbl_cityshare`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_cityshare` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `saldo` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_cityshare`
+--
+
+LOCK TABLES `tbl_cityshare` WRITE;
+/*!40000 ALTER TABLE `tbl_cityshare` DISABLE KEYS */;
+INSERT INTO `tbl_cityshare` VALUES (1,0);
+/*!40000 ALTER TABLE `tbl_cityshare` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_cnh`
 --
 
@@ -426,7 +481,7 @@ CREATE TABLE `tbl_cnh` (
   PRIMARY KEY (`id`),
   KEY `usuario_cnh` (`idUsuario`),
   CONSTRAINT `usuario_cnh` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -435,7 +490,7 @@ CREATE TABLE `tbl_cnh` (
 
 LOCK TABLES `tbl_cnh` WRITE;
 /*!40000 ALTER TABLE `tbl_cnh` DISABLE KEYS */;
-INSERT INTO `tbl_cnh` VALUES (5,123,23);
+INSERT INTO `tbl_cnh` VALUES (5,123,23),(6,15474849,26),(7,15474849,27),(8,15474849,28),(9,15474849,29),(10,15474849,30),(11,15474849,31),(12,15474849,32),(13,15474849,33),(14,15474849,34),(15,15474849,35),(16,15474849,36);
 /*!40000 ALTER TABLE `tbl_cnh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,7 +516,7 @@ CREATE TABLE `tbl_conta_bancaria` (
   CONSTRAINT `tbl_conta_bancaria_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `tbl_conta_bancaria_ibfk_2` FOREIGN KEY (`idTipoConta`) REFERENCES `tbl_tipo_conta_bancaria` (`id`),
   CONSTRAINT `tbl_conta_bancaria_ibfk_3` FOREIGN KEY (`idBanco`) REFERENCES `tbl_banco` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -470,6 +525,7 @@ CREATE TABLE `tbl_conta_bancaria` (
 
 LOCK TABLES `tbl_conta_bancaria` WRITE;
 /*!40000 ALTER TABLE `tbl_conta_bancaria` DISABLE KEYS */;
+INSERT INTO `tbl_conta_bancaria` VALUES (1,8850,8850,5,25,1,5);
 /*!40000 ALTER TABLE `tbl_conta_bancaria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -491,7 +547,7 @@ CREATE TABLE `tbl_contato` (
   PRIMARY KEY (`id`),
   KEY `faleConosco_assunto` (`idAssunto`),
   CONSTRAINT `faleConosco_assunto` FOREIGN KEY (`idAssunto`) REFERENCES `tbl_assunto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -500,7 +556,6 @@ CREATE TABLE `tbl_contato` (
 
 LOCK TABLES `tbl_contato` WRITE;
 /*!40000 ALTER TABLE `tbl_contato` DISABLE KEYS */;
-INSERT INTO `tbl_contato` VALUES (1,'teste','123','123',15,NULL,0),(2,'teste2 ','555 45','555',10,NULL,0),(3,'teste2 ','555 45','555',10,NULL,0),(4,'teste2 ','555 45','555',10,NULL,0),(5,'teste2 ','555 45','555',10,NULL,0),(6,'teste2 ','555 45','555',10,NULL,0),(7,'teste2 ','555 45','555',10,NULL,0),(8,'teste2 ','555 45','555',10,NULL,0),(9,'teste2 ','555 45','555',10,NULL,0),(10,'teste2 ','555 45','555',10,NULL,0),(11,'teste2 ','555 45','555',10,NULL,0),(12,'teste2 ','555 45','555',10,NULL,0),(13,'teste2 ','555 45','555',10,NULL,0),(14,'teste2 ','555 45','555',10,NULL,0),(15,'teste2 ','555 45','555',10,NULL,0),(16,'teste2 ','555 45','555',10,NULL,0);
 /*!40000 ALTER TABLE `tbl_contato` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -587,7 +642,7 @@ CREATE TABLE `tbl_empreste` (
 
 LOCK TABLES `tbl_empreste` WRITE;
 /*!40000 ALTER TABLE `tbl_empreste` DISABLE KEYS */;
-INSERT INTO `tbl_empreste` VALUES (1,'Quer lucrar com seu veÃ­culo?','Lucrar com seu veÃ­culo aqui na City Share Ã© fÃ¡cil e prÃ¡tico, nosso sistema foi desenvolvido especialmente para facilitar esse processo para vocÃª usuÃ¡rio, mas tenha em mente que existem tambÃ©m critÃ©rios a serem seguidos. Entenda melhor o processo de cadastro.','logo\\_eita\\_2.jpg','Como funciona?');
+INSERT INTO `tbl_empreste` VALUES (1,'Quer lucrar com seu veículo?','Lucrar com seu veículo aqui na City Share é fácil e prático, nosso sistema foi desenvolvido especialmente para facilitar esse processo para você usuário, mas tenha em mente que existem também critérios a serem seguidos. Entenda melhor o processo de cadastro.','logo\\_eita\\_2.jpg','Como funciona?');
 /*!40000 ALTER TABLE `tbl_empreste` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -628,8 +683,9 @@ DROP TABLE IF EXISTS `tbl_fabricanteveiculo`;
 CREATE TABLE `tbl_fabricanteveiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(30) NOT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -638,7 +694,7 @@ CREATE TABLE `tbl_fabricanteveiculo` (
 
 LOCK TABLES `tbl_fabricanteveiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_fabricanteveiculo` DISABLE KEYS */;
-INSERT INTO `tbl_fabricanteveiculo` VALUES (1,'Fabricante B'),(3,'Fabricante A'),(4,'Fabricante C');
+INSERT INTO `tbl_fabricanteveiculo` VALUES (1,'Caloy',1),(3,'Fabricante A',1),(4,'Fabricante C',1),(5,'teste',0);
 /*!40000 ALTER TABLE `tbl_fabricanteveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -668,7 +724,7 @@ CREATE TABLE `tbl_faleconosco` (
 
 LOCK TABLES `tbl_faleconosco` WRITE;
 /*!40000 ALTER TABLE `tbl_faleconosco` DISABLE KEYS */;
-INSERT INTO `tbl_faleconosco` VALUES (1,'Fale Conosco','Perguntas Frequentes','NÃ£o sanou sua dÃºvida? Contate-nos!','contato@cityshare.com.br','(11) 3061-5678','Das 09h Ã s 18h','Rua Gustavo da Silveira, 23 - Vila Santa Catarina CEP 04376-002 - SÃ£o Paulo/SP');
+INSERT INTO `tbl_faleconosco` VALUES (1,'Fale Conosco','Perguntas Frequentes','Não sanou sua dúvida? Contate-nos!','contato@cityshare.com.br','(11) 3061-5678','Das 09h às 18h','Rua Gustavo da Silveira, 23 - Vila Santa Catarina CEP 04376-002 - São Paulo/SP');
 /*!40000 ALTER TABLE `tbl_faleconosco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -722,7 +778,7 @@ CREATE TABLE `tbl_funcionario` (
   CONSTRAINT `funcionario_agencia` FOREIGN KEY (`idAgencia`) REFERENCES `tbl_agencia` (`id`),
   CONSTRAINT `funcionario_empresa` FOREIGN KEY (`idEmpresa`) REFERENCES `tbl_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `funcionario_nivelAcesso` FOREIGN KEY (`idNivelAcesso`) REFERENCES `tbl_nivelacesso_juridico` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -731,36 +787,8 @@ CREATE TABLE `tbl_funcionario` (
 
 LOCK TABLES `tbl_funcionario` WRITE;
 /*!40000 ALTER TABLE `tbl_funcionario` DISABLE KEYS */;
+INSERT INTO `tbl_funcionario` VALUES (3,'funcionario','funcionario@companyhost','$2y$10$.90KFtEFG0JShexr1FJdvuDzih5jSfv.cw/vPFDVhKEhD3LsF5PYu','123','123','a@a.com',0,17,8,7);
 /*!40000 ALTER TABLE `tbl_funcionario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_historicoalteracaopedido`
---
-
-DROP TABLE IF EXISTS `tbl_historicoalteracaopedido`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_historicoalteracaopedido` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dataOcorrencia` datetime NOT NULL,
-  `idStatus` int(11) NOT NULL,
-  `idPedido` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `historicoAlteracaoPedido_statusPedido` (`idStatus`),
-  KEY `pedido_historicoAlteracao` (`idPedido`),
-  CONSTRAINT `historicoAlteracaoPedido_statusPedido` FOREIGN KEY (`idStatus`) REFERENCES `tbl_statuspedido` (`id`),
-  CONSTRAINT `pedido_historicoAlteracao` FOREIGN KEY (`idPedido`) REFERENCES `tbl_pedido` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_historicoalteracaopedido`
---
-
-LOCK TABLES `tbl_historicoalteracaopedido` WRITE;
-/*!40000 ALTER TABLE `tbl_historicoalteracaopedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_historicoalteracaopedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -784,7 +812,7 @@ CREATE TABLE `tbl_home` (
 
 LOCK TABLES `tbl_home` WRITE;
 /*!40000 ALTER TABLE `tbl_home` DISABLE KEYS */;
-INSERT INTO `tbl_home` VALUES (1,'Como funciona123?','logo\\_eita\\_1.jpg');
+INSERT INTO `tbl_home` VALUES (1,'Como alugar?','logo\\_eita\\_1.jpg');
 /*!40000 ALTER TABLE `tbl_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -900,8 +928,9 @@ DROP TABLE IF EXISTS `tbl_nivelacesso_cs`;
 CREATE TABLE `tbl_nivelacesso_cs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -910,7 +939,7 @@ CREATE TABLE `tbl_nivelacesso_cs` (
 
 LOCK TABLES `tbl_nivelacesso_cs` WRITE;
 /*!40000 ALTER TABLE `tbl_nivelacesso_cs` DISABLE KEYS */;
-INSERT INTO `tbl_nivelacesso_cs` VALUES (1,'Administrador'),(3,'Editor de ConteÃºdo'),(4,'Gerenciador de Clientes'),(5,'Administrador de Desktop');
+INSERT INTO `tbl_nivelacesso_cs` VALUES (1,'Administrador',1),(3,'Editor de Conteúdo',1),(4,'Gerenciador de Clientes',1),(5,'Administrador de Desktop',1),(6,'123',0);
 /*!40000 ALTER TABLE `tbl_nivelacesso_cs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1007,17 +1036,33 @@ DROP TABLE IF EXISTS `tbl_pedido`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_pedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valorDiaria` decimal(5,2) DEFAULT NULL,
+  `valorCombustivel` decimal(4,2) DEFAULT NULL,
+  `valorQuilometragem` decimal(4,2) DEFAULT NULL,
   `dataRetirada` datetime DEFAULT NULL,
   `dataEntrega` datetime DEFAULT NULL,
+  `dataEntregaEfetuada` datetime DEFAULT NULL,
+  `localRetiradaLocador` tinyint(1) DEFAULT NULL,
+  `localDevolucaoLocador` tinyint(1) DEFAULT NULL,
+  `localRetiradaLocatario` tinyint(1) DEFAULT NULL,
+  `localDevolucaoLocatario` tinyint(1) DEFAULT NULL,
+  `solicitacaoRetiradaLocador` tinyint(1) DEFAULT NULL,
+  `solicitacaoDevolucaoLocador` tinyint(1) DEFAULT NULL,
+  `solicitacaoRetiradaLocatario` tinyint(1) DEFAULT NULL,
+  `solicitacaoDevolucaoLocatario` tinyint(1) DEFAULT NULL,
+  `combustivelRestante` decimal(4,1) DEFAULT NULL,
+  `quilometragemExcedida` int(5) DEFAULT NULL,
   `idPublicacao` int(11) NOT NULL,
   `idUsuarioLocador` int(11) NOT NULL,
   `idUsuarioLocatario` int(11) NOT NULL,
   `idStatusPedido` int(11) NOT NULL,
   `idTipoPedido` int(11) NOT NULL,
   `idFormaPagamento` int(11) NOT NULL,
+  `idFormaPagamentoPendencias` int(11) DEFAULT NULL,
   `idFuncionario` int(11) DEFAULT NULL,
   `idCnh` int(11) NOT NULL,
   `idVeiculo` int(11) NOT NULL,
+  `idAgencia` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `pedido_publicacao` (`idPublicacao`),
   KEY `pedido_usuarioLocatario` (`idUsuarioLocatario`),
@@ -1028,8 +1073,12 @@ CREATE TABLE `tbl_pedido` (
   KEY `pedido_cnd_idx` (`idCnh`),
   KEY `pedido_veiculo_idx` (`idVeiculo`),
   KEY `pedido_usuarioLocador_idx` (`idUsuarioLocador`),
+  KEY `pedido_formaPagamentoPendencias_idx` (`idFormaPagamentoPendencias`),
+  KEY `pedido_agencia_idx` (`idAgencia`),
+  CONSTRAINT `pedido_agencia` FOREIGN KEY (`idAgencia`) REFERENCES `tbl_agencia` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedido_cnd` FOREIGN KEY (`idCnh`) REFERENCES `tbl_cnh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedido_formaPagamento` FOREIGN KEY (`idFormaPagamento`) REFERENCES `tbl_formapagamento` (`id`),
+  CONSTRAINT `pedido_formaPagamentoPendencias` FOREIGN KEY (`idFormaPagamentoPendencias`) REFERENCES `tbl_formapagamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedido_funcionario` FOREIGN KEY (`idFuncionario`) REFERENCES `tbl_funcionario` (`id`),
   CONSTRAINT `pedido_publicacao` FOREIGN KEY (`idPublicacao`) REFERENCES `tbl_publicacao` (`id`),
   CONSTRAINT `pedido_statusPedido` FOREIGN KEY (`idStatusPedido`) REFERENCES `tbl_statuspedido` (`id`),
@@ -1037,7 +1086,7 @@ CREATE TABLE `tbl_pedido` (
   CONSTRAINT `pedido_usuarioLocador` FOREIGN KEY (`idUsuarioLocador`) REFERENCES `tbl_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedido_usuarioLocatario` FOREIGN KEY (`idUsuarioLocatario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `pedido_veiculo` FOREIGN KEY (`idVeiculo`) REFERENCES `tbl_veiculo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1046,39 +1095,38 @@ CREATE TABLE `tbl_pedido` (
 
 LOCK TABLES `tbl_pedido` WRITE;
 /*!40000 ALTER TABLE `tbl_pedido` DISABLE KEYS */;
-INSERT INTO `tbl_pedido` VALUES (3,'1996-07-17 00:00:00','1996-07-19 00:00:00',5,23,23,1,1,1,NULL,5,176),(4,'2017-06-25 15:00:00','2017-06-29 12:00:00',8,23,23,1,1,1,NULL,5,176),(5,'1966-07-22 00:00:00','1966-07-25 00:00:00',6,23,23,1,1,1,NULL,5,176);
 /*!40000 ALTER TABLE `tbl_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tbl_pendencia`
+-- Table structure for table `tbl_percentual_lucro`
 --
 
-DROP TABLE IF EXISTS `tbl_pendencia`;
+DROP TABLE IF EXISTS `tbl_percentual_lucro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_pendencia` (
+CREATE TABLE `tbl_percentual_lucro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `combustivelRestante` int(1) NOT NULL,
-  `quilometragemExcedida` decimal(7,2) NOT NULL,
-  `diasAtrasados` int(3) NOT NULL,
-  `idPedido` int(11) NOT NULL,
-  `idFormaPagamento` int(11) DEFAULT NULL,
+  `percentual` decimal(5,2) DEFAULT NULL,
+  `valorMinimo` decimal(9,2) DEFAULT NULL,
+  `idCategoria` int(11) DEFAULT NULL,
+  `idTipoVeiculo` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `pedido_pendencia` (`idPedido`),
-  KEY `pendencia_formaPagamento` (`idFormaPagamento`),
-  CONSTRAINT `pedido_pendencia` FOREIGN KEY (`idPedido`) REFERENCES `tbl_pedido` (`id`),
-  CONSTRAINT `pendencia_formaPagamento` FOREIGN KEY (`idFormaPagamento`) REFERENCES `tbl_formapagamento` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `tbl_percentual_lucro_ibfk_1` (`idCategoria`),
+  KEY `tbl_percentual_lucro_ibfk_2` (`idTipoVeiculo`),
+  CONSTRAINT `tbl_percentual_lucro_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoriaveiculo` (`id`),
+  CONSTRAINT `tbl_percentual_lucro_ibfk_2` FOREIGN KEY (`idTipoVeiculo`) REFERENCES `tbl_tipoveiculo` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_pendencia`
+-- Dumping data for table `tbl_percentual_lucro`
 --
 
-LOCK TABLES `tbl_pendencia` WRITE;
-/*!40000 ALTER TABLE `tbl_pendencia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_pendencia` ENABLE KEYS */;
+LOCK TABLES `tbl_percentual_lucro` WRITE;
+/*!40000 ALTER TABLE `tbl_percentual_lucro` DISABLE KEYS */;
+INSERT INTO `tbl_percentual_lucro` VALUES (1,7.50,NULL,14,26);
+/*!40000 ALTER TABLE `tbl_percentual_lucro` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1093,7 +1141,7 @@ CREATE TABLE `tbl_perguntasfrequentes` (
   `pergunta` varchar(100) NOT NULL,
   `resposta` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1102,6 +1150,7 @@ CREATE TABLE `tbl_perguntasfrequentes` (
 
 LOCK TABLES `tbl_perguntasfrequentes` WRITE;
 /*!40000 ALTER TABLE `tbl_perguntasfrequentes` DISABLE KEYS */;
+INSERT INTO `tbl_perguntasfrequentes` VALUES (3,'Aonde devo ir para pegar o veículo? ','A retirada do carro deve ser combinada com o proprietário, fica a critério de ambos escolherem um local favorável para retirada do veículo. '),(4,'Como é feito o pagamento?','O pagamento deve ser feito em conjunto com a retirada do veículo no local combinado para evitar inconveniências à ambos os negociantes.'),(5,'Quem é responsável pelo combustível durante a locação?','É imprescindível que o usuário que alugou o veículo o devolva com o tanque cheio assim como foi entregue, caso esse critério não seja cumprido, o valor complementar do combustível será cobrado como taxa no momento da devolução.'),(6,'Eu preciso avaliar o proprietário do carro após o aluguel?','Após devolver o carro, ambos os usuários (Proprietário e Condutor) poderão avaliar a experiência que tiveram com a transação. Essa avaliação será disponibilizada no perfil do usuário e servirá como base para as transações futuras do usuário no site da City Share.'),(7,'Um familiar/amigo também pode dirigir o carro durante a locação?','Sim, você pode cadastrar outras CNH caso não esteja apto a dirigir, mas tenha em mente que as CNH extras cadastradas devem estar válidas e sem qualquer restrição de uso.'),(8,'O que acontece se eu atrasar para devolver o carro?','Existe uma pequena taxa de atraso acumulativa a qual deve ser paga caso o veículo não seja entregue no dia e local combinados. Porém damos ao usuário uma tolerância de no máximo 30 minutos depois do prazo, após isso a taxa será aplicada.'),(9,'Eu serei cobrado caso a minha solicitação de reserva não seja aceita pelo proprietário?','Não. Já que o pagamento da diária ocorre no momento da retirada, você não será cobrado previamente pelo veículo alugado.'),(10,'Como entro em contato com o proprietário do veículo?','Após enviar uma solicitação de aluguel para o proprietário, o mesmo deverá confirmá-la caso queira realmente alugar o veículo. Quando confirmada, ambos, proprietário e usuário receberão os dados para entrar em contato um com o outro.');
 /*!40000 ALTER TABLE `tbl_perguntasfrequentes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1190,8 +1239,10 @@ CREATE TABLE `tbl_planoconta` (
   `duracaoMeses` int(11) NOT NULL,
   `limitePublicacao` int(2) NOT NULL,
   `diasAnalisePublicacao` int(2) NOT NULL,
+  `descPlano` varchar(500) NOT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1200,7 +1251,7 @@ CREATE TABLE `tbl_planoconta` (
 
 LOCK TABLES `tbl_planoconta` WRITE;
 /*!40000 ALTER TABLE `tbl_planoconta` DISABLE KEYS */;
-INSERT INTO `tbl_planoconta` VALUES (1,'Padrao',0.00,0,5,7);
+INSERT INTO `tbl_planoconta` VALUES (1,'Padrao',0.00,0,5,7,'123',1),(2,'Plano Padrão Jurídico',0.00,0,5,7,'123',0);
 /*!40000 ALTER TABLE `tbl_planoconta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1244,7 +1295,7 @@ CREATE TABLE `tbl_publicacao` (
   CONSTRAINT `publicacao_statusPublicacao` FOREIGN KEY (`idStatusPublicacao`) REFERENCES `tbl_statuspublicacao` (`id`),
   CONSTRAINT `publicacao_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `publicacao_veiculo` FOREIGN KEY (`idVeiculo`) REFERENCES `tbl_veiculo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1253,7 +1304,6 @@ CREATE TABLE `tbl_publicacao` (
 
 LOCK TABLES `tbl_publicacao` WRITE;
 /*!40000 ALTER TABLE `tbl_publicacao` DISABLE KEYS */;
-INSERT INTO `tbl_publicacao` VALUES (5,'qwe','qwe',123.00,99.99,12.00,123,3123,'0000-00-00 00:00:00','',0.00,NULL,NULL,NULL,NULL,0,1,NULL,23,NULL,176),(6,'qwe','qwe',123.00,99.99,12.00,123,3123,'2017-04-11 00:05:15','',0.00,NULL,NULL,NULL,NULL,0,1,NULL,23,NULL,176),(7,'qwe','qwe',123.00,99.99,12.00,123,3123,'2017-04-11 00:05:50','',0.00,NULL,NULL,NULL,NULL,0,1,NULL,23,NULL,176),(8,'qwe','qwe',2.00,3.00,5.00,1,4,'2017-04-11 00:06:36','post\\_8\\_imagem\\_principal',0.00,'post\\_8\\_imagem\\_principal','post\\_8\\_imagem\\_principal','post\\_8\\_imagem\\_principal','post\\_8\\_imagem\\_principal',0,1,NULL,23,NULL,176),(9,'qwe','qwe',2.00,3.00,5.00,1,4,'2017-04-11 00:09:24','post\\_9\\_imagem\\_principal',0.00,'post\\_9\\_imagem\\_principal','post\\_9\\_imagem\\_principal','post\\_9\\_imagem\\_principal','post\\_9\\_imagem\\_principal',0,1,NULL,23,NULL,176),(10,'qwe','qwe',2.00,3.00,5.00,1,4,'2017-04-11 00:10:01','post\\_10\\_imagem\\_principaljpg',0.00,'post\\_10\\_imagem\\_principaljpg','post\\_10\\_imagem\\_principaljpg','post\\_10\\_imagem\\_principaljpg','post\\_10\\_imagem\\_principaljpg',0,1,NULL,23,NULL,176),(11,'qwe','qwe',2.00,3.00,5.00,1,4,'2017-04-11 00:10:20','post\\_11\\_imagem\\_principal.jpg',0.00,'post\\_11\\_imagem\\_principal.jpg','post\\_11\\_imagem\\_principal.jpg','post\\_11\\_imagem\\_principal.jpg','post\\_11\\_imagem\\_principal.jpg',0,1,NULL,23,NULL,176),(12,'qwe','qwe',2.00,3.00,5.00,1,4,'2017-04-11 00:11:20','post\\_12\\_imagem\\_principal.jpg',0.00,'post\\_12\\_imagem\\_a.jpg','post\\_12\\_imagem\\_b.jpg','post\\_12\\_imagem\\_c.jpg','post\\_12\\_imagem\\_d.jpg',0,1,NULL,23,NULL,176),(32,'Teste','qweqwe',123.00,12.00,12.00,123,123,'2017-04-17 00:00:00','post_32_imagem_principal.jpg',123.00,'post_32_imagem_a.jpg','post_32_imagem_b.jpg','post_32_imagem_c.jpg','post_32_imagem_d.jpg',1,1,7,24,NULL,180),(33,'qweqwe','qwe',123.00,12.00,12.00,123,123,'2017-04-17 00:00:00',NULL,123.00,NULL,NULL,NULL,NULL,1,1,7,24,NULL,179),(34,'teste','qwe',123.00,12.00,12.00,123,123,'2017-04-17 00:00:00','post_34_imagem_principal.jpg',123.00,'post_34_imagem_a.jpg','post_34_imagem_b.jpg','post_34_imagem_c.jpg','post_34_imagem_d.jpg',1,1,7,24,NULL,180),(35,'qweqweqweqw','qweqwe',123.00,12.00,12.00,123,123,'2017-04-17 00:00:00','post_35_imagem_principal.jpg',123.00,'post_35_imagem_a.jpg','post_35_imagem_b.jpg','post_35_imagem_c.jpg','post_35_imagem_d.jpg',0,1,7,24,NULL,180);
 /*!40000 ALTER TABLE `tbl_publicacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1308,7 +1358,7 @@ CREATE TABLE `tbl_sobreempresa` (
 
 LOCK TABLES `tbl_sobreempresa` WRITE;
 /*!40000 ALTER TABLE `tbl_sobreempresa` DISABLE KEYS */;
-INSERT INTO `tbl_sobreempresa` VALUES (1,'Sobre a Empresa','O Projeto City Share sÃ³ foi possÃ­vel por conta da parceria entre duas empresas, que trabalharam em conjunto para trazer essa soluÃ§Ã£o atÃ© vocÃª! ConheÃ§a aqui um pouco sobre ambas as empresas envolvidas:','perfil git.PNG','City Share','A empresa â€œCity Shareâ€ Ã© uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o territÃ³rio nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar trÃªs, que sÃ£o eles: BicicletÃ¡rios,  Miniparques em vagas de rua e EspaÃ§os de convivÃªncia, gastronomia e arte. Com 5 anos de vida, a City Share tem ganhado espaÃ§o no mercado com seus projetos inovadores e parceirias duradouras. Sua trajetÃ³ria conta com os mais diversos projetos desenvolvidos para melhorias em municÃ­pios, todos muito bem implantados, e isso trouxe a confianÃ§a dos clientes atÃ© a City Share, que a cada dia conquista mais espaÃ§o no ramo.','logo\\_eita\\_1.jpg','E.I.T.A.','OriginÃ¡rio da Nova ZelÃ¢ndia, O grupo E.I.T.A. foi fundado por trÃªs pessoas que compartilhavam do mesmo ideal, desenvolver soluÃ§Ãµes para problemas.\r\n                            A empresa comeÃ§ou como uma simples agÃªncia de soluÃ§Ãµes e hoje Ã© uma das lÃ­deres de mercado de desenvolvimento de softwares. Atuando hÃ¡ mais de 10 anos no mercado, a E.I.T.A. soluÃ§Ãµes Ã© conhecida pela fidelizaÃ§Ã£o dos seus clientes destacando-se assim das demais empresas do ramo. Em seus 11 anos de vida, a E.I.T.A. tem expandido cada vez mais seu negÃ³cio, tendo filiais espalhadas pela Europa e AmÃ©ricas. Sua filial no Brasil, jÃ¡ estÃ¡ hÃ¡ 3 anos atuando no mercado. A equipe da E.I.T.A. jÃ¡ conta com mais de 1000 funcionÃ¡rios por filial onde pelo menos 300 deles atuam na Ã¡rea de TI, O foco atual da empresa.','O projeto City Share traz tambÃ©m benefÃ­cios para quem o utiliza, sendo alguns deles:\r\n\r\n- RemuneraÃ§Ã£o pelo veÃ­culo alugado;\r\n\r\n- O Sistema dinÃ¢mico permite que o veÃ­culo seja alugado em questÃ£o de minutos;\r\n\r\n- Pague somente pelo uso e nÃ£o pela propriedade do carro.');
+INSERT INTO `tbl_sobreempresa` VALUES (1,'Sobre a Empresa','O Projeto City Share só foi possível por conta da parceria entre duas empresas, que trabalharam em conjunto para trazer essa solução até você! Conheça aqui um pouco sobre ambas as empresas envolvidas:','sobre\\_empresa\\_img\\_A.jpg','City Share','A empresa City Share é uma empresa de iniciativa privada que atua em parceria com prefeituras em todo o território nacional com o objetivo de auxiliar as prefeituras em projetos de mobilidade e urbanismo. Dentre os projetos que a empresa atuou podemos citar três, que são eles: Bicicletários,  Miniparques em vagas de rua e Espaços de convivência, gastronomia e arte. Com 5 anos de vida, a City Share tem ganhado espaço no mercado com seus projetos inovadores e parceirias duradouras. Sua trajetória conta com os mais diversos projetos desenvolvidos para melhorias em municípios, todos muito bem implantados, e isso trouxe a confiança dos clientes até a City Share, que a cada dia conquista mais espaço no ramo.','sobre\\_empresa\\_img\\_B.png','E.I.T.A.','Originário da Nova Zelândia, O grupo E.I.T.A. foi fundado por três pessoas que compartilhavam do mesmo ideal, desenvolver soluções para problemas. A empresa começou como uma simples agência de soluções e hoje é uma das líderes de mercado de desenvolvimento de softwares. Atuando há mais de 10 anos no mercado, a E.I.T.A. soluções é conhecida pela fidelização dos seus clientes destacando-se assim das demais empresas do ramo. Em seus 11 anos de vida, a E.I.T.A. tem expandido cada vez mais seu negócio, tendo filiais espalhadas pela Europa e Américas. Sua filial no Brasil, já está há 3 anos atuando no mercado. A equipe da E.I.T.A. já conta com mais de 1000 funcionários por filial onde pelo menos 300 deles atuam na área de TI, O foco atual da empresa.','O Projeto City Share só foi possível por conta da parceria entre duas empresas, que trabalharam em conjunto para trazer essa solução até você! Conheça aqui um pouco sobre ambas as empresas envolvidas');
 /*!40000 ALTER TABLE `tbl_sobreempresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1339,7 +1389,7 @@ CREATE TABLE `tbl_sobreprojeto` (
 
 LOCK TABLES `tbl_sobreprojeto` WRITE;
 /*!40000 ALTER TABLE `tbl_sobreprojeto` DISABLE KEYS */;
-INSERT INTO `tbl_sobreprojeto` VALUES (1,'Sobre o projeto City Share','Com uma interface simples e intuitiva é fácil cadastrar seu veículo em nosso sistema e disponibilizá-lo para aluguel, com algumas poucas informações você poderá tanto alugar quanto disponibilizar um veículo de sua preferência. Nosso sistema busca reunir proprietários e usuários, e preza pelo bom relacionamento entre os mesmos, e para isso implantamos um sistema de reputação para que o usuário saiba com quem está fazendo negócio, facilitando a transparência na hora da negociação. E com o intuito de facilitar ainda mais a experiência para nossos usuários comuns, foi desenvolvido um aplicativo para smartphones onde você poderá gerenciar todas as suas atividades como faz no desktop, porém diretamente do seu celular!','','','A cada dia que passa, mais pessoas realizam o sonho de comprar um carro ou uma moto, alguns até mesmo dois. Mas não é sempre que tais veículos são utilizados, muitas das vezes eles ficam estacionados, fora de uso. Por outro lado exitem também aquelas pessoas que não tem condições de comprar efetivamente um veículo e geralmente se utilizam de transporte público para se locomover. O projeto City Share nasceu da necessidade de tirar carros e bicicletas que estão obsoletas das garagens e colocá-los em circulação, ajudando pessoas com a necessidade de um transporte a conseguir um de forma prática e rápida. Pensando nisso, a City Share decidiu implantar o sistema de mesmo nome que permite que você alugue ou empreste um veículo para outra pessoa, melhorando assim o fluxo de veí­culos dentro do município que adotou o sistema.','O projeto já foi adotado em mais de 10 municípios e tem ganhado popularidade entre os usuários comuns, muitos deles tem sua vida facilitada pelo sistema City Share e seu uso tem sido cada vez mais frequente, visto que a praticidade que o sistema proporciona é grande. O projeto City Share também tem um papel importante na ecologia, visto que ele incentiva os usuários ao uso de veículos mais econômicos por um período de tempo menor do que de costume, diminuindo a frequência de agentes poluentes ambientais, ou até mesmo anulando, como no caso das bicicletas. Recentemente temos cultivado parceria com outras empresas de aluguéis de veí­culos, que utilizam o sistema da City Share para encontrar e fidelizar novos clientes, tendo em cada municí­pio uma agência onde poderá ser feito o cadastro diretamente e você já poderá sair com seu carro alugado.','O City Share é um projeto da empresa de mesmo nome que consiste em um sistema de empréstimo de veí­culos implantado em municí­pios onde o usuário (físico ou jurí­dico) poderá disponibilizar sua bicicleta, moto ou carro o qual não utiliza ou tenha sobrando para aluguel. O sistema é voltado tanto para usuários que desejam alugar quanto disponibilizar para aluguel. Nele você poderá encontrar o carro perfeito para passeios ou até mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa! Tem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel! Bicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!\r\nCadastre-se agora e comece a usar o nosso sistema!','perfil git.PNG');
+INSERT INTO `tbl_sobreprojeto` VALUES (1,'Sobre o projeto City Share','Com uma interface simples e intuitiva é fácil cadastrar seu veículo em nosso sistema e disponibilizá-lo para aluguel, com algumas poucas informações você poderá tanto alugar quanto disponibilizar um veículo de sua preferência. Nosso sistema busca reunir proprietários e usuários, e preza pelo bom relacionamento entre os mesmos, e para isso implantamos um sistema de reputação para que o usuário saiba com quem está fazendo negócio, facilitando a transparência na hora da negociação. E com o intuito de facilitar ainda mais a experiência para nossos usuários comuns, foi desenvolvido um aplicativo para smartphones onde você poderá gerenciar todas as suas atividades como faz no desktop, porém diretamente do seu celular!','imagemA.jpg','imagemB.jpg','A cada dia que passa, mais pessoas realizam o sonho de comprar um carro ou uma moto, alguns até mesmo dois. Mas não é sempre que tais veículos são utilizados, muitas das vezes eles ficam estacionados, fora de uso. Por outro lado exitem também aquelas pessoas que não tem condições de comprar efetivamente um veículo e geralmente se utilizam de transporte público para se locomover. O projeto City Share nasceu da necessidade de tirar carros e bicicletas que estão obsoletas das garagens e colocá-los em circulação, ajudando pessoas com a necessidade de um transporte a conseguir um de forma prática e rápida.<br> Pensando nisso, a City Share decidiu implantar o sistema de mesmo nome que permite que você alugue ou empreste um veículo para outra pessoa, melhorando assim o fluxo de veículos dentro do município que adotou o sistema.','O projeto já foi adotado em mais de 10 municípios e tem ganhado popularidade entre os usuarios comuns, muitos deles tem sua vida facilitada pelo sistema City Share e seu uso tem sido cada vez mais frequente, visto que a praticidade que o sistema proporciona é grande. O projeto City Share também tem um papel importante na ecologia, visto que ele incentiva os usuários ao uso de veículos mais econômicos por um período de tempo menor do que de costume, diminuindo a frequência de agentes poluentes ambientais, ou até mesmo anulando, como no caso das bicicletas. Recentemente temos cultivado parceria com outras empresas de aluguéis de veículos, que utilizam o sistema da City Share para encontrar e fidelizar novos clientes, tendo em cada município uma agência onde poderá ser feito o cadastro diretamente e você já poderá sair com seu carro alugado.','O City Share é um projeto da empresa de mesmo nome que consiste em um sistema de empréstimo de veículos implantado em municípios onde o usuário (físico ou jurídico) poderá disponibilizar sua bicicleta, moto ou carro o qual não utiliza ou tenha sobrando para aluguel.\r\n<br>\r\nO sistema é voltado tanto para usuários que desejam alugar quanto disponibilizar para aluguel. Nele você poderá encontrar o carro perfeito para passeios ou até mesmo o carro dos seus sonhos, basta fazer uma pequena pesquisa!\r\n<br>\r\nTem algum carro parado ou obsoleto? Cadastre ele e fature um dinheiro extra com o aluguel!\r\n<br>\r\nBicicletas também são bem-vindas! Se você não usa sua bicicleta, coloque-a em nosso site, com certeza alguém fará bom uso dela, e você ainda ganha com isso!\r\n<br>\r\n<br>\r\nCadastre-se agora e comece a usar o nosso sistema!','imagemPrevia.jpg');
 /*!40000 ALTER TABLE `tbl_sobreprojeto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1352,9 +1402,10 @@ DROP TABLE IF EXISTS `tbl_statuspedido`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_statuspedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cod` int(2) DEFAULT NULL,
   `titulo` varchar(70) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1363,7 +1414,7 @@ CREATE TABLE `tbl_statuspedido` (
 
 LOCK TABLES `tbl_statuspedido` WRITE;
 /*!40000 ALTER TABLE `tbl_statuspedido` DISABLE KEYS */;
-INSERT INTO `tbl_statuspedido` VALUES (1,'Agendado'),(2,'Aguardando confirmação do local de retirada'),(3,'Aguardando confirmação de retirada'),(4,'Aguardando confirmação do local de entrega'),(5,'Aguardando confirmação de retirada'),(6,'Aguardando definição de pendências'),(7,'Aguardando confirmação de pendências'),(8,'Aguardando pagamento de pendências'),(9,'Concluido');
+INSERT INTO `tbl_statuspedido` VALUES (1,1,'Agendado'),(2,2,'Aguardando confirmação do local de retirada'),(3,3,'Aguardando confirmação de retirada'),(4,4,'Aguardando confirmação do local de entrega'),(5,5,'Aguardando confirmação de entrega'),(6,6,'Aguardando definição de pendências'),(7,7,'Aguardando confirmação de pendências'),(8,8,'Aguardando pagamento de pendências'),(9,9,'Concluido'),(10,10,'Rejeitado'),(11,11,'Pendências recusadas'),(12,12,'Pendências aceitas'),(13,13,'Pendências pagas - Dinheiro'),(14,14,'Pendências pagas - Cartão de Crédito'),(16,16,'Cancelado');
 /*!40000 ALTER TABLE `tbl_statuspedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1376,9 +1427,10 @@ DROP TABLE IF EXISTS `tbl_statuspublicacao`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_statuspublicacao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cod` int(2) DEFAULT NULL,
   `titulo` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1387,7 +1439,7 @@ CREATE TABLE `tbl_statuspublicacao` (
 
 LOCK TABLES `tbl_statuspublicacao` WRITE;
 /*!40000 ALTER TABLE `tbl_statuspublicacao` DISABLE KEYS */;
-INSERT INTO `tbl_statuspublicacao` VALUES (1,'Disponível'),(2,'Indisponível');
+INSERT INTO `tbl_statuspublicacao` VALUES (1,1,'Disponível'),(2,2,'Indisponível'),(3,3,'Pendente');
 /*!40000 ALTER TABLE `tbl_statuspublicacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1400,9 +1452,9 @@ DROP TABLE IF EXISTS `tbl_tela_cs`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_tela_cs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `titulo` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1456,7 +1508,7 @@ CREATE TABLE `tbl_tipo_cartao_credito` (
   `qtdDigitosSeguranca` int(2) DEFAULT NULL,
   `visivel` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1465,7 +1517,7 @@ CREATE TABLE `tbl_tipo_cartao_credito` (
 
 LOCK TABLES `tbl_tipo_cartao_credito` WRITE;
 /*!40000 ALTER TABLE `tbl_tipo_cartao_credito` DISABLE KEYS */;
-INSERT INTO `tbl_tipo_cartao_credito` VALUES (1,'blablaasdasd',3,NULL),(2,'Faster Card',6,1),(3,'Bisaa',4,0),(4,'Inferno',3,0),(5,'Bolt',3,0),(6,'asd',1234,0);
+INSERT INTO `tbl_tipo_cartao_credito` VALUES (1,'blablaasdasd',3,NULL),(2,'Cartão A',3,1),(3,'Bisaa',4,0),(4,'Inferno',3,0),(5,'Bolt',3,0),(6,'asd',1234,0),(7,'Cartão B',4,1),(8,'Faster Card',4,1);
 /*!40000 ALTER TABLE `tbl_tipo_cartao_credito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1513,7 +1565,7 @@ CREATE TABLE `tbl_tipocombustivel` (
 
 LOCK TABLES `tbl_tipocombustivel` WRITE;
 /*!40000 ALTER TABLE `tbl_tipocombustivel` DISABLE KEYS */;
-INSERT INTO `tbl_tipocombustivel` VALUES (1,'Ãlcool'),(2,'Gasolina');
+INSERT INTO `tbl_tipocombustivel` VALUES (1,'Álcool'),(2,'Gasolina');
 /*!40000 ALTER TABLE `tbl_tipocombustivel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1575,8 +1627,9 @@ DROP TABLE IF EXISTS `tbl_tipoveiculo`;
 CREATE TABLE `tbl_tipoveiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(30) NOT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1585,7 +1638,7 @@ CREATE TABLE `tbl_tipoveiculo` (
 
 LOCK TABLES `tbl_tipoveiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_tipoveiculo` DISABLE KEYS */;
-INSERT INTO `tbl_tipoveiculo` VALUES (1,'Tipo A'),(25,'Tipo B'),(26,'Tipo C'),(27,'Tipo D'),(29,'Tipo E'),(30,'Tipo F');
+INSERT INTO `tbl_tipoveiculo` VALUES (1,'Carro',1),(25,'Moto',1),(26,'Bicicleta',1),(27,'teste',0);
 /*!40000 ALTER TABLE `tbl_tipoveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1609,7 +1662,7 @@ CREATE TABLE `tbl_transmissaoveiculo` (
 
 LOCK TABLES `tbl_transmissaoveiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_transmissaoveiculo` DISABLE KEYS */;
-INSERT INTO `tbl_transmissaoveiculo` VALUES (1,'AutomÃ¡tico'),(2,'Manual');
+INSERT INTO `tbl_transmissaoveiculo` VALUES (1,'Automático'),(2,'Manual');
 /*!40000 ALTER TABLE `tbl_transmissaoveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1628,10 +1681,11 @@ CREATE TABLE `tbl_usuario` (
   `cpf` varchar(14) DEFAULT NULL,
   `telefone` varchar(25) DEFAULT NULL,
   `celular` varchar(25) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `emailContato` varchar(100) DEFAULT NULL,
   `rg` varchar(15) DEFAULT NULL,
   `dataNascimento` date NOT NULL,
   `saldo` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `email` varchar(100) DEFAULT NULL,
   `senha` varchar(70) DEFAULT NULL,
   `autenticacaoDupla` tinyint(1) DEFAULT NULL,
   `fotoPerfil` varchar(50) DEFAULT NULL,
@@ -1648,7 +1702,7 @@ CREATE TABLE `tbl_usuario` (
   CONSTRAINT `usuario_licencaDesktop` FOREIGN KEY (`idLicencaDesktop`) REFERENCES `tbl_licencadesktop` (`id`),
   CONSTRAINT `usuario_planoConta` FOREIGN KEY (`idPlanoConta`) REFERENCES `tbl_planoconta` (`id`),
   CONSTRAINT `usuario_tipoConta` FOREIGN KEY (`idTipoConta`) REFERENCES `tbl_tipoconta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1657,7 +1711,7 @@ CREATE TABLE `tbl_usuario` (
 
 LOCK TABLES `tbl_usuario` WRITE;
 /*!40000 ALTER TABLE `tbl_usuario` DISABLE KEYS */;
-INSERT INTO `tbl_usuario` VALUES (23,'Vagner','S','m','123','123','123','vagnervst17@gmail.com','123','1996-07-17',0.00,'$2y$10$uobfkb8hAfIXl2p/E8GBVuCgTuUhjjppkcKTTY0BaZQZ0Z5g7GuKK',NULL,'person-flat.png',1,1,1,1),(24,'Usuário','Jurídico','m',NULL,'11 9999-9999','11 9999-9999','juridico@email.com',NULL,'1980-01-15',0.00,'$2y$10$EXuW8Ou0S/vzPcWRtxGcq.8Y7GRS2xOcAg6paiUch3ZSPg.APVaw2',NULL,NULL,1,2,1,1);
+INSERT INTO `tbl_usuario` VALUES (23,'Vagner','Santana','m','123','11 9999-9999','11 9 9999-9999',NULL,'123','1996-07-17',0.00,'usuario@email.com','$2y$10$uobfkb8hAfIXl2p/E8GBVuCgTuUhjjppkcKTTY0BaZQZ0Z5g7GuKK',NULL,'usr\\_23.jpg',1,1,1,1),(24,'Usuário','Jurídico','m',NULL,'11 9999-9999','11 9999-9999',NULL,NULL,'1980-01-15',0.00,'juridico@email.com','$2y$10$EXuW8Ou0S/vzPcWRtxGcq.8Y7GRS2xOcAg6paiUch3ZSPg.APVaw2',NULL,NULL,1,2,1,1),(25,'victor','azevedo','m','48042813805','119544212123654','111222146321',NULL,'55925182454','1999-05-21',0.00,'victor@email.com','$2y$10$ytjZR9WKRjJNuYVT0bSbQ.tj59w0ywb69s4UPEgWJ8NtSYvgJANYO',NULL,NULL,1,1,1,1),(26,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$pSe7uf004BkC5PzL69Rh5eL9MRWaxO8vfNHFS5Q8ml9TKIyiiOvpm',NULL,NULL,1,1,1,1),(27,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$o95gdOWKL.6rOdzteGn4XuMcdL7EA.FTRrIoY4b6NHg8Lct.qJgBe',NULL,NULL,1,1,1,1),(28,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$a8KKjo/Y.TQNE5yhnGxkHutYbeNOoXUhsrwSZs3TRpvzBk4Y7v932',NULL,NULL,1,1,1,1),(29,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$TZUF8mLPH60mItel6fRgBuirv9FN/5pafGeHaqxof9kS81zyhgqda',NULL,NULL,1,1,1,1),(30,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$KEnoDAEWz40/5qLCGIkkE.fMH9dBi6rxacgX8w6zl1cKF3DOjYGBq',NULL,NULL,1,1,1,1),(31,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$JK5on5ALsdLn4eZlGrNAuOcc2TSsBbTC7bPd8e8qTRznHw61ahU4.',NULL,NULL,1,1,1,1),(32,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$O.koSxyTjWxcluFR.V33F.KgSMrs2LgdnEe6EEqvmcu.N/RoPhLoK',NULL,NULL,1,1,1,1),(33,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$CyX1tOCdBqIHPqmTgSd0COsBT0o6An40Q6gclsbdxL8C.pqlicege',NULL,NULL,1,1,1,1),(34,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$bx4QyBJsidR5hEMRicp9.OjMLyIvDxTx6Rwbt7WyOy57EndECZAFa',NULL,NULL,1,1,1,1),(35,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$BJtbjLSGf5xayrD0HQ8Ra.0UfrYq47vQdZwv/6KU9GSRw26LqMB7e',NULL,NULL,1,1,1,1),(36,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$NUuf8WDmRFhIRUiowfeKt.RlGVEltWKtZqK4Q7zYQ80y2SuBMENqq',NULL,'icon.png',1,1,1,1);
 /*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1679,7 +1733,7 @@ CREATE TABLE `tbl_usuario_cs` (
   PRIMARY KEY (`id`),
   KEY `usuario_nivelAcessoCS` (`idNivelAcesso`),
   CONSTRAINT `usuario_nivelAcessoCS` FOREIGN KEY (`idNivelAcesso`) REFERENCES `tbl_nivelacesso_cs` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1688,7 +1742,7 @@ CREATE TABLE `tbl_usuario_cs` (
 
 LOCK TABLES `tbl_usuario_cs` WRITE;
 /*!40000 ALTER TABLE `tbl_usuario_cs` DISABLE KEYS */;
-INSERT INTO `tbl_usuario_cs` VALUES (2,'Vagner','Santana','admin','$2y$10$viDTxRNuSKm3X/rMa9oytOKJ3aMCCWUdzv.IqJzvIKfWN7OkGhq4u',1,NULL),(3,'Teste','T','vgr','$2y$10$XZxsl3O84HQtkf1Yeg3l4urKk4n0Ddvp.727oqSLnaLfUNCnQwWAm',3,NULL);
+INSERT INTO `tbl_usuario_cs` VALUES (2,'Vagner','Santana','admin','$2y$10$viDTxRNuSKm3X/rMa9oytOKJ3aMCCWUdzv.IqJzvIKfWN7OkGhq4u',1,NULL),(3,'Teste','Teste','vgr','$2y$10$XZxsl3O84HQtkf1Yeg3l4urKk4n0Ddvp.727oqSLnaLfUNCnQwWAm',3,NULL),(5,'123123','123123','123123','$2y$10$PwqV8/D8JK.xx76gRpK9Denwn5jjasp4qWM837x2lENlZT1CNaw/u',1,NULL);
 /*!40000 ALTER TABLE `tbl_usuario_cs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1702,15 +1756,17 @@ DROP TABLE IF EXISTS `tbl_veiculo`;
 CREATE TABLE `tbl_veiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `tipoMotor` varchar(5) NOT NULL,
-  `ano` int(4) NOT NULL,
-  `qtdPortas` int(1) NOT NULL,
+  `tipoMotor` varchar(5) DEFAULT NULL,
+  `ano` int(4) DEFAULT NULL,
+  `qtdPortas` int(1) DEFAULT NULL,
   `codigo` varchar(10) DEFAULT NULL,
+  `tanque` decimal(5,2) DEFAULT NULL,
   `idCategoriaVeiculo` int(11) NOT NULL,
   `idFabricante` int(11) NOT NULL,
-  `idTipoCombustivel` int(11) NOT NULL,
+  `idTipoCombustivel` int(11) DEFAULT NULL,
   `idTipoVeiculo` int(11) NOT NULL,
-  `idTransmissao` int(11) NOT NULL,
+  `idTransmissao` int(11) DEFAULT NULL,
+  `visivel` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `veiculo_categoriaVeiculo` (`idCategoriaVeiculo`),
   KEY `veiculo_fabricanteVeiculo` (`idFabricante`),
@@ -1722,7 +1778,7 @@ CREATE TABLE `tbl_veiculo` (
   CONSTRAINT `veiculo_tipoCombustivel` FOREIGN KEY (`idTipoCombustivel`) REFERENCES `tbl_tipocombustivel` (`id`),
   CONSTRAINT `veiculo_tipoVeiculo` FOREIGN KEY (`idTipoVeiculo`) REFERENCES `tbl_tipoveiculo` (`id`),
   CONSTRAINT `veiculo_transmissaoVeiculo` FOREIGN KEY (`idTransmissao`) REFERENCES `tbl_transmissaoveiculo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=190 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1731,7 +1787,7 @@ CREATE TABLE `tbl_veiculo` (
 
 LOCK TABLES `tbl_veiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_veiculo` DISABLE KEYS */;
-INSERT INTO `tbl_veiculo` VALUES (176,'Mustang','2.0',1997,4,'1',2,3,1,1,1),(179,'Mustang','2.0',2017,2,'1',2,3,2,1,2),(180,'Camaro','2.0',2017,2,'2',2,3,2,1,1);
+INSERT INTO `tbl_veiculo` VALUES (188,'Bicicleta Caloy','',2013,0,'42',0.00,14,1,NULL,26,NULL,1),(189,'Ducati',NULL,2017,NULL,'43',40.00,2,4,2,25,2,0);
 /*!40000 ALTER TABLE `tbl_veiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1784,7 +1840,7 @@ CREATE TABLE `tipoveiculo_tipocombustivel` (
 
 LOCK TABLES `tipoveiculo_tipocombustivel` WRITE;
 /*!40000 ALTER TABLE `tipoveiculo_tipocombustivel` DISABLE KEYS */;
-INSERT INTO `tipoveiculo_tipocombustivel` VALUES (1,1),(2,1);
+INSERT INTO `tipoveiculo_tipocombustivel` VALUES (1,1),(2,1),(1,25),(2,25),(1,27);
 /*!40000 ALTER TABLE `tipoveiculo_tipocombustivel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1811,7 +1867,7 @@ CREATE TABLE `tipoveiculo_transmissaoveiculo` (
 
 LOCK TABLES `tipoveiculo_transmissaoveiculo` WRITE;
 /*!40000 ALTER TABLE `tipoveiculo_transmissaoveiculo` DISABLE KEYS */;
-INSERT INTO `tipoveiculo_transmissaoveiculo` VALUES (1,1);
+INSERT INTO `tipoveiculo_transmissaoveiculo` VALUES (1,1),(1,2),(25,1),(25,2);
 /*!40000 ALTER TABLE `tipoveiculo_transmissaoveiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1824,4 +1880,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-17  6:13:04
+-- Dump completed on 2017-05-14 21:39:07

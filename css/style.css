@@ -1,7 +1,6 @@
 body::after {
     content: "mobile";
-    font-size: 0;
-    font-family: 'roboto';
+    font-size: 0;    
 }
 
 @media (min-width: 740px) {
@@ -47,6 +46,10 @@ a {
 
 #container {
     
+}
+
+body {
+    font-family: 'roboto';
 }
 
 /*------------------------------------------------------------------------- GERAL*/
@@ -153,7 +156,7 @@ header #box-cabecalho #menu-navegacao ul li a {
 }
 
 header #box-cabecalho #menu-navegacao ul li a:hover {
-    background-color: #557bc9;
+    background-color: rgba(85, 123, 201, 0.2);
     color: white;
 }
 
@@ -194,7 +197,7 @@ header #box-cabecalho #box-conta #box-login-cadastro .botao-conta {
 
 header #box-cabecalho #box-conta #box-login-cadastro .botao-conta:hover,
 header #box-cabecalho #box-conta #box-login-cadastro .botao-conta:active {
-    background-color: #a1aec9;    
+    background-color: rgba(161, 174, 201, 0.5);    
 }
 
 header #box-cabecalho #box-conta #box-login-cadastro #botao-cadastro {
@@ -372,6 +375,7 @@ header #box-botao-filtragem {
 
 #box-mobile-menu-ativo #mobile-menu li a {
     display: block;
+    width: 160px;
     background-color: #ebebeb;
     border-bottom: 2px solid #868686;
     color: black;
@@ -890,7 +894,7 @@ header #box-botao-filtragem {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #ebebeb;
+    background-color: #fdfdfc;
     width: 100%;
     height: 100%;
     padding-top: 200px;
@@ -1012,19 +1016,28 @@ header #box-botao-filtragem {
     }
 }
 
-#pag-home #banner-cityshare {
-    background-color: black;
-    background-image: none;    
+#pag-home #banner-cityshare {    
+    background-image: url(../img/banner_cityshare.jpg);
+    background-position: center;    
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
     overflow: hidden;
     position: relative;
 }
 
-#pag-home #banner-cityshare video {    
-    display: block;        
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+#pag-home #banner-cityshare video {
+    display: none;
+}
+
+@media (min-width: 740px) {    
+    #pag-home #banner-cityshare video {    
+        display: block;        
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 #pag-home #banner1 {
@@ -3323,33 +3336,34 @@ header #box-botao-filtragem {
 }
 
 #pag-cadastro .imagem-divisao-conteudo {
-    margin-bottom: 1px;
+    background-image: url(../img/banner-registro.jpg);
 }
 
 #pag-cadastro #box-tipo-conta {    
-    background-color: #a1aec9;
-    padding-top: 10px;
-    border-bottom: 2px solid #202020;
+    background-color: #dedede;
+    padding-top: 10px;    
     overflow: hidden;
 }
 
 #pag-cadastro #box-tipo-conta #container-botoes-conta {
-    width: 292px;
+    width: 253px;
     margin: 0 auto;
+    padding-bottom: 5px;
 }
 
 @media (min-width: 740px) {
     #pag-cadastro #box-tipo-conta #container-botoes-conta {
         width: 215px;
+        padding-bottom: 0px;
     }
 }
 
 #pag-cadastro #box-tipo-conta #container-botoes-conta .botao-conta {    
     display: inline-block;
-    width: 140px;
+    width: 120px;
     border-radius: 2px 2px 0px 0px;
-    font-size: 25px;
-    padding: 20px 0px;
+    font-size: 20px;
+    padding: 15px 0px;
     border-bottom: 0px;
     border-left: 4px solid #141619;    
 }
@@ -3367,14 +3381,16 @@ header #box-botao-filtragem {
     } 
 }
 
-#pag-cadastro #box-tipo-conta .indicador-modo {
-    background-color: #202020;    
-    width: 50%;
-    height: 5px;
-    margin-top: 3px;
-    position: relative;
-    transition: all .2s;
-    left: 0;
+@media (min-width: 740px) {
+    #pag-cadastro #box-tipo-conta .indicador-modo {
+        background-color: #202020;    
+        width: 50%;
+        height: 5px;
+        margin-top: 3px;
+        position: relative;
+        transition: all .2s;
+        left: 0;
+    }
 }
 
 #pag-cadastro #box-tipo-conta #indicador-modo-fisico {
@@ -3603,7 +3619,7 @@ header #box-botao-filtragem {
 
 #pag-cadastro .box-conteudo .box-cadastro .horizontal-input-container .button-link {
     display: inline-block;
-    width: 130px;
+    margin-bottom: 5px;
 }
 
 @media (min-width: 740px) {
@@ -3742,6 +3758,7 @@ header #box-botao-filtragem {
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario {
     box-shadow: 1px 1px 1px #eaeaea;
+    border-radius: 5px;
 }
 
 @media (min-width: 740px) {
@@ -3941,8 +3958,7 @@ header #box-botao-filtragem {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
         border: 0px;
         width: 99.6%;
-        height: 191px;
-        border-right: 1px solid #b9b9b9;
+        height: 191px;        
         float: left;
     }
 }
@@ -3954,12 +3970,13 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-    background-color: #a1aec9;
+    background-color: #dedede;
     padding: 10px 0px;
     text-align: center;
     border: 1px solid #9f9f9f;
     margin-top: 5px;
     color: white;
+    border-radius: 5px;
 }
 
 #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao .preset-botao {
@@ -3970,7 +3987,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-        width: 374px;
+        width: 378px;
     }
 }
 
@@ -3982,7 +3999,13 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-        width: 99.6%;
+        width: 648px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
+        width: 898px;
     }
 }
 
@@ -4107,6 +4130,107 @@ header #box-botao-filtragem {
     cursor: pointer;
 }
 
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao {
+    background-color: #efefef;
+    padding: 5px;
+    height: 150px;
+    border: 1px solid #a7a7a7;
+    margin: 5px 0px;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+    width: 100%;
+    height: 40px;
+    display: inline-block;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 315px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 415px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 630px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
+        width: 888px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+    width: 85px;
+    margin: 5px;
+    height: 20px;
+    float: left;
+    font-size: 20px;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 95px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 115px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 195px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes {
+        width: 285px;
+    }
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+    height: 70px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #cecece;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 345px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 420px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 620px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
+        width: 865px;
+    }
+}
+
 /*------------- PERFIL USUARIO*/
 
 #pag-publicar .box-conteudo #container-imagens-veiculo {
@@ -4166,39 +4290,129 @@ header #box-botao-filtragem {
 
 #pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem {
     display: inline-block;
-    width: 120px;
+    width: 112px;
 }
 
 #pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .imagem {
     display: block;
     width: 110px;
-    height: 110px;
-    background-color: #141619;
-    background-image: url(../img/icones/icone-imagem.png);
-    background-size: cover;
+    height: 110px;        
+    background-image: url(../img/icones/camera.png);
+    background-size: 70px;
+    background-position: center;
     background-repeat: no-repeat;
-    border: 4px solid #141619;
-    border-radius: 10px 10px 0px 0px;
-    cursor: pointer;    
+    opacity: 0.3;
+    border: 1px solid #455679;
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: opacity .2s;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens #imagem-principal {
+    display: inline-block;
+    width: 112px;
+    padding: 5px;
+    border: 2px solid #a1aec9;
+    border-radius: 5px;
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens #imagem-principal #label {
+    
+}
+
+#pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .imagem:hover {
+    opacity: 0.5;
 }
 
 #pag-publicar .box-conteudo #container-imagens-veiculo #imagens #wrapper-imagens .box-botao-imagem .label {
-    display: block;
+    display: none;
     width: 118px;
     background-color: #557bc9;
     color: white;    
     padding: 5px 0px;
     font-weight: bold;
-    border-radius: 0px 0px 5px 5px; 
-    border-top: 3px solid #202020;
+    border-radius: 0px 0px 5px 5px;
 }
 
 #pag-publicar form {
     text-align: center;
 }
 
+#pag-publicar #wrapper-info-veiculo {
+    width: 300px;    
+    margin: 5px auto;        
+}
+
+@media (min-width: 420px) {
+    #pag-publicar #wrapper-info-veiculo {
+        width: 380px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-publicar #wrapper-info-veiculo {
+        width: 450px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-publicar #wrapper-info-veiculo {
+        width: 650px;
+        height: 500px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-publicar #wrapper-info-veiculo {
+        width: 900px;
+        height: 500px;
+    }
+}
+
+#pag-publicar #wrapper-info-veiculo .box-info-veiculo,
+#pag-publicar #wrapper-info-veiculo .box-info-locacao {            
+    width: 300px;  
+    background-color: #f8f8f8;
+    border: 1px solid #dbdbdb;
+    box-shadow: 1px 1px 5px #d4d4d4;
+    margin-bottom: 5px;
+}
+
+@media (min-width: 420px) {
+    #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
+    #pag-publicar #wrapper-info-veiculo .box-info-locacao {            
+        width: 380px;
+    }   
+}
+
+@media (min-width: 520px) {
+    #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
+    #pag-publicar #wrapper-info-veiculo .box-info-locacao {            
+        width: 450px;
+    }   
+}
+
+@media (min-width: 740px) {
+    #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
+    #pag-publicar #wrapper-info-veiculo .box-info-locacao {                    
+        width: 310px;
+        height: 500px;
+        margin: 0px 5px;
+        float: left;        
+    }   
+}
+
+@media (min-width: 1000px) {
+    #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
+    #pag-publicar #wrapper-info-veiculo .box-info-locacao {                    
+        width: 435px;
+        margin: 0px 5px;
+        float: left;        
+    }   
+}
+
 #pag-publicar .titulo-separador {
-    background-color: #c4c4c4;
+    background-color: #f0f0f0;
     text-align: center;
     color: #626262;
     font-weight: bold;
@@ -4209,34 +4423,63 @@ header #box-botao-filtragem {
     border-bottom: 1px solid #e0e0e0;
 }
 
-#pag-publicar .box-conteudo .label-input {
+#pag-publicar #wrapper-info-veiculo .box-info-veiculo .titulo,
+#pag-publicar #wrapper-info-veiculo .box-info-locacao .titulo {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;    
+    padding: 10px 0px;
+}
+
+#pag-publicar #wrapper-info-veiculo .box-info-veiculo #box-veiculo,
+#pag-publicar #wrapper-info-veiculo .box-info-locacao #box-locacao {
+    padding: 5px;
+}
+
+#pag-publicar .label-input {
     margin-top: 10px;
     text-align: left;
 }
 
-#pag-publicar .box-conteudo .label-input .preset-input-text {
+#pag-publicar .label-input .preset-input-text {    
     width: 100%;
 }
 
-#pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
-#pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
-#pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
-    width: 200px;
+#pag-publicar #box-veiculo .label-input .preset-input-text,
+#pag-publicar #box-veiculo .label-input .preset-input-select,
+#pag-publicar #box-locacao .label-input .preset-input-text {
+    width: 290px;
+    height: 40px;
+}
+
+@media (min-width: 420px) {
+    #pag-publicar #box-veiculo .label-input .preset-input-text,
+    #pag-publicar #box-veiculo .label-input .preset-input-select,
+    #pag-publicar #box-locacao .label-input .preset-input-text {
+        width: 370px;
+    }
 }
 
 @media (min-width: 520px) {
-    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
-    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
-    #pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
-        width: 280px;
+    #pag-publicar #box-veiculo .label-input .preset-input-text,
+    #pag-publicar #box-veiculo .label-input .preset-input-select,
+    #pag-publicar #box-locacao .label-input .preset-input-text {
+        width: 440px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-publicar #box-veiculo .label-input .preset-input-text,
+    #pag-publicar #box-veiculo .label-input .preset-input-select,
+    #pag-publicar #box-locacao .label-input .preset-input-text {
+        width: 300px;
     }
 }
 
 @media (min-width: 1000px) {
-    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-text,
-    #pag-publicar .box-conteudo#box-veiculo .label-input .preset-input-select,
-    #pag-publicar .box-conteudo#box-locacao .label-input .preset-input-text {
-        width: 380px;
+    #pag-publicar #box-veiculo .label-input .preset-input-text,
+    #pag-publicar #box-veiculo .label-input .preset-input-select,
+    #pag-publicar #box-locacao .label-input .preset-input-text {
+        width: 425px;
     }
 }
 
@@ -6065,42 +6308,65 @@ header #box-botao-filtragem {
 /*------------- DETALHES PERFIL*/
 /*=========================================*/
 #pag-perfil-usuario #box-inf-financeiras {
-    height: 300px;
+    height: 250px;
     width: 320px;
-    background-color: aqua ;
     margin:  0 auto ;
+    border: solid 1px gray;
+}
+
+#pag-perfil-usuario #box-inf-financeiras .label-titulo-valor {
+    text-align: center ;
+    font-size: 19px;
+    font-weight: bold;
+    
+}
+#pag-perfil-usuario #box-inf-financeiras .label-valor {
+    text-align: center ;
+    font-size: 19px;
+    font-weight: bold;
+    color: #00cb00 ;
+    
+}
+#pag-perfil-usuario #box-inf-financeiras .btn-sacar {
+    width: 70px;
+    background-color: #202020;
+    color: #ebebeb;
+    text-align: center;    
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+    border-bottom: 4px solid #141619; 
+    padding: 5px;
+    margin: 0 auto ;
+}
+#pag-perfil-usuario #box-inf-financeiras .base-btn-sacar{
+    margin: 0 auto ;
+    width: 70px;
 }
 
 @media(min-width: 420px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 300px;
+        height: 250px;
         width: 380px;
-        background-color: aqua ;
-        margin:  0 auto ;
     }  
 }
 @media(min-width: 520px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 300px;
+        height: 250px;
         width: 440px;
-        background-color: aqua ;
-        margin:  0 auto ;
     }  
 }
 @media(min-width: 720px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 300px;
+        height: 250px;
         width: 650px;
-        background-color: aqua ;
-        margin:  0 auto ;
     }  
 }
 @media(min-width: 1000px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 300px;
+        height: 250px;
         width: 900px;
-        background-color: aqua ;
-        margin:  0 auto ;
     }  
 }
 

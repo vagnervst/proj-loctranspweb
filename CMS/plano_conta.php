@@ -22,7 +22,7 @@
                     <a href="home.php" class="link-caminho">Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="plano_conta.php" class="link-caminho"> Planos de Conta</a>
                 </div>
                 <div class="box-conteudo">
-                    <div id="box-form-categoria">
+                    <div id="box-form-plano">
                         <form class="js-modo-insert" method="post" action="#" id="form-plano-conta">
                             <div class="box-label-input">
                                 <label><span class="label">Nome do plano :</span>
@@ -51,10 +51,9 @@
                             </div>
                             <div class="box-label-input">
                                 <label><span class="label">Descrição plano:</span>
-                                    <input class="input" type="text" name="txtDuracaoMeses" />
+                                    <textarea class="input" name="txtDescricaoPlano"></textarea>
                                 </label>
                             </div>
-                            
                             <div id="box-acoes">
                                 <span class="preset-botao botao js-botao-remocao" id="botao-remover">Remover</span>
                                 <div id="box-salvar-cancelar">                                

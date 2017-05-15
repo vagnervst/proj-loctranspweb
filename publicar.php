@@ -124,9 +124,12 @@
                         <div id="container-imagens-veiculo">
                             <div id="imagens">
                                 <div id="wrapper-imagens">
-                                    <div class="box-botao-imagem">
-                                        <div class="imagem"></div>
-                                        <h1 class="label">A Definir</h1>
+                                    <div id="imagem-principal">
+                                        <p id="label">Principal</p>
+                                        <div class="box-botao-imagem">
+                                            <div class="imagem"></div>
+                                            <h1 class="label">A Definir</h1>
+                                        </div>
                                     </div>
                                     <div class="box-botao-imagem">
                                         <div class="imagem"></div>
@@ -163,71 +166,77 @@
                             <textarea class="preset-input-textarea" name="txtDescricao"></textarea>
                         </div>
                     </div>
-                    <h1 class="titulo-separador">Veículo</h1>
-                    <div class="box-conteudo" id="box-veiculo">
-                       <div class="label-input">
-                            <p class="label">Tipo</p>
-                            <select class="preset-input-select js-select-tipo-veiculo" type="select" name="slTipo">
-                                <option selected disabled>Selecione um tipo</option>
-                                <?php
-                                    $lista_tipos = new \Tabela\TipoVeiculo();
-                                    $lista_tipos = $lista_tipos->buscar();
-                                    
-                                    foreach($lista_tipos as $tipo) {
-                                ?>
-                                <option value="<?php echo $tipo->id;?>"><?php echo $tipo->titulo; ?></option>
-                                <?php
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Fabricante</p>
-                            <select class="preset-input-select js-select-fabricante" type="select" name="slFabricante">
-                                <option selected disabled>Selecione um fabricante</option>                                
-                            </select>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Modelo</p>
-                            <select class="preset-input-select js-select-veiculo" type="select" name="slModelo">
-                                <option selected disabled>Selecione um modelo</option> 
-                            </select>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Tipo de Combustível</p>
-                            <select class="preset-input-select js-select-combustivel" type="select" name="slCombustivel">
-                                <option selected disabled>Selecione um tipo de combustível</option>                                
-                            </select>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Transmissão</p>
-                            <select class="preset-input-select js-select-transmissao" type="select" name="slTransmissao">
-                                <option selected disabled>Selecione um tipo de transmissão</option>
-                            </select>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Quilometragem</p>
-                            <input class="preset-input-text" type="text" name="txtQuilometragemAtual"/>
-                        </div>
-                    </div>
-                    <h1 class="titulo-separador">Locação</h1>
-                    <div class="box-conteudo" id="box-locacao">
-                        <div class="label-input">
-                            <p class="label">Valor da Diária</p>
-                            <input class="preset-input-text" type="text" name="txtValorDiaria"/>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Valor do Combustível por Litro</p>
-                            <input class="preset-input-text" type="text" name="txtValorCombustivel"/>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Limite de Quilometragem</p>
-                            <input class="preset-input-text" type="text" name="txtLimiteQuilometragem"/>
-                        </div>
-                        <div class="label-input">
-                            <p class="label">Valor por Quilometragem Excedida</p>
-                            <input class="preset-input-text" type="text" name="txtValorQuilometragem"/>
-                        </div>
+                    <div id="wrapper-info-veiculo">
+                        <section class="box-info-veiculo">
+                            <h1 class="titulo">Veículo</h1>
+                            <div id="box-veiculo">
+                               <div class="label-input">
+                                    <p class="label">Tipo</p>
+                                    <select class="preset-input-select js-select-tipo-veiculo" type="select" name="slTipo">
+                                        <option selected disabled>Selecione um tipo</option>
+                                        <?php
+                                            $lista_tipos = new \Tabela\TipoVeiculo();
+                                            $lista_tipos = $lista_tipos->buscar("visivel = 1");
+
+                                            foreach($lista_tipos as $tipo) {
+                                        ?>
+                                        <option value="<?php echo $tipo->id;?>"><?php echo $tipo->titulo; ?></option>
+                                        <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Fabricante</p>
+                                    <select class="preset-input-select js-select-fabricante" type="select" name="slFabricante">
+                                        <option selected disabled>Selecione um fabricante</option>                                
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Modelo</p>
+                                    <select class="preset-input-select js-select-veiculo" type="select" name="slModelo">
+                                        <option selected disabled>Selecione um modelo</option> 
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Tipo de Combustível</p>
+                                    <select class="preset-input-select js-select-combustivel" type="select" name="slCombustivel">
+                                        <option selected disabled>Selecione um tipo de combustível</option>                                
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Transmissão</p>
+                                    <select class="preset-input-select js-select-transmissao" type="select" name="slTransmissao">
+                                        <option selected disabled>Selecione um tipo de transmissão</option>
+                                    </select>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Quilometragem</p>
+                                    <input class="preset-input-text" type="text" name="txtQuilometragemAtual"/>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="box-info-locacao">
+                            <h1 class="titulo">Locação</h1>
+                            <div id="box-locacao">
+                                <div class="label-input">
+                                    <p class="label">Valor da Diária</p>
+                                    <input class="preset-input-text" type="text" name="txtValorDiaria"/>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Valor do Combustível por Litro</p>
+                                    <input class="preset-input-text" type="text" name="txtValorCombustivel"/>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Limite de Quilometragem</p>
+                                    <input class="preset-input-text" type="text" name="txtLimiteQuilometragem"/>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Valor por Quilometragem Excedida</p>
+                                    <input class="preset-input-text" type="text" name="txtValorQuilometragem"/>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                     <h1 class="titulo-separador">Acessórios</h1>
                     <div class="box-conteudo">

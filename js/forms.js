@@ -1,5 +1,26 @@
 $(document).ready(function() {
     
+    function relacionar_selects(selectBase, selectAlvo, url_api, nome_campo, callback) {
+        var ajax = new Ajax();
+
+        var valor = selectBase.value;
+        var dados = new FormData();
+        dados.append(nome_campo, valor);
+
+        var jqueryAjax = ajax.transferir_dados_para_api(url_api, 'POST', dados, function(resultado) {
+            $(selectAlvo).removeAttr("disabled");
+            selectAlvo.innerHTML = resultado;
+
+            if( $(selectAlvo).children().length == 1 ) {
+                $(selectAlvo).attr("disabled", "true");
+            }
+
+            if( callback !== undefined ) callback();
+        });
+
+        return jqueryAjax;
+    }
+    
     function inicializar_form_publicacao() {
         var pagina_publicacao_veiculos = $("#pag-publicar")[0];
         
@@ -11,34 +32,12 @@ $(document).ready(function() {
             var select_transmissao = $(".js-select-transmissao")[0];            
             var box_acessorio = $(".box-acessorios")[0];
             
-            $(select_tipo_veiculo).change(function() {
-                var id_tipo_veiculo = select_tipo_veiculo.value;
-                
-                var dados_api = new FormData();
-                dados_api.append( "idTipoVeiculo", id_tipo_veiculo );
-                
-                var ajax = new Ajax();
-                ajax.transferir_dados_para_api("apis/get_fabricantes.php", "POST", dados_api, function(resultado) {
-                    select_fabricante.innerHTML = resultado;
-                                                            
-                    $(select_fabricante).trigger("change");
-                });                                
-                
-                ajax.transferir_dados_para_api("apis/get_acessorios.php", "POST", dados_api, function(resultado) {
-                    box_acessorio.innerHTML = resultado;                                                                                
-                });
+            $(select_tipo_veiculo).change(function() {                
+                relacionar_selects(this, select_fabricante, "apis/get_fabricantes.php", "idTipoVeiculo");                
             });
             
-            $(select_fabricante).change(function() {                                
-                var id_fabricante = select_fabricante.value;
-                
-                var dados_api = new FormData();
-                dados_api.append( "idFabricante", id_fabricante );
-                
-                var ajax = new Ajax();
-                ajax.transferir_dados_para_api("apis/get_veiculos.php", "POST", dados_api, function(resultado) {
-                     select_veiculo.innerHTML = resultado;
-                });
+            $(select_fabricante).change(function() {
+                relacionar_selects(this, select_veiculo, "apis/get_veiculos.php", "idFabricante");                                
             });
             
             $( select_veiculo ).change(function(e) {            
@@ -69,6 +68,7 @@ $(document).ready(function() {
             });
         }
     }
+    
     function inicializar_form_cadastro() {
         var pagina_cadastro_usuario = $("#pag-cadastro")[0];
         
@@ -92,6 +92,7 @@ $(document).ready(function() {
             });
         }
     }
+    
     inicializar_form_cadastro();
     inicializar_form_publicacao();
 });

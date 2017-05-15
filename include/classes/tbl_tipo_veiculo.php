@@ -7,6 +7,7 @@
             
             public $id;
             public $titulo;
+            public $visivel;
             
             public function getTipos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 $sql = "SELECT id, titulo ";
@@ -89,7 +90,7 @@
                 $sql .= "ON ft.idFabricante = f.id ";
                 $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
                 $sql .= "ON t.id = ft.idTipo ";
-                $sql .= "WHERE t.id = {$this->id}";
+                $sql .= "WHERE t.id = {$this->id} AND f.visivel = 1";
                                 
                 $resultado = $this->executarQuery( $sql );
                 $lista_fabricantes = [];
@@ -123,7 +124,7 @@
                     
                     $lista_combustivel[] = $objCombustivel;
                 }
-                echo $sql;
+                
                 return $lista_combustivel;
             }
             
@@ -156,7 +157,7 @@
                 $sql .= "ON av.idAcessorio = a.id ";
                 $sql .= "INNER JOIN tbl_tipoveiculo AS t ";
                 $sql .= "ON t.id = av.idTipoVeiculo ";
-                $sql .= "WHERE t.id = {$this->id}";
+                $sql .= "WHERE t.id = {$this->id} AND a.visivel = 1";
                 
                 $lista_acessorios = [];
                 $resultado = $this->executarQuery( $sql );

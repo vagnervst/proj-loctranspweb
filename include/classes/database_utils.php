@@ -33,7 +33,7 @@
 
                 $statement = [];
                 for($i = 0; $i < count($propriedades); ++$i) {
-                    if( $propriedades[$i] != $this::$primary_key && !empty($valores[$i]) ) {
+                    if( $propriedades[$i] != $this::$primary_key && isset($valores[$i]) ) {
                         $statement[] = $propriedades[$i] . " = " . $this->preparar_valor($valores[$i]);                                                
                     }
                 }
@@ -164,7 +164,7 @@
             public function atualizar() {
                 $sql = "UPDATE " . $this::$nome_tabela . " ";
                 $sql .= "SET " . $this->get_update_valores($this) . " ";                        
-                $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();
+                $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();                
                 
                 return $this->executarQuery($sql);
             }
