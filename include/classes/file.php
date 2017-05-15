@@ -11,6 +11,8 @@
         }
         
         public static function upload($arquivo, $nome_arquivo, $pasta) {            
+            print_r($arquivo);
+            
             if( empty($arquivo["tmp_name"]) || empty($nome_arquivo) || !File::verificar_extensao($arquivo) ) return false;
             $nome_arquivo = basename($nome_arquivo);
             

@@ -60,8 +60,10 @@
                 $sql .= "v.tanque AS tanqueVeiculo, p.dataRetirada, p.dataEntrega, p.dataEntregaEfetuada, p.localRetiradaLocador, p.localDevolucaoLocador, p.localRetiradaLocatario, ";
                 $sql .= "p.localDevolucaoLocatario, p.solicitacaoRetiradaLocador, p.solicitacaoDevolucaoLocador, p.solicitacaoRetiradaLocatario, p.solicitacaoDevolucaoLocatario, ";
                 $sql .= "datediff(p.dataEntrega, p.dataRetirada) AS diarias, datediff(p.dataEntrega, p.dataRetirada) * pu.valorDiaria AS valorTotal, s.id AS idStatusPedido, s.titulo AS statusPedido,  ";
-                $sql .= "locador.id AS idUsuarioLocador, locador.nome AS nomeLocador, locador.sobrenome AS sobrenomeLocador, cidadeLocador.nome AS cidadeLocador, estadoLocador.nome AS estadoLocador,  ";
-                $sql .= "locatario.id AS idUsuarioLocatario, locatario.nome AS nomeLocatario, locatario.sobrenome AS sobrenomeLocatario, cidadeLocatario.nome AS cidadeLocatario, estadoLocatario.nome AS estadoLocatario, ";
+                $sql .= "locador.id AS idUsuarioLocador, locador.nome AS nomeLocador, locador.sobrenome AS sobrenomeLocador, locador.celular AS locadorCelular, locador.emailContato AS locadorEmail, locador.telefone AS locadorTelefone ";
+                $sql .= "cidadeLocador.nome AS cidadeLocador, estadoLocador.nome AS estadoLocador,  ";
+                $sql .= "locatario.id AS idUsuarioLocatario, locatario.nome AS nomeLocatario, locatario.celular AS locatarioCelular, locatario.emailContato AS locatarioEmail, locatario.telefone AS locatarioTelefone ";
+                $sql .= "locatario.sobrenome AS sobrenomeLocatario, cidadeLocatario.nome AS cidadeLocatario, estadoLocatario.nome AS estadoLocatario, ";
                 $sql .= "cn.id AS idCnh, cn.numeroRegistro AS numeroCnh ";
                 $sql .= "FROM tbl_pedido AS p ";
                 $sql .= "INNER JOIN tbl_usuario AS locador ";

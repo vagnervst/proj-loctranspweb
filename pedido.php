@@ -358,16 +358,24 @@
                                     </div>
                                 </div>
                                 <div class="box-contato-locador" id="contato-desktop">
+                                    <?php                                                  
+                                        $usuario_alvo = new \Tabela\Usuario();
+                                        if( $is_locador ) {                                            
+                                            $usuario_alvo = $usuario_alvo->buscar("id = {$infoPedido->idUsuarioLocatario}")[0];
+                                        } else {                                            
+                                            $usuario_alvo = $usuario_alvo->buscar("id = {$infoPedido->idUsuarioLocador}")[0];
+                                        }
+                                    ?>
                                     <div class="box-contato">
-                                       <p class="info-contato">11 9999-9999</p>                                    
+                                       <p class="info-contato"><?php echo $usuario_alvo->telefone; ?></p>                                    
                                         <div class="icone-contato telefone"></div>
                                     </div>
                                     <div class="box-contato">
-                                       <p class="info-contato">11 9 9999-9999</p>                                    
+                                       <p class="info-contato"><?php echo $usuario_alvo->celular; ?></p>                                    
                                         <div class="icone-contato celular"></div>
                                     </div>
                                     <div class="box-contato">                                    
-                                        <p class="info-contato">xxxx@xxxx.com</p>
+                                        <p class="info-contato"><?php echo $usuario_alvo->email; ?></p>
                                         <div class="icone-contato email"></div>
                                     </div>
                                 </div>                                

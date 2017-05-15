@@ -161,7 +161,7 @@
                             <a class="preset-botao botao-pagina" href="#">Primeira</a>
                             <a class="preset-botao botao-pagina" href="#">Anterior</a>
                             <p id="pagina-atual"><?php echo $pagina-atual; ?> |</p>
-                            <p id="total-paginas"><?php echo ; ?></p>
+                            <p id="total-paginas"><?php echo "";?></p>
                             <a class="preset-botao botao-pagina" href="#">Próxima</a>
                             <a class="preset-botao botao-pagina" href="#">Ultima</a>
                         </div>
