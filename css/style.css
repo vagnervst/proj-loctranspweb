@@ -6427,6 +6427,72 @@ header #box-botao-filtragem {
 }
 
 /*------------- DETALHES PERFIL*/
+/*=========================================*/
+#pag-perfil-usuario #box-inf-financeiras {
+    height: 250px;
+    width: 320px;
+    margin:  0 auto ;
+    border: solid 1px gray;
+}
+
+#pag-perfil-usuario #box-inf-financeiras .label-titulo-valor {
+    text-align: center ;
+    font-size: 19px;
+    font-weight: bold;
+    
+}
+#pag-perfil-usuario #box-inf-financeiras .label-valor {
+    text-align: center ;
+    font-size: 19px;
+    font-weight: bold;
+    color: #00cb00 ;
+    
+}
+#pag-perfil-usuario #box-inf-financeiras .btn-sacar {
+    width: 70px;
+    background-color: #202020;
+    color: #ebebeb;
+    text-align: center;    
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+    border-bottom: 4px solid #141619; 
+    padding: 5px;
+    margin: 0 auto ;
+}
+#pag-perfil-usuario #box-inf-financeiras .base-btn-sacar{
+    margin: 0 auto ;
+    width: 70px;
+}
+
+@media(min-width: 420px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 250px;
+        width: 380px;
+    }  
+}
+@media(min-width: 520px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 250px;
+        width: 440px;
+    }  
+}
+@media(min-width: 720px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 250px;
+        width: 650px;
+    }  
+}
+@media(min-width: 1000px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 250px;
+        width: 900px;
+    }  
+}
+
+
+
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
