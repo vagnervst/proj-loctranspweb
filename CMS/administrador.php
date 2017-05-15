@@ -89,7 +89,7 @@
         
         $objUsuario->deletar();  
         
-        redirecionar_para("administrador.php");
+        redirecionar_para("cityshare_adm.php");
     }
 ?>
 <!DOCTYPE html> 
@@ -161,7 +161,7 @@
                                     <option <?php echo ( empty($id) )? "selected" : ""; ?> disabled>Selecione o nível de acesso</option>
                                     <?php
                                         $niveisAcesso = new \Tabela\NivelAcessoCS();
-                                        $niveisAcesso = $niveisAcesso->buscar();
+                                        $niveisAcesso = $niveisAcesso->buscar("visivel = 1");
                                     
                                         foreach( $niveisAcesso as $nivelAcesso ) {
                                     ?>

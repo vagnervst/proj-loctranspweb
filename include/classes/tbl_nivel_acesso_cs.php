@@ -7,6 +7,7 @@
 
             public $id;
             public $nome;
+            public $visivel;
             
             public function inserirRelacionamento ($idNivel, $idPermissao) {
                 $sql = "INSERT INTO nivelacesso_permissaocs ( idNivelAcesso, idPermissao ) ";

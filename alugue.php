@@ -105,7 +105,7 @@
                             $pagina_atual = ( isset($_GET['p']) )? $_GET["p"] : 1;
                             $itens_por_pagina = 10;
                             
-                            $listaPublicacao = $dadosPublicacao->getPublicacao( $itens_por_pagina, $pagina_atual );
+                            $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual );
                             
                             foreach( $listaPublicacao as $publicacao ) { 
                         ?>
@@ -160,8 +160,8 @@
                         <div id="box-botoes-desktop">
                             <a class="preset-botao botao-pagina" href="#">Primeira</a>
                             <a class="preset-botao botao-pagina" href="#">Anterior</a>
-                            <p id="pagina-atual">1 |</p>
-                            <p id="total-paginas">3</p>
+                            <p id="pagina-atual"><?php echo $pagina-atual; ?> |</p>
+                            <p id="total-paginas"><?php echo "";?></p>
                             <a class="preset-botao botao-pagina" href="#">Próxima</a>
                             <a class="preset-botao botao-pagina" href="#">Ultima</a>
                         </div>

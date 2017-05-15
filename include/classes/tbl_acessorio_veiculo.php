@@ -7,6 +7,7 @@
             
             public $id;
             public $nome;
+            public $visivel;
             
             public function getAcessorios($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 $sql = "SELECT id, nome ";

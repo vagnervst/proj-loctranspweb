@@ -24,6 +24,7 @@
             $objNivelAcessoCS = new \Tabela\NivelAcessoCS();
             
             $objNivelAcessoCS->nome = $titulo;
+            $objNivelAcessoCS->visivel = 1;
             
             if( empty($buscaDados[0]) ) {                
                 $idNovoNivel = $objNivelAcessoCS->inserir();                                
@@ -34,7 +35,7 @@
                     }
                 }
                 
-                redirecionar_para("CMS_cityshare_nivelAcesso.php");
+                redirecionar_para("cityshare_nivelAcesso.php");
             } else {
                 $objNivelAcessoCS->id = $id;
                 $objNivelAcessoCS->atualizar();
@@ -48,17 +49,17 @@
                 }
             }
             
-            redirecionar_para("CMS_nivel_edit.php?id={$id}");
+            redirecionar_para("cityshare_nivelAcesso.php?id={$id}");
         }
         
     } elseif( !empty($modo) && $modo == "remover" ) {
         $objNivelAcessoCS = new \Tabela\NivelAcessoCS();
         $objNivelAcessoCS->id = $id;
+        $objNivelAcessoCS->visivel = 0;
+                
+        $objNivelAcessoCS->atualizar();
         
-        $objNivelAcessoCS->deletarRelacionamentos();
-        $objNivelAcessoCS->deletar();
-        
-        redirecionar_para("CMS_cityshare_nivelAcesso.php");
+        //redirecionar_para("cityshare_nivelAcesso.php?id={$id}");
     }
 ?>
 <!DOCTYPE html>
@@ -84,7 +85,7 @@
                     <a href="cityshare_nivelAcesso.php" class="link-caminho">Níveis de Acesso</a> &gt; 
                     <a href="#" class="link-caminho">Editar/Novo</a>
                 </div>
-                <form action="CMS_nivel_edit.php<?php echo (!empty($id))? "?id=" . $id : ""; ?>" method="post" enctype="multipart/form-data">
+                <form action="nivel_acesso.php<?php echo (!empty($id))? "?id=" . $id : ""; ?>" method="post">
                     <div class="box-conteudo">
                         <div class="container-campos">
                             <div class="box-input-pagina">
@@ -113,7 +114,7 @@
                             <div class="box-botao">
                                 <input type="submit" class="preset-input-submit" name="formSubmit" value="Salvar">
                                 <?php if( !empty($id) ) { ?>
-                                <a class="preset-botao" href="CMS_nivel_edit.php?modo=remover&id=<?php echo $id;?>">Remover</a>
+                                <a class="preset-botao" href="nivel_acesso.php?modo=remover&id=<?php echo $id;?>">Remover</a>
                                 <?php } ?>
                             </div>
                         </div>

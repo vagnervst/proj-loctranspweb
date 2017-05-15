@@ -13,6 +13,7 @@
     $objAcessorioVeiculo->nome = $titulo;
         
     if( $modo == "insert" ) {
+        $objAcessorioVeiculo->visivel = true;
         $id_acessorio = $objAcessorioVeiculo->inserir();
         $objAcessorioVeiculo->id = $id_acessorio;
         
@@ -35,15 +36,14 @@
         $objAcessorioVeiculo->atualizar();
     } elseif( $modo == "delete" ) {
         $objAcessorioVeiculo->id = (int) $id;
-        $objAcessorioVeiculo->eliminar_relacionamentos_a_veiculo();
-        
-        $objAcessorioVeiculo->deletar();
+        $objAcessorioVeiculo->visivel = false;        
+        $objAcessorioVeiculo->atualizar();
     }
 
     $pagina_atual = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;
         
-    $lista_acessorio = $objAcessorioVeiculo->getAcessorios($itens_por_pagina, $pagina_atual);    
+    $lista_acessorio = $objAcessorioVeiculo->getAcessorios($itens_por_pagina, $pagina_atual, "visivel = 1");    
 
     echo json_encode($lista_acessorio);
 ?>

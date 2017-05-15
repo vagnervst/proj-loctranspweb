@@ -36,7 +36,7 @@
                                 <div id="box-tipos-veiculo">
                                     <?php
                                         $lista_tipos = new \Tabela\TipoVeiculo();
-                                        $lista_tipos = $lista_tipos->buscar();
+                                        $lista_tipos = $lista_tipos->buscar("visivel = 1");
                                         
                                         foreach( $lista_tipos as $tipo ) {
                                     ?>

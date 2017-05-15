@@ -15,9 +15,10 @@
     $objTipoVeiculo->titulo = $nomeTipo;        
 
     if( $modo == "insert" ) {
+        $objTipoVeiculo->visivel = true;
         $id_tipo_veiculo = $objTipoVeiculo->inserir();
-        $objTipoVeiculo->id = $id_tipo_veiculo;
-                        
+        $objTipoVeiculo->id = $id_tipo_veiculo;        
+        
         for( $i = 0; $i < count($idsTipoCombustivel); ++$i ) {
             $id_tipo_combustivel = $idsTipoCombustivel[ $i ];
             $objTipoVeiculo->relacionar_a_combustivel( $id_tipo_combustivel );
@@ -46,18 +47,15 @@
         }
         
     } elseif( $modo == "delete" ) {
-        $objTipoVeiculo->id = (int) $id;
-        $objTipoVeiculo->eliminar_relacionamentos_a_acessorio();
-        $objTipoVeiculo->eliminar_relacionamentos_a_combustivel();       
-        $objTipoVeiculo->eliminar_relacionamentos_a_transmissao();
-        $objTipoVeiculo->eliminar_relacionamentos_a_fabricante();
-        $objTipoVeiculo->deletar();
+        $objTipoVeiculo->id = (int) $id;        
+        $objTipoVeiculo->visivel = false;
+        $objTipoVeiculo->atualizar();
     }
 
     $pagina = ( isset($_POST["numeroPagina"]) )? $_POST["numeroPagina"] : 1;
     $itens_por_pagina = 15;
     
-    $lista_tipo = $objTipoVeiculo->getTipos($itens_por_pagina, $pagina);    
+    $lista_tipo = $objTipoVeiculo->getTipos($itens_por_pagina, $pagina, "visivel = 1");    
 
     echo json_encode($lista_tipo);
 ?>

@@ -16,7 +16,7 @@
         <div id="menu-navegacao">
             <ul>
                 <li class="botao-menu"><a href="index.php">Home</a></li>
-                <li class="botao-menu"><a href="alugue.php">Alugue</a></li>
+                <li class="botao-menu"><a href="alugue.php">Alugue</a></li>                
                 <li class="botao-menu"><a href="empreste.php">Empreste</a></li>
                 <li class="botao-menu"><a href="contato.php">Contato</a></li>
             </ul>
@@ -53,7 +53,8 @@
                 <div class="js-popup-painel" id="box-menu-usuario">
                     <ul id="menu-usuario">
                         <li><a href="perfil.php?id=<?php echo $idUsuario; ?>">Perfil</a></li>
-                        <li><a href="solicitacoes.php?user=<?php echo $idUsuario; ?>">Solicitações</a></li>
+                        <li><a href="solicitacoes.php?user=<?php echo $idUsuario; ?>">Pedidos</a></li>
+                        <li><a href="publicar.php?user=<?php echo $idUsuario; ?>">Anuncie</a></li>
                         <li><a href="configuracoes.php">Configurações</a></li>
                         <li><a href="logout_action.php">Sair</a></li>
                     </ul>

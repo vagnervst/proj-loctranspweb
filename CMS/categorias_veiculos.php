@@ -38,7 +38,7 @@
                                         <option selected disabled>Selecione um tipo de veículo</option>
                                         <?php
                                             $listaTiposVeiculo = new \Tabela\TipoVeiculo();
-                                            $listaTiposVeiculo = $listaTiposVeiculo->buscar();
+                                            $listaTiposVeiculo = $listaTiposVeiculo->buscar("visivel = 1");
                                             
                                             foreach( $listaTiposVeiculo as $tipoVeiculo ) {
                                         ?>

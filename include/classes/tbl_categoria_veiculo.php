@@ -8,6 +8,7 @@
             public $id;
             public $nome;            
             public $idTipoVeiculo;
+            public $visivel;
         
             public function getCategorias($registros_por_pagina, $pagina_atual, $where = null) {
                 $sql = "SELECT c.id, c.nome, c.idTipoVeiculo, t.titulo AS tituloTipo ";

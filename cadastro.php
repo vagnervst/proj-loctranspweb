@@ -17,7 +17,7 @@
     $formularioFisico = ( isset($_POST["submitFisico"]) )? $_POST["submitFisico"] : null;
     $formularioJuridico = ( isset($_POST["submitJuridico"]) )? $_POST["submitJuridico"] : null;
 
-    if( !empty($formularioFisico) || !empty($formularioJuridico) ) {        
+    if( !empty($formularioFisico) || !empty($formularioJuridico) ) {
         
         $idContaFisica = 1;
         $idContaJuridica = 2;
@@ -30,7 +30,7 @@
         } elseif( !empty($formularioJuridico) ) {
             $fotoPerfil = ( isset($_FILES["fotoJuridico"]) )? $_FILES["fotoJuridico"] : null;
         }
-        
+
         $nome = ( isset($_POST["txtNome"]) )? $_POST["txtNome"] : null;
         $sobrenome = ( isset($_POST["txtSobrenome"]) )? $_POST["txtSobrenome"] : null;
         $diaNascimento = ( isset($_POST["txtDiaNascimento"]) )? $_POST["txtDiaNascimento"] : null;
@@ -41,10 +41,9 @@
         $rg = ( isset($_POST["txtRg"]) )? $_POST["txtRg"] : null;
         $telefone = ( isset($_POST["txtTelefone"]) )? $_POST["txtTelefone"] : null;
         $celular = ( isset($_POST["txtCelular"]) )? $_POST["txtCelular"] : null;
-        $email = ( isset($_POST["txtEmail"]) )? $_POST["txtEmail"] : null;
+        $emailContato = ( isset($_POST["txtEmail"]) )? $_POST["txtEmail"] : null;
         $idTipoCartao = ( isset($_POST["slTipoCartao"]) )? $_POST["slTipoCartao"] : null;
-        $numeroCartao = ( isset($_POST["txtNumeroCartao"]) )? $_POST["txtNumeroCartao"] : null;
-        $numeroSegurancaCartao = ( isset($_POST["txtNumeroSegurancaCartao"]) )? $_POST["txtNumeroSegurancaCartao"] : null;
+        $numeroCartao = ( isset($_POST["txtNumeroCartao"]) )? $_POST["txtNumeroCartao"] : null;        
         $mesValidade = ( isset($_POST["slMesValidade"]) )? $_POST["slMesValidade"] : null;
         $anoValidade = ( isset($_POST["slAnoValidade"]) )? $_POST["slAnoValidade"] : null;
         $idBanco = ( isset($_POST["slBanco"]) )? $_POST["slBanco"] : null;
@@ -52,6 +51,7 @@
         $contaNumero = ( isset($_POST["txtContaNumero"]) )? $_POST["txtContaNumero"] : null;;
         $contaDigitoVerificador = ( isset($_POST["txtContaBancariaDV"]) )? $_POST["txtContaBancariaDV"] : null;
         $cnh = ( isset($_POST["txtCnh"]) )? $_POST["txtCnh"] : null;
+        $emailAutenticacao = ( isset($_POST["txtEmailAutenticacao"]) )? $_POST["txtEmailAutenticacao"] : null;
         $senha = ( isset($_POST["txtSenha"]) )? $_POST["txtSenha"] : null;
         $confSenha = ( isset($_POST["txtConfSenha"]) )? $_POST["txtConfSenha"] : null;
         $idEstado = ( isset($_POST["slEstado"]) )? $_POST["slEstado"] : null;
@@ -75,12 +75,14 @@
         $usuario->rg = $rg;
         $usuario->telefone = $telefone;
         $usuario->celular = $celular;
-        $usuario->email = $email;
+        $usuario->emailContato = $emailContato;
+        $usuario->email = $emailAutenticacao;
         $usuario->senha = Autenticacao::hash( $senha );
         $usuario->idCidade = $idCidade;        
         $usuario->idTipoConta = $idTipoConta;
         $usuario->idPlanoConta = $idPlanoContaBasico;
         $usuario->idLicencaDesktop = $idLicencaDesktopBasico;
+        $usuario->fotoPerfil = ( $sexo == "m" )? "man.png" : "woman.png";
         
         $id_usuario_inserido = $usuario->inserir();
         
@@ -88,19 +90,19 @@
             
             $objEmpresa = new \Tabela\Empresa();
             
-            $pasta_empresa = "img/uploads/empresas/empresa_usr_" . $id_usuario_inserido;
-            if( mkdir( $pasta_empresa, 0777 ) ) {
-                
-                if( File::upload($fotoPerfil["tmp_name"], $fotoPerfil["name"], $pasta_empresa) ) {                
-                    $objEmpresa->logomarca = basename($fotoPerfil["name"]);
-                }
-            }
+            $pasta_empresa = "img/uploads/empresas";            
+            
+            $nome_arquivo = "empresa_usr_" . $id_usuario_inserido . "." . pathinfo($fotoPerfil["name"], PATHINFO_EXTENSION);
+            if( File::upload($fotoPerfil, $nome_arquivo, $pasta_empresa) ) {                
+                $objEmpresa->logomarca = basename($fotoPerfil["name"]);
+            }            
                         
             $objEmpresa->razaoSocial = $razaoSocial;
             $objEmpresa->nomeFantasia = $nomeFantasia;
             $objEmpresa->cnpj = $cnpj;            
             $objEmpresa->idUsuarioJuridico = $id_usuario_inserido;
-
+            $objEmpresa->logomarca = "company.png";
+            
             $objEmpresa->inserir();
             
             $objContaBancaria = new \Tabela\ContaBancaria();
@@ -116,15 +118,15 @@
             
         } elseif( $id_usuario_inserido && $idTipoConta == $idContaFisica ) {
             
-            $pasta_usuario = "img/uploads/usuarios/";
-            if( mkdir( $pasta_usuario, 0777 ) ) {
-                
-                if( File::upload($fotoPerfil["tmp_name"], $fotoPerfil["name"], $pasta_usuario) ) {
-                    $usuario->id = $id_usuario_inserido;
-                    $usuario->fotoPerfil = basename($fotoPerfil["name"]);
-                    $usuario->atualizar();
-                }
-            }
+            $pasta_usuario = "img/uploads/usuarios";
+                            
+            $nome_arquivo = "usr_" . $id_usuario_inserido . "." . pathinfo($fotoPerfil["name"], PATHINFO_EXTENSION);
+            
+            if( File::upload($fotoPerfil, $nome_arquivo, $pasta_usuario) ) {
+                $usuario->id = $id_usuario_inserido;
+                $usuario->fotoPerfil = basename($fotoPerfil["name"]);
+                $usuario->atualizar();
+            }            
             
             if( !empty( $idTipoCartao ) ) {
                 $objCnh = new \Tabela\Cnh();
@@ -138,8 +140,7 @@
                 $objCartaoCredito = new \Tabela\CartaoCredito();
 
                 $objCartaoCredito->numero = $numeroCartao;
-                $objCartaoCredito->vencimento = $dataValidadeCartao;
-                $objCartaoCredito->codigoSeguranca = $numeroSegurancaCartao;
+                $objCartaoCredito->vencimento = $dataValidadeCartao;                
                 $objCartaoCredito->idUsuario = $id_usuario_inserido;
                 $objCartaoCredito->idTipo = $idTipoCartao;
 
@@ -156,7 +157,7 @@
                 
                 $objContaBancaria->inserir();
             }
-        }
+        }                
     }
 ?>
 <!DOCTYPE html>
@@ -204,19 +205,19 @@
                                 </div>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Nome*:</span>
-                                        <input class="preset-input-text input text-input" name="txtNome" type="text" placeholder="Digite seu nome..."  />
+                                        <input class="preset-input-text input text-input js-mask" name="txtNome" type="text" placeholder="Digite seu nome..." data-mask="CCCCCCCCCCCCCCCCCCCC" maxlength="20" />
                                     </label>
                                 </div>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Sobrenome*:</span>
-                                        <input class="preset-input-text input text-input" name="txtSobrenome" type="text" placeholder="Digite seu sobrenome..."  />
+                                        <input class="preset-input-text input text-input" name="txtSobrenome" type="text" placeholder="Digite seu sobrenome..." maxlength="100" />
                                     </label>
                                 </div>
                                 <div class="horizontal-input-container box-data-nascimento">
                                     <p class="titulo">Data de Nascimento</p>
                                     <div class="label-input">
                                         <label class="label"><span class="input-label">Dia*:</span>
-                                            <input class="preset-input-text input text-input" name="txtDiaNascimento" placeholder="Ex: 01" type="text" />
+                                            <input class="preset-input-text input text-input js-mask" name="txtDiaNascimento" placeholder="01" type="text" data-mask="DD" />
                                         </label>
                                     </div>
                                     <div class="label-input">
@@ -293,12 +294,12 @@
                                 <div class="horizontal-input-container">
                                     <div class="label-input">
                                         <label class="label"><span class="input-label">CPF*:</span>
-                                            <input class="preset-input-text input text-input" type="text" name="txtCpf" placeholder="Ex: 999.999.999-99" />
+                                            <input class="preset-input-text input text-input js-mask" type="text" name="txtCpf" placeholder="Ex: 999.999.999-99" data-mask="DDD#.DDD#.DDD#-DD" />
                                         </label>
                                     </div>
                                     <div class="label-input">
                                         <label class="label"><span class="input-label">RG*:</span>
-                                            <input class="preset-input-text input text-input" type="text" name="txtRg" placeholder="Ex: 99.999.999-9" />
+                                            <input class="preset-input-text input text-input js-mask" type="text" name="txtRg" placeholder="Ex: 99.999.999-9" data-mask="DD#.DDD#.DDD#-D" />
                                         </label>
                                     </div>
                                 </div>
@@ -308,17 +309,17 @@
                                 <h1 class="titulo-cadastro">Informações de Contato</h1>               
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Telefone*:</span>
-                                        <input class="preset-input-text input text-input" type="text" name="txtTelefone" placeholder="Ex: (11) 1234-5678" />
+                                        <input class="preset-input-text input text-input js-mask" type="text" name="txtTelefone" placeholder="Ex: (11) 1234-5678" maxlength="25" />
                                     </label>
                                 </div>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Celular*:</span>
-                                        <input class="preset-input-text input text-input" type="text" name="txtCelular" placeholder="Ex: (11) 1234-5678" />
+                                        <input class="preset-input-text input text-input" type="text" name="txtCelular" placeholder="Ex: (11) 1234-5678" maxlength="25" />
                                     </label>
                                 </div>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Email*:</span>
-                                        <input class="preset-input-text input text-input" type="text" name="txtEmail" />
+                                        <input class="preset-input-text input text-input" type="text" name="txtEmail" maxlength="100" />
                                     </label>
                                 </div>
                                 <div class="horizontal-input-container">
@@ -347,14 +348,9 @@
                                 <div class="horizontal-input-container">
                                     <div class="label-input" id="box-numero-cartao">
                                         <label class="label"><span class="input-label">Número do Cartão:</span>
-                                            <input class="preset-input-text input text-input" type="text" name="txtNumeroCartao" placeholder="Número do cartão" />
+                                            <input class="preset-input-text input text-input js-mask" type="text" name="txtNumeroCartao" placeholder="Digite o número do cartão" data-mask="DDDDDDDDDDDDDDDD" />
                                         </label>
-                                    </div>
-                                    <div class="label-input">
-                                        <label class="label"><span class="input-label">Dígito:</span>
-                                            <input class="preset-input-text input text-input" type="text" name="txtNumeroSegurancaCartao" placeholder="CSC X dígitos" />
-                                        </label>
-                                    </div>
+                                    </div>                                    
                                 </div>                                
                                 <div class="horizontal-input-container">
                                     <h3 class="titulo">Validade</h3>                                    
@@ -411,18 +407,18 @@
                                 </div>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Número da Agência*:</span>
-                                        <input class="preset-input-text input text-input" type="text" name="txtContaAgencia" placeholder="Número da Agência" />
+                                        <input class="preset-input-text input text-input js-mask" type="text" name="txtContaAgencia" placeholder="Número da Agência" maxlength="10" data-mask="DDDDDDDDDD" />
                                     </label>
                                 </div>
                                 <div class="horizontal-input-container">
                                     <div class="label-input">
                                         <label class="label"><span class="input-label">Número da Conta*:</span>
-                                            <input class="preset-input-text input text-input" type="text" name="txtContaBancariaNumero" placeholder="Número da Conta" />
+                                            <input class="preset-input-text input text-input js-mask" type="text" name="txtContaBancariaNumero" placeholder="Número da Conta" maxlength="15" data-mask="DDDDDDDDDDDDDDD" />
                                         </label>
                                     </div>
                                     <div class="label-input">
                                         <label class="label"><span class="input-label">Dígito Verificador*:</span>
-                                            <input class="preset-input-text input text-input" type="text" name="txtContaBancariaDV" placeholder="Dígito" />
+                                            <input class="preset-input-text input text-input" type="text" name="txtContaBancariaDV" placeholder="Dígito" data-mask="D" maxlength="1" />
                                         </label>
                                     </div>
                                 </div>
@@ -432,13 +428,18 @@
                                 <h1 class="titulo-cadastro">Dados de Condução</h1>               
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">CNH*:</span>
-                                        <input class="preset-input-text input text-input" type="text" name="txtCnh" placeholder="Número da CNH" />
+                                        <input class="preset-input-text input text-input js-mask" type="text" name="txtCnh" placeholder="Número da CNH" maxlength="11" data-mask="DDDDDDDDDDD" />
                                     </label>
                                 </div>
                                     <p class="js-botao-transf js-etapa6 preset-botao button-link">Confirmar</p>
                             </section>
                             <section class="js-etapa6 box-cadastro" id="box-autenticacao">
-                                <h1 class="titulo-cadastro">Autenticação</h1>               
+                                <h1 class="titulo-cadastro">Autenticação</h1>
+                                <div class="label-input">
+                                    <label class="label"><span class="input-label">Email*:</span>
+                                        <input class="preset-input-text input text-input" type="password" name="txtEmailAutenticacao" placeholder="Digite sua senha" maxlength="100" />
+                                    </label>
+                                </div>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Senha*:</span>
                                         <input class="preset-input-text input text-input" type="password" name="txtSenha" placeholder="Digite sua senha" />
