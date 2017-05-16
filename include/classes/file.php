@@ -10,9 +10,7 @@
             return in_array( $extensao_imagem, File::$extensoes_imagem );
         }
         
-        public static function upload($arquivo, $nome_arquivo, $pasta) {            
-            print_r($arquivo);
-            
+        public static function upload($arquivo, $nome_arquivo, $pasta) {
             if( empty($arquivo["tmp_name"]) || empty($nome_arquivo) || !File::verificar_extensao($arquivo) ) return false;
             $nome_arquivo = basename($nome_arquivo);
             

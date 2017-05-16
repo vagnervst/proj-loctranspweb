@@ -4358,14 +4358,13 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-publicar #wrapper-info-veiculo {
         width: 650px;
-        height: 500px;
+        height: 550px;
     }
 }
 
 @media (min-width: 1000px) {
     #pag-publicar #wrapper-info-veiculo {
-        width: 900px;
-        height: 500px;
+        width: 900px;        
     }
 }
 
@@ -4395,8 +4394,8 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
     #pag-publicar #wrapper-info-veiculo .box-info-locacao {                    
-        width: 310px;
-        height: 500px;
+        width: 310px;   
+        height: 535px;
         margin: 0px 5px;
         float: left;        
     }   
