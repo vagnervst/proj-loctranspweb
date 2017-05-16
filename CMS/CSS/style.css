@@ -471,13 +471,13 @@ header #box-cabecalho #box-conta #botao-logout {
 
 .box-conteudo #container-previa {
     height: 250px;
-    width: 850px;
+    width: 800px;
     margin: 10px auto;
     padding: 5px;    
 }
 
 .box-conteudo #container-previa #box-texto-previa {
-    width:470px;
+    width: 400px;
     height: 235px;
     float: left;
     text-align: justify;
@@ -495,14 +495,14 @@ header #box-cabecalho #box-conta #botao-logout {
 
 .box-conteudo #container-previa #input-previa {
     height: 230px;
-    width: 470px;
+    width: 400px;
     resize: none;
     margin: 5px 10px;
 }
 
 .box-conteudo #container-pagina {
     height:250px;
-    width: 850px;
+    width: 800px;
     margin-top: 20px;
     margin-left: auto ;
     margin-right: auto ;
@@ -511,7 +511,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 .box-conteudo #container-pagina #box-texto {
-    width:470px;
+    width: 470px;
     height: 235px;
     float: left ;
     margin-left: 20px;
@@ -521,7 +521,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 .box-conteudo .box-input-pagina {
-    width: inherit;
+    width: 800px;
     height: 60px;
     padding: 10px;
 }
@@ -544,7 +544,7 @@ header #box-cabecalho #box-conta #botao-logout {
     float: left;
 }
 
-.box-conteudo  .box-input-pagina .input-pagina {
+.box-conteudo .box-input-pagina .input-pagina {
     width: 600px;
     height: 20px;
 }
@@ -569,7 +569,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto {
-    width: 550px;
+    width: 500px;
     height: 175px;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -615,7 +615,7 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-cityshare-empresa .box-conteudo #container-pagina {
     height:250px;
-    width: 850px;
+    width: 820px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -628,13 +628,13 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-cityshare-empresa .box-conteudo #container-previa #input-previa {
     height: 130px;
-    width: 825px;
+    width: 770px;
     resize: none;
     margin: 5px 10px;
 }
 
 #pag-cityshare-empresa .box-conteudo #container-pagina #box-texto {
-    width:470px;
+    width: 450px;
     height: 235px;
     float: left ;
     margin-left: 20px;
@@ -643,7 +643,7 @@ header #box-cabecalho #box-conta #botao-logout {
     font-family: monospace;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-input-pagina {
-    width: inherit;
+    width: 800px;
     height: 60px;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-input-pagina .titulo-input {
@@ -656,12 +656,12 @@ header #box-cabecalho #box-conta #botao-logout {
     height: 20px;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina {
-    width: inherit;
+    width: 800px;
     height: 200px;
     display: inline-block;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image {
-    width: 250px;
+    width: 235px;
     height: 180px;
     margin: 10px 5px;
     float: left;
@@ -684,11 +684,11 @@ header #box-cabecalho #box-conta #botao-logout {
     float: left;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo .input-pagina {
-    width: 550px;
+    width: 500px;
     height: 20px;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto {
-    width: 550px;
+    width: 500px;
     height: 100px;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -696,12 +696,12 @@ header #box-cabecalho #box-conta #botao-logout {
     float: left;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea {
-    width: inherit;
+    width: 500px;
     height: inherit;
     resize: none;
 }
 #pag-cityshare-empresa .box-conteudo #container-pagina .box-botao {
-    width: inherit;
+    width: 800px;
     height: 50px;
     display: inline-block;
 }
@@ -718,7 +718,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina {
     height:250px;
-    width: 850px;
+    width: 820px;
     margin-top: 20px;
     margin-left: auto ;
     margin-right: auto ;
@@ -726,7 +726,7 @@ header #box-cabecalho #box-conta #botao-logout {
     
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina #box-texto {
-    width:470px;
+    width: 430px;
     height: 235px;
     float: left ;
     margin-left: 20px;
@@ -748,12 +748,12 @@ header #box-cabecalho #box-conta #botao-logout {
     height: 20px;
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina {
-    width: inherit;
+    width: 800px;
     height: 200px;
     display: inline-block;
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-image {
-    width: 250px;
+    width: 230px;
     height: 180px;
     margin: 10px 5px;
     float: left;
@@ -764,7 +764,7 @@ header #box-cabecalho #box-conta #botao-logout {
     
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-titulo {
-    width: 550px;
+    width: 500px;
     height: 50px;
     margin-left: 5px;
     float: left;
@@ -788,12 +788,12 @@ header #box-cabecalho #box-conta #botao-logout {
     float: left;
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto textarea {
-    width: inherit;
+    width: 500px;
     height: inherit;
     resize: none;
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto-2 {
-    width: 810px;
+    width: 780px;
     height: 150px;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -801,13 +801,13 @@ header #box-cabecalho #box-conta #botao-logout {
     float: left;
 }
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-conteudo-pagina .conteudo-texto-2 textarea {
-    width: inherit;
+    width: 750px;
     height: inherit;
     resize: none;
 }
 
 #pag-cityshare-projeto .box-conteudo #container-pagina .box-botao {
-    width: inherit;
+    width: 800px;
     height: 50px;
     display: inline-block;
 }
@@ -824,7 +824,7 @@ header #box-cabecalho #box-conta #botao-logout {
     height: 580px;
 }
 #pag-cityshare-adm .box-conteudo {
-    width: 870px;
+    width: 800px;
     height: auto;
     float: left ;    
 }
@@ -881,7 +881,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 #pag-cityshare-adm .box-conteudo .container-campos {
     height:250px;
-    width: 850px;
+    width: 800px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -944,7 +944,7 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-cityshare-home .box-conteudo #container-pagina {
     height:250px;
-    width: 850px;
+    width: 800px;
     margin-top: 20px;
     margin-left: auto ;
     margin-right: auto ;
@@ -1021,7 +1021,7 @@ header #box-cabecalho #box-conta #botao-logout {
 
 #pag-cityshare-empreste .box-conteudo #container-pagina {
     height:250px;
-    width: 850px;
+    width: 800px;
     margin-top: 20px;
     margin-left: auto ;
     margin-right: auto ;
@@ -1566,7 +1566,7 @@ header #box-cabecalho #box-conta #botao-logout {
 }
 
 #pag-detalhes-publicacao .box-conteudo .box-publicacao {
-    width: 850px;
+    width: 800px;
     height: 650px;
 }
 
@@ -2307,7 +2307,7 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao .box-publicacao-preview {
-    width: 815px;
+    width: 785px;
     height: 100px;
     margin-left: 5px;
     background-color:#a1aec9;
@@ -2330,7 +2330,7 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao .box-publicacao-preview .box-publicacao-dados {
-    width: 331px;
+    width: 310px;
     height: 100px;
     float: left;
     margin-top: 10px;
@@ -2346,9 +2346,13 @@ footer #box-rodape #box-logo-rodape {
     margin-right: 10px;
 }
 
+#pag-publicacao-detalhes {
+    height: 790px;
+}
+
 #pag-publicacao-detalhes .box-publicacao {
-    width: 815px;
-    height: 725px;
+    width: 785px;
+    height: 650px;
     margin-left: 5px;
     background-color: white;
     border: 1px solid #cecece;
@@ -2358,7 +2362,7 @@ footer #box-rodape #box-logo-rodape {
 
 #pag-publicacao-detalhes .box-publicacao .boxes-publicacao {
     margin: 5px;
-    width: 800px;
+    width: 775px;
     height: 50px;
     line-height: 50px;
     margin-left: 15px;
@@ -2372,7 +2376,6 @@ footer #box-rodape #box-logo-rodape {
 
 #pag-publicacao-detalhes .box-publicacao #imagens-publicacao {
     height: 120px;
-    border: solid 1px #000000;
 }
 
 #pag-publicacao-detalhes .box-publicacao #modelo-publicacao {
@@ -2411,7 +2414,7 @@ footer #box-rodape #box-logo-rodape {
 #pag-publicacao-detalhes .box-publicacao #status-publicacao {
     border: solid 1px #000000;
     margin: 5px;
-    width: 800px;
+    width: 775px;
     height: 120px;
     line-height: 50px;
 }
@@ -2423,7 +2426,7 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao-detalhes .box-publicacao #botoes-publicacao {
-    margin: 0px 300px;
+    margin: 20px 300px;
 }
 
 #pag-publicacao-detalhes .box-publicacao #botoes-publicacao .preset-botao {
