@@ -135,7 +135,7 @@
 
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }
+                }                                
                 
                 $resultado = $this->executarQuery( $sql );
                                 

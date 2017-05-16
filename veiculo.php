@@ -7,14 +7,15 @@
     require_once("include/classes/sessao.php");
 
     $id_publicacao = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
-    
-    if( $id_publicacao == null ) redirecionar_para("index.php");
-
+        
     $info_publicacao = new \Tabela\Publicacao();
-    $info_publicacao = $info_publicacao->getDetalhesPublicacao("p.id = " . $id_publicacao)[0];            
+    $info_publicacao = $info_publicacao->getDetalhesPublicacao(null, null, "p.id = " . $id_publicacao)[0];        
+
+    if( empty($info_publicacao) ) redirecionar_para("index.php");
 
     $id_usuario = new Sessao();
-    $id_usuario = $id_usuario->get("idUsuario");        
+    $id_usuario = $id_usuario->get("idUsuario");  
+    
     
     $info_usuario = new \Tabela\Usuario();
     if( !empty($id_usuario) ) {    
@@ -91,12 +92,14 @@
                 <div id="slide-imagens-veiculo">
                     <span class="botao-slide" id="botao-prev"></span>
                     <span class="botao-slide" id="botao-next"></span>
-                    <div id="container-imagens">                        
-                        <div class="imagem" style="background-image: url(img/tesla1.jpg)"></div>
-                        <div class="imagem" style="background-image: url(img/tesla2.jpg)"></div>
-                        <div class="imagem" style="background-image: url(img/tesla3.jpg)"></div>
-                        <div class="imagem" style="background-image: url(img/tesla4.jpg)"></div>
-                        <div class="imagem" style="background-image: url(img/tesla5.png)"></div>
+                    <div id="container-imagens">       
+                        <?php 
+                            $info_publicacao->titulo;
+                        
+                        ?>
+                        
+                        <div class="imagem" style="background-image: url(<?php  ?>)"></div>
+                        
                     </div>
                     <div id="container-contador">
                         <div class="contador"></div>
@@ -155,7 +158,18 @@
                                         <input class="preset-input-text hora-input js-mask" id="hora-devolucao" type="text" placeholder="HH:MM" data-mask="DD#:DD" />
                                     </div>                                
                                 </div>
-                                <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
+                                <?php 
+                                    if(empty($id_usuario)){
+                                        ?>
+                                            <a href="login.php"><span class="preset-botao" >Alugar</span></a>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
+                                        <?php 
+                                    }
+                                ?>
+                                
                             </div>
                         </div>
                     </section>
