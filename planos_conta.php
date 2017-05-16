@@ -36,7 +36,7 @@
                         <div class="box-overflow">
                         <?php   
                             $dadosPlanoConta = new \Tabela\PlanoConta();
-                            $listaPlanoConta = $dadosPlanoConta->getPlanos();
+                            $listaPlanoConta = $dadosPlanoConta->getPlanos(null, null, " visivel = 1 ");
                             
                             foreach( $listaPlanoConta as $plano ) { 
                         ?>
@@ -57,18 +57,23 @@
                     <p class="subtitulo">Planos Desktop</p>
                     <div class="container-planos">
                         <div class="box-overflow">
+                        <?php
+                            $dadosPlanoContaJuridico = new \Tabela\PlanoConta();
+                            $listaPlanoContaJuridico = $dadosPlanoContaJuridico->getPlanos(null, null, " visivel = 0 ");
+    
+                            foreach( $listaPlanoContaJuridico as $planoJuridico ) { 
+                        ?>
                             <div class="box-plano">
-                                <div></div>
+                                <div class="titulo"><?php echo $planoJuridico->nome; ?></div>
+                                <div class="info-plano">
+                                    <p class="txt-info"><?php echo $planoJuridico->limitePublicacao; ?></p>
+                                    <p class="txt-info"><?php echo $planoJuridico->duracaoMeses; ?></p>
+                                </div>
+                                <div class="box-botao">
+                                    <span class="preset-botao">Assinar</span>
+                                </div>
                             </div>
-                            <div class="box-plano">
-                                <div></div>
-                            </div>
-                            <div class="box-plano">
-                                <div></div>
-                            </div>
-                            <div class="box-plano">
-                                <div></div>
-                            </div>
+                        <?php } ?>
                         </div>
                     </div>
                     <?php } ?>
