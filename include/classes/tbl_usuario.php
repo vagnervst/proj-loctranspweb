@@ -90,7 +90,6 @@
                 }
                 
                 $sql .= " ORDER BY mediaNotas DESC LIMIT 10";                                                                    
-                
                 $resultado = $this->executarQuery( $sql );
                                 
                 $resultado = $this->get_array_from_resultado( $resultado );                                                

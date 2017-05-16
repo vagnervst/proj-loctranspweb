@@ -32,10 +32,9 @@
                     for( $i = 0; $i < count( $lista_publicacoes ); ++$i ) {
                         $publicacao = $lista_publicacoes[$i];
                         $dataAtual = time();
-                        $diasRestantes = (($dataAtual - strtotime($publicacao->dataPublicacao))/(60*60*24));   
-                        echo $publicacao->dataPublicacao ; 
-                        echo (strtotime($publicacao->dataPublicacao)/(60*60*24))."<br>" ; 
+                        $diasRestantes = (($dataAtual - strtotime($publicacao->dataPublicacao))/(60*60*24));
                 ?>
+                
                 <a href="publicacao_detalhe.php?id=<?php echo $publicacao->id; ?>">
                     <div class="box-publicacao-preview">
                         <div class="box-publicacao-imagem">
@@ -55,7 +54,7 @@
                                     echo "Pendente";
                                 }
                             ?><br>
-                            <?php echo $diasRestantes; ?>
+                            Dias restantes: <?php echo $diasRestantes; ?>
                         </div>
                     </div>
                 </a>

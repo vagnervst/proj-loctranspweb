@@ -6035,7 +6035,8 @@ header #box-botao-filtragem {
 }
 
 #pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .info-plano .txt-info {
-    margin-left: 5px;
+    padding-top: 20px;
+    margin-left: 20px;
     font-size: 20px;
 }
 

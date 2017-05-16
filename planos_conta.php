@@ -3,6 +3,7 @@
     require_once("include/classes/sessao.php");
     require_once("include/classes/tbl_usuario.php");
     require_once("include/classes/tbl_plano_conta.php");
+    require_once("include/classes/tbl_licenca_desktop.php");
     
     $sessao = new Sessao();
     $idUsuario = $sessao->get("idUsuario");
@@ -37,20 +38,33 @@
                         <?php   
                             $dadosPlanoConta = new \Tabela\PlanoConta();
                             $listaPlanoConta = $dadosPlanoConta->getPlanos(null, null, " visivel = 1 ");
-                            
-                            foreach( $listaPlanoConta as $plano ) { 
+                            $idPlano = ( isset($_GET["idPlano"]) )? (int) $_GET["idPlano"] : null;
+                                
+                            if( empty($idPlano) ) {
+                                foreach( $listaPlanoConta as $plano ) {
                         ?>
                             <div class="box-plano">
                                 <div class="titulo"><?php echo $plano->nome; ?></div>
                                 <div class="info-plano">
-                                    <p class="txt-info"><?php echo $plano->limitePublicacao; ?></p>
-                                    <p class="txt-info"><?php echo $plano->duracaoMeses; ?></p>
+                                    <p class="txt-info">Limite de publicações: <?php echo $plano->limitePublicacao; ?></p>
+                                    <p class="txt-info">Duração do Plano: <?php echo $plano->duracaoMeses; ?> meses</p>
+                                    <p class="txt-info"><?php echo $plano->descPlano; ?></p>
+                                    <p class="txt-info">Preço: R$<?php echo $plano->preco; ?></p>
                                 </div>
                                 <div class="box-botao">
-                                    <span class="preset-botao">Assinar</span>
+                                    <a href="planos_conta.php?idPlano=<?php echo $plano->id; ?>" class="preset-botao">Assinar</a>
                                 </div>
                             </div>
-                        <?php } ?>
+                        <?php }
+                            }  
+                                    
+                            ?>
+                            <div class="box-plano">
+                                <form>
+                                    <div class="titulo"></div>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                     <?php if( $dadosUsuario->tipoConta == "Juridico" ) {  ?>
@@ -58,19 +72,20 @@
                     <div class="container-planos">
                         <div class="box-overflow">
                         <?php
-                            $dadosPlanoContaJuridico = new \Tabela\PlanoConta();
-                            $listaPlanoContaJuridico = $dadosPlanoContaJuridico->getPlanos(null, null, " visivel = 0 ");
+                            $dadosLicencaDesktop = new \Tabela\LicencaDesktop();
+                            $listaLicencaDesktop = $dadosLicencaDesktop->getLicencas();
     
-                            foreach( $listaPlanoContaJuridico as $planoJuridico ) { 
+                            foreach( $listaLicencaDesktop as $licenca ) { 
                         ?>
                             <div class="box-plano">
-                                <div class="titulo"><?php echo $planoJuridico->nome; ?></div>
+                                <div class="titulo"><?php echo $licenca->nome; ?></div>
                                 <div class="info-plano">
-                                    <p class="txt-info"><?php echo $planoJuridico->limitePublicacao; ?></p>
-                                    <p class="txt-info"><?php echo $planoJuridico->duracaoMeses; ?></p>
+                                    <p class="txt-info">Conexões Simultâneas<?php echo $licenca->conexoesSimultaneas; ?></p>
+                                    <p class="txt-info">Duração da Licença: <?php echo $licenca->duracaoMeses; ?></p>
+                                    <p class="txt-info">Preço: <?php echo $licenca->preco; ?></p>
                                 </div>
                                 <div class="box-botao">
-                                    <span class="preset-botao">Assinar</span>
+                                    <a href="planos_conta.php?idLicenca=<?php echo $licenca->id; ?>" class="preset-botao">Assinar</a>
                                 </div>
                             </div>
                         <?php } ?>

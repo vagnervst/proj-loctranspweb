@@ -55,6 +55,7 @@
                         <li><a href="perfil.php?id=<?php echo $idUsuario; ?>">Perfil</a></li>
                         <li><a href="solicitacoes.php?user=<?php echo $idUsuario; ?>">Pedidos</a></li>
                         <li><a href="publicar.php?user=<?php echo $idUsuario; ?>">Anuncie</a></li>
+                        <li><a href="planos_conta.php">Planos de Conta</a></li>
                         <li><a href="configuracoes.php">Configurações</a></li>
                         <li><a href="logout_action.php">Sair</a></li>
                     </ul>
