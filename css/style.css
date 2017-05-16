@@ -5958,11 +5958,17 @@ header #box-botao-filtragem {
 }
 
 #pag-planos-conta .box-conteudo .titulo {
-    
+    width: 100%;
+    height: 30px;
+    margin: auto;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 #pag-planos-conta .box-conteudo .subtitulo {
-    
+    margin-top: 30px;
+    font-size: 20px;
 }
 
 #pag-planos-conta .box-conteudo .container-planos {
@@ -5970,6 +5976,7 @@ header #box-botao-filtragem {
     margin: auto 0px;
     margin-bottom: 10px;
     overflow: auto;
+    background-color: #f8f8f8;
 }
 
 @media (min-width: 420px) {
@@ -6009,6 +6016,7 @@ header #box-botao-filtragem {
     margin-top: 10px;
     margin-left: 5px;
     background-color: #dedede;
+    border: 1px solid #cecece;
 }
 
 #pag-planos-conta .box-conteudo .container-planos .box-overflow .box-plano .titulo {
@@ -6017,7 +6025,7 @@ header #box-botao-filtragem {
     background-color: #557bc9;
     text-align: center;
     line-height: 50px;
-    font-size: 26px;
+    font-size: 22px;
     color: white;
 }
 
