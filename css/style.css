@@ -1289,7 +1289,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 1000px) {
     .main #container-locadores-destaque {
-        height: 610px;
+        height: 620px;
     }
 }
 
@@ -6437,21 +6437,21 @@ header #box-botao-filtragem {
 /*------------- DETALHES PERFIL*/
 /*=========================================*/
 #pag-perfil-usuario #box-inf-financeiras {
-    height: 250px;
-    width: 320px;
-    margin:  0 auto ;
+    height: 220px;
+    width: 190px;
+    margin: 0 auto ;
     border: solid 1px gray;
 }
 
 #pag-perfil-usuario #box-inf-financeiras .label-titulo-valor {
-    text-align: center ;
-    font-size: 19px;
+    margin-left: 20px;
+    font-size: 17px;
     font-weight: bold;
     
 }
 #pag-perfil-usuario #box-inf-financeiras .label-valor {
-    text-align: center ;
-    font-size: 19px;
+    margin-left: 40px;
+    font-size: 17px;
     font-weight: bold;
     color: #00cb00 ;
     
@@ -6476,26 +6476,26 @@ header #box-botao-filtragem {
 
 @media(min-width: 420px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 250px;
-        width: 380px;
+        height: 220px;
+        width: 200px;
     }  
 }
 @media(min-width: 520px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 250px;
-        width: 440px;
+        height: 220px;
+        width: auto;
     }  
 }
 @media(min-width: 720px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 250px;
-        width: 650px;
+        height: 220px;
+        width: auto;
     }  
 }
 @media(min-width: 1000px) {
   #pag-perfil-usuario #box-inf-financeiras {
-        height: 250px;
-        width: 900px;
+        height: 220px;
+        width: auto;
     }  
 }
 

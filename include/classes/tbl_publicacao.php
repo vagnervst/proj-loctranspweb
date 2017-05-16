@@ -113,11 +113,11 @@
                 $sql .= "ON cv.id = v.idCategoriaVeiculo ";
                 $sql .= "INNER JOIN tbl_fabricanteveiculo AS fb ";
                 $sql .= "ON fb.id = v.idFabricante ";
-                $sql .= "INNER JOIN tbl_tipocombustivel AS cb ";
+                $sql .= "LEFT JOIN tbl_tipocombustivel AS cb ";
                 $sql .= "ON cb.id = v.idTipoCombustivel ";
                 $sql .= "INNER JOIN tbl_tipoveiculo AS tp ";
-                $sql .= "ON tp.id = v.idTipoVeiculo INNER JOIN ";
-                $sql .= "tbl_transmissaoveiculo AS tr ";
+                $sql .= "ON tp.id = v.idTipoVeiculo ";
+                $sql .= "LEFT JOIN tbl_transmissaoveiculo AS tr ";
                 $sql .= "ON tr.id = v.idTransmissao ";
                 $sql .= "LEFT JOIN tbl_usuario AS u ";
                 $sql .= "ON u.id = p.idUsuario ";
@@ -135,7 +135,7 @@
 
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }
+                }                                
                 
                 $resultado = $this->executarQuery( $sql );
                                 
