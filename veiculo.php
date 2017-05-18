@@ -9,9 +9,9 @@
     $id_publicacao = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     if( $id_publicacao == null ) redirecionar_para("index.php");
-
+    
     $info_publicacao = new \Tabela\Publicacao();
-    $info_publicacao = $info_publicacao->getDetalhesPublicacao("p.id = " . $id_publicacao)[0];            
+    $info_publicacao = $info_publicacao->getDetalhesPublicacao(null, null, "p.id = " . $id_publicacao)[0];    
 
     $id_usuario = new Sessao();
     $id_usuario = $id_usuario->get("idUsuario");        

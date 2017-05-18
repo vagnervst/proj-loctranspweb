@@ -1858,6 +1858,7 @@ header #box-botao-filtragem {
     display: block; 
     width: 188px;    
     overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 23px;    
     text-align: left;    
@@ -1893,7 +1894,7 @@ header #box-botao-filtragem {
 @media (min-width: 1000px) {
     #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo .box-info-veiculo .titulo-veiculo {        
         width: 215px;
-        font-size: 19px;
+        font-size: 16px;
         text-align: center;
         font-weight: normal;
         border-bottom: 1px solid #b2b2b2;
@@ -1972,6 +1973,7 @@ header #box-botao-filtragem {
         bottom: 0px;
         font-size: 17px;
         font-weight: bold;
+        float: right;
     }
 }
 

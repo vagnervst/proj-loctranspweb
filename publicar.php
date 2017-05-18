@@ -36,8 +36,7 @@
         $acessorios = ( isset($_POST["chkAcessorio"]) )? $_POST["chkAcessorio"] : null;
             
         $lista_required_input = [];
-        $lista_required_input[] = $titulo;
-        $lista_required_input[] = $descricao;
+        $lista_required_input[] = $titulo;        
         $lista_required_input[] = $id_tipo;        
         $lista_required_input[] = $id_modelo;                
         $lista_required_input[] = $quilometragemAtual;
@@ -46,6 +45,8 @@
         $lista_required_input[] = $limiteQuilometragem;
         $lista_required_input[] = $valorQuilometragem;
         $lista_required_input[] = $acessorios;                                
+        
+        echo json_encode( $lista_required_input );
         
         if( !FormValidator::has_empty_input( $lista_required_input ) ) {
             $publicacao = new \Tabela\Publicacao();
@@ -66,7 +67,9 @@
             $sessao = new Sessao();
                                     
             $publicacao->idUsuario = (int) $sessao->get("idUsuario");
-                        
+            
+            echo json_encode( $publicacao );
+            
             $id_publicacao = $publicacao->inserir();
             
             if( !empty($id_publicacao) ) {

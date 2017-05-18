@@ -33,7 +33,7 @@
 
                 $statement = [];
                 for($i = 0; $i < count($propriedades); ++$i) {
-                    if( $propriedades[$i] != $this::$primary_key && isset($valores[$i]) ) {
+                    if( $propriedades[$i] != $this::$primary_key && property_exists( get_class($this), $propriedades[$i] ) && $valores == null || !empty($valores[$i]) ) {
                         $statement[] = $propriedades[$i] . " = " . $this->preparar_valor($valores[$i]);                                                
                     }
                 }
@@ -104,8 +104,12 @@
             }
             
             function preparar_valor_exibicao($valor) {                                                
-                //$valor = htmlentities($valor);
-                $valor = str_replace("\\", "", $valor);
+                //$valor = htmlentities($valor);                
+                $valor = str_replace("\\", "", $valor);                                                                                             
+                
+                if( is_numeric($valor) ) {
+                    $valor = (float) $valor;
+                }
                 
                 return $valor;
             }
@@ -117,11 +121,11 @@
             
             function get_object_from_assoc_result($resultado) {
                 $nomeClasse = get_class($this);
-                $objeto = new $nomeClasse;                                
+                $objeto = new $nomeClasse;
 
                 $keys = array_keys($resultado);
                 for($i = 0; $i < count($keys); ++$i) {                    
-                    $objeto->$keys[$i] = $this->preparar_valor_exibicao($resultado[$keys[$i]]);
+                    $objeto->$keys[$i] = $this->preparar_valor_exibicao($resultado[$keys[$i]]);                                        
                 }
 
                 return $objeto;
@@ -165,6 +169,8 @@
                 $sql = "UPDATE " . $this::$nome_tabela . " ";
                 $sql .= "SET " . $this->get_update_valores($this) . " ";                        
                 $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();                
+                
+                echo $sql;
                 
                 return $this->executarQuery($sql);
             }
