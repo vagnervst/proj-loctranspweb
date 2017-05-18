@@ -105,7 +105,7 @@
                                 </div><br>
                                 <?php } ?>
                                 <p class="label-titulo-valor" >Total de ganhos</p>
-                                <p class="label-valor">R$<?php echo $detalhes_usuario->getLucroTotal(); ?></p><br>
+                                <p class="label-valor">R$<?php echo $detalhes_usuario->getLucroTotal(); ?></p>
                                 <p class="label-titulo-valor" >Total de saque </p>
                                 <p class="label-valor">R$<?php echo $detalhes_usuario->getSaqueTotal(); ?></p>
                             </div>

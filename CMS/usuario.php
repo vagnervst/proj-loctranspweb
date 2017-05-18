@@ -1,8 +1,18 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_usuario.php");
+    
+    $search = ( isset($_POST["txtPesquisa"]) )? $_POST["txtPesquisa"] : null;
     $usuarios = new \Tabela\Usuario();
-    $usuarios = $usuarios->getUsuario();
+
+    if( isset($_POST['btnBuscar']) ) {
+        
+        $usuarios = $usuarios->getUsuario(" u.nome LIKE '%{$search}%' ");
+        
+    } else {
+        
+        $usuarios = $usuarios->getUsuario();   
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

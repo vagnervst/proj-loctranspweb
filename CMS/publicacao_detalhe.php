@@ -2,11 +2,15 @@
     require_once("../include/initialize.php");
     require_once("../include/classes/sessao.php");
     require_once("../include/classes/tbl_publicacao.php");
+    require_once("../include/classes/tbl_usuario.php");
 
     $idPublicacao = ( isset($_GET["id"]) )? $_GET["id"] : null;
-
+    
+    $limite = "";
+    $dadosUsuarios = new \Tabela\Usuario();
     $dadosPublicacao = new \Tabela\Publicacao();
-    $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao(null, null, "p.id = {$idPublicacao}")[0];
+    $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao(null, null, " p.id = {$idPublicacao}")[0];
+    $usuario = $dadosUsuarios ->getDetalhesUsuario(" u.nome = '{$dadosPublicacao->nomeLocador}'")[0];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,7 +50,31 @@
                         Proprietário: <?php echo $dadosPublicacao->nomeLocador; ?>
                     </div>
                     <div id="reputacao-publicacao" class="boxes-publicacao">
-                        reputação
+                        <div class="box-avaliacoes">
+                            <p class="avaliacoes-locador">Avaliações: <?php echo $usuario->qtdAvaliacoes; ?></p>
+                            <div class="container-icone-avaliacoes">
+                                <?php 
+                                    $usuario->qtdAvaliacoes; 
+
+
+                                    $lista_estrelas = [
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa"
+                                    ];                                                                                
+
+                                    for( $i = 0; $i < $usuario->mediaNotas; ++$i ) {
+                                        $lista_estrelas[$i] = "icone-avaliacao";                           
+                                    }                                                                            
+
+                                    foreach( $lista_estrelas as $classe_estrela ) {
+                                        echo "<div class=\"" . $classe_estrela . "\"></div>";
+                                    }                                                                        
+                                ?>
+                            </div>
+                        </div>
                     </div>
                     <div id="data-publicacao" class="boxes-publicacao">
                         Data da Publicação: <?php echo $dadosPublicacao->dataPublicacao; ?>
@@ -59,9 +87,6 @@
                     </div>
                     <div id="distancia-publicacao" class="boxes-publicacao">
                         Kms Rodados: <?php echo $dadosPublicacao->quilometragemAtual; ?>
-                    </div>
-                    <div id="status-publicacao" class="boxes-publicacao">
-                        status
                     </div>
                     <div id="botoes-publicacao">
                         <span class="preset-botao js-btn-aprovar">aprovar</span><span class="preset-botao js-btn-recusar">recusar</span>
