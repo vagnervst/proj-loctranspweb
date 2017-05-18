@@ -943,6 +943,7 @@ $(document).ready(function() {
                 exibirCarregamentoModal( box_modal );                                
                 
                 pedido_atualizar_local( RETIRADA, function(resultado) {
+                    console.log(resultado);
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_retirada = $(box_botoes).children("#botao-local-pedido")[0];
                     
@@ -986,6 +987,8 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_solicitacao.php", "POST", data, function(resultado) {
+                    console.log(resultado);
+                    
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_solicitacao = $(box_botoes).children("#botao-solicitar-retirada")[0];
                     var botao_confirmacao = $(box_botoes).children("#botao-confirmar-retirada")[0];
@@ -1382,6 +1385,7 @@ $(document).ready(function() {
         
         var ajax = new Ajax();        
         ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {            
+            console.log(resultado);
             lista_json_solicitacoes = JSON.parse(resultado);            
             
             if( increment ) {
@@ -1631,7 +1635,7 @@ $(document).ready(function() {
             var publicacao = lista_json[i];
             
             html += '<div class="box-publicacao">';
-            html += '<a href="veiculo.php">';
+            html += '<a href="veiculo.php?id=' + publicacao.id + '">';
             html += '<div class="foto-publicacao" style="background-image: url("img/uploads/publicacoes/")")"></div>';
             html += '</a>';
             html += '<section class="box-info-publicacao">';

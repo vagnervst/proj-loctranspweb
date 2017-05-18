@@ -30,15 +30,15 @@
                             <div class="titulo-sessao">Cadastro de Banco</div>
                             <div id="box-campos-fabricante">
                                 <div class="box-input-pagina">
-                                    <label class="titulo-input">Titulo Banco :</label>
+                                    <label class="titulo-input">Titulo Banco:</label>
                                     <input type="text" name="txt_titulo" class="input-pagina" required>
                                 </div>
                                 <div class="box-input-pagina">
-                                    <label class="titulo-input">Codigo Banco :</label>
+                                    <label class="titulo-input">Codigo Banco:</label>
                                     <input type="text" name="txt_codigo" class="input-pagina" required>
                                 </div>
                                  <div class="box-input-pagina">
-                                    <label class="titulo-input">Quantidade de digitos verificadores :</label>
+                                    <label class="titulo-input">Quantidade de digitos verificadores:</label>
                                     <input type="text" name="txt_qtd_digitos" class="input-pagina" required>
                                 </div>
                                 <div id="box-acoes">

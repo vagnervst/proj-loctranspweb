@@ -21,6 +21,7 @@
             public $solicitacaoRetiradaLocatario;
             public $solicitacaoDevolucaoLocatario;
             public $combustivelRestante;
+            public $limiteQuilometragem;
             public $quilometragemExcedida;            
             public $idPublicacao;
             public $idUsuarioLocador;
@@ -36,16 +37,20 @@
             function getPedido($where = null) {
                 
                 $sql = "SELECT p.id AS idPedido, p.idPublicacao, p.dataRetirada, p.dataEntrega, p.idUsuarioLocatario AS idLocatario, ";
-                $sql .= "u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, sp.titulo AS statusPedido ";
+                $sql .= "u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, sp.titulo AS statusPedido, v.nome AS veiculo, pu.imagemPrincipal ";
                 $sql .= "FROM tbl_pedido AS p ";
                 $sql .= "INNER JOIN tbl_usuario AS u ";
                 $sql .= "ON u.id = p.idUsuarioLocador ";
                 $sql .= "INNER JOIN tbl_statuspedido AS sp ";
-                $sql .= "ON sp.id = p.idStatusPedido";
+                $sql .= "ON sp.id = p.idStatusPedido ";
+                $sql .= "INNER JOIN tbl_veiculo AS v ";
+                $sql .= "ON v.id = p.idVeiculo ";
+                $sql .= "INNER JOIN tbl_publicacao AS pu ";
+                $sql .= "ON pu.id = p.idPublicacao ";
                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }                                                                
+                }                                                                                                
                 
                 $resultado = $this->executarQuery( $sql );
                                 
@@ -59,10 +64,10 @@
                 $sql = "SELECT p.id, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.combustivelRestante, pu.limiteQuilometragem, p.quilometragemExcedida, v.nome AS veiculo, ";
                 $sql .= "v.tanque AS tanqueVeiculo, p.dataRetirada, p.dataEntrega, p.dataEntregaEfetuada, p.localRetiradaLocador, p.localDevolucaoLocador, p.localRetiradaLocatario, ";
                 $sql .= "p.localDevolucaoLocatario, p.solicitacaoRetiradaLocador, p.solicitacaoDevolucaoLocador, p.solicitacaoRetiradaLocatario, p.solicitacaoDevolucaoLocatario, ";
-                $sql .= "datediff(p.dataEntrega, p.dataRetirada) AS diarias, datediff(p.dataEntrega, p.dataRetirada) * pu.valorDiaria AS valorTotal, s.id AS idStatusPedido, s.titulo AS statusPedido,  ";
-                $sql .= "locador.id AS idUsuarioLocador, locador.nome AS nomeLocador, locador.sobrenome AS sobrenomeLocador, locador.celular AS locadorCelular, locador.emailContato AS locadorEmail, locador.telefone AS locadorTelefone ";
-                $sql .= "cidadeLocador.nome AS cidadeLocador, estadoLocador.nome AS estadoLocador,  ";
-                $sql .= "locatario.id AS idUsuarioLocatario, locatario.nome AS nomeLocatario, locatario.celular AS locatarioCelular, locatario.emailContato AS locatarioEmail, locatario.telefone AS locatarioTelefone ";
+                $sql .= "datediff(p.dataEntrega, p.dataRetirada) AS diarias, (datediff(p.dataEntrega, p.dataRetirada) * pu.valorDiaria) AS valorTotal, s.id AS idStatusPedido, s.titulo AS statusPedido,  ";
+                $sql .= "locador.id AS idUsuarioLocador, locador.nome AS nomeLocador, locador.sobrenome AS sobrenomeLocador, locador.celular AS locadorCelular, locador.emailContato AS locadorEmail, locador.telefone AS locadorTelefone, ";
+                $sql .= "cidadeLocador.nome AS cidadeLocador, estadoLocador.nome AS estadoLocador, ";
+                $sql .= "locatario.id AS idUsuarioLocatario, locatario.nome AS nomeLocatario, locatario.celular AS locatarioCelular, locatario.emailContato AS locatarioEmail, locatario.telefone AS locatarioTelefone, ";
                 $sql .= "locatario.sobrenome AS sobrenomeLocatario, cidadeLocatario.nome AS cidadeLocatario, estadoLocatario.nome AS estadoLocatario, ";
                 $sql .= "cn.id AS idCnh, cn.numeroRegistro AS numeroCnh ";
                 $sql .= "FROM tbl_pedido AS p ";
@@ -89,7 +94,7 @@
                                                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }                                
+                }                                                                
                 
                 $sql .= " ORDER BY p.dataRetirada DESC";
                 
@@ -98,7 +103,7 @@
                     
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }                                
+                }                                                                                                                                            
                 
                 $resultado = $this->executarQuery( $sql );
                 $listaPedidos = $this->get_array_from_resultado( $resultado );
