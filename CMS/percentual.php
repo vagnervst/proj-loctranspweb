@@ -21,7 +21,7 @@
                 <div id="box-caminho">
                     <a href="home.php" class="link-caminho">Home</a> &gt; 
                     <a href="cityshare.php" class="link-caminho">City Share</a> &gt; 
-                    <a href="veiculos.php" class="link-caminho">Veículos</a> &gt; 
+                    <a href="financeiro.php" class="link-caminho">Financeiro</a> &gt; 
                     <a href="percentual.php" class="link-caminho">Percentual de Lucro</a>
                 </div>
                 <div class="box-conteudo">
@@ -33,7 +33,7 @@
                                         <option selected disabled>Selecione um tipo de veículo</option>                                        
                                         <?php
                                             $listaTipoVeiculo = new \Tabela\TipoVeiculo();
-                                            $listaTipoVeiculo = $listaTipoVeiculo->buscar();
+                                            $listaTipoVeiculo = $listaTipoVeiculo->buscar("visivel = 1");
                                             
                                             foreach( $listaTipoVeiculo as $tipoVeiculo ) {
                                         ?>

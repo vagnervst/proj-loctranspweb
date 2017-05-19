@@ -37,45 +37,51 @@
         if( $modo == $RETIRADA ) {
 
             if( $is_locador ) {
-                $infoPedido->localRetiradaLocador = true;
+                $infoPedido->localRetiradaLocador = 1;
             } else {
-                $infoPedido->localRetiradaLocatario = true;
+                $infoPedido->localRetiradaLocatario = 1;
             }
 
             if( $infoPedido->localRetiradaLocador == true && $infoPedido->localRetiradaLocatario == true ) {
-                $id_status_aguardando_retirada = 3;
-
-                $infoPedido->idStatusPedido = $id_status_aguardando_retirada;
+                $cod_status_aguardando_retirada = 3;
+                    
+                $statusPedido = new \Tabela\StatusPedido();
+                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_retirada}")[0];
+                
+                $infoPedido->idStatusPedido = $statusPedido->id;
 
                 $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
-                $historicoAlteracaoPedido->idStatus = $id_status_aguardando_retirada;
+                $historicoAlteracaoPedido->idStatusPedido = $statusPedido->id;
                 $historicoAlteracaoPedido->inserir();
             }
 
         } elseif( $modo == $DEVOLUCAO ) {
 
             if( $is_locador ) {
-                $infoPedido->localDevolucaoLocador = true;
-                $infoPedido->dataEntregaEfetuada = get_data_atual_mysql();
+                $infoPedido->localDevolucaoLocador = 1;                
             } else {
-                $infoPedido->localDevolucaoLocatario = true;
+                $infoPedido->localDevolucaoLocatario = 1;
             }                
 
             if( $infoPedido->localDevolucaoLocador && $infoPedido->localDevolucaoLocatario ) {
-                $id_definicao_pendencias = 5;
-
-                $infoPedido->idStatusPedido = $id_definicao_pendencias;            
+                $cod_status_aguardando_entrega = 5;
+                
+                $statusPedido = new \Tabela\StatusPedido();
+                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_entrega}")[0];
+                
+                $infoPedido->idStatusPedido = $statusPedido->id;            
 
                 $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
-                $historicoAlteracaoPedido->idStatus = $id_definicao_pendencias;            
+                $historicoAlteracaoPedido->idStatusPedido = $statusPedido->id;            
                 $historicoAlteracaoPedido->inserir();
             }
         }
-
+        echo json_encode( $infoPedido );
+        
         $resultado = $infoPedido->atualizar();
     }
 

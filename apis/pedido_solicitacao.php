@@ -5,6 +5,8 @@
     require_once("../include/classes/tbl_pedido.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
     require_once("../include/classes/tbl_cityshare.php");
+    require_once("../include/classes/tbl_status_pedido.php");
+    require_once("../include/classes/tbl_usuario.php");
 
     $RETIRADA = 1;
     $DEVOLUCAO = 2;
@@ -15,48 +17,57 @@
     
     $sessao = new Sessao();
     $idUsuario = -1;
-    if( $sessao->get("idUsuario") == null ) {
+    if( $sessao->get("idUsuario") != null ) {
         $idUsuario = (int) $sessao->get("idUsuario");
     } else {
         $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : -1;
     }
     
     $resultado = false;
-    if( $idUsuario != -1 ) {
-
+    
+    if( $idUsuario != -1 ) {        
+         
         $infoPedido = new \Tabela\Pedido();
-        $infoPedido = $infoPedido->listarPedidos(null, null, "id = {$idPedido}")[0];
-
+        $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
+                        
         $is_locador = null;
         if( $infoPedido->idUsuarioLocador == $idUsuario ) {
             $is_locador = true;
         } elseif( $infoPedido->idUsuarioLocatario == $idUsuario ) {
             $is_locador = false;
         }        
-
-        if( $modo == $RETIRADA ) {                        
-            
-            $lucroCityshare;
+        
+        if( $modo == $RETIRADA ) {
             
             if( $is_locador ) {
+                echo "LOCADOR";
                 $infoPedido->solicitacaoRetiradaLocador = 1;
             } else {
+                echo "LOCATARIO";
                 $infoPedido->solicitacaoRetiradaLocatario = 1;
             }
 
             if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {
-                $id_aguardando_confirmacao_local_entrega = 4;
-
-                $infoPedido->idStatusPedido = $id_aguardando_confirmacao_local_entrega;
-
+                $cod_status_aguardando_confirmacao_local_entrega = 4;
+                
+                $statusPedido = new \Tabela\StatusPedido();
+                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_confirmacao_local_entrega}")[0];
+                
+                $infoPedido->idStatusPedido = $statusPedido->id;
+                
                 $alteracaoPedido = new \Tabela\AlteracaoPedido();
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
-                $alteracaoPedido->idStatus = $id_aguardando_confirmacao_local_entrega;
+                $alteracaoPedido->idStatusPedido = $statusPedido->id;
                 $alteracaoPedido->inserir();
                 
-                $usuario_locador = new \Tabela\Usuario("id = {$infoPedido->idUsuarioLocador}")[0];
-                $usuario_locador->saldo = $usuario_locador->saldo + $infoPedido->valorTotal;
+                $usuario_locador = new \Tabela\Usuario();
+                $usuario_locador = $usuario_locador->buscar("id = {$infoPedido->idUsuarioLocador}")[0];
+                
+                
+                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;                
+                
+                $usuario_locador->saldo = $usuario_locador->saldo + $valorTotal;
                 $usuario_locador->atualizar();                
             }
 
@@ -67,25 +78,28 @@
             } else {
                 $infoPedido->solicitacaoDevolucaoLocatario = 1;
                 $infoPedido->dataEntregaEfetuada = get_data_atual_mysql();
-            }                
-
+            }
+            
             if( $infoPedido->solicitacaoDevolucaoLocador == 1 && $infoPedido->solicitacaoDevolucaoLocatario == 1 ) {
-                $id_aguardando_definicao_pendencias = 6;
+                $cod_status_aguardando_definicao_pendencias = 6;
 
-                $infoPedido->idStatusPedido = $id_aguardando_definicao_pendencias;
+                $statusPedido = new \Tabela\StatusPedido();
+                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_confirmacao_local_entrega}")[0];
+                
+                $infoPedido->idStatusPedido = $statusPedido->id;
 
                 $alteracaoPedido = new \Tabela\AlteracaoPedido();
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
-                $alteracaoPedido->idStatus = $id_aguardando_definicao_pendencias;
+                $alteracaoPedido->idStatusPedido = $statusPedido->id;
                 $alteracaoPedido->inserir(); 
             }
 
         }
-        
+                
+        echo json_encode( $infoPedido );
         $resultado = $infoPedido->atualizar();
     }
-
-
+        
     echo json_encode( $resultado );
 ?>

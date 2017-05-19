@@ -34,7 +34,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Home | City Share</title>
+        <title>Pedido | City Share</title>
         <meta name="viewport" content="width=device-width" />
         <meta charset="utf-8" />        
         <link rel="stylesheet" href="css/style.css">        

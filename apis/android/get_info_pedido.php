@@ -5,7 +5,7 @@
     $idPedido = ( isset($_POST["idPedido"]) )? (int) $_POST["idPedido"] : null;
 
     $buscaPedidos = new \Tabela\Pedido();
-    $listaPedidos = $buscaPedidos->listarPedidos(null, null, "p.id = {$idPedido}");
+    $listaPedidos = $buscaPedidos->listarPedidos(null. null, "p.id = {$idPedido}");
 
     echo json_encode( $listaPedidos[0] );
 ?>
