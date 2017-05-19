@@ -1025,6 +1025,8 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_solicitacao.php", "POST", dados, function(resultado) {
+                    console.log(resultado);
+                    
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_solicitacao = $(box_botoes).children("#botao-solicitar-devolucao")[0];
                     var botao_confirmacao = $(box_botoes).children("#botao-confirmar-devolucao")[0];
@@ -1065,6 +1067,7 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {
+                    console.log(resultado);
                     var botao_definir_pendencias = $("#botao-definir-pendencias")[0];
                     
                     if( botao_definir_pendencias !== undefined ) {
@@ -1096,6 +1099,7 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {                                                            
+                    console.log(resultado);
                     var botao_visualizar_pendencias = $("#botao-visualizar-pendencias")[0];
                     
                     if( statusPendencia === DISCORDO ) {                    
@@ -1125,7 +1129,8 @@ $(document).ready(function() {
                     var idPedido = window.location.search;
                     idPedido = idPedido.substr( idPedido.indexOf("?id=")+4, idPedido.length );
                     
-                    var formaPagamento = ( $(this).hasClass("js-btn-pagamento-cartao") )? PAGAMENTO_CARTAO : PAGAMENTO_DINHEIRO;
+                    var formaPagamento = ( $(this).hasClass("js-pagamento-cartao") )? PAGAMENTO_CARTAO : PAGAMENTO_DINHEIRO;
+                    console.log(formaPagamento);
                     
                     var dados = new FormData();
                     dados.append("idPedido", idPedido);
@@ -1142,6 +1147,8 @@ $(document).ready(function() {
                     
                     var ajax = new Ajax();
                     ajax.transferir_dados_para_api("apis/pedido_realizar_pagamento.php", "POST", dados, function(resultado) {
+                        console.log(resultado);
+                        
                         var botao_avanco = $(box_modal).find(".js-pagamento-cartao")[0];
                         
                         if( botao_avanco === undefined ) {                        
@@ -1258,18 +1265,30 @@ $(document).ready(function() {
                 
                 for( var x = 0; x < botoesTransferencia.length; ++x ) {
                     var modalAlvo = $(containerModals).children( "." + getClasseModal(botoesTransferencia[x]) )[0];                    
-                    definirBotaoModal(botoesTransferencia[x], modalAlvo);                                        
+                    definirBotaoModal(botoesTransferencia[x], modalAlvo);
                 }
 
             }
             
-            $(containerModals).click(function(e) {                
+            $(containerModals).click(function(e) {
                 if( $(e.target).parents(".modal")[0] !== undefined || $(e.target).hasClass("modal")) return;                
                 
                 ocultarModais(modals);
             });
             
             inicializarBotoesAcaoPedido();
+                        
+            $('#slider-combustivel').slider({
+                value: 1,
+                min: 0,
+                max: 8,
+                step: 1,
+                slide: function( event, ui ) {
+                    $( ".js-txt-combustivel-restante" ).val( ui.value );
+                    $( ".label-combustivel" ).text( ui.value + "/8" );
+                }
+            });
+            
         }
     }
     
@@ -1340,7 +1359,7 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_pedidos.php", "POST", dados, function(resultado) {
+        ajax.transferir_dados_para_api("apis/listagem_pedidos.php", "POST", dados, function(resultado) {            
             
             if( increment ) {
                 box_listagem.innerHTML = conteudo_listagem + resultado;                
@@ -1384,19 +1403,22 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {            
-            console.log(resultado);
-            lista_json_solicitacoes = JSON.parse(resultado);            
+        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                        
+            var nova_lista_solicitacoes = JSON.parse( resultado );
             
-            if( increment ) {
+            if( nova_lista_solicitacoes.length !== 0 ) {            
+                lista_json_solicitacoes = nova_lista_solicitacoes;                                                                                                              
+            }
+            
+            if( increment && nova_lista_solicitacoes.length > 0 ) {
                 box_listagem.innerHTML = conteudo_listagem + criarListaSolicitacoes(lista_json_solicitacoes);                
             } else {
                 box_listagem.innerHTML = criarListaSolicitacoes(lista_json_solicitacoes);
             }
             
-            var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+            var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];  
             
-            if( lista_json_solicitacoes.length === 0 ) {
+            if( nova_lista_solicitacoes.length === 0 ) {
                 botao_carregar_mais_pedidos.style.display = "none";
             } else {
                 botao_carregar_mais_pedidos.style.display = "block";    
@@ -1541,7 +1563,7 @@ $(document).ready(function() {
             });
             
             $(document).on("click", ".js-load-solicitacoes", function(e) {
-                ++paginaAtual;  
+                ++paginaAtual;
                 
                 carregarListaSolicitacoes(paginaAtual, true);
                 var botao_carregar_mais_solicitacoes = $("#botao-exibir-mais")[0];
@@ -1824,7 +1846,7 @@ $(document).ready(function() {
     function exibirFormularioConfiguracao(formulario) {
         var box_form = $("#box-form")[0];
         
-        $( box_form.children ).css("display", "none");
+        //$( box_form.children ).css("display", "none");
         $( formulario ).css("display", "block");
     }
     

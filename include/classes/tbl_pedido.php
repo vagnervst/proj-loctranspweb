@@ -22,7 +22,9 @@
             public $solicitacaoDevolucaoLocatario;
             public $combustivelRestante;
             public $limiteQuilometragem;
-            public $quilometragemExcedida;            
+            public $quilometragemExcedida;  
+            public $pagamentoPendenciaLocador;
+            public $pagamentoPendenciaLocatario;
             public $idPublicacao;
             public $idUsuarioLocador;
             public $idUsuarioLocatario;
@@ -94,7 +96,7 @@
                                                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }                                                                
+                }                                                                                                                                
                 
                 $sql .= " ORDER BY p.dataRetirada DESC";
                 

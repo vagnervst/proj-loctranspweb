@@ -43,10 +43,9 @@
             }
 
             if( $infoPedido->localRetiradaLocador == true && $infoPedido->localRetiradaLocatario == true ) {
-                $cod_status_aguardando_retirada = 3;
-                    
+                                    
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_retirada}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_RETIRADA}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;
 
@@ -65,11 +64,10 @@
                 $infoPedido->localDevolucaoLocatario = 1;
             }                
 
-            if( $infoPedido->localDevolucaoLocador && $infoPedido->localDevolucaoLocatario ) {
-                $cod_status_aguardando_entrega = 5;
+            if( $infoPedido->localDevolucaoLocador && $infoPedido->localDevolucaoLocatario ) {                
                 
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_entrega}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_ENTREGA}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;            
 
@@ -80,8 +78,7 @@
                 $historicoAlteracaoPedido->inserir();
             }
         }
-        echo json_encode( $infoPedido );
-        
+                
         $resultado = $infoPedido->atualizar();
     }
 

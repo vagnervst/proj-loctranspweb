@@ -39,19 +39,16 @@
         
         if( $modo == $RETIRADA ) {
             
-            if( $is_locador ) {
-                echo "LOCADOR";
+            if( $is_locador ) {                
                 $infoPedido->solicitacaoRetiradaLocador = 1;
-            } else {
-                echo "LOCATARIO";
+            } else {                
                 $infoPedido->solicitacaoRetiradaLocatario = 1;
             }
 
-            if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {
-                $cod_status_aguardando_confirmacao_local_entrega = 4;
+            if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {                
                 
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_confirmacao_local_entrega}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_LOCAL_ENTREGA}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;
                 
@@ -71,7 +68,7 @@
                 $usuario_locador->atualizar();                
             }
 
-        } elseif( $modo == $DEVOLUCAO ) {                
+        } elseif( $modo == $DEVOLUCAO ) {
 
             if( $is_locador ) {
                 $infoPedido->solicitacaoDevolucaoLocador = 1;
@@ -80,11 +77,10 @@
                 $infoPedido->dataEntregaEfetuada = get_data_atual_mysql();
             }
             
-            if( $infoPedido->solicitacaoDevolucaoLocador == 1 && $infoPedido->solicitacaoDevolucaoLocatario == 1 ) {
-                $cod_status_aguardando_definicao_pendencias = 6;
-
+            if( $infoPedido->solicitacaoDevolucaoLocador == 1 && $infoPedido->solicitacaoDevolucaoLocatario == 1 ) {                       
+                
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_confirmacao_local_entrega}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_DEFINICAO_PENDENCIAS}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;
 
@@ -96,8 +92,7 @@
             }
 
         }
-                
-        echo json_encode( $infoPedido );
+                                
         $resultado = $infoPedido->atualizar();
     }
         
