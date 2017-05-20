@@ -28,9 +28,7 @@
                 }     
                 
                 $listaBanco = $this->executarQuery( $sql );
-                $listaBanco = $this->get_array_from_resultado( $listaBanco );
-
-                                            
+                $listaBanco = $this->get_array_from_resultado( $listaBanco );     
                 
                 $totalBanco = $this->executarQuery("SELECT COUNT(*) AS total FROM {$this::$nome_tabela}");
                 
