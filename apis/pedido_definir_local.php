@@ -42,7 +42,9 @@
                 $infoPedido->localRetiradaLocatario = 1;
             }
 
-            if( $infoPedido->localRetiradaLocador == true && $infoPedido->localRetiradaLocatario == true ) {
+            echo json_encode( $infoPedido );
+            
+            if( $infoPedido->localRetiradaLocador == 1 && $infoPedido->localRetiradaLocatario == 1 ) {
                                     
                 $statusPedido = new \Tabela\StatusPedido();
                 $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_RETIRADA}")[0];
@@ -52,8 +54,11 @@
                 $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
-                $historicoAlteracaoPedido->idStatusPedido = $statusPedido->id;
+                $historicoAlteracaoPedido->idStatus = $statusPedido->id;
                 $historicoAlteracaoPedido->inserir();
+                
+                echo "INSERINDO ALTERACAO";
+                echo json_encode($historicoAlteracaoPedido);
             }
 
         } elseif( $modo == $DEVOLUCAO ) {
@@ -64,7 +69,7 @@
                 $infoPedido->localDevolucaoLocatario = 1;
             }                
 
-            if( $infoPedido->localDevolucaoLocador && $infoPedido->localDevolucaoLocatario ) {                
+            if( $infoPedido->localDevolucaoLocador == 1 && $infoPedido->localDevolucaoLocatario == 1 ) {                
                 
                 $statusPedido = new \Tabela\StatusPedido();
                 $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_ENTREGA}")[0];
@@ -74,7 +79,7 @@
                 $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
-                $historicoAlteracaoPedido->idStatusPedido = $statusPedido->id;            
+                $historicoAlteracaoPedido->idStatus = $statusPedido->id;            
                 $historicoAlteracaoPedido->inserir();
             }
         }

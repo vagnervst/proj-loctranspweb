@@ -32,8 +32,8 @@
                 $valores = $this->get_valores();                        
 
                 $statement = [];
-                for($i = 0; $i < count($propriedades); ++$i) {
-                    if( $propriedades[$i] != $this::$primary_key && property_exists( get_class($this), $propriedades[$i] ) && $valores == null || !empty($valores[$i]) ) {
+                for($i = 0; $i < count($propriedades); ++$i) {                    
+                    if( $propriedades[$i] != $this::$primary_key && property_exists( get_class($this), $propriedades[$i] ) && ( isset($valores[$i]) ) ) {
                         $statement[] = $propriedades[$i] . " = " . $this->preparar_valor($valores[$i]);                                                
                     }
                 }
@@ -124,8 +124,10 @@
                 $objeto = new $nomeClasse;
 
                 $keys = array_keys($resultado);
-                for($i = 0; $i < count($keys); ++$i) {                    
-                    $objeto->$keys[$i] = $this->preparar_valor_exibicao($resultado[$keys[$i]]);                                        
+                for($i = 0; $i < count($keys); ++$i) {
+                    if( isset( $resultado[$keys[$i]] ) ) {
+                        $objeto->$keys[$i] = $this->preparar_valor_exibicao($resultado[$keys[$i]]);
+                    }
                 }
 
                 return $objeto;
@@ -168,7 +170,7 @@
             public function atualizar() {
                 $sql = "UPDATE " . $this::$nome_tabela . " ";
                 $sql .= "SET " . $this->get_update_valores($this) . " ";                        
-                $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();                                                
+                $sql .= "WHERE " . $this::$primary_key . " = " . $this->get_valor_primary_key();                                
                 
                 return $this->executarQuery($sql);
             }

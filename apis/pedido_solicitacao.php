@@ -45,7 +45,7 @@
                 $infoPedido->solicitacaoRetiradaLocatario = 1;
             }
 
-            if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {                
+            if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {
                 
                 $statusPedido = new \Tabela\StatusPedido();
                 $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_LOCAL_ENTREGA}")[0];
@@ -55,15 +55,16 @@
                 $alteracaoPedido = new \Tabela\AlteracaoPedido();
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
-                $alteracaoPedido->idStatusPedido = $statusPedido->id;
+                $alteracaoPedido->idStatus = $statusPedido->id;
                 $alteracaoPedido->inserir();
+                
+                echo json_encode($alteracaoPedido);
                 
                 $usuario_locador = new \Tabela\Usuario();
                 $usuario_locador = $usuario_locador->buscar("id = {$infoPedido->idUsuarioLocador}")[0];
-                
-                
-                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;                
-                
+
+                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;
+
                 $usuario_locador->saldo = $usuario_locador->saldo + $valorTotal;
                 $usuario_locador->atualizar();                
             }
@@ -87,7 +88,7 @@
                 $alteracaoPedido = new \Tabela\AlteracaoPedido();
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
-                $alteracaoPedido->idStatusPedido = $statusPedido->id;
+                $alteracaoPedido->idStatus = $statusPedido->id;
                 $alteracaoPedido->inserir(); 
             }
 

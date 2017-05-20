@@ -9,6 +9,9 @@
     $idPedido = ( isset($_POST["idPedido"]) )? (int) $_POST["idPedido"]: null;
     $quilometragemExcedida = ( isset($_POST["quilometragemExcedida"]) )? (int) $_POST["quilometragemExcedida"] : null;
     $combustivelRestante = ( isset($_POST["combustivelRestante"]) )? (int) $_POST["combustivelRestante"] : null;
+    
+    echo "quilometragem excedida: " . $quilometragemExcedida;
+    echo "combustivel restante: " . $combustivelRestante;
 
     $infoPedido = new \Tabela\Pedido();
     $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
@@ -30,12 +33,14 @@
     }
     
     $alteracaoPendencia = new \Tabela\AlteracaoPedido();
-    $alteracaoPendencia->dataOcorrencia = strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()) );
+    $alteracaoPendencia->dataOcorrencia = get_data_atual_mysql();
     $alteracaoPendencia->idPedido = $idPedido;
+    
+    sleep(1);
 
     $alteracaoPedido = new \Tabela\AlteracaoPedido();
-    $alteracaoPedido->dataOcorrencia = strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()) );
-    $alteracaoPedido->idPedido = $idPedido;        
+    $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
+    $alteracaoPedido->idPedido = $idPedido;
     
     $resultado = false;
     if( $is_locador ) {                
