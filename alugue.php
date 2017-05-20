@@ -107,7 +107,7 @@
                             
                             $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual );
                             
-                            foreach( $listaPublicacao as $publicacao ) { 
+                            foreach( $listaPublicacao as $publicacao ) {
                         ?>
                         <section class="box-veiculo">
                             <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
