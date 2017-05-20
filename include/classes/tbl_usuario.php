@@ -88,8 +88,28 @@
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
+                                                                                                  
+                $resultado = $this->executarQuery( $sql );
+                                
+                $resultado = $this->get_array_from_resultado( $resultado );                                                
                 
-                $sql .= " ORDER BY mediaNotas DESC LIMIT 10";                                                                    
+                return $resultado;
+            }
+            
+            public function getTopUsuarios() {
+                $sql = "SELECT u.*, SUM(av.nota) AS somaAvaliacoes, (SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id) AS qtdAvaliacoes, (SUM(av.nota)/(SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id)) AS mediaAvaliacao, c.nome AS cidade, e.nome AS estado ";
+                $sql .= "FROM tbl_usuario AS u ";
+                $sql .= "INNER JOIN tbl_conta_bancaria AS cb ";
+                $sql .= "ON cb.idUsuario = u.id ";
+                $sql .= "INNER JOIN tbl_avaliacao AS av ";
+                $sql .= "ON av.idUsuarioAvaliado = u.id ";
+                $sql .= "INNER JOIN tbl_cidade AS c ";
+                $sql .= "ON c.id = u.idCidade ";
+                $sql .= "INNER JOIN tbl_estado AS e ";
+                $sql .= "ON e.id = c.idEstado ";
+                $sql .= "ORDER BY mediaAvaliacao DESC ";                                
+                $sql .= "LIMIT 10";
+                
                 $resultado = $this->executarQuery( $sql );
                                 
                 $resultado = $this->get_array_from_resultado( $resultado );                                                

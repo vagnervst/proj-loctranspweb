@@ -1294,7 +1294,8 @@ header #box-botao-filtragem {
 }
 
 .main #container-locadores-destaque #horizontal-wrapper {
-    width: 2600px;   
+    width: 2600px; 
+    height: 410px;
 }
 
 @media (min-width: 520px) {
@@ -4127,7 +4128,7 @@ header #box-botao-filtragem {
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao {
     background-color: #fff;
     padding: 5px;
-    height: 130px;
+    height: 150px;
     border: 1px solid #a7a7a7;
     margin: 5px 0px;
 }
@@ -4137,7 +4138,7 @@ header #box-botao-filtragem {
     background-size: cover;
     background-repeat: no-repeat;    
     width: 125px;
-    height: 130px;
+    height: 147px;
     border: 1px solid #a7a7a7;
     float: left;
 }
