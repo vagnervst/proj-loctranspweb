@@ -80,7 +80,7 @@
                                             "icone-avaliacao inativa"
                                         ];
                                                                                                                 
-                                        for( $i = 0; $i < $detalhes_usuario->mediaNotas; ++$i ) {
+                                        for( $i = 0; $i < round($detalhes_usuario->mediaNotas); ++$i ) {
                                             $lista_estrelas[$i] = "icone-avaliacao";                           
                                         }
                                 
