@@ -1754,8 +1754,9 @@ $(document).ready(function() {
             html += '<div class="box-avaliacao">';
             html += '<section class="info-avaliador">';
             html += '<div class="info-detalhes">'+ avaliacao.nomeAvaliador +'</div>';
-            html += '<div class="info-detalhes">'+ avaliacao.dataAvaliacao +'</div>';
-            html += '<div class="info-detalhes">'+ avaliacao.nota.toString(); +'</div>';
+            var dataAvaliacao = new Date( avaliacao.dataAvaliacao );            
+            html += '<div class="info-detalhes">'+ dataAvaliacao.toLocaleString().split(" ")[0] +'</div>';
+            html += '<div class="info-detalhes">Avaliação: '+ avaliacao.nota.toString(); +'</div>';
             html += '</section>';
             html += '<p>Mensagem:</p>'
             html += '<div class="mensagem">'+ avaliacao.mensagem +'</div>';
