@@ -2,6 +2,7 @@
     sleep(1);
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_pedido.php");
+    require_once("../include/classes/tbl_status_pedido.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
     require_once("../include/classes/sessao.php");
 
@@ -10,7 +11,13 @@
     $codigoSegurancaCartao = ( isset($_POST["codigoSegurancaCartao"]) )? (int) $_POST["codigoSegurancaCartao"] : null;
 
     $sessao = new Sessao();
-    $idUsuario = (int) $sessao->get("idUsuario");
+
+    $idUsuario = -1;    
+    if( $sessao->get("idUsuario") != null ) {
+        $idUsuario = (int) $sessao->get("idUsuario");   
+    } else {
+        $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : -1;
+    }
 
     $infoPedido = new \Tabela\Pedido();
     $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
@@ -24,35 +31,53 @@
 
     $CARTAO_CREDITO = 1;
     $DINHEIRO = 2;
-    
-    $id_pedido_concluido = 9;
-    
-    $alteracaoPendencias = new \Tabela\AlteracaoPedido();
-    $alteracaoPendencias->dataOcorrencia = get_data_atual_mysql();
-    $alteracaoPendencias->idPedido = $idPedido;
-
+        
     $alteracaoPedido = new \Tabela\AlteracaoPedido();
     $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
     $alteracaoPedido->idPedido = $idPedido;
-    $alteracaoPedido->idStatus = $id_pedido_concluido;
     
     if( $formaPagamento == $CARTAO_CREDITO && !$is_locador && !empty($codigoSegurancaCartao) ) {        
-        $id_pagamento_cartao_credito = 14;
+                
+        $statusPedido = new \Tabela\StatusPedido();
+        $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_PENDENCIAS_PAGAS_CARTAO_CREDITO}")[0];
         
+        $infoPedido->pagamentoPendenciaLocador = 1;
+        $infoPedido->pagamentoPendenciaLocatario = 1;
         $infoPedido->idFormaPagamentoPendencias = $CARTAO_CREDITO;
-        $infoPedido->idStatusPedido = $id_pedido_concluido;
-        $alteracaoPendencias->idStatus = $id_pagamento_cartao_credito;
+        
+        $alteracaoPedido->idStatus = $statusPedido->id;  
+        $alteracaoPedido->inserir();
+        
+        $infoPedido->idStatusPedido = $statusPedido->id;
                        
     } elseif( $formaPagamento == $DINHEIRO && !$is_locador ) {
-        $id_pagamento_dinheiro = 13;
         
+        $statusPedido = new \Tabela\StatusPedido();
+        $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_PAGAMENTO_PENDENCIAS}")[0];                
+        
+        $infoPedido->pagamentoPendenciaLocatario = 1;
         $infoPedido->idFormaPagamentoPendencias = $DINHEIRO;
-        $infoPedido->idStatusPedido = $id_pedido_concluido;
-        $alteracaoPendencias->idStatus = $id_pagamento_dinheiro;
         
+        $infoPedido->idStatusPedido = $statusPedido->id;
+        $alteracaoPedido->idStatus = $statusPedido->id;
+        $alteracaoPedido->inserir();
+    } elseif( $is_locador ) {
+        
+        $infoPedido->pagamentoPendenciaLocador = 1;
     }
+    
+    if( $infoPedido->pagamentoPendenciaLocador == 1 && $infoPedido->pagamentoPendenciaLocatario == 1 ) {
+        
+        $statusPedido = new \Tabela\StatusPedido();
+        $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_CONCLUIDO}")[0];                
+        
+        $infoPedido->idStatusPedido = $statusPedido->id;
+        
+        $alteracaoPedido->idStatus = $statusPedido->id;
+        $alteracaoPedido->inserir();
+    }
+    
+    echo json_encode($infoPedido);
 
     $infoPedido->atualizar();
-    $altercacaoPendencias->inserir();
-    $alteracaoPedido->inserir(); 
 ?>

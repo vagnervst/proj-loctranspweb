@@ -1072,7 +1072,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     .main .box-conteudo {
-        width: 650px;
+        width: 650px;        
     }
 }
 
@@ -2270,7 +2270,7 @@ header #box-botao-filtragem {
 #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {    
     display: none;
     width: 300px;    
-    background-color: #e2e2e2;
+    background-color: #f9f9f9;
     color: #202020;
     float: left;
 }
@@ -4667,8 +4667,10 @@ header #box-botao-filtragem {
     }   
 }
 
-#pag-solicitacoes .box-conteudo {
-    height: 800px;
+@media (min-width: 740px) {
+    #pag-solicitacoes .box-conteudo {
+        min-height: 800px;
+    }
 }
 
 #pag-solicitacoes #container-modo-visualizacao {
@@ -5383,6 +5385,21 @@ header #box-botao-filtragem {
     display: none;
 }
 
+#pag-pedido .box-modal-pedido #input-combustivel-restante {
+    display: none;
+}
+
+#pag-pedido .box-modal-pedido .label-combustivel {
+    text-align: center;
+    margin-bottom: 5px;
+    color: gray;
+}
+
+#pag-pedido .box-modal-pedido #slider-combustivel {
+    width: 270px;
+    margin: 0 auto;
+}
+
 #pag-pedido .box-modal-pedido .icone {
     background-color: #141619;
     background-size: 40px;
@@ -5468,6 +5485,7 @@ header #box-botao-filtragem {
 
 #pag-pedido .box-modal-pedido .box-info .box-acoes {
     text-align: center;    
+    margin: 5px 0px;
 }
 
 #pag-pedido .box-modal-pedido .box-info .box-acoes .titulo {
@@ -5554,18 +5572,20 @@ header #box-botao-filtragem {
     height: 55px;
     width: 55px;    
     padding: 5px;
-    right: 0px;
-    border: 0px solid #d3d3d3;
+    position: relative;
+    right: 0px;    
+    border: 0px;
     border-radius: 10px;
     transition: all .2s;
-    margin: 3px 0px;
+    margin: 3px 0px;    
 }
 
 #pag-pedido .box-contato-locador .box-contato.ativo {
-    background-color: #141619;
+    background-color: #a1aec9;
     width: 220px;
     position: relative;
-    right: 140px;    
+    right: 140px;      
+    box-shadow: 1px 1px 5px #bcbcbc;
 }
 
 @media (min-width: 740px) {
@@ -5581,11 +5601,12 @@ header #box-botao-filtragem {
 #pag-pedido .box-contato-locador .box-contato .info-contato {
     display: none;
     width: 160px;
-    position: relative;
-    top: 18px;
+    line-height: 55px;
+    position: relative;    
     font-size: 18px;
-    color: white;
-    float: right;    
+    color: #ffffff;
+    float: right;  
+    overflow-x: auto;
 }
 
 #pag-pedido .box-contato-locador .box-contato.ativo .info-contato.ativo {
@@ -5616,7 +5637,7 @@ header #box-botao-filtragem {
 
 #pag-pedido .box-contato-locador .box-contato .icone-contato {
     display: block;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     background-size: 32px 32px;
     background-repeat: no-repeat;
     background-position: center;

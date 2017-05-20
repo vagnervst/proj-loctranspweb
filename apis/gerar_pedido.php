@@ -18,8 +18,7 @@
         
         $dataRetirada = strftime( "%Y-%m-%d %H:%M:%S", $dataRetirada );
         $dataDevolucao = strftime( "%Y-%m-%d %H:%M:%S", $dataDevolucao );
-        
-        $id_status_aguardando_aprovacao = 1;
+                
         $id_tipo_pedido_online = 1;
         $id_forma_pagamento_cartao = 1;
         
@@ -33,6 +32,9 @@
         $sessao = new Sessao();
         $id_usuario_locatario = (int) $sessao->get("idUsuario");
         
+        $statusPedido = new \Tabela\StatusPedido();
+        $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGENDADO}")[0];
+        
         $objPedido->valorDiaria = $info_publicacao->valorDiaria;
         $objPedido->valorCombustivel = $info_publicacao->valorCombustivel;
         $objPedido->valorQuilometragem = $info_publicacao->valorQuilometragem;
@@ -41,7 +43,7 @@
         $objPedido->idPublicacao = (int) $info_publicacao->id;
         $objPedido->idUsuarioLocador = $id_usuario_locador;
         $objPedido->idUsuarioLocatario = $id_usuario_locatario;
-        $objPedido->idStatusPedido = $id_status_aguardando_aprovacao;
+        $objPedido->idStatusPedido = $statusPedido->id;
         $objPedido->idTipoPedido = $id_tipo_pedido_online;
         $objPedido->idFormaPagamento = $id_forma_pagamento_cartao;
         $objPedido->idFuncionario = $id_funcionario;
@@ -53,7 +55,7 @@
         $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
         $historicoAlteracaoPedido->dataOcorrencia = strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()) );
         $historicoAlteracaoPedido->idPedido = $idPedido;
-        $historicoAlteracaoPedido->idStatus = $id_status_aguardando_aprovacao;
+        $historicoAlteracaoPedido->idStatus = $statusPedido->id;
         
         $historicoAlteracaoPedido->inserir();
     }

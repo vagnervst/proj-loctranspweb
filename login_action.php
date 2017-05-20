@@ -17,9 +17,9 @@
         if( Autenticacao::verificar( $senha, $usuarioAlvo->senha ) ) {            
             $sessao = new Sessao();
             
-            $sessao->put("idUsuario", $usuarioAlvo->id);
-            
-            redirecionar_para("index.php");
+            $sessao->put("idUsuario", $usuarioAlvo->id);                        
         }
     }
+
+    redirecionar_para("index.php");
 ?>
