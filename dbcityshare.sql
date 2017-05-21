@@ -95,7 +95,6 @@ CREATE TABLE `nivel_acesso_juridico_tela_software` (
 
 LOCK TABLES `nivel_acesso_juridico_tela_software` WRITE;
 /*!40000 ALTER TABLE `nivel_acesso_juridico_tela_software` DISABLE KEYS */;
-INSERT INTO `nivel_acesso_juridico_tela_software` VALUES (17,3,1),(17,2,1),(17,1,1),(17,4,1),(17,3,2),(17,2,2),(17,1,2),(17,4,2),(17,3,3),(17,2,3),(17,1,3),(17,4,3),(17,3,4),(17,2,4),(17,1,4),(17,4,4),(17,3,5),(17,2,5),(17,1,5),(17,4,5);
 /*!40000 ALTER TABLE `nivel_acesso_juridico_tela_software` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +227,7 @@ CREATE TABLE `tbl_alteracao_pedido` (
   KEY `pedido_historicoAlteracao` (`idPedido`),
   CONSTRAINT `historicoAlteracaoPedido_statusPedido` FOREIGN KEY (`idStatus`) REFERENCES `tbl_statuspedido` (`id`),
   CONSTRAINT `pedido_historicoAlteracao` FOREIGN KEY (`idPedido`) REFERENCES `tbl_pedido` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,6 +236,7 @@ CREATE TABLE `tbl_alteracao_pedido` (
 
 LOCK TABLES `tbl_alteracao_pedido` WRITE;
 /*!40000 ALTER TABLE `tbl_alteracao_pedido` DISABLE KEYS */;
+INSERT INTO `tbl_alteracao_pedido` VALUES (246,'2017-05-21 12:45:55',1,27),(247,'2017-05-21 13:01:16',2,27),(248,'2017-05-21 13:04:48',3,27),(249,'2017-05-21 13:07:33',4,27),(250,'2017-05-21 13:07:56',5,27),(251,'2017-05-21 13:15:53',6,27),(253,'2017-05-21 13:16:19',7,27),(254,'2017-05-21 13:22:47',12,27),(255,'2017-05-21 13:22:48',8,27);
 /*!40000 ALTER TABLE `tbl_alteracao_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,7 +283,7 @@ CREATE TABLE `tbl_avaliacao` (
   KEY `usuarioAvaliado_avaliacao` (`idUsuarioAvaliado`),
   CONSTRAINT `usuarioAvaliado_avaliacao` FOREIGN KEY (`idUsuarioAvaliado`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `usuarioAvaliador_avaliacao` FOREIGN KEY (`idUsuarioAvaliador`) REFERENCES `tbl_usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -292,7 +292,7 @@ CREATE TABLE `tbl_avaliacao` (
 
 LOCK TABLES `tbl_avaliacao` WRITE;
 /*!40000 ALTER TABLE `tbl_avaliacao` DISABLE KEYS */;
-INSERT INTO `tbl_avaliacao` VALUES (1,2,'qweqewq',NULL,24,23);
+INSERT INTO `tbl_avaliacao` VALUES (1,2,'qweqewq',NULL,24,23),(2,5,'Locador muito prestativo. Faria negócio novamente.','2017-05-19 23:56:38',23,24),(3,5,'Locador muito prestativo. Faria negócio novamente.','2017-05-19 23:56:48',23,24),(4,5,'123','2017-05-19 23:58:17',23,24),(5,1,'123','2017-05-19 23:58:45',24,23),(6,1,'qwe','2017-05-20 00:00:26',24,23),(7,5,NULL,'2017-05-20 00:00:56',24,23),(8,2,NULL,'2017-05-20 00:01:07',24,23),(9,4,'123','2017-05-20 00:17:01',23,24),(10,3,'123','2017-05-20 00:17:05',24,23),(11,4,NULL,'2017-05-20 03:00:46',24,23),(12,4,NULL,'2017-05-20 03:04:29',24,23),(13,5,NULL,'2017-05-20 03:15:18',23,24),(14,3,NULL,'2017-05-20 04:05:44',24,23),(15,5,NULL,'2017-05-20 04:06:12',23,24),(16,5,'Excelente cliente','2017-05-20 04:39:53',24,23),(17,5,'123','2017-05-20 04:41:56',23,24),(18,4,'123','2017-05-20 04:42:59',23,24),(19,4,'123','2017-05-20 04:43:09',24,23),(20,4,'123','2017-05-20 04:44:59',24,23),(21,4,'123','2017-05-20 04:45:53',24,23),(22,2,'123','2017-05-20 04:45:58',23,24);
 /*!40000 ALTER TABLE `tbl_avaliacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,7 +373,7 @@ CREATE TABLE `tbl_cartao_credito` (
   KEY `idTipo` (`idTipo`),
   CONSTRAINT `tbl_cartao_credito_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `tbl_cartao_credito_ibfk_2` FOREIGN KEY (`idTipo`) REFERENCES `tbl_tipo_cartao_credito` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -382,7 +382,7 @@ CREATE TABLE `tbl_cartao_credito` (
 
 LOCK TABLES `tbl_cartao_credito` WRITE;
 /*!40000 ALTER TABLE `tbl_cartao_credito` DISABLE KEYS */;
-INSERT INTO `tbl_cartao_credito` VALUES (5,'123','1996-07-17',23,2),(6,'15141619','2033-07-01',26,2),(7,'15141619','2033-07-01',27,2),(8,'15141619','2033-07-01',28,2),(9,'15141619','2033-07-01',29,2),(10,'15141619','2033-07-01',30,2),(11,'15141619','2033-07-01',31,2),(12,'15141619','2033-07-01',32,2),(13,'15141619','2033-07-01',33,2),(14,'15141619','2033-07-01',34,2),(15,'15141619','2033-07-01',35,2),(16,'15141619','2033-07-01',36,2);
+INSERT INTO `tbl_cartao_credito` VALUES (5,'123','1996-07-17',23,2),(6,'15141619','2033-07-01',26,2),(7,'15141619','2033-07-01',27,2),(8,'15141619','2033-07-01',28,2),(9,'15141619','2033-07-01',29,2),(10,'15141619','2033-07-01',30,2),(11,'15141619','2033-07-01',31,2),(12,'15141619','2033-07-01',32,2),(13,'15141619','2033-07-01',33,2),(14,'15141619','2033-07-01',34,2),(15,'15141619','2033-07-01',35,2),(16,'15141619','2033-07-01',36,2),(17,'123','2017-05-17',37,2);
 /*!40000 ALTER TABLE `tbl_cartao_credito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -525,7 +525,7 @@ CREATE TABLE `tbl_conta_bancaria` (
 
 LOCK TABLES `tbl_conta_bancaria` WRITE;
 /*!40000 ALTER TABLE `tbl_conta_bancaria` DISABLE KEYS */;
-INSERT INTO `tbl_conta_bancaria` VALUES (1,8850,8850,5,25,1,5);
+INSERT INTO `tbl_conta_bancaria` VALUES (1,8850,8850,5,24,1,5);
 /*!40000 ALTER TABLE `tbl_conta_bancaria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -574,7 +574,7 @@ CREATE TABLE `tbl_deposito` (
   PRIMARY KEY (`id`),
   KEY `usuario_saque` (`idUsuario`),
   CONSTRAINT `usuario_saque` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -583,6 +583,7 @@ CREATE TABLE `tbl_deposito` (
 
 LOCK TABLES `tbl_deposito` WRITE;
 /*!40000 ALTER TABLE `tbl_deposito` DISABLE KEYS */;
+INSERT INTO `tbl_deposito` VALUES (1,637.50,'2017-05-19 03:48:02',24),(2,999.99,'2017-05-20 07:50:07',24),(3,999.99,'2017-05-20 07:51:06',24),(4,999.99,'2017-05-20 07:51:08',24),(5,999.99,'2017-05-20 07:51:11',24),(6,999.99,'2017-05-20 07:51:39',24);
 /*!40000 ALTER TABLE `tbl_deposito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1036,22 +1037,27 @@ DROP TABLE IF EXISTS `tbl_pedido`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_pedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `valorDiaria` decimal(5,2) DEFAULT NULL,
-  `valorCombustivel` decimal(4,2) DEFAULT NULL,
-  `valorQuilometragem` decimal(4,2) DEFAULT NULL,
+  `valorDiaria` decimal(5,2) DEFAULT '0.00',
+  `valorCombustivel` decimal(4,2) DEFAULT '0.00',
+  `valorQuilometragem` decimal(4,2) DEFAULT '0.00',
   `dataRetirada` datetime DEFAULT NULL,
   `dataEntrega` datetime DEFAULT NULL,
   `dataEntregaEfetuada` datetime DEFAULT NULL,
-  `localRetiradaLocador` tinyint(1) DEFAULT NULL,
-  `localDevolucaoLocador` tinyint(1) DEFAULT NULL,
-  `localRetiradaLocatario` tinyint(1) DEFAULT NULL,
-  `localDevolucaoLocatario` tinyint(1) DEFAULT NULL,
-  `solicitacaoRetiradaLocador` tinyint(1) DEFAULT NULL,
-  `solicitacaoDevolucaoLocador` tinyint(1) DEFAULT NULL,
-  `solicitacaoRetiradaLocatario` tinyint(1) DEFAULT NULL,
-  `solicitacaoDevolucaoLocatario` tinyint(1) DEFAULT NULL,
-  `combustivelRestante` decimal(4,1) DEFAULT NULL,
-  `quilometragemExcedida` int(5) DEFAULT NULL,
+  `localRetiradaLocador` tinyint(1) DEFAULT '0',
+  `localDevolucaoLocador` tinyint(1) DEFAULT '0',
+  `localRetiradaLocatario` tinyint(1) DEFAULT '0',
+  `localDevolucaoLocatario` tinyint(1) DEFAULT '0',
+  `solicitacaoRetiradaLocador` tinyint(1) DEFAULT '0',
+  `solicitacaoDevolucaoLocador` tinyint(1) DEFAULT '0',
+  `solicitacaoRetiradaLocatario` tinyint(1) DEFAULT '0',
+  `solicitacaoDevolucaoLocatario` tinyint(1) DEFAULT '0',
+  `pagamentoPendenciaLocador` tinyint(1) DEFAULT '0',
+  `pagamentoPendenciaLocatario` tinyint(1) DEFAULT '0',
+  `locadorAvaliado` tinyint(1) DEFAULT '0',
+  `locatarioAvaliado` tinyint(1) DEFAULT '0',
+  `combustivelRestante` decimal(4,1) DEFAULT '0.0',
+  `quilometragemExcedida` int(5) DEFAULT '0',
+  `limiteQuilometragem` int(5) DEFAULT '0',
   `idPublicacao` int(11) NOT NULL,
   `idUsuarioLocador` int(11) NOT NULL,
   `idUsuarioLocatario` int(11) NOT NULL,
@@ -1086,7 +1092,7 @@ CREATE TABLE `tbl_pedido` (
   CONSTRAINT `pedido_usuarioLocador` FOREIGN KEY (`idUsuarioLocador`) REFERENCES `tbl_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedido_usuarioLocatario` FOREIGN KEY (`idUsuarioLocatario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `pedido_veiculo` FOREIGN KEY (`idVeiculo`) REFERENCES `tbl_veiculo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1095,6 +1101,7 @@ CREATE TABLE `tbl_pedido` (
 
 LOCK TABLES `tbl_pedido` WRITE;
 /*!40000 ALTER TABLE `tbl_pedido` DISABLE KEYS */;
+INSERT INTO `tbl_pedido` VALUES (27,37.50,2.30,4.70,'2017-05-21 16:30:15','2017-05-29 12:45:15','2017-05-21 13:15:29',1,1,1,1,1,1,1,1,0,0,0,0,6.0,0,0,8,24,23,8,1,1,NULL,NULL,5,190,NULL);
 /*!40000 ALTER TABLE `tbl_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1295,7 +1302,7 @@ CREATE TABLE `tbl_publicacao` (
   CONSTRAINT `publicacao_statusPublicacao` FOREIGN KEY (`idStatusPublicacao`) REFERENCES `tbl_statuspublicacao` (`id`),
   CONSTRAINT `publicacao_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `tbl_usuario` (`id`),
   CONSTRAINT `publicacao_veiculo` FOREIGN KEY (`idVeiculo`) REFERENCES `tbl_veiculo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1304,6 +1311,7 @@ CREATE TABLE `tbl_publicacao` (
 
 LOCK TABLES `tbl_publicacao` WRITE;
 /*!40000 ALTER TABLE `tbl_publicacao` DISABLE KEYS */;
+INSERT INTO `tbl_publicacao` VALUES (7,'Bicicleta em Ótimo Estado!','123',123.00,99.99,99.99,123,123,'0000-00-00 00:00:00','post\\_7\\_imagem\\_principal.jpg',0.00,'post\\_7\\_imagem\\_a.jpg','post\\_7\\_imagem\\_b.jpg','post\\_7\\_imagem\\_c.jpg','post\\_7\\_imagem\\_d.jpg',0,2,NULL,24,NULL,188),(8,'Tesla S 2016 em Perfeito Estado!','',37.50,2.30,4.70,5000,5000,'0000-00-00 00:00:00',NULL,0.00,NULL,NULL,NULL,NULL,0,3,NULL,24,NULL,190);
 /*!40000 ALTER TABLE `tbl_publicacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1405,7 +1413,7 @@ CREATE TABLE `tbl_statuspedido` (
   `cod` int(2) DEFAULT NULL,
   `titulo` varchar(70) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1414,7 +1422,7 @@ CREATE TABLE `tbl_statuspedido` (
 
 LOCK TABLES `tbl_statuspedido` WRITE;
 /*!40000 ALTER TABLE `tbl_statuspedido` DISABLE KEYS */;
-INSERT INTO `tbl_statuspedido` VALUES (1,1,'Agendado'),(2,2,'Aguardando confirmação do local de retirada'),(3,3,'Aguardando confirmação de retirada'),(4,4,'Aguardando confirmação do local de entrega'),(5,5,'Aguardando confirmação de entrega'),(6,6,'Aguardando definição de pendências'),(7,7,'Aguardando confirmação de pendências'),(8,8,'Aguardando pagamento de pendências'),(9,9,'Concluido'),(10,10,'Rejeitado'),(11,11,'Pendências recusadas'),(12,12,'Pendências aceitas'),(13,13,'Pendências pagas - Dinheiro'),(14,14,'Pendências pagas - Cartão de Crédito'),(16,16,'Cancelado');
+INSERT INTO `tbl_statuspedido` VALUES (1,2,'Agendado'),(2,4,'Aguardando confirmação do local de retirada'),(3,5,'Aguardando confirmação de retirada'),(4,6,'Aguardando confirmação do local de entrega'),(5,7,'Aguardando confirmação de entrega'),(6,8,'Aguardando definição de pendências'),(7,9,'Aguardando confirmação de pendências'),(8,12,'Aguardando pagamento de pendências'),(9,16,'Concluido'),(10,1,'Rejeitado'),(11,11,'Pendências recusadas'),(12,10,'Pendências aceitas'),(13,15,'Pendências pagas - Dinheiro'),(14,14,'Pendências pagas - Cartão de Crédito'),(16,3,'Cancelado'),(17,13,'Aguardando confirmação do pagamento de pendências');
 /*!40000 ALTER TABLE `tbl_statuspedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1481,8 +1489,9 @@ CREATE TABLE `tbl_tela_software` (
   `escrita` tinyint(1) NOT NULL,
   `edicao` tinyint(1) NOT NULL,
   `remocao` tinyint(1) NOT NULL,
+  `cod` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1491,7 +1500,7 @@ CREATE TABLE `tbl_tela_software` (
 
 LOCK TABLES `tbl_tela_software` WRITE;
 /*!40000 ALTER TABLE `tbl_tela_software` DISABLE KEYS */;
-INSERT INTO `tbl_tela_software` VALUES (1,'Funcionários',1,1,1,1),(2,'Publicações',1,1,1,1),(3,'Agências',1,1,1,1),(4,'Perfís de Nível de Acesso',1,1,1,1),(5,'Clientes',1,1,1,1);
+INSERT INTO `tbl_tela_software` VALUES (1,'Funcionários',1,1,1,1,1),(2,'Publicações',1,1,1,1,2),(3,'Agências',1,1,1,1,3),(4,'Perfís de Nível de Acesso',1,1,1,1,4),(5,'Clientes',1,1,1,1,5),(6,'Pedidos',1,1,0,0,6),(7,'Plano de Software',1,0,0,0,7),(8,'Estatísticas de Locação',1,0,0,0,8),(9,'Estatísticas de Publicação',1,0,0,0,9);
 /*!40000 ALTER TABLE `tbl_tela_software` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1702,7 +1711,7 @@ CREATE TABLE `tbl_usuario` (
   CONSTRAINT `usuario_licencaDesktop` FOREIGN KEY (`idLicencaDesktop`) REFERENCES `tbl_licencadesktop` (`id`),
   CONSTRAINT `usuario_planoConta` FOREIGN KEY (`idPlanoConta`) REFERENCES `tbl_planoconta` (`id`),
   CONSTRAINT `usuario_tipoConta` FOREIGN KEY (`idTipoConta`) REFERENCES `tbl_tipoconta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1711,7 +1720,7 @@ CREATE TABLE `tbl_usuario` (
 
 LOCK TABLES `tbl_usuario` WRITE;
 /*!40000 ALTER TABLE `tbl_usuario` DISABLE KEYS */;
-INSERT INTO `tbl_usuario` VALUES (23,'Vagner','Santana','m','123','11 9999-9999','11 9 9999-9999',NULL,'123','1996-07-17',0.00,'usuario@email.com','$2y$10$uobfkb8hAfIXl2p/E8GBVuCgTuUhjjppkcKTTY0BaZQZ0Z5g7GuKK',NULL,'usr\\_23.jpg',1,1,1,1),(24,'Usuário','Jurídico','m',NULL,'11 9999-9999','11 9999-9999',NULL,NULL,'1980-01-15',0.00,'juridico@email.com','$2y$10$EXuW8Ou0S/vzPcWRtxGcq.8Y7GRS2xOcAg6paiUch3ZSPg.APVaw2',NULL,NULL,1,2,1,1),(25,'victor','azevedo','m','48042813805','119544212123654','111222146321',NULL,'55925182454','1999-05-21',0.00,'victor@email.com','$2y$10$ytjZR9WKRjJNuYVT0bSbQ.tj59w0ywb69s4UPEgWJ8NtSYvgJANYO',NULL,NULL,1,1,1,1),(26,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$pSe7uf004BkC5PzL69Rh5eL9MRWaxO8vfNHFS5Q8ml9TKIyiiOvpm',NULL,NULL,1,1,1,1),(27,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$o95gdOWKL.6rOdzteGn4XuMcdL7EA.FTRrIoY4b6NHg8Lct.qJgBe',NULL,NULL,1,1,1,1),(28,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$a8KKjo/Y.TQNE5yhnGxkHutYbeNOoXUhsrwSZs3TRpvzBk4Y7v932',NULL,NULL,1,1,1,1),(29,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$TZUF8mLPH60mItel6fRgBuirv9FN/5pafGeHaqxof9kS81zyhgqda',NULL,NULL,1,1,1,1),(30,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$KEnoDAEWz40/5qLCGIkkE.fMH9dBi6rxacgX8w6zl1cKF3DOjYGBq',NULL,NULL,1,1,1,1),(31,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$JK5on5ALsdLn4eZlGrNAuOcc2TSsBbTC7bPd8e8qTRznHw61ahU4.',NULL,NULL,1,1,1,1),(32,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$O.koSxyTjWxcluFR.V33F.KgSMrs2LgdnEe6EEqvmcu.N/RoPhLoK',NULL,NULL,1,1,1,1),(33,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$CyX1tOCdBqIHPqmTgSd0COsBT0o6An40Q6gclsbdxL8C.pqlicege',NULL,NULL,1,1,1,1),(34,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$bx4QyBJsidR5hEMRicp9.OjMLyIvDxTx6Rwbt7WyOy57EndECZAFa',NULL,NULL,1,1,1,1),(35,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$BJtbjLSGf5xayrD0HQ8Ra.0UfrYq47vQdZwv/6KU9GSRw26LqMB7e',NULL,NULL,1,1,1,1),(36,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$NUuf8WDmRFhIRUiowfeKt.RlGVEltWKtZqK4Q7zYQ80y2SuBMENqq',NULL,'icon.png',1,1,1,1);
+INSERT INTO `tbl_usuario` VALUES (23,'Vagner','Santana','m','123','11 9999-9999','11 9 9999-9999',NULL,'123','1996-07-17',0.00,'usuario@email.com','$2y$10$uobfkb8hAfIXl2p/E8GBVuCgTuUhjjppkcKTTY0BaZQZ0Z5g7GuKK',NULL,'usr\\_23.jpg',1,1,1,1),(24,'Usuário','Jurídico','m',NULL,'11 9999-9999','11 9999-9999',NULL,NULL,'1980-01-15',300.00,'juridico@email.com','$2y$10$EXuW8Ou0S/vzPcWRtxGcq.8Y7GRS2xOcAg6paiUch3ZSPg.APVaw2',NULL,'usr\\_24.png',1,2,1,1),(25,'victor','azevedo','m','48042813805','119544212123654','111222146321',NULL,'55925182454','1999-05-21',0.00,'victor@email.com','$2y$10$ytjZR9WKRjJNuYVT0bSbQ.tj59w0ywb69s4UPEgWJ8NtSYvgJANYO',NULL,NULL,1,1,1,1),(26,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$pSe7uf004BkC5PzL69Rh5eL9MRWaxO8vfNHFS5Q8ml9TKIyiiOvpm',NULL,NULL,1,1,1,1),(27,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$o95gdOWKL.6rOdzteGn4XuMcdL7EA.FTRrIoY4b6NHg8Lct.qJgBe',NULL,NULL,1,1,1,1),(28,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$a8KKjo/Y.TQNE5yhnGxkHutYbeNOoXUhsrwSZs3TRpvzBk4Y7v932',NULL,NULL,1,1,1,1),(29,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$TZUF8mLPH60mItel6fRgBuirv9FN/5pafGeHaqxof9kS81zyhgqda',NULL,NULL,1,1,1,1),(30,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$KEnoDAEWz40/5qLCGIkkE.fMH9dBi6rxacgX8w6zl1cKF3DOjYGBq',NULL,NULL,1,1,1,1),(31,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$JK5on5ALsdLn4eZlGrNAuOcc2TSsBbTC7bPd8e8qTRznHw61ahU4.',NULL,NULL,1,1,1,1),(32,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$O.koSxyTjWxcluFR.V33F.KgSMrs2LgdnEe6EEqvmcu.N/RoPhLoK',NULL,NULL,1,1,1,1),(33,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$CyX1tOCdBqIHPqmTgSd0COsBT0o6An40Q6gclsbdxL8C.pqlicege',NULL,NULL,1,1,1,1),(34,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$bx4QyBJsidR5hEMRicp9.OjMLyIvDxTx6Rwbt7WyOy57EndECZAFa',NULL,NULL,1,1,1,1),(35,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$BJtbjLSGf5xayrD0HQ8Ra.0UfrYq47vQdZwv/6KU9GSRw26LqMB7e',NULL,NULL,1,1,1,1),(36,'Vagner','Santana','m','433.841.818.40','11 4187-5397','11 9 9795-2959',NULL,'52.946.530-9','1996-07-17',0.00,'vagnervst17@gmail.com','$2y$10$NUuf8WDmRFhIRUiowfeKt.RlGVEltWKtZqK4Q7zYQ80y2SuBMENqq',NULL,'icon.png',1,1,1,1),(37,'Cadastro','Teste','m','123','123','123',NULL,'123','2017-05-16',0.00,'cadastro@teste.com',NULL,NULL,NULL,1,1,1,NULL);
 /*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1778,7 +1787,7 @@ CREATE TABLE `tbl_veiculo` (
   CONSTRAINT `veiculo_tipoCombustivel` FOREIGN KEY (`idTipoCombustivel`) REFERENCES `tbl_tipocombustivel` (`id`),
   CONSTRAINT `veiculo_tipoVeiculo` FOREIGN KEY (`idTipoVeiculo`) REFERENCES `tbl_tipoveiculo` (`id`),
   CONSTRAINT `veiculo_transmissaoVeiculo` FOREIGN KEY (`idTransmissao`) REFERENCES `tbl_transmissaoveiculo` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=190 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1787,7 +1796,7 @@ CREATE TABLE `tbl_veiculo` (
 
 LOCK TABLES `tbl_veiculo` WRITE;
 /*!40000 ALTER TABLE `tbl_veiculo` DISABLE KEYS */;
-INSERT INTO `tbl_veiculo` VALUES (188,'Bicicleta Caloy','',2013,0,'42',0.00,14,1,NULL,26,NULL,1),(189,'Ducati',NULL,2017,NULL,'43',40.00,2,4,2,25,2,0);
+INSERT INTO `tbl_veiculo` VALUES (188,'Bicicleta Caloy','',2013,0,'42',0.00,14,1,NULL,26,NULL,1),(189,'Ducati',NULL,2017,NULL,'43',40.00,2,4,2,25,2,0),(190,'Tesla Model S','2.0',2016,4,'44',48.00,1,3,1,1,1,1);
 /*!40000 ALTER TABLE `tbl_veiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1880,4 +1889,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-14 21:39:07
+-- Dump completed on 2017-05-21 13:31:55
