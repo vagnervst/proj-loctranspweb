@@ -61,7 +61,7 @@
                 $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, sp.titulo AS tituloStatus, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
-                $sql .= "f.id AS idFuncionario ";
+                $sql .= "f.id AS idFuncionario, (SELECT COUNT(id) FROM tbl_publicacao WHERE idStatusPublicacao = 1) AS totalPublicacoes ";
                 $sql .= "FROM tbl_publicacao AS p ";
                 $sql .= "INNER JOIN tbl_veiculo AS v ";
                 $sql .= "ON v.id = p.idVeiculo ";
@@ -76,18 +76,18 @@
                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }
+                }                                
                 
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                     $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
 
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }
+                }                                
                 
                 $resultado = $this->executarQuery( $sql );
                                 
-                $resultado = $this->get_array_from_resultado( $resultado );                                                
+                $resultado = $this->get_array_from_resultado( $resultado );
                 
                 return $resultado;
             } 
@@ -128,7 +128,7 @@
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
-                }                                
+                }
                 
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                     $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
