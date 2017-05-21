@@ -12,13 +12,10 @@
     $id_usuario_locatario = ( isset($_POST["idUsuarioLocatario"]) )? (int) $_POST["idUsuarioLocatario"] : null;
 
     if( !empty( $idPublicacao ) ) {
-        $objPedido = new \Tabela\Pedido();                    
-        
-        $dataRetirada = strtotime( $dataRetirada );
-        $dataDevolucao = strtotime( $dataDevolucao );
+        $objPedido = new \Tabela\Pedido();                                                    
         
         $dataRetirada = strftime( "%Y-%m-%d %H:%M:%S", $dataRetirada );
-        $dataDevolucao = strftime( "%Y-%m-%d %H:%M:%S", $dataDevolucao );
+        $dataDevolucao = strftime( "%Y-%m-%d %H:%M:%S", $dataDevolucao );                
         
         $id_status_aguardando_aprovacao = 1;
         $id_tipo_pedido_online = 1;
@@ -44,9 +41,10 @@
         $objPedido->idFormaPagamento = $id_forma_pagamento_cartao;
         $objPedido->idFuncionario = $id_funcionario;
         $objPedido->idCnh = $idCnh;
-        $objPedido->idVeiculo = $id_veiculo;
+        $objPedido->idVeiculo = $id_veiculo;                
         
-        $id_inserido = $idPedido = $objPedido->inserir();
+        $id_inserido = $objPedido->inserir();        
+        
         $resultado = false;
         if( $id_inserido != 0 ) {
             $resultado = true;
@@ -56,7 +54,7 @@
         
         $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
         $historicoAlteracaoPedido->dataOcorrencia = strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()) );
-        $historicoAlteracaoPedido->idPedido = $idPedido;
+        $historicoAlteracaoPedido->idPedido = $id_inserido;
         $historicoAlteracaoPedido->idStatus = $id_status_aguardando_aprovacao;
         
         $historicoAlteracaoPedido->inserir();

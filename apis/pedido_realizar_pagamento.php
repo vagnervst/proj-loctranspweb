@@ -36,6 +36,7 @@
     $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
     $alteracaoPedido->idPedido = $idPedido;
     
+    $resultado = false;
     if( $formaPagamento == $CARTAO_CREDITO && !$is_locador && !empty($codigoSegurancaCartao) ) {        
                 
         $statusPedido = new \Tabela\StatusPedido();
@@ -75,9 +76,9 @@
         
         $alteracaoPedido->idStatus = $statusPedido->id;
         $alteracaoPedido->inserir();
-    }
-    
-    echo json_encode($infoPedido);
+    }        
 
-    $infoPedido->atualizar();
+    $resultado = $infoPedido->atualizar();
+    
+    echo json_encode($resultado);
 ?>

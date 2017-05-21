@@ -56,17 +56,17 @@
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
                 $alteracaoPedido->idStatus = $statusPedido->id;
-                $alteracaoPedido->inserir();
-                
-                echo json_encode($alteracaoPedido);
+                $alteracaoPedido->inserir();                                
                 
                 $usuario_locador = new \Tabela\Usuario();
                 $usuario_locador = $usuario_locador->buscar("id = {$infoPedido->idUsuarioLocador}")[0];
 
                 $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;
-
+                    
+                
+                
                 $usuario_locador->saldo = $usuario_locador->saldo + $valorTotal;
-                $usuario_locador->atualizar();                
+                $usuario_locador->atualizar();
             }
 
         } elseif( $modo == $DEVOLUCAO ) {
