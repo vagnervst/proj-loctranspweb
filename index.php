@@ -63,9 +63,9 @@
                             $dadosUsuarios = new \Tabela\Usuario();
                             $limite = "";
                             
-                            $listaUsuario = $dadosUsuarios ->getDetalhesUsuario( );
+                            $listaUsuario = $dadosUsuarios->getTopUsuarios();
                             
-                            foreach( $listaUsuario as $usuario ) { 
+                            foreach( $listaUsuario as $usuario ) {
                             
                         ?>
                         <section class="box-locador-destaque">
@@ -74,7 +74,7 @@
                                     <div class="hover-effect"></div>
                                 </div>
                                 <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
-                                <img id="foto-usuario-index" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
+                                <img class="foto-locador" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
                             </a>
                             <p class="localizacao-locador">Estado: SP</p>
                             <h1 class="nome-locador"><?php echo $usuario->nome; ?></h1>
@@ -82,19 +82,18 @@
                             <div class="box-avaliacoes">
                                 <p class="avaliacoes-locador">Avaliações: <?php echo $usuario->qtdAvaliacoes; ?></p>
                                 <div class="container-icone-avaliacoes">
-                                    <?php 
-                                        $usuario->qtdAvaliacoes; 
-                                        
-                                        
+                                    <?php                                                                                
                                         $lista_estrelas = [
                                             "icone-avaliacao inativa",
                                             "icone-avaliacao inativa",
                                             "icone-avaliacao inativa",
                                             "icone-avaliacao inativa",
                                             "icone-avaliacao inativa"
-                                        ];                                                                                
-                                                                                                                
-                                        for( $i = 0; $i < $usuario->mediaNotas; ++$i ) {
+                                        ];
+                                         
+                                        $mediaNotasUsuario = round($usuario->mediaAvaliacao);                                                
+                                
+                                        for( $i = 0; $i < $mediaNotasUsuario; ++$i ) {
                                             $lista_estrelas[$i] = "icone-avaliacao";                           
                                         }                                                                            
                                 

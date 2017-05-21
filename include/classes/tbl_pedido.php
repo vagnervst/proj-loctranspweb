@@ -22,7 +22,9 @@
             public $solicitacaoDevolucaoLocatario;
             public $combustivelRestante;
             public $limiteQuilometragem;
-            public $quilometragemExcedida;            
+            public $quilometragemExcedida;  
+            public $pagamentoPendenciaLocador;
+            public $pagamentoPendenciaLocatario;
             public $idPublicacao;
             public $idUsuarioLocador;
             public $idUsuarioLocatario;
@@ -33,6 +35,8 @@
             public $idFuncionario;
             public $idCnh;
             public $idVeiculo;
+            public $locatarioAvaliado;
+            public $locadorAvaliado;
             
             function getPedido($where = null) {
                 
@@ -64,6 +68,7 @@
                 $sql = "SELECT p.id, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.combustivelRestante, pu.limiteQuilometragem, p.quilometragemExcedida, v.nome AS veiculo, ";
                 $sql .= "v.tanque AS tanqueVeiculo, p.dataRetirada, p.dataEntrega, p.dataEntregaEfetuada, p.localRetiradaLocador, p.localDevolucaoLocador, p.localRetiradaLocatario, ";
                 $sql .= "p.localDevolucaoLocatario, p.solicitacaoRetiradaLocador, p.solicitacaoDevolucaoLocador, p.solicitacaoRetiradaLocatario, p.solicitacaoDevolucaoLocatario, ";
+                $sql .= "p.locadorAvaliado, p.locatarioAvaliado, ";
                 $sql .= "datediff(p.dataEntrega, p.dataRetirada) AS diarias, (datediff(p.dataEntrega, p.dataRetirada) * pu.valorDiaria) AS valorTotal, s.id AS idStatusPedido, s.titulo AS statusPedido,  ";
                 $sql .= "locador.id AS idUsuarioLocador, locador.nome AS nomeLocador, locador.sobrenome AS sobrenomeLocador, locador.celular AS locadorCelular, locador.emailContato AS locadorEmail, locador.telefone AS locadorTelefone, ";
                 $sql .= "cidadeLocador.nome AS cidadeLocador, estadoLocador.nome AS estadoLocador, ";
@@ -94,7 +99,7 @@
                                                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
-                }                                                                
+                }                                                                                                                                
                 
                 $sql .= " ORDER BY p.dataRetirada DESC";
                 

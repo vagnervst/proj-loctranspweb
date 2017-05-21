@@ -4,13 +4,14 @@
     require_once("include/classes/tbl_publicacao.php");
     require_once("include/classes/tbl_empresa.php");
     require_once("include/classes/tbl_deposito.php");
+    require_once("include/classes/tbl_conta_bancaria.php");
     require_once("include/classes/sessao.php");
         
-    $idUsuariopublico = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
+    $idUsuarioPublico = ( isset($_GET["id"]) )? (int) $_GET["id"] : null;
     
     $detalhes_usuario = new \Tabela\Usuario();
 
-    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuariopublico}")[0]; 
+    $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuarioPublico}")[0]; 
     
     if(isset($_POST['btn-saque'])){
         
@@ -19,6 +20,9 @@
         $objDeposito->quando = get_data_atual_mysql();
         $objDeposito->idUsuario = (int) $detalhes_usuario->id;
         $objDeposito->inserir();
+        
+        $detalhes_usuario->saldo = 0;
+        $detalhes_usuario->atualizar();
     }
     
     $is_juridico = ( $detalhes_usuario->idTipoConta == 2 )? true : false;
@@ -63,7 +67,7 @@
                                 <h1 id="nome"><?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome; ?></h1>
                                 <p class="label-info">Localização: <span class="info"><?php echo $detalhes_usuario->estado . ", " . $detalhes_usuario->cidade; ?></span></p>
                                 <p class="label-info">Empréstimos: <span class="info"><?php echo $detalhes_usuario->qtdEmprestimos; ?></span></p>
-                                <p class="label-info">Locações: <span class="info"><?php echo $detalhes_usuario->qtdLocacoes; ?></span></p>
+                                <p class="label-info">Locações: <span class="info"><?php echo $detalhes_usuario->qtdLocacoes; ?></span></p>                                
                                 <div class="container-icone-avaliacoes">
                                     <?php 
                                         $detalhes_usuario->qtdAvaliacoes;
@@ -76,7 +80,7 @@
                                             "icone-avaliacao inativa"
                                         ];
                                                                                                                 
-                                        for( $i = 0; $i < $detalhes_usuario->mediaNotas; ++$i ) {
+                                        for( $i = 0; $i < round($detalhes_usuario->mediaNotas); ++$i ) {
                                             $lista_estrelas[$i] = "icone-avaliacao";                           
                                         }
                                 
@@ -90,28 +94,37 @@
                     </div>
                     <?php 
                         $sessao = new Sessao();
-                        $idUsuariologado = $sessao->get("idUsuario");
+                        $idUsuarioLogado = $sessao->get("idUsuario");
                     
-                        if($idUsuariopublico == $idUsuariologado ){
-                            ?>
-                            <div id="box-inf-financeiras">
-                                <p class="label-titulo-valor" >Saldo disponível</p>
-                                <p class="label-valor">R$<?php echo str_replace(".", ",", $detalhes_usuario->saldo); ?></p>
-                                <?php if ($detalhes_usuario->saldo > 0 ){ ?>
-                                <div class="base-btn-sacar">
-                                    <form action="perfil.php?id=<?php echo $_GET['id'] ?>" method="post">
-                                        <input class="btn-sacar" value="Transferir" name="btn-saque" type="submit">
-                                    </form>
-                                </div><br>
-                                <?php } ?>
-                                <p class="label-titulo-valor" >Total de ganhos</p>
-                                <p class="label-valor">R$<?php echo $detalhes_usuario->getLucroTotal(); ?></p>
-                                <p class="label-titulo-valor" >Total de saque </p>
-                                <p class="label-valor">R$<?php echo $detalhes_usuario->getSaqueTotal(); ?></p>
+                        $contaBancaria = new \Tabela\ContaBancaria();                                            
+                        $contaBancaria = $contaBancaria->buscar("idUsuario = {$idUsuarioLogado}");
+                        
+                        if( $idUsuarioPublico == $idUsuarioLogado && !empty($contaBancaria[0]) ) {
+                    ?>
+                        <div id="box-inf-financeiras">
+                            <div id="wrapper-financas-graph">
+                                <div id="box-dados-financeiros">
+                                    <p class="label-titulo-valor">Saldo disponível</p>
+                                    <p class="label-valor">R$<?php echo str_replace(".", ",", $detalhes_usuario->saldo); ?></p>
+                                    <?php if ($detalhes_usuario->saldo > 0 ){ ?>
+                                    <div class="base-btn-sacar">
+                                        <form action="perfil.php?id=<?php echo $_GET['id'] ?>" method="post">
+                                            <input class="preset-botao btn-sacar" value="Transferir" name="btn-saque" type="submit">
+                                        </form>
+                                    </div><br>
+                                    <?php } ?>
+                                    <p class="label-titulo-valor" >Total de ganhos</p>
+                                    <p class="label-valor">R$<?php echo $detalhes_usuario->getLucroTotal(); ?></p>
+                                    <p class="label-titulo-valor" >Total de saque </p>
+                                    <p class="label-valor">R$<?php echo $detalhes_usuario->getSaqueTotal(); ?></p>
+                                </div>
+                                <div id="box-grafico">
+                                    <canvas id="canvas-grafico"></canvas>
+                                </div>
                             </div>
-                            <?php
-                        }
-                            
+                        </div>                        
+                    <?php
+                        }                            
                     ?>
                     <div class="botoes-publicacao-avaliacao">
                         <span class="preset-botao js-btn-publicacao">Anúncios</span>
@@ -131,6 +144,8 @@
         </div>
         <?php require_once("layout/footer.php"); ?>
         <script src="js/libs/jquery-3.1.1.min.js"></script>
+        <script src="js/libs/Chart.min.js"></script>        
         <script src="js/script.js"></script>
+        <script src="js/graficos.js"></script>
     </body>
 </html>

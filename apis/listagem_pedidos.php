@@ -1,14 +1,20 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_pedido.php");
+    require_once("../include/classes/tbl_status_pedido.php");
     sleep(1);
 
     $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : null;
     $paginaAtual = ( isset($_POST["paginaAtual"]) )? (int) $_POST["paginaAtual"] : 1;
     $registrosPorPagina = 10;
+    
+    $statusPedido = new \Tabela\StatusPedido();
+    $infoPedidoCancelado = $statusPedido->buscar("cod = {$STATUS_PEDIDO_CANCELADO}")[0];
+    $infoPedidoConcluido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_CONCLUIDO}")[0];
+    $infoPedidoRejeitado = $statusPedido->buscar("cod = {$STATUS_PEDIDO_REJEITADO}")[0];
 
     $buscaPedido = new \Tabela\Pedido();
-    $listaPedidos = $buscaPedido->listarPedidos($registrosPorPagina, $paginaAtual, "p.idStatusPedido != 10 AND locatario.id = {$idUsuario}");
+    $listaPedidos = $buscaPedido->listarPedidos($registrosPorPagina, $paginaAtual, "locatario.id = {$idUsuario}");
 
     foreach( $listaPedidos as $pedido ) {        
 ?>

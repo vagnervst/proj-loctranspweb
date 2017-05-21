@@ -39,39 +39,37 @@
         
         if( $modo == $RETIRADA ) {
             
-            if( $is_locador ) {
-                echo "LOCADOR";
+            if( $is_locador ) {                
                 $infoPedido->solicitacaoRetiradaLocador = 1;
-            } else {
-                echo "LOCATARIO";
+            } else {                
                 $infoPedido->solicitacaoRetiradaLocatario = 1;
             }
 
             if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {
-                $cod_status_aguardando_confirmacao_local_entrega = 4;
                 
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_confirmacao_local_entrega}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_LOCAL_ENTREGA}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;
                 
                 $alteracaoPedido = new \Tabela\AlteracaoPedido();
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
-                $alteracaoPedido->idStatusPedido = $statusPedido->id;
+                $alteracaoPedido->idStatus = $statusPedido->id;
                 $alteracaoPedido->inserir();
+                
+                echo json_encode($alteracaoPedido);
                 
                 $usuario_locador = new \Tabela\Usuario();
                 $usuario_locador = $usuario_locador->buscar("id = {$infoPedido->idUsuarioLocador}")[0];
-                
-                
-                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;                
-                
+
+                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;
+
                 $usuario_locador->saldo = $usuario_locador->saldo + $valorTotal;
                 $usuario_locador->atualizar();                
             }
 
-        } elseif( $modo == $DEVOLUCAO ) {                
+        } elseif( $modo == $DEVOLUCAO ) {
 
             if( $is_locador ) {
                 $infoPedido->solicitacaoDevolucaoLocador = 1;
@@ -80,24 +78,22 @@
                 $infoPedido->dataEntregaEfetuada = get_data_atual_mysql();
             }
             
-            if( $infoPedido->solicitacaoDevolucaoLocador == 1 && $infoPedido->solicitacaoDevolucaoLocatario == 1 ) {
-                $cod_status_aguardando_definicao_pendencias = 6;
-
+            if( $infoPedido->solicitacaoDevolucaoLocador == 1 && $infoPedido->solicitacaoDevolucaoLocatario == 1 ) {                       
+                
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_confirmacao_local_entrega}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_DEFINICAO_PENDENCIAS}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;
 
                 $alteracaoPedido = new \Tabela\AlteracaoPedido();
                 $alteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $alteracaoPedido->idPedido = $idPedido;
-                $alteracaoPedido->idStatusPedido = $statusPedido->id;
+                $alteracaoPedido->idStatus = $statusPedido->id;
                 $alteracaoPedido->inserir(); 
             }
 
         }
-                
-        echo json_encode( $infoPedido );
+                                
         $resultado = $infoPedido->atualizar();
     }
         

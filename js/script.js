@@ -923,6 +923,9 @@ $(document).ready(function() {
             
             $(botao_a_ativar).toggleClass("ativo");
         }
+        
+        $(botoes_avaliacao).removeClass("js-selected");
+        $(botao_avaliacao).addClass("js-selected");
     }
     
     function inicializarBotoesAcaoPedido() {                
@@ -933,7 +936,9 @@ $(document).ready(function() {
         var botao_definir_pendencias = $(".js-btn-definir-pendencias");
         var botao_pendencias = $(".js-btn-pendencias-concordar, .js-btn-pendencias-discordar");        
         var botao_pagamento = $(".js-pagamento-cartao, .js-pagamento-dinheiro");
+        var botao_confirmacao_pagamento = $(".js-pagamento-dinheiro-confirmar, .js-pagamento-dinheiro-negar");
         var botao_confirmar_avaliacao = $(".js-btn-confirmar-avaliacao");
+        var botao_cancelar_locacao = $(".js-btn-cancelar-locacao");
         
         var RETIRADA = 1, DEVOLUCAO = 2;
         if( botao_local_retirada !== undefined ) {
@@ -1025,6 +1030,8 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_solicitacao.php", "POST", dados, function(resultado) {
+                    console.log(resultado);
+                    
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_solicitacao = $(box_botoes).children("#botao-solicitar-devolucao")[0];
                     var botao_confirmacao = $(box_botoes).children("#botao-confirmar-devolucao")[0];
@@ -1065,6 +1072,7 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {
+                    console.log(resultado);
                     var botao_definir_pendencias = $("#botao-definir-pendencias")[0];
                     
                     if( botao_definir_pendencias !== undefined ) {
@@ -1096,6 +1104,7 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {                                                            
+                    console.log(resultado);
                     var botao_visualizar_pendencias = $("#botao-visualizar-pendencias")[0];
                     
                     if( statusPendencia === DISCORDO ) {                    
@@ -1125,23 +1134,28 @@ $(document).ready(function() {
                     var idPedido = window.location.search;
                     idPedido = idPedido.substr( idPedido.indexOf("?id=")+4, idPedido.length );
                     
-                    var formaPagamento = ( $(this).hasClass("js-btn-pagamento-cartao") )? PAGAMENTO_CARTAO : PAGAMENTO_DINHEIRO;
+                    var formaPagamento = ( $(this).hasClass("js-pagamento-cartao") )? PAGAMENTO_CARTAO : PAGAMENTO_DINHEIRO;
+                    console.log(formaPagamento);
                     
                     var dados = new FormData();
                     dados.append("idPedido", idPedido);
                     dados.append("formaPagamento", formaPagamento);
-                    
-                    if( formaPagamento === PAGAMENTO_CARTAO ) {
-                        var codigo_seguranca_cartao = $(modalAtual).children(".js-txt-codigo-seguranca-cartao")[0].value;
+                                                            
+                    var box_modal = $(this).parents(".modal")[0];
+                                        
+                    if( formaPagamento === PAGAMENTO_CARTAO ) { 
+                        console.log(box_modal);
+                        var codigo_seguranca_cartao = $(box_modal).find(".js-txt-codigo-seguranca-cartao")[0].value;
                         
                         dados.append("codigoSegurancaCartao", codigo_seguranca_cartao);
                     }
                     
-                    var box_modal = $(this).parents(".modal")[0];
-                    exibirCarregamentoModal(box_modal); 
+                    exibirCarregamentoModal(box_modal);
                     
                     var ajax = new Ajax();
                     ajax.transferir_dados_para_api("apis/pedido_realizar_pagamento.php", "POST", dados, function(resultado) {
+                        console.log(resultado);
+                        
                         var botao_avanco = $(box_modal).find(".js-pagamento-cartao")[0];
                         
                         if( botao_avanco === undefined ) {                        
@@ -1157,6 +1171,35 @@ $(document).ready(function() {
                         titulo_modal.innerHTML = "Pendências Definidas";
                         
                         $(modal_pagamento_pendencias).find(".box-acoes")[0].style.display = "none";
+                    });
+                });
+            }
+            
+            if( botao_confirmacao_pagamento !== undefined ) {
+                $( botao_confirmacao_pagamento ).click(function(e) {
+                    var PAGAMENTO_CONFIRMADO = 1, PAGAMENTO_NEGADO = 2;                    
+                    var botao_avanco = this;
+                    
+                    var idPedido = window.location.search;
+                    idPedido = idPedido.substr( idPedido.indexOf("?id=")+4, idPedido.length );
+                    
+                    var is_confirmado = ( $(this).hasClass("js-pagamento-dinheiro-confirmar") )? 1 : 2;
+                    console.log(is_confirmado);
+                    
+                    var dados = new FormData();
+                    dados.append("idPedido", idPedido);
+                    dados.append("confirmacaoPagamento", is_confirmado);
+                    
+                    var box_modal = $(this).parents(".modal")[0];
+                    exibirCarregamentoModal(box_modal);
+                    
+                    var ajax = new Ajax();
+                    ajax.transferir_dados_para_api("apis/pedido_confirmar_recebimento.php", "POST", dados, function(resultado) {
+                        console.log(resultado);
+                        
+                        var modal_alvo = $(box_modal.parentNode).children("." + getClasseModal(botao_avanco));
+                        
+                        exibirModal(box_modal, modal_alvo);
                     });
                 });
             }
@@ -1179,12 +1222,41 @@ $(document).ready(function() {
                     dados.append("idPedido", idPedido);
                     dados.append("notaAvaliacao", nota);                    
                     dados.append("mensagemAvaliacao", comentario_avaliacao);
+                                        
+                    console.log(box_modal);
+                    exibirCarregamentoModal(box_modal);
                     
                     var ajax = new Ajax();
-                    ajax.transferir_dados_para_api("apis/pedido_avaliacao.php", "POST", dados, function(resultado) {
-                        console.log(resultado);
+                    ajax.transferir_dados_para_api("apis/pedido_avaliacao.php", "POST", dados, function(resultado) {                               
+                        exibirModal(box_modal);
+                        $("#botao-avaliar-locacao").css("display", "none");
                     });
                 });                
+            }
+            
+            if( botao_cancelar_locacao !== undefined ) {
+                $(botao_cancelar_locacao).click(function(e) {
+                    var box_modal = $(this).parents(".modal")[0];
+                    
+                    var idPedido = window.location.search;
+                    idPedido = idPedido.substr( idPedido.indexOf("?id=")+4, idPedido.length );
+                    
+                    var dados = new FormData();
+                    dados.append( "idPedido", idPedido );
+                    
+                    var ajax = new Ajax();
+                    ajax.transferir_dados_para_api("apis/pedido_cancelar.php", "POST", dados, function(resultado) {
+                        console.log(resultado);
+                        
+                        var objeto = JSON.parse(resultado);
+                        console.log(objeto);
+                        
+                        if( objeto.resultado === true ) {
+                            window.location = "perfil.php?id=" + objeto.idUsuario;
+                        }
+                    });
+                    
+                });
             }
             
             var box_botoes_avaliacao = $("#modal-pagamento-confirmado .box-botoes-avaliacao")[0];
@@ -1193,7 +1265,7 @@ $(document).ready(function() {
             for( var i = 0; i < botoes_avaliacao.length; ++i ) {
                 var botao_avaliacao = botoes_avaliacao[i];
                 
-                $(botao_avaliacao).click(function(e) {                    
+                $(botao_avaliacao).click(function(e) {
                     $(botoes_avaliacao).removeClass("js-selected");
                     $(this).addClass("js-selected");
                     
@@ -1258,18 +1330,30 @@ $(document).ready(function() {
                 
                 for( var x = 0; x < botoesTransferencia.length; ++x ) {
                     var modalAlvo = $(containerModals).children( "." + getClasseModal(botoesTransferencia[x]) )[0];                    
-                    definirBotaoModal(botoesTransferencia[x], modalAlvo);                                        
+                    definirBotaoModal(botoesTransferencia[x], modalAlvo);
                 }
 
             }
             
-            $(containerModals).click(function(e) {                
+            $(containerModals).click(function(e) {
                 if( $(e.target).parents(".modal")[0] !== undefined || $(e.target).hasClass("modal")) return;                
                 
                 ocultarModais(modals);
             });
             
             inicializarBotoesAcaoPedido();
+                        
+            $('#slider-combustivel').slider({
+                value: 1,
+                min: 0,
+                max: 8,
+                step: 1,
+                slide: function( event, ui ) {
+                    $( ".js-txt-combustivel-restante" ).val( ui.value );
+                    $( ".label-combustivel" ).text( ui.value + "/8" );
+                }
+            });
+            
         }
     }
     
@@ -1340,7 +1424,7 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_pedidos.php", "POST", dados, function(resultado) {
+        ajax.transferir_dados_para_api("apis/listagem_pedidos.php", "POST", dados, function(resultado) {            
             
             if( increment ) {
                 box_listagem.innerHTML = conteudo_listagem + resultado;                
@@ -1371,6 +1455,7 @@ $(document).ready(function() {
         
         if( !increment ) {
             box_listagem.innerHTML = "";
+            pagina_alvo = 1;
         }
         
         box_listagem.appendChild( imagem_carregamento );
@@ -1384,19 +1469,23 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {            
-            console.log(resultado);
-            lista_json_solicitacoes = JSON.parse(resultado);            
+        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                        
+            var nova_lista_solicitacoes = JSON.parse( resultado );
             
-            if( increment ) {
+            if( nova_lista_solicitacoes.length !== 0 ) {            
+                lista_json_solicitacoes = nova_lista_solicitacoes;                                                                                                              
+            }
+                        
+            if( increment && nova_lista_solicitacoes.length > 0 ) {                
                 box_listagem.innerHTML = conteudo_listagem + criarListaSolicitacoes(lista_json_solicitacoes);                
-            } else {
+            } else {                
+                console.log("not increment");
                 box_listagem.innerHTML = criarListaSolicitacoes(lista_json_solicitacoes);
             }
             
-            var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];
+            var botao_carregar_mais_pedidos = $("#botao-exibir-mais")[0];  
             
-            if( lista_json_solicitacoes.length === 0 ) {
+            if( nova_lista_solicitacoes.length === 0 ) {
                 botao_carregar_mais_pedidos.style.display = "none";
             } else {
                 botao_carregar_mais_pedidos.style.display = "block";    
@@ -1431,6 +1520,9 @@ $(document).ready(function() {
     }
     
     function criarListaSolicitacoes(lista_json) {
+        console.log("CRIANDO LISTA");
+        console.log( lista_json );
+        
         var html = "";
         for( var i = 0; i < lista_json.length; ++i ) {
             var solicitacao = lista_json[i];
@@ -1541,7 +1633,7 @@ $(document).ready(function() {
             });
             
             $(document).on("click", ".js-load-solicitacoes", function(e) {
-                ++paginaAtual;  
+                ++paginaAtual;                
                 
                 carregarListaSolicitacoes(paginaAtual, true);
                 var botao_carregar_mais_solicitacoes = $("#botao-exibir-mais")[0];
@@ -1598,8 +1690,8 @@ $(document).ready(function() {
                 var box_listagem = $("#box-listagem")[0];
                 var lista_solicitacoes = box_listagem.childNodes;
                 
-                var indice_solicitacao_selecionada = $(lista_solicitacoes).index(box_solicitacao_selecionada);
-                                
+                var indice_solicitacao_selecionada = $(lista_solicitacoes).index(box_solicitacao_selecionada);                
+                
                 var solicitacao_selecionada = lista_json_solicitacoes[indice_solicitacao_selecionada];
                                             
                 var dados = new FormData();
@@ -1617,6 +1709,7 @@ $(document).ready(function() {
                 box_listagem.appendChild( imagem_carregamento );
                 
                 ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                     
+                    console.log(resultado);
                     carregarListaSolicitacoes( paginaAtual );
                     
                     if( lista_json_solicitacoes.length === 0 ) {
@@ -1661,8 +1754,9 @@ $(document).ready(function() {
             html += '<div class="box-avaliacao">';
             html += '<section class="info-avaliador">';
             html += '<div class="info-detalhes">'+ avaliacao.nomeAvaliador +'</div>';
-            html += '<div class="info-detalhes">'+ avaliacao.dataAvaliacao +'</div>';
-            html += '<div class="info-detalhes">'+ avaliacao.nota.toString(); +'</div>';
+            var dataAvaliacao = new Date( avaliacao.dataAvaliacao );            
+            html += '<div class="info-detalhes">'+ dataAvaliacao.toLocaleString().split(" ")[0] +'</div>';
+            html += '<div class="info-detalhes">Avaliação: '+ avaliacao.nota.toString(); +'</div>';
             html += '</section>';
             html += '<p>Mensagem:</p>'
             html += '<div class="mensagem">'+ avaliacao.mensagem +'</div>';
@@ -1824,7 +1918,7 @@ $(document).ready(function() {
     function exibirFormularioConfiguracao(formulario) {
         var box_form = $("#box-form")[0];
         
-        $( box_form.children ).css("display", "none");
+        //$( box_form.children ).css("display", "none");
         $( formulario ).css("display", "block");
     }
     

@@ -40,9 +40,11 @@
             if( $alvoAvaliacao == $LOCADOR ) {
                 $usuarioAlvoAvaliacao = (int) $infoPedido->idUsuarioLocador;
                 $usuarioAvaliador = (int) $infoPedido->idUsuarioLocatario;
+                $infoPedido->locadorAvaliado = 1;                
             } elseif( $alvoAvaliacao == $LOCATARIO ) {
                 $usuarioAlvoAvaliacao = (int) $infoPedido->idUsuarioLocatario;
                 $usuarioAvaliador = (int) $infoPedido->idUsuarioLocador;
+                $infoPedido->locatarioAvaliado = 1;
             }
             
             echo "avaliado: " . $usuarioAlvoAvaliacao . " avaliador: " . $usuarioAvaliador;
@@ -58,6 +60,7 @@
                 echo json_encode( $avaliacao );
                 
                 $avaliacao->inserir();
+                $infoPedido->atualizar();
             }
         }
     }

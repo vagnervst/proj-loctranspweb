@@ -24,7 +24,7 @@
         <div id="box-conta">            
             <?php 
                 $sessao = new Sessao();                
-                if( empty($sessao->get("idUsuario")) ) { 
+                if( $sessao->get("idUsuario") == null ) { 
             ?>
             <div id="box-login-cadastro">
                 <a class="botao-conta" id="botao-login" href="login.php">Entrar</a>

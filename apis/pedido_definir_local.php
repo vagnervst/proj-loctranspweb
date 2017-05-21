@@ -42,19 +42,23 @@
                 $infoPedido->localRetiradaLocatario = 1;
             }
 
-            if( $infoPedido->localRetiradaLocador == true && $infoPedido->localRetiradaLocatario == true ) {
-                $cod_status_aguardando_retirada = 3;
-                    
+            echo json_encode( $infoPedido );
+            
+            if( $infoPedido->localRetiradaLocador == 1 && $infoPedido->localRetiradaLocatario == 1 ) {
+                                    
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_retirada}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_RETIRADA}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;
 
                 $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
-                $historicoAlteracaoPedido->idStatusPedido = $statusPedido->id;
+                $historicoAlteracaoPedido->idStatus = $statusPedido->id;
                 $historicoAlteracaoPedido->inserir();
+                
+                echo "INSERINDO ALTERACAO";
+                echo json_encode($historicoAlteracaoPedido);
             }
 
         } elseif( $modo == $DEVOLUCAO ) {
@@ -65,23 +69,21 @@
                 $infoPedido->localDevolucaoLocatario = 1;
             }                
 
-            if( $infoPedido->localDevolucaoLocador && $infoPedido->localDevolucaoLocatario ) {
-                $cod_status_aguardando_entrega = 5;
+            if( $infoPedido->localDevolucaoLocador == 1 && $infoPedido->localDevolucaoLocatario == 1 ) {                
                 
                 $statusPedido = new \Tabela\StatusPedido();
-                $statusPedido = $statusPedido->buscar("cod = {$cod_status_aguardando_entrega}")[0];
+                $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_ENTREGA}")[0];
                 
                 $infoPedido->idStatusPedido = $statusPedido->id;            
 
                 $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
-                $historicoAlteracaoPedido->idStatusPedido = $statusPedido->id;            
+                $historicoAlteracaoPedido->idStatus = $statusPedido->id;            
                 $historicoAlteracaoPedido->inserir();
             }
         }
-        echo json_encode( $infoPedido );
-        
+                
         $resultado = $infoPedido->atualizar();
     }
 

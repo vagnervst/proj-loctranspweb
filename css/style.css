@@ -1072,7 +1072,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 740px) {
     .main .box-conteudo {
-        width: 650px;
+        width: 650px;        
     }
 }
 
@@ -1294,7 +1294,8 @@ header #box-botao-filtragem {
 }
 
 .main #container-locadores-destaque #horizontal-wrapper {
-    width: 2600px;   
+    width: 2600px; 
+    height: 410px;
 }
 
 @media (min-width: 520px) {
@@ -2270,7 +2271,7 @@ header #box-botao-filtragem {
 #pag-contato .box-conteudo-faq #faq-accordion .faq .faq-answer {    
     display: none;
     width: 300px;    
-    background-color: #e2e2e2;
+    background-color: #f9f9f9;
     color: #202020;
     float: left;
 }
@@ -3759,21 +3760,21 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario {
-    box-shadow: 1px 1px 1px #eaeaea;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #b7b7b7;
     border-radius: 5px;
 }
 
 @media (min-width: 740px) {
-    #pag-perfil-usuario .box-conteudo #box-info-usuario {
-        background-color: #f8f8f8;
-        height: 195px;
+    #pag-perfil-usuario .box-conteudo #box-info-usuario {        
+        height: 225px;
         border: 1px solid #b9b9b9;
     }
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
     width: 304px;
-    height: 125px;
+    height: 145px;
     padding: 2px;
     border: 1px solid #a7a7a7;
 }
@@ -3791,11 +3792,8 @@ header #box-botao-filtragem {
 }
 
 @media (min-width: 740px) {
-    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
-        border: 0px;
-        width: 99.6%;
-        height: 191px;
-        border-right: 1px solid #b9b9b9;
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {                
+        height: 200px;        
         float: left;
     }
 }
@@ -3820,9 +3818,10 @@ header #box-botao-filtragem {
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto #foto-usuario {    
     width:  100px;
-    height: 100px;
-    border: 2px solid #ebebeb;
-    border-radius: 5px 50px 50px 50px;        
+    height: 100px;    
+    border: 0px solid #557bc9;
+    border-radius: 5px 50px 50px 50px;
+    box-shadow: 1px 1px 5px #c4c4c4;
 }
 
 @media (min-width: 420px) {
@@ -3839,14 +3838,9 @@ header #box-botao-filtragem {
     }
 }
 
- #foto-usuario-index {
-    width:  180px;
-    height: 160px;
-}
-
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {    
     width: 190px;
-    height: 105px;
+    height: auto;
     float: right;
 }
 
@@ -3866,7 +3860,7 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info {
         width: 450px;
-        height: 190px;
+        height: 215px;
     }
 }
 
@@ -3877,25 +3871,28 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {
-    font-size: 19px;
-    font-weight: bold;    
+    font-size: 17px;          
+    text-align: center;    
+    word-break: break-all;
+    height: 40px;
+    max-height: 40px;
+    overflow: hidden;
 }
 
 @media (min-width: 1000px) {
-    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {
-        text-align: center;
+    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info #nome {        
         margin-bottom: 10px;
         padding-bottom: 5px;
+        border-radius: 0px;
         border-bottom: 1px solid #6a6a6a;
     }
 }
-
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info {
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 2px;
-    color: #a1aec9;
+    color: #557bc9;
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .label-info .info {
@@ -3943,18 +3940,6 @@ header #box-botao-filtragem {
         margin-top: 10px;
     }
 }
-/*Caixa de Saldo*/
-@media (min-width: 420px) {
-    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {
-        width: 374px;
-    }
-}
-
-@media (min-width: 520px) {
-    #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {
-        width: 444px;        
-    }
-}
 
 @media (min-width: 740px) {
     #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario {        
@@ -3964,7 +3949,114 @@ header #box-botao-filtragem {
         float: left;
     }
 }
-/*Caixa de Saldo*/
+
+#pag-perfil-usuario #box-inf-financeiras {
+    background-color: #fff;    
+    width: 295px;
+    height: 310px;
+    margin: 5px auto ;
+    border: solid 1px #bfbfbf;
+    box-shadow: 1px 1px 5px #c1c1c1;
+    border-radius: 0px;
+    padding: 5px;
+}
+
+@media(min-width: 420px) {
+  #pag-perfil-usuario #box-inf-financeiras {        
+        width: 365px;        
+        height: 315px;
+    }  
+}
+
+@media(min-width: 520px) {
+    #pag-perfil-usuario #box-inf-financeiras {
+        width: 435px;
+        height: 343px;        
+    }  
+}
+
+@media(min-width: 740px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 250px;
+        width: 635px;
+    }  
+}
+
+@media(min-width: 1000px) {
+  #pag-perfil-usuario #box-inf-financeiras {
+        height: 385px;
+        width: 890px;
+    }  
+}
+
+#pag-perfil-usuario #box-inf-financeiras #box-dados-financeiros {    
+    width: 200px;
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario #box-inf-financeiras #box-dados-financeiros {    
+        float: left;
+        width: 130px;
+    }
+}
+
+#pag-perfil-usuario #box-inf-financeiras #box-grafico {    
+    background-color: #fdfdfd; 
+    width: 285px;
+    height: 130px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: inset 1px 1px 15px #ebebeb;
+    float: left;
+}
+
+@media (min-width: 420px) {
+    #pag-perfil-usuario #box-inf-financeiras #box-grafico {
+        width: 355px;
+        height: 170px;
+    }
+}
+
+@media (min-width: 520px) {
+    #pag-perfil-usuario #box-inf-financeiras #box-grafico {
+        width: 425px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 740px) {
+    #pag-perfil-usuario #box-inf-financeiras #box-grafico {
+        width: 495px;
+        height: 240px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #pag-perfil-usuario #box-inf-financeiras #box-grafico {
+        width: 750px;
+        height: 375px;
+    }
+}
+
+#pag-perfil-usuario #box-inf-financeiras .label-titulo-valor {    
+    font-size: 17px;    
+}
+
+#pag-perfil-usuario #box-inf-financeiras .label-valor {    
+    font-size: 17px;
+    font-weight: italic;
+    color: #557bc9;
+}
+
+#pag-perfil-usuario #box-inf-financeiras .btn-sacar {
+    width: 100px;
+    padding: 10px 0px;
+}
+
+#pag-perfil-usuario #box-inf-financeiras .base-btn-sacar {    
+    width: 100px;
+    margin-top: 5px;
+}
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-info .container-icone-avaliacoes .icone-avaliacao {
     width: 20px;
@@ -3972,13 +4064,13 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao {
-    background-color: #dedede;
+    background-color: #fdfdfd;
     padding: 10px 0px;
     text-align: center;
-    border: 1px solid #9f9f9f;
+    border: 1px solid #dddddd;
     margin-top: 5px;
     color: white;
-    border-radius: 5px;
+    box-shadow: 1px 1px 5px #d0d0d0;
 }
 
 #pag-perfil-usuario .box-conteudo .botoes-publicacao-avaliacao .preset-botao {
@@ -4034,9 +4126,9 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao {
-    background-color: #efefef;
+    background-color: #fff;
     padding: 5px;
-    height: 130px;
+    height: 150px;
     border: 1px solid #a7a7a7;
     margin: 5px 0px;
 }
@@ -4046,7 +4138,7 @@ header #box-botao-filtragem {
     background-size: cover;
     background-repeat: no-repeat;    
     width: 125px;
-    height: 130px;
+    height: 147px;
     border: 1px solid #a7a7a7;
     float: left;
 }
@@ -4093,9 +4185,10 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .modelo-veiculo {
-    background-color: #e0e0e0;
+    background-color: #a1aec9;
     padding: 2px;
     font-style: italic;
+    color: white;
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-publicacao .box-info-publicacao .box-diaria {
@@ -4121,7 +4214,8 @@ header #box-botao-filtragem {
     margin: 10px auto;
     background-image: url("../img/icones/expandir.png");
     background-color: #202020;
-    background-size: contain;
+    background-size: 30px;
+    background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
     border-radius: 30px;
@@ -4133,17 +4227,18 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao {
-    background-color: #efefef;
+    background-color: #fdfdfd;
     padding: 5px;
     height: 150px;
     border: 1px solid #a7a7a7;
     margin: 5px 0px;
+    box-shadow: 1px 1px 5px #d3d3d3;
 }
 
-#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {
-    width: 100%;
-    height: 40px;
-    display: inline-block;
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {    
+    width: 298px;
+    height: 30px;
+    display: block;    
 }
 
 @media (min-width: 420px) {
@@ -4175,7 +4270,7 @@ header #box-botao-filtragem {
     margin: 5px;
     height: 20px;
     float: left;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 @media (min-width: 420px) {
@@ -4667,8 +4762,10 @@ header #box-botao-filtragem {
     }   
 }
 
-#pag-solicitacoes .box-conteudo {
-    height: 800px;
+@media (min-width: 740px) {
+    #pag-solicitacoes .box-conteudo {
+        min-height: 800px;
+    }
 }
 
 #pag-solicitacoes #container-modo-visualizacao {
@@ -5383,6 +5480,21 @@ header #box-botao-filtragem {
     display: none;
 }
 
+#pag-pedido .box-modal-pedido #input-combustivel-restante {
+    display: none;
+}
+
+#pag-pedido .box-modal-pedido .label-combustivel {
+    text-align: center;
+    margin-bottom: 5px;
+    color: gray;
+}
+
+#pag-pedido .box-modal-pedido #slider-combustivel {
+    width: 270px;
+    margin: 0 auto;
+}
+
 #pag-pedido .box-modal-pedido .icone {
     background-color: #141619;
     background-size: 40px;
@@ -5468,6 +5580,7 @@ header #box-botao-filtragem {
 
 #pag-pedido .box-modal-pedido .box-info .box-acoes {
     text-align: center;    
+    margin: 5px 0px;
 }
 
 #pag-pedido .box-modal-pedido .box-info .box-acoes .titulo {
@@ -5554,18 +5667,20 @@ header #box-botao-filtragem {
     height: 55px;
     width: 55px;    
     padding: 5px;
-    right: 0px;
-    border: 0px solid #d3d3d3;
+    position: relative;
+    right: 0px;    
+    border: 0px;
     border-radius: 10px;
     transition: all .2s;
-    margin: 3px 0px;
+    margin: 3px 0px;    
 }
 
 #pag-pedido .box-contato-locador .box-contato.ativo {
-    background-color: #141619;
+    background-color: #a1aec9;
     width: 220px;
     position: relative;
-    right: 140px;    
+    right: 140px;      
+    box-shadow: 1px 1px 5px #bcbcbc;
 }
 
 @media (min-width: 740px) {
@@ -5581,11 +5696,12 @@ header #box-botao-filtragem {
 #pag-pedido .box-contato-locador .box-contato .info-contato {
     display: none;
     width: 160px;
-    position: relative;
-    top: 18px;
+    line-height: 55px;
+    position: relative;    
     font-size: 18px;
-    color: white;
-    float: right;    
+    color: #ffffff;
+    float: right;  
+    overflow-x: auto;
 }
 
 #pag-pedido .box-contato-locador .box-contato.ativo .info-contato.ativo {
@@ -5616,7 +5732,7 @@ header #box-botao-filtragem {
 
 #pag-pedido .box-contato-locador .box-contato .icone-contato {
     display: block;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     background-size: 32px 32px;
     background-repeat: no-repeat;
     background-position: center;
@@ -6435,74 +6551,6 @@ header #box-botao-filtragem {
 #pag-config-perfil #box-form #form-info-autenticacao {
     display: none;
 }
-
-/*------------- DETALHES PERFIL*/
-/*=========================================*/
-#pag-perfil-usuario #box-inf-financeiras {
-    height: 220px;
-    width: 190px;
-    margin: 0 auto ;
-    border: solid 1px gray;
-}
-
-#pag-perfil-usuario #box-inf-financeiras .label-titulo-valor {
-    margin-left: 20px;
-    font-size: 17px;
-    font-weight: bold;
-    
-}
-#pag-perfil-usuario #box-inf-financeiras .label-valor {
-    margin-left: 40px;
-    font-size: 17px;
-    font-weight: bold;
-    color: #00cb00 ;
-    
-}
-#pag-perfil-usuario #box-inf-financeiras .btn-sacar {
-    width: 70px;
-    background-color: #202020;
-    color: #ebebeb;
-    text-align: center;    
-    border-radius: 3px;
-    border: 0px;
-    outline: none;
-    cursor: pointer;
-    border-bottom: 4px solid #141619; 
-    padding: 5px;
-    margin: 0 auto ;
-}
-#pag-perfil-usuario #box-inf-financeiras .base-btn-sacar{
-    margin: 0 auto ;
-    width: 70px;
-}
-
-@media(min-width: 420px) {
-  #pag-perfil-usuario #box-inf-financeiras {
-        height: 220px;
-        width: 200px;
-    }  
-}
-@media(min-width: 520px) {
-  #pag-perfil-usuario #box-inf-financeiras {
-        height: 220px;
-        width: auto;
-    }  
-}
-@media(min-width: 720px) {
-  #pag-perfil-usuario #box-inf-financeiras {
-        height: 220px;
-        width: auto;
-    }  
-}
-@media(min-width: 1000px) {
-  #pag-perfil-usuario #box-inf-financeiras {
-        height: 220px;
-        width: auto;
-    }  
-}
-
-
-
 
 /*------------------------------------------------------------------------- CONTEUDO PRINCIPAL*/
 
