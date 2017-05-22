@@ -189,11 +189,25 @@
                         <div id="box-reputacao-locador">
                             <p id="label-reputacao">Reputação do locador</p>
                             <div class="container-icone-avaliacoes">
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
+                                <?php                                                                                
+                                    $lista_estrelas = [
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa"
+                                    ];
+
+                                    $mediaNotasUsuario = round($info_publicacao->mediaAvaliacaoLocador);                                                
+
+                                    for( $i = 0; $i < $mediaNotasUsuario; ++$i ) {
+                                        $lista_estrelas[$i] = "icone-avaliacao";                           
+                                    }                                                                            
+
+                                    foreach( $lista_estrelas as $classe_estrela ) {
+                                        echo "<div class=\"" . $classe_estrela . "\"></div>";
+                                    }                                                                        
+                                ?>
                             </div>
                         </div>
                     </div>
