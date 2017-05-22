@@ -40,9 +40,7 @@
                 $infoPedido->localRetiradaLocador = 1;
             } else {
                 $infoPedido->localRetiradaLocatario = 1;
-            }
-
-            echo json_encode( $infoPedido );
+            }            
             
             if( $infoPedido->localRetiradaLocador == 1 && $infoPedido->localRetiradaLocatario == 1 ) {
                                     
@@ -55,10 +53,7 @@
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
                 $historicoAlteracaoPedido->idStatus = $statusPedido->id;
-                $historicoAlteracaoPedido->inserir();
-                
-                echo "INSERINDO ALTERACAO";
-                echo json_encode($historicoAlteracaoPedido);
+                $historicoAlteracaoPedido->inserir();                                
             }
 
         } elseif( $modo == $DEVOLUCAO ) {

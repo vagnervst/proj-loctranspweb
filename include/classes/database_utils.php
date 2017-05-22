@@ -4,8 +4,8 @@
         class DatabaseUtils {
             
             public function get_propriedades() {
-                $propriedades = get_object_vars($this);
-
+                $propriedades = get_object_vars($this);                
+                
                 return array_keys($propriedades);
             }
 
@@ -42,8 +42,8 @@
             }
 
             public function get_propriedades_preparadas($incluirPrimaryKey=true) {
-                $propriedades = $this->get_propriedades();
-
+                $propriedades = $this->get_propriedades();                
+                
                 $statement = [];
                 for($i = 0; $i < count($propriedades); ++$i) {
                     if( empty($this->get_valores()[$i]) || !$incluirPrimaryKey && $propriedades[$i] == $this::$primary_key ) continue;
@@ -55,18 +55,24 @@
             }
 
             public function get_valores_preparados($incluirPrimaryKey=true) {
-                $valores = $this->get_propriedades_valores();                
-                
+                $propriedades = $this->get_propriedades_preparadas();                
+                $propriedades = explode(", ", $propriedades);
+                                 
                 $statement = "";
-
-                $i = 0;
+                for( $i = 0; $i < count($propriedades); ++$i ) {
+                    $statement .= $this->preparar_valor( $this->$propriedades[$i] );
+                    
+                    if( $i < count($propriedades)-1 ) $statement .= ", ";
+                }                                                                    
+                
+                /*$i = 0;
                 foreach( $valores as $key => $value ) {                    
                     ++$i;
                     if( empty($value) || !$incluirPrimaryKey && $key == $this::$primary_key ) continue;                    
                     
                     $statement .= $this->preparar_valor($value);
                     if( $i < count($valores) ) $statement .= ", ";                
-                }
+                }*/
 
                 return $statement;
             }                        
@@ -185,7 +191,7 @@
 
             public function inserir() {
                 $sql = "INSERT INTO " . $this::$nome_tabela . "(" . $this->get_propriedades_preparadas(false) . ") ";
-                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";
+                $sql .= "VALUES(" . $this->get_valores_preparados(false) . ")";                                
                 
                 return $this->executarQuery($sql);
             }                        

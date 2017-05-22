@@ -11,28 +11,28 @@
 
     $LOCADOR = 1;
     $LOCATARIO = 2;                
-
+    
+    $resultado = false;
     if( $notaAvaliacao != null && $idPedido != null ) {
         
         $infoPedido = new \Tabela\Pedido();
         $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];                
         
         $sessao = new Sessao();
-        $idUsuario = (int) $sessao->get("idUsuario");
-        
-        echo json_encode($infoPedido);
-        
-        echo "idUsuario: " . $idUsuario;
+        $idUsuario = -1;
+        if( $sessao->get("idUsuario") != null ) {
+            $idUsuario = (int) $sessao->get("idUsuario");
+        } else {
+            $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : -1;
+        }                             
         
         $alvoAvaliacao = null;
         if( $idUsuario == $infoPedido->idUsuarioLocador ) {
             $alvoAvaliacao = $LOCATARIO;
         } elseif( $idUsuario == $infoPedido->idUsuarioLocatario ) {
             $alvoAvaliacao = $LOCADOR;
-        }
-        
-        echo "nota: " . $notaAvaliacao . " idPedido: " . $idPedido . " alvoAvaliacao: " . $alvoAvaliacao . " mensagem: " . $mensagem . "<br/>";
-        
+        }                
+                
         if( $idPedido != null ) {
             
             $usuarioAlvoAvaliacao = null;
@@ -47,21 +47,23 @@
                 $infoPedido->locatarioAvaliado = 1;
             }
             
-            echo "avaliado: " . $usuarioAlvoAvaliacao . " avaliador: " . $usuarioAvaliador;
-            
             if( $usuarioAlvoAvaliacao != null && $usuarioAvaliador != null ) {
                 $avaliacao = new \Tabela\Avaliacao();
                 $avaliacao->nota = $notaAvaliacao;                              
                 $avaliacao->mensagem = $mensagem;
                 $avaliacao->data = get_data_atual_mysql();
                 $avaliacao->idUsuarioAvaliado = $usuarioAlvoAvaliacao;
-                $avaliacao->idUsuarioAvaliador = $usuarioAvaliador;
+                $avaliacao->idUsuarioAvaliador = $usuarioAvaliador;                                
                 
-                echo json_encode( $avaliacao );
+                $resultado = $avaliacao->inserir();
+                if( $resultado != 0 && $resultado != false ) {
+                    $resultado = true;                    
+                }
                 
-                $avaliacao->inserir();
                 $infoPedido->atualizar();
             }
         }
     }
+
+    echo json_encode($resultado);
 ?>

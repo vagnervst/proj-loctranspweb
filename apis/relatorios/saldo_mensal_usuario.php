@@ -13,10 +13,12 @@
         $rangeTempo = get_data_mysql( $rangeTempo );                
         
         $sql = "SELECT SUM(valorDiaria) AS lucroMensal, MONTH(dataRetirada) AS mes ";
-        $sql .= "FROM tbl_pedido  ";
-        $sql .= "WHERE idStatusPedido = 9 ";
+        $sql .= "FROM tbl_pedido ";
+        $sql .= "INNER JOIN tbl_statuspedido AS st ";
+        $sql .= "ON st.id = idStatusPedido ";
+        $sql .= "WHERE st.cod > {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_RETIRADA} ";
         $sql .= "AND dataRetirada > '{$rangeTempo}' ";
-        $sql .= "AND idUsuarioLocador = {$idUsuario} ";
+        $sql .= "AND idUsuarioLocador = {$idUsuario} ";        
         $sql .= "GROUP BY MONTH(dataRetirada)";                                
         
         $resultado = $databaseUtils->executarQuery( $sql );
