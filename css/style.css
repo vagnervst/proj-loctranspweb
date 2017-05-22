@@ -462,6 +462,10 @@ header #box-botao-filtragem {
     }
 }
 
+#container #box-mobile-filtragem-ativo .box-opcoes-select .select:enabled{
+    color: black;
+}
+
 #container #box-mobile-filtragem .box-filtragem-valor,
 #container #box-mobile-filtragem-ativo .box-filtragem-valor {
     margin-bottom: 10px;

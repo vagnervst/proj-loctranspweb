@@ -5,10 +5,10 @@
     $sql = "SELECT id, nome ";
     $sql .= "FROM tbl_frabricanteveiculo";
 
-    $buscaFabrincanteVeiculo = new \Tabela\FabrincanteVeiculo();
+    $buscaFabrincanteVeiculo = new \Tabela\FabricanteVeiculo();
     $listaFabrincanteVeiculo = $buscaFabricanteVeiculo->executarQuery( $sql );
     $listaFabrincanteVeiculo = $buscaFabricanteVeiculo->get_array_from_resultado( $listaFabrincanteVeiculo );
     
     echo json_encode( $listaFabrincanteVeiculo );
-    }
+    
 ?>

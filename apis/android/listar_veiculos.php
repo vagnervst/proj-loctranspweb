@@ -22,5 +22,5 @@
     $listaVeiculo = $buscaVeiculo->get_array_from_resultado( $listaVeiculo );
     
     echo json_encode( $listaVeiculo );
-    }
+    
 ?>

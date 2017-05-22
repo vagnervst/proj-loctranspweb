@@ -10,5 +10,5 @@
     $listaTransmissao = $buscaTransmissao->get_array_from_resultado( $listaTransmissao );
     
     echo json_encode( $listaTransmissao );
-    }
+    
 ?>

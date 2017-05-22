@@ -10,5 +10,5 @@
     $listaTipoCombustivel = $buscaTipoCombustivel->get_array_from_resultado( $listaTipoCombustivel );
     
     echo json_encode( $listaTipoCombustivel );
-    }
+    
 ?>

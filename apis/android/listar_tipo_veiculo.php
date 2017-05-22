@@ -12,5 +12,5 @@
     $listaTipoVeiculo = $buscaTipoVeiculo->get_array_from_resultado( $listaTipoVeiculo );
     
     echo json_encode( $listaTipoVeiculo );
-    }
+    
 ?>
