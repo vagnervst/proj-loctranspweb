@@ -228,7 +228,13 @@ header #box-cabecalho #box-conta #box-info-conta {
     }
 }
 
-header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
+header #box-cabecalho #box-conta #box-info-conta #box-notificacoes {    
+    width: 40px;
+    height: inherit;
+    float: left;
+}
+
+header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #icone-notificacao {
     background: url(../img/icones/notificacao.png) no-repeat;
     background-size: cover;
     width: 40px;
@@ -239,15 +245,57 @@ header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
 }
 
 @media (min-width: 520px) {
-    header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
+    header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #icone-notificacao {
         width: 28px;
         height: 28px;
     }
 }
 
 @media (min-width: 740px) {
-    header #box-cabecalho #box-conta #box-info-conta #icone-notificacao {
+    header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #icone-notificacao {
         margin-right: 10px;
+    }
+}
+
+header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #contagem-notificacoes {            
+    display: none;
+    background-color: #557bc9;
+    width: 30px;
+    height: 30px;    
+    float: right;
+    margin-top: -45px;
+    border-radius: 15px;
+}
+
+@media (min-width: 520px) {
+    header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #contagem-notificacoes {
+        margin-top: -35px;
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (min-width: 740px) {
+    header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #contagem-notificacoes {
+        margin-top: -35px;
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+}
+
+header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #contagem-notificacoes #label {        
+    width: inherit;
+    height: inherit;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+@media (min-width: 520px) {
+    header #box-cabecalho #box-conta #box-info-conta #box-notificacoes #contagem-notificacoes #label {
+        font-size: 17px;
     }
 }
 
@@ -581,14 +629,15 @@ header #box-botao-filtragem {
 /*------------- MENU DE FILTRAGEM DE VEICULOS*/
 
 #box-menu-notificacoes,
-#box-menu-notificacoes-ativo {    
-    background-color: #2a2a2a;
+#box-menu-notificacoes-ativo {
+    background-color: #f2f2f2;
     width: 300px;         
     position: relative;
-    top: 6px;        
+    top: 6px;
     float: right;
     overflow: hidden;
     border-radius: 0px 0px 2px 2px;
+    box-shadow: 1px 1px 5px #8a8a8a;    
 }
 
 #box-menu-notificacoes {
@@ -602,19 +651,18 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #box-menu-notificacoes,
     #box-menu-notificacoes-ativo {
-        width: 290px;        
-        top: 4px;
+        width: 290px;  
+        top: 5px;
     }
 }
 
 #box-menu-notificacoes #titulo-box-notificacoes,
 #box-menu-notificacoes-ativo #titulo-box-notificacoes {
-    background-color: #fff;
-    border-left: 1px solid #d6d6d6;
-    border-right: 1px solid #d6d6d6;
+    background-color: #fff;    
     padding: 5px;
     font-weight: bold;
     color: #557BC9;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 @media (min-width: 740px) {
@@ -641,7 +689,7 @@ header #box-botao-filtragem {
 
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao:hover,
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao:active {
-    background-color: #557BC9;
+    background-color: #d4d4d4;
 }
 
 @media (min-width: 520px) {
@@ -668,8 +716,24 @@ header #box-botao-filtragem {
     width: 50px;
     height: 50px;
     margin-right: 5px;
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background-position: center;
     float: left;
 }
+
+#box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .icone-notificacao.pedido {
+    background-image: url(../img/icones/update_locacao.png);
+}
+
+#box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .icone-notificacao.avaliacao {
+    background-image: url(../img/icones/medalha.png);
+}
+
+#box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .icone-notificacao.solicitacao {
+    background-image: url(../img/icones/handshake.png);
+}
+
 
 #box-menu-notificacoes #container-notificacoes .box-notificacao .info-notificacao,
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .info-notificacao {
@@ -722,7 +786,7 @@ header #box-botao-filtragem {
 
 #box-menu-notificacoes #container-notificacoes .box-notificacao .info-notificacao .titulo-notificacao,
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .info-notificacao .titulo-notificacao {
-    color: #f7f7f7;
+    color: #6a6a6a;
     font-size: 19px;
     font-weight: bold;    
 }
@@ -736,7 +800,7 @@ header #box-botao-filtragem {
 
 #box-menu-notificacoes #container-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao {    
-    color: #bababa;
+    color: #626262;
     text-align: justify;
     white-space: nowrap;
     overflow: hidden;
@@ -1299,7 +1363,7 @@ header #box-botao-filtragem {
 
 .main #container-locadores-destaque #horizontal-wrapper {
     width: 2600px; 
-    height: 410px;
+    height: 395px;
 }
 
 @media (min-width: 520px) {
@@ -1761,7 +1825,7 @@ header #box-botao-filtragem {
 @media (min-width: 1200px) {
     #pag-listagem-veiculos .box-conteudo #lista-veiculos {
         width: 1180px;
-        min-height: 520px;
+        min-height: 580px;
     }
 }
 
@@ -1789,7 +1853,7 @@ header #box-botao-filtragem {
 @media (min-width: 1000px) {
     #pag-listagem-veiculos .box-conteudo #lista-veiculos .box-veiculo {        
         width: 229px;
-        height: 475px;
+        height: 480px;
         margin: 3.7px;
         padding-top: 1px;
     }

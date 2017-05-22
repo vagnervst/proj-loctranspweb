@@ -11,5 +11,17 @@ function Ajax() {
                 if( callback !== undefined ) callback(dados_retorno);
             }
         });
-    }
+    };
+    
+    this.conectar = function(url, callback) {
+        $.ajax({
+            url: url,
+            method: "GET",
+            contentType: false,
+            processData: false,
+            success: function(retorno) {
+                if( callback !== undefined ) callback( retorno );
+            }
+        })
+    };
 }

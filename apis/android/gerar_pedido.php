@@ -3,6 +3,8 @@
     require_once("../../include/classes/tbl_pedido.php");
     require_once("../../include/classes/tbl_publicacao.php");
     require_once("../../include/classes/tbl_alteracao_pedido.php");
+    require_once("../../include/classes/tbl_notificacao.php");
+    require_once("../../include/classes/tbl_usuario.php");
     require_once("../../include/classes/sessao.php");
 
     $idPublicacao = ( isset( $_POST["idPublicacao"] ) )? (int) $_POST["idPublicacao"] : null;
@@ -47,7 +49,7 @@
         
         $resultado = false;
         if( $id_inserido != 0 ) {
-            $resultado = true;
+            $resultado = true;            
         }
         
         echo json_encode($resultado);
@@ -58,5 +60,18 @@
         $historicoAlteracaoPedido->idStatus = $id_status_aguardando_aprovacao;
         
         $historicoAlteracaoPedido->inserir();
+        
+        $usuario = new \Tabela\Usuario();
+        $usuario = $usuario->buscar("id = {$id_usuario_locatario}")[0];
+        
+        $notificacao = new \Tabela\Notificacao();
+        $notificacao->idUsuarioRemetente = $id_usuario_locatario;
+        $notificacao->idUsuarioDestinatario = $id_usuario_locador;
+        $notificacao->idPedido = $id_inserido;
+        $notificacao->idTipoNotificacao = 1;
+        $notificacao->mensagem = "Há uma nova solicitação de " . $usuario->nome . " " . $usuario->sobrenome;
+        $notificacao->visualizada = 0;        
+        
+        $notificacao->inserir();
     }
 ?>

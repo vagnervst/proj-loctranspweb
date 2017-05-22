@@ -209,8 +209,13 @@
                     </div>
                     <div id="lista-veiculos">
 
-                        <?php
-                                                        
+                        <?php 
+                            $dadosPublicacao = new \Tabela\Publicacao();
+                            $pagina_atual = ( isset($_GET['p']) )? $_GET["p"] : 1;
+                            $itens_por_pagina = 10;
+                            
+                            $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual, "p.idStatusPublicacao = 1" );
+                            
                             foreach( $listaPublicacao as $publicacao ) { 
 
                         ?>
@@ -243,34 +248,43 @@
                         </section>
                         <?php } ?>                        
                     </div>
+                    <?php if( count($listaPublicacao) > 0 ) { ?>
+                    <?php
+                        $totalPaginas = $listaPublicacao[0]->totalPublicacoes / $itens_por_pagina;
+                        var_dump($listaPublicacao[0]);
+    
+                        $proxima_pagina = ( ($pagina_atual + 1) > $totalPaginas )? $pagina_atual + 1 : $pagina_atual;
+                        $pagina_anterior = ( ($pagina_atual - 1) > 0 )? $pagina_atual - 1 : $pagina_atual;
+                    ?>
                     <div id="box-paginas">
                         <div id="box-botoes-mobile">
                             <div class="box-botoes-pagina" id="box-botoes-prev">
-                                <a class="preset-botao botao-pagina" id="link-pagina-prev" href="#">Anterior</a>
+                                <a class="preset-botao botao-pagina" id="link-pagina-prev" href="alugue.php?p=<?php echo $pagina_anterior; ?>">Anterior</a>
                                 <div id="box-primeira-pagina">
-                                    <a class="preset-botao botao-pagina" href="#">Primeira</a>
+                                    <a class="preset-botao botao-pagina" href="alugue.php?p=1">Primeira</a>
                                 </div>
                             </div>
                             <div id="box-numero-paginas">
-                                <p id="label-pagina-atual">1</p>
-                                <p id="label-total-paginas">1</p>
+                                <p id="label-pagina-atual"><?php echo $pagina_atual; ?></p>
+                                <p id="label-total-paginas"><?php echo $totalPaginas; ?></p>
                             </div>
                             <div class="box-botoes-pagina" id="box-botoes-next">
-                                <a class="preset-botao botao-pagina" id="link-pagina-next" href="#">Próxima</a>
+                                <a class="preset-botao botao-pagina" id="link-pagina-next" href="alugue.php?p=<?php echo $proxima_pagina; ?>">Próxima</a>
                                 <div id="box-ultima-pagina">
-                                    <a class="preset-botao botao-pagina" href="#">Última</a>
+                                    <a class="preset-botao botao-pagina" href="alugue.php?p=<?php echo $totalPaginas; ?>">Última</a>
                                 </div>
                             </div>
                         </div>
                         <div id="box-botoes-desktop">
-                            <a class="preset-botao botao-pagina" href="#">Primeira</a>
-                            <a class="preset-botao botao-pagina" href="#">Anterior</a>
-                            <p id="pagina-atual"><?php echo $pagina_atual; ?> |</p>
-                            <p id="total-paginas"><?php echo "";?></p>
-                            <a class="preset-botao botao-pagina" href="#">Próxima</a>
-                            <a class="preset-botao botao-pagina" href="#">Ultima</a>
+                            <a class="preset-botao botao-pagina" href="alugue.php?p=1">Primeira</a>
+                            <a class="preset-botao botao-pagina" href="alugue.php?p=<?php echo $pagina_anterior; ?>">Anterior</a>
+                            <p id="pagina-atual"><?php echo $pagina_atual; ?> |</p>                                                    
+                            <p id="total-paginas"><?php echo $totalPaginas; ?></p>
+                            <a class="preset-botao botao-pagina" href="alugue.php?p=<?php echo $proxima_pagina; ?>">Próxima</a>
+                            <a class="preset-botao botao-pagina" href="alugue.php?p=<?php echo $totalPaginas; ?>">Ultima</a>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <!-- CONTEUDO PRINCIPAL -->

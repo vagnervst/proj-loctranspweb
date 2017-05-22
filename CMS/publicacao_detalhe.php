@@ -43,15 +43,17 @@
                         <img src="<?php File::read($dadosPublicacao->imagemC, "../../img/uploads/publicacoes/");?>"/>
                         <img src="<?php File::read($dadosPublicacao->imagemD, "../../img/uploads/publicacoes/");?>"/>
                     </div>
-                    <div id="modelo-publicacao" class="boxes-publicacao">
-                        Modelo: <?php echo $dadosPublicacao->modeloVeiculo; ?>
+                    <div id="modelo-publicacao" class="box-label-info">
+                        <p class="label">Modelo:</p>
+                        <p class="info"><?php echo $dadosPublicacao->modeloVeiculo; ?></p>                        
                     </div>
-                    <div id="proprietario-publicacao" class="boxes-publicacao">
-                        Proprietário: <?php echo $dadosPublicacao->nomeLocador; ?>
+                    <div id="modelo-publicacao" class="box-label-info">
+                        <p class="label">Proprietário:</p>
+                        <p class="info"><?php echo $dadosPublicacao->nomeLocador; ?></p>                        
                     </div>
-                    <div id="reputacao-publicacao" class="boxes-publicacao">
-                        <div class="box-avaliacoes">
-                            <p class="avaliacoes-locador">Avaliações: <?php echo $usuario->qtdAvaliacoes; ?></p>
+                    <div id="reputacao-publicacao" class="box-label-info">
+                        <p class="label">Média de Avaliações:</p>
+                        <div class="box-avaliacoes">                            
                             <div class="container-icone-avaliacoes">
                                 <?php 
                                     $usuario->qtdAvaliacoes; 
@@ -64,8 +66,8 @@
                                         "icone-avaliacao inativa",
                                         "icone-avaliacao inativa"
                                     ];                                                                                
-
-                                    for( $i = 0; $i < $usuario->mediaNotas; ++$i ) {
+                                                                        
+                                    for( $i = 0; $i < round($usuario->mediaNotas); ++$i ) {
                                         $lista_estrelas[$i] = "icone-avaliacao";                           
                                     }                                                                            
 
@@ -76,20 +78,27 @@
                             </div>
                         </div>
                     </div>
-                    <div id="data-publicacao" class="boxes-publicacao">
-                        Data da Publicação: <?php echo $dadosPublicacao->dataPublicacao; ?>
+                    <div id="data-publicacao" class="box-label-info">
+                        <p class="label">Data da Publicação:</p>
+                        <p class="info"><?php echo $dadosPublicacao->dataPublicacao; ?></p>
                     </div>
-                    <div id="diaria-publicacao" class="boxes-publicacao">
-                        Diária: R$<?php echo $dadosPublicacao->valorDiaria; ?>
+                    <div id="diaria-publicacao" class="box-label-info">
+                        <p class="label">Diária:</p>
+                        <p class="info">R$<?php echo $dadosPublicacao->valorDiaria; ?></p>                        
                     </div>
-                    <div id="combustivel-publicacao" class="boxes-publicacao">
-                        Tipo de Combustível: <?php echo $dadosPublicacao->combustivel; ?>
+                    <?php if( isset( $dadosPublicacao->combustivel ) ) { ?>
+                    <div id="combustivel-publicacao" class="box-label-infoo">
+                        <p class="label">Tipo de Combustível:</p>
+                        <p class="info"><?php echo $dadosPublicacao->combustivel; ?></p>                        
                     </div>
-                    <div id="distancia-publicacao" class="boxes-publicacao">
-                        Kms Rodados: <?php echo $dadosPublicacao->quilometragemAtual; ?>
+                    <?php } ?>
+                    <div id="distancia-publicacao" class="box-label-info">
+                        <p class="label">Kms Rodados:</p>
+                        <p class="info"><?php echo $dadosPublicacao->quilometragemAtual; ?></p>
                     </div>
                     <div id="botoes-publicacao">
-                        <span class="preset-botao js-btn-aprovar">aprovar</span><span class="preset-botao js-btn-recusar">recusar</span>
+                        <a class="preset-botao js-btn-aprovar" href="publicacao_detalhe.php">aprovar</a>
+                        <a class="preset-botao js-btn-recusar" href="publicacao_detalhe.php">recusar</a>
                     </div>
                 </div>
             </div>
