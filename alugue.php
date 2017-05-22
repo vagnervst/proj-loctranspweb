@@ -2,6 +2,10 @@
     require_once("include/initialize.php");
     require_once("include/classes/tbl_veiculo.php");
     require_once("include/classes/tbl_publicacao.php");
+    require_once("include/classes/tbl_estado.php");
+    require_once("include/classes/tbl_cidade.php");
+    require_once("include/classes/tbl_tipo_veiculo.php");
+    require_once("include/classes/tbl_usuario.php");
 
     $pesquisa = ( isset($_POST["txtPesquisa"]) )? $_POST["txtPesquisa"] : null;
     $dadosPublicacao = new \Tabela\Publicacao();
@@ -9,12 +13,70 @@
     $itens_por_pagina = 10;
 
     if( isset($_POST["btnBuscar"]) ) {
+        
         $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual, " p.titulo LIKE '%{$pesquisa}%' OR p.descricao LIKE '%{$pesquisa}%' " );
+        
     } else {
+        
         $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual );
+        
     }
 
     if( isset($_POST["btnFiltrar"]) ) {
+        
+        $estado = isset( $_POST["slEstado"] )? $_POST["slEstado"] : null;
+        $cidade = isset( $_POST["slCidade"] )? $_POST["slCidade"] : null;
+        $tipoVeiculo = isset( $_POST["slTipoVeiculo"] )? $_POST["slTipoVeiculo"] : null;
+        $vlDiariaMinimo = isset( $_POST["vlDiariaMinimo"] )? $_POST["vlDiariaMinimo"] : null;
+        $vlDiariaMaximo = isset( $_POST["vlDiariaMaximo"] )? $_POST["vlDiariaMaximo"] : null;
+        $ordem = isset( $_POST["rdoOrdem"] )? $_POST["rdoOrdem"] : null;
+        $vlCombustivelMinimo = isset( $_POST["vlCombustivelMinimo"] )? $_POST["vlCombustivelMinimo"] : null;
+        $vlCombustivelMaximo = isset( $_POST["vlCombustivelMaximo"] )? $_POST["vlCombustivelMaximo"] : null;
+        $vlQuilometragemMinimo = isset( $_POST["vlQuilometragemMinimo"] )? $_POST["vlQuilometragemMinimo"] : null;
+        $vlQuilometragemMaximo = isset( $_POST["vlQuilometragemMaximo"] )? $_POST["vlQuilometragemMaximo"] : null;
+        $limiteDistanciaMinimo = isset( $_POST["limiteDistanciaMinimo"] )? $_POST["limiteDistanciaMinimo"] : null;
+        $limiteDistanciaMaximo = isset( $_POST["limiteDistanciaMaximo"] )? $_POST["limiteDistanciaMaximo"] : null;
+        $avaliacaoMinima = isset( $_POST["slAvaliacaoMinima"] )? $_POST["slAvaliacaoMinima"] : null;
+        
+        $whereValorDiaria = " p.valorDiaria BETWEEN {$vlDiariaMinimo} AND {$vlDiariaMaximo} ";
+        $whereValorCombustivel = " p.valorCombustivel BETWEEN {$vlCombustivelMinimo} AND {$vlCombustivelMaximo} ";
+        $whereValorQuilometragem = " p.valorQuilometragem BETWEEN {$vlQuilometragemMinimo} AND {$vlQuilometragemMaximo} ";
+        $whereLimiteDistancia = " p.limiteQuilometragem BETWEEN {$limiteDistanciaMinimo} AND {$limiteDistanciaMaximo} ";
+        $whereAvaliacaoMinima = " (SELECT (SUM(av.nota)/(SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id))) <= {$avaliacaoMinima} ";
+        $whereEstado = " c.idEstado = {$estado} ";
+        $whereCidade = " u.idCidade = {$cidade} ";
+        $whereTipoVeiculo = " tp.id = {$tipoVeiculo} ";
+        
+        if( $ordem == "crescente" ) {
+            
+            $ordem = " p.valorDiaria ASC ";
+            
+        } else {
+            
+            $ordem = " p.valorDiaria DESC ";
+            
+        }
+        
+        $where = "";
+        $listaWhere = [];
+        if( $vlDiariaMinimo != null and $vlDiariaMaximo != null ) { $listaWhere[] = $whereValorDiaria; }
+        if( $vlCombustivelMinimo != null and $vlCombustivelMaximo != null ) { $listaWhere[] = $whereValorCombustivel; }
+        if( $vlQuilometragemMinimo != null and $vlQuilometragemMaximo != null ) { $listaWhere[] = $whereValorQuilometragem; }
+        if( $limiteDistanciaMinimo != null and $limiteDistanciaMaximo != null ) { $listaWhere[] = $whereLimiteDistancia; }
+        if( $avaliacaoMinima != null ) { $listaWhere[] = $whereAvaliacaoMinima; }
+        if( $estado != null ) { $listaWhere[] = $whereEstado; }
+        if( $cidade != null ) { $listaWhere[] = $whereCidade; }
+        if( $tipoVeiculo != null ) { $listaWhere[] = $whereTipoVeiculo; }
+        
+        for( $i = 0; $i < count($listaWhere); ++$i ) {
+            if( $i == 0 ) {
+                $where .= " {$listaWhere[$i]} ";
+            } else {
+                $where .= " AND {$listaWhere[$i]} ";
+            }
+        }
+        
+        $listaPublicacao = $dadosPublicacao->getDetalhesPublicacao( $itens_por_pagina, $pagina_atual, " {$where} ORDER BY {$ordem} " );
         
     }
 ?>
@@ -36,37 +98,61 @@
                 <form method="post" action="#">                    
                     <div class="box-opcoes-select">
                         <p class="label">Estado</p>
-                        <select class="preset-input-select select">
-                            <option>Estado</option>
+                        <select class="preset-input-select select" name="slEstado">
+                            <option class="option" selected disabled>Selecione..</option>
+                            <?php
+                                $buscaEstado = new \Tabela\Estado();
+                                $listaEstado = $buscaEstado->buscar();
+                            
+                                for( $i = 0; $i < count($listaEstado); ++$i ) {
+                            ?>
+                            <option class="option" value="<?php echo $listaEstado[$i]->id; ?>"><?php echo $listaEstado[$i]->nome; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="box-opcoes-select">
                         <p class="label">Cidade</p>
-                        <select class="preset-input-select select">
-                            <option>Cidade</option>
+                        <select class="preset-input-select select" name="slCidade">
+                            <option selected disabled>Selecione..</option>
+                            <?php 
+                                $buscaCidade = new \Tabela\Cidade();
+                                $listaCidade = $buscaCidade->buscar();
+                            
+                                for( $i = 0; $i < count($listaCidade); ++$i ) {
+                            ?>
+                            <option value="<?php echo $listaCidade[$i]->id; ?>"><?php echo $listaCidade[$i]->nome; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="box-opcoes-select">
                         <p class="label">Tipo de Transporte</p>
-                        <select class="preset-input-select select">
-                            <option>Bicicleta</option>
+                        <select class="preset-input-select select" name="slTipoVeiculo">
+                            <option selected disabled>Selecione..</option>
+                            <?php
+                                $buscaTipoVeiculo = new \Tabela\TipoVeiculo();
+                                $listaTipoVeiculo = $buscaTipoVeiculo->buscar();
+                            
+                                for( $i = 0; $i < count($listaTipoVeiculo); ++$i ) {
+                            ?>
+                            <option value="<?php echo $listaTipoVeiculo[$i]->id; ?>"><?php echo $listaTipoVeiculo[$i]->titulo; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="box-filtragem-valor">
                         <p class="label">Valor da Diária</p>
                         <div class="box-valores">
                             <p class="label-intervalo">De:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="vlDiariaMinimo" />
                             <p class="label-intervalo">A:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="vlDiariaMaximo" />
                         </div>
                         <div class="box-ordem">
                             <label>
-                                <input class="opcao-ordem" type="radio" name="rdoOrdem"/>
+                                <input class="opcao-ordem" type="radio" name="rdoOrdem" value="crescente"/>
                                 <span class="label-ordem">Crescente</span>
                             </label>                        
                             <label>
-                                <input class="opcao-ordem" type="radio" name="rdoOrdem"/>
+                                <input class="opcao-ordem" type="radio" name="rdoOrdem" value="decrescente"/>
                                 <span class="label-ordem">Decrescente</span>
                             </label>
                         </div>
@@ -75,33 +161,38 @@
                         <p class="label">Valor do Combustível</p>
                         <div class="box-valores">
                             <p class="label-intervalo">De:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="vlCombustivelMinimo"/>
                             <p class="label-intervalo">A:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="vlCombustivelMaximo"/>
                         </div>
                     </div>
                     <div class="box-filtragem-valor">
                         <p class="label">Quilometragem do Veículo</p>
                         <div class="box-valores">
                             <p class="label-intervalo">De:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="vlQuilometragemMinimo"/>
                             <p class="label-intervalo">A:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="vlQuilometragemMaximo"/>
                         </div>
                     </div>
                     <div class="box-filtragem-valor">
                         <p class="label">Limite de Distância</p>
                         <div class="box-valores">
                             <p class="label-intervalo">De:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="limiteDistanciaMinimo"/>
                             <p class="label-intervalo">A:</p>
-                            <input class="preset-input-text txt-valor" type="text" />
+                            <input class="preset-input-text txt-valor" type="text" name="limiteDistanciaMaximo"/>
                         </div>
                     </div>
                     <div class="box-opcoes-select">
                         <p class="label">Avaliação Mínima</p>
-                        <select class="preset-input-select select">
-                            <option>0</option>
+                        <select class="preset-input-select select" name="slAvaliacaoMinima">
+                            <option selected disabled>Selecione..</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
                     <input class="preset-input-submit botao-submit" name="btnFiltrar" type="submit" value="Filtrar" />
@@ -117,9 +208,11 @@
                         </form>
                     </div>
                     <div id="lista-veiculos">
+
                         <?php
                                                         
                             foreach( $listaPublicacao as $publicacao ) { 
+
                         ?>
                         <section class="box-veiculo">
                             <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
