@@ -48,36 +48,33 @@
         $whereTipoVeiculo = " tp.id = {$tipoVeiculo} ";
         
         if( $ordem == "crescente" ) {
-            
             $ordem = " p.valorDiaria ASC ";
-            
         } else {
-            
             $ordem = " p.valorDiaria DESC ";
-            
         }
         
         $where = "";
         $listaWhere = [];
-        if( $vlDiariaMinimo != null and $vlDiariaMaximo != null ) { $listaWhere[] = $whereValorDiaria; }
-        if( $vlCombustivelMinimo != null and $vlCombustivelMaximo != null ) { $listaWhere[] = $whereValorCombustivel; }
-        if( $vlQuilometragemMinimo != null and $vlQuilometragemMaximo != null ) { $listaWhere[] = $whereValorQuilometragem; }
-        if( $limiteDistanciaMinimo != null and $limiteDistanciaMaximo != null ) { $listaWhere[] = $whereLimiteDistancia; }
-        if( $avaliacaoMinima != null ) { $listaWhere[] = $whereAvaliacaoMinima; }
-        if( $estado != null ) { $listaWhere[] = $whereEstado; }
-        if( $cidade != null ) { $listaWhere[] = $whereCidade; }
-        if( $tipoVeiculo != null ) { $listaWhere[] = $whereTipoVeiculo; }
+        if( !empty( $vlDiariaMinimo ) and !empty($vlDiariaMaximo) ) { $listaWhere[] = $whereValorDiaria; }
+        if( !empty( $vlCombustivelMinimo ) and !empty( $vlCombustivelMaximo ) ) { $listaWhere[] = $whereValorCombustivel; }
+        if( !empty( $vlQuilometragemMinimo ) and !empty( $vlQuilometragemMaximo ) ) { $listaWhere[] = $whereValorQuilometragem; }
+        if( !empty( $limiteDistanciaMinimo ) and !empty( $limiteDistanciaMaximo ) ) { $listaWhere[] = $whereLimiteDistancia; }
+        if( !empty( $avaliacaoMinima ) ) { $listaWhere[] = $whereAvaliacaoMinima; }
+        if( !empty( $estado ) ) { $listaWhere[] = $whereEstado; }
+        if( !empty( $cidade ) ) { $listaWhere[] = $whereCidade; }
+        if( !empty( $tipoVeiculo ) ) { $listaWhere[] = $whereTipoVeiculo; }
         
-        for( $i = 0; $i < count($listaWhere); ++$i ) {
-            if( $i == 0 ) {
-                $where .= " {$listaWhere[$i]} ";
-            } else {
-                $where .= " AND {$listaWhere[$i]} ";
+        if( !empty($listaWhere) ) {
+            for( $i = 0; $i < count($listaWhere); ++$i ) {
+                if( $i == 0 ) {
+                    $where .= " {$listaWhere[$i]} ";
+                } else {
+                    $where .= " AND {$listaWhere[$i]} ";
+                }
             }
+
+            $listaPublicacao = $dadosPublicacao->getDetalhesPublicacao( $itens_por_pagina, $pagina_atual, " {$where} ORDER BY {$ordem} " );
         }
-        
-        $listaPublicacao = $dadosPublicacao->getDetalhesPublicacao( $itens_por_pagina, $pagina_atual, " {$where} ORDER BY {$ordem} " );
-        
     }
 ?>
 <!DOCTYPE html>

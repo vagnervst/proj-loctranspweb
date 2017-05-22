@@ -510,8 +510,8 @@ header #box-botao-filtragem {
     }
 }
 
-#container #box-mobile-filtragem-ativo .box-opcoes-select .select:enabled{
-    color: black;
+#container #box-mobile-filtragem-ativo .box-opcoes-select .select:enabled {
+    color: #ffffff;
 }
 
 #container #box-mobile-filtragem .box-filtragem-valor,
@@ -4523,7 +4523,7 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-publicar #wrapper-info-veiculo {
         width: 650px;
-        height: 550px;
+        height: 610px;
     }
 }
 
@@ -4560,7 +4560,7 @@ header #box-botao-filtragem {
     #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
     #pag-publicar #wrapper-info-veiculo .box-info-locacao {                    
         width: 310px;   
-        height: 535px;
+        height: 605px;
         margin: 0px 5px;
         float: left;        
     }   

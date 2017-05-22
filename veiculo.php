@@ -93,13 +93,21 @@
                     <span class="botao-slide" id="botao-prev"></span>
                     <span class="botao-slide" id="botao-next"></span>
                     <div id="container-imagens">       
-                        <?php 
-                            $info_publicacao->titulo;
-                        
+                        <?php                                                     
+                            $imagens_veiculo = [];
+                            $imagens_veiculo[] = ( $info_publicacao->imagemPrincipal != null )? $info_publicacao->imagemPrincipal : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemA != null )? $info_publicacao->imagemA : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemB != null )? $info_publicacao->imagemB : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemC != null )? $info_publicacao->imagemC : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemD != null )? $info_publicacao->imagemD : "no_image.jpg";
+                            
+                            $pasta_imagens = "img/uploads/publicacoes/";
+                            foreach( $imagens_veiculo as $imagem ) {                            
+                        ?>                        
+                        <div class="imagem" style="background-image: url(<?php echo $pasta_imagens . $imagem ?>)"></div>
+                        <?php
+                            }
                         ?>
-                        
-                        <div class="imagem" style="background-image: url(<?php  ?>)"></div>
-                        
                     </div>
                     <div id="container-contador">
                         <div class="contador"></div>
