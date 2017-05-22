@@ -8,10 +8,7 @@
 
     $idPedido = ( isset($_POST["idPedido"]) )? (int) $_POST["idPedido"]: null;
     $quilometragemExcedida = ( isset($_POST["quilometragemExcedida"]) )? (int) $_POST["quilometragemExcedida"] : null;
-    $combustivelRestante = ( isset($_POST["combustivelRestante"]) )? (int) $_POST["combustivelRestante"] : null;
-    
-    echo "quilometragem excedida: " . $quilometragemExcedida;
-    echo "combustivel restante: " . $combustivelRestante;
+    $combustivelRestante = ( isset($_POST["combustivelRestante"]) )? (int) $_POST["combustivelRestante"] : null;        
 
     $infoPedido = new \Tabela\Pedido();
     $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];

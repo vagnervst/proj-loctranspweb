@@ -3,6 +3,7 @@
     require_once("../include/classes/tbl_pedido.php");
     require_once("../include/classes/tbl_publicacao.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
+    require_once("../include/classes/tbl_notificacao.php");
     require_once("../include/classes/sessao.php");
 
     $idPublicacao = ( isset( $_POST["idPublicacao"] ) )? (int) $_POST["idPublicacao"] : null;
@@ -58,5 +59,13 @@
         $historicoAlteracaoPedido->idStatus = $statusPedido->id;
         
         $historicoAlteracaoPedido->inserir();
+        
+        $notificacao = new \Tabela\Notificacao();
+        $notificacao->usuarioRemetente = $id_usuario_locatario;
+        $notificacao->usuarioDestinatario = $id_usuario_locador;
+        $notificacao->idPedido = $idPedido;
+        $notificacao->idTipoNotificacao = 1;
+        $notificacao->visualizada = 0;
+        $notificacao->inserir();
     }
 ?>

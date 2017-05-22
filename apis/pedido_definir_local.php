@@ -4,6 +4,7 @@
     require_once("../include/classes/tbl_pedido.php");
     require_once("../include/classes/tbl_status_pedido.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
+    require_once("../include/classes/tbl_notificacao.php");
     require_once("../include/classes/sessao.php");
 
     $RETIRADA = 1;
@@ -25,7 +26,7 @@
     if( $idUsuario != -1 ) {
 
         $infoPedido = new \Tabela\Pedido();
-        $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
+        $infoPedido = $infoPedido->listarPedidos("p.id = {$idPedido}")[0];
 
         $is_locador = null;
         if( $infoPedido->idUsuarioLocador == $idUsuario ) {
@@ -34,13 +35,26 @@
             $is_locador = false;
         }
 
+        $notificacao = new \Tabela\Notificacao();
+        $notificacao->idPedido = $idPedido;
+        $notificacao->visualizada = 0;
+        $notificacao->idTipoNotificacao = 2;
+        
         if( $modo == $RETIRADA ) {
-
+                            
             if( $is_locador ) {
                 $infoPedido->localRetiradaLocador = 1;
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;
+                $notificacao->mensagem = $infoPedido->nomeLocador . " " . $infoPedido->sobrenomeLocador[0] . " confirmou o local de retirada.";
+                $notificacao->inserir();
             } else {
                 $infoPedido->localRetiradaLocatario = 1;
-            }            
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->mensagem = $infoPedido->nomeLocatario . " " . $infoPedido->sobrenomeLocatario[0] . " confirmou o local de retirada.";
+                $notificacao->inserir();
+            }
             
             if( $infoPedido->localRetiradaLocador == 1 && $infoPedido->localRetiradaLocatario == 1 ) {
                                     
@@ -53,15 +67,33 @@
                 $historicoAlteracaoPedido->dataOcorrencia = get_data_atual_mysql();
                 $historicoAlteracaoPedido->idPedido = $idPedido;
                 $historicoAlteracaoPedido->idStatus = $statusPedido->id;
-                $historicoAlteracaoPedido->inserir();                                
+                $historicoAlteracaoPedido->inserir();
+                
+                $notificacao->mensagem = "Atualização de Pedido: 'Aguardando Confirmação de Retirada'.";
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;
+                $notificacao->inserir();
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->inserir();
             }
 
         } elseif( $modo == $DEVOLUCAO ) {
 
             if( $is_locador ) {
-                $infoPedido->localDevolucaoLocador = 1;                
+                $infoPedido->localDevolucaoLocador = 1;   
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;
+                $notificacao->mensagem = $infoPedido->nomeLocador . " " . $infoPedido->sobrenomeLocador[0] . " confirmou o local de entrega.";
+                $notificacao->inserir();
             } else {
                 $infoPedido->localDevolucaoLocatario = 1;
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->mensagem = $infoPedido->nomeLocatario . " " . $infoPedido->sobrenomeLocatario[0] . " confirmou o local de entrega.";
+                $notificacao->inserir();
             }                
 
             if( $infoPedido->localDevolucaoLocador == 1 && $infoPedido->localDevolucaoLocatario == 1 ) {                
@@ -76,6 +108,16 @@
                 $historicoAlteracaoPedido->idPedido = $idPedido;
                 $historicoAlteracaoPedido->idStatus = $statusPedido->id;            
                 $historicoAlteracaoPedido->inserir();
+                
+                $notificacao->mensagem = "Atualização de Pedido: 'Aguardando Confirmação de Entrega'.";
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;
+                $notificacao->inserir();
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->inserir();
             }
         }
                 

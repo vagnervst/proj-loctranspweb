@@ -40,7 +40,10 @@
                 if( empty( $usuario ) ) redirecionar_para("logout_action.php");
             ?>
             <div id="box-info-conta">
-                <span id="icone-notificacao"></span>
+                <div id="box-notificacoes">
+                    <span id="icone-notificacao"></span>
+                    <span id="contagem-notificacoes"><p id="label">1</p></span>
+                </div>
                 <div id="imagem-perfil">
                     <?php 
                           $caminhoFoto = "img/uploads/usuarios/";
@@ -63,21 +66,7 @@
                 <!-- MENU DE USUÁRIO -->
                 <section class="js-popup-painel" id="box-menu-notificacoes">        
                     <h1 id="titulo-box-notificacoes">Notificações</h1>
-                    <div id="container-notificacoes">
-                        <?php for($i = 0; $i < 10; ++$i) { ?>
-                        <section class="box-notificacao">
-                            <a href="#">
-                                <img class="icone-notificacao" />
-                                <div class="info-notificacao">
-                                    <h1 class="titulo-notificacao">Titulo</h1>
-                                    <p class="conteudo-notificacao">                                    
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue ante at magna pellentesque fringilla. Nam placerat dictum turpis ac pellentesque. Aenean et ligula a nibh tristique ultricies et eu sem. Ut turpis mi, tincidunt id gravida sed, porttitor eu erat. Cras eleifend maximus egestas. Maecenas eget ultrices nibh. Aliquam vitae semper arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In vel facilisis nulla. Fusce a sem mi. Ut eget tincidunt dolor, eu dictum risus. Nullam volutpat suscipit auctor. Vestibulum vel sem elit. Donec et purus egestas, egestas augue in, molestie dui. Vivamus ut varius felis.
-                                    </p>
-                                </div>
-                            </a>
-                        </section>
-                        <?php } ?>
-                    </div>
+                    <div id="container-notificacoes"></div>
                 </section>
                 <!-- MENU DE NOTIFICACOES --> 
             </div>

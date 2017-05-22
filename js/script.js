@@ -80,10 +80,9 @@ $(document).ready(function() {
     }
 
     function toggleExibicaoPainel(painel) {
-        //Exibe ou oculta o painel de acordo com seus estado atual
+        //Exibe ou oculta o painel de acordo com seu estado atual
 
-        if( isPainelExibido(painel) ) { 
-            console.log("Ocultando: " + painel.id);
+        if( isPainelExibido(painel) ) {
             var idPainelInativo = painel.id.substr(0, painel.id.indexOf("-ativo"));                
             $(painel).attr("id", idPainelInativo);                
             mudarStatusExibicaoPainel(painel);
@@ -554,7 +553,7 @@ $(document).ready(function() {
         var botaoFiltragemVeiculos = $("#mobile-botao-filtragem-ativo")[0];
         var painelFiltragemVeiculos = $("#box-mobile-filtragem")[0];
         
-        var botaoNotificacoes = $("#icone-notificacao")[0];
+        var botaoNotificacoes = $("#box-notificacoes")[0];
         var painelNotificacoes = $("#box-menu-notificacoes")[0];
         
         $(document.body).click(function(e) {

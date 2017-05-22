@@ -7,6 +7,7 @@
     require_once("../include/classes/tbl_cityshare.php");
     require_once("../include/classes/tbl_status_pedido.php");
     require_once("../include/classes/tbl_usuario.php");
+    require_once("../include/classes/tbl_notificacao.php");
 
     $RETIRADA = 1;
     $DEVOLUCAO = 2;
@@ -28,7 +29,7 @@
     if( $idUsuario != -1 ) {        
          
         $infoPedido = new \Tabela\Pedido();
-        $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
+        $infoPedido = $infoPedido->listarPedidos("p.id = {$idPedido}")[0];
                         
         $is_locador = null;
         if( $infoPedido->idUsuarioLocador == $idUsuario ) {
@@ -37,12 +38,26 @@
             $is_locador = false;
         }        
         
+        $notificacao = new \Tabela\Notificacao();
+        $notificacao->idPedido = $idPedido;
+        $notificacao->idTipoNotificacao = 2;
+        $notificacao->visualizada = 0;
         if( $modo == $RETIRADA ) {
             
             if( $is_locador ) {                
                 $infoPedido->solicitacaoRetiradaLocador = 1;
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;
+                $notificacao->mensagem = $infoPedido->nomeLocador . " " . $infoPedido->sobrenomeLocador[0] . " confirmou a retirada do veículo";
+                $notificacao->inserir();
             } else {                
                 $infoPedido->solicitacaoRetiradaLocatario = 1;
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->mensagem = $infoPedido->nomeLocatario . " " . $infoPedido->sobrenomeLocatario[0] . " solicitou a retirada do veículo";
+                $notificacao->inserir();
             }
 
             if( $infoPedido->solicitacaoRetiradaLocador == 1 && $infoPedido->solicitacaoRetiradaLocatario == 1 ) {
@@ -63,7 +78,15 @@
 
                 $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;
                     
+                $notificacao->mensagem = "Retirada de veículo realizada";
                 
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;                
+                $notificacao->inserir();
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->inserir();
                 
                 $usuario_locador->saldo = $usuario_locador->saldo + $valorTotal;
                 $usuario_locador->atualizar();
@@ -73,9 +96,20 @@
 
             if( $is_locador ) {
                 $infoPedido->solicitacaoDevolucaoLocador = 1;
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;
+                $notificacao->mensagem = $infoPedido->nomeLocador . " " . $infoPedido->sobrenomeLocador[0] . " confirmou a entrega do veículo";
+                $notificacao->inserir();
             } else {
                 $infoPedido->solicitacaoDevolucaoLocatario = 1;
                 $infoPedido->dataEntregaEfetuada = get_data_atual_mysql();
+                
+                $infoPedido->solicitacaoRetiradaLocatario = 1;
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->mensagem = $infoPedido->nomeLocatario . " " . $infoPedido->sobrenomeLocatario[0] . " solicitou a entrega do veículo";
+                $notificacao->inserir();
             }
             
             if( $infoPedido->solicitacaoDevolucaoLocador == 1 && $infoPedido->solicitacaoDevolucaoLocatario == 1 ) {                       
@@ -90,6 +124,16 @@
                 $alteracaoPedido->idPedido = $idPedido;
                 $alteracaoPedido->idStatus = $statusPedido->id;
                 $alteracaoPedido->inserir(); 
+                
+                $notificacao->mensagem = "Devolução de veículo realizada";
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;                
+                $notificacao->inserir();
+                
+                $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
+                $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
+                $notificacao->inserir();
             }
 
         }
