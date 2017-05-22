@@ -168,13 +168,13 @@
                                 </div>
                                 <?php 
                                     if(empty($id_usuario)){
-                                        ?>
-                                            <a href="login.php"><span class="preset-botao" >Alugar</span></a>
-                                        <?php
-                                    }else{
-                                        ?>
-                                        <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
-                                        <?php 
+                                ?>
+                                    <a href="login.php" id="botao-login" class="preset-botao">Login</a>
+                                <?php
+                                    } else {
+                                ?>
+                                    <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
+                                <?php 
                                     }
                                 ?>
                                 
