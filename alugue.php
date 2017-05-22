@@ -2,6 +2,21 @@
     require_once("include/initialize.php");
     require_once("include/classes/tbl_veiculo.php");
     require_once("include/classes/tbl_publicacao.php");
+
+    $pesquisa = ( isset($_POST["txtPesquisa"]) )? $_POST["txtPesquisa"] : null;
+    $dadosPublicacao = new \Tabela\Publicacao();
+    $pagina_atual = ( isset($_GET['p']) )? $_GET["p"] : 1;
+    $itens_por_pagina = 10;
+
+    if( isset($_POST["btnBuscar"]) ) {
+        $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual, " p.titulo LIKE '%{$pesquisa}%' OR p.descricao LIKE '%{$pesquisa}%' " );
+    } else {
+        $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual );
+    }
+
+    if( isset($_POST["btnFiltrar"]) ) {
+        
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,11 +62,11 @@
                         </div>
                         <div class="box-ordem">
                             <label>
-                                <input class="opcao-ordem" type="radio" />
+                                <input class="opcao-ordem" type="radio" name="rdoOrdem"/>
                                 <span class="label-ordem">Crescente</span>
                             </label>                        
                             <label>
-                                <input class="opcao-ordem" type="radio" />
+                                <input class="opcao-ordem" type="radio" name="rdoOrdem"/>
                                 <span class="label-ordem">Decrescente</span>
                             </label>
                         </div>
@@ -89,24 +104,21 @@
                             <option>0</option>
                         </select>
                     </div>
-                    <input class="preset-input-submit botao-submit" type="submit" value="Filtrar" />
+                    <input class="preset-input-submit botao-submit" name="btnFiltrar" type="submit" value="Filtrar" />
                 </form>
             </section>
             <!-- MENU DE FILTRAGEM - MOBILE -->
             <div class="main" id="pag-listagem-veiculos">                
                 <div class="box-conteudo">
                     <div id="box-pesquisa">
-                        <input class="preset-input-text " id="texto-pesquisa" type="text" placeholder="Pesquisar..." />
-                        <input class="preset-input-submit " id="botao-pesquisa" type="submit" value="Buscar" />
+                        <form method="post" action="#">
+                            <input class="preset-input-text " id="texto-pesquisa" name="txtPesquisa" type="text" placeholder="Pesquisar..." />
+                            <input class="preset-input-submit " id="botao-pesquisa" name="btnBuscar" type="submit" value="Buscar" />
+                        </form>
                     </div>
                     <div id="lista-veiculos">
-                        <?php 
-                            $dadosPublicacao = new \Tabela\Publicacao();
-                            $pagina_atual = ( isset($_GET['p']) )? $_GET["p"] : 1;
-                            $itens_por_pagina = 10;
-                            
-                            $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual );
-                            
+                        <?php
+                                                        
                             foreach( $listaPublicacao as $publicacao ) { 
                         ?>
                         <section class="box-veiculo">
@@ -160,7 +172,7 @@
                         <div id="box-botoes-desktop">
                             <a class="preset-botao botao-pagina" href="#">Primeira</a>
                             <a class="preset-botao botao-pagina" href="#">Anterior</a>
-                            <p id="pagina-atual"><?php echo $pagina-atual; ?> |</p>
+                            <p id="pagina-atual"><?php echo $pagina_atual; ?> |</p>
                             <p id="total-paginas"><?php echo "";?></p>
                             <a class="preset-botao botao-pagina" href="#">Próxima</a>
                             <a class="preset-botao botao-pagina" href="#">Ultima</a>
