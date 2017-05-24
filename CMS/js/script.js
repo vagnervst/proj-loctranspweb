@@ -212,7 +212,7 @@ $(document).ready(function() {
     //-------------------------------------------- SCRIPT DE RELAÇÃO DE SELECTS        
 
     function inicializarBotoesAnalisePublicacao() {
-        var botao_aceitar = $(".js-btn-aprovar")[0];
+        /*var botao_aceitar = $(".js-btn-aprovar")[0];
         var botao_recusar = $(".js-btn-recusar")[0];
 
         if( botao_aceitar !== undefined ) {
@@ -241,7 +241,7 @@ $(document).ready(function() {
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/analise_publicacao.php", "POST", data );
             });
-        }
+        }*/
     }
     //--------------------------------------------
 

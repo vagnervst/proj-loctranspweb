@@ -15,8 +15,9 @@
             public $quilometragemAtual;
             public $limiteQuilometragem;
             public $dataPublicacao;
-            public $disponivelOnline;
-            public $imagemPrincipal;
+            public $valorVeiculo;
+            public $imagemPrincipal;            
+            public $disponivelOnline;        
             public $imagemA;
             public $imagemB;
             public $imagemC;

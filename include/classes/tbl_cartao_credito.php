@@ -7,8 +7,7 @@
 
             public $id;
             public $numero;
-            public $vencimento;
-            public $codigoSeguranca;
+            public $vencimento;            
             public $idUsuario;
             public $idTipo;
         }

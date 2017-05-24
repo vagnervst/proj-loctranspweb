@@ -7,6 +7,8 @@
 
             public $id;
             public $numeroRegistro;
+            public $validade;
+            public $visivel;
             public $idUsuario;
         }
         
