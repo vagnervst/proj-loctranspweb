@@ -40,7 +40,7 @@
     $alteracaoPedido->idPedido = $idPedido;
     
     $resultado = false;
-    if( $is_locador ) {                
+    if( $is_locador ) {
         $statusPedido = new \Tabela\StatusPedido();
         $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_PENDENCIAS}")[0];
         

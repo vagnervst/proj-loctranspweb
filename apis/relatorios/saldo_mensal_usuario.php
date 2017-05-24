@@ -12,7 +12,7 @@
         $rangeTempo = strtotime( date("Y-m-d") . " -1 year" );        
         $rangeTempo = get_data_mysql( $rangeTempo );                
         
-        $sql = "SELECT SUM(valorDiaria) AS lucroMensal, MONTH(dataRetirada) AS mes ";
+        $sql = "SELECT SUM((datediff(dataEntrega, dataRetirada) * valorDiaria)) AS lucroMensal, MONTH(dataRetirada) AS mes ";
         $sql .= "FROM tbl_pedido ";
         $sql .= "INNER JOIN tbl_statuspedido AS st ";
         $sql .= "ON st.id = idStatusPedido ";

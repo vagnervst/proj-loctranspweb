@@ -677,7 +677,7 @@ header #box-botao-filtragem {
 #box-menu-notificacoes #container-notificacoes .box-notificacao,
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao {    
     display: block;
-    border-bottom: 1px solid #464646;
+    border-bottom: 1px solid #a1aec9;
     width: 250px;    
     padding: 5px;       
     float: left;
@@ -797,10 +797,11 @@ header #box-botao-filtragem {
 #box-menu-notificacoes #container-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao,
 #box-menu-notificacoes-ativo #container-notificacoes .box-notificacao .info-notificacao .conteudo-notificacao {    
     color: #626262;
-    text-align: justify;
-    white-space: nowrap;
+    text-align: justify;    
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 30px;
+    line-height: 15px;
 }
 
 @media (min-width: 740px) {
@@ -3881,6 +3882,7 @@ header #box-botao-filtragem {
 }
 
 #pag-perfil-usuario .box-conteudo #box-info-usuario #box-info-pessoal-usuario #box-foto #foto-usuario {    
+    background-size: cover;
     width:  100px;
     height: 100px;    
     border: 0px solid #557bc9;
@@ -4017,7 +4019,7 @@ header #box-botao-filtragem {
 #pag-perfil-usuario #box-inf-financeiras {
     background-color: #fff;    
     width: 295px;
-    height: 310px;
+    height: 330px;
     margin: 5px auto ;
     border: solid 1px #bfbfbf;
     box-shadow: 1px 1px 5px #c1c1c1;
@@ -4028,14 +4030,14 @@ header #box-botao-filtragem {
 @media(min-width: 420px) {
   #pag-perfil-usuario #box-inf-financeiras {        
         width: 365px;        
-        height: 315px;
+        height: 360px;
     }  
 }
 
 @media(min-width: 520px) {
     #pag-perfil-usuario #box-inf-financeiras {
         width: 435px;
-        height: 343px;        
+        height: 390px;        
     }  
 }
 
@@ -5901,6 +5903,15 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-pedido #box-info #container-info-pedido #box-info-pendencias {
+    min-height: 100px;
+}
+
+#pag-pedido #box-info #container-info-pedido #box-info-pendencias #label-pendencias-indefinidas {
+    margin-top: 40px;
+    text-align: center;
+}
+
 #pag-pedido #box-info #container-info-pedido #box-veiculo-locador #info-locador {
     width: 195px;
     height: 100px;
@@ -5964,11 +5975,11 @@ header #box-botao-filtragem {
     
     #pag-pedido #box-info #container-info-pedido #box-info-diarias {
         width: 316px;        
-        height: 155px;
+        height: 185px;
     }
     
     #pag-pedido #box-info #container-info-pedido #box-info-pendencias {        
-        width: 638px;
+        width: 638px;        
     }
     
     #pag-pedido #box-info #container-info-pedido #box-info-cnh {
@@ -5991,8 +6002,7 @@ header #box-botao-filtragem {
     }
     
     #pag-pedido #box-info #container-info-pedido #box-info-diarias {
-        width: 431px;        
-        height: 155px;
+        width: 431px;                
     }
     
     #pag-pedido #box-info #container-info-pedido #box-info-pendencias {        

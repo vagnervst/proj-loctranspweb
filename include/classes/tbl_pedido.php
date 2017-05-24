@@ -65,8 +65,8 @@
             
             function listarPedidos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 
-                $sql = "SELECT p.id, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.combustivelRestante, pu.limiteQuilometragem, p.quilometragemExcedida, v.nome AS veiculo, ";
-                $sql .= "v.tanque AS tanqueVeiculo, p.dataRetirada, p.dataEntrega, p.dataEntregaEfetuada, p.localRetiradaLocador, p.localDevolucaoLocador, p.localRetiradaLocatario, ";
+                $sql = "SELECT p.id, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.combustivelRestante, pu.limiteQuilometragem, pu.valorVeiculo, p.quilometragemExcedida, v.id AS idVeiculo, v.nome AS veiculo, ";
+                $sql .= "v.tanque AS tanqueVeiculo, v.idCategoriaVeiculo, p.dataRetirada, p.dataEntrega, p.dataEntregaEfetuada, p.localRetiradaLocador, p.localDevolucaoLocador, p.localRetiradaLocatario, ";
                 $sql .= "p.localDevolucaoLocatario, p.solicitacaoRetiradaLocador, p.solicitacaoDevolucaoLocador, p.solicitacaoRetiradaLocatario, p.solicitacaoDevolucaoLocatario, ";
                 $sql .= "p.locadorAvaliado, p.locatarioAvaliado, ";
                 $sql .= "datediff(p.dataEntrega, p.dataRetirada) AS diarias, (datediff(p.dataEntrega, p.dataRetirada) * pu.valorDiaria) AS valorTotal, s.id AS idStatusPedido, s.titulo AS statusPedido,  ";
@@ -108,7 +108,7 @@
                     
                     $sql .= " LIMIT " . $registros_por_pagina . " ";
                     $sql .= "OFFSET " . $registros_a_ignorar;
-                }                                                                                                                                            
+                }                                                                                                                                                                            
                 
                 $resultado = $this->executarQuery( $sql );
                 $listaPedidos = $this->get_array_from_resultado( $resultado );

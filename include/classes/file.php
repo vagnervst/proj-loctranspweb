@@ -33,9 +33,9 @@
             return File::codificar_caminho($nome_arquivo, $pasta);
         }
         
-        public static function remove($nome_arquivo, $pasta) {
+        public static function remove($nome_arquivo, $pasta) {            
             if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return false;
-
+                            
             return unlink( $pasta . "/" . $nome_arquivo );
         }
         

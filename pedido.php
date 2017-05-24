@@ -20,6 +20,10 @@
     $dataEntregaMarcada = strtotime($infoPedido->dataEntrega);
     $dataEntregaEfetuada = strtotime($infoPedido->dataEntregaEfetuada);
     $diasAtraso = floor( ($dataEntregaEfetuada - $dataEntregaMarcada) / (60 * 60 * 24) );
+    if( $diasAtraso < 0 ) {
+        $diasAtraso = 0;
+    }
+
     $valorAtrasoDiarias = $diasAtraso * $infoPedido->valorDiaria;
 
     $combustivelRestante = $infoPedido->combustivelRestante / 8;
@@ -479,11 +483,11 @@
                                     <div class="icone-contato email js-botao-contato"></div>
                                 </div>
                             </div>
-                        </div>
-                        <?php
-                            if( $statusPedido->cod >= $STATUS_PEDIDO_AGUARDANDO_PAGAMENTO_PENDENCIAS  ) {
-                        ?>
+                        </div>                        
                         <div class="info-box" id="box-info-pendencias">
+                            <?php
+                                if( $statusPedido->cod >= $STATUS_PEDIDO_AGUARDANDO_PAGAMENTO_PENDENCIAS  ) {
+                            ?>
                             <p class="titulo-box">Pendências</p>
                             <div class="box-label-info">
                                 <p class="label">Combustível:</p>
@@ -497,8 +501,12 @@
                                 <p class="label">Atraso de entrega:</p>
                                 <p class="info"><?php echo $diasAtraso; ?> dias = R$<?php echo str_replace(".", ",", $valorAtrasoDiarias); ?></p>
                             </div>
-                        </div>
-                        <?php } ?>
+                            <?php
+                                } else {
+                            ?>
+                            <p id="label-pendencias-indefinidas">Ainda não há pendências definidas</p>
+                            <?php } ?>
+                        </div>                        
                         <?php if( !$is_locador ) { ?>
                         <div class="info-box" id="box-info-cnh">                            
                             <div class="box-label-info">
@@ -514,6 +522,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php 
+                        if( $statusPedido->cod != $STATUS_PEDIDO_CONCLUIDO ) {
+                    ?>
                     <div id="container-acoes-pedido">                        
                         <?php
                             if( ( $statusPedido->cod == $STATUS_PEDIDO_AGUARDANDO_CONFIRMACAO_LOCAL_RETIRADA && ( $is_locador && $infoPedido->localRetiradaLocador != 1 ) ) ||
@@ -576,6 +587,9 @@
                             }
                         ?>
                     </div>
+                    <?php
+                        }
+                    ?>
                     <div id="container-historico-pedido">
                         <?php
                             $listaHistoricoAlteracao = new \Tabela\AlteracaoPedido();

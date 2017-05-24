@@ -553,7 +553,7 @@ $(document).ready(function() {
         var botaoFiltragemVeiculos = $("#mobile-botao-filtragem-ativo")[0];
         var painelFiltragemVeiculos = $("#box-mobile-filtragem")[0];
         
-        var botaoNotificacoes = $("#box-notificacoes")[0];
+        var botaoNotificacoes = $("#icone-notificacao");
         var painelNotificacoes = $("#box-menu-notificacoes")[0];
         
         $(document.body).click(function(e) {
@@ -1468,7 +1468,7 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                        
+        ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                                    
             var nova_lista_solicitacoes = JSON.parse( resultado );
             
             if( nova_lista_solicitacoes.length !== 0 ) {            
@@ -1917,7 +1917,7 @@ $(document).ready(function() {
     function exibirFormularioConfiguracao(formulario) {
         var box_form = $("#box-form")[0];
         
-        //$( box_form.children ).css("display", "none");
+        $( box_form.children ).css("display", "none");
         $( formulario ).css("display", "block");
     }
     

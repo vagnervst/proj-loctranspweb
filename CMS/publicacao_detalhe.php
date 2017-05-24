@@ -30,7 +30,10 @@
             <div class="CMS_main" id="pag-publicacao-detalhes">
                 <?php include("layout/menu.php") ?>
                 <div id="box-caminho">
-                    <a href="home.php" class="link-caminho" >Home</a> ><a href="clientes.php" class="link-caminho"> Clientes</a> ><a href="publicacoes.php" class="link-caminho"> Publicações</a> ><a href="publicacao_detalhe.php" class="link-caminho"> Detalhes da Publicação</a>
+                    <a href="home.php" class="link-caminho">Home</a> &gt;
+                    <a href="clientes.php" class="link-caminho">Clientes</a> &gt;
+                    <a href="publicacoes.php" class="link-caminho">Publicações</a> &gt;
+                    <a href="publicacao_detalhe.php" class="link-caminho">Detalhes da Publicação</a>
                 </div>
                 <div class="box-publicacao">
                     <div id="nome-publicacao" class="boxes-publicacao">
@@ -97,8 +100,8 @@
                         <p class="info"><?php echo $dadosPublicacao->quilometragemAtual; ?></p>
                     </div>
                     <div id="botoes-publicacao">
-                        <a class="preset-botao js-btn-aprovar" href="publicacao_detalhe.php">aprovar</a>
-                        <a class="preset-botao js-btn-recusar" href="publicacao_detalhe.php">recusar</a>
+                        <a class="preset-botao js-btn-aprovar" href="apis/analise_publicacao.php?modo=aceitar&idPublicacao=<?php echo $idPublicacao; ?>">Aprovar</a>
+                        <a class="preset-botao js-btn-recusar" href="apis/analise_publicacao.php?modo=recusar&idPublicacao=<?php echo $idPublicacao; ?>">Recusar</a>
                     </div>
                 </div>
             </div>

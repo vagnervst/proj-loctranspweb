@@ -2,6 +2,9 @@
     require_once("../../include/initialize.php");
     require_once("../../include/classes/tbl_usuario.php");
     require_once("../../include/classes/tbl_cnh.php");
+    require_once("../../include/classes/tbl_cidade.php");
+    require_once("../../include/classes/tbl_cartao_credito.php");
+    require_once("../../include/classes/tbl_conta_bancaria.php");
 
     $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : null;
 
@@ -17,10 +20,28 @@
         $usuario->idLicencaDesktop = (int) $usuario->idLicencaDesktop;
         $usuario->saldo = (double) $usuario->saldo;
         
+        $buscaCidade = new \Tabela\Cidade();
+        $buscaCidade = $buscaCidade->buscar("id = {$usuario->idCidade}")[0];
+        
+        $usuario->idEstado = $buscaCidade->idEstado;
         $listaCnhs = new \Tabela\Cnh();
-        $listaCnhs = $listaCnhs->buscar("idUsuario = {$idUsuario}");
+        $listaCnhs = $listaCnhs->buscar("idUsuario = {$idUsuario} AND visivel = 1");
         
         $usuario->listaCnh = $listaCnhs;
+        
+        $cartaoCredito = new \Tabela\CartaoCredito();
+        $cartaoCredito = $cartaoCredito->buscar("idUsuario = {$idUsuario}");
+        
+        if( !empty($cartaoCredito[0]) ) {
+            $usuario->cartaoCredito = $cartaoCredito[0];
+        }
+        
+        $contaBancaria = new \Tabela\ContaBancaria();
+        $contaBancaria = $contaBancaria->buscar("idUsuario = {$idUsuario}");
+        
+        if( !empty($contaBancaria[0]) ) {
+            $usuario->contaBancaria = $contaBancaria[0];
+        }
         
         echo json_encode($usuario);
     }

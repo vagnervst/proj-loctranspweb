@@ -133,11 +133,6 @@
                                             <input class="input" type="text" name="txtCod"/>
                                         </label>
                                     </div>
-                                    <div class="box-label-input" id="box-preco-medio">
-                                        <label><span class="label">Preço Médio Mínimo</span>
-                                            <input class="input" type="text" name="txtPrecoMinimo"/>
-                                        </label>
-                                    </div>
                                     <div class="box-label-input">
                                         <label><span class="label">Tipo</span>
                                             <select class="input" name="slTipo">

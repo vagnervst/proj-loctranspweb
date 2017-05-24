@@ -13,7 +13,7 @@
 
     $detalhes_usuario = $detalhes_usuario->getDetalhesUsuario("u.id = {$idUsuarioPublico}")[0]; 
     
-    if(isset($_POST['btn-saque'])){
+    if(isset($_POST['btn-saque'])) {
         
         $objDeposito = new \Tabela\Deposito();
         $objDeposito->valor = $detalhes_usuario->saldo;
@@ -61,7 +61,7 @@
                                         $nome_arquivo = $detalhes_usuario->fotoPerfil;
                                     }                                                                    
                                 ?>                    
-                                <img id="foto-usuario" src="<?php echo File::read($nome_arquivo, $caminhoFoto)?>"/>
+                                <div id="foto-usuario" style="background-image: url(<?php echo File::read($nome_arquivo, $caminhoFoto)?>)"></div>
                             </div>
                             <section id="box-info">
                                 <h1 id="nome"><?php echo $detalhes_usuario->nome . " " . $detalhes_usuario->sobrenome; ?></h1>
@@ -133,12 +133,8 @@
                     <section id="container-publicacoes-avaliacoes">
                         <div class="wrapper-publicacoes-avaliacoes"></div>
                         <div id="botao-ver-mais" class="js-load-publicacao"></div>
-                    </section>
-                    
-                    
-                </div>       
-                
-                
+                    </section>                                        
+                </div>                                       
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>

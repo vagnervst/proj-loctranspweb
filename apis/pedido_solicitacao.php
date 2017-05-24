@@ -3,6 +3,7 @@
     require_once("../include/initialize.php");
     require_once("../include/classes/sessao.php");
     require_once("../include/classes/tbl_pedido.php");
+    require_once("../include/classes/tbl_percentual_lucro.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
     require_once("../include/classes/tbl_cityshare.php");
     require_once("../include/classes/tbl_status_pedido.php");
@@ -75,10 +76,8 @@
                 
                 $usuario_locador = new \Tabela\Usuario();
                 $usuario_locador = $usuario_locador->buscar("id = {$infoPedido->idUsuarioLocador}")[0];
-
-                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;
-                    
-                $notificacao->mensagem = "Retirada de veículo realizada";
+                                    
+                $notificacao->mensagem = "Retirada de veículo efetuada";
                 
                 $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
                 $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;                
@@ -87,9 +86,28 @@
                 $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocatario;
                 $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocador;
                 $notificacao->inserir();
+                                                
+                $cityshare = new \Tabela\Cityshare();
+                $cityshare->id = 1;
                 
-                $usuario_locador->saldo = $usuario_locador->saldo + $valorTotal;
+                $percentualLucro = new \Tabela\PercentualLucro();
+                $percentualLucro = $percentualLucro->buscar("idCategoria = {$infoPedido->idCategoriaVeiculo} AND valorMinimo <= {$infoPedido->valorVeiculo}");
+                
+                if( count($percentualLucro) == 0 ) {
+                    $percentualLucro = new \Tabela\PercentualLucro();
+                    $percentualLucro = $percentualLucro->buscar("idCategoria = {$infoPedido->idCategoriaVeiculo}")[0];
+                }
+                
+                $percentualLucro = $percentualLucro[0]->percentual;
+                
+                $valorTotal = $infoPedido->listarPedidos(null, null, "p.id = {$idPedido}")[0]->valorTotal;
+                $lucro_city_share = $valorTotal * ($percentualLucro/100);
+                
+                $usuario_locador->saldo = $usuario_locador->saldo - $lucro_city_share;
                 $usuario_locador->atualizar();
+                                                
+                $cityshare->saldo = $cityshare->saldo + $lucro_city_share;
+                $cityshare->atualizar();
             }
 
         } elseif( $modo == $DEVOLUCAO ) {
@@ -125,7 +143,7 @@
                 $alteracaoPedido->idStatus = $statusPedido->id;
                 $alteracaoPedido->inserir(); 
                 
-                $notificacao->mensagem = "Devolução de veículo realizada";
+                $notificacao->mensagem = "Devolução de veículo efetuada";
                 
                 $notificacao->idUsuarioRemetente = $infoPedido->idUsuarioLocador;
                 $notificacao->idUsuarioDestinatario = $infoPedido->idUsuarioLocatario;                

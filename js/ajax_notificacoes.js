@@ -52,7 +52,7 @@ $(document).ready(function() {
         var containerNotificacoes = $("#container-notificacoes")[0];
         containerNotificacoes.innerHTML = conteudo;
         
-        var botaoNotificacoes = $("#box-notificacoes")[0];
+        var botaoNotificacoes = $("#icone-notificacao")[0];
         $(botaoNotificacoes).click(function(e) {
             label_contagem.innerHTML = "0";
             $(contagemNotificacoes).css("display", "none");
@@ -91,10 +91,10 @@ $(document).ready(function() {
     
     function getNotificacoes() {
         var ajax = new Ajax();
-        ajax.conectar("apis/get_id_usuario_logado.php", function(resultado) {    
+        ajax.conectar("apis/get_id_usuario_logado.php", function(idUsuario) {    
             var listaNotificacoes = [];
             
-            asyncNotificacoes(resultado, listaNotificacoes);
+            asyncNotificacoes(idUsuario, listaNotificacoes);
                                         
             setInterval(function() {                
                 

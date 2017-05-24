@@ -39,7 +39,6 @@ $(document).ready(function() {
 
             formulario_veiculos.relacao_campo_propriedade_pesquisa = [
                 { nomeCampo : 'txtCod', propriedade: 'codigo' },
-                { nomeCampo : 'txtPrecoMinimo', propriedade: 'precoMedio' },
                 { nomeCampo : 'slTipo', propriedade: 'idTipoVeiculo' },
                 { nomeCampo : 'slFabricante', propriedade: 'idFabricante' },
                 { nomeCampo : 'txtNome', propriedade: 'nome' },
