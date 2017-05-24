@@ -11,11 +11,13 @@
             public $valorDiaria;
             public $valorCombustivel;
             public $valorQuilometragem;
+            public $valorVeiculo;
             public $quilometragemAtual;
             public $limiteQuilometragem;
             public $dataPublicacao;
             public $valorVeiculo;
             public $imagemPrincipal;            
+            public $disponivelOnline;        
             public $imagemA;
             public $imagemB;
             public $imagemC;
@@ -28,7 +30,7 @@
             
             function getPublicacao($where = null) {
                 
-                $sql = "SELECT p.id, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, ";
+                $sql = "SELECT p.id, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.valorVeiculo, ";
                 $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, sp.titulo AS tituloStatus, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
@@ -58,7 +60,7 @@
             
             function getPublicacaoPaginacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 
-                $sql = "SELECT p.id, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.dataPublicacao, ";
+                $sql = "SELECT p.id, p.titulo, p.descricao, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.dataPublicacao, p.valorVeiculo, ";
                 $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, sp.titulo AS tituloStatus, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
@@ -94,8 +96,8 @@
             } 
             
             public function getDetalhesPublicacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
-                $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, p.valorQuilometragem, p.valorCombustivel, p.dataPublicacao, p.quilometragemAtual, p.limiteQuilometragem, ";
-                $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
+                $sql = "SELECT p.id, p.titulo, p.descricao, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.valorDiaria, p.valorQuilometragem, p.valorCombustivel, p.dataPublicacao, p.quilometragemAtual, p.limiteQuilometragem, p.valorVeiculo, ";
+                $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador,  (SUM(av.nota)/(SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id)) AS mediaAvaliacaoLocador, ";
                 $sql .= "c.nome AS cidade, e.nome AS estado, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, v.codigo, v.tipoMotor, v.ano, v.qtdPortas, v.idCategoriaVeiculo, ";
                 $sql .= "cv.nome AS categoria, v.idFabricante, fb.nome as fabricante, v.idTipoCombustivel, cb.nome AS combustivel, ";
@@ -126,6 +128,8 @@
                 $sql .= "ON u.idCidade = c.id ";
                 $sql .= "INNER JOIN tbl_estado AS e ";
                 $sql .= "ON c.idEstado = e.id ";
+                $sql .= "INNER JOIN tbl_avaliacao AS av ";
+                $sql .= "ON av.idUsuarioAvaliado = u.id ";
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
