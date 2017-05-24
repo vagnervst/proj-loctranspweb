@@ -3,7 +3,7 @@
         
         public static function has_empty_input( $listaInput ) {
             foreach( $listaInput as $input ) {
-                if( empty($input) ) return true;
+                if( empty($input) && $input != 0 ) return true;
             }
             
             return false;

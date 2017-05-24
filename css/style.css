@@ -510,8 +510,8 @@ header #box-botao-filtragem {
     }
 }
 
-#container #box-mobile-filtragem-ativo .box-opcoes-select .select:enabled{
-    color: black;
+#container #box-mobile-filtragem-ativo .box-opcoes-select .select:enabled {
+    color: #ffffff;
 }
 
 #container #box-mobile-filtragem .box-filtragem-valor,
@@ -3032,6 +3032,13 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao #botao-login {    
+    display: block;
+    width: 100px;
+    padding: 10px 0px;        
+    margin: 0 auto;
+}
+
 #pag-detalhes-veiculo #box-previa-locador {    
     border-top: 1px solid #a7a7a7;
     border-bottom: 1px solid #a7a7a7;
@@ -4523,7 +4530,7 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-publicar #wrapper-info-veiculo {
         width: 650px;
-        height: 550px;
+        height: 610px;
     }
 }
 
@@ -4560,7 +4567,7 @@ header #box-botao-filtragem {
     #pag-publicar #wrapper-info-veiculo .box-info-veiculo,
     #pag-publicar #wrapper-info-veiculo .box-info-locacao {                    
         width: 310px;   
-        height: 535px;
+        height: 605px;
         margin: 0px 5px;
         float: left;        
     }   
@@ -5800,7 +5807,7 @@ header #box-botao-filtragem {
 
 #pag-pedido .box-contato-locador .box-contato .icone-contato {
     display: block;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     background-size: 32px 32px;
     background-repeat: no-repeat;
     background-position: center;

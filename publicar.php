@@ -33,6 +33,7 @@
         $valorCombustivel = ( isset($_POST["txtValorCombustivel"]) )? mysqli_real_escape_string( $db->conexao, $_POST["txtValorCombustivel"] ) : null;
         $limiteQuilometragem = ( isset($_POST["txtLimiteQuilometragem"]) )? mysqli_real_escape_string( $db->conexao, $_POST["txtLimiteQuilometragem"] ) : null;
         $valorQuilometragem = ( isset($_POST["txtValorQuilometragem"]) )? mysqli_real_escape_string( $db->conexao, $_POST["txtValorQuilometragem"] ) : null;
+        $valorVeiculo = ( isset($_POST["txtValorVeiculo"]) )? mysqli_real_escape_string( $db->conexao, $_POST["txtValorVeiculo"] ) : null;
         $acessorios = ( isset($_POST["chkAcessorio"]) )? $_POST["chkAcessorio"] : null;
             
         $lista_required_input = [];
@@ -44,34 +45,37 @@
         $lista_required_input[] = $valorCombustivel;
         $lista_required_input[] = $limiteQuilometragem;
         $lista_required_input[] = $valorQuilometragem;
-        $lista_required_input[] = $acessorios;                                
+        $lista_required_input[] = $valorVeiculo;
+        $lista_required_input[] = $acessorios;                                                        
         
-        echo json_encode( $lista_required_input );
-        
-        if( !FormValidator::has_empty_input( $lista_required_input ) ) {
+        if( !FormValidator::has_empty_input( $lista_required_input ) ) {            
+            
             $publicacao = new \Tabela\Publicacao();
-                        
+            
             $publicacao->titulo = $titulo;
             $publicacao->descricao = $descricao;
-            $publicacao->valorDiaria = $valorDiaria;
-            $publicacao->valorCombustivel = $valorCombustivel;
-            $publicacao->valorQuilometragem = $valorQuilometragem;
-            $publicacao->quilometragemAtual = $quilometragemAtual;
-            $publicacao->limiteQuilometragem = $limiteQuilometragem;            
-            $publicacao->dataPublicacao = get_data_atual();
-            $publicacao->idVeiculo = $id_modelo;
+            $publicacao->valorDiaria = (double) $valorDiaria;
+            $publicacao->valorCombustivel = (double) $valorCombustivel;
+            $publicacao->valorQuilometragem = (double) $valorQuilometragem;
+            $publicacao->valorVeiculo = (double) $valorVeiculo;
+            $publicacao->quilometragemAtual = (int) $quilometragemAtual;
+            $publicacao->limiteQuilometragem = (int) $limiteQuilometragem;         
+            $publicacao->dataPublicacao = get_data_atual_mysql();
+            $publicacao->idVeiculo = (int) $id_modelo;
+            $publicacao->disponivelOnline = 1;
             
             $status_publicacao_pendente = 3;
             $publicacao->idStatusPublicacao = $status_publicacao_pendente;
             
             $sessao = new Sessao();
                                     
-            $publicacao->idUsuario = (int) $sessao->get("idUsuario");
+            $publicacao->idUsuario = (int) $sessao->get("idUsuario");                        
             
-            echo json_encode( $publicacao );
+            echo json_encode($publicacao);
             
             $id_publicacao = $publicacao->inserir();
             
+            echo $id_publicacao;
             if( !empty($id_publicacao) ) {
                 $publicacao->id = $id_publicacao;
                 
@@ -102,6 +106,7 @@
                     $publicacao->imagemD = $nome_arquivo_d;
                 }
                 
+                echo json_encode($publicacao);
                 $publicacao->atualizar();
             }
         }
@@ -217,6 +222,10 @@
                                 <div class="label-input">
                                     <p class="label">Quilometragem</p>
                                     <input class="preset-input-text" type="text" name="txtQuilometragemAtual"/>
+                                </div>
+                                <div class="label-input">
+                                    <p class="label">Valor do Veículo</p>
+                                    <input class="preset-input-text" type="text" name="txtValorVeiculo"/>
                                 </div>
                             </div>
                         </section>

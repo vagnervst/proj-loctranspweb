@@ -93,13 +93,21 @@
                     <span class="botao-slide" id="botao-prev"></span>
                     <span class="botao-slide" id="botao-next"></span>
                     <div id="container-imagens">       
-                        <?php 
-                            $info_publicacao->titulo;
-                        
+                        <?php                                                     
+                            $imagens_veiculo = [];
+                            $imagens_veiculo[] = ( $info_publicacao->imagemPrincipal != null )? $info_publicacao->imagemPrincipal : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemA != null )? $info_publicacao->imagemA : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemB != null )? $info_publicacao->imagemB : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemC != null )? $info_publicacao->imagemC : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemD != null )? $info_publicacao->imagemD : "no_image.jpg";
+                            
+                            $pasta_imagens = "img/uploads/publicacoes/";
+                            foreach( $imagens_veiculo as $imagem ) {                            
+                        ?>                        
+                        <div class="imagem" style="background-image: url(<?php echo $pasta_imagens . $imagem ?>)"></div>
+                        <?php
+                            }
                         ?>
-                        
-                        <div class="imagem" style="background-image: url(<?php  ?>)"></div>
-                        
                     </div>
                     <div id="container-contador">
                         <div class="contador"></div>
@@ -160,13 +168,13 @@
                                 </div>
                                 <?php 
                                     if(empty($id_usuario)){
-                                        ?>
-                                            <a href="login.php"><span class="preset-botao" >Alugar</span></a>
-                                        <?php
-                                    }else{
-                                        ?>
-                                        <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
-                                        <?php 
+                                ?>
+                                    <a href="login.php" id="botao-login" class="preset-botao">Login</a>
+                                <?php
+                                    } else {
+                                ?>
+                                    <span class="preset-botao js-modal1" id="botao-alugar">Alugar</span>
+                                <?php 
                                     }
                                 ?>
                                 
@@ -181,11 +189,25 @@
                         <div id="box-reputacao-locador">
                             <p id="label-reputacao">Reputação do locador</p>
                             <div class="container-icone-avaliacoes">
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
-                                <div class="icone-avaliacao"></div>
+                                <?php                                                                                
+                                    $lista_estrelas = [
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa",
+                                        "icone-avaliacao inativa"
+                                    ];
+
+                                    $mediaNotasUsuario = round($info_publicacao->mediaAvaliacaoLocador);                                                
+
+                                    for( $i = 0; $i < $mediaNotasUsuario; ++$i ) {
+                                        $lista_estrelas[$i] = "icone-avaliacao";                           
+                                    }                                                                            
+
+                                    foreach( $lista_estrelas as $classe_estrela ) {
+                                        echo "<div class=\"" . $classe_estrela . "\"></div>";
+                                    }                                                                        
+                                ?>
                             </div>
                         </div>
                     </div>
