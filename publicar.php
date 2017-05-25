@@ -71,11 +71,11 @@
                                     
             $publicacao->idUsuario = (int) $sessao->get("idUsuario");                        
             
-            echo json_encode($publicacao);
+            
             
             $id_publicacao = $publicacao->inserir();
             
-            echo $id_publicacao;
+            
             if( !empty($id_publicacao) ) {
                 $publicacao->id = $id_publicacao;
                 
@@ -106,7 +106,7 @@
                     $publicacao->imagemD = $nome_arquivo_d;
                 }
                 
-                echo json_encode($publicacao);
+                
                 $publicacao->atualizar();
             }
         }
