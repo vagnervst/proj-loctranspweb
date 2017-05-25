@@ -3,7 +3,7 @@
         class Database {                
             private $servidor = "localhost";
             private $usuario = "root";
-            private $senha = "root";
+            private $senha = "bcd127";
             private $banco = "dbcityshare";
             public $conexao;
 
