@@ -1,10 +1,10 @@
 <?php
     namespace DB {
         class Database {                
-            private $servidor = "10.107.144.46";
-            private $usuario = "root";
-            private $senha = "bcd127";
-            private $banco = "dbcityshare";
+            private $servidor = "192.168.0.2";
+            private $usuario = "mobcityshare";
+            private $senha = "ac@c1tysh4r3";
+            private $banco = "dbmobcityshare";
             public $conexao;
 
             function __construct() {

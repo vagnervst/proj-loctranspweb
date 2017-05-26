@@ -22,4 +22,8 @@
     $STATUS_PEDIDO_PENDENCIAS_PAGAS_CARTAO_CREDITO = 14;
     $STATUS_PEDIDO_PENDENCIAS_PAGAS_DINHEIRO = 15;
     $STATUS_PEDIDO_CONCLUIDO = 16;
+    ini_set('display_errors',1);
+    ini_set('display_startup_errors',1);
+    error_reporting(E_ALL);
+
 ?>
