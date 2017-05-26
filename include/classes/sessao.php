@@ -2,9 +2,9 @@
     class Sessao {
         
         function __construct() {
-            if( session_status() == PHP_SESSION_NONE ) {
+            if( session_id() == "" ) {
                 session_start();
-            }
+            }	    
         }
         
         public function put($chave, $valor) {

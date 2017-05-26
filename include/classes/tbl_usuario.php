@@ -70,7 +70,7 @@
             public function getDetalhesUsuario($where = null) {
                 $sql = "SELECT u.id, u.fotoPerfil, u.nome, u.sobrenome, u.sexo, u.cpf, u.rg, ";
                 $sql .= "u.telefone, u.celular, u.email, u.saldo, ";
-                $sql .= "c.nome AS cidade, e.nome AS estado, u.idTipoConta, t.titulo AS tipoConta, ";
+                $sql .= "c.nome AS cidade, e.nome AS estado, u.idTipoConta, u.idPlanoConta, u.idLicencaDesktop, t.titulo AS tipoConta, ";
                 $sql .= "p.nome AS planoConta, ld.nome AS licencaDesktop, ";                
                 $sql .= "( SELECT COUNT(id) FROM tbl_pedido WHERE idUsuarioLocador = u.id ) AS qtdEmprestimos, ";
                 $sql .= "( SELECT COUNT(id) FROM tbl_pedido WHERE idUsuarioLocatario = u.id ) AS qtdLocacoes, ";

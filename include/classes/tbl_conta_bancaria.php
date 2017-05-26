@@ -12,6 +12,21 @@
             public $idUsuario;
             public $idTipoConta;
             public $idBanco;
+            
+            public function getContaBancaria($where = null) {
+                
+                $sql = "SELECT cb.* ";
+                $sql .= "FROM tbl_conta_bancaria AS cb";
+                
+                if( !empty( $where ) ) {
+                    $sql .= " WHERE " . $where;
+                }
+                
+                $resultado = $this->executarQuery( $sql );
+                $resultado  = $this->get_array_from_resultado( $resultado );
+
+                return $resultado;
+            }
         }
         
     }

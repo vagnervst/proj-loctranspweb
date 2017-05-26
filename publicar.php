@@ -1,6 +1,8 @@
 <?php
     require_once("include/initialize.php");
     require_once("include/functions.php");
+    require_once("include/classes/tbl_usuario.php");
+    require_once("include/classes/tbl_plano_conta.php");
     require_once("include/classes/tbl_fabricante_veiculo.php");
     require_once("include/classes/tbl_tipo_veiculo.php");
     require_once("include/classes/tbl_tipo_combustivel.php");
@@ -10,9 +12,21 @@
     require_once("include/classes/file.php");
     require_once("include/classes/sessao.php");
     require_once("include/classes/form_validate.php");
+    
+    $sessao = new Sessao();
+    $idUsuario = $sessao->get("idUsuario");
+    $dadosUsuario = new \Tabela\Usuario();
+    $dadosUsuario = $dadosUsuario->getDetalhesUsuario(" u.id = {$idUsuario} ")[0];
+    
+    $planoConta = new \Tabela\PlanoConta();
+    $planoConta = $planoConta->getPlanos(null, null, " p.id = {$dadosUsuario->idPlanoConta} ")[0];
+
+    $dadosPublicacao = new \Tabela\Publicacao();
+    $dadosPublicacao = $dadosPublicacao->getPublicacao(" u.id = {$idUsuario} ");
+    $disabled = false;
 
     $publicar = ( isset($_POST["btnPublicar"]) )? $_POST["btnPublicar"] : null;
-
+    
     if( isset($publicar) ) {
         $db = new \DB\Database();
         
@@ -126,6 +140,18 @@
             <div class="main" id="pag-publicar">
                 <form method="post" action="publicar.php" enctype="multipart/form-data">
                     <div class="box-conteudo">
+                        <?php 
+                                                
+                        if( count($dadosPublicacao) >= $planoConta->limitePublicacao ) {
+                            $disabled = true;                           
+                        ?>
+                        <div id="box-limite-atingido">
+                            <p>Você atingiu o seu limite de publicações!</p>
+                        </div>
+                        <?php } ?>
+                        <?php                                     
+                            if( !$disabled ) {
+                        ?>
                         <div id="container-imagens-veiculo">
                             <div id="imagens">
                                 <div id="wrapper-imagens">
@@ -157,13 +183,14 @@
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
                         <div class="label-input">
                             <p class="label">Título</p>
-                            <input class="preset-input-text" type="text" name="txtTitulo"/>
+                            <input class="preset-input-text" type="text" name="txtTitulo" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                         </div>
                         <div class="label-input">
                             <p class="label">Descrição</p>
-                            <textarea class="preset-input-textarea" name="txtDescricao"></textarea>
+                            <textarea class="preset-input-textarea" name="txtDescricao" <?php echo ( $disabled )? "disabled" : ""; ?>></textarea>
                         </div>
                     </div>
                     <div id="wrapper-info-veiculo">
@@ -172,7 +199,7 @@
                             <div id="box-veiculo">
                                <div class="label-input">
                                     <p class="label">Tipo</p>
-                                    <select class="preset-input-select js-select-tipo-veiculo" type="select" name="slTipo">
+                                    <select class="preset-input-select js-select-tipo-veiculo" type="select" name="slTipo" <?php echo ( $disabled )? "disabled" : ""; ?>>
                                         <option selected disabled>Selecione um tipo</option>
                                         <?php
                                             $lista_tipos = new \Tabela\TipoVeiculo();
@@ -188,25 +215,25 @@
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Fabricante</p>
-                                    <select class="preset-input-select js-select-fabricante" type="select" name="slFabricante">
+                                    <select class="preset-input-select js-select-fabricante" type="select" name="slFabricante" <?php echo ( $disabled )? "disabled" : ""; ?>>
                                         <option selected disabled>Selecione um fabricante</option>                                
                                     </select>
                                 </div>                                
                                 <div class="label-input">
                                     <p class="label">Tipo de Combustível</p>
-                                    <select class="preset-input-select js-select-combustivel" type="select" name="slCombustivel">
+                                    <select class="preset-input-select js-select-combustivel" type="select" name="slCombustivel" <?php echo ( $disabled )? "disabled" : ""; ?>>
                                         <option selected disabled>Selecione um tipo de combustível</option>                                
                                     </select>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Transmissão</p>
-                                    <select class="preset-input-select js-select-transmissao" type="select" name="slTransmissao">
+                                    <select class="preset-input-select js-select-transmissao" type="select" name="slTransmissao" <?php echo ( $disabled )? "disabled" : ""; ?>>
                                         <option selected disabled>Selecione um tipo de transmissão</option>
                                     </select>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Portas</p>
-                                    <select class="preset-input-select js-select-portas" type="select" name="slTransmissao">
+                                    <select class="preset-input-select js-select-portas" type="select" name="slTransmissao" <?php echo ( $disabled )? "disabled" : ""; ?>>
                                         <option selected disabled>Selecione a quantidade de portas</option>
                                         <option>0</option>
                                         <option>2</option>
@@ -215,17 +242,17 @@
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Modelo</p>
-                                    <select class="preset-input-select js-select-veiculo" type="select" name="slModelo">
+                                    <select class="preset-input-select js-select-veiculo" type="select" name="slModelo" <?php echo ( $disabled )? "disabled" : ""; ?>>
                                         <option selected disabled>Selecione um modelo</option> 
                                     </select>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Quilometragem</p>
-                                    <input class="preset-input-text" type="text" name="txtQuilometragemAtual"/>
+                                    <input class="preset-input-text" type="text" name="txtQuilometragemAtual" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Valor do Veículo</p>
-                                    <input class="preset-input-text" type="text" name="txtValorVeiculo"/>
+                                    <input class="preset-input-text" type="text" name="txtValorVeiculo" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                                 </div>
                             </div>
                         </section>
@@ -234,30 +261,32 @@
                             <div id="box-locacao">
                                 <div class="label-input">
                                     <p class="label">Valor da Diária</p>
-                                    <input class="preset-input-text" type="text" name="txtValorDiaria"/>
+                                    <input class="preset-input-text" type="text" name="txtValorDiaria" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Valor do Combustível por Litro</p>
-                                    <input class="preset-input-text" type="text" name="txtValorCombustivel"/>
+                                    <input class="preset-input-text" type="text" name="txtValorCombustivel" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Limite de Quilometragem</p>
-                                    <input class="preset-input-text" type="text" name="txtLimiteQuilometragem"/>
+                                    <input class="preset-input-text" type="text" name="txtLimiteQuilometragem" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Valor por Quilometragem Excedida</p>
-                                    <input class="preset-input-text" type="text" name="txtValorQuilometragem"/>
+                                    <input class="preset-input-text" type="text" name="txtValorQuilometragem" <?php echo ( $disabled )? "disabled" : ""; ?>/>
                                 </div>
                             </div>
                         </section>
                     </div>
+                    <?php
+                            if( !$disabled ) {
+                        ?>
                     <h1 class="titulo-separador">Acessórios</h1>
-                    <div class="box-conteudo">
-                        <div class="box-acessorios">
-                        
-                        </div>
+                    <div class="box-conteudo">                        
+                        <div class="box-acessorios"></div>                        
                         <input class="preset-input-submit" id="botao-publicar" type="submit" value="Publicar" name="btnPublicar" />
                     </div>
+                    <?php } ?>
                 </form>
             </div>
             <!-- CONTEUDO PRINCIPAL -->
