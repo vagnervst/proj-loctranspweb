@@ -9,7 +9,8 @@
     $idUsuario = $sessao->get("idUsuario");
     $dadosPlanoConta = new \Tabela\PlanoConta();
     $idPlano = ( isset($_GET["idPlano"]) )? (int) $_GET["idPlano"] : null;
-
+    $idLicenca = ( isset($_GET["idLicenca"]) )? (int) $_GET["idLicenca"] : null;
+    
     if( empty($idUsuario) ) {
         redirecionar_para("logout_action.php");
     } else {
@@ -21,11 +22,19 @@
     if( isset( $_POST["btnComprar"] ) ) {
         $codSeguranca = isset( $_POST["txtConfirmacaoCodSeg"] )? (int) $_POST["txtConfirmacaoCodSeg"] : null;
         
-        if( !empty( $codSeguranca ) ) {
+        if( !empty( $codSeguranca ) and !empty( $idPlano ) ) {
+            
             $dadosUsuario->idPlanoConta = $idPlano;
+            $dadosUsuario->atualizar(" u.id = {$idUsuario} ");
+
+            redirecionar_para("planos_conta.php");
+            
+        } else if ( !empty( $codSeguranca ) and !empty( $idLicenca ) ) {
+            $dadosUsuario->idLicencaDesktop = $idLicenca;
             $dadosUsuario->atualizar(" u.id = {$idUsuario} ");
             
             redirecionar_para("planos_conta.php");
+            
         }
     }
 ?>
@@ -49,9 +58,9 @@
                         <div class="box-overflow">
                         <?php
                                 
-                            if( empty($idPlano) ) {
+                            if( empty( $idPlano ) ) {
                                 
-                                $listaPlanoConta = $dadosPlanoConta->getPlanos(null, null, " visivel = 1 ");
+                                $listaPlanoConta = $dadosPlanoConta->getPlanos(null, null, " visivel = 1 AND id != {$dadosUsuario->idPlanoConta} ");
                                 
                                 foreach( $listaPlanoConta as $plano ) {
                         ?>
@@ -82,7 +91,7 @@
                                         <p class="txt-info">Duração do Plano: <?php echo $plano->duracaoMeses; ?> meses</p>
                                         <p class="txt-info"><?php echo $plano->descPlano; ?></p>
                                         <p class="txt-info">Preço: R$<?php echo $plano->preco; ?></p>
-                                        <p class="txt-info">Codigo de Segurança da conta</p>
+                                        <p class="txt-info">Codigo de Segurança:</p>
                                         <input type="text" class="input-text" name="txtConfirmacaoCodSeg"/>
                                     </div>
                                     <div class="box-botao">
@@ -99,9 +108,11 @@
                         <div class="box-overflow">
                         <?php
                             $dadosLicencaDesktop = new \Tabela\LicencaDesktop();
-                            $listaLicencaDesktop = $dadosLicencaDesktop->getLicencas();
     
-                            foreach( $listaLicencaDesktop as $licenca ) { 
+                            if( empty( $idLicenca ) ) {
+                                $listaLicencaDesktop = $dadosLicencaDesktop->getLicencas(null, null, " id != {$dadosUsuario->idLicencaDesktop} ");
+    
+                                foreach( $listaLicencaDesktop as $licenca ) {
                         ?>
                             <div class="box-plano">
                                 <div class="titulo"><?php echo $licenca->nome; ?></div>
@@ -114,7 +125,26 @@
                                     <a href="planos_conta.php?idLicenca=<?php echo $licenca->id; ?>" class="preset-botao">Assinar</a>
                                 </div>
                             </div>
-                        <?php } ?>
+                        <?php }
+                            } else { 
+                                $licencaDesktop = $dadosLicencaDesktop->getLicencas(null, null, " id = {$idLicenca} ");
+                            ?>
+                            <div class="box-plano">
+                                <div class="titulo"><?php echo $licencaDesktop->nome; ?>
+                                    <a href="planos_conta.php" class="btn-cancelar">X</a>
+                                </div>
+                                <div class="info-plano">
+                                    <p class="txt-info">Conexões Simultâneas<?php echo $licencaDesktop->conexoesSimultaneas; ?></p>
+                                    <p class="txt-info">Duração da Licença: <?php echo $licencaDesktop->duracaoMeses; ?></p>
+                                    <p class="txt-info">Preço: <?php echo $licencaDesktop->preco; ?></p>
+                                    <p class="txt-info">Codigo de Segurança:</p>
+                                    <input type="text" class="input-text" name="txtConfirmacaoCodSeg"/>
+                                </div>
+                                <div class="box-botao">
+                                    <input type="submit" class="preset-input-submit" name="btnComprar" />
+                                </div>
+                            </div>
+                            <?php  }?>
                         </div>
                     </div>
                     <?php } ?>

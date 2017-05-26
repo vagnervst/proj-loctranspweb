@@ -4408,6 +4408,16 @@ header #box-botao-filtragem {
 
 /*------------- PERFIL USUARIO*/
 
+#pag-publicar .box-conteudo #box-limite-atingido {
+    width: 300px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+#pag-publicar .box-conteudo #box-limite-atingido p {
+    color: red;
+}
+
 #pag-publicar .box-conteudo #container-imagens-veiculo {
     width: 300px;
     height: 180px;

@@ -17,7 +17,7 @@
         if( Autenticacao::verificar( $senha, $usuarioAlvo->senha ) ) {            
             $sessao = new Sessao();
             
-            $sessao->put("idUsuario", $usuarioAlvo->id);                        
+            $sessao->put("idUsuario", $usuarioAlvo->id);                   
         }
     }
 
