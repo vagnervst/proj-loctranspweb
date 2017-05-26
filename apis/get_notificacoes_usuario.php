@@ -11,10 +11,10 @@
         $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : null;
     }
     
-    if( $idUsuario != null ) {
-        $notificoesUsuario = new \Tabela\Notificacao();
-        $notificoesUsuario = $notificoesUsuario->getNotificacao("n.idUsuarioDestinatario = {$idUsuario}");
-        
-        echo json_encode($notificoesUsuario);
-    }
+    $where = ( isset($_POST["where"]) )? $_POST["where"] : null;
+    
+    $notificoesUsuario = new \Tabela\Notificacao();
+    $notificoesUsuario = $notificoesUsuario->getNotificacao($where);
+
+    echo json_encode($notificoesUsuario);
 ?>

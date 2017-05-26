@@ -211,7 +211,7 @@
                             $pagina_atual = ( isset($_GET['p']) )? $_GET["p"] : 1;
                             $itens_por_pagina = 10;
                             
-                            $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual, "p.idStatusPublicacao = 1" );
+                            $listaPublicacao = $dadosPublicacao->getPublicacaoPaginacao( $itens_por_pagina, $pagina_atual, "p.idStatusPublicacao = 1 AND p.disponivelOnline = 1" );
                             
                             foreach( $listaPublicacao as $publicacao ) { 
 
@@ -247,10 +247,9 @@
                     </div>
                     <?php if( count($listaPublicacao) > 0 ) { ?>
                     <?php
-                        $totalPaginas = $listaPublicacao[0]->totalPublicacoes / $itens_por_pagina;
-                        var_dump($listaPublicacao[0]);
+                        $totalPaginas = ceil($listaPublicacao[0]->totalPublicacoes / $itens_por_pagina);
     
-                        $proxima_pagina = ( ($pagina_atual + 1) > $totalPaginas )? $pagina_atual + 1 : $pagina_atual;
+                        $proxima_pagina = ( ($pagina_atual + 1) < $totalPaginas )? $pagina_atual + 1 : $pagina_atual;
                         $pagina_anterior = ( ($pagina_atual - 1) > 0 )? $pagina_atual - 1 : $pagina_atual;
                     ?>
                     <div id="box-paginas">

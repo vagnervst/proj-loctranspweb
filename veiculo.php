@@ -69,7 +69,7 @@
                                 <select class="preset-input-select input" id="select-cnh">
                                     <option selected disabled>Selecione a CNH</option>
                                     <?php
-                                        $lista_cnh = $info_usuario->getListaCnh();
+                                        $lista_cnh = $info_usuario->getListaCnh("visivel = 1");
                                         foreach( $lista_cnh as $cnh ) {
                                     ?>
                                     <option value="<?php echo $cnh->id; ?>"><?php echo $cnh->numeroRegistro; ?></option>
