@@ -339,7 +339,7 @@
                             <div id="container-cnh">
                                 <?php
                                 $buscaCnh = new \Tabela\Cnh();
-                                $listaCnhUsuario = $buscaCnh->buscar("idUsuario = {$usuario->id}");
+                                $listaCnhUsuario = $buscaCnh->buscar("idUsuario = {$usuario->id} AND visivel = 1");
                                 foreach( $listaCnhUsuario as $cnh ) {
                                 ?>
                                 <div class="box-cnh">

@@ -25,11 +25,15 @@
             public $idPlanoConta;
             public $idLicencaDesktop;
             
-            public function getListaCnh() {
+            public function getListaCnh($where = null) {
                 $sql = "SELECT * ";
                 $sql .= "FROM tbl_cnh ";
                 $sql .= "WHERE idUsuario = " . $this->id;
-            
+                
+                if( $where != null ) {
+                    $sql .= " AND " . $where;
+                }
+                
                 $resultado = $this->executarQuery( $sql );
             
                 $lista_cnh = [];

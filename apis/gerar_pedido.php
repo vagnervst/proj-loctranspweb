@@ -1,6 +1,7 @@
 <?php
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_pedido.php");
+    require_once("../include/classes/tbl_status_pedido.php");
     require_once("../include/classes/tbl_publicacao.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
     require_once("../include/classes/tbl_notificacao.php");
@@ -61,11 +62,13 @@
         $historicoAlteracaoPedido->inserir();
         
         $notificacao = new \Tabela\Notificacao();
-        $notificacao->usuarioRemetente = $id_usuario_locatario;
-        $notificacao->usuarioDestinatario = $id_usuario_locador;
+        $notificacao->idUsuarioRemetente = $id_usuario_locatario;
+        $notificacao->idUsuarioDestinatario = $id_usuario_locador;
         $notificacao->idPedido = $idPedido;
         $notificacao->idTipoNotificacao = 1;
-        $notificacao->visualizada = 0;
+        $notificacao->visualizada = 0;                
         $notificacao->inserir();
+        
+        echo json_encode($notificacao);
     }
 ?>

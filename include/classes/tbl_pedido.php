@@ -65,14 +65,14 @@
             
             function listarPedidos($registros_por_pagina = null, $pagina_atual = null, $where = null) {
                 
-                $sql = "SELECT p.id, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.combustivelRestante, pu.limiteQuilometragem, pu.valorVeiculo, p.quilometragemExcedida, v.id AS idVeiculo, v.nome AS veiculo, ";
+                $sql = "SELECT p.id, p.valorDiaria, p.valorCombustivel, p.valorQuilometragem, p.combustivelRestante, pu.limiteQuilometragem, pu.imagemPrincipal, pu.valorVeiculo, p.quilometragemExcedida, v.id AS idVeiculo, v.nome AS veiculo, ";
                 $sql .= "v.tanque AS tanqueVeiculo, v.idCategoriaVeiculo, p.dataRetirada, p.dataEntrega, p.dataEntregaEfetuada, p.localRetiradaLocador, p.localDevolucaoLocador, p.localRetiradaLocatario, ";
                 $sql .= "p.localDevolucaoLocatario, p.solicitacaoRetiradaLocador, p.solicitacaoDevolucaoLocador, p.solicitacaoRetiradaLocatario, p.solicitacaoDevolucaoLocatario, ";
                 $sql .= "p.locadorAvaliado, p.locatarioAvaliado, ";
                 $sql .= "datediff(p.dataEntrega, p.dataRetirada) AS diarias, (datediff(p.dataEntrega, p.dataRetirada) * pu.valorDiaria) AS valorTotal, s.id AS idStatusPedido, s.titulo AS statusPedido,  ";
                 $sql .= "locador.id AS idUsuarioLocador, locador.nome AS nomeLocador, locador.sobrenome AS sobrenomeLocador, locador.celular AS locadorCelular, locador.emailContato AS locadorEmail, locador.telefone AS locadorTelefone, ";
                 $sql .= "cidadeLocador.nome AS cidadeLocador, estadoLocador.nome AS estadoLocador, ";
-                $sql .= "locatario.id AS idUsuarioLocatario, locatario.nome AS nomeLocatario, locatario.celular AS locatarioCelular, locatario.emailContato AS locatarioEmail, locatario.telefone AS locatarioTelefone, ";
+                $sql .= "locatario.id AS idUsuarioLocatario, locatario.fotoPerfil AS imagemPerfilLocatario, locatario.nome AS nomeLocatario, locatario.celular AS locatarioCelular, locatario.emailContato AS locatarioEmail, locatario.telefone AS locatarioTelefone, ";
                 $sql .= "locatario.sobrenome AS sobrenomeLocatario, cidadeLocatario.nome AS cidadeLocatario, estadoLocatario.nome AS estadoLocatario, ";
                 $sql .= "cn.id AS idCnh, cn.numeroRegistro AS numeroCnh ";
                 $sql .= "FROM tbl_pedido AS p ";

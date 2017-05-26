@@ -9,7 +9,7 @@
     $registros_por_pagina = 10; 
     
     $buscaPublicacoes = new \Tabela\Publicacao();
-    $listaPublicacoes = $buscaPublicacoes->getDetalhesPublicacao( $registros_por_pagina, $paginaAtual, "u.id = {$idUsuario}" );
+    $listaPublicacoes = $buscaPublicacoes->getDetalhesPublicacao( $registros_por_pagina, $paginaAtual, "p.idUsuario = {$idUsuario}" );
 
     echo json_encode($listaPublicacoes);
 ?>
