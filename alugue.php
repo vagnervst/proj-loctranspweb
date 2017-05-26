@@ -247,7 +247,7 @@
                     </div>
                     <?php if( count($listaPublicacao) > 0 ) { ?>
                     <?php
-                        $totalPaginas = ceil($listaPublicacao[0]->totalPublicacoes / $itens_por_pagina);
+                        $totalPaginas = ceil($listaPublicacao[0]->totalPublicacoes / $itens_por_pagina);                                                
     
                         $proxima_pagina = ( ($pagina_atual + 1) < $totalPaginas )? $pagina_atual + 1 : $pagina_atual;
                         $pagina_anterior = ( ($pagina_atual - 1) > 0 )? $pagina_atual - 1 : $pagina_atual;
@@ -285,23 +285,7 @@
             </div>
             <!-- CONTEUDO PRINCIPAL -->
         </div>
-        <footer>
-            <div id="box-rodape">
-                <section id="box-mapa-site">
-                    <h1>Mapa do Site</h1>
-                    <ul id="lista-paginas">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="alugue.html">Alugue</a></li>
-                        <li><a href="empreste.html">Empreste</a></li>
-                        <li><a href="projeto.html">Sobre o Projeto</a></li>
-                        <li><a href="beneficios.html">Benefícios do Projeto</a></li>
-                        <li><a href="empresa.html">A Empresa</a></li>
-                        <li><a href="contato.html">Contato</a></li>
-                    </ul>
-                </section>
-                <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
-            </div>
-        </footer>
+        <?php include("layout/footer.php"); ?>
         <!-- RODAPÉ -->
         <script src="js/libs/jquery-3.1.1.min.js"></script>
         <script src="js/script.js"></script>

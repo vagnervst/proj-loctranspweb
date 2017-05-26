@@ -100,7 +100,7 @@
                 return $resultado;
             }
             
-            public function getTopUsuarios() {
+            public function getTopUsuarios($where = null) {
                 $sql = "SELECT u.*, SUM(av.nota) AS somaAvaliacoes, (SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id) AS qtdAvaliacoes, (SUM(av.nota)/(SELECT COUNT(id) FROM tbl_avaliacao WHERE idUsuarioAvaliado = u.id)) AS mediaAvaliacao, c.nome AS cidade, e.nome AS estado ";
                 $sql .= "FROM tbl_usuario AS u ";
                 $sql .= "INNER JOIN tbl_conta_bancaria AS cb ";
@@ -114,6 +114,10 @@
                 $sql .= "ORDER BY mediaAvaliacao DESC ";                                
                 $sql .= "LIMIT 10";
                 
+                if( !empty($where) ) {
+                    $sql .= " WHERE " . $where;
+                }
+                   
                 $resultado = $this->executarQuery( $sql );
                                 
                 $resultado = $this->get_array_from_resultado( $resultado );                                                

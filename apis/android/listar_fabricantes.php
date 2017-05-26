@@ -3,12 +3,12 @@
     require_once("../../include/classes/tbl_fabricante_veiculo.php");
 
     $sql = "SELECT id, nome ";
-    $sql .= "FROM tbl_frabricanteveiculo";
+    $sql .= "FROM tbl_fabricanteveiculo";
 
-    $buscaFabrincanteVeiculo = new \Tabela\FabricanteVeiculo();
-    $listaFabrincanteVeiculo = $buscaFabricanteVeiculo->executarQuery( $sql );
-    $listaFabrincanteVeiculo = $buscaFabricanteVeiculo->get_array_from_resultado( $listaFabrincanteVeiculo );
+    $buscaFabricanteVeiculo = new \Tabela\FabricanteVeiculo();
+    $listaFabricanteVeiculo = $buscaFabricanteVeiculo->executarQuery( $sql );
+    $listaFabricanteVeiculo = $buscaFabricanteVeiculo->get_array_from_resultado( $listaFabricanteVeiculo );
     
-    echo json_encode( $listaFabrincanteVeiculo );
+    echo json_encode( $listaFabricanteVeiculo );
     
 ?>
