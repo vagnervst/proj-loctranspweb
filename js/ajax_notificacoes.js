@@ -78,7 +78,11 @@ $(document).ready(function() {
     function asyncNotificacoes(idUsuario, listaNotificacoes) {
         var url = "apis/get_notificacoes_usuario.php";
         var ajax = new Ajax();
-        ajax.transferir_dados_para_api(url, "POST", null, function(json) {                
+        
+        var dados = new FormData();
+        dados.append("where", "n.idUsuarioDestinatario = " + idUsuario);
+        
+        ajax.transferir_dados_para_api(url, "POST", dados, function(json) {                
             var novaListaNotificacoes = JSON.parse(json);
             
             if( listaNotificacoes.length !== novaListaNotificacoes.length ) {
@@ -98,8 +102,11 @@ $(document).ready(function() {
                                         
             setInterval(function() {                
                 
-                var url = "apis/get_notificacoes_usuario.php";                
-                ajax.transferir_dados_para_api(url, "POST", null, function(json) {                
+                var url = "apis/get_notificacoes_usuario.php";    
+                var dados = new FormData();
+                dados.append("where", "n.idUsuarioDestinatario = " + idUsuario);
+                
+                ajax.transferir_dados_para_api(url, "POST", dados, function(json) {
                     var novaListaNotificacoes = JSON.parse(json);
 
                     if( listaNotificacoes.length !== novaListaNotificacoes.length ) {

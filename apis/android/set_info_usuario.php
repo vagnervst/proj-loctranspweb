@@ -4,6 +4,7 @@
     require_once("../../include/classes/tbl_cartao_credito.php");
     require_once("../../include/classes/tbl_conta_bancaria.php");
     require_once("../../include/classes/tbl_cnh.php");
+    require_once("../../include/classes/autenticacao.php");
         
     $idUsuario = ( isset($_POST["idUsuario"]) )? $_POST["idUsuario"] : null;
     $fotoPerfil = ( isset($_POST["fotoPerfil"]) )? $_POST["fotoPerfil"] : null;
@@ -28,40 +29,105 @@
     $senha = ( isset( $_POST["senha"] ) )? $_POST["senha"] : null;
     $confirmarSenha = ( isset( $_POST["confirmarSenha"] ) )? $_POST["confirmarSenha"] : null;
     $novaSenha = ( isset( $_POST["novaSenha"] ) )? $_POST["novaSenha"] : null;    
-    
+    $modo = ( isset($_POST["modo"]) )? $_POST["modo"] : null;
+
     $infoUsuario = new \Tabela\Usuario();
     $infoUsuario = $infoUsuario->buscar("id = {$idUsuario}")[0];    
+               
+    $resultado = false;
+    if( $modo == "pessoal" ) {
+        $usuario = new \Tabela\Usuario();    
+        $usuario->id = $idUsuario;
+        
+        $usuario->nome = $nome;
+        $usuario->sobrenome = $sobrenome;
+        $usuario->sexo = $sexo;
+        $usuario->cpf = $cpf;
+        $usuario->rg = $rg;
+        $usuario->dataNascimento = $dataNascimento;
+        $usuario->idCidade = $idCidade;
+        
+        if( $fotoPerfil != null ) {
+            $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $fotoPerfil));
 
-    $usuario = new \Tabela\Usuario();    
-    $usuario->id = $idUsuario;
+            $nome_arquivo = "usr_" . $idUsuario . ".jpeg";
+            $pasta = "../../img/uploads/usuarios";
 
-    if( $fotoPerfil != null ) {
-        $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $fotoPerfil));
-        
-        $nome_arquivo = "usr_" . $idUsuario . ".jpeg";
-        $pasta = "../../img/uploads/usuarios";
-        
-        File::remove($infoUsuario->fotoPerfil, $pasta);
-        file_put_contents($pasta . "/" . $nome_arquivo, $data);        
-        
-        $usuario->fotoPerfil = $nome_arquivo;
-    }
+            File::remove($infoUsuario->fotoPerfil, $pasta);
+            file_put_contents($pasta . "/" . $nome_arquivo, $data);        
 
-    $usuario->nome = $nome;
-    $usuario->sobrenome = $sobrenome;
-    $usuario->sexo = $sexo;
-    $usuario->cpf = $cpf;
-    $usuario->dataNascimento = $dataNascimento;
-    $usuario->telefone = $telefone;
-    $usuario->celular = $celular;
-    $usuario->emailContato = $emailContato;
-    $usuario->rg = $rg;
-    $usuario->email = $emailAutenticacao;
-    $usuario->senha = $novaSenha;
-    //$usuario->fotoPerfil = $;
-    $usuario->idCidade = $idCidade;
+            $usuario->fotoPerfil = $nome_arquivo;
+        }
         
-    $resultado = $usuario->atualizar();
+        $resultado = $usuario->atualizar();
+        
+    } elseif( $modo == "contato" ) {
+        
+        $usuario = new \Tabela\Usuario();    
+        $usuario->id = $idUsuario;
+        
+        $usuario->telefone = $telefone;
+        $usuario->celular = $celular;
+        $usuario->emailContato = $emailContato;
+        
+        $resultado = $usuario->atualizar();
+        
+    } elseif( $modo == "financeiro" ) {
+        
+        $infoCartaoCredito = new \Tabela\CartaoCredito();    
+        $infoCartaoCredito->idUsuario = $idUsuario;
+
+        if( !empty($idTipoCartao) && !empty($numeroCartao) && !empty($validadeCartao) ) {
+            $infoCartaoCredito->idTipo = (int) $idTipoCartao;    
+            $infoCartaoCredito->numero = $numeroCartao;    
+            $infoCartaoCredito->vencimento = get_data_mysql( $validadeCartao );
+
+            $cartaoUsuario = $infoCartaoCredito->buscar("idUsuario = {$idUsuario}");
+            if( count($cartaoUsuario) > 0 ) {
+                $infoCartaoCredito->id = $cartaoUsuario[0]->id;
+                $resultado = $infoCartaoCredito->atualizar();
+            } else {
+                $resultado = $infoCartaoCredito->inserir();
+                
+                $resultado = ( $resultado > 0 )? true : false;                
+            }
+        }        
+
+        $contaBancaria = new \Tabela\ContaBancaria();
+        $contaBancaria->idUsuario = $idUsuario;
+
+        if( !empty($idBanco) && !empty($numeroAgencia) && !empty($numeroContaBancaria) && !empty($digitoContaBancaria) ) {
+            $contaBancaria->idBanco = (int) $idBanco;    
+            $contaBancaria->numeroAgencia = $numeroAgencia;    
+            $contaBancaria->conta = $numeroContaBancaria;    
+            $contaBancaria->digito = $digitoContaBancaria;
+
+            $bancoUsuario = $contaBancaria->buscar("idUsuario = {$idUsuario}");
+            if( count($bancoUsuario) ) {
+                $contaBancaria->id = $bancoUsuario[0]->id;
+                $resultado = $contaBancaria->atualizar();
+            } else {
+                $resultado = $contaBancaria->inserir();
+                
+                $resultado = ( $resultado > 0 )? true : false;
+            }
+        }
+        
+    } elseif( $modo == "autenticacao" ) {
+        
+        $usuario = new \Tabela\Usuario();    
+        $usuario->id = $idUsuario;
+        
+        $usuario->email = $emailAutenticacao;
+        
+        if( !empty($senha) && !empty($confirmarSenha) && !empty($novaSenha) ) {
+            if( $senha == $confirmarSenha && Autenticacao::verificar( $senha, $infoUsuario->senha ) ) {
+                $usuario->senha = Autenticacao::hash($novaSenha);
+            }
+        }
+        
+        $resultado = $usuario->atualizar();
+    }                                                        
 
     echo json_encode($resultado);
 ?>

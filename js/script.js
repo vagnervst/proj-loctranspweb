@@ -721,7 +721,7 @@ $(document).ready(function() {
                                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/gerar_pedido.php", "POST", dados_api, function(resultado) {
-                    
+                    console.log(resultado);
                 });
             }
             
@@ -1733,7 +1733,7 @@ $(document).ready(function() {
             html += '<section class="box-info-publicacao">';
             html += '<h1 class="titulo">'+ publicacao.titulo +'</h1>';
             html += '<p class="modelo-veiculo">'+ publicacao.modeloVeiculo +'</p>';
-            html += '<div class="box-diaria">';
+            html += '<div class="box-diaria">';            
             html += '<p class="diaria">R$'+ publicacao.valorDiaria.toString().replace(".", ","); +'</p>';
             html += '<p class="label-diaria">diária</p>';
             html += '</div>';
@@ -1811,7 +1811,7 @@ $(document).ready(function() {
         
         var ajax = new Ajax();        
         ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {
-            
+            console.log(resultado);
             lista_json_publicacoes = JSON.parse( resultado );
             
             if( increment ) {

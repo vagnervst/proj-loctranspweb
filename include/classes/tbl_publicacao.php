@@ -134,6 +134,8 @@
                         $sql .= " WHERE " . $where;
                 }
                 
+                $sql .= " GROUP BY u.id";                                
+                
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                     $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
 
