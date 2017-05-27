@@ -4307,7 +4307,7 @@ header #box-botao-filtragem {
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao {
     background-color: #fdfdfd;
     padding: 5px;
-    height: 150px;
+    height: 180px;
     border: 1px solid #a7a7a7;
     margin: 5px 0px;
     box-shadow: 1px 1px 5px #d3d3d3;
@@ -4315,7 +4315,7 @@ header #box-botao-filtragem {
 
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador {    
     width: 298px;
-    height: 30px;
+    height: 50px;
     display: block;    
 }
 
@@ -4375,11 +4375,40 @@ header #box-botao-filtragem {
     }
 }
 
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes .container-icones-avaliacao {
+    display: inline-block;
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes .container-icones-avaliacao .estrela-ativa {
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 2px;
+
+    background-image: url(../img/icones/avaliacao.png);
+}
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .info-avaliador .info-detalhes .container-icones-avaliacao .estrela-inativa {
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 2px;
+    background-image: url(../img/icones/avaliacao-inativa.png);
+}
+
+
+#pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .label-mensagem {
+    margin-left: 10px;
+}
+
 #pag-perfil-usuario .box-conteudo #container-publicacoes-avaliacoes .box-avaliacao .mensagem {
     height: 70px;
     margin: 10px;
     background-color: white;
-    border: 1px solid #cecece;
+    
+    padding: 5px;
 }
 
 @media (min-width: 420px) {
