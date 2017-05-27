@@ -120,8 +120,13 @@
                         <span id="botao-expansao"></span>    
                     </div>
                 </div>
-                <div class="box-conteudo">                        
-                    <section class="box-veiculo">                        
+                <div class="box-conteudo">
+                    <?php
+                        if( $id_usuario == $info_usuario->id ) {
+                    ?>
+                    <a class="preset-botao" id="editar">Editar</a>
+                    <?php } ?>
+                    <section class="box-veiculo">
                         <h1 id="titulo-veiculo"><?php echo $info_publicacao->titulo; ?></h1>
                         <p id="modelo-veiculo"><?php echo $info_publicacao->modeloVeiculo; ?></p>
                         <div id="info-veiculo">
