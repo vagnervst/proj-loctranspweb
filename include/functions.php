@@ -29,4 +29,17 @@
         $sessao = new Sessao();
         $idUsuario = (int) $sessao->get("idUsuario");
     }
+
+    function upload_base64_image($base64, $nome_arquivo, $pasta) {
+        $resultado = false;
+        
+        if( $base64 != null ) {  
+            echo "fazendo upload de " . $nome_arquivo;
+            $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64));
+            
+            $resultado = file_put_contents($pasta . "/" . $nome_arquivo, $data);
+        }
+        
+        return $resultado;
+    }
 ?>

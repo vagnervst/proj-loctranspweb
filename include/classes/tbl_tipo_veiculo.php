@@ -146,7 +146,7 @@
                     
                     $lista_transmissao[] = $objTransmissao;
                 }
-                echo $sql;
+                
                 return $lista_transmissao;
             }
             
