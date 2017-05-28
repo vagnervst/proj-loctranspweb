@@ -99,7 +99,7 @@
                                 
                                         foreach( $lista_estrelas as $classe_estrela ) {
                                             echo "<div class=\"" . $classe_estrela . "\"></div>";
-                                        }                                                                        
+                                        }                                                 
                                     ?>
                                 </div>
                             </div>
