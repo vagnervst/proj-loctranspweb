@@ -16,8 +16,10 @@
     $id_usuario = new Sessao();
     $id_usuario = $id_usuario->get("idUsuario");  
     
-    
     $info_usuario = new \Tabela\Usuario();
+    
+    $info_locador = $info_usuario->buscar( " nome = '{$info_publicacao->nomeLocador}' " )[0];
+
     if( !empty($id_usuario) ) {    
         $info_usuario = $info_usuario->buscar( "id = {$id_usuario}" )[0];
     }
@@ -122,9 +124,9 @@
                 </div>
                 <div class="box-conteudo">
                     <?php
-                        if( $id_usuario == $info_usuario->id ) {
+                        if( $id_usuario == $info_locador->id ) {
                     ?>
-                    <a class="preset-botao" id="editar">Editar</a>
+                    <a href="publicar.php?idPublicacao=<?php echo $info_publicacao->id; ?>&modo=editar" class="preset-botao" id="editar">Editar</a>
                     <?php } ?>
                     <section class="box-veiculo">
                         <h1 id="titulo-veiculo"><?php echo $info_publicacao->titulo; ?></h1>
