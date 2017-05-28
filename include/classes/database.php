@@ -9,6 +9,7 @@
             //private $senha = "ac@c1tysh4r3";
             private $banco = "dbcityshare";
             //private $banco = "dbmobcityshare";
+
             public $conexao;
 
             function __construct() {
