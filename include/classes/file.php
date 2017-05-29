@@ -14,6 +14,7 @@
             if( empty($arquivo["tmp_name"]) || empty($nome_arquivo) || !File::verificar_extensao($arquivo) ) return false;
             $nome_arquivo = basename($nome_arquivo);
             
+            echo "UPLOAD: " . $arquivo["tmp_name"] . $pasta . "/" . $nome_arquivo;
             return move_uploaded_file($arquivo["tmp_name"], $pasta . "/" . $nome_arquivo);
         }
         
