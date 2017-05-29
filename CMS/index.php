@@ -1,10 +1,10 @@
 <?php
-    require_once("../include/initialize.php");
-    require_once("../include/classes/tbl_sobre_projeto.php");
-    require_once("../include/classes/tbl_home.php");
-    require_once("../include/classes/tbl_beneficios_projeto.php");
-    require_once("../include/classes/tbl_sobre_empresa.php");
-    require_once("../include/classes/tbl_usuario.php");
+    require_once("include/initialize.php");
+    require_once("include/classes/tbl_sobre_projeto.php");
+    require_once("include/classes/tbl_home.php");
+    require_once("include/classes/tbl_beneficios_projeto.php");
+    require_once("include/classes/tbl_sobre_empresa.php");
+    require_once("include/classes/tbl_usuario.php");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
