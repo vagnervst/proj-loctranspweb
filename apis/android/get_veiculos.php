@@ -1,6 +1,6 @@
 <?php
-    require_once("../include/initialize.php");
-    require_once("../include/classes/tbl_veiculo.php");
+    require_once("../../include/initialize.php");
+    require_once("../../include/classes/tbl_veiculo.php");
     
     $id_tipo = ( isset($_POST["idTipo"]) )? $_POST["idTipo"] : null;
     $id_fabricante = ( isset( $_POST["idFabricante"] ) )? $_POST["idFabricante"] : null;
@@ -21,8 +21,5 @@
     $lista_veiculos = new \Tabela\Veiculo();
     $lista_veiculos = $lista_veiculos->getVeiculos(null, null, "{$pesquisa}", "codigo");
 
-    echo '<option selected disabled>Selecione um modelo</option>';
-    foreach($lista_veiculos as $veiculo) {
-        echo '<option value="' . $veiculo->id . '">' . $veiculo->nome . '</option>';
-    }
+    echo json_encode( $lista_veiculos );
 ?>
