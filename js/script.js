@@ -1752,12 +1752,30 @@ $(document).ready(function() {
             
             html += '<div class="box-avaliacao">';
             html += '<section class="info-avaliador">';
-            html += '<div class="info-detalhes">'+ avaliacao.nomeAvaliador +'</div>';
+            html += '<div class="info-detalhes">'+ "Avaliador: "+ avaliacao.nomeAvaliador +'</div>';
             var dataAvaliacao = new Date( avaliacao.dataAvaliacao );            
-            html += '<div class="info-detalhes">'+ dataAvaliacao.toLocaleString().split(" ")[0] +'</div>';
-            html += '<div class="info-detalhes">Avaliação: '+ avaliacao.nota.toString(); +'</div>';
+            html += '<div class="info-detalhes">'+ "Data: "+ dataAvaliacao.toLocaleString().split(" ")[0] +'</div>';
+            html += '<div class="info-detalhes"> Avaliação: ';
+            html += '<div class="container-icones-avaliacao">';
+            var lista_estrelas = [
+                'estrela-inativa',
+                'estrela-inativa',
+                'estrela-inativa',
+                'estrela-inativa',
+                'estrela-inativa'
+            ];
+            
+            for( var index = 0; index < lista_estrelas.length; index++ ) {
+                if( index < avaliacao.nota ) {
+                    lista_estrelas[index] = 'estrela-ativa';
+                }
+                html += '<div class="' + lista_estrelas[index] + '"></div>';
+                
+            }
+            html += '</div>';
+            html += '</div>';
             html += '</section>';
-            html += '<p>Mensagem:</p>'
+            html += '<p class="label-mensagem">Mensagem:</p>';
             html += '<div class="mensagem">'+ avaliacao.mensagem +'</div>';
             html += '<div class="box-avaliacoes">';
             
