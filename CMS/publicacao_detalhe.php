@@ -40,11 +40,14 @@
                         <?php echo $dadosPublicacao->titulo; ?>
                     </div>
                     <div id="imagens-publicacao">
-                        <img src="<?php File::read($dadosPublicacao->imagemPrincipal, "../../img/uploads/publicacoes/");?>"/>
-                        <img src="<?php File::read($dadosPublicacao->imagemA, "../../img/uploads/publicacoes/");?>"/>
-                        <img src="<?php File::read($dadosPublicacao->imagemB, "../../img/uploads/publicacoes/");?>"/>
-                        <img src="<?php File::read($dadosPublicacao->imagemC, "../../img/uploads/publicacoes/");?>"/>
-                        <img src="<?php File::read($dadosPublicacao->imagemD, "../../img/uploads/publicacoes/");?>"/>
+                        <?php
+                            $pasta = "../img/uploads/publicacoes";
+                        ?>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemPrincipal, $pasta); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemA, $pasta); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemB, $pasta); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemC, $pasta); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemD, $pasta); ?>"/>
                     </div>
                     <div id="modelo-publicacao" class="box-label-info">
                         <p class="label">Modelo:</p>
