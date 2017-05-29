@@ -63,7 +63,8 @@
                 $sql .= "p.quilometragemAtual, p.limiteQuilometragem, p.imagemPrincipal, p.imagemA, p.imagemB, p.imagemC, p.imagemD, p.idStatusPublicacao, sp.titulo AS tituloStatus, ";
                 $sql .= "u.id AS idLocador, u.nome AS nomeLocador, u.sobrenome AS sobrenomeLocador, ";
                 $sql .= "v.id AS idVeiculo, v.nome AS modeloVeiculo, ";
-                $sql .= "f.id AS idFuncionario, (SELECT COUNT(id) FROM tbl_publicacao WHERE idStatusPublicacao = 1) AS totalPublicacoes ";
+                $sql .= "f.id AS idFuncionario, (SELECT COUNT(id) FROM tbl_publicacao WHERE idStatusPublicacao = 1 AND disponivelOnline = 1) AS totalPublicacoes, ";
+                $sql .= "pl.diasAnalisePublicacao ";
                 $sql .= "FROM tbl_publicacao AS p ";
                 $sql .= "INNER JOIN tbl_veiculo AS v ";
                 $sql .= "ON v.id = p.idVeiculo ";
@@ -74,7 +75,9 @@
                 $sql .= "LEFT JOIN tbl_funcionario AS f ";
                 $sql .= "ON f.id = p.idFuncionario ";
                 $sql .= "LEFT JOIN tbl_agencia AS a ";
-                $sql .= "ON a.id = p.idAgencia";
+                $sql .= "ON a.id = p.idAgencia ";
+                $sql .= "INNER JOIN tbl_planoconta AS pl ";
+                $sql .= "ON pl.id = u.idPlanoConta";                                
                 
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;

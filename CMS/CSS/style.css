@@ -2322,14 +2322,22 @@ footer #box-rodape #box-logo-rodape {
     height: 1020px;
 }
 
+#pag-publicacao #container-publicacoes {        
+    height: 965px; 
+    float: left;
+    overflow-y: auto;
+}
+
 #pag-publicacao .box-publicacao-preview {
     width: 785px;
     height: 100px;
     margin-left: 5px;
-    background-color:#a1aec9;
+    background-color:#f7f7f7;
     float: left;
     border-radius: 2px;
     margin: 5px 5px;
+    box-shadow: 1px 1px 5px #d0d0d0;
+    border: 1px solid #d4d4d4;
 }
 
 #pag-publicacao .box-publicacao-preview .box-publicacao-imagem {
@@ -2395,7 +2403,7 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao-detalhes .box-publicacao #modelo-publicacao {
-    
+    margin: 5px;
 }
 
 #pag-publicacao-detalhes .box-publicacao #proprietario-publicacao {
@@ -2411,11 +2419,11 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao-detalhes .box-publicacao #data-publicacao {
-    
+    margin: 5px;
 }
 
 #pag-publicacao-detalhes .box-publicacao #diaria-publicacao {
-    
+    margin: 5px;   
 }
 
 #pag-publicacao-detalhes .box-publicacao #combustivel-publicacao {
@@ -2423,7 +2431,7 @@ footer #box-rodape #box-logo-rodape {
 }
 
 #pag-publicacao-detalhes .box-publicacao #distancia-publicacao {
-    
+    margin: 5px;
 }
 
 #pag-publicacao-detalhes .box-publicacao #status-publicacao {
