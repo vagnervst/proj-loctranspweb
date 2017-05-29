@@ -27,10 +27,12 @@
     
     $txtBotao = "Publicar";
     
+    $link = "";
     $editar = false;
 
     if( $modo == "editar" ) {
         
+        $link = "?modo=editar";
         $txtBotao = "Atualizar";
         $editar = true;
         
@@ -61,9 +63,9 @@
     $disabled = false;
 
     $publicar = ( isset($_POST["btnPublicar"]) )? $_POST["btnPublicar"] : null;
-    var_dump($editar);
+    
     if( isset($publicar) ) {
-        var_dump($editar);
+        
         $db = new \DB\Database();
         $imagemPrincipal = ( isset($_FILES["flImagemPrincipal"]) )? $_FILES["flImagemPrincipal"] : null;
         $imagemA = ( isset($_FILES["flImagemA"]) )? $_FILES["flImagemA"] : null;
@@ -97,15 +99,9 @@
         $lista_required_input[] = $valorVeiculo;
         $lista_required_input[] = $acessorios;                                                        
         
-        if( !FormValidator::has_empty_input( $lista_required_input ) ) {            
-            
-            if( $editar ) {
-                //$publicacao = $dadosPublicacao->getPublicacao(" id = {$idPublicacao} ");
+        if( !FormValidator::has_empty_input( $lista_required_input ) ) {
                 
-            } else {
-                $publicacao = new \Tabela\Publicacao();
-            }
-            
+            $publicacao = new \Tabela\Publicacao();                            
             $publicacao->titulo = $titulo;
             $publicacao->descricao = $descricao;
             $publicacao->valorDiaria = (double) $valorDiaria;
@@ -126,12 +122,12 @@
             $publicacao->idUsuario = (int) $sessao->get("idUsuario");
             
             if( !$editar ) {
-                echo "blablabla";
-                //$id_publicacao = $publicacao->inserir();
+                
+                $id_publicacao = $publicacao->inserir();
                 
             } else {
-                //$id_publicacao = $publicacao->atualizar( " id = {$idPublicacao} " );
-                echo "bleblelb";
+                $id_publicacao = $publicacao->atualizar();
+            
             }
             
             if( !empty($id_publicacao) ) {
@@ -165,7 +161,7 @@
                 }
                 
                 
-                $publicacao->atualizar();
+                $publicacao->atualizar(" id = {$idPublicacao} ");
             }
         }
     }
@@ -182,7 +178,7 @@
         <div id="container">
             <?php require_once("layout/header.php"); ?>
             <div class="main" id="pag-publicar">
-                <form method="post" action="publicar.php" enctype="multipart/form-data">
+                <form method="post" action="publicar.php<?php echo $link; ?>" enctype="multipart/form-data">
                     <div class="box-conteudo">
                         <?php 
                                                 
