@@ -1748,7 +1748,7 @@ $(document).ready(function() {
         var html = "";
         
         for( var i = 0; i<lista_json.length; i++ ) {
-            var avaliacao = lista_json[i];
+            var avaliacao = lista_json[i];            
             
             html += '<div class="box-avaliacao">';
             html += '<section class="info-avaliador">';
@@ -1777,6 +1777,25 @@ $(document).ready(function() {
             html += '</section>';
             html += '<p class="label-mensagem">Mensagem:</p>';
             html += '<div class="mensagem">'+ avaliacao.mensagem +'</div>';
+            html += '<div class="box-avaliacoes">';
+            
+            var lista_estrelas = [
+                'classe-para-estrela-inativa',
+                'classe-para-estrela-inativa',
+                'classe-para-estrela-inativa',
+                'classe-para-estrela-inativa',
+                'classe-para-estrela-inativa'
+            ];
+                        
+            for( var x = 0; x < lista_estrelas.length; ++x ) {
+                if( x <= avaliacao.nota ) {
+                    lista_estrelas[i] = 'classe-para-estrela-ativa';
+                }
+                
+                html += '<div class="' + lista_estrelas[x] + '"></div>';
+            }
+                        
+            html += '</div>';
             html += '</div>';
         }
         

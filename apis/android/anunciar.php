@@ -34,10 +34,7 @@
     $publicacao->idVeiculo = $idVeiculo;
     $publicacao->idStatusPublicacao = $status_publicacao_pendente;
     $publicacao->dataPublicacao = get_data_atual_mysql();
-    $publicacao->disponivelOnline = 1;
-    
-    var_dump($publicacao);
-    echo $modo;
+    $publicacao->disponivelOnline = 1;        
 
     $resultado = false;
     if( $modo == "insert" ) {

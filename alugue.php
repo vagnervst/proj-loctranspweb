@@ -217,7 +217,10 @@
 
                         ?>
                         <section class="box-veiculo">
-                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="img/image_teste.jpg" /></a>
+                            <?php
+                                $pasta = "img/uploads/publicacoes";                                
+                            ?>
+                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="<?php echo File::read($publicacao->imagemPrincipal, $pasta); ?>" /></a>
                             <div class="box-info-veiculo">                                
                                 <h1 class="titulo-veiculo"><?php echo $publicacao->titulo; ?></h1>
                                 <div class="box-valor-diaria">
@@ -247,9 +250,11 @@
                     </div>
                     <?php if( count($listaPublicacao) > 0 ) { ?>
                     <?php
+                        /*echo $listaPublicacao[0]->totalPublicacoes . " ";
+                        echo $itens_por_pagina;*/
                         $totalPaginas = ceil($listaPublicacao[0]->totalPublicacoes / $itens_por_pagina);                                                
-    
-                        $proxima_pagina = ( ($pagina_atual + 1) < $totalPaginas )? $pagina_atual + 1 : $pagina_atual;
+                            
+                        $proxima_pagina = ( ($pagina_atual + 1) <= $totalPaginas )? $pagina_atual + 1 : $pagina_atual;
                         $pagina_anterior = ( ($pagina_atual - 1) > 0 )? $pagina_atual - 1 : $pagina_atual;
                     ?>
                     <div id="box-paginas">

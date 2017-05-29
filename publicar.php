@@ -101,8 +101,7 @@
         
         if( !FormValidator::has_empty_input( $lista_required_input ) ) {
                 
-            $publicacao = new \Tabela\Publicacao();                
-            
+            $publicacao = new \Tabela\Publicacao();                            
             $publicacao->titulo = $titulo;
             $publicacao->descricao = $descricao;
             $publicacao->valorDiaria = (double) $valorDiaria;

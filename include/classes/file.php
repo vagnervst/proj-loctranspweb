@@ -14,6 +14,7 @@
             if( empty($arquivo["tmp_name"]) || empty($nome_arquivo) || !File::verificar_extensao($arquivo) ) return false;
             $nome_arquivo = basename($nome_arquivo);
             
+            echo "UPLOAD: " . $arquivo["tmp_name"] . $pasta . "/" . $nome_arquivo;
             return move_uploaded_file($arquivo["tmp_name"], $pasta . "/" . $nome_arquivo);
         }
         
@@ -21,13 +22,13 @@
             return $pasta . "/" . rawurlencode($nome_arquivo);
         }
         
-        private static function is_arquivo_existente($nome_arquivo, $pasta) {                        
-            if( file_exists($pasta . "/" . $nome_arquivo) ) return true;
+        private static function is_arquivo_existente($nome_arquivo, $pasta) {                       
+            if( file_exists($pasta . "/" . $nome_arquivo) && is_file($pasta . "/" . $nome_arquivo) ) return true;
             
             return false;
         }
         
-        public static function read($nome_arquivo, $pasta) {
+        public static function read($nome_arquivo, $pasta) {             
             if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return $pasta . "/no_image.jpg";
             
             return File::codificar_caminho($nome_arquivo, $pasta);

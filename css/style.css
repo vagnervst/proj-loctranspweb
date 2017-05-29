@@ -1797,6 +1797,7 @@ header #box-botao-filtragem {
 
 #pag-listagem-veiculos .box-conteudo #lista-veiculos {    
     width: 310px;
+    min-height: 580px;
     margin: 0 auto;
 }
 
@@ -1826,8 +1827,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 1200px) {
     #pag-listagem-veiculos .box-conteudo #lista-veiculos {
-        width: 1180px;
-        min-height: 580px;
+        width: 1180px;        
     }
 }
 
