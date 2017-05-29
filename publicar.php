@@ -103,8 +103,7 @@
                 //$publicacao = $dadosPublicacao->getPublicacao(" id = {$idPublicacao} ");
                 
             } else {
-                //$publicacao = new \Tabela\Publicacao();
-                
+                $publicacao = new \Tabela\Publicacao();
             }
             
             $publicacao->titulo = $titulo;
