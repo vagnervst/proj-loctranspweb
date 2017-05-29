@@ -22,14 +22,49 @@
     $planoConta = $planoConta->getPlanos(null, null, " p.id = {$dadosUsuario->idPlanoConta} ")[0];
 
     $dadosPublicacao = new \Tabela\Publicacao();
-    $dadosPublicacao = $dadosPublicacao->getPublicacao(" u.id = {$idUsuario} ");
+    $modo = isset( $_GET["modo"] )? $_GET["modo"] : null;
+    $idPublicacao = isset( $_GET["idPublicacao"] )? $_GET["idPublicacao"] : null;
+    
+    $txtBotao = "Publicar";
+    
+    $editar = false;
+
+    if( $modo == "editar" ) {
+        
+        $txtBotao = "Atualizar";
+        $editar = true;
+        
+        $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao(" u.id = {$idUsuario}  AND p.id = {$idPublicacao} ")[0];
+        $titulo = $dadosPublicacao->titulo;
+        $descricao = $dadosPublicacao->descricao;
+        $quilometragemAtual = $dadosPublicacao->quilometragemAtual;
+        $valorVeiculo = $dadosPublicacao->valorVeiculo;
+        $valorDiaria = $dadosPublicacao->valorDiaria;
+        $valorCombustivel = $dadosPublicacao->valorCombustivel;
+        $limiteQuilometragem = $dadosPublicacao->limiteQuilometragem;
+        $valorQuilometragem = $dadosPublicacao->valorQuilometragem;
+        
+        
+    } else {
+        
+        $dadosPublicacao = $dadosPublicacao->getPublicacao(" u.id = {$idUsuario} ");
+        $titulo = null;
+        $descricao = null;
+        $quilometragemAtual = null;
+        $valorVeiculo = null;
+        $valorDiaria = null;
+        $valorCombustivel = null;
+        $limiteQuilometragem = null;
+        $valorQuilometragem = null;
+    }
+
     $disabled = false;
 
     $publicar = ( isset($_POST["btnPublicar"]) )? $_POST["btnPublicar"] : null;
-    
+    var_dump($editar);
     if( isset($publicar) ) {
+        var_dump($editar);
         $db = new \DB\Database();
-        
         $imagemPrincipal = ( isset($_FILES["flImagemPrincipal"]) )? $_FILES["flImagemPrincipal"] : null;
         $imagemA = ( isset($_FILES["flImagemA"]) )? $_FILES["flImagemA"] : null;
         $imagemB = ( isset($_FILES["flImagemB"]) )? $_FILES["flImagemB"] : null;
@@ -64,7 +99,13 @@
         
         if( !FormValidator::has_empty_input( $lista_required_input ) ) {            
             
-            $publicacao = new \Tabela\Publicacao();
+            if( $editar ) {
+                //$publicacao = $dadosPublicacao->getPublicacao(" id = {$idPublicacao} ");
+                
+            } else {
+                //$publicacao = new \Tabela\Publicacao();
+                
+            }
             
             $publicacao->titulo = $titulo;
             $publicacao->descricao = $descricao;
@@ -83,12 +124,16 @@
             
             $sessao = new Sessao();
                                     
-            $publicacao->idUsuario = (int) $sessao->get("idUsuario");                        
+            $publicacao->idUsuario = (int) $sessao->get("idUsuario");
             
-            
-            
-            $id_publicacao = $publicacao->inserir();
-            
+            if( !$editar ) {
+                echo "blablabla";
+                //$id_publicacao = $publicacao->inserir();
+                
+            } else {
+                //$id_publicacao = $publicacao->atualizar( " id = {$idPublicacao} " );
+                echo "bleblelb";
+            }
             
             if( !empty($id_publicacao) ) {
                 $publicacao->id = $id_publicacao;
@@ -158,7 +203,11 @@
                                     <div id="imagem-principal">
                                         <p id="label">Principal</p>
                                         <div class="box-botao-imagem">
-                                            <div class="imagem"></div>                                            
+                                            <?php if( $editar ) { ?>
+                                            <div class="imagem" style="background-image: url('<?php echo $dadosPublicacao->imagemPrincipal; ?>')" ></div>
+                                            <?php } else { ?>
+                                            <div class="imagem"></div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <div class="box-botao-imagem">
@@ -186,11 +235,11 @@
                         <?php } ?>
                         <div class="label-input">
                             <p class="label">Título</p>
-                            <input class="preset-input-text" type="text" name="txtTitulo" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                            <input class="preset-input-text" type="text" name="txtTitulo" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo $titulo; ?>"/>
                         </div>
                         <div class="label-input">
                             <p class="label">Descrição</p>
-                            <textarea class="preset-input-textarea" name="txtDescricao" <?php echo ( $disabled )? "disabled" : ""; ?>></textarea>
+                            <textarea class="preset-input-textarea" name="txtDescricao" <?php echo ( $disabled )? "disabled" : ""; ?>><?php echo $descricao; ?></textarea>
                         </div>
                     </div>
                     <div id="wrapper-info-veiculo">
@@ -200,7 +249,15 @@
                                <div class="label-input">
                                     <p class="label">Tipo</p>
                                     <select class="preset-input-select js-select-tipo-veiculo" type="select" name="slTipo" <?php echo ( $disabled )? "disabled" : ""; ?>>
+                                        <?php if( $editar ) { ?>
+                                        
+                                        <option selected><?php echo $dadosPublicacao->tipoVeiculo; ?></option>
+                                        
+                                        <?php } else {?>
+                                        
                                         <option selected disabled>Selecione um tipo</option>
+                                        
+                                        <?php } ?>
                                         <?php
                                             $lista_tipos = new \Tabela\TipoVeiculo();
                                             $lista_tipos = $lista_tipos->buscar("visivel = 1");
@@ -216,19 +273,31 @@
                                 <div class="label-input">
                                     <p class="label">Fabricante</p>
                                     <select class="preset-input-select js-select-fabricante" type="select" name="slFabricante" <?php echo ( $disabled )? "disabled" : ""; ?>>
-                                        <option selected disabled>Selecione um fabricante</option>                                
+                                        <?php if( $editar  ) { ?>
+                                        <option selected><?php echo $dadosPublicacao->fabricante; ?></option>
+                                        <?php } else { ?>
+                                        <option selected disabled>Selecione um fabricante</option>
+                                        <?php } ?>
                                     </select>
                                 </div>                                
                                 <div class="label-input">
                                     <p class="label">Tipo de Combustível</p>
                                     <select class="preset-input-select js-select-combustivel" type="select" name="slCombustivel" <?php echo ( $disabled )? "disabled" : ""; ?>>
-                                        <option selected disabled>Selecione um tipo de combustível</option>                                
+                                        <?php if( $editar  ) { ?>
+                                        <option selected><?php echo $dadosPublicacao->combustivel; ?></option>
+                                        <?php } else { ?>
+                                        <option selected disabled>Selecione um tipo de combustível</option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Transmissão</p>
                                     <select class="preset-input-select js-select-transmissao" type="select" name="slTransmissao" <?php echo ( $disabled )? "disabled" : ""; ?>>
+                                        <?php if( $editar  ) { ?>
+                                        <option selected><?php echo $dadosPublicacao->trasmissao; ?></option>
+                                        <?php } else { ?>
                                         <option selected disabled>Selecione um tipo de transmissão</option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="label-input">
@@ -243,16 +312,20 @@
                                 <div class="label-input">
                                     <p class="label">Modelo</p>
                                     <select class="preset-input-select js-select-veiculo" type="select" name="slModelo" <?php echo ( $disabled )? "disabled" : ""; ?>>
-                                        <option selected disabled>Selecione um modelo</option> 
+                                        <?php if( $editar  ) { ?>
+                                        <option selected><?php echo $dadosPublicacao->modeloVeiculo; ?></option>
+                                        <?php } else { ?>
+                                        <option selected disabled>Selecione um modelo</option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Quilometragem</p>
-                                    <input class="preset-input-text" type="text" name="txtQuilometragemAtual" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                                    <input class="preset-input-text" type="text" name="txtQuilometragemAtual" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo $quilometragemAtual; ?>" />
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Valor do Veículo</p>
-                                    <input class="preset-input-text" type="text" name="txtValorVeiculo" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                                    <input class="preset-input-text" type="text" name="txtValorVeiculo" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo $valorVeiculo; ?>"/>
                                 </div>
                             </div>
                         </section>
@@ -261,19 +334,19 @@
                             <div id="box-locacao">
                                 <div class="label-input">
                                     <p class="label">Valor da Diária</p>
-                                    <input class="preset-input-text" type="text" name="txtValorDiaria" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                                    <input class="preset-input-text" type="text" name="txtValorDiaria" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo $valorDiaria; ?>"/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Valor do Combustível por Litro</p>
-                                    <input class="preset-input-text" type="text" name="txtValorCombustivel" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                                    <input class="preset-input-text" type="text" name="txtValorCombustivel" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo $valorCombustivel; ?>"/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Limite de Quilometragem</p>
-                                    <input class="preset-input-text" type="text" name="txtLimiteQuilometragem" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                                    <input class="preset-input-text" type="text" name="txtLimiteQuilometragem" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo $limiteQuilometragem; ?>"/>
                                 </div>
                                 <div class="label-input">
                                     <p class="label">Valor por Quilometragem Excedida</p>
-                                    <input class="preset-input-text" type="text" name="txtValorQuilometragem" <?php echo ( $disabled )? "disabled" : ""; ?>/>
+                                    <input class="preset-input-text" type="text" name="txtValorQuilometragem" <?php echo ( $disabled )? "disabled" : ""; ?> value="<?php echo ($valorQuilometragem); ?>" />
                                 </div>
                             </div>
                         </section>
@@ -282,9 +355,9 @@
                             if( !$disabled ) {
                         ?>
                     <h1 class="titulo-separador">Acessórios</h1>
-                    <div class="box-conteudo">                        
+                    <div class="box-conteudo">
                         <div class="box-acessorios"></div>                        
-                        <input class="preset-input-submit" id="botao-publicar" type="submit" value="Publicar" name="btnPublicar" />
+                        <input class="preset-input-submit" id="botao-publicar" type="submit" value="<?php echo $txtBotao ?>" name="btnPublicar" />
                     </div>
                     <?php } ?>
                 </form>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     require_once("include/initialize.php");
     require_once("include/classes/tbl_sobre_projeto.php");
     require_once("include/classes/tbl_home.php");
