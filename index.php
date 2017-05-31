@@ -65,22 +65,33 @@
                             
                             $listaUsuario = $dadosUsuarios->getTopUsuarios();
                             
-                            foreach( $listaUsuario as $usuario ) {
-                            
-                        ?>
-                        <section class="box-locador-destaque">
+                            for($i = 0; $i < 10; ++$i) {
+                                
+                                if( isset($listaUsuario[$i]) ) {
+                                    $usuario = $listaUsuario[$i];   
+                                } else {
+                                    $usuario = new \Tabela\Usuario();
+                                }
+                        ?>                        
+                        <section class="box-locador-destaque" <?php echo ( !isset($usuario->id) )? "style=\"opacity: 0.4;box-shadow: 0px 0px 0px black;\"" : ""; ?> >
+                            <?php if( !empty($usuario->id) ) { ?>
                             <a href="perfil.php?id=<?php echo $usuario->id; ?>">
+                            <?php } ?>
+                                <?php if( !empty($usuario->id) ) { ?>
                                 <div class="box-effect">
                                     <div class="hover-effect"></div>
                                 </div>
+                                <?php } ?>
                                 <?php $caminhoFoto = "img/uploads/usuarios/"; ?>
-                                <img class="foto-locador" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto)?>"/>
-                            </a>
-                            <p class="localizacao-locador">Estado: SP</p>
-                            <h1 class="nome-locador"><?php echo $usuario->nome; ?></h1>
-                            <p class="localizacao-locador">Estado: <?php echo $usuario->estado; ?></p>
+                                <img class="foto-locador" src="<?php echo File::read($usuario->fotoPerfil, $caminhoFoto, "no_image.png")?>"/>
+                            <?php if( !empty($usuario->id) ) { ?>
+                            </a>                                                        
+                            <?php } ?>
+                            <h1 class="nome-locador"><?php echo ( isset($usuario->nome) )? $usuario->nome : ""; ?></h1>
+                            <p class="localizacao-locador"><?php echo ( isset($usuario->estado) )? "Estado: " . $usuario->estado : ""; ?></p>
                             <div class="box-avaliacoes">
-                                <p class="avaliacoes-locador">Avaliações: <?php echo $usuario->qtdAvaliacoes; ?></p>
+                                <p class="avaliacoes-locador"><?php echo ( isset($usuario->qtdAvaliacoes) )? "Avaliações: " . $usuario->qtdAvaliacoes : ""; ?></p>
+                                <?php if( isset($usuario->mediaAvaliacao) ) { ?>
                                 <div class="container-icone-avaliacoes">
                                     <?php                                                                                
                                         $lista_estrelas = [
@@ -93,8 +104,8 @@
                                          
                                         $mediaNotasUsuario = round($usuario->mediaAvaliacao);                                                
                                 
-                                        for( $i = 0; $i < $mediaNotasUsuario; ++$i ) {
-                                            $lista_estrelas[$i] = "icone-avaliacao";                           
+                                        for( $x = 0; $x < $mediaNotasUsuario; ++$x ) {
+                                            $lista_estrelas[$x] = "icone-avaliacao";                           
                                         }                                                                            
                                 
                                         foreach( $lista_estrelas as $classe_estrela ) {
@@ -102,8 +113,9 @@
                                         }                                                 
                                     ?>
                                 </div>
+                                <?php } ?>
                             </div>
-                        </section>
+                        </section>                            
                         <?php } ?>
                     </div>
                 </section>
