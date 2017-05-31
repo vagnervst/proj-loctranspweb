@@ -28,8 +28,8 @@
             return false;
         }
         
-        public static function read($nome_arquivo, $pasta) {             
-            if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return $pasta . "/no_image.jpg";
+        public static function read($nome_arquivo, $pasta, $nao_encontrado="no_image.jpg") {                                     
+            if( !File::is_arquivo_existente($nome_arquivo, $pasta) ) return $pasta . "/" . $nao_encontrado;
             
             return File::codificar_caminho($nome_arquivo, $pasta);
         }

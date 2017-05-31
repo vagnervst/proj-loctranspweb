@@ -5,7 +5,7 @@
             //private $servidor = "192.168.0.2";
             private $usuario = "root";
             //private $usuario = "mobcityshare";
-            private $senha = "root";
+            private $senha = "bcd127";
             //private $senha = "ac@c1tysh4r3";
             private $banco = "dbcityshare";
             //private $banco = "dbmobcityshare";

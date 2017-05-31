@@ -1341,19 +1341,19 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     .main #container-locadores-destaque {
-        height: 370px;
+        height: 410px;
     }
 }
 
 @media (min-width: 520px) {
     .main #container-locadores-destaque {
-        height: 625px;
+        height: 780px;
     }
 }
 
 @media (min-width: 740px) {
-    .main #container-locadores-destaque {
-        height: 790px;
+    .main #container-locadores-destaque {    
+        height: 905px;        
     }
 }
 
@@ -1391,14 +1391,16 @@ header #box-botao-filtragem {
     }
 }
 
-.main #container-locadores-destaque .box-locador-destaque {    
-    display: inline-block;    
-    width: 240px;
+.main #container-locadores-destaque .box-locador-destaque {        
+    width: 240px;    
+    height: 360px;
     border-radius: 0px 0px 5px 5px;
     margin: 0 3px;
     padding: 5px;    
     color: #202020;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #dcdcdc;    
+    box-shadow: 1px 1px 5px #d1d1d1;
+    float: left;
     transition: background-color .2s;
 }
 
@@ -1486,7 +1488,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     .main #container-locadores-destaque .box-locador-destaque {
-        width: 230px;
+        width: 230px;        
     }
     
     .main #container-locadores-destaque .box-locador-destaque .foto-locador {
@@ -1508,6 +1510,7 @@ header #box-botao-filtragem {
     
     .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes {
         margin-left: 55px;
+        margin-top: 30px;
     }
 }
 
@@ -1533,14 +1536,16 @@ header #box-botao-filtragem {
         margin-top: 15px;
     }
     
-    .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes {
-        margin-left: 16px;
+    .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes {        
+        margin-top: 80px;
+        margin-left: 50px;
     }
 }
 
 @media (min-width: 740px) {
     .main #container-locadores-destaque .box-locador-destaque {
         width: 150px;
+        height: 280px;
     }        
     
     .main #container-locadores-destaque .box-locador-destaque .foto-locador {
@@ -1561,6 +1566,7 @@ header #box-botao-filtragem {
     }
     
     .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes {
+        margin-top: 45px;
         margin-left: 2px;
         filter: grayscale(50%);
         transition: filter .2s;
@@ -1578,7 +1584,7 @@ header #box-botao-filtragem {
 
 @media (min-width: 1000px) {
     .main #container-locadores-destaque .box-locador-destaque {
-        width: 180px;
+        width: 180px;        
     }
     
     .main #container-locadores-destaque .box-locador-destaque .foto-locador {
@@ -1588,6 +1594,10 @@ header #box-botao-filtragem {
     
     .main #container-locadores-destaque .box-locador-destaque .nome-locador {
         font-size: 16px;
+    }
+    
+    .main #container-locadores-destaque .box-locador-destaque .box-avaliacoes .container-icone-avaliacoes {
+        margin-top: 10px;
     }
 }
 
@@ -2815,7 +2825,7 @@ header #box-botao-filtragem {
     text-align: center;
     margin-bottom: 10px;
     padding: 5px 0px;
-    border-top: 1px solid #202020;
+    border-top: 1px solid #d1d1d1;
 }
 
 #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo .box-label-valor {    
@@ -2854,7 +2864,7 @@ header #box-botao-filtragem {
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao {
         display: inline-block;
         width: 49%;        
-        border-left: 1px solid #202020;
+        border-left: 1px solid #b0b0b0;
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo {        
@@ -2867,7 +2877,7 @@ header #box-botao-filtragem {
     }
     
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #box-valores-veiculo .box-label-valor .valor {        
-        background-color: #c7c7c7;
+        background-color: #e9e9e9;
         font-size: 16px;
         padding: 5px;
     }
@@ -2943,7 +2953,7 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-detalhes-veiculo .box-conteudo .box-veiculo #info-veiculo #box-locacao .box-data .titulo {
         display: block;
-        background-color: #d1d1d1;
+        background-color: #e9e9e9;
         text-align: left;
         font-size: 17px;
         padding: 5px;
@@ -3057,9 +3067,10 @@ header #box-botao-filtragem {
 @media (min-width: 740px) {
     #pag-detalhes-veiculo #box-previa-locador {        
         background-image: url(../img/assets/background_box_locador.png);
+        background-repeat: no-repeat;
         width: 500px;
         border: 0px;
-        margin: 30px 0px;
+        margin: 30px 0px;        
     }
     
     #pag-detalhes-veiculo #box-previa-locador #imagem-locador {
