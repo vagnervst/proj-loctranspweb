@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once("include/initialize.php");
     require_once("include/functions.php");
     require_once("include/classes/tbl_usuario.php");
@@ -22,20 +22,17 @@
     $planoConta = $planoConta->getPlanos(null, null, " p.id = {$dadosUsuario->idPlanoConta} ")[0];
 
     $dadosPublicacao = new \Tabela\Publicacao();
-    $modo = isset( $_GET["modo"] )? $_GET["modo"] : null;
+    $modo = isset( $_GET["modo"] )? $_GET["modo"] : "inserir";
     $idPublicacao = isset( $_GET["idPublicacao"] )? $_GET["idPublicacao"] : null;
     
     $txtBotao = "Publicar";
     
-    $link = "";
-    $editar = false;
+    $link = "";    
 
     if( $modo == "editar" ) {
-        
         $link = "?modo=editar";
         $txtBotao = "Atualizar";
-        $editar = true;
-        
+      
         $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao(" u.id = {$idUsuario}  AND p.id = {$idPublicacao} ")[0];
         $titulo = $dadosPublicacao->titulo;
         $descricao = $dadosPublicacao->descricao;
@@ -45,8 +42,7 @@
         $valorCombustivel = $dadosPublicacao->valorCombustivel;
         $limiteQuilometragem = $dadosPublicacao->limiteQuilometragem;
         $valorQuilometragem = $dadosPublicacao->valorQuilometragem;
-        
-        
+                
     } else {
         
         $dadosPublicacao = $dadosPublicacao->getPublicacao(" u.id = {$idUsuario} ");
@@ -121,41 +117,36 @@
                                     
             $publicacao->idUsuario = (int) $sessao->get("idUsuario");
             
-            if( !$editar ) {
-                
-                $id_publicacao = $publicacao->inserir();
-                
-            } else {
-                $id_publicacao = $publicacao->atualizar();
-            
+            if( $modo == "inserir" ) {
+                $idPublicacao = $publicacao->inserir();                
             }
-            
-            if( !empty($id_publicacao) ) {
-                $publicacao->id = $id_publicacao;
+            	
+            if( !empty($idPublicacao) ) {
+                $publicacao->id = $idPublicacao;
                 
                 $caminho = "img/uploads/publicacoes";
                                 
-                $nome_arquivo_principal = "post_" . $id_publicacao . "_imagem_principal." . pathinfo( $imagemPrincipal["name"], PATHINFO_EXTENSION );                
+                $nome_arquivo_principal = "post_" . $idPublicacao . "_imagem_principal." . pathinfo( $imagemPrincipal["name"], PATHINFO_EXTENSION );		
                 if( File::upload( $imagemPrincipal, $nome_arquivo_principal, $caminho ) ) {
                     $publicacao->imagemPrincipal = $nome_arquivo_principal;
                 }
                 
-                $nome_arquivo_a = "post_" . $id_publicacao . "_imagem_a." . pathinfo( $imagemA["name"], PATHINFO_EXTENSION );
+                $nome_arquivo_a = "post_" . $idPublicacao . "_imagem_a." . pathinfo( $imagemA["name"], PATHINFO_EXTENSION );
                 if( File::upload( $imagemA, $nome_arquivo_a, $caminho ) ) {
                     $publicacao->imagemA = $nome_arquivo_a;
                 }
                 
-                $nome_arquivo_b = "post_" . $id_publicacao . "_imagem_b." . pathinfo( $imagemB["name"], PATHINFO_EXTENSION );
+                $nome_arquivo_b = "post_" . $idPublicacao . "_imagem_b." . pathinfo( $imagemB["name"], PATHINFO_EXTENSION );
                 if( File::upload( $imagemB, $nome_arquivo_b, $caminho ) ) {
                     $publicacao->imagemB = $nome_arquivo_b;
                 }
                 
-                $nome_arquivo_c = "post_" . $id_publicacao . "_imagem_c." . pathinfo( $imagemC["name"], PATHINFO_EXTENSION );
+                $nome_arquivo_c = "post_" . $idPublicacao . "_imagem_c." . pathinfo( $imagemC["name"], PATHINFO_EXTENSION );
                 if( File::upload( $imagemC, $nome_arquivo_c, $caminho ) ) {
                     $publicacao->imagemC = $nome_arquivo_c;
                 }
                 
-                $nome_arquivo_d = "post_" . $id_publicacao . "_imagem_d." . pathinfo( $imagemD["name"], PATHINFO_EXTENSION );
+                $nome_arquivo_d = "post_" . $idPublicacao . "_imagem_d." . pathinfo( $imagemD["name"], PATHINFO_EXTENSION );
                 if( File::upload( $imagemD, $nome_arquivo_d, $caminho ) ) {
                     $publicacao->imagemD = $nome_arquivo_d;
                 }
@@ -163,6 +154,8 @@
                 
                 $publicacao->atualizar(" id = {$idPublicacao} ");
             }
+	    
+            redirecionar_para("perfil.php?id={$idUsuario}");
         }
     }
 ?>
@@ -198,7 +191,7 @@
                                     <div id="imagem-principal">
                                         <p id="label">Principal</p>
                                         <div class="box-botao-imagem">
-                                            <?php if( $editar ) { ?>
+                                            <?php if( $modo == "editar" ) { ?>
                                             <div class="imagem" style="background-image: url('<?php echo $dadosPublicacao->imagemPrincipal; ?>')" ></div>
                                             <?php } else { ?>
                                             <div class="imagem"></div>

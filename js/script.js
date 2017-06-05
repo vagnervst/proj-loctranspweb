@@ -27,7 +27,7 @@ $(document).ready(function() {
     }
     
     function controlarPainel(botaoInteracao, painel, elementoClicado, elemento_a_ocultar = undefined) {                
-        if(painel === null) return;
+        if(painel === null || painel === undefined) return;    
         
         if( elementoClicado != painel && isElementoDoPainel(elementoClicado, painel) ) {
             //Evita o fechamento do painel caso o clique ocorra em um de seus elementos filho
@@ -43,7 +43,7 @@ $(document).ready(function() {
             }
             
         } else if( !isPainelExibido(painel) && elementoClicado == botaoInteracao ) {
-            //Abre o painel
+            //Abre o painel            
             toggleExibicaoPainel(painel);
 
             if( elemento_a_ocultar != undefined ) {
@@ -553,8 +553,8 @@ $(document).ready(function() {
         var botaoFiltragemVeiculos = $("#mobile-botao-filtragem-ativo")[0];
         var painelFiltragemVeiculos = $("#box-mobile-filtragem")[0];
         
-        var botaoNotificacoes = $("#icone-notificacao");
-        var painelNotificacoes = $("#box-menu-notificacoes")[0];
+        var botaoNotificacoes = $("#icone-notificacao")[0];
+        var painelNotificacoes = $("#box-menu-notificacoes")[0];                
         
         $(document.body).click(function(e) {
             var elementoClicado = e.target;            
@@ -721,7 +721,7 @@ $(document).ready(function() {
                                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/gerar_pedido.php", "POST", dados_api, function(resultado) {
-                    console.log(resultado);
+
                 });
             }
             
@@ -947,7 +947,6 @@ $(document).ready(function() {
                 exibirCarregamentoModal( box_modal );                                
                 
                 pedido_atualizar_local( RETIRADA, function(resultado) {
-                    console.log(resultado);
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_retirada = $(box_botoes).children("#botao-local-pedido")[0];
                     
@@ -991,7 +990,6 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_solicitacao.php", "POST", data, function(resultado) {
-                    console.log(resultado);
                     
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_solicitacao = $(box_botoes).children("#botao-solicitar-retirada")[0];
@@ -1029,7 +1027,6 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_solicitacao.php", "POST", dados, function(resultado) {
-                    console.log(resultado);
                     
                     var box_botoes = $("#container-acoes-pedido")[0];
                     var botao_solicitacao = $(box_botoes).children("#botao-solicitar-devolucao")[0];
@@ -1071,7 +1068,6 @@ $(document).ready(function() {
                 
                 var ajax = new Ajax();
                 ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {
-                    console.log(resultado);
                     var botao_definir_pendencias = $("#botao-definir-pendencias")[0];
                     
                     if( botao_definir_pendencias !== undefined ) {
@@ -1102,8 +1098,7 @@ $(document).ready(function() {
                 exibirCarregamentoModal(box_modal); 
                 
                 var ajax = new Ajax();
-                ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {                                                            
-                    console.log(resultado);
+                ajax.transferir_dados_para_api("apis/pedido_definir_pendencias.php", "POST", dados, function(resultado) {
                     var botao_visualizar_pendencias = $("#botao-visualizar-pendencias")[0];
                     
                     if( statusPendencia === DISCORDO ) {                    
@@ -1134,7 +1129,6 @@ $(document).ready(function() {
                     idPedido = idPedido.substr( idPedido.indexOf("?id=")+4, idPedido.length );
                     
                     var formaPagamento = ( $(this).hasClass("js-pagamento-cartao") )? PAGAMENTO_CARTAO : PAGAMENTO_DINHEIRO;
-                    console.log(formaPagamento);
                     
                     var dados = new FormData();
                     dados.append("idPedido", idPedido);
@@ -1143,7 +1137,6 @@ $(document).ready(function() {
                     var box_modal = $(this).parents(".modal")[0];
                                         
                     if( formaPagamento === PAGAMENTO_CARTAO ) { 
-                        console.log(box_modal);
                         var codigo_seguranca_cartao = $(box_modal).find(".js-txt-codigo-seguranca-cartao")[0].value;
                         
                         dados.append("codigoSegurancaCartao", codigo_seguranca_cartao);
@@ -1153,7 +1146,6 @@ $(document).ready(function() {
                     
                     var ajax = new Ajax();
                     ajax.transferir_dados_para_api("apis/pedido_realizar_pagamento.php", "POST", dados, function(resultado) {
-                        console.log(resultado);
                         
                         var botao_avanco = $(box_modal).find(".js-pagamento-cartao")[0];
                         
@@ -1183,7 +1175,6 @@ $(document).ready(function() {
                     idPedido = idPedido.substr( idPedido.indexOf("?id=")+4, idPedido.length );
                     
                     var is_confirmado = ( $(this).hasClass("js-pagamento-dinheiro-confirmar") )? 1 : 2;
-                    console.log(is_confirmado);
                     
                     var dados = new FormData();
                     dados.append("idPedido", idPedido);
@@ -1194,7 +1185,6 @@ $(document).ready(function() {
                     
                     var ajax = new Ajax();
                     ajax.transferir_dados_para_api("apis/pedido_confirmar_recebimento.php", "POST", dados, function(resultado) {
-                        console.log(resultado);
                         
                         var modal_alvo = $(box_modal.parentNode).children("." + getClasseModal(botao_avanco));
                         
@@ -1222,7 +1212,6 @@ $(document).ready(function() {
                     dados.append("notaAvaliacao", nota);                    
                     dados.append("mensagemAvaliacao", comentario_avaliacao);
                                         
-                    console.log(box_modal);
                     exibirCarregamentoModal(box_modal);
                     
                     var ajax = new Ajax();
@@ -1245,10 +1234,8 @@ $(document).ready(function() {
                     
                     var ajax = new Ajax();
                     ajax.transferir_dados_para_api("apis/pedido_cancelar.php", "POST", dados, function(resultado) {
-                        console.log(resultado);
                         
                         var objeto = JSON.parse(resultado);
-                        console.log(objeto);
                         
                         if( objeto.resultado === true ) {
                             window.location = "perfil.php?id=" + objeto.idUsuario;
@@ -1478,7 +1465,6 @@ $(document).ready(function() {
             if( increment && nova_lista_solicitacoes.length > 0 ) {                
                 box_listagem.innerHTML = conteudo_listagem + criarListaSolicitacoes(lista_json_solicitacoes);                
             } else {                
-                console.log("not increment");
                 box_listagem.innerHTML = criarListaSolicitacoes(lista_json_solicitacoes);
             }
             
@@ -1519,8 +1505,6 @@ $(document).ready(function() {
     }
     
     function criarListaSolicitacoes(lista_json) {
-        console.log("CRIANDO LISTA");
-        console.log( lista_json );
         
         var html = "";
         for( var i = 0; i < lista_json.length; ++i ) {
@@ -1708,7 +1692,6 @@ $(document).ready(function() {
                 box_listagem.appendChild( imagem_carregamento );
                 
                 ajax.transferir_dados_para_api("apis/listagem_solicitacoes.php", "POST", dados, function(resultado) {                     
-                    console.log(resultado);
                     carregarListaSolicitacoes( paginaAtual );
                     
                     if( lista_json_solicitacoes.length === 0 ) {
@@ -1728,7 +1711,15 @@ $(document).ready(function() {
             
             html += '<div class="box-publicacao">';
             html += '<a href="veiculo.php?id=' + publicacao.id + '">';
-            html += '<div class="foto-publicacao" style="background-image: url("img/uploads/publicacoes/")")"></div>';
+            
+            var caminhoImagem = "";
+            if( publicacao.imagemPrincipal !== null ) {
+                caminhoImagem = "img/uploads/publicacoes/" + publicacao.imagemPrincipal;
+            } else {
+                caminhoImagem = "img/uploads/publicacoes/no_image.png";
+            }
+                        
+            html += '<div class="foto-publicacao" style="background-image: url(' + caminhoImagem + '); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>';
             html += '</a>';
             html += '<section class="box-info-publicacao">';
             html += '<h1 class="titulo">'+ publicacao.titulo +'</h1>';
@@ -1847,9 +1838,8 @@ $(document).ready(function() {
         dados.append("paginaAtual", pagina_alvo);                
         
         var ajax = new Ajax();        
-        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {
-            console.log(resultado);
-            lista_json_publicacoes = JSON.parse( resultado );
+        ajax.transferir_dados_para_api("apis/listagem_publicacoes_usuario.php", "POST", dados, function(resultado) {            
+            lista_json_publicacoes = JSON.parse( resultado );            
             
             if( increment ) {
                 box_info_publicacao.innerHTML = conteudo_listagem + criarListaPublicacoesUsuario( lista_json_publicacoes );              

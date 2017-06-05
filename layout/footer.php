@@ -10,7 +10,8 @@
                 <li><a href="beneficios.php">Benefícios do Projeto</a></li>
                 <li><a href="empresa.php">A Empresa</a></li>
                 <li><a href="contato.php">Contato</a></li>
-            </ul>
+                <li><a href="downloads/cityshare.apk"><div class="icone-app"></div></a></li>
+            </ul>            
         </section>
         <p id="declaracao-copyright">&copy; City Share 2017 Cityshare.com.br - Todos os Direitos Reservados</p>
     </div>

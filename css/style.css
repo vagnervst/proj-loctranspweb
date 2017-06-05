@@ -13,7 +13,7 @@ body::after {
 /*------------------------------------------------------------------------- PSEUDO ELEMENTOS PARA BREAKPOINT*/
 
 @font-face {
-    font-family: roboto;
+    font-family: Roboto;
     src: url(fonts/Roboto-Regular.ttf);
 }
 
@@ -49,7 +49,7 @@ a {
 }
 
 body {
-    font-family: 'roboto';
+    font-family: "Roboto";
 }
 
 /*------------------------------------------------------------------------- GERAL*/
@@ -1186,7 +1186,6 @@ header #box-botao-filtragem {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
-    font-family: Bell Gothic Std Black ;
     color: #557bc9 ;
 }
 
@@ -1255,8 +1254,6 @@ header #box-botao-filtragem {
     font-size: 20px;
     text-align: justify;    
     margin: 0 auto;
-    font-family: Bell Gothic Std Light;
-    
 }
 
 @media (min-width: 420px) {
@@ -1332,7 +1329,7 @@ header #box-botao-filtragem {
 
 .main #container-locadores-destaque {
     background-color: #fafafa;
-    height: 410px;   
+    height: 420px;   
     overflow-x: auto;
     padding: 5px;
     padding-top: 15px;    
@@ -1341,19 +1338,19 @@ header #box-botao-filtragem {
 
 @media (min-width: 420px) {
     .main #container-locadores-destaque {
-        height: 410px;
+        height: 430px;
     }
 }
 
 @media (min-width: 520px) {
     .main #container-locadores-destaque {
-        height: 780px;
+        height: 790px;
     }
 }
 
 @media (min-width: 740px) {
     .main #container-locadores-destaque {    
-        height: 905px;        
+        height: 915px;        
     }
 }
 
@@ -6726,7 +6723,7 @@ footer {
 
 @media (min-width: 740px) {
     footer {
-        height: 295px;
+        height: 350px;
     }
 }
 
@@ -6792,6 +6789,21 @@ footer #box-rodape #box-mapa-site #lista-paginas li a {
     }
 }
 
+footer #box-rodape #box-mapa-site #lista-paginas .icone-app {
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/icones/playstore.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 740px) {
+    footer #box-rodape #box-mapa-site #lista-paginas .icone-app {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 footer #box-rodape #declaracao-copyright {
     display: block;
     color: white;
@@ -6801,7 +6813,7 @@ footer #box-rodape #declaracao-copyright {
 
 @media (min-width: 740px) {
     footer #box-rodape #declaracao-copyright {        
-        margin-top: 230px;        
+        margin-top: 300px;        
     }
 }
 

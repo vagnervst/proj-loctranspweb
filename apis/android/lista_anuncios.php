@@ -18,7 +18,8 @@
     $sql .= "INNER JOIN tbl_estado AS eUsuario ";
     $sql .= "ON eUsuario.id = cUsuario.idEstado ";
     $sql .= "LEFT JOIN tbl_estado AS eAgencia ";
-    $sql .= "ON eAgencia.id = cAgencia.idEstado "; 
+    $sql .= "ON eAgencia.id = cAgencia.idEstado ";
+	$sql .= "WHERE p.idStatusPublicacao = 1";
 
     $db_utils = new \DB\DatabaseUtils();
     $resultado = $db_utils->executarQuery($sql);

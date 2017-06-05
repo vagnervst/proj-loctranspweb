@@ -2326,10 +2326,11 @@ footer #box-rodape #box-logo-rodape {
     height: 965px; 
     float: left;
     overflow-y: auto;
+    width: 780px
 }
 
 #pag-publicacao .box-publicacao-preview {
-    width: 785px;
+    width: 770px;
     height: 100px;
     margin-left: 5px;
     background-color:#f7f7f7;
@@ -2363,7 +2364,7 @@ footer #box-rodape #box-logo-rodape {
 
 #pag-publicacao .box-publicacao-preview .box-publicacao-status {
     text-align: right;
-    width: 324px;
+    width: 310px;
     height: 90px;
     float: left;
     margin-top: 10px;

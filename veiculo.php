@@ -17,8 +17,8 @@
     $id_usuario = $id_usuario->get("idUsuario");  
     
     $info_usuario = new \Tabela\Usuario();
-    
-    $info_locador = $info_usuario->buscar( " nome = '{$info_publicacao->nomeLocador}' " )[0];
+
+    $info_locador = $info_usuario->buscar( " id = '{$info_publicacao->idLocador} AND ' " )[0];
 
     if( !empty($id_usuario) ) {    
         $info_usuario = $info_usuario->buscar( "id = {$id_usuario}" )[0];
@@ -97,16 +97,16 @@
                     <div id="container-imagens">       
                         <?php                                                     
                             $imagens_veiculo = [];
-                            $imagens_veiculo[] = ( $info_publicacao->imagemPrincipal != null )? $info_publicacao->imagemPrincipal : "no_image.jpg";
-                            $imagens_veiculo[] = ( $info_publicacao->imagemA != null )? $info_publicacao->imagemA : "no_image.jpg";
-                            $imagens_veiculo[] = ( $info_publicacao->imagemB != null )? $info_publicacao->imagemB : "no_image.jpg";
-                            $imagens_veiculo[] = ( $info_publicacao->imagemC != null )? $info_publicacao->imagemC : "no_image.jpg";
-                            $imagens_veiculo[] = ( $info_publicacao->imagemD != null )? $info_publicacao->imagemD : "no_image.jpg";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemPrincipal != null )? $info_publicacao->imagemPrincipal : "no_image.png";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemA != null )? $info_publicacao->imagemA : "no_image.png";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemB != null )? $info_publicacao->imagemB : "no_image.png";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemC != null )? $info_publicacao->imagemC : "no_image.png";
+                            $imagens_veiculo[] = ( $info_publicacao->imagemD != null )? $info_publicacao->imagemD : "no_image.png";
                             
                             $pasta_imagens = "img/uploads/publicacoes/";
                             foreach( $imagens_veiculo as $imagem ) {                            
                         ?>                        
-                        <div class="imagem" style="background-image: url(<?php echo $pasta_imagens . $imagem ?>)"></div>
+                        <div class="imagem" style="background-image: url(<?php echo $pasta_imagens . $imagem ?>); <?php echo ($imagem == "no_image.png")? "background-size: contain; background-repeat: no-repeat;" : ""; ?>"></div>
                         <?php
                             }
                         ?>
@@ -190,7 +190,12 @@
                     </section>
                 </div>
                 <section id="box-previa-locador">
-                    <img id="imagem-locador" src="img/image_teste.jpg" />
+                    <?php
+                        $pasta = "img/uploads/usuarios/";
+                    ?>
+                    <a href="perfil.php?id=<?php echo $info_locador->id; ?>">
+                        <img id="imagem-locador" src="<?php echo File::read( $info_locador->fotoPerfil, $pasta ); ?>" />
+                    </a>
                     <div id="info-locador">
                         <h1 id="nome-locador"><?php echo $info_publicacao->nomeLocador . " " . $info_publicacao->sobrenomeLocador; ?></h1>
                         <div id="box-reputacao-locador">

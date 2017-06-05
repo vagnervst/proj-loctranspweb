@@ -4,6 +4,7 @@
     require_once("include/classes/tbl_status_pedido.php");
     require_once("include/classes/sessao.php");
     require_once("include/classes/tbl_alteracao_pedido.php");
+    require_once("include/classes/file.php");
 
     $idPedido = ( isset( $_GET["id"] ) )? (int) $_GET["id"] : null;
     
@@ -38,7 +39,7 @@
 
     $idStatusPedido = $infoPedido->idStatusPedido;
     $statusPedido = new \Tabela\StatusPedido();
-    $statusPedido = $statusPedido->buscar("id = {$infoPedido->idStatusPedido}")[0];
+    $statusPedido = $statusPedido->buscar("id = {$infoPedido->idStatusPedido}")[0];    
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,7 +58,7 @@
                 <div id="box-botoes-exibicao">
                     <span id="botao-detalhes" class="preset-botao botao">Detalhes</span>
                     <?php 
-                        if( $statusPedido->cod != $STATUS_PEDIDO_CONCLUIDO && ( $is_locador && $infoPedido->locatarioAvaliado == 0 ) || ( !$is_locador && $infoPedido->locadorAvaliado == 0 ) ) {
+                        if( $statusPedido->cod != $STATUS_PEDIDO_CONCLUIDO && $infoPedido->locadorAvaliado == 0 || $infoPedido->locatarioAvaliado == 0 ) {
                     ?>
                     <span id="botao-acoes" class="preset-botao botao">Ações</span>
                     <?php } ?>
@@ -388,7 +389,8 @@
                     </div>
                     <div id="container-info-pedido">
                         <div id="box-veiculo-locador">
-                            <img id="foto-veiculo" />
+                            <?php $pasta = "img/uploads/publicacoes/"; ?>
+                            <img id="foto-veiculo" src="<?php echo File::read( $infoPedido->imagemPrincipal, $pasta); ?>" />
                             <div id="info-locador">
                                 <p id="modelo-veiculo"><?php echo $infoPedido->veiculo; ?></p>
                                 <?php
@@ -523,7 +525,7 @@
                         </div>
                     </div>
                     <?php 
-                        if( $statusPedido->cod != $STATUS_PEDIDO_CONCLUIDO ) {
+                        if( $statusPedido->cod != $STATUS_PEDIDO_CONCLUIDO && $infoPedido->locadorAvaliado == 0 || $infoPedido->locatarioAvaliado == 0 ) {
                     ?>
                     <div id="container-acoes-pedido">                        
                         <?php
@@ -575,7 +577,7 @@
                         <span class="preset-botao botao js-modal10" id="botao-definir-pendencias">Definir Pendências</span>
                         <?php
                             }
-                        ?>
+                        ?>                        
                         <?php if( $statusPedido->cod == $STATUS_PEDIDO_CONCLUIDO && ( ( $is_locador && $infoPedido->locatarioAvaliado == 0 ) || ( !$is_locador && $infoPedido->locadorAvaliado == 0 ) ) ) { ?>
                         <span class="preset-botao botao js-modal19" id="botao-avaliar-locacao">Avaliar <?php echo ( !$is_locador )? "Locador" : "Locatário"; ?></span>
                         <?php } ?>

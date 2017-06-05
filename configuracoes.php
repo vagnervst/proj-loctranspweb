@@ -8,6 +8,7 @@
     require_once("include/classes/tbl_estado.php");
     require_once("include/classes/tbl_cidade.php");
     require_once("include/classes/tbl_cnh.php");
+    require_once("include/classes/autenticacao.php");
     require_once("include/classes/sessao.php");
         
     $sessao = new Sessao();
@@ -49,6 +50,7 @@
         $celular = ( isset($_POST["txtCelular"]) )? $_POST["txtCelular"] : null;
         $email = ( isset($_POST["txtEmail"]) )? $_POST["txtEmail"] : null;                                                                
         $numeroCnh = ( isset($_POST["txtNumeroCnh"]) )? $_POST["txtNumeroCnh"] : null;
+        $emailAutenticacao = ( isset($_POST["txtEmailAutenticacao"]) )? $_POST["txtEmailAutenticacao"] : null;
         $senha = ( isset($_POST["txtSenha"]) )? $_POST["txtSenha"] : null;
         $confirmarSenha = ( isset($_POST["txtConfirmarSenha"]) )? $_POST["txtConfirmarSenha"] : null;
                 
@@ -60,8 +62,12 @@
         $usuario->dataNascimento = $dataNascimento;
         $usuario->telefone = $telefone;
         $usuario->celular = $celular;
-        $usuario->email = $email;        
-        $usuario->senha = $senha;                
+        $usuario->emailContato = $email;
+        $usuario->email = $emailAutenticacao;
+        
+        if( !empty($senha) && !empty($confirmarSenha) && $senha == $confirmarSenha ) {
+            $usuario->senha = Autenticacao::hash($senha);
+        }                
                 
         $nome_arquivo = "usr_" . $usuario->id . "." . pathinfo($fotoPerfil["name"])["extension"];        
         if( File::replace($fotoPerfil, $nome_arquivo, $usuario->fotoPerfil, $pasta_usuario . "/") ) {
@@ -170,11 +176,6 @@
                                     </label>
                                 </div>
                                 <div class="box-label-input">
-                                    <label><span class="label">Email:</span>
-                                        <input type="text" name="txtEmail" class="preset-input-text input" value="<?php echo $usuario->email; ?>" />
-                                    </label>
-                                </div>
-                                <div class="box-label-input">
                                     <label><span class="label">RG:</span>
                                         <input type="text" name="txtRg" class="preset-input-text input" value="<?php echo $usuario->rg; ?>" />
                                     </label>
@@ -251,7 +252,7 @@
                                 </div>
                                 <div class="box-label-input">
                                     <label><span class="label">Email:</span>
-                                        <input type="text" name="txtEmail" class="preset-input-text input" value="<?php echo $usuario->email; ?>" />
+                                        <input type="text" name="txtEmail" class="preset-input-text input" value="<?php echo $usuario->emailContato; ?>" />
                                     </label>
                                 </div>
                                 <input class="preset-input-submit botao-submit" type="submit" name="formSubmit" value="Salvar" />
@@ -266,7 +267,7 @@
                                             <option selected disabled>Selecione</option>
                                             <?php
                                                 $listaTipoCartao = new \Tabela\TipoCartaoCredito();
-                                                $listaTipoCartao = $listaTipoCartao->buscar();
+                                                $listaTipoCartao = $listaTipoCartao->buscar("visivel = 1");
                                                 
                                                 foreach( $listaTipoCartao as $tipoCartao ) {
                                             ?>
@@ -359,16 +360,21 @@
                         <div id="form-info-autenticacao" class="form-conta">
                             <form method="POST" action="configuracoes.php?id=<?php echo $idUsuario; ?>">
                                 <div class="box-label-input">
+                                    <label><span class="label">Email:</span>
+                                        <input type="email" name="txtEmailAutenticacao" class="preset-input-text input" value="<?php echo $usuario->email; ?>" />
+                                    </label>
+                                </div>
+                                <div class="box-label-input">
                                     <label><span class="label">Senha:</span>
-                                        <input type="password" name="txtSenha" class="preset-input-text input" />
+                                        <input type="password" name="txtSenha" class="preset-input-text input" placeholder="Digite a nova senha" />
                                     </label>
                                 </div>
                                 <div class="box-label-input">
                                     <label><span class="label">Confirmar Senha:</span>
-                                        <input type="password" name="txtConfirmarSenha" class="preset-input-text input" />
+                                        <input type="password" name="txtConfirmarSenha" class="preset-input-text input" placeholder="Confirme a nova senha" />
                                     </label>
                                 </div>
-                                <input class="preset-input-submit botao-submit" type="submit" name="formSubmit" value="Salvar" />
+                                <input class="preset-input-submit botao-submit" type="submit" name="formSubmit" value="Salvar"/>
                             </form>
                         </div>
                     </div>
