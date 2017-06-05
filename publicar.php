@@ -30,10 +30,9 @@
     $link = "";    
 
     if( $modo == "editar" ) {
-        
         $link = "?modo=editar";
-        $txtBotao = "Atualizar";        
-        
+        $txtBotao = "Atualizar";
+      
         $dadosPublicacao = $dadosPublicacao->getDetalhesPublicacao(" u.id = {$idUsuario}  AND p.id = {$idPublicacao} ")[0];
         $titulo = $dadosPublicacao->titulo;
         $descricao = $dadosPublicacao->descricao;
@@ -156,7 +155,7 @@
                 $publicacao->atualizar(" id = {$idPublicacao} ");
             }
 	    
-	    redirecionar_para("perfil.php?id={$idUsuario}");
+            redirecionar_para("perfil.php?id={$idUsuario}");
         }
     }
 ?>
