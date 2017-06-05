@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once("../include/initialize.php");
     require_once("../include/classes/sessao.php");
     require_once("../include/classes/tbl_publicacao.php");
@@ -43,11 +43,11 @@
                         <?php
                             $pasta = "../img/uploads/publicacoes";
                         ?>
-                        <img src="<?php echo File::read($dadosPublicacao->imagemPrincipal, $pasta); ?>"/>
-                        <img src="<?php echo File::read($dadosPublicacao->imagemA, $pasta); ?>"/>
-                        <img src="<?php echo File::read($dadosPublicacao->imagemB, $pasta); ?>"/>
-                        <img src="<?php echo File::read($dadosPublicacao->imagemC, $pasta); ?>"/>
-                        <img src="<?php echo File::read($dadosPublicacao->imagemD, $pasta); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemPrincipal, $pasta, "no_image.png"); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemA, $pasta, "no_image.png"); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemB, $pasta, "no_image.png"); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemC, $pasta, "no_image.png"); ?>"/>
+                        <img src="<?php echo File::read($dadosPublicacao->imagemD, $pasta, "no_image.png"); ?>"/>
                     </div>
                     <div id="modelo-publicacao" class="box-label-info">
                         <p class="label">Modelo:</p>

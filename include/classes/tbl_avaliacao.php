@@ -15,8 +15,8 @@
             public function getAvaliacao($registros_por_pagina = null, $pagina_atual = null, $where = null) {
             
                 $sql = "SELECT a.id, a.nota, a.mensagem, a.data AS dataAvaliacao, ";
-                $sql .= "avaliado.nome AS nomeAvaliado, avaliado.sobrenome AS sobrenomeAvaliado, ";
-                $sql .= "avaliador.nome AS nomeAvaliador, avaliador.sobrenome AS sobrenomeAvaliador ";
+                $sql .= "avaliado.id AS idUsuarioAvaliado, avaliado.nome AS nomeAvaliado, avaliado.sobrenome AS sobrenomeAvaliado, ";
+                $sql .= "avaliador.id AS idUsuarioAvaliador, avaliador.nome AS nomeAvaliador, avaliador.sobrenome AS sobrenomeAvaliador ";
                 $sql .= "FROM tbl_avaliacao AS a ";
                 $sql .= "INNER JOIN tbl_usuario AS avaliado ";
                 $sql .= "ON avaliado.id = a.idUsuarioAvaliado ";
@@ -26,7 +26,9 @@
                 if( !empty($where) ) {
                     $sql .= " WHERE " . $where;
                 }
-
+                    
+                $sql .= " ORDER BY a.data DESC ";
+                
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
                         $registros_a_ignorar = $registros_por_pagina * ( $pagina_atual - 1 );
 

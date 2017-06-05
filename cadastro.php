@@ -334,7 +334,7 @@
                                             <option selected disabled>Selecione o tipo do cartão</option>
                                             <?php
                                                 $lista_tipo_cartao = new \Tabela\TipoCartaoCredito();
-                                                $lista_tipo_cartao = $lista_tipo_cartao->buscar();
+                                                $lista_tipo_cartao = $lista_tipo_cartao->buscar("visivel = 1");
                                                 foreach( $lista_tipo_cartao as $tipo_cartao ) {
                                             ?>
                                             <option value="<?php echo $tipo_cartao->id; ?>"><?php echo $tipo_cartao->titulo; ?></option>
@@ -436,7 +436,7 @@
                                 <h1 class="titulo-cadastro">Autenticação</h1>
                                 <div class="label-input">
                                     <label class="label"><span class="input-label">Email*:</span>
-                                        <input class="preset-input-text input text-input" type="password" name="txtEmailAutenticacao" placeholder="Digite sua senha" maxlength="100" />
+                                        <input class="preset-input-text input text-input" type="email" name="txtEmailAutenticacao" placeholder="Digite seu email de autenticação" maxlength="100" />
                                     </label>
                                 </div>
                                 <div class="label-input">
@@ -632,6 +632,9 @@
                             <section class="js-etapa5 box-cadastro" id="box-autenticacao">
                                 <h1 class="titulo-cadastro">Autenticação</h1>               
                                 <div class="label-input">
+                                    <label class="label"><span class="input-label">Email*:</span>
+                                        <input class="preset-input-text input text-input" type="email" name="txtEmailAutenticacao" placeholder="Digite seu email de autenticação" maxlength="100" />
+                                    </label>
                                     <label class="label"><span class="input-label">Senha*:</span>
                                         <input class="preset-input-text input text-input" type="password" name="txtSenha" placeholder="Digite sua senha" />
                                     </label>

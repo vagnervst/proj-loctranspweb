@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once("include/initialize.php");
     require_once("include/classes/tbl_veiculo.php");
     require_once("include/classes/tbl_publicacao.php");
@@ -220,7 +220,7 @@
                             <?php
                                 $pasta = "img/uploads/publicacoes";                                
                             ?>
-                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="<?php echo File::read($publicacao->imagemPrincipal, $pasta); ?>" /></a>
+                            <a href="veiculo.php?id=<?php echo $publicacao->id; ?>"><img class="imagem-veiculo" src="<?php echo File::read($publicacao->imagemPrincipal, $pasta, "no_image.png"); ?>" /></a>
                             <div class="box-info-veiculo">                                
                                 <h1 class="titulo-veiculo"><?php echo $publicacao->titulo; ?></h1>
                                 <div class="box-valor-diaria">

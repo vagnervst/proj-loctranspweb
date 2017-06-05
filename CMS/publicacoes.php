@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require_once("../include/initialize.php");
     require_once("../include/classes/file.php");
     require_once("../include/classes/sessao.php");
@@ -51,7 +51,7 @@
                                 <?php
                                     $pasta = "../img/uploads/publicacoes";
                                 ?>
-                                <img src="<?php echo File::read($publicacao->imagemPrincipal, $pasta); ?>" class="publicacao-imagem">
+                                <img src="<?php echo File::read($publicacao->imagemPrincipal, $pasta, "no_image.png"); ?>" class="publicacao-imagem">
                             </div>
                             <div class="box-publicacao-dados">
                                 <?php echo $publicacao->titulo ?><br>
