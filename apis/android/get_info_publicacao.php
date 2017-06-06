@@ -9,7 +9,8 @@
         $publicacao->id = $idPublicacao;
         
         $publicacao = $publicacao->getDetalhesPublicacao(null, null, "p.id = {$idPublicacao}")[0];
-        
+	$publicacao->id = $idPublicacao;        
+
         echo json_encode($publicacao);
     }
 ?>

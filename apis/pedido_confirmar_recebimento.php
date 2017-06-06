@@ -15,6 +15,7 @@
         
         $infoPedido = new \Tabela\Pedido();
         $infoPedido = $infoPedido->buscar("id = {$idPedido}");
+        $infoPedido->id = $idPedido;
         
         if( isset($infoPedido[0]) ) {
             $infoPedido = $infoPedido[0];
