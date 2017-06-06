@@ -17,6 +17,7 @@
         
         $infoPedido = new \Tabela\Pedido();
         $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];                
+        $infoPedido->id = $idPedido;
         
         $sessao = new Sessao();
         $idUsuario = -1;

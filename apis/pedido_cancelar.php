@@ -12,6 +12,7 @@
         
         $infoPedido = new \Tabela\Pedido();
         $infoPedido = $infoPedido->buscar("id = {$idPedido}")[0];
+        $infoPedido->id = $idPedido;
         
         $statusPedido = new \Tabela\StatusPedido();
         $statusPedido = $statusPedido->buscar("cod = {$STATUS_PEDIDO_CANCELADO}")[0];

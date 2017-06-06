@@ -27,7 +27,8 @@
 
         $infoPedido = new \Tabela\Pedido();
         $infoPedido = $infoPedido->listarPedidos("p.id = {$idPedido}")[0];
-
+        $infoPedido->id = $idPedido;
+        
         $is_locador = null;
         if( $infoPedido->idUsuarioLocador == $idUsuario ) {
             $is_locador = true;
