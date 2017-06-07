@@ -130,13 +130,14 @@
                 $sql .= "ON u.idCidade = c.id ";
                 $sql .= "INNER JOIN tbl_estado AS e ";
                 $sql .= "ON c.idEstado = e.id ";
-                $sql .= "INNER JOIN tbl_avaliacao AS av ";
+                $sql .= "LEFT JOIN tbl_avaliacao AS av ";
                 $sql .= "ON av.idUsuarioAvaliado = u.id ";
                 
                 if( !empty($where) ) {
                         $sql .= " WHERE " . $where;
                 }
                 
+
                 $sql .= " GROUP BY u.id";                                
                 
                 if( !empty($registros_por_pagina) && !empty($pagina_atual) ) {
