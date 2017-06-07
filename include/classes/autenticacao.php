@@ -20,5 +20,6 @@
                                
             return ( $hash2 == $hash );
         }
-    }    
+    }
+
 ?>
