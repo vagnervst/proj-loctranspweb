@@ -1,7 +1,10 @@
 <?php
     require_once("../../include/initialize.php");
+    
+    $params = ( isset($_POST["params"]) )? $_POST["params"] : null;
 
-    $sql = "SELECT p.id, p.titulo, p.quilometragemAtual, p.valorDiaria, p.imagemPrincipal, CONCAT(eUsuario.nome, \", \", cUsuario.nome) AS localizacaoUsuario, CONCAT(eAgencia.nome, \", \", cAgencia.nome) AS localizacaoAgencia, v.qtdPortas ";
+    $sql = "SELECT p.id, p.titulo, p.quilometragemAtual, p.valorDiaria, p.imagemPrincipal, p.idStatusPublicacao, CONCAT(eUsuario.nome, \", \", cUsuario.nome) AS localizacaoUsuario, CONCAT(eAgencia.nome, \", \", cAgencia.nome) AS localizacaoAgencia, v.nome AS modeloVeiculo, v.qtdPortas, ";
+    $sql .= "st.titulo AS statusPedido ";
     $sql .= "FROM tbl_publicacao AS p ";
     $sql .= "INNER JOIN tbl_veiculo AS v ";
     $sql .= "ON v.id = p.idVeiculo ";
@@ -19,7 +22,16 @@
     $sql .= "ON eUsuario.id = cUsuario.idEstado ";
     $sql .= "LEFT JOIN tbl_estado AS eAgencia ";
     $sql .= "ON eAgencia.id = cAgencia.idEstado ";
-	$sql .= "WHERE p.idStatusPublicacao = 1";
+    $sql .= "LEFT JOIN tbl_pedido AS pe ";
+    $sql .= "ON pe.idPublicacao = p.id ";
+    $sql .= "LEFT JOIN tbl_statuspedido AS st ";
+    $sql .= "ON st.id = pe.idStatusPedido ";
+
+    if( $params == null ) {
+        $sql .= "WHERE p.idStatusPublicacao = 1";
+    } else {
+        $sql .= "WHERE " . $params;
+    }
 
     $db_utils = new \DB\DatabaseUtils();
     $resultado = $db_utils->executarQuery($sql);
