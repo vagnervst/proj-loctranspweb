@@ -50,7 +50,8 @@
         $nome_arquivo = "usr_" . $idUsuario . ".jpeg";
         
         if( upload_base64_image( $fotoPerfil, $nome_arquivo, $pasta ) ) {
-            $usuario->fotoPerfil = $nome_arquivo;
+            $usuario->id = $idUsuario;
+            $usuario->fotoPerfil = $nome_arquivo;            
             $usuario->atualizar();
         }
         
@@ -60,8 +61,7 @@
             $cartaoCredito->numero = $numeroCartao;
             $cartaoCredito->vencimento = get_data_mysql($vencimentoCartao);
             $cartaoCredito->idUsuario = $idUsuario;
-            $cartaoCredito->idTipo = $idTipoCartao;
-            echo json_encode($cartaoCredito);
+            $cartaoCredito->idTipo = $idTipoCartao;            
             
             $cartaoCredito->inserir();
             
@@ -73,11 +73,11 @@
             $contaBancaria->digito = $digitoVerificador;
             $contaBancaria->idUsuario = $idUsuario;
             $contaBancaria->idTipoConta = 1;
-            $contaBancaria->idBanco = $idBanco;
-            echo json_encode($contaBancaria);
+            $contaBancaria->idBanco = $idBanco;            
             
             $contaBancaria->inserir();
         }
     }
 
+    echo json_encode($idUsuario);
 ?>

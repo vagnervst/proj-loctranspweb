@@ -2,6 +2,7 @@
     sleep(1);
     require_once("../include/initialize.php");
     require_once("../include/classes/tbl_pedido.php");
+    require_once("../include/classes/tbl_publicacao.php");
     require_once("../include/classes/tbl_status_pedido.php");
     require_once("../include/classes/tbl_alteracao_pedido.php");
     require_once("../include/classes/sessao.php");
@@ -77,6 +78,13 @@
         
         $alteracaoPedido->idStatus = $statusPedido->id;
         $alteracaoPedido->inserir();
+        
+        $publicacaoAlvo = new \Tabela\Publicacao();
+        $publicacaoAlvo->id = $infoPedido->idPublicacao;
+        
+        $ID_PUBLICACAO_DISPONIVEL = 1;
+        $publicacaoAlvo->idStatusPublicacao = $ID_PUBLICACAO_DISPONIVEL;
+        $publicacaoAlvo->atualizar();
     }        
 
     $resultado = $infoPedido->atualizar();

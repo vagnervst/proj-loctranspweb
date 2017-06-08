@@ -5,6 +5,8 @@
     require_once("../../include/classes/tbl_cidade.php");
     require_once("../../include/classes/tbl_cartao_credito.php");
     require_once("../../include/classes/tbl_conta_bancaria.php");
+    require_once("../../include/classes/tbl_avaliacao.php");
+    require_once("../../include/classes/tbl_pedido.php");
 
     $idUsuario = ( isset($_POST["idUsuario"]) )? (int) $_POST["idUsuario"] : null;
 
@@ -18,7 +20,17 @@
         $usuario->idTipoConta = (int) $usuario->idTipoConta;
         $usuario->idPlanoConta = (int) $usuario->idPlanoConta;
         $usuario->idLicencaDesktop = (int) $usuario->idLicencaDesktop;
-        $usuario->saldo = (double) $usuario->saldo;
+        $usuario->saldo = (double) $usuario->saldo;        
+        
+        $pedido = new \Tabela\Pedido();
+        $listaPedidosUsuario = $pedido->buscar("idUsuarioLocatario = {$idUsuario}");
+        
+        $usuario->qtdLocacoes = count($listaPedidosUsuario);
+        
+        $avaliacao = new \Tabela\Avaliacao();
+        $avaliacoesUsuario = $avaliacao->buscar("idUsuarioAvaliado = {$idUsuario}");
+        
+        $usuario->mediaNotas = $usuario->getDetalhesUsuario("u.id = {$idUsuario}")[0]->mediaNotas;
         
         $buscaCidade = new \Tabela\Cidade();
         $buscaCidade = $buscaCidade->buscar("id = {$usuario->idCidade}")[0];

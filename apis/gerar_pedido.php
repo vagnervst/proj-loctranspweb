@@ -12,6 +12,8 @@
     $dataDevolucao = ( isset( $_POST["dataDevolucao"] ) )? $_POST["dataDevolucao"] : null;
     $idCnh = ( isset( $_POST["idCnh"] ) )? (int) $_POST["idCnh"] : null;
     
+    $ID_INDISPONIVEL = 2;
+
     if( !empty( $idPublicacao ) ) {
         $objPedido = new \Tabela\Pedido();                    
         
@@ -52,7 +54,10 @@
         $objPedido->idCnh = $idCnh;
         $objPedido->idVeiculo = $id_veiculo;
         
-        $idPedido = $objPedido->inserir();
+        $idPedido = $objPedido->inserir();                
+        
+        $info_publicacao->idStatusPublicacao = $ID_INDISPONIVEL;
+        $info_publicacao->atualizar();
         
         $historicoAlteracaoPedido = new \Tabela\AlteracaoPedido();
         $historicoAlteracaoPedido->dataOcorrencia = strftime( "%Y-%m-%d %H:%M:%S", strtotime(get_data_atual()) );
